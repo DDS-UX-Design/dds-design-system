@@ -1,0 +1,87 @@
+0 verbose cli /usr/local/bin/node /usr/local/bin/npm
+1 info using npm@11.16.0
+2 info using node@v24.18.0
+3 silly config load:file:/usr/local/lib/node_modules/npm/npmrc
+4 silly config load:file:/Users/michaelknjogu/Documents/Projects/DDS/Design System/dds-design-system/.npmrc
+5 silly config load:file:/Users/michaelknjogu/.npmrc
+6 silly config load:file:/usr/local/etc/npmrc
+7 verbose title npm install lucide-angular
+8 verbose argv "install" "lucide-angular" "--cache" ".npm-cache"
+9 verbose logfile logs-max:10 dir:/Users/michaelknjogu/Documents/Projects/DDS/Design System/dds-design-system/.npm-cache/_logs/2026-07-26T19_42_12_672Z-
+10 verbose logfile /Users/michaelknjogu/Documents/Projects/DDS/Design System/dds-design-system/.npm-cache/_logs/2026-07-26T19_42_12_672Z-debug-0.log
+11 silly logfile done cleaning log files
+12 silly packumentCache heap:4496293888 maxSize:1124073472 maxEntrySize:562036736
+13 silly idealTree buildDeps
+14 silly fetch manifest lucide-angular@*
+15 silly packumentCache full:https://registry.npmjs.org/lucide-angular cache-miss
+16 http fetch GET 200 https://registry.npmjs.org/lucide-angular 630ms (cache miss)
+17 silly packumentCache full:https://registry.npmjs.org/lucide-angular set size:undefined disposed:false
+18 silly fetch manifest @angular/common@^22.0.0
+19 silly packumentCache full:https://registry.npmjs.org/@angular%2fcommon cache-miss
+20 http fetch GET 200 https://registry.npmjs.org/npm 1162ms
+21 http fetch GET 200 https://registry.npmjs.org/@angular%2fcommon 872ms (cache miss)
+22 silly packumentCache full:https://registry.npmjs.org/@angular%2fcommon set size:undefined disposed:false
+23 silly fetch manifest @angular/common@13.x - 21.x
+24 silly packumentCache full:https://registry.npmjs.org/@angular%2fcommon cache-miss
+25 http cache https://registry.npmjs.org/@angular%2fcommon 11ms (cache hit)
+26 silly packumentCache full:https://registry.npmjs.org/@angular%2fcommon set size:3193251 disposed:false
+27 silly fetch manifest @angular/core@^22.0.0
+28 silly packumentCache full:https://registry.npmjs.org/@angular%2fcore cache-miss
+29 http fetch GET 200 https://registry.npmjs.org/@angular%2fcore 506ms (cache miss)
+30 silly packumentCache full:https://registry.npmjs.org/@angular%2fcore set size:undefined disposed:false
+31 silly fetch manifest @angular/compiler@^22.0.0
+32 silly packumentCache full:https://registry.npmjs.org/@angular%2fcompiler cache-miss
+33 http fetch GET 200 https://registry.npmjs.org/@angular%2fcompiler 803ms (cache miss)
+34 silly packumentCache full:https://registry.npmjs.org/@angular%2fcompiler set size:undefined disposed:false
+35 silly fetch manifest rxjs@~7.8.0
+36 silly packumentCache full:https://registry.npmjs.org/rxjs cache-miss
+37 http fetch GET 200 https://registry.npmjs.org/rxjs 188ms (cache miss)
+38 silly packumentCache full:https://registry.npmjs.org/rxjs set size:undefined disposed:false
+39 silly fetch manifest zone.js@~0.15.0 || ~0.16.0
+40 silly packumentCache full:https://registry.npmjs.org/zone.js cache-miss
+41 http fetch GET 200 https://registry.npmjs.org/zone.js 462ms (cache miss)
+42 silly packumentCache full:https://registry.npmjs.org/zone.js set size:undefined disposed:false
+43 verbose stack Error: unable to resolve dependency tree
+43 verbose stack     at #failPeerConflict (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:1496:25)
+43 verbose stack     at #loadPeerSet (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:1462:33)
+43 verbose stack     at async #buildDepStep (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:978:15)
+43 verbose stack     at async Arborist.buildIdealTree (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:178:7)
+43 verbose stack     at async Promise.all (index 1)
+43 verbose stack     at async Arborist.reify (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/reify.js:112:5)
+43 verbose stack     at async Install.exec (/usr/local/lib/node_modules/npm/lib/commands/install.js:157:5)
+43 verbose stack     at async Npm.exec (/usr/local/lib/node_modules/npm/lib/npm.js:193:9)
+43 verbose stack     at async module.exports (/usr/local/lib/node_modules/npm/lib/cli/entry.js:67:5)
+44 error code ERESOLVE
+45 error ERESOLVE unable to resolve dependency tree
+46 error
+47 error While resolving: dds-design-system@0.0.0
+47 error Found: @angular/common@22.0.8[2m[22m
+47 error [2mnode_modules/@angular/common[22m
+47 error   @angular/common@"^22.0.0" from the root project
+47 error
+47 error Could not resolve dependency:
+47 error [95mpeer[39m @angular/common@"13.x - 21.x" from lucide-angular@1.0.0[2m[22m
+47 error [2mnode_modules/lucide-angular[22m
+47 error   lucide-angular@"*" from the root project
+47 error
+47 error Fix the upstream dependency conflict, or retry this command with --force or --legacy-peer-deps to accept an incorrect (and potentially broken) dependency resolution.
+48 error
+48 error
+48 error For a full report see:
+48 error /Users/michaelknjogu/Documents/Projects/DDS/Design System/dds-design-system/.npm-cache/_logs/2026-07-26T19_42_12_672Z-eresolve-report.txt
+49 silly unfinished npm timer reify 1785094932840
+50 silly unfinished npm timer reify:loadTrees 1785094932841
+51 silly unfinished npm timer idealTree:buildDeps 1785094933079
+52 silly unfinished npm timer idealTree:#root 1785094933079
+53 verbose cwd /Users/michaelknjogu/Documents/Projects/DDS/Design System/dds-design-system
+54 verbose os Darwin 25.5.0
+55 verbose node v24.18.0
+56 verbose npm  v11.16.0
+57 notice
+57 notice New [31mmajor[39m version of npm available! [31m11.16.0[39m -> [34m12.0.1[39m
+57 notice Changelog: [34mhttps://github.com/npm/cli/releases/tag/v12.0.1[39m
+57 notice To update run: [4mnpm install -g npm@12.0.1[24m
+57 notice  { force: true, Symbol(proc-log.meta): true }
+58 verbose exit 1
+59 verbose code 1
+60 error A complete log of this run can be found in: /Users/michaelknjogu/Documents/Projects/DDS/Design System/dds-design-system/.npm-cache/_logs/2026-07-26T19_42_12_672Z-debug-0.log

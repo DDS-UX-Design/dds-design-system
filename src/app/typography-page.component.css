@@ -1,0 +1,158 @@
+:host {
+  display: block;
+}
+
+.typography-page {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 48px 24px 72px;
+  color: #121212;
+}
+
+.page-header {
+  margin-bottom: 36px;
+}
+
+.eyebrow {
+  margin: 0;
+  font-size: 13px;
+  line-height: 20px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #4a4a4a;
+}
+
+h1 {
+  margin: 8px 0 12px;
+  font-size: 40px;
+  line-height: 48px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.intro {
+  margin: 0;
+  max-width: 65ch;
+  font-size: 18px;
+  line-height: 28px;
+  color: #2d2d2d;
+}
+
+h2 {
+  margin: 0 0 20px;
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 600;
+}
+
+.type-specs {
+  border-top: 1px solid #e4e4e4;
+  padding-top: 24px;
+}
+
+.type-row {
+  padding: 20px 0;
+  border-bottom: 1px solid #efefef;
+}
+
+.type-meta {
+  margin: 0 0 10px;
+  font-size: 13px;
+  line-height: 20px;
+  letter-spacing: 0.01em;
+  color: #646464;
+}
+
+.sample {
+  margin: 0;
+}
+
+.display {
+  font-size: 56px;
+  line-height: 64px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.h1 {
+  font-size: 40px;
+  line-height: 48px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.h2 {
+  font-size: 32px;
+  line-height: 40px;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+
+.h3 {
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.body-lg {
+  font-size: 18px;
+  line-height: 28px;
+  font-weight: 400;
+}
+
+.body {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+}
+
+.caption {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
+}
+
+.button-specs {
+  padding-top: 32px;
+}
+
+.button-intro {
+  margin: 0 0 16px;
+  font-size: 16px;
+  line-height: 24px;
+  color: #2d2d2d;
+}
+
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+@media (max-width: 768px) {
+  .typography-page {
+    padding: 36px 16px 56px;
+  }
+
+  .display {
+    font-size: 40px;
+    line-height: 48px;
+  }
+
+  .h1 {
+    font-size: 32px;
+    line-height: 40px;
+  }
+
+  .h2 {
+    font-size: 28px;
+    line-height: 36px;
+  }
+
+  .button-row {
+    gap: 10px;
+  }
+}

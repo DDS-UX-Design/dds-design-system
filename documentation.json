@@ -1,0 +1,1136 @@
+{
+    "pipes": [],
+    "interfaces": [],
+    "injectables": [],
+    "guards": [],
+    "interceptors": [],
+    "classes": [],
+    "directives": [],
+    "components": [
+        {
+            "name": "App",
+            "id": "component-App-137353843dfb912e7418f37fcfc639ea30a681d0b7476b561ea8af9abb444908eeb5d33fcf2afad2c4a9f1239630b375952bd7da2d0ebd43ec78b9b0f21f877f",
+            "file": "src/app/app.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-root",
+            "styleUrls": [
+                "./app.css"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./app.html"
+            ],
+            "templateVariables": [],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "coverageIgnore": false,
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "RouterOutlet"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { RouterOutlet } from '@angular/router';\n\n@Component({\n  selector: 'app-root',\n  imports: [RouterOutlet],\n  templateUrl: './app.html',\n  styleUrl: './app.css'\n})\nexport class App {\n}\n",
+            "styleUrl": "./app.css",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "",
+                    "styleUrl": "./app.css"
+                }
+            ],
+            "stylesData": "",
+            "extends": [],
+            "relationships": {
+                "incoming": [],
+                "outgoing": [
+                    {
+                        "name": "RouterOutlet",
+                        "type": "module"
+                    }
+                ]
+            },
+            "templateData": "<router-outlet />\n"
+        },
+        {
+            "name": "ButtonComponent",
+            "id": "component-ButtonComponent-c09b1990456baab454497c4e9cf6807763cf8d223ba969cbe849b44f1fc6436ce0ee1ce936dd3320ca257a6e60d3b767d71dda7af939b4f5fe12dd85bdcb456b",
+            "file": "src/app/components/button/button.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "dds-button",
+            "styleUrls": [
+                "./button.component.css"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./button.component.html"
+            ],
+            "templateVariables": [],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "coverageIgnore": false,
+                    "name": "ariaLabel",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 25,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "disabled",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 27,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "fullWidth",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 28,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "icon",
+                    "defaultValue": "'info'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 24,
+                    "type": "DdsIconName",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "iconType",
+                    "defaultValue": "'no-icon'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 23,
+                    "type": "ButtonIconType",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "size",
+                    "defaultValue": "'large'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 22,
+                    "type": "ButtonSize",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "state",
+                    "defaultValue": "'default'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 20,
+                    "type": "ButtonState",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "styleType",
+                    "defaultValue": "'default'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 21,
+                    "type": "ButtonStyle",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "type",
+                    "defaultValue": "'button'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 26,
+                    "type": "\"button\" | \"submit\" | \"reset\"",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "variant",
+                    "defaultValue": "'primary'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 19,
+                    "type": "ButtonVariant",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "coverageIgnore": false,
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "IconComponent",
+                    "type": "component"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { DdsIconName, IconComponent } from '../icon/icon.component';\n\nexport type ButtonVariant = 'primary' | 'outlined' | 'ghost';\nexport type ButtonState = 'default' | 'hover' | 'focused' | 'disabled';\nexport type ButtonStyle = 'default' | 'danger';\nexport type ButtonSize = 'large' | 'medium' | 'small';\nexport type ButtonIconType = 'no-icon' | 'left-icon' | 'right-icon' | 'icon-only';\n\n@Component({\n  selector: 'dds-button',\n  standalone: true,\n  imports: [CommonModule, IconComponent],\n  templateUrl: './button.component.html',\n  styleUrl: './button.component.css'\n})\nexport class ButtonComponent {\n  @Input() variant: ButtonVariant = 'primary';\n  @Input() state: ButtonState = 'default';\n  @Input() styleType: ButtonStyle = 'default';\n  @Input() size: ButtonSize = 'large';\n  @Input() iconType: ButtonIconType = 'no-icon';\n  @Input() icon: DdsIconName = 'info';\n  @Input() ariaLabel?: string;\n  @Input() type: 'button' | 'submit' | 'reset' = 'button';\n  @Input() disabled = false;\n  @Input() fullWidth = false;\n\n  get isDisabled(): boolean {\n    return this.disabled || this.state === 'disabled';\n  }\n\n  get hasLeftIcon(): boolean {\n    return this.iconType === 'left-icon';\n  }\n\n  get hasRightIcon(): boolean {\n    return this.iconType === 'right-icon';\n  }\n\n  get isIconOnly(): boolean {\n    return this.iconType === 'icon-only';\n  }\n\n  get iconSize(): number {\n    if (this.size === 'small') {\n      return 14;\n    }\n\n    if (this.size === 'medium') {\n      return 16;\n    }\n\n    return 18;\n  }\n}",
+            "styleUrl": "./button.component.css",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ":host {\n  display: inline-block;\n}\n\n.dds-button {\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  gap: var(--dds-space-2);\n  border: 1px solid;\n  border-radius: var(--dds-radius-2);\n  font-family: var(--dds-font-family-primary);\n  font-weight: var(--dds-font-weight-medium);\n  letter-spacing: var(--dds-space-none);\n  cursor: pointer;\n  position: relative;\n}\n\n.dds-button:focus-visible, .dds-button:focus {\n    border: 1px solid #fff;\n    box-shadow: var(--dds-btn-focus-ring);\n}\n\n.dds-button:disabled {\n  background-color: var(--dds-btn-primary-bg-disabled);\n  border-color: var(--dds-btn-primary-bg-disabled);\n  cursor: not-allowed;\n  color: var(--dds-text-colour-disabled);\n}\n\n.dds-button--large {\n    height: 48px;\n    min-height: 48px;\n    padding: 12px 24px;\n    font-size: var(--dds-font-size-3);\n}\n\n.dds-button--medium {\n    height: 40px;\n    min-height: 40px;\n    padding: 8px 16px;\n    font-size: var(--dds-font-size-2);\n}\n\n.dds-button--small {\n  min-height: 32px;\n  padding: 4px 12px;\n  font-size: var(--dds-font-size-1);\n}\n\n\n/* Primary Button */\n.dds-button--primary {\n  background-color: var(--dds-btn-primary-bg-default);\n  border-color: var(--dds-btn-primary-border-default);\n  color: var(--dds-text-colour-inverse);\n}\n\n.dds-button--primary:focus, .dds-button--primary:focus-visible {\n  border-color: var(--dds-btn-primary-border-focus);\n  box-shadow: var(--dds-btn-focus-ring);\n}\n\n.dds-button--primary:hover:not(:disabled) {\n  background-color: var(--dds-btn-primary-bg-hover);\n  border-color: var(--dds-btn-primary-border-hover);\n}\n\n.dds-button--primary:hover:focus, .dds-button--primary:hover:focus-visible {\n  border-color: var(--dds-btn-primary-border-focus);\n  box-shadow: var(--dds-btn-focus-ring);\n}\n\n\n/* Outlined Button */\n.dds-button--outlined {\n  background-color: var(--dds-btn-outlined-bg-default);\n  border-color: var(--dds-btn-outlined-border-default);\n  color: var(--dds-text-colour-default);\n}\n\n.dds-button--outlined:hover:not(:disabled) {\n  background-color: var(--dds-btn-outlined-bg-hover);\n}\n\n/* Ghost Button */\n.dds-button--ghost {\n  background-color: var(--dds-btn-ghost-bg-default);\n  border-color: var(--dds-btn-ghost-border-default);\n  color: var(--dds-text-colour-accent);\n}\n\n.dds-button--ghost .dds-button__label {\n    display: block;\n    height: 100%;\n    position: relative;\n}\n\n.dds-button--ghost .dds-button__label::after {\n    background-color: var(--dds-btn-primary-border-default);\n    content: '';\n    display: block;\n    position: absolute;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    width: 100%;\n    height: 1px;\n}\n\n.dds-button--ghost:hover:not(:disabled) {\n  background-color: var(--dds-btn-ghost-bg-hover);\n}\n\n.dds-button--danger.dds-button--primary {\n  background-color: var(--dds-btn-danger-primary-bg-default);\n  border-color: var(--dds-btn-danger-primary-border-default);\n}\n\n.dds-button--danger.dds-button--primary:hover:not(:disabled),\n.dds-button--danger.dds-button--primary.dds-button--state-hover {\n  background-color: var(--dds-btn-danger-primary-bg-hover);\n  border-color: var(--dds-btn-danger-primary-border-hover);\n}\n\n.dds-button--danger.dds-button--outlined,\n.dds-button--danger.dds-button--ghost {\n  color: var(--dds-btn-danger-ghost-fg-default);\n}\n\n.dds-button--danger.dds-button--outlined {\n  border-color: var(--dds-btn-danger-outlined-border-default);\n}\n\n.dds-button--danger.dds-button--ghost:hover:not(:disabled),\n.dds-button--danger.dds-button--ghost.dds-button--state-hover {\n  background-color: var(--dds-btn-danger-ghost-bg-hover);\n}\n\n.dds-button--state-hover.dds-button--primary:not(:disabled) {\n  background-color: var(--dds-btn-primary-bg-hover);\n  border-color: var(--dds-btn-primary-border-hover);\n}\n\n.dds-button--state-hover.dds-button--outlined:not(:disabled) {\n  background-color: var(--dds-btn-outlined-bg-hover);\n}\n\n.dds-button--state-hover.dds-button--ghost:not(:disabled) {\n  background-color: var(--dds-btn-ghost-bg-hover);\n}\n\n.dds-button--state-focused {\n  box-shadow: var(--dds-btn-focus-ring);\n}\n\n.dds-button--state-disabled {\n  opacity: var(--dds-button-disabled-opacity);\n  cursor: not-allowed;\n}\n\n.dds-button__icon {\n  display: inline-flex;\n  line-height: 0;\n}\n\n.dds-button--icon-only {\n  padding: var(--dds-space-0);\n  height: var(--dds-btn-icon-only-size-lg);\n  min-height: var(--dds-btn-icon-only-size-lg);\n  width: var(--dds-btn-icon-only-size-lg);\n}\n\n.dds-button--icon-only.dds-button--medium {\n  width: var(--dds-btn-icon-only-size-md);\n  height: var(--dds-btn-icon-only-size-md);\n  min-height: var(--dds-btn-icon-only-size-md);\n}\n\n.dds-button--icon-only.dds-button--small {\n  width: var(--dds-btn-icon-only-size-sm);\n  height: var(--dds-btn-icon-only-size-sm);\n  min-height: var(--dds-btn-icon-only-size-sm);\n}",
+                    "styleUrl": "./button.component.css"
+                }
+            ],
+            "stylesData": "",
+            "extends": [],
+            "accessors": {
+                "isDisabled": {
+                    "name": "isDisabled",
+                    "getSignature": {
+                        "name": "isDisabled",
+                        "type": "boolean",
+                        "returnType": "boolean",
+                        "line": 30,
+                        "rawdescription": "\n",
+                        "description": ""
+                    }
+                },
+                "hasLeftIcon": {
+                    "name": "hasLeftIcon",
+                    "getSignature": {
+                        "name": "hasLeftIcon",
+                        "type": "boolean",
+                        "returnType": "boolean",
+                        "line": 34,
+                        "rawdescription": "\n",
+                        "description": ""
+                    }
+                },
+                "hasRightIcon": {
+                    "name": "hasRightIcon",
+                    "getSignature": {
+                        "name": "hasRightIcon",
+                        "type": "boolean",
+                        "returnType": "boolean",
+                        "line": 38,
+                        "rawdescription": "\n",
+                        "description": ""
+                    }
+                },
+                "isIconOnly": {
+                    "name": "isIconOnly",
+                    "getSignature": {
+                        "name": "isIconOnly",
+                        "type": "boolean",
+                        "returnType": "boolean",
+                        "line": 42,
+                        "rawdescription": "\n",
+                        "description": ""
+                    }
+                },
+                "iconSize": {
+                    "name": "iconSize",
+                    "getSignature": {
+                        "name": "iconSize",
+                        "type": "number",
+                        "returnType": "number",
+                        "line": 46,
+                        "rawdescription": "\n",
+                        "description": ""
+                    }
+                }
+            },
+            "relationships": {
+                "incoming": [
+                    {
+                        "name": "TypographyPageComponent",
+                        "type": "component"
+                    }
+                ],
+                "outgoing": [
+                    {
+                        "name": "CommonModule",
+                        "type": "module"
+                    },
+                    {
+                        "name": "IconComponent",
+                        "type": "component"
+                    }
+                ]
+            },
+            "templateData": "<button\n  class=\"dds-button\"\n  [attr.type]=\"type\"\n  [disabled]=\"isDisabled\"\n  [attr.aria-label]=\"isIconOnly ? (ariaLabel || 'Icon button') : null\"\n  [class.dds-button--primary]=\"variant === 'primary'\"\n  [class.dds-button--outlined]=\"variant === 'outlined'\"\n  [class.dds-button--ghost]=\"variant === 'ghost'\"\n  [class.dds-button--danger]=\"styleType === 'danger'\"\n  [class.dds-button--large]=\"size === 'large'\"\n  [class.dds-button--small]=\"size === 'small'\"\n  [class.dds-button--medium]=\"size === 'medium'\"\n  [class.dds-button--state-hover]=\"state === 'hover'\"\n  [class.dds-button--state-focused]=\"state === 'focused'\"\n  [class.dds-button--state-disabled]=\"state === 'disabled'\"\n  [class.dds-button--icon-only]=\"isIconOnly\"\n  [class.dds-button--full-width]=\"fullWidth\"\n>\n  <dds-icon class=\"dds-button__icon\" *ngIf=\"hasLeftIcon || isIconOnly\" [name]=\"icon\" [size]=\"iconSize\"></dds-icon>\n  <span class=\"dds-button__label\" *ngIf=\"!isIconOnly\"><ng-content></ng-content></span>\n  <dds-icon class=\"dds-button__icon\" *ngIf=\"hasRightIcon\" [name]=\"icon\" [size]=\"iconSize\"></dds-icon>\n</button>"
+        },
+        {
+            "name": "IconComponent",
+            "id": "component-IconComponent-ef46469d26196bf19418ad9a83473cb3ab18a97510527273c1dd8013357c87de47a0304dc72b5b7a42e7decec1b0b218416ec90c9340cb8fb744aee6b22a6b47",
+            "file": "src/app/components/icon/icon.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [
+                {
+                    "name": "provideLucideIcons(LucideArrowRight, LucideArrowLeft, LucideArrowDown, LucideCheck, LucideChevronDown, LucideCircleAlert, LucideEllipsis, LucideInfo, LucidePlus, LucideTrash2, LucideX, LucideArrowUp)"
+                }
+            ],
+            "selector": "dds-icon",
+            "styleUrls": [],
+            "styles": [],
+            "template": "<svg\n  [lucideIcon]=\"name\"\n  [size]=\"size\"\n  [strokeWidth]=\"strokeWidth\"\n  [attr.aria-hidden]=\"decorative ? 'true' : null\"\n  [title]=\"decorative ? null : title\"\n></svg>\n",
+            "templateUrl": [],
+            "templateVariables": [],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "coverageIgnore": false,
+                    "name": "decorative",
+                    "defaultValue": "true",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 67,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "name",
+                    "defaultValue": "'info'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 64,
+                    "type": "DdsIconName",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "size",
+                    "defaultValue": "16",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 65,
+                    "type": "number",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "strokeWidth",
+                    "defaultValue": "2",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 66,
+                    "type": "number | string",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "title",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 68,
+                    "type": "string",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "coverageIgnore": false,
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "LucideDynamicIcon"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, Input } from '@angular/core';\nimport {\n  LucideArrowRight,\n  LucideArrowLeft,\n  LucideArrowDown,\n  LucideArrowUp,\n  LucideCheck,\n  LucideChevronDown,\n  LucideCircleAlert,\n  LucideDynamicIcon,\n  LucideEllipsis,\n  LucideInfo,\n  LucidePlus,\n  LucideTrash2,\n  LucideX,\n  provideLucideIcons\n} from '@lucide/angular';\n\nexport type DdsIconName =\n  | 'arrow-right'\n  | 'arrow-left'\n  | 'arrow-down'\n  | 'check'\n  | 'chevron-down'\n  | 'circle-alert'\n  | 'ellipsis'\n  | 'info'\n  | 'plus'\n  | 'trash-2'\n  | 'x'\n  | 'arrow-up'; \n\n@Component({\n  selector: 'dds-icon',\n  standalone: true,\n  imports: [LucideDynamicIcon],\n  providers: [\n    provideLucideIcons(\n      LucideArrowRight,\n      LucideArrowLeft,\n      LucideArrowDown,\n      LucideCheck,\n      LucideChevronDown,\n      LucideCircleAlert,\n      LucideEllipsis,\n      LucideInfo,\n      LucidePlus,\n      LucideTrash2,\n      LucideX,\n      LucideArrowUp\n    )\n  ],\n  template: `\n    <svg\n      [lucideIcon]=\"name\"\n      [size]=\"size\"\n      [strokeWidth]=\"strokeWidth\"\n      [attr.aria-hidden]=\"decorative ? 'true' : null\"\n      [title]=\"decorative ? null : title\"\n    ></svg>\n  `\n})\nexport class IconComponent {\n  @Input() name: DdsIconName = 'info';\n  @Input() size = 16;\n  @Input() strokeWidth: number | string = 2;\n  @Input() decorative = true;\n  @Input() title?: string;\n}",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "relationships": {
+                "incoming": [
+                    {
+                        "name": "ButtonComponent",
+                        "type": "component"
+                    }
+                ],
+                "outgoing": [
+                    {
+                        "name": "LucideDynamicIcon",
+                        "type": "module"
+                    },
+                    {
+                        "name": "provideLucideIcons(LucideArrowRight, LucideArrowLeft, LucideArrowDown, LucideCheck, LucideChevronDown, LucideCircleAlert, LucideEllipsis, LucideInfo, LucidePlus, LucideTrash2, LucideX, LucideArrowUp)",
+                        "type": "injectable"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "TypographyPageComponent",
+            "id": "component-TypographyPageComponent-0bd10d27d9e9d2444d19aa2b7f1453f556d7c856d21e4b85cfb35e83ec50067ff1106057345356f3fe66fb7e0c48a0c4335742440e72bcac94a495272b377e87",
+            "file": "src/app/typography-page.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-typography-page",
+            "styleUrls": [
+                "./typography-page.component.css"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./typography-page.component.html"
+            ],
+            "templateVariables": [],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "coverageIgnore": false,
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "ButtonComponent",
+                    "type": "component"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { ButtonComponent } from './components/button/button.component';\n\n@Component({\n  selector: 'app-typography-page',\n  standalone: true,\n  imports: [ButtonComponent],\n  templateUrl: './typography-page.component.html',\n  styleUrl: './typography-page.component.css'\n})\nexport class TypographyPageComponent {}",
+            "styleUrl": "./typography-page.component.css",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ":host {\n  display: block;\n}\n\n.typography-page {\n  max-width: 980px;\n  margin: 0 auto;\n  padding: 48px 24px 72px;\n  color: #121212;\n}\n\n.page-header {\n  margin-bottom: 36px;\n}\n\n.eyebrow {\n  margin: 0;\n  font-size: 13px;\n  line-height: 20px;\n  font-weight: 600;\n  letter-spacing: 0.08em;\n  text-transform: uppercase;\n  color: #4a4a4a;\n}\n\nh1 {\n  margin: 8px 0 12px;\n  font-size: 40px;\n  line-height: 48px;\n  font-weight: 700;\n  letter-spacing: -0.02em;\n}\n\n.intro {\n  margin: 0;\n  max-width: 65ch;\n  font-size: 18px;\n  line-height: 28px;\n  color: #2d2d2d;\n}\n\nh2 {\n  margin: 0 0 20px;\n  font-size: 20px;\n  line-height: 28px;\n  font-weight: 600;\n}\n\n.type-specs {\n  border-top: 1px solid #e4e4e4;\n  padding-top: 24px;\n}\n\n.type-row {\n  padding: 20px 0;\n  border-bottom: 1px solid #efefef;\n}\n\n.type-meta {\n  margin: 0 0 10px;\n  font-size: 13px;\n  line-height: 20px;\n  letter-spacing: 0.01em;\n  color: #646464;\n}\n\n.sample {\n  margin: 0;\n}\n\n.display {\n  font-size: 56px;\n  line-height: 64px;\n  font-weight: 700;\n  letter-spacing: -0.03em;\n}\n\n.h1 {\n  font-size: 40px;\n  line-height: 48px;\n  font-weight: 700;\n  letter-spacing: -0.02em;\n}\n\n.h2 {\n  font-size: 32px;\n  line-height: 40px;\n  font-weight: 600;\n  letter-spacing: -0.015em;\n}\n\n.h3 {\n  font-size: 24px;\n  line-height: 32px;\n  font-weight: 600;\n  letter-spacing: -0.01em;\n}\n\n.body-lg {\n  font-size: 18px;\n  line-height: 28px;\n  font-weight: 400;\n}\n\n.body {\n  font-size: 16px;\n  line-height: 24px;\n  font-weight: 400;\n}\n\n.caption {\n  font-size: 14px;\n  line-height: 20px;\n  font-weight: 500;\n}\n\n.button-specs {\n  padding-top: 32px;\n}\n\n.button-intro {\n  margin: 0 0 16px;\n  font-size: 16px;\n  line-height: 24px;\n  color: #2d2d2d;\n}\n\n.button-row {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 12px;\n  margin-bottom: 12px;\n}\n\n@media (max-width: 768px) {\n  .typography-page {\n    padding: 36px 16px 56px;\n  }\n\n  .display {\n    font-size: 40px;\n    line-height: 48px;\n  }\n\n  .h1 {\n    font-size: 32px;\n    line-height: 40px;\n  }\n\n  .h2 {\n    font-size: 28px;\n    line-height: 36px;\n  }\n\n  .button-row {\n    gap: 10px;\n  }\n}",
+                    "styleUrl": "./typography-page.component.css"
+                }
+            ],
+            "stylesData": "",
+            "extends": [],
+            "relationships": {
+                "incoming": [],
+                "outgoing": [
+                    {
+                        "name": "ButtonComponent",
+                        "type": "component"
+                    }
+                ]
+            },
+            "templateData": "<main class=\"typography-page\">\n  <header class=\"page-header\">\n    <p class=\"eyebrow\">Design System</p>\n    <h1>Typography</h1>\n    <p class=\"intro\">\n      This page defines and previews the primary type styles for the system using Inter.\n    </p>\n  </header>\n\n  <section class=\"type-specs\" aria-labelledby=\"type-scale-heading\">\n    <h2 id=\"type-scale-heading\">Type Scale</h2>\n\n    <article class=\"type-row\">\n      <p class=\"type-meta\">Display · 56/64 · 700</p>\n      <p class=\"sample display\">Design systems make products feel like one voice.</p>\n    </article>\n\n    <article class=\"type-row\">\n      <p class=\"type-meta\">Heading 1 · 40/48 · 700</p>\n      <p class=\"sample h1\">Build a strong visual hierarchy.</p>\n    </article>\n\n    <article class=\"type-row\">\n      <p class=\"type-meta\">Heading 2 · 32/40 · 600</p>\n      <p class=\"sample h2\">Guide attention with rhythm.</p>\n    </article>\n\n    <article class=\"type-row\">\n      <p class=\"type-meta\">Heading 3 · 24/32 · 600</p>\n      <p class=\"sample h3\">Reusable styles reduce drift.</p>\n    </article>\n\n    <article class=\"type-row\">\n      <p class=\"type-meta\">Body Large · 18/28 · 400</p>\n      <p class=\"sample body-lg\">\n        Body large is useful for lead text, summaries, and content that benefits from easier reading.\n      </p>\n    </article>\n\n    <article class=\"type-row\">\n      <p class=\"type-meta\">Body · 16/24 · 400</p>\n      <p class=\"sample body\">\n        Body text is the default for most interfaces and should be highly legible at all viewport sizes.\n      </p>\n    </article>\n\n    <article class=\"type-row\">\n      <p class=\"type-meta\">Caption · 14/20 · 500</p>\n      <p class=\"sample caption\">Use captions for helper text, labels, and supportive metadata.</p>\n    </article>\n  </section>\n\n  <section class=\"button-specs\" aria-labelledby=\"button-specs-heading\">\n    <h2 id=\"button-specs-heading\">Button Component</h2>\n    <p class=\"button-intro\">A base action component with consistent sizing and visual variants.</p>\n\n    <div class=\"button-row\" role=\"group\" aria-label=\"Button variants\">\n      <dds-button variant=\"primary\" size=\"large\">Primary</dds-button>\n      <dds-button variant=\"outlined\" size=\"large\">Outlined</dds-button>\n      <dds-button variant=\"ghost\" size=\"large\">Ghost</dds-button>\n      <dds-button variant=\"primary\" size=\"large\" state=\"disabled\">Disabled</dds-button>\n      <dds-button variant=\"primary\" styleType=\"danger\" size=\"large\">Danger</dds-button>\n    </div>\n\n    <div class=\"button-row\" role=\"group\" aria-label=\"Button sizes\">\n      <dds-button variant=\"primary\" size=\"small\">Small</dds-button>\n      <dds-button variant=\"primary\" size=\"large\">Large</dds-button>\n      <dds-button variant=\"outlined\" size=\"small\" iconType=\"left-icon\" icon=\"+\">Left Icon</dds-button>\n      <dds-button variant=\"outlined\" size=\"small\" iconType=\"right-icon\" icon=\"→\">Right Icon</dds-button>\n      <dds-button variant=\"ghost\" size=\"small\" iconType=\"icon-only\" icon=\"⋯\" ariaLabel=\"More actions\"></dds-button>\n    </div>\n  </section>\n</main>"
+        }
+    ],
+    "modules": [],
+    "miscellaneous": {
+        "variables": [
+            {
+                "name": "angularApp",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/server.ts",
+                "coverageIgnore": false,
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "unknown",
+                "defaultValue": "new AngularNodeAppEngine()"
+            },
+            {
+                "name": "app",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/server.ts",
+                "coverageIgnore": false,
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "unknown",
+                "defaultValue": "express()"
+            },
+            {
+                "name": "appConfig",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/app.config.ts",
+                "coverageIgnore": false,
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "ApplicationConfig",
+                "defaultValue": "{\n  providers: [\n    provideBrowserGlobalErrorListeners(),\n    provideRouter(routes), provideClientHydration()\n  ]\n}"
+            },
+            {
+                "name": "bootstrap",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/main.server.ts",
+                "coverageIgnore": false,
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "unknown",
+                "defaultValue": "(context: BootstrapContext) =>\n    bootstrapApplication(App, config, context)"
+            },
+            {
+                "name": "browserDistFolder",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/server.ts",
+                "coverageIgnore": false,
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "unknown",
+                "defaultValue": "join(import.meta.dirname, '../browser')"
+            },
+            {
+                "name": "config",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/app.config.server.ts",
+                "coverageIgnore": false,
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "unknown",
+                "defaultValue": "mergeApplicationConfig(appConfig, serverConfig)"
+            },
+            {
+                "name": "reqHandler",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/server.ts",
+                "coverageIgnore": false,
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "unknown",
+                "defaultValue": "createNodeRequestHandler(app)",
+                "rawdescription": "Request handler used by the Angular CLI (for dev-server and during build) or Firebase Cloud Functions.",
+                "description": "<p>Request handler used by the Angular CLI (for dev-server and during build) or Firebase Cloud Functions.</p>\n"
+            },
+            {
+                "name": "routes",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/app.routes.ts",
+                "coverageIgnore": false,
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Routes",
+                "defaultValue": "[\n\t{\n\t\tpath: '',\n\t\tloadComponent: () => \"import('./typography-page.component').then((m) => m.TypographyPageComponent)\"\n\t},\n\t{\n\t\tpath: '**',\n\t\tredirectTo: ''\n\t}\n]"
+            },
+            {
+                "name": "serverConfig",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/app.config.server.ts",
+                "coverageIgnore": false,
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "ApplicationConfig",
+                "defaultValue": "{\n  providers: [\n    provideServerRendering(withRoutes(serverRoutes))\n  ]\n}"
+            },
+            {
+                "name": "serverRoutes",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/app.routes.server.ts",
+                "coverageIgnore": false,
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "ServerRoute[]",
+                "defaultValue": "[\n  {\n    path: '**',\n    renderMode: 2\n  }\n]"
+            }
+        ],
+        "functions": [],
+        "typealiases": [
+            {
+                "name": "ButtonIconType",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "coverageIgnore": false,
+                "rawtype": "\"no-icon\" | \"left-icon\" | \"right-icon\" | \"icon-only\"",
+                "file": "src/app/components/button/button.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "rawdescription": "",
+                "description": "",
+                "kind": 193
+            },
+            {
+                "name": "ButtonSize",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "coverageIgnore": false,
+                "rawtype": "\"large\" | \"medium\" | \"small\"",
+                "file": "src/app/components/button/button.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "rawdescription": "",
+                "description": "",
+                "kind": 193
+            },
+            {
+                "name": "ButtonState",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "coverageIgnore": false,
+                "rawtype": "\"default\" | \"hover\" | \"focused\" | \"disabled\"",
+                "file": "src/app/components/button/button.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "rawdescription": "",
+                "description": "",
+                "kind": 193
+            },
+            {
+                "name": "ButtonStyle",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "coverageIgnore": false,
+                "rawtype": "\"default\" | \"danger\"",
+                "file": "src/app/components/button/button.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "rawdescription": "",
+                "description": "",
+                "kind": 193
+            },
+            {
+                "name": "ButtonVariant",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "coverageIgnore": false,
+                "rawtype": "\"primary\" | \"outlined\" | \"ghost\"",
+                "file": "src/app/components/button/button.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "rawdescription": "",
+                "description": "",
+                "kind": 193
+            },
+            {
+                "name": "DdsIconName",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "coverageIgnore": false,
+                "rawtype": "\"arrow-right\" | \"arrow-left\" | \"arrow-down\" | \"check\" | \"chevron-down\" | \"circle-alert\" | \"ellipsis\" | \"info\" | \"plus\" | \"trash-2\" | \"x\" | \"arrow-up\"",
+                "file": "src/app/components/icon/icon.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "rawdescription": "",
+                "description": "",
+                "kind": 193
+            }
+        ],
+        "enumerations": [],
+        "groupedVariables": {
+            "src/server.ts": [
+                {
+                    "name": "angularApp",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/server.ts",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "defaultValue": "new AngularNodeAppEngine()"
+                },
+                {
+                    "name": "app",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/server.ts",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "defaultValue": "express()"
+                },
+                {
+                    "name": "browserDistFolder",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/server.ts",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "defaultValue": "join(import.meta.dirname, '../browser')"
+                },
+                {
+                    "name": "reqHandler",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/server.ts",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "defaultValue": "createNodeRequestHandler(app)",
+                    "rawdescription": "Request handler used by the Angular CLI (for dev-server and during build) or Firebase Cloud Functions.",
+                    "description": "<p>Request handler used by the Angular CLI (for dev-server and during build) or Firebase Cloud Functions.</p>\n"
+                }
+            ],
+            "src/app/app.config.ts": [
+                {
+                    "name": "appConfig",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/app.config.ts",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ApplicationConfig",
+                    "defaultValue": "{\n  providers: [\n    provideBrowserGlobalErrorListeners(),\n    provideRouter(routes), provideClientHydration()\n  ]\n}"
+                }
+            ],
+            "src/main.server.ts": [
+                {
+                    "name": "bootstrap",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/main.server.ts",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "defaultValue": "(context: BootstrapContext) =>\n    bootstrapApplication(App, config, context)"
+                }
+            ],
+            "src/app/app.config.server.ts": [
+                {
+                    "name": "config",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/app.config.server.ts",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "defaultValue": "mergeApplicationConfig(appConfig, serverConfig)"
+                },
+                {
+                    "name": "serverConfig",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/app.config.server.ts",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ApplicationConfig",
+                    "defaultValue": "{\n  providers: [\n    provideServerRendering(withRoutes(serverRoutes))\n  ]\n}"
+                }
+            ],
+            "src/app/app.routes.ts": [
+                {
+                    "name": "routes",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/app.routes.ts",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Routes",
+                    "defaultValue": "[\n\t{\n\t\tpath: '',\n\t\tloadComponent: () => \"import('./typography-page.component').then((m) => m.TypographyPageComponent)\"\n\t},\n\t{\n\t\tpath: '**',\n\t\tredirectTo: ''\n\t}\n]"
+                }
+            ],
+            "src/app/app.routes.server.ts": [
+                {
+                    "name": "serverRoutes",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/app.routes.server.ts",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ServerRoute[]",
+                    "defaultValue": "[\n  {\n    path: '**',\n    renderMode: 2\n  }\n]"
+                }
+            ]
+        },
+        "groupedFunctions": {},
+        "groupedEnumerations": {},
+        "groupedTypeAliases": {
+            "src/app/components/button/button.component.ts": [
+                {
+                    "name": "ButtonIconType",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "coverageIgnore": false,
+                    "rawtype": "\"no-icon\" | \"left-icon\" | \"right-icon\" | \"icon-only\"",
+                    "file": "src/app/components/button/button.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "",
+                    "description": "",
+                    "kind": 193
+                },
+                {
+                    "name": "ButtonSize",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "coverageIgnore": false,
+                    "rawtype": "\"large\" | \"medium\" | \"small\"",
+                    "file": "src/app/components/button/button.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "",
+                    "description": "",
+                    "kind": 193
+                },
+                {
+                    "name": "ButtonState",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "coverageIgnore": false,
+                    "rawtype": "\"default\" | \"hover\" | \"focused\" | \"disabled\"",
+                    "file": "src/app/components/button/button.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "",
+                    "description": "",
+                    "kind": 193
+                },
+                {
+                    "name": "ButtonStyle",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "coverageIgnore": false,
+                    "rawtype": "\"default\" | \"danger\"",
+                    "file": "src/app/components/button/button.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "",
+                    "description": "",
+                    "kind": 193
+                },
+                {
+                    "name": "ButtonVariant",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "coverageIgnore": false,
+                    "rawtype": "\"primary\" | \"outlined\" | \"ghost\"",
+                    "file": "src/app/components/button/button.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "",
+                    "description": "",
+                    "kind": 193
+                }
+            ],
+            "src/app/components/icon/icon.component.ts": [
+                {
+                    "name": "DdsIconName",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "coverageIgnore": false,
+                    "rawtype": "\"arrow-right\" | \"arrow-left\" | \"arrow-down\" | \"check\" | \"chevron-down\" | \"circle-alert\" | \"ellipsis\" | \"info\" | \"plus\" | \"trash-2\" | \"x\" | \"arrow-up\"",
+                    "file": "src/app/components/icon/icon.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "",
+                    "description": "",
+                    "kind": 193
+                }
+            ]
+        }
+    },
+    "routes": {
+        "name": "<root>",
+        "kind": "module",
+        "children": [
+            {
+                "name": "TypographyPageComponent",
+                "kind": "component",
+                "component": "TypographyPageComponent",
+                "path": "",
+                "filename": "src/app/app.routes.ts"
+            }
+        ]
+    },
+    "coverage": {
+        "count": 5,
+        "status": "low",
+        "files": [
+            {
+                "filePath": "src/app/app.config.server.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "config",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/app.config.server.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "serverConfig",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/app.config.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "appConfig",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/app.routes.server.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "serverRoutes",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/app.routes.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "routes",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/app.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "App",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/button/button.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ButtonComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/11",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/button/button.component.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "ButtonIconType",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/button/button.component.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "ButtonSize",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/button/button.component.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "ButtonState",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/button/button.component.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "ButtonStyle",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/button/button.component.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "ButtonVariant",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/icon/icon.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "IconComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/6",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/icon/icon.component.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "DdsIconName",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/typography-page.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "TypographyPageComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/main.server.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "bootstrap",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/server.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "angularApp",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/server.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "app",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/server.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "browserDistFolder",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/server.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "reqHandler",
+                "coveragePercent": 100,
+                "coverageCount": "1/1",
+                "status": "very-good"
+            }
+        ]
+    }
+}

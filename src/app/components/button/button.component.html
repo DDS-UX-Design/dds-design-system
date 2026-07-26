@@ -1,0 +1,22 @@
+<button
+  class="dds-button"
+  [attr.type]="type"
+  [disabled]="isDisabled"
+  [attr.aria-label]="isIconOnly ? (ariaLabel || 'Icon button') : null"
+  [class.dds-button--primary]="variant === 'primary'"
+  [class.dds-button--outlined]="variant === 'outlined'"
+  [class.dds-button--ghost]="variant === 'ghost'"
+  [class.dds-button--danger]="styleType === 'danger'"
+  [class.dds-button--large]="size === 'large'"
+  [class.dds-button--small]="size === 'small'"
+  [class.dds-button--medium]="size === 'medium'"
+  [class.dds-button--state-hover]="state === 'hover'"
+  [class.dds-button--state-focused]="state === 'focused'"
+  [class.dds-button--state-disabled]="state === 'disabled'"
+  [class.dds-button--icon-only]="isIconOnly"
+  [class.dds-button--full-width]="fullWidth"
+>
+  <dds-icon class="dds-button__icon" *ngIf="hasLeftIcon || isIconOnly" [name]="icon" [size]="iconSize"></dds-icon>
+  <span class="dds-button__label" *ngIf="!isIconOnly"><ng-content></ng-content></span>
+  <dds-icon class="dds-button__icon" *ngIf="hasRightIcon" [name]="icon" [size]="iconSize"></dds-icon>
+</button>

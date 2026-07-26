@@ -1,0 +1,16 @@
+'Log files:
+/Users/michaelknjogu/Documents/Projects/DDS/Design System/dds-design-system/.npm-cache/_logs/2026-07-26T19_42_12_672Z-debug-0.log
+
+# npm resolution error report
+
+While resolving: dds-design-system@0.0.0
+Found: @angular/common@22.0.8
+node_modules/@angular/common
+  @angular/common@"^22.0.0" from the root project
+
+Could not resolve dependency:
+peer @angular/common@"13.x - 21.x" from lucide-angular@1.0.0
+node_modules/lucide-angular
+  lucide-angular@"*" from the root project
+
+Fix the upstream dependency conflict, or retry this command with --force or --legacy-peer-deps to accept an incorrect (and potentially broken) dependency resolution.

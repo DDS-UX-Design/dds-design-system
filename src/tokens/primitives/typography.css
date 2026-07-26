@@ -1,0 +1,25 @@
+:root {
+
+  /* Font Families */
+  --dds-font-family-primary: 'Inter', sans-serif;
+
+  /* Font Sizes */
+  --dds-font-size-1: 12px;
+  --dds-font-size-2: 14px;
+  --dds-font-size-3: 16px;
+  --dds-font-size-4: 18px;
+  --dds-font-size-5: 20px;
+  --dds-font-size-6: 24px;
+  --dds-font-size-7: 32px;
+  --dds-font-size-8: 36px;
+  --dds-font-size-9: 40px;
+  --dds-font-size-10: 48px;
+  --dds-font-size-11: 64px;
+
+
+  /* Font Weights */
+  --dds-font-weight-regular: 400;
+  --dds-font-weight-medium: 500;
+  --dds-font-weight-semibold: 600;
+  --dds-font-weight-bold: 700;
+}

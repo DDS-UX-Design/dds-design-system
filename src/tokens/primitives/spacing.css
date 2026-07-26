@@ -1,0 +1,12 @@
+:root {
+  --dds-space-none: 0;
+  --dds-space-1: 4px;
+  --dds-space-2: 8px;
+  --dds-space-3: 12px;
+  --dds-space-4: 16px;
+  --dds-space-6: 24px;
+  --dds-space-7: 32px;
+  --dds-space-8: 40px;
+  --dds-space-9: 48px;
+  --dds-space-10: 64px;
+}

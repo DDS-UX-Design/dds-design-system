@@ -1,0 +1,21 @@
+:root {
+
+    --dds-text-colour-default: var(--dds-grey-900);
+    --dds-text-colour-secondary: var(--dds-grey-700);
+    --dds-text-colour-tertiary: var(--dds-grey-500);
+    --dds-text-colour-inverse: var(--dds-color-neutral-white);
+    --dds-text-colour-disabled: var(--dds-grey-400);
+    --dds-text-colour-link: var(--dds-blue-600);
+    --dds-text-colour-link-hover: var(--dds-blue-700);
+    --dds-text-colour-placeholder: var(--dds-grey-400);
+
+    --dds-text-colour-accent: var(--dds-blue-700);
+    /* --dds-text-colour-accent-secondary: var(--dds-teal-300); */
+
+    --dds-text-colour-info: var(--dds-blue-600);
+    --dds-text-colour-success: var(--dds-green-600);
+    --dds-text-colour-warning: var(--dds-yellow-600);
+    --dds-text-colour-danger: var(--dds-red-600);
+
+
+}
