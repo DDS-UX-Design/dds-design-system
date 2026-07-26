@@ -23,6 +23,29 @@ import {
   LucideMenu,
   LucideColumns3,
   LucideSearch,
+  LucideLayoutDashboard,
+  LucideEllipsisVertical,
+  LucideHouse,
+  LucideMapPin,
+  LucidePanelsTopLeft,
+  LucideGripVertical,
+  LucideDownload,
+  LucideUpload,
+  LucideMinus,
+  LucideArchive,
+  LucideBan,
+  LucidePencil,
+  LucideSettings,
+  LucideSlidersHorizontal,
+  LucideSquarePen,
+  LucideCopy,
+  LucideFunnel,
+  LucideExternalLink,
+  LucideRefreshCw,
+  LucideWrench, 
+  LucideBrushCleaning,
+  LucideCloudUpload,
+  LucideWandSparkles
 } from '@lucide/angular';
 
 export const DDS_ICON_NAMES = [
@@ -47,6 +70,29 @@ export const DDS_ICON_NAMES = [
   'plus',
   'trash-2',
   'x',
+  'layout-dashboard',
+  'ellipsis-vertical',
+  'house',
+  'map-pin',
+  'panels-top-left',
+  'grip-vertical',
+  'download',
+  'upload',
+  'minus',
+  'archive',
+  'ban',
+  'pencil',
+  'settings',
+  'sliders-horizontal',
+  'square-pen',
+  'copy',
+  'funnel',
+  'external-link',
+  'refresh-cw',
+  'wrench',
+  'brush-cleaning',
+  'cloud-upload',
+  'wand-sparkles'
 ] as const;
 
 export type DdsIconName = (typeof DDS_ICON_NAMES)[number];
@@ -77,14 +123,36 @@ export type DdsIconName = (typeof DDS_ICON_NAMES)[number];
       LucideChevronUp,
       LucideChevronLeft,
       LucideColumns3,
-      LucideSearch
+      LucideSearch,
+      LucideLayoutDashboard,
+      LucideEllipsisVertical,
+      LucideHouse,
+      LucideMapPin,
+      LucidePanelsTopLeft,
+      LucideGripVertical,
+      LucideDownload,
+      LucideUpload,
+      LucideMinus,
+      LucideArchive,
+      LucideBan,
+      LucidePencil,
+      LucideSettings,
+      LucideSlidersHorizontal,
+      LucideSquarePen,
+      LucideCopy,
+      LucideFunnel,
+      LucideExternalLink,
+      LucideRefreshCw,
+      LucideWrench,
+      LucideBrushCleaning,
+      LucideCloudUpload,
+      LucideWandSparkles
     )
   ],
   template: `
     <svg
       [lucideIcon]="name"
       [size]="size"
-      [strokeWidth]="strokeWidth"
       [attr.aria-hidden]="decorative ? 'true' : null"
       [title]="decorative ? null : title"
     ></svg>
