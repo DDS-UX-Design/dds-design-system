@@ -19,13 +19,18 @@ const meta: Meta<IconStoryArgs> = {
       options: DDS_ICON_NAMES
     },
     size: {
-      control: { type: 'range', min: 12, max: 48, step: 1 }
+      control: { type: 'range', min: 12, max: 48, step: 4 }
     },
     strokeWidth: {
-      control: { type: 'range', min: 1, max: 3, step: 0.25 }
+      table: {
+        disable: true,
+      },
     },
     decorative: {
-      control: 'boolean'
+      control: 'boolean',
+      table: {
+        disable: true,
+      },
     },
     title: {
       control: 'text'
@@ -53,23 +58,21 @@ export const IconSetPreview: Story = {
     name: 'arrow-right',
     title: undefined
   },
-  render: (args) => ({
-    props: args,
-    template: `
-      <div style="display:flex; gap:12px; align-items:center; flex-wrap: wrap;">
-        <dds-icon name="info" [size]="size" [strokeWidth]="strokeWidth"></dds-icon>
-        <dds-icon name="arrow-right" [size]="size" [strokeWidth]="strokeWidth"></dds-icon>
-        <dds-icon name="arrow-left" [size]="size" [strokeWidth]="strokeWidth"></dds-icon>
-        <dds-icon name="arrow-down" [size]="size" [strokeWidth]="strokeWidth"></dds-icon>
-        <dds-icon name="arrow-up" [size]="size" [strokeWidth]="strokeWidth"></dds-icon>
-        <dds-icon name="plus" [size]="size" [strokeWidth]="strokeWidth"></dds-icon>
-        <dds-icon name="ellipsis" [size]="size" [strokeWidth]="strokeWidth"></dds-icon>
-        <dds-icon name="trash-2" [size]="size" [strokeWidth]="strokeWidth"></dds-icon>
-        <dds-icon name="check" [size]="size" [strokeWidth]="strokeWidth"></dds-icon>
-        <dds-icon name="x" [size]="size" [strokeWidth]="strokeWidth"></dds-icon>
-        <dds-icon name="circle-alert" [size]="size" [strokeWidth]="strokeWidth"></dds-icon>
-        <dds-icon name="chevron-down" [size]="size" [strokeWidth]="strokeWidth"></dds-icon>
+  render: (args) => {
+    const iconMarkup = DDS_ICON_NAMES.map((iconName: DdsIconName) => `
+      <div style="display:flex; flex-direction:column; align-items:center; gap:6px; min-width:120px;">
+        <dds-icon name="${iconName}" [size]="size" [strokeWidth]="strokeWidth"></dds-icon>
+        <span style="font-size:12px; color:#5b6470;">${iconName}</span>
       </div>
-    `
-  })
+    `).join('');
+
+    return {
+      props: args,
+      template: `
+        <div style="display:flex; align-items:flex-start; gap:32px; flex-wrap: wrap;">
+          ${iconMarkup}
+        </div>
+      `
+    };
+  }
 };
