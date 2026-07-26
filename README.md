@@ -1,59 +1,101 @@
-# DdsDesignSystem
+# DDS Design System
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.0.8.
+This repository contains the DDS Design System, a lightweight Angular-based component library with Storybook documentation and visual review workflows.
 
-## Development server
+## Overview
 
-To start a local development server, run:
+The system includes:
 
-```bash
-ng serve
-```
+- reusable UI primitives such as buttons and icons
+- token-driven styling for colors, spacing, radius, and typography
+- Storybook documentation for component exploration and review
+- Chromatic integration for visual regression testing and design review
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Prerequisites
 
-## Code scaffolding
+Make sure you have the following installed:
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+- Node.js 20 or newer
+- npm 10 or newer
 
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Clone and install
 
 ```bash
-ng generate --help
+git clone <repository-url>
+cd dds-design-system
+npm install
 ```
 
-## Building
+## Run the app locally
 
-To build the project run:
+Start the Angular development server:
 
 ```bash
-ng build
+npm start
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Then open http://localhost:4200/ in your browser.
 
-## Running unit tests
+## Run Storybook
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+To explore and document components locally:
 
 ```bash
-ng test
+npm run storybook
 ```
 
-## Running end-to-end tests
+Storybook will open in your browser and load the component stories from the project.
 
-For end-to-end (e2e) testing, run:
+## Build the project
+
+Create a production build of the Angular app:
 
 ```bash
-ng e2e
+npm run build
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+## Run tests
 
-## Additional Resources
+Run the unit test suite:
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+```bash
+npm test
+```
+
+## Publish to Chromatic
+
+Chromatic is used to publish Storybook builds for visual review and regression tracking.
+
+### Build Storybook for Chromatic
+
+```bash
+npm run build-storybook
+```
+
+### Publish the build
+
+```bash
+npm run chromatic
+```
+
+If you need to publish with a different token, you can also run:
+
+```bash
+npx chromatic --project-token=<your-project-token>
+```
+
+## Contribution workflow
+
+When you update or add a component:
+
+1. Create or update the Angular component in src/app/components.
+2. Add or refine its Storybook stories in src/stories.
+3. Verify the change locally with npm start or npm run storybook.
+4. Run npm run build to ensure the app still compiles.
+5. Publish a Chromatic review with npm run chromatic when the visual change should be reviewed.
+
+## Project structure highlights
+
+- src/app/components: reusable Angular components
+- src/stories: Storybook stories for component documentation
+- src/tokens: design tokens for primitive and semantic styles
