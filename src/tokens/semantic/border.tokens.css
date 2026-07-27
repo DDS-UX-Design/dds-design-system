@@ -1,0 +1,12 @@
+:root {
+
+    --dds-border-colour-default: var(--dds-grey-300);
+    --dds-border-colour-subtle: var(--dds-grey-200);
+    --dds-border-colour-strong: var(--dds-grey-400);
+    --dds-border-colour-info: var(--dds-blue-600);
+    --dds-border-colour-success: var(--dds-green-600);
+    --dds-border-colour-warning: var(--dds-yellow-600);
+    --dds-border-colour-danger: var(--dds-red-600);
+    --dds-border-colour-white: var(--dds-color-neutral-white);
+
+}
