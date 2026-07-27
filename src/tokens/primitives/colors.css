@@ -56,4 +56,10 @@
   --dds-red-700: #B91C1C;
   --dds-red-800: #991B1B;
   --dds-red-900: #7F1D1D;
+
+  /* Teal */
+  --dds-teal-100: #CEECF0;
+  --dds-teal-300: #6EC3CE;
+  --dds-teal-400: #44A6B3;
+  --dds-teal-500: #328C98;
 }
