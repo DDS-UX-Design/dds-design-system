@@ -1,0 +1,10 @@
+:root {
+
+    --dds-bg-default: var(--dds-grey-100);
+    --dds-bg-white: var(--dds-color-neutral-white);
+    --dds-bg-info-muted: var(--dds-blue-100);
+    --dds-bg-success-muted: var(--dds-green-100);
+    --dds-bg-warning-muted: var(--dds-yellow-100);
+    --dds-bg-danger-muted: var(--dds-red-100);
+
+}
