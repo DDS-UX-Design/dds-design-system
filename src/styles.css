@@ -5,6 +5,9 @@
 @import './tokens/primitives/typography.css';
 @import './tokens/semantic/button.tokens.css';
 @import './tokens/semantic/text.tokens.css';
+@import './tokens/semantic/background.tokens.css';
+@import './tokens/semantic/icon.tokens.css';
+@import './tokens/semantic/border.tokens.css';
 
 :root {
 	--dds-font-family-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
