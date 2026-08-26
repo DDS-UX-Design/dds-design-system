@@ -1,5 +1,7 @@
 # DDS Design System
 
+[![Visual tests](https://github.com/DDS-UX-Design/dds-design-system/actions/workflows/visual-tests.yml/badge.svg)](https://github.com/DDS-UX-Design/dds-design-system/actions/workflows/visual-tests.yml)
+
 This repository contains the DDS Design System, a lightweight Angular-based component library with Storybook documentation and visual review workflows.
 
 ## Overview
@@ -89,14 +91,22 @@ npm run build-storybook
 ### Publish the build
 
 ```bash
+export CHROMATIC_PROJECT_TOKEN=<your-project-token>
 npm run chromatic
 ```
 
-If you need to publish with a different token, you can also run:
+### Continuous visual testing
 
-```bash
-npx chromatic --project-token=<your-project-token>
-```
+The `Visual tests` GitHub Actions workflow publishes Storybook to Chromatic on every push. Chromatic then reports UI Tests, Storybook Publish, and—when enabled for the project—UI Review checks on related pull requests.
+
+Repository setup required:
+
+1. Rotate the Chromatic project token previously stored in this repository.
+2. In GitHub, add the rotated token as an Actions repository secret named `CHROMATIC_PROJECT_TOKEN`.
+3. In Chromatic under **Manage → Configure**, connect this GitHub repository and enable UI Tests and UI Review.
+4. Optionally require the Chromatic checks in the GitHub branch protection rules for `main`.
+
+The workflow uses push events because Chromatic uses branch commit history to select reliable visual baselines. Pull requests from forks do not receive repository secrets and therefore require a separate security decision before they can publish builds.
 
 ## Contribution workflow
 
@@ -106,7 +116,7 @@ When you update or add a component:
 2. Add or refine its Storybook stories in src/stories.
 3. Verify the change locally with npm start or npm run storybook.
 4. Run npm run build to ensure the app still compiles.
-5. Publish a Chromatic review with npm run chromatic when the visual change should be reviewed.
+5. Push the branch to publish a Chromatic review and receive pull-request status checks.
 
 ## Project structure highlights
 
