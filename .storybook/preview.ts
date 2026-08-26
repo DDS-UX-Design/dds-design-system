@@ -1,14 +1,50 @@
-import type { Preview } from '@storybook/angular'
-import { setCompodocJson } from "@storybook/addon-docs/angular";
-import docJson from "../documentation.json";
+import type { Preview } from '@storybook/angular';
+import { setCompodocJson } from '@storybook/addon-docs/angular';
+import docJson from '../documentation.json';
+
 setCompodocJson(docJson);
 
 const preview: Preview = {
   parameters: {
+    actions: { argTypesRegex: '^on[A-Z].*' },
+    a11y: {
+      test: 'error',
+    },
+    backgrounds: {
+      options: {
+        light: { name: 'Light', value: '#ffffff' },
+        subtle: { name: 'Subtle', value: '#f7f7f7' },
+        dark: { name: 'Dark', value: '#171717' },
+      },
+    },
     controls: {
+      expanded: true,
+      sort: 'requiredFirst',
       matchers: {
-       color: /(background|color)$/i,
-       date: /Date$/i,
+        color: /(background|color)$/i,
+        date: /Date$/i,
+      },
+    },
+    docs: {
+      toc: true,
+    },
+    options: {
+      storySort: {
+        order: [
+          'Foundations',
+          ['Typography', 'Icons'],
+          'Components',
+          'Patterns',
+          'Layouts',
+          'Pages',
+        ],
+      },
+    },
+    viewport: {
+      options: {
+        mobile: { name: 'Mobile', styles: { width: '375px', height: '812px' } },
+        tablet: { name: 'Tablet', styles: { width: '768px', height: '1024px' } },
+        desktop: { name: 'Desktop', styles: { width: '1440px', height: '900px' } },
       },
     },
   },
