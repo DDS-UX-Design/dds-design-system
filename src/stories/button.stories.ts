@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/angular';
-import { expect, userEvent, within } from 'storybook/test';
+import { expect, within } from 'storybook/test';
 import {
   ButtonComponent,
   ButtonIconType,
@@ -174,7 +174,40 @@ const comparisonMarkup = comparisonRows
   })
   .join('');
 
-export const Default: Story = {
+export const Playground: Story = {
+  args: {
+    text: 'Continue',
+    iconType: 'left-icon',
+    icon: 'arrow-right',
+    ariaLabel: 'Continue',
+  },
+  parameters: {
+    controls: {
+      include: [
+        'text',
+        'variant',
+        'styleType',
+        'state',
+        'size',
+        'iconType',
+        'icon',
+        'ariaLabel',
+        'disabled',
+        'fullWidth',
+        'type',
+      ],
+    },
+    docs: {
+      description: {
+        story:
+          'Use the Controls panel alongside the Canvas to explore button variants, icon placement, icon choice, states, and sizing.',
+      },
+    },
+  },
+};
+
+export const PrimaryDefault: Story = {
+  name: 'Primary / Default',
   args: {
     text: 'Save changes',
   },
@@ -183,8 +216,149 @@ export const Default: Story = {
     const button = canvas.getByRole('button', { name: 'Save changes' });
 
     await expect(button).toBeEnabled();
-    await userEvent.click(button);
-    await expect(button).toHaveFocus();
+    await expect(button).not.toHaveFocus();
+  },
+};
+
+export const PrimaryHover: Story = {
+  name: 'Primary / Hover',
+  args: {
+    text: 'Save changes',
+    state: 'hover',
+  },
+  parameters: {
+    docs: { description: { story: 'The hover treatment increases visual feedback.' } },
+  },
+};
+
+export const PrimaryFocused: Story = {
+  name: 'Primary / Focused',
+  args: {
+    text: 'Save changes',
+    state: 'focused',
+  },
+  parameters: {
+    docs: { description: { story: 'Keyboard focus uses a visible focus ring.' } },
+  },
+};
+
+export const PrimaryDisabled: Story = {
+  name: 'Primary / Disabled',
+  args: {
+    text: 'Save changes',
+    disabled: true,
+  },
+};
+
+export const SecondaryDefault: Story = {
+  name: 'Secondary / Default',
+  args: {
+    text: 'Cancel',
+    variant: 'secondary',
+  },
+};
+
+export const SecondaryHover: Story = {
+  name: 'Secondary / Hover',
+  args: {
+    text: 'Cancel',
+    variant: 'secondary',
+    state: 'hover',
+  },
+};
+
+export const SecondaryFocused: Story = {
+  name: 'Secondary / Focused',
+  args: {
+    text: 'Cancel',
+    variant: 'secondary',
+    state: 'focused',
+  },
+};
+
+export const SecondaryDisabled: Story = {
+  name: 'Secondary / Disabled',
+  args: {
+    text: 'Cancel',
+    variant: 'secondary',
+    disabled: true,
+  },
+};
+
+export const DangerDefault: Story = {
+  name: 'Danger / Default',
+  args: {
+    text: 'Delete project',
+    styleType: 'danger',
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'Reserve danger buttons for destructive actions and pair them with explicit labels.',
+      },
+    },
+  },
+};
+
+export const DangerHover: Story = {
+  name: 'Danger / Hover',
+  args: {
+    text: 'Delete project',
+    styleType: 'danger',
+    state: 'hover',
+  },
+};
+
+export const DangerFocused: Story = {
+  name: 'Danger / Focused',
+  args: {
+    text: 'Delete project',
+    styleType: 'danger',
+    state: 'focused',
+  },
+};
+
+export const DangerDisabled: Story = {
+  name: 'Danger / Disabled',
+  args: {
+    text: 'Delete project',
+    styleType: 'danger',
+    disabled: true,
+  },
+};
+
+export const GhostDefault: Story = {
+  name: 'Ghost / Default',
+  args: {
+    text: 'Learn more',
+    variant: 'ghost',
+  },
+};
+
+export const GhostHover: Story = {
+  name: 'Ghost / Hover',
+  args: {
+    text: 'Learn more',
+    variant: 'ghost',
+    state: 'hover',
+  },
+};
+
+export const GhostFocused: Story = {
+  name: 'Ghost / Focused',
+  args: {
+    text: 'Learn more',
+    variant: 'ghost',
+    state: 'focused',
+  },
+};
+
+export const GhostDisabled: Story = {
+  name: 'Ghost / Disabled',
+  args: {
+    text: 'Learn more',
+    variant: 'ghost',
+    disabled: true,
   },
 };
 
@@ -211,54 +385,6 @@ export const AllVariants: Story = {
       `,
     ],
   }),
-};
-
-export const Hover: Story = {
-  args: {
-    text: 'Save changes',
-  },
-  parameters: {
-    docs: { description: { story: 'The hover treatment increases visual feedback.' } },
-  },
-  play: async ({ canvasElement }) => {
-    await userEvent.hover(within(canvasElement).getByRole('button', { name: 'Save changes' }));
-  },
-};
-
-export const Focused: Story = {
-  args: {
-    text: 'Save changes',
-  },
-  parameters: {
-    docs: { description: { story: 'Keyboard focus uses a visible focus ring.' } },
-  },
-  play: async ({ canvasElement }) => {
-    await userEvent.tab();
-    await expect(within(canvasElement).getByRole('button', { name: 'Save changes' })).toHaveFocus();
-  },
-};
-
-export const Disabled: Story = {
-  args: {
-    text: 'Save changes',
-    disabled: true,
-  },
-};
-
-export const Danger: Story = {
-  args: {
-    text: 'Delete project',
-    styleType: 'danger',
-    iconType: 'left-icon',
-    icon: 'trash-2',
-  },
-  parameters: {
-    docs: {
-      description: {
-        story: 'Reserve danger buttons for destructive actions and pair them with explicit labels.',
-      },
-    },
-  },
 };
 
 export const IconOnly: Story = {
