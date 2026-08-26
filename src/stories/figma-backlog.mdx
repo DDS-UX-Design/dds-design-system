@@ -4,6 +4,8 @@ import backlog from '../../FIGMA_BACKLOG.md';
 
 <Meta title="Project/Figma Backlog" />
 
+export const backlogRevision = '27 August 2026 · Textarea added';
+
 export const parseBacklog = (source) => {
   const sections = [];
   let area = '';
@@ -18,6 +20,21 @@ return;
 
     if (line.startsWith('### ')) {
       component = line.slice(4).trim();
+      return;
+    }
+
+    const reference = line.match(/^Figma reference: \[(.*?)\]\((.*?)\)$/);
+
+    if (reference && component) {
+      const sectionName = `${area} / ${component}`;
+      let section = sections.find((item) => item.name === sectionName);
+
+      if (!section) {
+        section = { name: sectionName, tasks: [] };
+        sections.push(section);
+      }
+
+      section.reference = { label: reference[1], href: reference[2] };
       return;
     }
 
@@ -99,7 +116,7 @@ components and Storybook documentation.
       <aside className="figma-backlog__notice">
         <span>
           Checked items are saved in this browser. Update <code>FIGMA_BACKLOG.md</code> in the
-          repository to record completion for the whole team.
+          repository to record completion for the whole team. Storybook source: <strong>{backlogRevision}</strong>.
         </span>
         <button type="button" onClick={clearLocalProgress}>Reset</button>
       </aside>
@@ -118,7 +135,14 @@ components and Storybook documentation.
           return (
             <section className="figma-backlog__section" key={section.name}>
               <div className="figma-backlog__section-heading">
-                <h2>{section.name}</h2>
+                <div>
+                  <h2>{section.name}</h2>
+                  {section.reference && (
+                    <a href={section.reference.href} target="_blank" rel="noreferrer">
+                      View {section.reference.label} in Figma
+                    </a>
+                  )}
+                </div>
                 <span>{sectionComplete}/{section.tasks.length}</span>
               </div>
               <ul>
@@ -284,6 +308,23 @@ components and Storybook documentation.
     color: #1a223b;
     font-size: 16px;
     line-height: 1.4;
+  }
+
+  .figma-backlog__section-heading a {
+    display: inline-block;
+    margin-top: 3px;
+    color: #2f5eaf;
+    font-size: 12px;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .figma-backlog__section-heading a:hover { text-decoration: underline; }
+
+  .figma-backlog__section-heading a:focus-visible {
+    border-radius: 2px;
+    outline: 2px solid #2f5eaf;
+    outline-offset: 2px;
   }
 
   .figma-backlog__section-heading > span {

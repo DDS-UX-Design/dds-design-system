@@ -64,6 +64,34 @@ Figma reference: [OTP Input — node 2:968](https://www.figma.com/design/u0lpCPr
 - [ ] **P2 · Design review** — Confirm hover, pressed, and focus treatments for the visibility control.
 - [ ] **P3 · Design review** — Define behavior for long error messages and translated labels on Mobile.
 
+### Select
+
+Figma reference: [Select — node 2:1098](https://www.figma.com/design/u0lpCPrGMj68e9RMIRuYxL/DDS---Design-System-v1.0?node-id=2-1098)
+
+- [ ] **P0 · Confirmed gap** — Design the opened menu, including its elevation, maximum height, scrolling, and viewport collision behavior.
+- [ ] **P1 · Confirmed gap** — Add option states for hover, keyboard focus, selected, disabled, and pressed.
+- [ ] **P1 · Design review** — Decide whether DDS Select remains native or requires a custom listbox for richer content and consistent cross-platform menu styling.
+- [ ] **P1 · Confirmed gap** — Define loading, empty-options, and option-loading-failure states for dynamically populated selects.
+- [ ] **P2 · Confirmed gap** — Define long option labels, truncation or wrapping, and localized content.
+- [ ] **P2 · Design review** — Define option groups, separators, and supporting descriptions if they are allowed.
+- [ ] **P2 · Design review** — Decide whether a clear/reset option is supported for optional fields after a selection is made.
+- [ ] **P2 · Confirmed gap** — Specify Mobile menu behavior and whether it may use the platform-native picker.
+- [ ] **P3 · Design review** — Clarify placeholder behavior when the field is disabled and when a required field has not been selected.
+
+### Textarea
+
+Figma reference: [Textarea — node 28:1043](https://www.figma.com/design/u0lpCPrGMj68e9RMIRuYxL/DDS---Design-System-v1.0?node-id=28-1043)
+
+- [ ] **P1 · Confirmed gap** — Define vertical resize behavior, including minimum and maximum heights and whether resizing is disabled in any product context.
+- [ ] **P1 · Design review** — Specify validation timing for required fields and character limits: on input, blur, form submission, or a combination.
+- [ ] **P1 · Confirmed gap** — Define character-counter warning and limit-reached treatments, including color, messaging, and screen-reader announcements.
+- [ ] **P2 · Design review** — Confirm whether the counter shows characters used (`75/150`) or characters remaining and whether spaces and line breaks count.
+- [ ] **P2 · Confirmed gap** — Add success, read-only, loading, and warning states or explicitly rule them out.
+- [ ] **P2 · Confirmed gap** — Specify behavior for pasted content that exceeds the maximum length and content restored by browser autofill.
+- [ ] **P2 · Confirmed gap** — Define long helper and error text, localized labels, and narrow-screen wrapping.
+- [ ] **P3 · Design review** — Document when spellcheck, autocomplete, and browser writing-assistance features should be enabled.
+- [ ] **P3 · Design review** — Clarify whether Large and Small change only typography or should also have different minimum heights and padding.
+
 ## Feedback
 
 ### Alert
