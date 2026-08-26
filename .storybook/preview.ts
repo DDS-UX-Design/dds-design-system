@@ -38,6 +38,7 @@ const preview: Preview = {
           'Patterns',
           'Layouts',
           'Pages',
+          'Project',
         ],
       },
     },
