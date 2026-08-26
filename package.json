@@ -12,7 +12,7 @@
     "serve:ssr:dds-design-system": "node dist/dds-design-system/server/server.mjs",
     "storybook": "ng run dds-design-system:storybook",
     "build-storybook": "ng run dds-design-system:build-storybook",
-    "chromatic": "npx chromatic --project-token=chpt_d1f4c3739b4b683"
+    "chromatic": "chromatic"
   },
   "private": true,
   "packageManager": "npm@11.16.0",
