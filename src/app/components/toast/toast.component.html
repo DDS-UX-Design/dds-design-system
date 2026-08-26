@@ -1,0 +1,36 @@
+<div
+  *ngIf="visible"
+  class="dds-toast"
+  [attr.role]="tone === 'danger' ? 'alert' : 'status'"
+  [attr.aria-live]="tone === 'danger' ? 'assertive' : 'polite'"
+  [class.dds-toast--info]="tone === 'info'"
+  [class.dds-toast--warning]="tone === 'warning'"
+  [class.dds-toast--success]="tone === 'success'"
+  [class.dds-toast--danger]="tone === 'danger'"
+  [class.dds-toast--small]="size === 'small'"
+  [style.--dds-toast-duration]="duration + 'ms'"
+>
+  <dds-icon
+    class="dds-toast__status-icon"
+    [name]="iconName"
+    [size]="iconSize"
+    aria-hidden="true"
+  ></dds-icon>
+
+  <div class="dds-toast__content">
+    <strong *ngIf="showTitle" class="dds-toast__title">{{ title }}</strong>
+    <span class="dds-toast__message">{{ message }}</span>
+  </div>
+
+  <button
+    *ngIf="showDismissControl"
+    class="dds-toast__dismiss"
+    type="button"
+    aria-label="Dismiss notification"
+    (click)="dismiss()"
+  >
+    <dds-icon name="x" size="24" aria-hidden="true"></dds-icon>
+  </button>
+
+  <span *ngIf="isTimed" class="dds-toast__progress" aria-hidden="true"></span>
+</div>
