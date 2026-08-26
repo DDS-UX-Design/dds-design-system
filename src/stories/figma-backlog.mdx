@@ -1,0 +1,343 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { useEffect, useMemo, useState } from 'react';
+import backlog from '../../FIGMA_BACKLOG.md';
+
+<Meta title="Project/Figma Backlog" />
+
+export const parseBacklog = (source) => {
+  const sections = [];
+  let area = '';
+  let component = '';
+
+source.split('\n').forEach((line) => {
+if (line.startsWith('## ')) {
+area = line.slice(3).trim();
+component = '';
+return;
+}
+
+    if (line.startsWith('### ')) {
+      component = line.slice(4).trim();
+      return;
+    }
+
+    const match = line.match(/^- \[([ xX])\] \*\*(.*?)\*\* — (.*)$/);
+    if (!match || area === 'Future maintenance') return;
+
+    const sectionName = component ? `${area} / ${component}` : area;
+    let section = sections.find((item) => item.name === sectionName);
+
+    if (!section) {
+      section = { name: sectionName, tasks: [] };
+      sections.push(section);
+    }
+
+    const [priority = 'P3', classification = 'Design review'] = match[2]
+      .split('·')
+      .map((part) => part.trim());
+    const text = match[3].trim();
+
+    section.tasks.push({
+      id: `${sectionName}:${text}`,
+      priority,
+      classification,
+      text,
+      sourceCompleted: match[1].toLowerCase() === 'x',
+    });
+
+});
+
+return sections;
+};
+
+export const BacklogPage = () => {
+  const sections = useMemo(() => parseBacklog(backlog), []);
+  const tasks = useMemo(() => sections.flatMap((section) => section.tasks), [sections]);
+  const [completed, setCompleted] = useState(() => {
+    if (typeof window === 'undefined') return {};
+
+    try {
+      return JSON.parse(window.localStorage.getItem('dds-figma-backlog') || '{}');
+    } catch {
+      return {};
+    }
+
+});
+
+useEffect(() => {
+window.localStorage.setItem('dds-figma-backlog', JSON.stringify(completed));
+}, [completed]);
+
+const isComplete = (task) => task.sourceCompleted || Boolean(completed[task.id]);
+const completedCount = tasks.filter(isComplete).length;
+
+const toggle = (task) => {
+if (task.sourceCompleted) return;
+setCompleted((current) => ({ ...current, [task.id]: !current[task.id] }));
+};
+
+const clearLocalProgress = () => setCompleted({});
+
+return (
+
+<main className="figma-backlog">
+<header className="figma-backlog__header">
+<div>
+<p className="figma-backlog__eyebrow">DDS DESIGN SYSTEM</p>
+<h1>Figma design backlog</h1>
+<p>
+Design gaps and unresolved decisions found while comparing the DDS Design System in Figma with the coded
+components and Storybook documentation.
+</p>
+</div>
+<div className="figma-backlog\_\_progress" aria-label={`${completedCount} of ${tasks.length} enhancements complete`}>
+<strong>{completedCount}/{tasks.length}</strong>
+<span>complete</span>
+</div>
+</header>
+
+      <aside className="figma-backlog__notice">
+        <span>
+          Checked items are saved in this browser. Update <code>FIGMA_BACKLOG.md</code> in the
+          repository to record completion for the whole team.
+        </span>
+        <button type="button" onClick={clearLocalProgress}>Reset</button>
+      </aside>
+
+      <div className="figma-backlog__legend" aria-label="Priority legend">
+        <span><b className="priority priority--p0">P0</b> Blocks safe use</span>
+        <span><b className="priority priority--p1">P1</b> Important behavior</span>
+        <span><b className="priority priority--p2">P2</b> Completeness</span>
+        <span><b className="priority priority--p3">P3</b> Guidance or polish</span>
+      </div>
+
+      <div className="figma-backlog__sections">
+        {sections.map((section) => {
+          const sectionComplete = section.tasks.filter(isComplete).length;
+
+          return (
+            <section className="figma-backlog__section" key={section.name}>
+              <div className="figma-backlog__section-heading">
+                <h2>{section.name}</h2>
+                <span>{sectionComplete}/{section.tasks.length}</span>
+              </div>
+              <ul>
+                {section.tasks.map((task) => {
+                  const checked = isComplete(task);
+
+                  return (
+                    <li className={checked ? 'is-complete' : ''} key={task.id}>
+                      <label>
+                        <input
+                          type="checkbox"
+                          checked={checked}
+                          disabled={task.sourceCompleted}
+                          onChange={() => toggle(task)}
+                        />
+                        <span className={`priority priority--${task.priority.toLowerCase()}`}>
+                          {task.priority}
+                        </span>
+                        <span className="figma-backlog__task-copy">
+                          <strong>{task.classification}</strong>
+                          <span>{task.text}</span>
+                        </span>
+                      </label>
+                    </li>
+                  );
+                })}
+              </ul>
+            </section>
+          );
+        })}
+      </div>
+    </main>
+
+);
+};
+
+<BacklogPage />
+
+<style>{`
+  .figma-backlog {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 48px 32px 80px;
+    color: #171717;
+    font-family: Inter, system-ui, sans-serif;
+  }
+
+  .figma-backlog__header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 32px;
+    margin-bottom: 32px;
+  }
+
+  .figma-backlog__eyebrow {
+    margin: 0 0 8px;
+    color: #224583;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .12em;
+  }
+
+  .figma-backlog h1 {
+    margin: 0 0 12px;
+    color: #1a223b;
+    font-size: clamp(36px, 5vw, 54px);
+    line-height: 1.05;
+    letter-spacing: -.035em;
+  }
+
+  .figma-backlog__header p:last-child {
+    max-width: 760px;
+    margin: 0;
+    color: #525252;
+    font-size: 17px;
+    line-height: 1.6;
+  }
+
+  .figma-backlog__progress {
+    display: flex;
+    flex: 0 0 auto;
+    flex-direction: column;
+    min-width: 104px;
+    padding: 16px;
+    border-radius: 8px;
+    background: #f0f4fa;
+    color: #224583;
+    text-align: center;
+  }
+
+  .figma-backlog__progress strong { font-size: 24px; }
+  .figma-backlog__progress span { font-size: 12px; }
+
+  .figma-backlog__notice {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+    padding: 12px 16px;
+    border-left: 4px solid #2f5eaf;
+    border-radius: 4px;
+    background: #f0f4fa;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .figma-backlog__notice button {
+    padding: 7px 10px;
+    border: 1px solid #d4d4d4;
+    border-radius: 4px;
+    background: #fff;
+    color: #171717;
+    cursor: pointer;
+    font: inherit;
+    font-weight: 600;
+  }
+
+  .figma-backlog__notice button:focus-visible,
+  .figma-backlog input:focus-visible {
+    outline: 2px solid #2f5eaf;
+    outline-offset: 2px;
+  }
+
+  .figma-backlog__legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 20px;
+    margin-bottom: 32px;
+    color: #525252;
+    font-size: 12px;
+  }
+
+  .figma-backlog__legend span { display: inline-flex; align-items: center; gap: 6px; }
+
+  .figma-backlog__sections {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+    gap: 20px;
+  }
+
+  .figma-backlog__section {
+    overflow: hidden;
+    border: 1px solid #d4d4d4;
+    border-radius: 8px;
+    background: #fff;
+  }
+
+  .figma-backlog__section-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 16px 18px;
+    border-bottom: 1px solid #e5e5e5;
+    background: #f7f7f7;
+  }
+
+  .figma-backlog__section-heading h2 {
+    margin: 0;
+    color: #1a223b;
+    font-size: 16px;
+    line-height: 1.4;
+  }
+
+  .figma-backlog__section-heading > span {
+    color: #737373;
+    font-size: 12px;
+    white-space: nowrap;
+  }
+
+  .figma-backlog__section ul { margin: 0; padding: 0; list-style: none; }
+
+  .figma-backlog__section li + li { border-top: 1px solid #e5e5e5; }
+
+  .figma-backlog__section label {
+    display: grid;
+    grid-template-columns: 18px 34px minmax(0, 1fr);
+    align-items: start;
+    gap: 10px;
+    padding: 14px 16px;
+    cursor: pointer;
+  }
+
+  .figma-backlog__section input { width: 16px; height: 16px; margin: 2px 0 0; accent-color: #2f5eaf; }
+
+  .priority {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 20px;
+    padding: 0 6px;
+    border-radius: 999px;
+    font-size: 10px;
+    font-weight: 700;
+  }
+
+  .priority--p0 { background: #fee2e2; color: #991b1b; }
+  .priority--p1 { background: #fff1c2; color: #682d03; }
+  .priority--p2 { background: #d9e4f5; color: #224583; }
+  .priority--p3 { background: #e5e5e5; color: #404040; }
+
+  .figma-backlog__task-copy { display: flex; flex-direction: column; gap: 3px; }
+  .figma-backlog__task-copy strong { color: #525252; font-size: 11px; }
+  .figma-backlog__task-copy > span { font-size: 13px; line-height: 1.5; }
+
+  .figma-backlog__section li.is-complete { background: #f7f7f7; }
+  .figma-backlog__section li.is-complete .figma-backlog__task-copy > span {
+    color: #737373;
+    text-decoration: line-through;
+  }
+
+  @media (max-width: 800px) {
+    .figma-backlog { padding: 32px 18px 56px; }
+    .figma-backlog__header { align-items: flex-start; flex-direction: column; }
+    .figma-backlog__progress { align-self: stretch; }
+    .figma-backlog__notice { grid-template-columns: 1fr; }
+    .figma-backlog__sections { grid-template-columns: 1fr; }
+  }
+`}</style>
