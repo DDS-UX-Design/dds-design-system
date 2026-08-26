@@ -70,7 +70,7 @@
         },
         {
             "name": "ButtonComponent",
-            "id": "component-ButtonComponent-c09b1990456baab454497c4e9cf6807763cf8d223ba969cbe849b44f1fc6436ce0ee1ce936dd3320ca257a6e60d3b767d71dda7af939b4f5fe12dd85bdcb456b",
+            "id": "component-ButtonComponent-47f80e7c19ca5e48d3fb0bf7888920088bd09080f919dc9b8290a7bd4722b7481ee679cc101f20dfd0a9690c70780ba6a054828a618f9d22644e8db3c223ad55",
             "file": "src/app/components/button/button.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -95,9 +95,9 @@
                     "name": "ariaLabel",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "rawdescription": "\n",
-                    "description": "",
-                    "line": 25,
+                    "rawdescription": "\nAccessible label for icon-only buttons when the visible label is not present.",
+                    "description": "<p>Accessible label for icon-only buttons when the visible label is not present.</p>\n",
+                    "line": 42,
                     "type": "string",
                     "decorators": []
                 },
@@ -107,9 +107,9 @@
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "rawdescription": "\n",
-                    "description": "",
-                    "line": 27,
+                    "rawdescription": "\nDisables interaction and applies the disabled visual treatment.",
+                    "description": "<p>Disables interaction and applies the disabled visual treatment.</p>\n",
+                    "line": 48,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -119,9 +119,9 @@
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "rawdescription": "\n",
-                    "description": "",
-                    "line": 28,
+                    "rawdescription": "\nExpands the button to fill the available width of its container.",
+                    "description": "<p>Expands the button to fill the available width of its container.</p>\n",
+                    "line": 51,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -131,9 +131,9 @@
                     "defaultValue": "'info'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "rawdescription": "\n",
-                    "description": "",
-                    "line": 24,
+                    "rawdescription": "\nName of the icon to display when icon placement is enabled.",
+                    "description": "<p>Name of the icon to display when icon placement is enabled.</p>\n",
+                    "line": 39,
                     "type": "DdsIconName",
                     "decorators": []
                 },
@@ -143,9 +143,9 @@
                     "defaultValue": "'no-icon'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "rawdescription": "\n",
-                    "description": "",
-                    "line": 23,
+                    "rawdescription": "\nPlacement of the icon, or whether the button should render as icon-only.",
+                    "description": "<p>Placement of the icon, or whether the button should render as icon-only.</p>\n",
+                    "line": 36,
                     "type": "ButtonIconType",
                     "decorators": []
                 },
@@ -155,9 +155,9 @@
                     "defaultValue": "'large'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "rawdescription": "\n",
-                    "description": "",
-                    "line": 22,
+                    "rawdescription": "\nSize of the button to match surrounding layout and hierarchy.",
+                    "description": "<p>Size of the button to match surrounding layout and hierarchy.</p>\n",
+                    "line": 33,
                     "type": "ButtonSize",
                     "decorators": []
                 },
@@ -167,9 +167,9 @@
                     "defaultValue": "'default'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "rawdescription": "\n",
-                    "description": "",
-                    "line": 20,
+                    "rawdescription": "\nVisual state used for design previews and interaction feedback.",
+                    "description": "<p>Visual state used for design previews and interaction feedback.</p>\n",
+                    "line": 27,
                     "type": "ButtonState",
                     "decorators": []
                 },
@@ -179,9 +179,9 @@
                     "defaultValue": "'default'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "rawdescription": "\n",
-                    "description": "",
-                    "line": 21,
+                    "rawdescription": "\nSemantic style that can switch the button to a destructive treatment.",
+                    "description": "<p>Semantic style that can switch the button to a destructive treatment.</p>\n",
+                    "line": 30,
                     "type": "ButtonStyle",
                     "decorators": []
                 },
@@ -191,9 +191,9 @@
                     "defaultValue": "'button'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "rawdescription": "\n",
-                    "description": "",
-                    "line": 26,
+                    "rawdescription": "\nNative button type used for form submission and button semantics.",
+                    "description": "<p>Native button type used for form submission and button semantics.</p>\n",
+                    "line": 45,
                     "type": "\"button\" | \"submit\" | \"reset\"",
                     "decorators": []
                 },
@@ -203,9 +203,9 @@
                     "defaultValue": "'primary'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "rawdescription": "\n",
-                    "description": "",
-                    "line": 19,
+                    "rawdescription": "\nVisual treatment for the button, used to communicate action importance.",
+                    "description": "<p>Visual treatment for the button, used to communicate action importance.</p>\n",
+                    "line": 24,
                     "type": "ButtonVariant",
                     "decorators": []
                 }
@@ -229,19 +229,31 @@
                     "type": "component"
                 }
             ],
-            "description": "",
-            "rawdescription": "\n",
+            "description": "<p>A reusable button component for primary actions, secondary actions, and icon-only affordances.\nSupports variants, size options, semantic states, and optional leading or trailing icons.</p>\n",
+            "rawdescription": "\n\nA reusable button component for primary actions, secondary actions, and icon-only affordances.\nSupports variants, size options, semantic states, and optional leading or trailing icons.\n",
             "type": "component",
-            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { DdsIconName, IconComponent } from '../icon/icon.component';\n\nexport type ButtonVariant = 'primary' | 'outlined' | 'ghost';\nexport type ButtonState = 'default' | 'hover' | 'focused' | 'disabled';\nexport type ButtonStyle = 'default' | 'danger';\nexport type ButtonSize = 'large' | 'medium' | 'small';\nexport type ButtonIconType = 'no-icon' | 'left-icon' | 'right-icon' | 'icon-only';\n\n@Component({\n  selector: 'dds-button',\n  standalone: true,\n  imports: [CommonModule, IconComponent],\n  templateUrl: './button.component.html',\n  styleUrl: './button.component.css'\n})\nexport class ButtonComponent {\n  @Input() variant: ButtonVariant = 'primary';\n  @Input() state: ButtonState = 'default';\n  @Input() styleType: ButtonStyle = 'default';\n  @Input() size: ButtonSize = 'large';\n  @Input() iconType: ButtonIconType = 'no-icon';\n  @Input() icon: DdsIconName = 'info';\n  @Input() ariaLabel?: string;\n  @Input() type: 'button' | 'submit' | 'reset' = 'button';\n  @Input() disabled = false;\n  @Input() fullWidth = false;\n\n  get isDisabled(): boolean {\n    return this.disabled || this.state === 'disabled';\n  }\n\n  get hasLeftIcon(): boolean {\n    return this.iconType === 'left-icon';\n  }\n\n  get hasRightIcon(): boolean {\n    return this.iconType === 'right-icon';\n  }\n\n  get isIconOnly(): boolean {\n    return this.iconType === 'icon-only';\n  }\n\n  get iconSize(): number {\n    if (this.size === 'small') {\n      return 14;\n    }\n\n    if (this.size === 'medium') {\n      return 16;\n    }\n\n    return 18;\n  }\n}",
+            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { DdsIconName, IconComponent } from '../icon/icon.component';\n\nexport type ButtonVariant = 'primary' | 'outlined' | 'ghost';\nexport type ButtonState = 'default' | 'hover' | 'focused' | 'disabled';\nexport type ButtonStyle = 'default' | 'danger';\nexport type ButtonSize = 'large' | 'medium' | 'small';\nexport type ButtonIconType = 'no-icon' | 'left-icon' | 'right-icon' | 'icon-only';\n\n/**\n * A reusable button component for primary actions, secondary actions, and icon-only affordances.\n * Supports variants, size options, semantic states, and optional leading or trailing icons.\n */\n@Component({\n  selector: 'dds-button',\n  standalone: true,\n  imports: [CommonModule, IconComponent],\n  templateUrl: './button.component.html',\n  styleUrl: './button.component.css'\n})\nexport class ButtonComponent {\n  /** Visual treatment for the button, used to communicate action importance. */\n  @Input() variant: ButtonVariant = 'primary';\n\n  /** Visual state used for design previews and interaction feedback. */\n  @Input() state: ButtonState = 'default';\n\n  /** Semantic style that can switch the button to a destructive treatment. */\n  @Input() styleType: ButtonStyle = 'default';\n\n  /** Size of the button to match surrounding layout and hierarchy. */\n  @Input() size: ButtonSize = 'large';\n\n  /** Placement of the icon, or whether the button should render as icon-only. */\n  @Input() iconType: ButtonIconType = 'no-icon';\n\n  /** Name of the icon to display when icon placement is enabled. */\n  @Input() icon: DdsIconName = 'info';\n\n  /** Accessible label for icon-only buttons when the visible label is not present. */\n  @Input() ariaLabel?: string;\n\n  /** Native button type used for form submission and button semantics. */\n  @Input() type: 'button' | 'submit' | 'reset' = 'button';\n\n  /** Disables interaction and applies the disabled visual treatment. */\n  @Input() disabled = false;\n\n  /** Expands the button to fill the available width of its container. */\n  @Input() fullWidth = false;\n\n  get isDisabled(): boolean {\n    return this.disabled || this.state === 'disabled';\n  }\n\n  get hasLeftIcon(): boolean {\n    return this.iconType === 'left-icon';\n  }\n\n  get hasRightIcon(): boolean {\n    return this.iconType === 'right-icon';\n  }\n\n  get isIconOnly(): boolean {\n    return this.iconType === 'icon-only';\n  }\n\n  get iconSize(): number {\n    if (this.size === 'small') {\n      return 14;\n    }\n\n    if (this.size === 'medium') {\n      return 16;\n    }\n\n    return 18;\n  }\n}",
             "styleUrl": "./button.component.css",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ":host {\n  display: inline-block;\n}\n\n.dds-button {\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  gap: var(--dds-space-2);\n  border: 1px solid;\n  border-radius: var(--dds-radius-2);\n  font-family: var(--dds-font-family-primary);\n  font-weight: var(--dds-font-weight-medium);\n  letter-spacing: var(--dds-space-none);\n  cursor: pointer;\n  position: relative;\n}\n\n.dds-button:focus-visible, .dds-button:focus {\n    border: 1px solid #fff;\n    box-shadow: var(--dds-btn-focus-ring);\n}\n\n.dds-button:disabled {\n  background-color: var(--dds-btn-primary-bg-disabled);\n  border-color: var(--dds-btn-primary-bg-disabled);\n  cursor: not-allowed;\n  color: var(--dds-text-colour-disabled);\n}\n\n.dds-button--large {\n    height: 48px;\n    min-height: 48px;\n    padding: 12px 24px;\n    font-size: var(--dds-font-size-3);\n}\n\n.dds-button--medium {\n    height: 40px;\n    min-height: 40px;\n    padding: 8px 16px;\n    font-size: var(--dds-font-size-2);\n}\n\n.dds-button--small {\n  min-height: 32px;\n  padding: 4px 12px;\n  font-size: var(--dds-font-size-1);\n}\n\n\n/* Primary Button */\n.dds-button--primary {\n  background-color: var(--dds-btn-primary-bg-default);\n  border-color: var(--dds-btn-primary-border-default);\n  color: var(--dds-text-colour-inverse);\n}\n\n.dds-button--primary:focus, .dds-button--primary:focus-visible {\n  border-color: var(--dds-btn-primary-border-focus);\n  box-shadow: var(--dds-btn-focus-ring);\n}\n\n.dds-button--primary:hover:not(:disabled) {\n  background-color: var(--dds-btn-primary-bg-hover);\n  border-color: var(--dds-btn-primary-border-hover);\n}\n\n.dds-button--primary:hover:focus, .dds-button--primary:hover:focus-visible {\n  border-color: var(--dds-btn-primary-border-focus);\n  box-shadow: var(--dds-btn-focus-ring);\n}\n\n\n/* Outlined Button */\n.dds-button--outlined {\n  background-color: var(--dds-btn-outlined-bg-default);\n  border-color: var(--dds-btn-outlined-border-default);\n  color: var(--dds-text-colour-default);\n}\n\n.dds-button--outlined:hover:not(:disabled) {\n  background-color: var(--dds-btn-outlined-bg-hover);\n}\n\n/* Ghost Button */\n.dds-button--ghost {\n  background-color: var(--dds-btn-ghost-bg-default);\n  border-color: var(--dds-btn-ghost-border-default);\n  color: var(--dds-text-colour-accent);\n}\n\n.dds-button--ghost .dds-button__label {\n    display: block;\n    height: 100%;\n    position: relative;\n}\n\n.dds-button--ghost .dds-button__label::after {\n    background-color: var(--dds-btn-primary-border-default);\n    content: '';\n    display: block;\n    position: absolute;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    width: 100%;\n    height: 1px;\n}\n\n.dds-button--ghost:hover:not(:disabled) {\n  background-color: var(--dds-btn-ghost-bg-hover);\n}\n\n.dds-button--danger.dds-button--primary {\n  background-color: var(--dds-btn-danger-primary-bg-default);\n  border-color: var(--dds-btn-danger-primary-border-default);\n}\n\n.dds-button--danger.dds-button--primary:hover:not(:disabled),\n.dds-button--danger.dds-button--primary.dds-button--state-hover {\n  background-color: var(--dds-btn-danger-primary-bg-hover);\n  border-color: var(--dds-btn-danger-primary-border-hover);\n}\n\n.dds-button--danger.dds-button--outlined,\n.dds-button--danger.dds-button--ghost {\n  color: var(--dds-btn-danger-ghost-fg-default);\n}\n\n.dds-button--danger.dds-button--outlined {\n  border-color: var(--dds-btn-danger-outlined-border-default);\n}\n\n.dds-button--danger.dds-button--ghost:hover:not(:disabled),\n.dds-button--danger.dds-button--ghost.dds-button--state-hover {\n  background-color: var(--dds-btn-danger-ghost-bg-hover);\n}\n\n.dds-button--state-hover.dds-button--primary:not(:disabled) {\n  background-color: var(--dds-btn-primary-bg-hover);\n  border-color: var(--dds-btn-primary-border-hover);\n}\n\n.dds-button--state-hover.dds-button--outlined:not(:disabled) {\n  background-color: var(--dds-btn-outlined-bg-hover);\n}\n\n.dds-button--state-hover.dds-button--ghost:not(:disabled) {\n  background-color: var(--dds-btn-ghost-bg-hover);\n}\n\n.dds-button--state-focused {\n  box-shadow: var(--dds-btn-focus-ring);\n}\n\n.dds-button--state-disabled {\n  opacity: var(--dds-button-disabled-opacity);\n  cursor: not-allowed;\n}\n\n.dds-button__icon {\n  display: inline-flex;\n  line-height: 0;\n}\n\n.dds-button--icon-only {\n  padding: var(--dds-space-0);\n  height: var(--dds-btn-icon-only-size-lg);\n  min-height: var(--dds-btn-icon-only-size-lg);\n  width: var(--dds-btn-icon-only-size-lg);\n}\n\n.dds-button--icon-only.dds-button--medium {\n  width: var(--dds-btn-icon-only-size-md);\n  height: var(--dds-btn-icon-only-size-md);\n  min-height: var(--dds-btn-icon-only-size-md);\n}\n\n.dds-button--icon-only.dds-button--small {\n  width: var(--dds-btn-icon-only-size-sm);\n  height: var(--dds-btn-icon-only-size-sm);\n  min-height: var(--dds-btn-icon-only-size-sm);\n}",
+                    "data": ":host {\n  display: inline-block;\n}\n\n.dds-button {\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  gap: var(--space-2);\n  border: 1px solid;\n  border-radius: var(--radius-sm);\n  font-family: var(--font-family-primary);\n  font-weight: var(--font-weight-medium);\n  letter-spacing: var(--space-none);\n  cursor: pointer;\n  position: relative;\n}\n\n.dds-button:focus-visible, .dds-button:focus {\n    border: 1px solid #fff;\n    box-shadow: var(--btn-default-focus-ring);\n}\n\n.dds-button:disabled {\n  background-color: var(--btn-colour-primary-disabled);\n  border-color: var(--btn-colour-primary-disabled);\n  cursor: not-allowed;\n  color: var(--text-colour-disabled);\n}\n\n.dds-button--large {\n    height: 48px;\n    min-height: 48px;\n    padding: 12px 24px;\n    font-size: var(--font-size-md);\n}\n\n.dds-button--medium {\n    height: 40px;\n    min-height: 40px;\n    padding: 8px 16px;\n    font-size: var(--font-size-sm);\n}\n\n.dds-button--small {\n  min-height: 32px;\n  padding: 4px 12px;\n  font-size: var(--font-size-xs);\n}\n\n\n/* Primary Button */\n.dds-button--primary {\n  background-color: var(--btn-colour-primary);\n  border-color: var(--btn-colour-primary);\n  color: var(--text-colour-inverse);\n}\n\n.dds-button--primary:focus, .dds-button--primary:focus-visible {\n  border-color: var(--border-colour-white);\n  box-shadow: var(--btn-default-focus-ring);\n}\n\n.dds-button--primary:hover:not(:disabled) {\n  background-color: var(--btn-colour-primary-hover);\n  border-color: var(--btn-colour-primary-hover);\n}\n\n.dds-button--primary:hover:focus, .dds-button--primary:hover:focus-visible {\n  border-color: var(--btn-colour-primary-focus);\n  box-shadow: var(--btn-default-focus-ring);\n}\n\n\n/* Outlined Button */\n.dds-button--outlined {\n  background-color: var(--btn-colour-outlined-bg-default);\n  border-color: var(--btn-colour-outlined-border-default);\n  color: var(--text-colour-default);\n}\n\n.dds-button--outlined:hover:not(:disabled) {\n  background-color: var(--btn-colour-outlined-bg-hover);\n}\n\n/* Ghost Button */\n.dds-button--ghost {\n  background-color: var(--btn-colour-ghost-bg-default);\n  border-color: var(--btn-colour-ghost-border-default);\n  color: var(--text-colour-accent);\n}\n\n.dds-button--ghost .dds-button__label {\n    display: block;\n    height: 100%;\n    position: relative;\n}\n\n.dds-button--ghost .dds-button__label::after {\n    background-color: var(--btn-colour-primary-border-default);\n    content: '';\n    display: block;\n    position: absolute;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    width: 100%;\n    height: 1px;\n}\n\n.dds-button--ghost:hover:not(:disabled) {\n  background-color: var(--btn-colour-ghost-bg-hover);\n}\n\n.dds-button--danger.dds-button--primary {\n  background-color: var(--btn-colour-danger-primary-bg-default);\n  border-color: var(--btn-colour-danger-primary-border-default);\n}\n\n.dds-button--danger.dds-button--primary:hover:not(:disabled),\n.dds-button--danger.dds-button--primary.dds-button--state-hover {\n  background-color: var(--btn-colour-danger-primary-bg-hover);\n  border-color: var(--btn-colour-danger-primary-border-hover);\n}\n\n.dds-button--danger.dds-button--outlined,\n.dds-button--danger.dds-button--ghost {\n  color: var(--text-colour-danger-ghost-fg-default);\n}\n\n.dds-button--danger.dds-button--outlined {\n  border-color: var(--btn-colour-danger-outlined-border-default);\n}\n\n.dds-button--danger.dds-button--ghost:hover:not(:disabled),\n.dds-button--danger.dds-button--ghost.dds-button--state-hover {\n  background-color: var(--btn-colour-danger-ghost-bg-hover);\n}\n\n.dds-button--state-hover.dds-button--primary:not(:disabled) {\n  background-color: var(--btn-colour-primary-bg-hover);\n  border-color: var(--btn-colour-primary-border-hover);\n}\n\n.dds-button--state-hover.dds-button--outlined:not(:disabled) {\n  background-color: var(--btn-colour-outlined-bg-hover);\n}\n\n.dds-button--state-hover.dds-button--ghost:not(:disabled) {\n  background-color: var(--btn-colour-ghost-bg-hover);\n}\n\n.dds-button--state-focused {\n  box-shadow: var(--btn-primary-focus-ring);\n}\n\n.dds-button--state-disabled {\n  background-color: var(--btn-colour-primary-disabled);\n  border-color: var(--btn-colour-primary-disabled);\n  color: var(--text-colour-disabled);\n  cursor: not-allowed;\n}\n\n.dds-button__icon {\n  display: inline-flex;\n  line-height: 0;\n}\n\n.dds-button--icon-only {\n  padding: var(--dds-space-0);\n  height: var(--dds-btn-icon-only-size-lg);\n  min-height: var(--dds-btn-icon-only-size-lg);\n  width: var(--dds-btn-icon-only-size-lg);\n}\n\n.dds-button--icon-only.dds-button--medium {\n  width: var(--dds-btn-icon-only-size-md);\n  height: var(--dds-btn-icon-only-size-md);\n  min-height: var(--dds-btn-icon-only-size-md);\n}\n\n.dds-button--icon-only.dds-button--small {\n  width: var(--dds-btn-icon-only-size-sm);\n  height: var(--dds-btn-icon-only-size-sm);\n  min-height: var(--dds-btn-icon-only-size-sm);\n}",
                     "styleUrl": "./button.component.css"
                 }
             ],
             "stylesData": "",
+            "jsdoctags": [
+                {
+                    "pos": 489,
+                    "end": 687,
+                    "kind": 321,
+                    "id": 0,
+                    "flags": 16777216,
+                    "modifierFlagsCache": 0,
+                    "transformFlags": 0,
+                    "comment": "A reusable button component for primary actions, secondary actions, and icon-only affordances.\nSupports variants, size options, semantic states, and optional leading or trailing icons."
+                }
+            ],
             "extends": [],
             "accessors": {
                 "isDisabled": {
@@ -250,7 +262,7 @@
                         "name": "isDisabled",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 30,
+                        "line": 53,
                         "rawdescription": "\n",
                         "description": ""
                     }
@@ -261,7 +273,7 @@
                         "name": "hasLeftIcon",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 34,
+                        "line": 57,
                         "rawdescription": "\n",
                         "description": ""
                     }
@@ -272,7 +284,7 @@
                         "name": "hasRightIcon",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 38,
+                        "line": 61,
                         "rawdescription": "\n",
                         "description": ""
                     }
@@ -283,7 +295,7 @@
                         "name": "isIconOnly",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 42,
+                        "line": 65,
                         "rawdescription": "\n",
                         "description": ""
                     }
@@ -294,7 +306,7 @@
                         "name": "iconSize",
                         "type": "number",
                         "returnType": "number",
-                        "line": 46,
+                        "line": 69,
                         "rawdescription": "\n",
                         "description": ""
                     }
@@ -322,7 +334,7 @@
         },
         {
             "name": "IconComponent",
-            "id": "component-IconComponent-6a2c575e9d053ecad478a16d28844c236ce36124508538e9e8816e0f73ca62755d64f3e5e70e0d31795ff7c0b3668957b3c5f72143323db19bfbe22cd0825686",
+            "id": "component-IconComponent-27e19adc53f0030391332ab088096febf1ec7a49cdbe03ab09087a6610bb91801c1ea08571bbc6b345bf605b82b0c9a5370c7c281b6b5b16f3fd149c454136d5",
             "file": "src/app/components/icon/icon.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -331,13 +343,13 @@
             "outputs": [],
             "providers": [
                 {
-                    "name": "provideLucideIcons(LucideArrowRight, LucideArrowLeft, LucideArrowDown, LucideArrowUp, LucideCheck, LucideChevronRight, LucideChevronDown, LucideChevronsUpDown, LucideListFilter, LucideMenu, LucideCircleAlert, LucideEllipsis, LucideInfo, LucidePlus, LucideTrash2, LucideX, LucideArrowUpDown, LucideChevronUp, LucideChevronLeft, LucideColumns3, LucideSearch)"
+                    "name": "provideLucideIcons(LucideArrowRight, LucideArrowLeft, LucideArrowDown, LucideArrowUp, LucideCheck, LucideChevronRight, LucideChevronDown, LucideChevronsUpDown, LucideListFilter, LucideMenu, LucideCircleAlert, LucideEllipsis, LucideInfo, LucidePlus, LucideTrash2, LucideX, LucideArrowUpDown, LucideChevronUp, LucideChevronLeft, LucideColumns3, LucideSearch, LucideLayoutDashboard, LucideEllipsisVertical, LucideHouse, LucideMapPin, LucidePanelsTopLeft, LucideGripVertical, LucideDownload, LucideUpload, LucideMinus, LucideArchive, LucideBan, LucidePencil, LucideSettings, LucideSlidersHorizontal, LucideSquarePen, LucideCopy, LucideFunnel, LucideExternalLink, LucideRefreshCw, LucideWrench, LucideBrushCleaning, LucideCloudUpload, LucideWandSparkles, LucideUser, LucideUsers, LucideUserX, LucideKeyRound, LucideLockKeyhole, LucideUserRound, LucideEye, LucideEyeOff, LucideLogOut, LucideSendHorizontal, LucideBell, LucideBellDot, LucideMessageSquarePlus, LucideStar, LucideCircleQuestionMark, LucidePhone, LucideShare2, LucideImage, LucideCircleStop, LucideCirclePlay, LucideHeadset, LucideFile, LucideClipboardList, LucidePrinter, LucideType, LucideHash, LucideAtSign, LucideTextWrap, LucideCircleDot, LucideSquareCheck, LucideList, LucideToggleRight, LucideClock, LucideCircleCheck, LucideTriangleAlert, LucideCalendarDays, LucideCalendar1, LucideLoaderCircle, LucideLifeBuoy, LucideShoppingCart, LucideBox, LucidePackage, LucideTruck, LucideChartNoAxesCombined, LucideDollarSign, LucideCreditCard, LucideReceiptText, LucideStore, LucideFactory, LucideChartNoAxesColumn, LucideBatteryFull, LucideScan, LucidePersonStanding, LucideMonitorSmartphone, LucideContrast, LucideWifi, LucideSignal)"
                 }
             ],
             "selector": "dds-icon",
             "styleUrls": [],
             "styles": [],
-            "template": "<svg\n  [lucideIcon]=\"name\"\n  [size]=\"size\"\n  [strokeWidth]=\"strokeWidth\"\n  [attr.aria-hidden]=\"decorative ? 'true' : null\"\n  [title]=\"decorative ? null : title\"\n></svg>\n",
+            "template": "<svg\n  [lucideIcon]=\"name\"\n  [size]=\"size\"\n  [attr.aria-hidden]=\"decorative ? 'true' : null\"\n  [title]=\"decorative ? null : title\"\n></svg>\n",
             "templateUrl": [],
             "templateVariables": [],
             "viewProviders": [],
@@ -351,7 +363,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 97,
+                    "line": 338,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -363,7 +375,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 94,
+                    "line": 335,
                     "type": "DdsIconName",
                     "decorators": []
                 },
@@ -375,7 +387,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 95,
+                    "line": 336,
                     "type": "number",
                     "decorators": []
                 },
@@ -387,7 +399,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 96,
+                    "line": 337,
                     "type": "number | string",
                     "decorators": []
                 },
@@ -398,7 +410,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 98,
+                    "line": 339,
                     "type": "string",
                     "decorators": []
                 }
@@ -420,7 +432,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input } from '@angular/core';\nimport {\n  LucideArrowRight,\n  LucideArrowLeft,\n  LucideArrowDown,\n  LucideArrowUp,\n  LucideArrowUpDown,\n  LucideCheck,\n  LucideChevronRight,\n  LucideChevronUp,\n  LucideChevronLeft,\n  LucideChevronDown,\n  LucideChevronsUpDown,\n  LucideListFilter,\n  LucideCircleAlert,\n  LucideDynamicIcon,\n  LucideEllipsis,\n  LucideInfo,\n  LucidePlus,\n  LucideTrash2,\n  LucideX,\n  provideLucideIcons,\n  LucideMenu,\n  LucideColumns3,\n  LucideSearch,\n} from '@lucide/angular';\n\nexport const DDS_ICON_NAMES = [\n  'info',\n  'arrow-right',\n  'arrow-left',\n  'arrow-down',\n  'arrow-up-down',  \n  'arrow-up',\n  'check',\n  'chevron-down',\n  'chevron-right',\n  'chevron-left',\n  'chevron-up',\n  'chevrons-up-down',\n  'list-filter',\n  'columns-3',\n  'search',\n  'menu',\n  'circle-alert',\n  'ellipsis',\n  'plus',\n  'trash-2',\n  'x',\n] as const;\n\nexport type DdsIconName = (typeof DDS_ICON_NAMES)[number];\n\n@Component({\n  selector: 'dds-icon',\n  standalone: true,\n  imports: [LucideDynamicIcon],\n  providers: [\n    provideLucideIcons(\n      LucideArrowRight,\n      LucideArrowLeft,\n      LucideArrowDown,\n      LucideArrowUp,\n      LucideCheck,\n      LucideChevronRight,\n      LucideChevronDown,\n      LucideChevronsUpDown,\n      LucideListFilter,\n      LucideMenu,\n      LucideCircleAlert,\n      LucideEllipsis,\n      LucideInfo,\n      LucidePlus,\n      LucideTrash2,\n      LucideX,\n      LucideArrowUpDown,\n      LucideChevronUp,\n      LucideChevronLeft,\n      LucideColumns3,\n      LucideSearch\n    )\n  ],\n  template: `\n    <svg\n      [lucideIcon]=\"name\"\n      [size]=\"size\"\n      [strokeWidth]=\"strokeWidth\"\n      [attr.aria-hidden]=\"decorative ? 'true' : null\"\n      [title]=\"decorative ? null : title\"\n    ></svg>\n  `\n})\nexport class IconComponent {\n  @Input() name: DdsIconName = 'info';\n  @Input() size = 16;\n  @Input() strokeWidth: number | string = 2;\n  @Input() decorative = true;\n  @Input() title?: string;\n}",
+            "sourceCode": "import { Component, Input } from '@angular/core';\nimport {\n  LucideArrowRight,\n  LucideArrowLeft,\n  LucideArrowDown,\n  LucideArrowUp,\n  LucideArrowUpDown,\n  LucideCheck,\n  LucideChevronRight,\n  LucideChevronUp,\n  LucideChevronLeft,\n  LucideChevronDown,\n  LucideChevronsUpDown,\n  LucideListFilter,\n  LucideCircleAlert,\n  LucideDynamicIcon,\n  LucideEllipsis,\n  LucideInfo,\n  LucidePlus,\n  LucideTrash2,\n  LucideX,\n  provideLucideIcons,\n  LucideMenu,\n  LucideColumns3,\n  LucideSearch,\n  LucideLayoutDashboard,\n  LucideEllipsisVertical,\n  LucideHouse,\n  LucideMapPin,\n  LucidePanelsTopLeft,\n  LucideGripVertical,\n  LucideDownload,\n  LucideUpload,\n  LucideMinus,\n  LucideArchive,\n  LucideBan,\n  LucidePencil,\n  LucideSettings,\n  LucideSlidersHorizontal,\n  LucideSquarePen,\n  LucideCopy,\n  LucideFunnel,\n  LucideExternalLink,\n  LucideRefreshCw,\n  LucideWrench, \n  LucideBrushCleaning,\n  LucideCloudUpload,\n  LucideWandSparkles,\n  LucideUser,\n  LucideUsers,\n  LucideUserX,\n  LucideKeyRound,\n  LucideLockKeyhole,\n  LucideUserRound,\n  LucideEye,\n  LucideEyeOff,\n  LucideLogOut,\n  LucideSendHorizontal,\n  LucideBell,\n  LucideBellDot,\n  LucideMessageSquarePlus,\n  LucideStar,\n  LucideCircleQuestionMark,\n  LucidePhone,\n  LucideShare2,\n  LucideImage,\n  LucideCircleStop,\n  LucideCirclePlay,\n  LucideHeadset,\n  LucideFile,\n  LucideClipboardList,\n  LucidePrinter,\n  LucideType,\n  LucideHash,\n  LucideAtSign,\n  LucideTextWrap,\n  LucideCircleDot,\n  LucideSquareCheck,\n  LucideList,\n  LucideToggleRight,\n  LucideClock,\n  LucideCircleCheck,\n  LucideTriangleAlert,\n  LucideCalendarDays,\n  LucideCalendar1,\n  LucideLoaderCircle,\n  LucideLifeBuoy,\n  LucideShoppingCart,\n  LucideBox,\n  LucidePackage,\n  LucideTruck,\n  LucideChartNoAxesCombined,\n  LucideDollarSign,\n  LucideCreditCard,\n  LucideReceiptText,\n  LucideStore,\n  LucideFactory,\n  LucideChartNoAxesColumn,\n  LucideBatteryFull,\n  LucideScan,\n  LucidePersonStanding,\n  LucideMonitorSmartphone,\n  LucideContrast,\n  LucideWifi,\n  LucideSignal,\n\n  \n} from '@lucide/angular';\n\nexport const DDS_ICON_NAMES = [\n  'info',\n  'arrow-right',\n  'arrow-left',\n  'arrow-down',\n  'arrow-up-down',  \n  'arrow-up',\n  'check',\n  'chevron-down',\n  'chevron-right',\n  'chevron-left',\n  'chevron-up',\n  'chevrons-up-down',\n  'list-filter',\n  'columns-3',\n  'search',\n  'menu',\n  'circle-alert',\n  'ellipsis',\n  'plus',\n  'trash-2',\n  'x',\n  'layout-dashboard',\n  'ellipsis-vertical',\n  'house',\n  'map-pin',\n  'panels-top-left',\n  'grip-vertical',\n  'download',\n  'upload',\n  'minus',\n  'archive',\n  'ban',\n  'pencil',\n  'settings',\n  'sliders-horizontal',\n  'square-pen',\n  'copy',\n  'funnel',\n  'external-link',\n  'refresh-cw',\n  'wrench',\n  'brush-cleaning',\n  'cloud-upload',\n  'wand-sparkles',\n  'user',\n  'users',\n  'user-x',\n  'key-round',\n  'lock-keyhole',\n  'user-round',\n  'eye',\n  'eye-off',\n  'log-out',\n  'send-horizontal',\n  'bell',\n  'bell-dot',\n  'message-square-plus',\n  'star',\n  'circle-question-mark',\n  'phone',\n  'share-2',\n  'image',\n  'circle-stop',\n  'circle-play',\n  'headset',\n  'file',\n  'clipboard-list',\n  'printer',\n  'type',\n  'hash',\n  'at-sign',\n  'text-wrap',\n  'circle-dot',\n  'square-check',\n  'list',\n  'toggle-right',\n  'clock',\n  'circle-check',\n  'triangle-alert',\n  'calendar-days',\n  'calendar-1',\n  'loader-circle',\n  'life-buoy',\n  'shopping-cart',\n  'box',\n  'package',\n  'truck',\n  'chart-no-axes-combined',\n  'dollar-sign',\n  'credit-card',\n  'receipt-text',\n  'store',\n  'factory',\n  'chart-no-axes-column',\n  'battery-full',\n  'scan',\n  'person-standing',\n  'monitor-smartphone',\n  'contrast',\n  'wifi',\n  'signal',\n] as const;\n\nexport type DdsIconName = (typeof DDS_ICON_NAMES)[number];\n\n@Component({\n  selector: 'dds-icon',\n  standalone: true,\n  imports: [LucideDynamicIcon],\n  providers: [\n    provideLucideIcons(\n      LucideArrowRight,\n      LucideArrowLeft,\n      LucideArrowDown,\n      LucideArrowUp,\n      LucideCheck,\n      LucideChevronRight,\n      LucideChevronDown,\n      LucideChevronsUpDown,\n      LucideListFilter,\n      LucideMenu,\n      LucideCircleAlert,\n      LucideEllipsis,\n      LucideInfo,\n      LucidePlus,\n      LucideTrash2,\n      LucideX,\n      LucideArrowUpDown,\n      LucideChevronUp,\n      LucideChevronLeft,\n      LucideColumns3,\n      LucideSearch,\n      LucideLayoutDashboard,\n      LucideEllipsisVertical,\n      LucideHouse,\n      LucideMapPin,\n      LucidePanelsTopLeft,\n      LucideGripVertical,\n      LucideDownload,\n      LucideUpload,\n      LucideMinus,\n      LucideArchive,\n      LucideBan,\n      LucidePencil,\n      LucideSettings,\n      LucideSlidersHorizontal,\n      LucideSquarePen,\n      LucideCopy,\n      LucideFunnel,\n      LucideExternalLink,\n      LucideRefreshCw,\n      LucideWrench,\n      LucideBrushCleaning,\n      LucideCloudUpload,\n      LucideWandSparkles,\n      LucideUser,\n      LucideUsers,\n      LucideUserX,\n      LucideKeyRound,\n      LucideLockKeyhole,\n      LucideUserRound,\n      LucideEye,\n      LucideEyeOff,\n      LucideLogOut,\n      LucideSendHorizontal,\n      LucideBell,\n      LucideBellDot,\n      LucideMessageSquarePlus,\n      LucideStar,\n      LucideCircleQuestionMark,\n      LucidePhone,\n      LucideShare2,\n      LucideImage,\n      LucideCircleStop,\n      LucideCirclePlay,\n      LucideHeadset,\n      LucideFile,\n      LucideClipboardList,\n      LucidePrinter,\n      LucideType,\n      LucideHash,\n      LucideAtSign,\n      LucideTextWrap,\n      LucideCircleDot,\n      LucideSquareCheck,\n      LucideList,\n      LucideToggleRight,\n      LucideClock,\n      LucideCircleCheck,\n      LucideTriangleAlert,\n      LucideCalendarDays,\n      LucideCalendar1,\n      LucideLoaderCircle,\n      LucideLifeBuoy,\n      LucideShoppingCart,\n      LucideBox,\n      LucidePackage,\n      LucideTruck,\n      LucideChartNoAxesCombined,\n      LucideDollarSign,\n      LucideCreditCard,\n      LucideReceiptText,\n      LucideStore,\n      LucideFactory,\n      LucideChartNoAxesColumn,\n      LucideBatteryFull,\n      LucideScan,\n      LucidePersonStanding,\n      LucideMonitorSmartphone,\n      LucideContrast,\n      LucideWifi,\n      LucideSignal\n    )\n  ],\n  template: `\n    <svg\n      [lucideIcon]=\"name\"\n      [size]=\"size\"\n      [attr.aria-hidden]=\"decorative ? 'true' : null\"\n      [title]=\"decorative ? null : title\"\n    ></svg>\n  `\n})\nexport class IconComponent {\n  @Input() name: DdsIconName = 'info';\n  @Input() size = 16;\n  @Input() strokeWidth: number | string = 2;\n  @Input() decorative = true;\n  @Input() title?: string;\n}",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -429,7 +441,8 @@
                 "incoming": [
                     {
                         "name": "ButtonComponent",
-                        "type": "component"
+                        "type": "component",
+                        "description": "A reusable button component for primary actions, secondary actions, and icon-only affordances. Supports variants, size options, semantic..."
                     }
                 ],
                 "outgoing": [
@@ -438,7 +451,7 @@
                         "type": "module"
                     },
                     {
-                        "name": "provideLucideIcons(LucideArrowRight, LucideArrowLeft, LucideArrowDown, LucideArrowUp, LucideCheck, LucideChevronRight, LucideChevronDown, LucideChevronsUpDown, LucideListFilter, LucideMenu, LucideCircleAlert, LucideEllipsis, LucideInfo, LucidePlus, LucideTrash2, LucideX, LucideArrowUpDown, LucideChevronUp, LucideChevronLeft, LucideColumns3, LucideSearch)",
+                        "name": "provideLucideIcons(LucideArrowRight, LucideArrowLeft, LucideArrowDown, LucideArrowUp, LucideCheck, LucideChevronRight, LucideChevronDown, LucideChevronsUpDown, LucideListFilter, LucideMenu, LucideCircleAlert, LucideEllipsis, LucideInfo, LucidePlus, LucideTrash2, LucideX, LucideArrowUpDown, LucideChevronUp, LucideChevronLeft, LucideColumns3, LucideSearch, LucideLayoutDashboard, LucideEllipsisVertical, LucideHouse, LucideMapPin, LucidePanelsTopLeft, LucideGripVertical, LucideDownload, LucideUpload, LucideMinus, LucideArchive, LucideBan, LucidePencil, LucideSettings, LucideSlidersHorizontal, LucideSquarePen, LucideCopy, LucideFunnel, LucideExternalLink, LucideRefreshCw, LucideWrench, LucideBrushCleaning, LucideCloudUpload, LucideWandSparkles, LucideUser, LucideUsers, LucideUserX, LucideKeyRound, LucideLockKeyhole, LucideUserRound, LucideEye, LucideEyeOff, LucideLogOut, LucideSendHorizontal, LucideBell, LucideBellDot, LucideMessageSquarePlus, LucideStar, LucideCircleQuestionMark, LucidePhone, LucideShare2, LucideImage, LucideCircleStop, LucideCirclePlay, LucideHeadset, LucideFile, LucideClipboardList, LucidePrinter, LucideType, LucideHash, LucideAtSign, LucideTextWrap, LucideCircleDot, LucideSquareCheck, LucideList, LucideToggleRight, LucideClock, LucideCircleCheck, LucideTriangleAlert, LucideCalendarDays, LucideCalendar1, LucideLoaderCircle, LucideLifeBuoy, LucideShoppingCart, LucideBox, LucidePackage, LucideTruck, LucideChartNoAxesCombined, LucideDollarSign, LucideCreditCard, LucideReceiptText, LucideStore, LucideFactory, LucideChartNoAxesColumn, LucideBatteryFull, LucideScan, LucidePersonStanding, LucideMonitorSmartphone, LucideContrast, LucideWifi, LucideSignal)",
                         "type": "injectable"
                     }
                 ]
@@ -500,11 +513,12 @@
                 "outgoing": [
                     {
                         "name": "ButtonComponent",
-                        "type": "component"
+                        "type": "component",
+                        "description": "A reusable button component for primary actions, secondary actions, and icon-only affordances. Supports variants, size options, semantic..."
                     }
                 ]
             },
-            "templateData": "<main class=\"typography-page\">\n  <header class=\"page-header\">\n    <p class=\"eyebrow\">Design System</p>\n    <h1>Typography</h1>\n    <p class=\"intro\">\n      This page defines and previews the primary type styles for the system using Inter.\n    </p>\n  </header>\n\n  <section class=\"type-specs\" aria-labelledby=\"type-scale-heading\">\n    <h2 id=\"type-scale-heading\">Type Scale</h2>\n\n    <article class=\"type-row\">\n      <p class=\"type-meta\">Display · 56/64 · 700</p>\n      <p class=\"sample display\">Design systems make products feel like one voice.</p>\n    </article>\n\n    <article class=\"type-row\">\n      <p class=\"type-meta\">Heading 1 · 40/48 · 700</p>\n      <p class=\"sample h1\">Build a strong visual hierarchy.</p>\n    </article>\n\n    <article class=\"type-row\">\n      <p class=\"type-meta\">Heading 2 · 32/40 · 600</p>\n      <p class=\"sample h2\">Guide attention with rhythm.</p>\n    </article>\n\n    <article class=\"type-row\">\n      <p class=\"type-meta\">Heading 3 · 24/32 · 600</p>\n      <p class=\"sample h3\">Reusable styles reduce drift.</p>\n    </article>\n\n    <article class=\"type-row\">\n      <p class=\"type-meta\">Body Large · 18/28 · 400</p>\n      <p class=\"sample body-lg\">\n        Body large is useful for lead text, summaries, and content that benefits from easier reading.\n      </p>\n    </article>\n\n    <article class=\"type-row\">\n      <p class=\"type-meta\">Body · 16/24 · 400</p>\n      <p class=\"sample body\">\n        Body text is the default for most interfaces and should be highly legible at all viewport sizes.\n      </p>\n    </article>\n\n    <article class=\"type-row\">\n      <p class=\"type-meta\">Caption · 14/20 · 500</p>\n      <p class=\"sample caption\">Use captions for helper text, labels, and supportive metadata.</p>\n    </article>\n  </section>\n\n  <section class=\"button-specs\" aria-labelledby=\"button-specs-heading\">\n    <h2 id=\"button-specs-heading\">Button Component</h2>\n    <p class=\"button-intro\">A base action component with consistent sizing and visual variants.</p>\n\n    <div class=\"button-row\" role=\"group\" aria-label=\"Button variants\">\n      <dds-button variant=\"primary\" size=\"large\">Primary</dds-button>\n      <dds-button variant=\"outlined\" size=\"large\">Outlined</dds-button>\n      <dds-button variant=\"ghost\" size=\"large\">Ghost</dds-button>\n      <dds-button variant=\"primary\" size=\"large\" state=\"disabled\">Disabled</dds-button>\n      <dds-button variant=\"primary\" styleType=\"danger\" size=\"large\">Danger</dds-button>\n    </div>\n\n    <div class=\"button-row\" role=\"group\" aria-label=\"Button sizes\">\n      <dds-button variant=\"primary\" size=\"small\">Small</dds-button>\n      <dds-button variant=\"primary\" size=\"large\">Large</dds-button>\n      <dds-button variant=\"outlined\" size=\"small\" iconType=\"left-icon\" icon=\"+\">Left Icon</dds-button>\n      <dds-button variant=\"outlined\" size=\"small\" iconType=\"right-icon\" icon=\"→\">Right Icon</dds-button>\n      <dds-button variant=\"ghost\" size=\"small\" iconType=\"icon-only\" icon=\"⋯\" ariaLabel=\"More actions\"></dds-button>\n    </div>\n  </section>\n</main>"
+            "templateData": "<main class=\"typography-page\">\n  <header class=\"page-header\">\n    <p class=\"eyebrow\">Design System</p>\n    <h1>Typography</h1>\n    <p class=\"intro\">\n      This page defines and previews the primary type styles for the system using Inter.\n    </p>\n  </header>\n\n  <section class=\"type-specs\" aria-labelledby=\"type-scale-heading\">\n    <h2 id=\"type-scale-heading\">Type Scale</h2>\n\n    <article class=\"type-row\">\n      <p class=\"type-meta\">Display · 56/64 · 700</p>\n      <p class=\"sample display\">Design systems make products feel like one voice.</p>\n    </article>\n\n    <article class=\"type-row\">\n      <p class=\"type-meta\">Heading 1 · 40/48 · 700</p>\n      <p class=\"sample h1\">Build a strong visual hierarchy.</p>\n    </article>\n\n    <article class=\"type-row\">\n      <p class=\"type-meta\">Heading 2 · 32/40 · 600</p>\n      <p class=\"sample h2\">Guide attention with rhythm.</p>\n    </article>\n\n    <article class=\"type-row\">\n      <p class=\"type-meta\">Heading 3 · 24/32 · 600</p>\n      <p class=\"sample h3\">Reusable styles reduce drift.</p>\n    </article>\n\n    <article class=\"type-row\">\n      <p class=\"type-meta\">Body Large · 18/28 · 400</p>\n      <p class=\"sample body-lg\">\n        Body large is useful for lead text, summaries, and content that benefits from easier reading.\n      </p>\n    </article>\n\n    <article class=\"type-row\">\n      <p class=\"type-meta\">Body · 16/24 · 400</p>\n      <p class=\"sample body\">\n        Body text is the default for most interfaces and should be highly legible at all viewport sizes.\n      </p>\n    </article>\n\n    <article class=\"type-row\">\n      <p class=\"type-meta\">Caption · 14/20 · 500</p>\n      <p class=\"sample caption\">Use captions for helper text, labels, and supportive metadata.</p>\n    </article>\n  </section>\n\n</main>"
         }
     ],
     "modules": [],
@@ -585,7 +599,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "unknown",
-                "defaultValue": "[\n  'info',\n  'arrow-right',\n  'arrow-left',\n  'arrow-down',\n  'arrow-up-down',  \n  'arrow-up',\n  'check',\n  'chevron-down',\n  'chevron-right',\n  'chevron-left',\n  'chevron-up',\n  'chevrons-up-down',\n  'list-filter',\n  'columns-3',\n  'search',\n  'menu',\n  'circle-alert',\n  'ellipsis',\n  'plus',\n  'trash-2',\n  'x',\n] as const"
+                "defaultValue": "[\n  'info',\n  'arrow-right',\n  'arrow-left',\n  'arrow-down',\n  'arrow-up-down',  \n  'arrow-up',\n  'check',\n  'chevron-down',\n  'chevron-right',\n  'chevron-left',\n  'chevron-up',\n  'chevrons-up-down',\n  'list-filter',\n  'columns-3',\n  'search',\n  'menu',\n  'circle-alert',\n  'ellipsis',\n  'plus',\n  'trash-2',\n  'x',\n  'layout-dashboard',\n  'ellipsis-vertical',\n  'house',\n  'map-pin',\n  'panels-top-left',\n  'grip-vertical',\n  'download',\n  'upload',\n  'minus',\n  'archive',\n  'ban',\n  'pencil',\n  'settings',\n  'sliders-horizontal',\n  'square-pen',\n  'copy',\n  'funnel',\n  'external-link',\n  'refresh-cw',\n  'wrench',\n  'brush-cleaning',\n  'cloud-upload',\n  'wand-sparkles',\n  'user',\n  'users',\n  'user-x',\n  'key-round',\n  'lock-keyhole',\n  'user-round',\n  'eye',\n  'eye-off',\n  'log-out',\n  'send-horizontal',\n  'bell',\n  'bell-dot',\n  'message-square-plus',\n  'star',\n  'circle-question-mark',\n  'phone',\n  'share-2',\n  'image',\n  'circle-stop',\n  'circle-play',\n  'headset',\n  'file',\n  'clipboard-list',\n  'printer',\n  'type',\n  'hash',\n  'at-sign',\n  'text-wrap',\n  'circle-dot',\n  'square-check',\n  'list',\n  'toggle-right',\n  'clock',\n  'circle-check',\n  'triangle-alert',\n  'calendar-days',\n  'calendar-1',\n  'loader-circle',\n  'life-buoy',\n  'shopping-cart',\n  'box',\n  'package',\n  'truck',\n  'chart-no-axes-combined',\n  'dollar-sign',\n  'credit-card',\n  'receipt-text',\n  'store',\n  'factory',\n  'chart-no-axes-column',\n  'battery-full',\n  'scan',\n  'person-standing',\n  'monitor-smartphone',\n  'contrast',\n  'wifi',\n  'signal',\n] as const"
             },
             {
                 "name": "reqHandler",
@@ -825,7 +839,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "unknown",
-                    "defaultValue": "[\n  'info',\n  'arrow-right',\n  'arrow-left',\n  'arrow-down',\n  'arrow-up-down',  \n  'arrow-up',\n  'check',\n  'chevron-down',\n  'chevron-right',\n  'chevron-left',\n  'chevron-up',\n  'chevrons-up-down',\n  'list-filter',\n  'columns-3',\n  'search',\n  'menu',\n  'circle-alert',\n  'ellipsis',\n  'plus',\n  'trash-2',\n  'x',\n] as const"
+                    "defaultValue": "[\n  'info',\n  'arrow-right',\n  'arrow-left',\n  'arrow-down',\n  'arrow-up-down',  \n  'arrow-up',\n  'check',\n  'chevron-down',\n  'chevron-right',\n  'chevron-left',\n  'chevron-up',\n  'chevrons-up-down',\n  'list-filter',\n  'columns-3',\n  'search',\n  'menu',\n  'circle-alert',\n  'ellipsis',\n  'plus',\n  'trash-2',\n  'x',\n  'layout-dashboard',\n  'ellipsis-vertical',\n  'house',\n  'map-pin',\n  'panels-top-left',\n  'grip-vertical',\n  'download',\n  'upload',\n  'minus',\n  'archive',\n  'ban',\n  'pencil',\n  'settings',\n  'sliders-horizontal',\n  'square-pen',\n  'copy',\n  'funnel',\n  'external-link',\n  'refresh-cw',\n  'wrench',\n  'brush-cleaning',\n  'cloud-upload',\n  'wand-sparkles',\n  'user',\n  'users',\n  'user-x',\n  'key-round',\n  'lock-keyhole',\n  'user-round',\n  'eye',\n  'eye-off',\n  'log-out',\n  'send-horizontal',\n  'bell',\n  'bell-dot',\n  'message-square-plus',\n  'star',\n  'circle-question-mark',\n  'phone',\n  'share-2',\n  'image',\n  'circle-stop',\n  'circle-play',\n  'headset',\n  'file',\n  'clipboard-list',\n  'printer',\n  'type',\n  'hash',\n  'at-sign',\n  'text-wrap',\n  'circle-dot',\n  'square-check',\n  'list',\n  'toggle-right',\n  'clock',\n  'circle-check',\n  'triangle-alert',\n  'calendar-days',\n  'calendar-1',\n  'loader-circle',\n  'life-buoy',\n  'shopping-cart',\n  'box',\n  'package',\n  'truck',\n  'chart-no-axes-combined',\n  'dollar-sign',\n  'credit-card',\n  'receipt-text',\n  'store',\n  'factory',\n  'chart-no-axes-column',\n  'battery-full',\n  'scan',\n  'person-standing',\n  'monitor-smartphone',\n  'contrast',\n  'wifi',\n  'signal',\n] as const"
                 }
             ],
             "src/app/app.routes.ts": [
@@ -956,7 +970,7 @@
         ]
     },
     "coverage": {
-        "count": 4,
+        "count": 9,
         "status": "low",
         "files": [
             {
@@ -1023,9 +1037,9 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "ButtonComponent",
-                "coveragePercent": 0,
-                "coverageCount": "0/11",
-                "status": "low"
+                "coveragePercent": 100,
+                "coverageCount": "11/11",
+                "status": "very-good"
             },
             {
                 "filePath": "src/app/components/button/button.component.ts",
