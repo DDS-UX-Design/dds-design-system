@@ -1,0 +1,115 @@
+:host {
+  display: block;
+  max-width: 100%;
+}
+
+.dds-search {
+  display: flex;
+  flex-direction: column;
+  width: 460px;
+  max-width: 100%;
+  color: var(--text-colour-default);
+  font-family: var(--font-family-primary);
+}
+
+.dds-search__label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding-bottom: var(--space-1);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  line-height: 20px;
+}
+
+.dds-search--small .dds-search__label {
+  font-size: var(--font-size-xs);
+  line-height: 16px;
+}
+
+.dds-search__required {
+  color: var(--text-colour-danger);
+}
+
+.dds-search__field {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 48px;
+  gap: var(--space-2);
+  padding: var(--space-3);
+  border: 1px solid var(--border-colour-default);
+  border-radius: var(--radius-sm);
+  background: var(--bg-colour-white);
+}
+
+.dds-search--small .dds-search__field {
+  min-height: 40px;
+}
+
+.dds-search--focused .dds-search__field,
+.dds-search__field:focus-within {
+  border: 2px solid var(--border-colour-info);
+  padding: 11px;
+}
+
+.dds-search__icon {
+  display: inline-flex;
+  flex: 0 0 auto;
+  color: var(--text-colour-default);
+}
+
+.dds-search__input {
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--text-colour-default);
+  font: inherit;
+  font-size: var(--font-size-md);
+  line-height: 24px;
+}
+
+.dds-search--small .dds-search__input {
+  font-size: var(--font-size-sm);
+  line-height: 20px;
+}
+
+.dds-search__input::placeholder {
+  color: var(--text-colour-placeholder);
+  opacity: 1;
+}
+
+.dds-search__input::-webkit-search-cancel-button {
+  display: none;
+}
+
+.dds-search__dropdown {
+  padding-top: var(--space-2);
+}
+
+.dds-search__listbox {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+  background: var(--bg-colour-white);
+  box-shadow: 0 4px 16px rgb(0 0 0 / 8%);
+  list-style: none;
+}
+
+.dds-search__option {
+  box-sizing: border-box;
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--font-size-sm);
+  line-height: 20px;
+  cursor: pointer;
+}
+
+.dds-search__option:hover,
+.dds-search__option--active {
+  background: var(--grey-200);
+}
