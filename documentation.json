@@ -313,7 +313,12 @@
                 }
             },
             "relationships": {
-                "incoming": [],
+                "incoming": [
+                    {
+                        "name": "MinimalPaginationComponent",
+                        "type": "component"
+                    }
+                ],
                 "outgoing": [
                     {
                         "name": "CommonModule",
@@ -440,6 +445,10 @@
                         "description": "A reusable button component for primary actions, secondary actions, and icon-only affordances. Supports variants, size options, semantic..."
                     },
                     {
+                        "name": "NumberedPaginationComponent",
+                        "type": "component"
+                    },
+                    {
                         "name": "PasswordInputComponent",
                         "type": "component"
                     }
@@ -455,6 +464,488 @@
                     }
                 ]
             }
+        },
+        {
+            "name": "MinimalPaginationComponent",
+            "id": "component-MinimalPaginationComponent-71f25ed836d5edb79631816e57de44bf1029e678e2e62c35d7bed63a4070d56e47eb4012b55463ed2929720e139a31bef845ad1efc240cfa16b70142dfa367af",
+            "file": "src/app/components/minimal-pagination/minimal-pagination.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "dds-minimal-pagination",
+            "styleUrls": [
+                "./minimal-pagination.component.css"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./minimal-pagination.component.html"
+            ],
+            "templateVariables": [],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "coverageIgnore": false,
+                    "name": "ariaLabel",
+                    "defaultValue": "'Pagination'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 14,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "currentPage",
+                    "defaultValue": "1",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 12,
+                    "type": "number",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "totalPages",
+                    "defaultValue": "1",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 13,
+                    "type": "number",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "pageChange",
+                    "coverageIgnore": false,
+                    "defaultValue": "new EventEmitter<number>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 16,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "next",
+                    "coverageIgnore": false,
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 40,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": ""
+                },
+                {
+                    "name": "previous",
+                    "coverageIgnore": false,
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 34,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": ""
+                }
+            ],
+            "coverageIgnore": false,
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "ButtonComponent",
+                    "type": "component"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core';\nimport { ButtonComponent } from '../button/button.component';\n\n@Component({\n  selector: 'dds-minimal-pagination',\n  standalone: true,\n  imports: [ButtonComponent],\n  templateUrl: './minimal-pagination.component.html',\n  styleUrl: './minimal-pagination.component.css',\n})\nexport class MinimalPaginationComponent {\n  @Input() currentPage = 1;\n  @Input() totalPages = 1;\n  @Input() ariaLabel = 'Pagination';\n\n  @Output() pageChange = new EventEmitter<number>();\n\n  get normalizedTotalPages(): number {\n    return Math.max(1, Math.floor(this.totalPages));\n  }\n\n  get normalizedCurrentPage(): number {\n    return Math.min(Math.max(1, Math.floor(this.currentPage)), this.normalizedTotalPages);\n  }\n\n  get isFirstPage(): boolean {\n    return this.normalizedCurrentPage === 1;\n  }\n\n  get isLastPage(): boolean {\n    return this.normalizedCurrentPage === this.normalizedTotalPages;\n  }\n\n  previous(): void {\n    if (!this.isFirstPage) {\n      this.pageChange.emit(this.normalizedCurrentPage - 1);\n    }\n  }\n\n  next(): void {\n    if (!this.isLastPage) {\n      this.pageChange.emit(this.normalizedCurrentPage + 1);\n    }\n  }\n}\n",
+            "styleUrl": "./minimal-pagination.component.css",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ":host {\n  display: inline-block;\n}\n\n.dds-minimal-pagination {\n  display: inline-flex;\n  align-items: center;\n  gap: var(--space-2);\n  font-family: var(--font-family-primary);\n}\n\n.dds-minimal-pagination__status {\n  color: var(--text-colour-tertiary);\n  font-size: var(--font-size-sm);\n  font-weight: var(--font-weight-regular);\n  line-height: 20px;\n  white-space: nowrap;\n}\n",
+                    "styleUrl": "./minimal-pagination.component.css"
+                }
+            ],
+            "stylesData": "",
+            "extends": [],
+            "accessors": {
+                "normalizedTotalPages": {
+                    "name": "normalizedTotalPages",
+                    "getSignature": {
+                        "name": "normalizedTotalPages",
+                        "type": "number",
+                        "returnType": "number",
+                        "line": 18,
+                        "rawdescription": "\n",
+                        "description": ""
+                    }
+                },
+                "normalizedCurrentPage": {
+                    "name": "normalizedCurrentPage",
+                    "getSignature": {
+                        "name": "normalizedCurrentPage",
+                        "type": "number",
+                        "returnType": "number",
+                        "line": 22,
+                        "rawdescription": "\n",
+                        "description": ""
+                    }
+                },
+                "isFirstPage": {
+                    "name": "isFirstPage",
+                    "getSignature": {
+                        "name": "isFirstPage",
+                        "type": "boolean",
+                        "returnType": "boolean",
+                        "line": 26,
+                        "rawdescription": "\n",
+                        "description": ""
+                    }
+                },
+                "isLastPage": {
+                    "name": "isLastPage",
+                    "getSignature": {
+                        "name": "isLastPage",
+                        "type": "boolean",
+                        "returnType": "boolean",
+                        "line": 30,
+                        "rawdescription": "\n",
+                        "description": ""
+                    }
+                }
+            },
+            "relationships": {
+                "incoming": [],
+                "outgoing": [
+                    {
+                        "name": "ButtonComponent",
+                        "type": "component",
+                        "description": "A reusable button component for primary actions, secondary actions, and icon-only affordances. Supports variants, size options, semantic..."
+                    }
+                ]
+            },
+            "templateData": "<nav class=\"dds-minimal-pagination\" [attr.aria-label]=\"ariaLabel\">\n  <dds-button\n    variant=\"secondary\"\n    size=\"medium\"\n    iconType=\"left-icon\"\n    icon=\"chevron-left\"\n    [disabled]=\"isFirstPage\"\n    (click)=\"previous()\"\n  >\n    Previous\n  </dds-button>\n\n  <span class=\"dds-minimal-pagination__status\" aria-live=\"polite\">\n    Page {{ normalizedCurrentPage }} of {{ normalizedTotalPages }}\n  </span>\n\n  <dds-button\n    variant=\"secondary\"\n    size=\"medium\"\n    iconType=\"right-icon\"\n    icon=\"chevron-right\"\n    [disabled]=\"isLastPage\"\n    (click)=\"next()\"\n  >\n    Next\n  </dds-button>\n</nav>\n"
+        },
+        {
+            "name": "NumberedPaginationComponent",
+            "id": "component-NumberedPaginationComponent-56ff0d6965a5322640120356fe342f6d2e7e27ea86d7642aae2ce821835d7b312928e26485a54b0428e9689485a81fdb63e9e5ddd7589c073ea14f4cf7476407",
+            "file": "src/app/components/numbered-pagination/numbered-pagination.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "dds-numbered-pagination",
+            "styleUrls": [
+                "./numbered-pagination.component.css"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./numbered-pagination.component.html"
+            ],
+            "templateVariables": [],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "coverageIgnore": false,
+                    "name": "ariaLabel",
+                    "defaultValue": "'Pagination'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 17,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "currentPage",
+                    "defaultValue": "1",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 15,
+                    "type": "number",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "totalPages",
+                    "defaultValue": "1",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 16,
+                    "type": "number",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "pageChange",
+                    "coverageIgnore": false,
+                    "defaultValue": "new EventEmitter<number>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 19,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "asPageNumber",
+                    "coverageIgnore": false,
+                    "args": [
+                        {
+                            "name": "item",
+                            "type": "PaginationItem",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "number",
+                    "typeParameters": [],
+                    "line": 64,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "jsdoctags": [
+                        {
+                            "name": "item",
+                            "type": "PaginationItem",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "selectPage",
+                    "coverageIgnore": false,
+                    "args": [
+                        {
+                            "name": "page",
+                            "type": "number",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 56,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "jsdoctags": [
+                        {
+                            "name": "page",
+                            "type": "number",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "trackItem",
+                    "coverageIgnore": false,
+                    "args": [
+                        {
+                            "name": "_index",
+                            "type": "number",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "item",
+                            "type": "PaginationItem",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "PaginationItem",
+                    "typeParameters": [],
+                    "line": 68,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "jsdoctags": [
+                        {
+                            "name": "_index",
+                            "type": "number",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "item",
+                            "type": "PaginationItem",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "coverageIgnore": false,
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "IconComponent",
+                    "type": "component"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, EventEmitter, Input, Output } from '@angular/core';\nimport { IconComponent } from '../icon/icon.component';\n\nexport type PaginationItem = number | 'ellipsis-start' | 'ellipsis-end';\n\n@Component({\n  selector: 'dds-numbered-pagination',\n  standalone: true,\n  imports: [CommonModule, IconComponent],\n  templateUrl: './numbered-pagination.component.html',\n  styleUrl: './numbered-pagination.component.css',\n})\nexport class NumberedPaginationComponent {\n  @Input() currentPage = 1;\n  @Input() totalPages = 1;\n  @Input() ariaLabel = 'Pagination';\n\n  @Output() pageChange = new EventEmitter<number>();\n\n  get normalizedTotalPages(): number {\n    return Math.max(1, Math.floor(this.totalPages));\n  }\n\n  get normalizedCurrentPage(): number {\n    return Math.min(Math.max(1, Math.floor(this.currentPage)), this.normalizedTotalPages);\n  }\n\n  get items(): PaginationItem[] {\n    const total = this.normalizedTotalPages;\n    const current = this.normalizedCurrentPage;\n\n    if (total <= 5) {\n      return Array.from({ length: total }, (_, index) => index + 1);\n    }\n\n    if (current <= 3) {\n      return [1, 2, 3, 4, 'ellipsis-end', total];\n    }\n\n    if (current >= total - 2) {\n      return [1, 'ellipsis-start', total - 3, total - 2, total - 1, total];\n    }\n\n    return [1, 'ellipsis-start', current - 1, current, current + 1, 'ellipsis-end', total];\n  }\n\n  get isFirstPage(): boolean {\n    return this.normalizedCurrentPage === 1;\n  }\n\n  get isLastPage(): boolean {\n    return this.normalizedCurrentPage === this.normalizedTotalPages;\n  }\n\n  selectPage(page: number): void {\n    const nextPage = Math.min(Math.max(1, page), this.normalizedTotalPages);\n\n    if (nextPage !== this.normalizedCurrentPage) {\n      this.pageChange.emit(nextPage);\n    }\n  }\n\n  asPageNumber(item: PaginationItem): number {\n    return item as number;\n  }\n\n  trackItem(_index: number, item: PaginationItem): PaginationItem {\n    return item;\n  }\n}\n",
+            "styleUrl": "./numbered-pagination.component.css",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ":host {\n  display: inline-block;\n}\n\n.dds-numbered-pagination {\n  display: inline-flex;\n  align-items: center;\n  font-family: var(--font-family-primary);\n}\n\n.dds-numbered-pagination__item {\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  width: 36px;\n  height: 36px;\n  margin-left: -1px;\n  padding: var(--space-none);\n  border: 1px solid var(--border-colour-subtle);\n  background-color: var(--colour-neutral-white);\n  color: var(--text-colour-default);\n  font-family: inherit;\n  font-size: var(--font-size-sm);\n  font-weight: var(--font-weight-medium);\n  line-height: 20px;\n  cursor: pointer;\n}\n\n.dds-numbered-pagination__item:first-child {\n  margin-left: 0;\n}\n\n.dds-numbered-pagination__item--previous {\n  border-radius: var(--radius-sm) 0 0 var(--radius-sm);\n}\n\n.dds-numbered-pagination__item--next {\n  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;\n}\n\n.dds-numbered-pagination__item:hover:not(:disabled, .dds-numbered-pagination__item--active) {\n  position: relative;\n  background-color: var(--blue-100);\n}\n\n.dds-numbered-pagination__item:focus-visible {\n  position: relative;\n  z-index: 1;\n  outline: 2px solid var(--border-colour-info);\n  outline-offset: 2px;\n}\n\n.dds-numbered-pagination__item--active {\n  position: relative;\n  z-index: 1;\n  border-color: var(--border-colour-info);\n  background-color: var(--border-colour-info);\n  color: var(--text-colour-inverse);\n  cursor: default;\n}\n\n.dds-numbered-pagination__item:disabled {\n  color: var(--text-colour-disabled);\n  cursor: not-allowed;\n}\n\n.dds-numbered-pagination__ellipsis {\n  margin-left: -1px;\n  cursor: default;\n}\n",
+                    "styleUrl": "./numbered-pagination.component.css"
+                }
+            ],
+            "stylesData": "",
+            "extends": [],
+            "accessors": {
+                "normalizedTotalPages": {
+                    "name": "normalizedTotalPages",
+                    "getSignature": {
+                        "name": "normalizedTotalPages",
+                        "type": "number",
+                        "returnType": "number",
+                        "line": 21,
+                        "rawdescription": "\n",
+                        "description": ""
+                    }
+                },
+                "normalizedCurrentPage": {
+                    "name": "normalizedCurrentPage",
+                    "getSignature": {
+                        "name": "normalizedCurrentPage",
+                        "type": "number",
+                        "returnType": "number",
+                        "line": 25,
+                        "rawdescription": "\n",
+                        "description": ""
+                    }
+                },
+                "items": {
+                    "name": "items",
+                    "getSignature": {
+                        "name": "items",
+                        "type": "[]",
+                        "returnType": "PaginationItem[]",
+                        "line": 29,
+                        "rawdescription": "\n",
+                        "description": ""
+                    }
+                },
+                "isFirstPage": {
+                    "name": "isFirstPage",
+                    "getSignature": {
+                        "name": "isFirstPage",
+                        "type": "boolean",
+                        "returnType": "boolean",
+                        "line": 48,
+                        "rawdescription": "\n",
+                        "description": ""
+                    }
+                },
+                "isLastPage": {
+                    "name": "isLastPage",
+                    "getSignature": {
+                        "name": "isLastPage",
+                        "type": "boolean",
+                        "returnType": "boolean",
+                        "line": 52,
+                        "rawdescription": "\n",
+                        "description": ""
+                    }
+                }
+            },
+            "relationships": {
+                "incoming": [],
+                "outgoing": [
+                    {
+                        "name": "CommonModule",
+                        "type": "module"
+                    },
+                    {
+                        "name": "IconComponent",
+                        "type": "component"
+                    }
+                ]
+            },
+            "templateData": "<nav class=\"dds-numbered-pagination\" [attr.aria-label]=\"ariaLabel\">\n  <button\n    class=\"dds-numbered-pagination__item dds-numbered-pagination__item--previous\"\n    type=\"button\"\n    aria-label=\"Previous page\"\n    [disabled]=\"isFirstPage\"\n    (click)=\"selectPage(normalizedCurrentPage - 1)\"\n  >\n    <dds-icon name=\"chevron-left\" [size]=\"16\"></dds-icon>\n  </button>\n\n  <ng-container *ngFor=\"let item of items; trackBy: trackItem\">\n    <span\n      *ngIf=\"item === 'ellipsis-start' || item === 'ellipsis-end'; else pageButton\"\n      class=\"dds-numbered-pagination__item dds-numbered-pagination__ellipsis\"\n      aria-hidden=\"true\"\n    >\n      …\n    </span>\n\n    <ng-template #pageButton>\n      <button\n        class=\"dds-numbered-pagination__item\"\n        type=\"button\"\n        [class.dds-numbered-pagination__item--active]=\"item === normalizedCurrentPage\"\n        [attr.aria-label]=\"'Page ' + item\"\n        [attr.aria-current]=\"item === normalizedCurrentPage ? 'page' : null\"\n        (click)=\"selectPage(asPageNumber(item))\"\n      >\n        {{ item }}\n      </button>\n    </ng-template>\n  </ng-container>\n\n  <button\n    class=\"dds-numbered-pagination__item dds-numbered-pagination__item--next\"\n    type=\"button\"\n    aria-label=\"Next page\"\n    [disabled]=\"isLastPage\"\n    (click)=\"selectPage(normalizedCurrentPage + 1)\"\n  >\n    <dds-icon name=\"chevron-right\" [size]=\"16\"></dds-icon>\n  </button>\n</nav>\n"
         },
         {
             "name": "PasswordInputComponent",
@@ -1080,6 +1571,19 @@
                 "kind": 200
             },
             {
+                "name": "PaginationItem",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "coverageIgnore": false,
+                "rawtype": "number | \"ellipsis-start\" | \"ellipsis-end\"",
+                "file": "src/app/components/numbered-pagination/numbered-pagination.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "rawdescription": "",
+                "description": "",
+                "kind": 193
+            },
+            {
                 "name": "PasswordInputSize",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
@@ -1344,6 +1848,21 @@
                     "kind": 200
                 }
             ],
+            "src/app/components/numbered-pagination/numbered-pagination.component.ts": [
+                {
+                    "name": "PaginationItem",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "coverageIgnore": false,
+                    "rawtype": "number | \"ellipsis-start\" | \"ellipsis-end\"",
+                    "file": "src/app/components/numbered-pagination/numbered-pagination.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "",
+                    "description": "",
+                    "kind": 193
+                }
+            ],
             "src/app/components/password-input/password-input.component.ts": [
                 {
                     "name": "PasswordInputSize",
@@ -1388,7 +1907,7 @@
         ]
     },
     "coverage": {
-        "count": 8,
+        "count": 7,
         "status": "low",
         "files": [
             {
@@ -1534,6 +2053,34 @@
                 "linktype": "miscellaneous",
                 "linksubtype": "typealias",
                 "name": "DdsIconName",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/minimal-pagination/minimal-pagination.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "MinimalPaginationComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/7",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/numbered-pagination/numbered-pagination.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "NumberedPaginationComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/8",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/numbered-pagination/numbered-pagination.component.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "PaginationItem",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
