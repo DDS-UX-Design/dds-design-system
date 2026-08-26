@@ -1,0 +1,40 @@
+<div
+  class="dds-textarea"
+  [class.dds-textarea--small]="size === 'small'"
+  [class.dds-textarea--focused]="state === 'focused'"
+  [class.dds-textarea--disabled]="isDisabled"
+  [class.dds-textarea--error]="isError"
+>
+  <label *ngIf="showLabel" class="dds-textarea__label" [for]="inputId">
+    {{ label }}
+    <span *ngIf="required" class="dds-textarea__required" aria-hidden="true">*</span>
+  </label>
+
+  <div class="dds-textarea__field">
+    <textarea
+      class="dds-textarea__control"
+      [id]="inputId"
+      [value]="value"
+      [placeholder]="placeholder"
+      [required]="required"
+      [disabled]="isDisabled"
+      [attr.maxlength]="maxLength > 0 ? maxLength : null"
+      [attr.aria-label]="showLabel ? null : ariaLabel"
+      [attr.aria-invalid]="isError ? 'true' : null"
+      [attr.aria-describedby]="describedBy"
+      (input)="handleInput($event)"
+    ></textarea>
+
+    <span *ngIf="showCharacterCount" class="dds-textarea__count" [id]="countId" aria-live="polite">
+      {{ value.length }}/{{ maxLength }}
+    </span>
+  </div>
+
+  <p *ngIf="!isError && showHelperText" class="dds-textarea__supporting-text" [id]="helperId">
+    {{ helperText }}
+  </p>
+
+  <p *ngIf="isError" class="dds-textarea__supporting-text dds-textarea__error" [id]="errorId">
+    {{ errorMessage }}
+  </p>
+</div>
