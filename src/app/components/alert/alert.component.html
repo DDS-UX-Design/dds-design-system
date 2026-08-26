@@ -1,0 +1,40 @@
+<div
+  class="dds-alert"
+  role="alert"
+  [class.dds-alert--info]="tone === 'info'"
+  [class.dds-alert--warning]="tone === 'warning'"
+  [class.dds-alert--success]="tone === 'success'"
+  [class.dds-alert--danger]="tone === 'danger'"
+  [class.dds-alert--mobile]="size === 'mobile'"
+>
+  <div class="dds-alert__content">
+    <dds-icon
+      *ngIf="showIcon"
+      class="dds-alert__status-icon"
+      [name]="iconName"
+      [size]="iconSize"
+      aria-hidden="true"
+    ></dds-icon>
+    <span class="dds-alert__text">{{ text }}</span>
+  </div>
+
+  <dds-button
+    *ngIf="showAction"
+    class="dds-alert__action"
+    variant="secondary"
+    size="medium"
+    (click)="activateAction()"
+  >
+    {{ actionLabel }}
+  </dds-button>
+
+  <button
+    *ngIf="dismissible"
+    class="dds-alert__dismiss"
+    type="button"
+    aria-label="Dismiss alert"
+    (click)="dismiss()"
+  >
+    <dds-icon name="x" [size]="iconSize" aria-hidden="true"></dds-icon>
+  </button>
+</div>
