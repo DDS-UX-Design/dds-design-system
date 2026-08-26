@@ -1,0 +1,2502 @@
+{
+  "analytics": {
+    "pending": [],
+    "client": {
+      "endpoint": "https://index.chromatic.com/graphql",
+      "client": {
+        "env": {
+          "CHROMATIC_DNS_FAILOVER_SERVERS": [
+            "1.1.1.1",
+            "8.8.8.8"
+          ],
+          "CHROMATIC_DNS_SERVERS": [],
+          "CHROMATIC_HASH_CONCURRENCY": 48,
+          "CHROMATIC_INDEX_URL": "https://index.chromatic.com",
+          "CHROMATIC_NOTIFY_SERVICE_URL": "wss://notify.chromatic.com",
+          "CHROMATIC_OUTPUT_INTERVAL": 10000,
+          "CHROMATIC_POLL_INTERVAL": 1000,
+          "CHROMATIC_PROJECT_TOKEN": "chpt_cd6232df7b0a690",
+          "CHROMATIC_RETRIES": 5,
+          "CHROMATIC_SHARE_PROGRESS_INTERVAL": 100,
+          "CHROMATIC_TIMEOUT": 300000,
+          "CHROMATIC_TURBOSNAP_MANIFEST_CONCURRENCY": 20,
+          "CHROMATIC_TURBOSNAP_PACKAGE_CONCURRENCY": 200,
+          "CHROMATIC_UPGRADE_TIMEOUT": 3600000,
+          "ENVIRONMENT_WHITELIST": [
+            {},
+            {}
+          ],
+          "STORYBOOK_BUILD_TIMEOUT": 600000,
+          "STORYBOOK_CLI_FLAGS_BY_VERSION": {
+            "--ci": "4.0.0",
+            "--loglevel": "5.1.0"
+          },
+          "STORYBOOK_VERIFY_TIMEOUT": 180000,
+          "STORYBOOK_NODE_ENV": "production"
+        },
+        "log": {},
+        "headers": {
+          "x-chromatic-session-id": "511951eb-63a8-4e75-a677-f80539dade24",
+          "x-chromatic-cli-version": "18.1.0",
+          "apollographql-client-name": "chromatic-cli",
+          "apollographql-client-version": "18.1.0"
+        },
+        "retries": 3
+      },
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJjaGp0Xzc0NDIzNjAzMDc5NjRiNzg5ZGIyZWMyMzA2ZTE5NWUzIiwiaWF0IjoxNzg3NzgyMjQ4LCJleHAiOjE3ODc3ODk0NDgsImFwcElkIjoiNmE2NWU3MWFkMzhlYTgxZWVmMDhlZGM4In0.DccBPknCqs9UtpaifrNRdP5ShlUnzNSSGfoatRY8wnE"
+      }
+    },
+    "logger": {}
+  },
+  "announcedBuild": {
+    "id": "6a8f646f3e768543f974a3b2",
+    "number": 8,
+    "browsers": [
+      "chrome"
+    ],
+    "status": "PUBLISHED",
+    "autoAcceptChanges": false,
+    "features": {
+      "uiTests": true,
+      "uiReview": true,
+      "isReactNativeApp": null
+    },
+    "app": {
+      "id": "6a65e71ad38ea81eef08edc8",
+      "turboSnapAvailability": "UNAVAILABLE",
+      "isOnboarding": false
+    },
+    "storybookUrl": "https://6a65e71ad38ea81eef08edc8-ygxrcmsnqr.chromatic.com/"
+  },
+  "build": {
+    "id": "6a8f646f3e768543f974a3b2",
+    "number": 8,
+    "browsers": [
+      {
+        "browser": "chrome"
+      }
+    ],
+    "status": "BROKEN",
+    "autoAcceptChanges": false,
+    "features": {
+      "uiTests": true,
+      "uiReview": true,
+      "isReactNativeApp": null
+    },
+    "app": {
+      "manageUrl": "https://www.chromatic.com/manage?appId=6a65e71ad38ea81eef08edc8",
+      "setupUrl": "https://www.chromatic.com/setup?appId=6a65e71ad38ea81eef08edc8",
+      "account": {
+        "exceededThreshold": false,
+        "paymentRequired": false,
+        "billingUrl": "https://www.chromatic.com/billing?accountId=6a65e6ed0314fd59538eceed"
+      },
+      "repository": {
+        "provider": "github"
+      }
+    },
+    "storybookUrl": "https://6a65e71ad38ea81eef08edc8-ygxrcmsnqr.chromatic.com/",
+    "specCount": 100,
+    "componentCount": 12,
+    "testCount": 100,
+    "changeCount": 88,
+    "errorCount": 8,
+    "actualTestCount": 100,
+    "actualCaptureCount": 200,
+    "inheritedCaptureCount": 0,
+    "interactionTestFailuresCount": 0,
+    "webUrl": "https://www.chromatic.com/build?appId=6a65e71ad38ea81eef08edc8&number=8",
+    "turboSnapEnabled": null,
+    "wasLimited": false,
+    "tests": [
+      {
+        "spec": {
+          "name": "Type scale",
+          "component": {
+            "name": "Foundations/Typography",
+            "displayName": "Typography"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "Default",
+          "component": {
+            "name": "Foundations/Icons",
+            "displayName": "Icons"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "Accessible",
+          "component": {
+            "name": "Foundations/Icons",
+            "displayName": "Icons"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "Library",
+          "component": {
+            "name": "Foundations/Icons",
+            "displayName": "Icons"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "Playground",
+          "component": {
+            "name": "Components/Feedback/Alert",
+            "displayName": "Alert"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "Info",
+          "component": {
+            "name": "Components/Feedback/Alert",
+            "displayName": "Alert"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "Warning",
+          "component": {
+            "name": "Components/Feedback/Alert",
+            "displayName": "Alert"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "Success",
+          "component": {
+            "name": "Components/Feedback/Alert",
+            "displayName": "Alert"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "Danger",
+          "component": {
+            "name": "Components/Feedback/Alert",
+            "displayName": "Alert"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "Mobile",
+          "component": {
+            "name": "Components/Feedback/Alert",
+            "displayName": "Alert"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "With action",
+          "component": {
+            "name": "Components/Feedback/Alert",
+            "displayName": "Alert"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "Persistent",
+          "component": {
+            "name": "Components/Feedback/Alert",
+            "displayName": "Alert"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "Dismiss interaction",
+          "component": {
+            "name": "Components/Feedback/Alert",
+            "displayName": "Alert"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "Playground",
+          "component": {
+            "name": "Components/Button",
+            "displayName": "Button"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "Primary / Default",
+          "component": {
+            "name": "Components/Button",
+            "displayName": "Button"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "Primary / Hover",
+          "component": {
+            "name": "Components/Button",
+            "displayName": "Button"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "Primary / Focus",
+          "component": {
+            "name": "Components/Button",
+            "displayName": "Button"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "Primary / Disabled",
+          "component": {
+            "name": "Components/Button",
+            "displayName": "Button"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "Secondary / Default",
+          "component": {
+            "name": "Components/Button",
+            "displayName": "Button"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "Secondary / Hover",
+          "component": {
+            "name": "Components/Button",
+            "displayName": "Button"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "Secondary / Focus",
+          "component": {
+            "name": "Components/Button",
+            "displayName": "Button"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "Secondary / Disabled",
+          "component": {
+            "name": "Components/Button",
+            "displayName": "Button"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "Danger / Default",
+          "component": {
+            "name": "Components/Button",
+            "displayName": "Button"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "Danger / Hover",
+          "component": {
+            "name": "Components/Button",
+            "displayName": "Button"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "Danger / Focus",
+          "component": {
+            "name": "Components/Button",
+            "displayName": "Button"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "Danger / Disabled",
+          "component": {
+            "name": "Components/Button",
+            "displayName": "Button"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "Ghost / Default",
+          "component": {
+            "name": "Components/Button",
+            "displayName": "Button"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "Ghost / Hover",
+          "component": {
+            "name": "Components/Button",
+            "displayName": "Button"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "Ghost / Disabled",
+          "component": {
+            "name": "Components/Button",
+            "displayName": "Button"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "Variants and icons",
+          "component": {
+            "name": "Components/Button",
+            "displayName": "Button"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "Icon Only",
+          "component": {
+            "name": "Components/Button",
+            "displayName": "Button"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "Sizes",
+          "component": {
+            "name": "Components/Button",
+            "displayName": "Button"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "Full Width",
+          "component": {
+            "name": "Components/Button",
+            "displayName": "Button"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "Playground",
+          "component": {
+            "name": "Components/Navigation/Pagination/Minimal",
+            "displayName": "Minimal"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "Single page",
+          "component": {
+            "name": "Components/Navigation/Pagination/Minimal",
+            "displayName": "Minimal"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "First page",
+          "component": {
+            "name": "Components/Navigation/Pagination/Minimal",
+            "displayName": "Minimal"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "Inner page",
+          "component": {
+            "name": "Components/Navigation/Pagination/Minimal",
+            "displayName": "Minimal"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "Last page",
+          "component": {
+            "name": "Components/Navigation/Pagination/Minimal",
+            "displayName": "Minimal"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "Next page interaction",
+          "component": {
+            "name": "Components/Navigation/Pagination/Minimal",
+            "displayName": "Minimal"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "Playground",
+          "component": {
+            "name": "Components/Navigation/Pagination/Numbered",
+            "displayName": "Numbered"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "Single page",
+          "component": {
+            "name": "Components/Navigation/Pagination/Numbered",
+            "displayName": "Numbered"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "First page",
+          "component": {
+            "name": "Components/Navigation/Pagination/Numbered",
+            "displayName": "Numbered"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "Inner page",
+          "component": {
+            "name": "Components/Navigation/Pagination/Numbered",
+            "displayName": "Numbered"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "Last page",
+          "component": {
+            "name": "Components/Navigation/Pagination/Numbered",
+            "displayName": "Numbered"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "Few pages",
+          "component": {
+            "name": "Components/Navigation/Pagination/Numbered",
+            "displayName": "Numbered"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "Page selection",
+          "component": {
+            "name": "Components/Navigation/Pagination/Numbered",
+            "displayName": "Numbered"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "Playground",
+          "component": {
+            "name": "Components/Forms/OTP Input",
+            "displayName": "OTP Input"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "Default",
+          "component": {
+            "name": "Components/Forms/OTP Input",
+            "displayName": "OTP Input"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "Filled",
+          "component": {
+            "name": "Components/Forms/OTP Input",
+            "displayName": "OTP Input"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "Focused",
+          "component": {
+            "name": "Components/Forms/OTP Input",
+            "displayName": "OTP Input"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "Error",
+          "component": {
+            "name": "Components/Forms/OTP Input",
+            "displayName": "OTP Input"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "Expired",
+          "component": {
+            "name": "Components/Forms/OTP Input",
+            "displayName": "OTP Input"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "Disabled / Loading",
+          "component": {
+            "name": "Components/Forms/OTP Input",
+            "displayName": "OTP Input"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "Mobile",
+          "component": {
+            "name": "Components/Forms/OTP Input",
+            "displayName": "OTP Input"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "Paste complete code",
+          "component": {
+            "name": "Components/Forms/OTP Input",
+            "displayName": "OTP Input"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "Playground",
+          "component": {
+            "name": "Components/Forms/Password Input",
+            "displayName": "Password Input"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "Default",
+          "component": {
+            "name": "Components/Forms/Password Input",
+            "displayName": "Password Input"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "Filled",
+          "component": {
+            "name": "Components/Forms/Password Input",
+            "displayName": "Password Input"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "Focused",
+          "component": {
+            "name": "Components/Forms/Password Input",
+            "displayName": "Password Input"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "Error",
+          "component": {
+            "name": "Components/Forms/Password Input",
+            "displayName": "Password Input"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "Mobile",
+          "component": {
+            "name": "Components/Forms/Password Input",
+            "displayName": "Password Input"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "Disabled",
+          "component": {
+            "name": "Components/Forms/Password Input",
+            "displayName": "Password Input"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "Visibility toggle",
+          "component": {
+            "name": "Components/Forms/Password Input",
+            "displayName": "Password Input"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "Playground",
+          "component": {
+            "name": "Components/Forms/Search",
+            "displayName": "Search"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "Default",
+          "component": {
+            "name": "Components/Forms/Search",
+            "displayName": "Search"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "Filled",
+          "component": {
+            "name": "Components/Forms/Search",
+            "displayName": "Search"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "Focused",
+          "component": {
+            "name": "Components/Forms/Search",
+            "displayName": "Search"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "Small",
+          "component": {
+            "name": "Components/Forms/Search",
+            "displayName": "Search"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "With suggestions",
+          "component": {
+            "name": "Components/Forms/Search",
+            "displayName": "Search"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "Without visible label",
+          "component": {
+            "name": "Components/Forms/Search",
+            "displayName": "Search"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "Keyboard selection",
+          "component": {
+            "name": "Components/Forms/Search",
+            "displayName": "Search"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "Submit query",
+          "component": {
+            "name": "Components/Forms/Search",
+            "displayName": "Search"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "Playground",
+          "component": {
+            "name": "Components/Forms/Select",
+            "displayName": "Select"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "Default",
+          "component": {
+            "name": "Components/Forms/Select",
+            "displayName": "Select"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "Selected",
+          "component": {
+            "name": "Components/Forms/Select",
+            "displayName": "Select"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "Focused",
+          "component": {
+            "name": "Components/Forms/Select",
+            "displayName": "Select"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "Error",
+          "component": {
+            "name": "Components/Forms/Select",
+            "displayName": "Select"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "Disabled",
+          "component": {
+            "name": "Components/Forms/Select",
+            "displayName": "Select"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "Small",
+          "component": {
+            "name": "Components/Forms/Select",
+            "displayName": "Select"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "Without visible label",
+          "component": {
+            "name": "Components/Forms/Select",
+            "displayName": "Select"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "Select an option",
+          "component": {
+            "name": "Components/Forms/Select",
+            "displayName": "Select"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "Playground",
+          "component": {
+            "name": "Components/Forms/Textarea",
+            "displayName": "Textarea"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "Default",
+          "component": {
+            "name": "Components/Forms/Textarea",
+            "displayName": "Textarea"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "With content",
+          "component": {
+            "name": "Components/Forms/Textarea",
+            "displayName": "Textarea"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "Focused",
+          "component": {
+            "name": "Components/Forms/Textarea",
+            "displayName": "Textarea"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "Error",
+          "component": {
+            "name": "Components/Forms/Textarea",
+            "displayName": "Textarea"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "Disabled",
+          "component": {
+            "name": "Components/Forms/Textarea",
+            "displayName": "Textarea"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "Small",
+          "component": {
+            "name": "Components/Forms/Textarea",
+            "displayName": "Textarea"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "Without character count",
+          "component": {
+            "name": "Components/Forms/Textarea",
+            "displayName": "Textarea"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "Enter a response",
+          "component": {
+            "name": "Components/Forms/Textarea",
+            "displayName": "Textarea"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "Playground",
+          "component": {
+            "name": "Components/Feedback/Toast",
+            "displayName": "Toast"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "Info",
+          "component": {
+            "name": "Components/Feedback/Toast",
+            "displayName": "Toast"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "Warning",
+          "component": {
+            "name": "Components/Feedback/Toast",
+            "displayName": "Toast"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "Success",
+          "component": {
+            "name": "Components/Feedback/Toast",
+            "displayName": "Toast"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "Danger",
+          "component": {
+            "name": "Components/Feedback/Toast",
+            "displayName": "Toast"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "Small",
+          "component": {
+            "name": "Components/Feedback/Toast",
+            "displayName": "Toast"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "Without title",
+          "component": {
+            "name": "Components/Feedback/Toast",
+            "displayName": "Toast"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "Persistent",
+          "component": {
+            "name": "Components/Feedback/Toast",
+            "displayName": "Toast"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "Auto-dismiss countdown",
+          "component": {
+            "name": "Components/Feedback/Toast",
+            "displayName": "Toast"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      },
+      {
+        "spec": {
+          "name": "Dismiss interaction",
+          "component": {
+            "name": "Components/Feedback/Toast",
+            "displayName": "Toast"
+          }
+        },
+        "parameters": {
+          "viewport": 1200,
+          "viewportIsDefault": true
+        },
+        "mode": {
+          "name": "1200px"
+        }
+      }
+    ],
+    "inProgressCount": 0,
+    "completedAt": 1787782425587
+  },
+  "buildCommand": "npm run build-storybook -- --output-dir=/private/var/folders/l7/snym6p_57wv4_blcfbpl_38m0000gn/T/chromatic--62883-ei2elOyOuuqs",
+  "buildLogFile": "/Users/michaelknjogu/Documents/Projects/DDS/Design System/dds-design-system/build-storybook.log",
+  "configuration": {},
+  "environment": {},
+  "exitCode": 2,
+  "exitCodeKey": "BUILD_HAS_ERRORS",
+  "fileInfo": {
+    "lengths": [
+      {
+        "pathname": "139.ed3b4ffd.iframe.bundle.js",
+        "contentLength": 850217,
+        "knownAs": "139.ed3b4ffd.iframe.bundle.js"
+      },
+      {
+        "pathname": "139.ed3b4ffd.iframe.bundle.js.LICENSE.txt",
+        "contentLength": 452,
+        "knownAs": "139.ed3b4ffd.iframe.bundle.js.LICENSE.txt"
+      },
+      {
+        "pathname": "139.ed3b4ffd.iframe.bundle.js.map",
+        "contentLength": 1324711,
+        "knownAs": "139.ed3b4ffd.iframe.bundle.js.map"
+      },
+      {
+        "pathname": "190.ffe7c6bd.iframe.bundle.js",
+        "contentLength": 13793223,
+        "knownAs": "190.ffe7c6bd.iframe.bundle.js"
+      },
+      {
+        "pathname": "190.ffe7c6bd.iframe.bundle.js.map",
+        "contentLength": 12617054,
+        "knownAs": "190.ffe7c6bd.iframe.bundle.js.map"
+      },
+      {
+        "pathname": "2.cf43632b.iframe.bundle.js",
+        "contentLength": 41113,
+        "knownAs": "2.cf43632b.iframe.bundle.js"
+      },
+      {
+        "pathname": "2.cf43632b.iframe.bundle.js.map",
+        "contentLength": 54154,
+        "knownAs": "2.cf43632b.iframe.bundle.js.map"
+      },
+      {
+        "pathname": "270.f5434410.iframe.bundle.js",
+        "contentLength": 2171738,
+        "knownAs": "270.f5434410.iframe.bundle.js"
+      },
+      {
+        "pathname": "270.f5434410.iframe.bundle.js.LICENSE.txt",
+        "contentLength": 309,
+        "knownAs": "270.f5434410.iframe.bundle.js.LICENSE.txt"
+      },
+      {
+        "pathname": "270.f5434410.iframe.bundle.js.map",
+        "contentLength": 3153473,
+        "knownAs": "270.f5434410.iframe.bundle.js.map"
+      },
+      {
+        "pathname": "476.65205ea5.iframe.bundle.js",
+        "contentLength": 1171789,
+        "knownAs": "476.65205ea5.iframe.bundle.js"
+      },
+      {
+        "pathname": "476.65205ea5.iframe.bundle.js.LICENSE.txt",
+        "contentLength": 982,
+        "knownAs": "476.65205ea5.iframe.bundle.js.LICENSE.txt"
+      },
+      {
+        "pathname": "476.65205ea5.iframe.bundle.js.map",
+        "contentLength": 2006155,
+        "knownAs": "476.65205ea5.iframe.bundle.js.map"
+      },
+      {
+        "pathname": "495.cae59a18.iframe.bundle.js",
+        "contentLength": 384761,
+        "knownAs": "495.cae59a18.iframe.bundle.js"
+      },
+      {
+        "pathname": "495.cae59a18.iframe.bundle.js.LICENSE.txt",
+        "contentLength": 486,
+        "knownAs": "495.cae59a18.iframe.bundle.js.LICENSE.txt"
+      },
+      {
+        "pathname": "495.cae59a18.iframe.bundle.js.map",
+        "contentLength": 571698,
+        "knownAs": "495.cae59a18.iframe.bundle.js.map"
+      },
+      {
+        "pathname": "560.e59b5a40.iframe.bundle.js",
+        "contentLength": 60637,
+        "knownAs": "560.e59b5a40.iframe.bundle.js"
+      },
+      {
+        "pathname": "560.e59b5a40.iframe.bundle.js.map",
+        "contentLength": 81181,
+        "knownAs": "560.e59b5a40.iframe.bundle.js.map"
+      },
+      {
+        "pathname": "670.66135518.iframe.bundle.js",
+        "contentLength": 45769,
+        "knownAs": "670.66135518.iframe.bundle.js"
+      },
+      {
+        "pathname": "670.66135518.iframe.bundle.js.map",
+        "contentLength": 69935,
+        "knownAs": "670.66135518.iframe.bundle.js.map"
+      },
+      {
+        "pathname": "714.b6403121.iframe.bundle.js",
+        "contentLength": 105557,
+        "knownAs": "714.b6403121.iframe.bundle.js"
+      },
+      {
+        "pathname": "714.b6403121.iframe.bundle.js.map",
+        "contentLength": 186297,
+        "knownAs": "714.b6403121.iframe.bundle.js.map"
+      },
+      {
+        "pathname": "944.52753618.iframe.bundle.js",
+        "contentLength": 429,
+        "knownAs": "944.52753618.iframe.bundle.js"
+      },
+      {
+        "pathname": "95.3e65b218.iframe.bundle.js",
+        "contentLength": 1470,
+        "knownAs": "95.3e65b218.iframe.bundle.js"
+      },
+      {
+        "pathname": "95.3e65b218.iframe.bundle.js.map",
+        "contentLength": 672,
+        "knownAs": "95.3e65b218.iframe.bundle.js.map"
+      },
+      {
+        "pathname": "favicon-wrapper.svg",
+        "contentLength": 5803,
+        "knownAs": "favicon-wrapper.svg"
+      },
+      {
+        "pathname": "favicon.ico",
+        "contentLength": 15086,
+        "knownAs": "favicon.ico"
+      },
+      {
+        "pathname": "favicon.svg",
+        "contentLength": 2163,
+        "knownAs": "favicon.svg"
+      },
+      {
+        "pathname": "iframe.html",
+        "contentLength": 17166,
+        "knownAs": "iframe.html"
+      },
+      {
+        "pathname": "index.html",
+        "contentLength": 3738,
+        "knownAs": "index.html"
+      },
+      {
+        "pathname": "index.json",
+        "contentLength": 41033,
+        "knownAs": "index.json"
+      },
+      {
+        "pathname": "main.c1375888.iframe.bundle.js",
+        "contentLength": 204436,
+        "knownAs": "main.c1375888.iframe.bundle.js"
+      },
+      {
+        "pathname": "main.c1375888.iframe.bundle.js.map",
+        "contentLength": 13110,
+        "knownAs": "main.c1375888.iframe.bundle.js.map"
+      },
+      {
+        "pathname": "main.ebc7009147e8135396a4.css",
+        "contentLength": 5531,
+        "knownAs": "main.ebc7009147e8135396a4.css"
+      },
+      {
+        "pathname": "mocker-runtime-injected.js",
+        "contentLength": 42630,
+        "knownAs": "mocker-runtime-injected.js"
+      },
+      {
+        "pathname": "nunito-sans-bold-italic.woff2",
+        "contentLength": 49460,
+        "knownAs": "nunito-sans-bold-italic.woff2"
+      },
+      {
+        "pathname": "nunito-sans-bold.woff2",
+        "contentLength": 47144,
+        "knownAs": "nunito-sans-bold.woff2"
+      },
+      {
+        "pathname": "nunito-sans-italic.woff2",
+        "contentLength": 49620,
+        "knownAs": "nunito-sans-italic.woff2"
+      },
+      {
+        "pathname": "nunito-sans-regular.woff2",
+        "contentLength": 47072,
+        "knownAs": "nunito-sans-regular.woff2"
+      },
+      {
+        "pathname": "project.json",
+        "contentLength": 980,
+        "knownAs": "project.json"
+      },
+      {
+        "pathname": "runtime~main.6aefa532.iframe.bundle.js",
+        "contentLength": 7337,
+        "knownAs": "runtime~main.6aefa532.iframe.bundle.js"
+      },
+      {
+        "pathname": "runtime~main.6aefa532.iframe.bundle.js.map",
+        "contentLength": 12702,
+        "knownAs": "runtime~main.6aefa532.iframe.bundle.js.map"
+      },
+      {
+        "pathname": "sb-addons/a11y-1/manager-bundle.js",
+        "contentLength": 66572,
+        "knownAs": "sb-addons/a11y-1/manager-bundle.js"
+      },
+      {
+        "pathname": "sb-addons/docs-2/manager-bundle.js",
+        "contentLength": 66061,
+        "knownAs": "sb-addons/docs-2/manager-bundle.js"
+      },
+      {
+        "pathname": "sb-addons/storybook-3/manager-bundle.js",
+        "contentLength": 1574,
+        "knownAs": "sb-addons/storybook-3/manager-bundle.js"
+      },
+      {
+        "pathname": "sb-addons/storybook-core-server-presets-0/common-manager-bundle.js",
+        "contentLength": 473032,
+        "knownAs": "sb-addons/storybook-core-server-presets-0/common-manager-bundle.js"
+      },
+      {
+        "pathname": "sb-common-assets/favicon-wrapper.svg",
+        "contentLength": 5803,
+        "knownAs": "sb-common-assets/favicon-wrapper.svg"
+      },
+      {
+        "pathname": "sb-common-assets/favicon.svg",
+        "contentLength": 2163,
+        "knownAs": "sb-common-assets/favicon.svg"
+      },
+      {
+        "pathname": "sb-common-assets/nunito-sans-bold-italic.woff2",
+        "contentLength": 49460,
+        "knownAs": "sb-common-assets/nunito-sans-bold-italic.woff2"
+      },
+      {
+        "pathname": "sb-common-assets/nunito-sans-bold.woff2",
+        "contentLength": 47144,
+        "knownAs": "sb-common-assets/nunito-sans-bold.woff2"
+      },
+      {
+        "pathname": "sb-common-assets/nunito-sans-italic.woff2",
+        "contentLength": 49620,
+        "knownAs": "sb-common-assets/nunito-sans-italic.woff2"
+      },
+      {
+        "pathname": "sb-common-assets/nunito-sans-regular.woff2",
+        "contentLength": 47072,
+        "knownAs": "sb-common-assets/nunito-sans-regular.woff2"
+      },
+      {
+        "pathname": "sb-manager/globals-runtime.js",
+        "contentLength": 3294169,
+        "knownAs": "sb-manager/globals-runtime.js"
+      },
+      {
+        "pathname": "sb-manager/globals.js",
+        "contentLength": 1019,
+        "knownAs": "sb-manager/globals.js"
+      },
+      {
+        "pathname": "sb-manager/manager-stores.js",
+        "contentLength": 654,
+        "knownAs": "sb-manager/manager-stores.js"
+      },
+      {
+        "pathname": "sb-manager/runtime.js",
+        "contentLength": 1240574,
+        "knownAs": "sb-manager/runtime.js"
+      },
+      {
+        "pathname": "sb-preview/globals.js",
+        "contentLength": 958,
+        "knownAs": "sb-preview/globals.js"
+      },
+      {
+        "pathname": "sb-preview/runtime.js",
+        "contentLength": 1577931,
+        "knownAs": "sb-preview/runtime.js"
+      },
+      {
+        "pathname": "stories-alert-stories.4c0a5fc1.iframe.bundle.js",
+        "contentLength": 30626,
+        "knownAs": "stories-alert-stories.4c0a5fc1.iframe.bundle.js"
+      },
+      {
+        "pathname": "stories-alert-stories.4c0a5fc1.iframe.bundle.js.map",
+        "contentLength": 27065,
+        "knownAs": "stories-alert-stories.4c0a5fc1.iframe.bundle.js.map"
+      },
+      {
+        "pathname": "stories-button-stories.7e7daaf0.iframe.bundle.js",
+        "contentLength": 39367,
+        "knownAs": "stories-button-stories.7e7daaf0.iframe.bundle.js"
+      },
+      {
+        "pathname": "stories-button-stories.7e7daaf0.iframe.bundle.js.map",
+        "contentLength": 31262,
+        "knownAs": "stories-button-stories.7e7daaf0.iframe.bundle.js.map"
+      },
+      {
+        "pathname": "stories-colours-mdx.d07781a8.iframe.bundle.js",
+        "contentLength": 19628,
+        "knownAs": "stories-colours-mdx.d07781a8.iframe.bundle.js"
+      },
+      {
+        "pathname": "stories-colours-mdx.d07781a8.iframe.bundle.js.map",
+        "contentLength": 18287,
+        "knownAs": "stories-colours-mdx.d07781a8.iframe.bundle.js.map"
+      },
+      {
+        "pathname": "stories-figma-backlog-mdx.c487b77f.iframe.bundle.js",
+        "contentLength": 26278,
+        "knownAs": "stories-figma-backlog-mdx.c487b77f.iframe.bundle.js"
+      },
+      {
+        "pathname": "stories-figma-backlog-mdx.c487b77f.iframe.bundle.js.map",
+        "contentLength": 12931,
+        "knownAs": "stories-figma-backlog-mdx.c487b77f.iframe.bundle.js.map"
+      },
+      {
+        "pathname": "stories-icon-stories.587ba2e4.iframe.bundle.js",
+        "contentLength": 12714,
+        "knownAs": "stories-icon-stories.587ba2e4.iframe.bundle.js"
+      },
+      {
+        "pathname": "stories-icon-stories.587ba2e4.iframe.bundle.js.map",
+        "contentLength": 10514,
+        "knownAs": "stories-icon-stories.587ba2e4.iframe.bundle.js.map"
+      },
+      {
+        "pathname": "stories-minimal-pagination-stories.7f4c0d5b.iframe.bundle.js",
+        "contentLength": 26418,
+        "knownAs": "stories-minimal-pagination-stories.7f4c0d5b.iframe.bundle.js"
+      },
+      {
+        "pathname": "stories-minimal-pagination-stories.7f4c0d5b.iframe.bundle.js.map",
+        "contentLength": 23637,
+        "knownAs": "stories-minimal-pagination-stories.7f4c0d5b.iframe.bundle.js.map"
+      },
+      {
+        "pathname": "stories-numbered-pagination-stories.6fb36dc8.iframe.bundle.js",
+        "contentLength": 20217,
+        "knownAs": "stories-numbered-pagination-stories.6fb36dc8.iframe.bundle.js"
+      },
+      {
+        "pathname": "stories-numbered-pagination-stories.6fb36dc8.iframe.bundle.js.map",
+        "contentLength": 17292,
+        "knownAs": "stories-numbered-pagination-stories.6fb36dc8.iframe.bundle.js.map"
+      },
+      {
+        "pathname": "stories-otp-input-stories.71652e1f.iframe.bundle.js",
+        "contentLength": 24828,
+        "knownAs": "stories-otp-input-stories.71652e1f.iframe.bundle.js"
+      },
+      {
+        "pathname": "stories-otp-input-stories.71652e1f.iframe.bundle.js.map",
+        "contentLength": 22297,
+        "knownAs": "stories-otp-input-stories.71652e1f.iframe.bundle.js.map"
+      },
+      {
+        "pathname": "stories-password-input-stories.b5f138da.iframe.bundle.js",
+        "contentLength": 24603,
+        "knownAs": "stories-password-input-stories.b5f138da.iframe.bundle.js"
+      },
+      {
+        "pathname": "stories-password-input-stories.b5f138da.iframe.bundle.js.map",
+        "contentLength": 22188,
+        "knownAs": "stories-password-input-stories.b5f138da.iframe.bundle.js.map"
+      },
+      {
+        "pathname": "stories-search-stories.f7354f55.iframe.bundle.js",
+        "contentLength": 25313,
+        "knownAs": "stories-search-stories.f7354f55.iframe.bundle.js"
+      },
+      {
+        "pathname": "stories-search-stories.f7354f55.iframe.bundle.js.map",
+        "contentLength": 22318,
+        "knownAs": "stories-search-stories.f7354f55.iframe.bundle.js.map"
+      },
+      {
+        "pathname": "stories-select-stories.52e2ae9c.iframe.bundle.js",
+        "contentLength": 23419,
+        "knownAs": "stories-select-stories.52e2ae9c.iframe.bundle.js"
+      },
+      {
+        "pathname": "stories-select-stories.52e2ae9c.iframe.bundle.js.map",
+        "contentLength": 21004,
+        "knownAs": "stories-select-stories.52e2ae9c.iframe.bundle.js.map"
+      },
+      {
+        "pathname": "stories-spacing-mdx.646a68b9.iframe.bundle.js",
+        "contentLength": 14126,
+        "knownAs": "stories-spacing-mdx.646a68b9.iframe.bundle.js"
+      },
+      {
+        "pathname": "stories-spacing-mdx.646a68b9.iframe.bundle.js.map",
+        "contentLength": 12508,
+        "knownAs": "stories-spacing-mdx.646a68b9.iframe.bundle.js.map"
+      },
+      {
+        "pathname": "stories-textarea-stories.a235dfec.iframe.bundle.js",
+        "contentLength": 16124,
+        "knownAs": "stories-textarea-stories.a235dfec.iframe.bundle.js"
+      },
+      {
+        "pathname": "stories-textarea-stories.a235dfec.iframe.bundle.js.map",
+        "contentLength": 14989,
+        "knownAs": "stories-textarea-stories.a235dfec.iframe.bundle.js.map"
+      },
+      {
+        "pathname": "stories-toast-stories.b1c39400.iframe.bundle.js",
+        "contentLength": 24952,
+        "knownAs": "stories-toast-stories.b1c39400.iframe.bundle.js"
+      },
+      {
+        "pathname": "stories-toast-stories.b1c39400.iframe.bundle.js.map",
+        "contentLength": 21659,
+        "knownAs": "stories-toast-stories.b1c39400.iframe.bundle.js.map"
+      },
+      {
+        "pathname": "stories-typography-page-stories.e71a8236.iframe.bundle.js",
+        "contentLength": 7517,
+        "knownAs": "stories-typography-page-stories.e71a8236.iframe.bundle.js"
+      },
+      {
+        "pathname": "stories-typography-page-stories.e71a8236.iframe.bundle.js.map",
+        "contentLength": 6780,
+        "knownAs": "stories-typography-page-stories.e71a8236.iframe.bundle.js.map"
+      },
+      {
+        "pathname": "stories-welcome-mdx.813437cc.iframe.bundle.js",
+        "contentLength": 7420,
+        "knownAs": "stories-welcome-mdx.813437cc.iframe.bundle.js"
+      },
+      {
+        "pathname": "stories-welcome-mdx.813437cc.iframe.bundle.js.map",
+        "contentLength": 6353,
+        "knownAs": "stories-welcome-mdx.813437cc.iframe.bundle.js.map"
+      }
+    ],
+    "paths": [
+      "139.ed3b4ffd.iframe.bundle.js",
+      "139.ed3b4ffd.iframe.bundle.js.LICENSE.txt",
+      "139.ed3b4ffd.iframe.bundle.js.map",
+      "190.ffe7c6bd.iframe.bundle.js",
+      "190.ffe7c6bd.iframe.bundle.js.map",
+      "2.cf43632b.iframe.bundle.js",
+      "2.cf43632b.iframe.bundle.js.map",
+      "270.f5434410.iframe.bundle.js",
+      "270.f5434410.iframe.bundle.js.LICENSE.txt",
+      "270.f5434410.iframe.bundle.js.map",
+      "476.65205ea5.iframe.bundle.js",
+      "476.65205ea5.iframe.bundle.js.LICENSE.txt",
+      "476.65205ea5.iframe.bundle.js.map",
+      "495.cae59a18.iframe.bundle.js",
+      "495.cae59a18.iframe.bundle.js.LICENSE.txt",
+      "495.cae59a18.iframe.bundle.js.map",
+      "560.e59b5a40.iframe.bundle.js",
+      "560.e59b5a40.iframe.bundle.js.map",
+      "670.66135518.iframe.bundle.js",
+      "670.66135518.iframe.bundle.js.map",
+      "714.b6403121.iframe.bundle.js",
+      "714.b6403121.iframe.bundle.js.map",
+      "944.52753618.iframe.bundle.js",
+      "95.3e65b218.iframe.bundle.js",
+      "95.3e65b218.iframe.bundle.js.map",
+      "favicon-wrapper.svg",
+      "favicon.ico",
+      "favicon.svg",
+      "iframe.html",
+      "index.html",
+      "index.json",
+      "main.c1375888.iframe.bundle.js",
+      "main.c1375888.iframe.bundle.js.map",
+      "main.ebc7009147e8135396a4.css",
+      "mocker-runtime-injected.js",
+      "nunito-sans-bold-italic.woff2",
+      "nunito-sans-bold.woff2",
+      "nunito-sans-italic.woff2",
+      "nunito-sans-regular.woff2",
+      "project.json",
+      "runtime~main.6aefa532.iframe.bundle.js",
+      "runtime~main.6aefa532.iframe.bundle.js.map",
+      "sb-addons/a11y-1/manager-bundle.js",
+      "sb-addons/docs-2/manager-bundle.js",
+      "sb-addons/storybook-3/manager-bundle.js",
+      "sb-addons/storybook-core-server-presets-0/common-manager-bundle.js",
+      "sb-common-assets/favicon-wrapper.svg",
+      "sb-common-assets/favicon.svg",
+      "sb-common-assets/nunito-sans-bold-italic.woff2",
+      "sb-common-assets/nunito-sans-bold.woff2",
+      "sb-common-assets/nunito-sans-italic.woff2",
+      "sb-common-assets/nunito-sans-regular.woff2",
+      "sb-manager/globals-runtime.js",
+      "sb-manager/globals.js",
+      "sb-manager/manager-stores.js",
+      "sb-manager/runtime.js",
+      "sb-preview/globals.js",
+      "sb-preview/runtime.js",
+      "stories-alert-stories.4c0a5fc1.iframe.bundle.js",
+      "stories-alert-stories.4c0a5fc1.iframe.bundle.js.map",
+      "stories-button-stories.7e7daaf0.iframe.bundle.js",
+      "stories-button-stories.7e7daaf0.iframe.bundle.js.map",
+      "stories-colours-mdx.d07781a8.iframe.bundle.js",
+      "stories-colours-mdx.d07781a8.iframe.bundle.js.map",
+      "stories-figma-backlog-mdx.c487b77f.iframe.bundle.js",
+      "stories-figma-backlog-mdx.c487b77f.iframe.bundle.js.map",
+      "stories-icon-stories.587ba2e4.iframe.bundle.js",
+      "stories-icon-stories.587ba2e4.iframe.bundle.js.map",
+      "stories-minimal-pagination-stories.7f4c0d5b.iframe.bundle.js",
+      "stories-minimal-pagination-stories.7f4c0d5b.iframe.bundle.js.map",
+      "stories-numbered-pagination-stories.6fb36dc8.iframe.bundle.js",
+      "stories-numbered-pagination-stories.6fb36dc8.iframe.bundle.js.map",
+      "stories-otp-input-stories.71652e1f.iframe.bundle.js",
+      "stories-otp-input-stories.71652e1f.iframe.bundle.js.map",
+      "stories-password-input-stories.b5f138da.iframe.bundle.js",
+      "stories-password-input-stories.b5f138da.iframe.bundle.js.map",
+      "stories-search-stories.f7354f55.iframe.bundle.js",
+      "stories-search-stories.f7354f55.iframe.bundle.js.map",
+      "stories-select-stories.52e2ae9c.iframe.bundle.js",
+      "stories-select-stories.52e2ae9c.iframe.bundle.js.map",
+      "stories-spacing-mdx.646a68b9.iframe.bundle.js",
+      "stories-spacing-mdx.646a68b9.iframe.bundle.js.map",
+      "stories-textarea-stories.a235dfec.iframe.bundle.js",
+      "stories-textarea-stories.a235dfec.iframe.bundle.js.map",
+      "stories-toast-stories.b1c39400.iframe.bundle.js",
+      "stories-toast-stories.b1c39400.iframe.bundle.js.map",
+      "stories-typography-page-stories.e71a8236.iframe.bundle.js",
+      "stories-typography-page-stories.e71a8236.iframe.bundle.js.map",
+      "stories-welcome-mdx.813437cc.iframe.bundle.js",
+      "stories-welcome-mdx.813437cc.iframe.bundle.js.map"
+    ],
+    "statsPath": "",
+    "total": 46817713,
+    "hashes": {
+      "139.ed3b4ffd.iframe.bundle.js": "b1c9ba076af69694",
+      "139.ed3b4ffd.iframe.bundle.js.LICENSE.txt": "06a784957cf0aa26",
+      "139.ed3b4ffd.iframe.bundle.js.map": "347d6114552c4e1d",
+      "190.ffe7c6bd.iframe.bundle.js": "822efda29c2a4e20",
+      "190.ffe7c6bd.iframe.bundle.js.map": "e0fc5ce5ad28522a",
+      "2.cf43632b.iframe.bundle.js": "3f8600a5e97fd128",
+      "2.cf43632b.iframe.bundle.js.map": "4295c40365434c4e",
+      "270.f5434410.iframe.bundle.js": "d54f2f4105524c35",
+      "270.f5434410.iframe.bundle.js.LICENSE.txt": "0803412c10423f61",
+      "270.f5434410.iframe.bundle.js.map": "c56bf75119dc3f9a",
+      "476.65205ea5.iframe.bundle.js": "efe6d84c1b975c44",
+      "476.65205ea5.iframe.bundle.js.LICENSE.txt": "ab463e0df2fac35d",
+      "476.65205ea5.iframe.bundle.js.map": "26e4949676d6adcf",
+      "495.cae59a18.iframe.bundle.js": "16d6684979ffa775",
+      "495.cae59a18.iframe.bundle.js.LICENSE.txt": "56aef22273f64ca6",
+      "495.cae59a18.iframe.bundle.js.map": "ceb1d7c11eac0010",
+      "560.e59b5a40.iframe.bundle.js": "ff360f1dde2de19a",
+      "560.e59b5a40.iframe.bundle.js.map": "518f86eb19c4bbe7",
+      "670.66135518.iframe.bundle.js": "df3e1ee122226e52",
+      "670.66135518.iframe.bundle.js.map": "7a0d7b2a32d5b8ec",
+      "714.b6403121.iframe.bundle.js": "e14b445ede6bf801",
+      "714.b6403121.iframe.bundle.js.map": "5ca5d065c29600a2",
+      "944.52753618.iframe.bundle.js": "bf0ed2f57321044b",
+      "95.3e65b218.iframe.bundle.js": "0c04a7bd15ba42a9",
+      "95.3e65b218.iframe.bundle.js.map": "5e97f4493f4aadd8",
+      "favicon-wrapper.svg": "ac2f5da4f59a4ab7",
+      "favicon.ico": "b8826cb5e6c6bb55",
+      "favicon.svg": "d3380c3fb63a8430",
+      "iframe.html": "16bf22b0f2cd73fe",
+      "index.html": "8ef6afce27fd8485",
+      "index.json": "8cf23117620e7f17",
+      "main.c1375888.iframe.bundle.js": "4ea31f2044f73e9e",
+      "main.c1375888.iframe.bundle.js.map": "aaaa0740e1c912c5",
+      "main.ebc7009147e8135396a4.css": "20fcb9a03433b087",
+      "mocker-runtime-injected.js": "76ac3d112b8eb00a",
+      "nunito-sans-bold-italic.woff2": "d64464b3594b3fb9",
+      "nunito-sans-bold.woff2": "0bd5b61b7fb7f7d5",
+      "nunito-sans-italic.woff2": "b7807d9de055e9a0",
+      "nunito-sans-regular.woff2": "6687b7be04c2debe",
+      "project.json": "5a687ad3458fe606",
+      "runtime~main.6aefa532.iframe.bundle.js": "d52b41de79164755",
+      "runtime~main.6aefa532.iframe.bundle.js.map": "5786105a75356e37",
+      "sb-addons/a11y-1/manager-bundle.js": "a7113a6af2f16dff",
+      "sb-addons/docs-2/manager-bundle.js": "d007d84f0a160b78",
+      "sb-addons/storybook-3/manager-bundle.js": "0ea06b842f6df96e",
+      "sb-addons/storybook-core-server-presets-0/common-manager-bundle.js": "93cec5627cbe57a3",
+      "sb-common-assets/favicon-wrapper.svg": "ac2f5da4f59a4ab7",
+      "sb-common-assets/favicon.svg": "d3380c3fb63a8430",
+      "sb-common-assets/nunito-sans-bold-italic.woff2": "d64464b3594b3fb9",
+      "sb-common-assets/nunito-sans-bold.woff2": "0bd5b61b7fb7f7d5",
+      "sb-common-assets/nunito-sans-italic.woff2": "b7807d9de055e9a0",
+      "sb-common-assets/nunito-sans-regular.woff2": "6687b7be04c2debe",
+      "sb-manager/globals-runtime.js": "5abe657c2d3ac5e8",
+      "sb-manager/globals.js": "8c183e98860c1b5b",
+      "sb-manager/manager-stores.js": "3f248595f03be18f",
+      "sb-manager/runtime.js": "26c57d12d331379e",
+      "sb-preview/globals.js": "4fbae35d45b8c5e6",
+      "sb-preview/runtime.js": "e55bedbb0e059859",
+      "stories-alert-stories.4c0a5fc1.iframe.bundle.js": "ef031e46c2796421",
+      "stories-alert-stories.4c0a5fc1.iframe.bundle.js.map": "bb1995f6e3847c6d",
+      "stories-button-stories.7e7daaf0.iframe.bundle.js": "08299ada1ac2aa28",
+      "stories-button-stories.7e7daaf0.iframe.bundle.js.map": "78bb2aca64a9cbb8",
+      "stories-colours-mdx.d07781a8.iframe.bundle.js": "1b686e1f4bb1c408",
+      "stories-colours-mdx.d07781a8.iframe.bundle.js.map": "640bd85a5508ac10",
+      "stories-figma-backlog-mdx.c487b77f.iframe.bundle.js": "2f8fa4245d91ac99",
+      "stories-figma-backlog-mdx.c487b77f.iframe.bundle.js.map": "292dd9a438cfd4ce",
+      "stories-icon-stories.587ba2e4.iframe.bundle.js": "785ccd818617ae9d",
+      "stories-icon-stories.587ba2e4.iframe.bundle.js.map": "720d86bae3c9dcf7",
+      "stories-minimal-pagination-stories.7f4c0d5b.iframe.bundle.js": "df9f39983797ca0e",
+      "stories-minimal-pagination-stories.7f4c0d5b.iframe.bundle.js.map": "15339f6362b2fdc9",
+      "stories-numbered-pagination-stories.6fb36dc8.iframe.bundle.js": "86132bf485c3cbc4",
+      "stories-numbered-pagination-stories.6fb36dc8.iframe.bundle.js.map": "e536abc958fc55e3",
+      "stories-otp-input-stories.71652e1f.iframe.bundle.js": "d251e3a0424218b3",
+      "stories-otp-input-stories.71652e1f.iframe.bundle.js.map": "3538a27cc3f57fa7",
+      "stories-password-input-stories.b5f138da.iframe.bundle.js": "3159808f5d89207e",
+      "stories-password-input-stories.b5f138da.iframe.bundle.js.map": "7fa3c389e57acba6",
+      "stories-search-stories.f7354f55.iframe.bundle.js": "6ce074ce80e6a51b",
+      "stories-search-stories.f7354f55.iframe.bundle.js.map": "3a33bebe40b75ab2",
+      "stories-select-stories.52e2ae9c.iframe.bundle.js": "be33bbb67ece6e6c",
+      "stories-select-stories.52e2ae9c.iframe.bundle.js.map": "c9b5e6149f855b3d",
+      "stories-spacing-mdx.646a68b9.iframe.bundle.js": "b8f0911cddc1b02f",
+      "stories-spacing-mdx.646a68b9.iframe.bundle.js.map": "2a0ebd0277185163",
+      "stories-textarea-stories.a235dfec.iframe.bundle.js": "5e7edc62304b6443",
+      "stories-textarea-stories.a235dfec.iframe.bundle.js.map": "c2a4aa2e85525dfa",
+      "stories-toast-stories.b1c39400.iframe.bundle.js": "c8502517b18b3a16",
+      "stories-toast-stories.b1c39400.iframe.bundle.js.map": "6b8efa1cc4acc4c1",
+      "stories-typography-page-stories.e71a8236.iframe.bundle.js": "dc15d29bcc8dd121",
+      "stories-typography-page-stories.e71a8236.iframe.bundle.js.map": "84f187ac0b1a6ca2",
+      "stories-welcome-mdx.813437cc.iframe.bundle.js": "1d302cb3cda2a223",
+      "stories-welcome-mdx.813437cc.iframe.bundle.js.map": "0efb6dc580464d2f"
+    }
+  },
+  "flags": {
+    "diagnosticsFile": "chromatic-diagnostics.json",
+    "outputDir": [],
+    "storybookBuildDir": [],
+    "externals": [],
+    "onlyStoryFiles": [],
+    "onlyStoryNames": [],
+    "untraced": [],
+    "fileHashing": true,
+    "interactive": true
+  },
+  "git": {
+    "version": "2.50.1",
+    "gitUserEmail": "mikeknjogu@gmail.com",
+    "uncommittedHash": "b2c935c90545f8401763536a26cf237568247b53",
+    "rootPath": "/Users/michaelknjogu/Documents/Projects/DDS/Design System/dds-design-system",
+    "commit": "7b8b066f5e1a059820257ef30c8a53abca013cb2",
+    "committedAt": 1787781924000,
+    "committerEmail": "mikeknjogu@gmail.com",
+    "committerName": "Michael-K-Njogu",
+    "branch": "main",
+    "slug": "dds-ux-design/dds-design-system",
+    "fromCI": false,
+    "parentCommits": [
+      "f01022314d100ae361e43866871d97bfc57a1b0b"
+    ]
+  },
+  "input": [],
+  "isOnboarding": false,
+  "isPublishOnly": false,
+  "isReactNativeApp": false,
+  "options": {
+    "fromCI": false,
+    "inAction": false,
+    "dryRun": false,
+    "debug": false,
+    "autoAcceptChanges": false,
+    "exitZeroOnChanges": false,
+    "exitOnceUploaded": false,
+    "diagnosticsFile": "chromatic-diagnostics.json",
+    "fileHashing": true,
+    "interactive": false,
+    "isLocalBuild": false,
+    "originalArgv": [
+      "--diagnostics-file=chromatic-diagnostics.json"
+    ],
+    "logFile": "chromatic.log",
+    "buildScriptName": "build-storybook",
+    "storybookLogFile": "build-storybook.log",
+    "branchName": "",
+    "persistLogFile": false,
+    "persistDiagnosticsFile": true
+  },
+  "packageJson": {
+    "name": "dds-design-system",
+    "version": "0.0.0",
+    "scripts": {
+      "ng": "ng",
+      "start": "ng serve",
+      "build": "ng build",
+      "watch": "ng build --watch --configuration development",
+      "test": "ng test",
+      "format": "prettier --write .",
+      "format:check": "prettier --check .",
+      "serve:ssr:dds-design-system": "node dist/dds-design-system/server/server.mjs",
+      "storybook": "ng run dds-design-system:storybook",
+      "build-storybook": "ng run dds-design-system:build-storybook",
+      "chromatic": "chromatic"
+    },
+    "private": true,
+    "packageManager": "npm@11.16.0",
+    "dependencies": {
+      "@angular/common": "^22.0.0",
+      "@angular/compiler": "^22.0.0",
+      "@angular/core": "^22.0.0",
+      "@angular/forms": "^22.0.0",
+      "@angular/platform-browser": "^22.0.0",
+      "@angular/platform-server": "^22.0.0",
+      "@angular/router": "^22.0.0",
+      "@angular/ssr": "^22.0.8",
+      "@lucide/angular": "^1.27.0",
+      "express": "^5.1.0",
+      "rxjs": "~7.8.0",
+      "tslib": "^2.3.0"
+    },
+    "devDependencies": {
+      "@angular-devkit/architect": "^0.2200.0",
+      "@angular-devkit/build-angular": "^22.0.0",
+      "@angular-devkit/core": "^22.0.0",
+      "@angular/build": "^22.0.8",
+      "@angular/cli": "^22.0.8",
+      "@angular/compiler-cli": "^22.0.0",
+      "@angular/platform-browser-dynamic": "^22.0.0",
+      "@compodoc/compodoc": "^2.0.0",
+      "@storybook/addon-a11y": "^10.5.4",
+      "@storybook/addon-docs": "^10.5.4",
+      "@storybook/addon-onboarding": "^10.5.4",
+      "@storybook/angular": "^10.5.4",
+      "@types/express": "^5.0.1",
+      "@types/node": "^20.17.19",
+      "chromatic": "^18.1.0",
+      "jsdom": "^28.0.0",
+      "prettier": "^3.8.1",
+      "storybook": "^10.5.4",
+      "typescript": "~6.0.2",
+      "vitest": "^4.0.8"
+    }
+  },
+  "packagePath": "/Users/michaelknjogu/Documents/Projects/DDS/Design System/dds-design-system/package.json",
+  "projectMetadata": {
+    "hasRouter": true,
+    "creationDate": {},
+    "storybookCreationDate": {},
+    "numberOfCommitters": 2,
+    "numberOfAppFiles": 2
+  },
+  "runtime": {},
+  "runtimeMetadata": {
+    "nodePlatform": "darwin",
+    "nodeVersion": "24.18.0",
+    "packageManager": "npm",
+    "packageManagerVersion": "11.16.0"
+  },
+  "sentinelUrls": [
+    "https://chromatic-builds.s3.us-west-2.amazonaws.com/6a65e71ad38ea81eef08edc8-ygxrcmsnqr/.chromatic/files-copied.3749684974.txt?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAJVVEQEOBEEPXSNNQ%2F20260826%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260826T221145Z&X-Amz-Expires=1800&X-Amz-Signature=67f0c99a5eba65f4abd1c3685f7ddebeb0fb506d999bfcf1fd394e8fca9db3bf&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject"
+  ],
+  "sessionId": "511951eb-63a8-4e75-a677-f80539dade24",
+  "sourceDir": "/private/var/folders/l7/snym6p_57wv4_blcfbpl_38m0000gn/T/chromatic--62883-ei2elOyOuuqs",
+  "startedAt": 1787782320570,
+  "storybook": {
+    "version": "10.5.4",
+    "baseDir": "."
+  },
+  "storybookUrl": "https://6a65e71ad38ea81eef08edc8-ygxrcmsnqr.chromatic.com/",
+  "task": "snapshot",
+  "uploadedBytes": 411509,
+  "uploadedFiles": 13,
+  "userError": true
+}
