@@ -1,7 +1,9 @@
 name: Visual tests
 
+# Visual tests are temporarily manual-only. Restore `push:` when the
+# Chromatic workflow is ready to be enabled again.
 on:
-  push:
+  workflow_dispatch:
 
 permissions:
   contents: read
