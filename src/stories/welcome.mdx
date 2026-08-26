@@ -1,0 +1,159 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Welcome" />
+
+<div className="dds-welcome">
+  <p className="dds-welcome__eyebrow">DDS DESIGN SYSTEM</p>
+
+# Build consistent experiences, together.
+
+DDS Design System is the shared UI reference for our designers and developers. Use this
+Storybook to explore foundations, understand component behaviour, test states, and build
+accessible interfaces with confidence.
+
+<div className="dds-welcome__actions">
+  <a className="dds-welcome__primary-action" href="?path=/docs/foundations-typography--docs">
+    Explore foundations
+  </a>
+  <a
+    className="dds-welcome__secondary-action"
+    href="https://github.com/DDS-UX-Design/dds-design-system"
+    target="_blank"
+    rel="noreferrer"
+  >
+    View on GitHub ↗
+  </a>
+</div>
+
+<div className="dds-welcome__grid">
+  <section>
+    <span aria-hidden="true">◈</span>
+    <h2>Foundations</h2>
+    <p>Learn the typography, colour, icon, and token choices behind the DDS visual language.</p>
+  </section>
+  <section>
+    <span aria-hidden="true">▣</span>
+    <h2>Components</h2>
+    <p>Review component variants, states, controls, accessibility, and implementation guidance.</p>
+  </section>
+  <section>
+    <span aria-hidden="true">✓</span>
+    <h2>Test with confidence</h2>
+    <p>Use interactive stories and visual checks to catch regressions before they reach users.</p>
+  </section>
+</div>
+
+## Getting started
+
+Choose a category from the sidebar. Each component page includes interactive examples and
+controls so you can evaluate its supported options. Developers can find the source,
+contribution workflow, and local setup instructions in the
+[DDS Design System repository](https://github.com/DDS-UX-Design/dds-design-system).
+
+</div>
+
+<style>{`
+  .dds-welcome {
+    --dds-accent: #224583;
+    --dds-accent-dark: #1a223b;
+    --dds-border: #d4d4d4;
+    --dds-muted: #525252;
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 48px 32px 72px;
+    color: #171717;
+    font-family: Inter, system-ui, sans-serif;
+  }
+
+  .dds-welcome__eyebrow {
+    margin: 0 0 16px;
+    color: var(--dds-accent);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+  }
+
+  .dds-welcome h1 {
+    max-width: 760px;
+    margin-bottom: 20px;
+    color: var(--dds-accent-dark);
+    font-size: clamp(40px, 6vw, 64px);
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+  }
+
+  .dds-welcome > p:not(.dds-welcome__eyebrow) {
+    max-width: 760px;
+    color: var(--dds-muted);
+    font-size: 18px;
+    line-height: 1.7;
+  }
+
+  .dds-welcome__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 32px 0 56px;
+  }
+
+  .dds-welcome__actions a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 0 20px;
+    border: 1px solid var(--dds-accent-dark);
+    border-radius: 6px;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .dds-welcome__primary-action, .dds-welcome__primary-action > * {
+    background: var(--dds-accent-dark);
+    color: #fff !important;
+  }
+
+  .dds-welcome__secondary-action {
+    color: var(--dds-accent-dark) !important;
+  }
+
+  .dds-welcome__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 56px;
+  }
+
+  .dds-welcome__grid section {
+    padding: 28px;
+    border: 1px solid var(--dds-border);
+    border-radius: 10px;
+    background: #fff;
+  }
+
+  .dds-welcome__grid span {
+    color: var(--dds-accent);
+    font-size: 24px;
+  }
+
+  .dds-welcome__grid h2 {
+    margin: 18px 0 8px;
+    color: var(--dds-accent-dark);
+    font-size: 18px;
+  }
+
+  .dds-welcome__grid p {
+    margin: 0;
+    color: var(--dds-muted);
+    line-height: 1.6;
+  }
+
+  @media (max-width: 720px) {
+    .dds-welcome {
+      padding: 32px 20px 48px;
+    }
+
+    .dds-welcome__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+`}</style>
