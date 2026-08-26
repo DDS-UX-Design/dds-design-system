@@ -232,7 +232,7 @@ export const PrimaryHover: Story = {
 };
 
 export const PrimaryFocused: Story = {
-  name: 'Primary / Focused',
+  name: 'Primary / Focus',
   args: {
     text: 'Save changes',
     state: 'focused',
@@ -268,7 +268,7 @@ export const SecondaryHover: Story = {
 };
 
 export const SecondaryFocused: Story = {
-  name: 'Secondary / Focused',
+  name: 'Secondary / Focus',
   args: {
     text: 'Cancel',
     variant: 'secondary',
@@ -310,7 +310,7 @@ export const DangerHover: Story = {
 };
 
 export const DangerFocused: Story = {
-  name: 'Danger / Focused',
+  name: 'Danger / Focus',
   args: {
     text: 'Delete project',
     styleType: 'danger',
@@ -341,15 +341,6 @@ export const GhostHover: Story = {
     text: 'Learn more',
     variant: 'ghost',
     state: 'hover',
-  },
-};
-
-export const GhostFocused: Story = {
-  name: 'Ghost / Focused',
-  args: {
-    text: 'Learn more',
-    variant: 'ghost',
-    state: 'focused',
   },
 };
 
@@ -412,12 +403,31 @@ export const Sizes: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <div style="display:flex; flex-wrap:wrap; align-items:center; gap:12px;">
-        <dds-button [variant]="variant" [styleType]="styleType" size="large" [iconType]="iconType" [icon]="icon">Large action</dds-button>
-        <dds-button [variant]="variant" [styleType]="styleType" size="medium" [iconType]="iconType" [icon]="icon">Medium action</dds-button>
-        <dds-button [variant]="variant" [styleType]="styleType" size="small" [iconType]="iconType" [icon]="icon">Small action</dds-button>
+      <div class="button-sizes">
+        <div class="button-sizes__row">
+          <span>Large · 48px</span>
+          <dds-button [variant]="variant" [styleType]="styleType" size="large" [iconType]="iconType" [icon]="icon">Large action</dds-button>
+          <dds-button *ngIf="variant !== 'ghost'" [variant]="variant" [styleType]="styleType" size="large" iconType="icon-only" [icon]="icon" ariaLabel="Large icon action"></dds-button>
+        </div>
+        <div class="button-sizes__row">
+          <span>Medium · 40px</span>
+          <dds-button [variant]="variant" [styleType]="styleType" size="medium" [iconType]="iconType" [icon]="icon">Medium action</dds-button>
+          <dds-button *ngIf="variant !== 'ghost'" [variant]="variant" [styleType]="styleType" size="medium" iconType="icon-only" [icon]="icon" ariaLabel="Medium icon action"></dds-button>
+        </div>
+        <div class="button-sizes__row">
+          <span>Small · 32px</span>
+          <dds-button [variant]="variant" [styleType]="styleType" size="small" [iconType]="iconType" [icon]="icon">Small action</dds-button>
+          <dds-button *ngIf="variant !== 'ghost'" [variant]="variant" [styleType]="styleType" size="small" iconType="icon-only" [icon]="icon" ariaLabel="Small icon action"></dds-button>
+        </div>
       </div>
     `,
+    styles: [
+      `
+        .button-sizes { display: grid; gap: 20px; }
+        .button-sizes__row { display: grid; grid-template-columns: 112px auto auto; align-items: center; justify-content: start; gap: 16px; }
+        .button-sizes__row > span { color: #525252; font-size: 13px; }
+      `,
+    ],
   }),
 };
 
