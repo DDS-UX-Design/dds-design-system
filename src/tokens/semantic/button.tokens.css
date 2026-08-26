@@ -1,40 +1,29 @@
 :root {
 
-  --dds-btn-focus-ring: 0 0 0 4px var(--dds-blue-300);
-  --dds-btn-primary-border-focus: var(--dds-color-neutral-white);
-
-  --dds-btn-icon-only-size-lg: 48px;
-  --dds-btn-icon-only-size-md: 40px;
-  --dds-btn-icon-only-size-sm: 32px;
+  --btn-icon-only-size-lg: 48px;
+  --btn-icon-only-size-md: 40px;
+  --btn-icon-only-size-sm: 32px;
 
   /* Primary Button - Default */
-  --dds-btn-primary-bg-default: var(--dds-blue-600);
-  --dds-btn-primary-border-default: var(--dds-blue-600);
-  --dds-btn-primary-bg-hover: var(--dds-blue-700);
-  --dds-btn-primary-border-hover: var(--dds-blue-700);
-
-  --dds-btn-primary-bg-disabled: var(--dds-grey-200);
-  --dds-btn-primary-border-disabled: var(--dds-grey-200);
-
-  /* Outlined Button */
-  --dds-btn-outlined-bg-default: var(--dds-color-neutral-white);
-  --dds-btn-outlined-border-default: var(--dds-grey-300);
-  --dds-btn-outlined-bg-hover: var(--dds-blue-100);
-
-  /* Ghost Button */
-  --dds-btn-ghost-bg-default: transparent;
-  --dds-btn-ghost-border-default: transparent;
-  --dds-btn-ghost-bg-hover: var(--dds-blue-100);
-
-   --dds-btn-danger-ghost-fg-default: var(--dds-red-500);
-   --dds-btn-danger-ghost-bg-hover: var(--dds-red-50);
+  --btn-colour-primary: var(--blue-600);
+  --btn-colour-primary-hover: var(--blue-700);
+  --btn-primary-focus-ring: 0 0 0 4px var(--blue-300);
+  --btn-colour-primary-disabled: var(--grey-200);
 
     /* Danger Button */
-  --dds-btn-danger-primary-bg-default: var(--dds-red-600);
-  --dds-btn-danger-primary-border-default: var(--dds-red-600);
-  --dds-btn-danger-primary-bg-hover: var(--dds-red-700);
-  --dds-btn-danger-primary-border-hover: var(--dds-red-700);
+  --btn-colour-danger: var(--red-600);
+  --btn-colour-danger-hover: var(--red-700);
+  --btn-danger-focus-ring: 0 0 0 4px var(--red-300);
+  --btn-colour-danger-disabled: var(--red-200);
 
-  --dds-btn-danger-outlined-fg-default: var(--dds-red-500);
-  --dds-btn-danger-outlined-border-default: var(--dds-red-100);
+  /* Outlined Button */
+  --btn-colour-secondary: var(--colour-neutral-white);
+ --btn-colour-secondary-hover: var(--blue-100);
+  --btn-colour-secondary-disabled: var(--colour-neutral-white);
+
+  /* Ghost Button */
+  --btn-colour-ghost: transparent;
+  --btn-colour-ghost-hover: var(--blue-100);
+  --btn-colour-ghost-disabled: transparent;
+
 }
