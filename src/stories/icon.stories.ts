@@ -10,7 +10,7 @@ type IconStoryArgs = {
 };
 
 const meta: Meta<IconStoryArgs> = {
-  title: 'Foundations/Icon',
+  title: 'Foundations/Icons',
   component: IconComponent,
   tags: ['autodocs'],
   argTypes: {
@@ -41,16 +41,17 @@ const meta: Meta<IconStoryArgs> = {
     },
     decorative: {
       control: 'boolean',
-      description: 'Removes the icon title from the accessibility tree when enabled.',
+      description:
+        'Hides the icon from assistive technology. Keep enabled when nearby text already conveys its meaning.',
       table: {
-        disable: true,
         type: { summary: 'boolean' },
         defaultValue: { summary: 'true' },
       },
     },
     title: {
       control: 'text',
-      description: 'Accessible title shown when the icon is not decorative.',
+      description: 'Accessible title required when the icon conveys meaning on its own.',
+      if: { arg: 'decorative', eq: false },
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: 'undefined' },
@@ -62,18 +63,19 @@ const meta: Meta<IconStoryArgs> = {
     size: 20,
     strokeWidth: 2,
     decorative: true,
-    title: 'Info',
+    title: undefined,
   },
   parameters: {
     docs: {
       description: {
         component:
-          'A reusable icon component that renders SVG icons from the Lucide library.'
+          'Icons provide compact visual cues using the approved Lucide set. Icons are decorative by default; when an icon communicates meaning without an adjacent label, set decorative to false and provide a concise title. Prefer the standard 16–24px range in product interfaces.',
       },
     },
     controls: {
-      exclude: ['strokeWidth', 'decorative', 'title'],
+      exclude: ['strokeWidth'],
     },
+    layout: 'centered',
   },
 };
 
@@ -86,7 +88,24 @@ export const Default: Story = {
   },
 };
 
-export const IconSetPreview: Story = {
+export const Accessible: Story = {
+  args: {
+    decorative: false,
+    name: 'circle-alert',
+    title: 'Warning',
+    size: 24,
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Non-decorative icons need a short accessible title that communicates their meaning.',
+      },
+    },
+  },
+};
+
+export const Library: Story = {
   args: {
     decorative: false,
     size: 24,
@@ -98,6 +117,12 @@ export const IconSetPreview: Story = {
     controls: {
       exclude: ['name', 'strokeWidth', 'decorative', 'title'],
     },
+    docs: {
+      description: {
+        story: 'The complete approved icon library. Use the displayed name with the name input.',
+      },
+    },
+    layout: 'padded',
   },
   render: (args) => {
     const iconMarkup = DDS_ICON_NAMES.map(
