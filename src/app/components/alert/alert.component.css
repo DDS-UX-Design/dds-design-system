@@ -1,0 +1,114 @@
+:host {
+  display: block;
+  max-width: 100%;
+}
+
+.dds-alert {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 578px;
+  max-width: 100%;
+  padding: var(--space-3) var(--space-4);
+  border-left: 4px solid;
+  border-radius: var(--radius-sm);
+  color: var(--text-colour-default);
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-md);
+  line-height: 24px;
+}
+
+.dds-alert--mobile {
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--font-size-xs);
+  line-height: 18px;
+}
+
+.dds-alert--info {
+  background: var(--bg-colour-info-muted);
+  border-color: var(--border-colour-info);
+}
+
+.dds-alert--warning {
+  background: var(--bg-colour-warning-muted);
+  border-color: var(--border-colour-warning);
+}
+
+.dds-alert--success {
+  background: var(--bg-colour-success-muted);
+  border-color: var(--border-colour-success);
+}
+
+.dds-alert--danger {
+  background: var(--bg-colour-danger-muted);
+  border-color: var(--border-colour-danger);
+}
+
+.dds-alert__content {
+  display: flex;
+  flex: 1 1 auto;
+  align-items: center;
+  min-width: 0;
+  gap: var(--space-2);
+}
+
+.dds-alert__status-icon,
+.dds-alert__dismiss dds-icon {
+  display: inline-flex;
+}
+
+.dds-alert__status-icon {
+  flex: 0 0 auto;
+  align-self: flex-start;
+}
+
+.dds-alert--info .dds-alert__status-icon {
+  color: var(--text-colour-info);
+}
+
+.dds-alert--warning .dds-alert__status-icon {
+  color: var(--text-colour-warning);
+}
+
+.dds-alert--success .dds-alert__status-icon {
+  color: var(--text-colour-success);
+}
+
+.dds-alert--danger .dds-alert__status-icon {
+  color: var(--text-colour-danger);
+}
+
+.dds-alert__text {
+  overflow-wrap: anywhere;
+}
+
+.dds-alert__action {
+  flex: 0 0 auto;
+  margin-left: var(--space-4);
+}
+
+.dds-alert__dismiss {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  margin-left: var(--space-3);
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--text-colour-default);
+  cursor: pointer;
+}
+
+.dds-alert__dismiss:focus-visible {
+  border-radius: var(--radius-xs);
+  outline: 2px solid var(--border-colour-info);
+  outline-offset: 2px;
+}
+
+@media (max-width: 480px) {
+  .dds-alert__action {
+    margin-left: var(--space-2);
+  }
+}
