@@ -1,0 +1,44 @@
+<nav class="dds-numbered-pagination" [attr.aria-label]="ariaLabel">
+  <button
+    class="dds-numbered-pagination__item dds-numbered-pagination__item--previous"
+    type="button"
+    aria-label="Previous page"
+    [disabled]="isFirstPage"
+    (click)="selectPage(normalizedCurrentPage - 1)"
+  >
+    <dds-icon name="chevron-left" [size]="16"></dds-icon>
+  </button>
+
+  <ng-container *ngFor="let item of items; trackBy: trackItem">
+    <span
+      *ngIf="item === 'ellipsis-start' || item === 'ellipsis-end'; else pageButton"
+      class="dds-numbered-pagination__item dds-numbered-pagination__ellipsis"
+      aria-hidden="true"
+    >
+      …
+    </span>
+
+    <ng-template #pageButton>
+      <button
+        class="dds-numbered-pagination__item"
+        type="button"
+        [class.dds-numbered-pagination__item--active]="item === normalizedCurrentPage"
+        [attr.aria-label]="'Page ' + item"
+        [attr.aria-current]="item === normalizedCurrentPage ? 'page' : null"
+        (click)="selectPage(asPageNumber(item))"
+      >
+        {{ item }}
+      </button>
+    </ng-template>
+  </ng-container>
+
+  <button
+    class="dds-numbered-pagination__item dds-numbered-pagination__item--next"
+    type="button"
+    aria-label="Next page"
+    [disabled]="isLastPage"
+    (click)="selectPage(normalizedCurrentPage + 1)"
+  >
+    <dds-icon name="chevron-right" [size]="16"></dds-icon>
+  </button>
+</nav>
