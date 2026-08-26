@@ -1,0 +1,133 @@
+:host {
+  display: block;
+  max-width: 100%;
+}
+
+.dds-select {
+  display: flex;
+  flex-direction: column;
+  width: 460px;
+  max-width: 100%;
+  color: var(--text-colour-default);
+  font-family: var(--font-family-primary);
+}
+
+.dds-select__label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding-bottom: var(--space-2);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  line-height: 20px;
+}
+
+.dds-select--small .dds-select__label {
+  padding-bottom: var(--space-1);
+  font-size: var(--font-size-xs);
+  line-height: 16px;
+}
+
+.dds-select__required {
+  color: var(--text-colour-danger);
+}
+
+.dds-select__field {
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 48px;
+  border: 1px solid var(--border-colour-strong);
+  border-radius: var(--radius-sm);
+  background: var(--bg-colour-white);
+}
+
+.dds-select--small .dds-select__field {
+  min-height: 40px;
+}
+
+.dds-select--focused .dds-select__field,
+.dds-select__field:focus-within {
+  border: 2px solid var(--border-colour-info);
+}
+
+.dds-select--error .dds-select__field {
+  border: 2px solid var(--border-colour-danger);
+}
+
+.dds-select--disabled .dds-select__field {
+  background: var(--bg-colour-disabled);
+}
+
+.dds-select__control {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  min-height: 46px;
+  padding: var(--space-3) 48px var(--space-3) var(--space-3);
+  border: 0;
+  outline: 0;
+  appearance: none;
+  background: transparent;
+  color: var(--text-colour-default);
+  cursor: pointer;
+  font: inherit;
+  font-size: var(--font-size-md);
+  line-height: 24px;
+}
+
+.dds-select--small .dds-select__control {
+  min-height: 38px;
+  padding: 9px 40px 9px var(--space-3);
+  font-size: var(--font-size-sm);
+  line-height: 20px;
+}
+
+.dds-select--focused .dds-select__control,
+.dds-select--error .dds-select__control {
+  min-height: 44px;
+}
+
+.dds-select--small.dds-select--focused .dds-select__control,
+.dds-select--small.dds-select--error .dds-select__control {
+  min-height: 36px;
+  padding-block: 8px;
+}
+
+.dds-select--placeholder .dds-select__control,
+.dds-select--disabled .dds-select__control {
+  color: var(--text-colour-placeholder);
+}
+
+.dds-select--disabled .dds-select__control {
+  cursor: not-allowed;
+}
+
+.dds-select__icon {
+  position: absolute;
+  z-index: 0;
+  right: var(--space-3);
+  display: inline-flex;
+  color: var(--text-colour-default);
+  pointer-events: none;
+}
+
+.dds-select--disabled .dds-select__icon {
+  color: var(--text-colour-placeholder);
+}
+
+.dds-select__supporting-text {
+  margin: 0;
+  padding-top: var(--space-2);
+  color: var(--text-colour-secondary);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-regular);
+  line-height: 16px;
+}
+
+.dds-select__error {
+  color: var(--text-colour-danger);
+  font-weight: var(--font-weight-medium);
+}
