@@ -1,10 +1,18 @@
 :root {
 
-    --dds-bg-default: var(--dds-grey-100);
-    --dds-bg-white: var(--dds-color-neutral-white);
-    --dds-bg-info-muted: var(--dds-blue-100);
-    --dds-bg-success-muted: var(--dds-green-100);
-    --dds-bg-warning-muted: var(--dds-yellow-100);
-    --dds-bg-danger-muted: var(--dds-red-100);
+    --bg-colour-default: var(--grey-100);
+    --bg-colour-secondary: var(--grey-600);
+    --bg-colour-tertiary: var(--grey-400);
+    --bg-colour-accent-dark: var(--blue-800);
+    --bg-colour-accent: var(--blue-700);
+    --bg-colour-accent-muted: var(--blue-700, 0.4);
+    --bg-colour-disabled: var(--grey-100);
+    --bg-colour-white: var(--color-neutral-white);
+    --bg-colour-info-muted: var(--blue-100);
+    --bg-colour-success-muted: var(--green-100);
+    --bg-colour-warning-muted: var(--yellow-100);
+    --bg-colour-danger-muted: var(--red-100);
+    --bg-colour-overlay-light: rgba(255, 255, 255, 0.6);
+    --bg-colour-overlay-dark: rgba(0, 0, 0, 0.6);
 
 }
