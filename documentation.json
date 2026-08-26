@@ -709,8 +709,18 @@
                         "type": "component"
                     },
                     {
+                        "name": "OtpInputComponent",
+                        "type": "component",
+                        "description": "A six-digit one-time-code field with paste, mobile autofill, and validation support."
+                    },
+                    {
                         "name": "PasswordInputComponent",
                         "type": "component"
+                    },
+                    {
+                        "name": "SearchComponent",
+                        "type": "component",
+                        "description": "A search field with optional suggestions and accessible combobox keyboard behavior."
                     },
                     {
                         "name": "ToastComponent",
@@ -1213,6 +1223,506 @@
             "templateData": "<nav class=\"dds-numbered-pagination\" [attr.aria-label]=\"ariaLabel\">\n  <button\n    class=\"dds-numbered-pagination__item dds-numbered-pagination__item--previous\"\n    type=\"button\"\n    aria-label=\"Previous page\"\n    [disabled]=\"isFirstPage\"\n    (click)=\"selectPage(normalizedCurrentPage - 1)\"\n  >\n    <dds-icon name=\"chevron-left\" [size]=\"16\"></dds-icon>\n  </button>\n\n  <ng-container *ngFor=\"let item of items; trackBy: trackItem\">\n    <span\n      *ngIf=\"item === 'ellipsis-start' || item === 'ellipsis-end'; else pageButton\"\n      class=\"dds-numbered-pagination__item dds-numbered-pagination__ellipsis\"\n      aria-hidden=\"true\"\n    >\n      …\n    </span>\n\n    <ng-template #pageButton>\n      <button\n        class=\"dds-numbered-pagination__item\"\n        type=\"button\"\n        [class.dds-numbered-pagination__item--active]=\"item === normalizedCurrentPage\"\n        [attr.aria-label]=\"'Page ' + item\"\n        [attr.aria-current]=\"item === normalizedCurrentPage ? 'page' : null\"\n        (click)=\"selectPage(asPageNumber(item))\"\n      >\n        {{ item }}\n      </button>\n    </ng-template>\n  </ng-container>\n\n  <button\n    class=\"dds-numbered-pagination__item dds-numbered-pagination__item--next\"\n    type=\"button\"\n    aria-label=\"Next page\"\n    [disabled]=\"isLastPage\"\n    (click)=\"selectPage(normalizedCurrentPage + 1)\"\n  >\n    <dds-icon name=\"chevron-right\" [size]=\"16\"></dds-icon>\n  </button>\n</nav>\n"
         },
         {
+            "name": "OtpInputComponent",
+            "id": "component-OtpInputComponent-fbb41fb633c641c4207303dfa0e464248ec019a34c704a2aa1819547418ee18db43c45886634499b7dbd7e7f34219fc32c5d21dc879272f91cf4f68a56ae2474",
+            "file": "src/app/components/otp-input/otp-input.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "dds-otp-input",
+            "styleUrls": [
+                "./otp-input.component.css"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./otp-input.component.html"
+            ],
+            "templateVariables": [],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "coverageIgnore": false,
+                    "name": "ariaLabel",
+                    "defaultValue": "'Six-digit verification code'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nAccessible name used when the visible label is hidden.",
+                    "description": "<p>Accessible name used when the visible label is hidden.</p>\n",
+                    "line": 45,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "codeExpired",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nSwitches the expiry information to its expired treatment.",
+                    "description": "<p>Switches the expiry information to its expired treatment.</p>\n",
+                    "line": 57,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "errorMessage",
+                    "defaultValue": "'Enter the complete six-digit code.'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nValidation guidance shown in the error state.",
+                    "description": "<p>Validation guidance shown in the error state.</p>\n",
+                    "line": 48,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "expiryTime",
+                    "defaultValue": "'02:57'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nFormatted time remaining for the current code.",
+                    "description": "<p>Formatted time remaining for the current code.</p>\n",
+                    "line": 60,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "inputId",
+                    "defaultValue": "`dds-otp-input-${nextOtpInputId++}`",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nUnique ID for the native input and visible label.",
+                    "description": "<p>Unique ID for the native input and visible label.</p>\n",
+                    "line": 24,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "label",
+                    "defaultValue": "'Verification code'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nVisible field label.",
+                    "description": "<p>Visible field label.</p>\n",
+                    "line": 27,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "required",
+                    "defaultValue": "true",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nMarks the native input as required.",
+                    "description": "<p>Marks the native input as required.</p>\n",
+                    "line": 39,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "showCodeExpiry",
+                    "defaultValue": "true",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nShows the expiry information beneath the fields.",
+                    "description": "<p>Shows the expiry information beneath the fields.</p>\n",
+                    "line": 54,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "showErrorMessage",
+                    "defaultValue": "true",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nShows validation guidance in the error state.",
+                    "description": "<p>Shows validation guidance in the error state.</p>\n",
+                    "line": 51,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "showLabel",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nShows the visible field label.",
+                    "description": "<p>Shows the visible field label.</p>\n",
+                    "line": 42,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "size",
+                    "defaultValue": "'desktop'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nResponsive dimensions from the DDS specification.",
+                    "description": "<p>Responsive dimensions from the DDS specification.</p>\n",
+                    "line": 33,
+                    "type": "OtpInputSize",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "state",
+                    "defaultValue": "'default'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nDeterministic visual state for validation and documentation.",
+                    "description": "<p>Deterministic visual state for validation and documentation.</p>\n",
+                    "line": 36,
+                    "type": "OtpInputState",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "value",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nCurrent numeric one-time code.",
+                    "description": "<p>Current numeric one-time code.</p>\n",
+                    "line": 30,
+                    "type": "string",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "completed",
+                    "coverageIgnore": false,
+                    "defaultValue": "new EventEmitter<string>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nEmitted once all six digits have been entered.",
+                    "description": "<p>Emitted once all six digits have been entered.</p>\n",
+                    "line": 66,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "valueChange",
+                    "coverageIgnore": false,
+                    "defaultValue": "new EventEmitter<string>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nEmitted whenever the numeric code changes.",
+                    "description": "<p>Emitted whenever the numeric code changes.</p>\n",
+                    "line": 63,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "digits",
+                    "coverageIgnore": false,
+                    "defaultValue": "Array.from({ length: 6 }, (_, index) => index)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 68,
+                    "rawdescription": "\n",
+                    "modifierKind": [
+                        148
+                    ]
+                },
+                {
+                    "name": "hasNativeFocus",
+                    "coverageIgnore": false,
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 69,
+                    "rawdescription": "\n"
+                },
+                {
+                    "name": "otpInput",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ElementRef<HTMLInputElement>",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 21,
+                    "rawdescription": "\n",
+                    "decorators": [
+                        {
+                            "name": "ViewChild",
+                            "stringifiedArguments": "'otpInput'"
+                        }
+                    ],
+                    "modifierKind": [
+                        171
+                    ]
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "digitAt",
+                    "coverageIgnore": false,
+                    "args": [
+                        {
+                            "name": "index",
+                            "type": "number",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "string",
+                    "typeParameters": [],
+                    "line": 105,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "jsdoctags": [
+                        {
+                            "name": "index",
+                            "type": "number",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "focusInput",
+                    "coverageIgnore": false,
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 117,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": ""
+                },
+                {
+                    "name": "handleInput",
+                    "coverageIgnore": false,
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "Event",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 123,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "Event",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "isActive",
+                    "coverageIgnore": false,
+                    "args": [
+                        {
+                            "name": "index",
+                            "type": "number",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "boolean",
+                    "typeParameters": [],
+                    "line": 109,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "jsdoctags": [
+                        {
+                            "name": "index",
+                            "type": "number",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "coverageIgnore": false,
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "IconComponent",
+                    "type": "component"
+                }
+            ],
+            "description": "<p>A six-digit one-time-code field with paste, mobile autofill, and validation support.</p>\n",
+            "rawdescription": "\n\nA six-digit one-time-code field with paste, mobile autofill, and validation support.\n",
+            "type": "component",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';\nimport { IconComponent } from '../icon/icon.component';\n\nexport type OtpInputSize = 'desktop' | 'mobile';\nexport type OtpInputState = 'default' | 'focused' | 'error' | 'disabled-loading';\n\nlet nextOtpInputId = 0;\n\n/**\n * A six-digit one-time-code field with paste, mobile autofill, and validation support.\n */\n@Component({\n  selector: 'dds-otp-input',\n  standalone: true,\n  imports: [CommonModule, IconComponent],\n  templateUrl: './otp-input.component.html',\n  styleUrl: './otp-input.component.css',\n})\nexport class OtpInputComponent {\n  @ViewChild('otpInput') otpInput?: ElementRef<HTMLInputElement>;\n\n  /** Unique ID for the native input and visible label. */\n  @Input() inputId = `dds-otp-input-${nextOtpInputId++}`;\n\n  /** Visible field label. */\n  @Input() label = 'Verification code';\n\n  /** Current numeric one-time code. */\n  @Input() value = '';\n\n  /** Responsive dimensions from the DDS specification. */\n  @Input() size: OtpInputSize = 'desktop';\n\n  /** Deterministic visual state for validation and documentation. */\n  @Input() state: OtpInputState = 'default';\n\n  /** Marks the native input as required. */\n  @Input() required = true;\n\n  /** Shows the visible field label. */\n  @Input() showLabel = false;\n\n  /** Accessible name used when the visible label is hidden. */\n  @Input() ariaLabel = 'Six-digit verification code';\n\n  /** Validation guidance shown in the error state. */\n  @Input() errorMessage = 'Enter the complete six-digit code.';\n\n  /** Shows validation guidance in the error state. */\n  @Input() showErrorMessage = true;\n\n  /** Shows the expiry information beneath the fields. */\n  @Input() showCodeExpiry = true;\n\n  /** Switches the expiry information to its expired treatment. */\n  @Input() codeExpired = false;\n\n  /** Formatted time remaining for the current code. */\n  @Input() expiryTime = '02:57';\n\n  /** Emitted whenever the numeric code changes. */\n  @Output() valueChange = new EventEmitter<string>();\n\n  /** Emitted once all six digits have been entered. */\n  @Output() completed = new EventEmitter<string>();\n\n  readonly digits = Array.from({ length: 6 }, (_, index) => index);\n  hasNativeFocus = false;\n\n  get isDisabled(): boolean {\n    return this.state === 'disabled-loading';\n  }\n\n  get isError(): boolean {\n    return this.state === 'error';\n  }\n\n  get activeIndex(): number {\n    return Math.min(this.value.length, this.digits.length - 1);\n  }\n\n  get errorId(): string {\n    return `${this.inputId}-error`;\n  }\n\n  get expiryId(): string {\n    return `${this.inputId}-expiry`;\n  }\n\n  get describedBy(): string | null {\n    const ids: string[] = [];\n\n    if (this.isError && this.showErrorMessage) {\n      ids.push(this.errorId);\n    }\n\n    if (this.showCodeExpiry) {\n      ids.push(this.expiryId);\n    }\n\n    return ids.length ? ids.join(' ') : null;\n  }\n\n  digitAt(index: number): string {\n    return this.value[index] ?? '';\n  }\n\n  isActive(index: number): boolean {\n    return (\n      !this.isDisabled &&\n      (this.hasNativeFocus || this.state === 'focused') &&\n      index === this.activeIndex\n    );\n  }\n\n  focusInput(): void {\n    if (!this.isDisabled) {\n      this.otpInput?.nativeElement.focus();\n    }\n  }\n\n  handleInput(event: Event): void {\n    const input = event.target as HTMLInputElement;\n    const nextValue = input.value.replace(/\\D/g, '').slice(0, this.digits.length);\n\n    input.value = nextValue;\n    this.value = nextValue;\n    this.valueChange.emit(nextValue);\n\n    if (nextValue.length === this.digits.length) {\n      this.completed.emit(nextValue);\n    }\n  }\n}\n",
+            "styleUrl": "./otp-input.component.css",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ":host {\n  display: inline-block;\n  max-width: 100%;\n}\n\n.dds-otp {\n  display: flex;\n  flex-direction: column;\n  width: 388px;\n  max-width: 100%;\n  color: var(--text-colour-default);\n  font-family: var(--font-family-primary);\n}\n\n.dds-otp--mobile {\n  width: 304px;\n}\n\n.dds-otp__label {\n  display: flex;\n  gap: var(--space-1);\n  padding-bottom: var(--space-2);\n  font-size: var(--font-size-sm);\n  font-weight: var(--font-weight-semibold);\n  line-height: 20px;\n}\n\n.dds-otp__required {\n  color: var(--red-700);\n}\n\n.dds-otp__fields {\n  position: relative;\n  display: grid;\n  grid-template-columns: repeat(6, minmax(0, 1fr));\n  gap: var(--space-2);\n  width: 100%;\n  cursor: text;\n}\n\n.dds-otp__native-input {\n  position: absolute;\n  z-index: 1;\n  inset: 0;\n  width: 100%;\n  height: 100%;\n  padding: 0;\n  border: 0;\n  opacity: 0;\n  cursor: text;\n}\n\n.dds-otp__native-input:focus {\n  outline: none;\n}\n\n.dds-otp__field {\n  box-sizing: border-box;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  height: 67px;\n  border: 1px solid var(--border-colour-strong);\n  border-radius: var(--radius-sm);\n  background: var(--bg-colour-white);\n  font-size: var(--font-size-xl);\n  font-weight: var(--font-weight-semibold);\n  line-height: 24px;\n}\n\n.dds-otp--mobile .dds-otp__field {\n  width: 44px;\n  height: 44px;\n  font-size: var(--font-size-sm);\n  line-height: 20px;\n}\n\n.dds-otp__field--active {\n  border: 2px solid var(--border-colour-info);\n}\n\n.dds-otp--error .dds-otp__field {\n  border: 2px solid var(--border-colour-danger);\n}\n\n.dds-otp--disabled .dds-otp__fields {\n  cursor: not-allowed;\n}\n\n.dds-otp--disabled .dds-otp__native-input {\n  cursor: not-allowed;\n}\n\n.dds-otp--disabled .dds-otp__field {\n  border-color: var(--border-colour-default);\n  background: var(--bg-colour-disabled);\n  color: var(--text-colour-disabled);\n}\n\n.dds-otp__error-message {\n  margin: 0;\n  padding-top: var(--space-2);\n  color: var(--text-colour-danger);\n  font-size: var(--font-size-xs);\n  font-weight: var(--font-weight-medium);\n  line-height: 16px;\n  text-align: center;\n}\n\n.dds-otp__expiry {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  gap: var(--space-1);\n  margin: 0;\n  padding-top: var(--space-4);\n  color: var(--text-colour-tertiary);\n  font-size: var(--font-size-xs);\n  font-weight: var(--font-weight-regular);\n  line-height: 16px;\n  text-align: center;\n}\n\n.dds-otp__expiry dds-icon {\n  display: inline-flex;\n}\n\n.dds-otp__expiry strong {\n  color: var(--text-colour-default);\n  font-weight: var(--font-weight-semibold);\n}\n\n.dds-otp__expiry--expired {\n  color: var(--text-colour-danger);\n  font-weight: var(--font-weight-medium);\n}\n",
+                    "styleUrl": "./otp-input.component.css"
+                }
+            ],
+            "stylesData": "",
+            "jsdoctags": [
+                {
+                    "pos": 357,
+                    "end": 452,
+                    "kind": 321,
+                    "id": 0,
+                    "flags": 16777216,
+                    "modifierFlagsCache": 0,
+                    "transformFlags": 0,
+                    "comment": "A six-digit one-time-code field with paste, mobile autofill, and validation support."
+                }
+            ],
+            "extends": [],
+            "accessors": {
+                "isDisabled": {
+                    "name": "isDisabled",
+                    "getSignature": {
+                        "name": "isDisabled",
+                        "type": "boolean",
+                        "returnType": "boolean",
+                        "line": 71,
+                        "rawdescription": "\n",
+                        "description": ""
+                    }
+                },
+                "isError": {
+                    "name": "isError",
+                    "getSignature": {
+                        "name": "isError",
+                        "type": "boolean",
+                        "returnType": "boolean",
+                        "line": 75,
+                        "rawdescription": "\n",
+                        "description": ""
+                    }
+                },
+                "activeIndex": {
+                    "name": "activeIndex",
+                    "getSignature": {
+                        "name": "activeIndex",
+                        "type": "number",
+                        "returnType": "number",
+                        "line": 79,
+                        "rawdescription": "\n",
+                        "description": ""
+                    }
+                },
+                "errorId": {
+                    "name": "errorId",
+                    "getSignature": {
+                        "name": "errorId",
+                        "type": "string",
+                        "returnType": "string",
+                        "line": 83,
+                        "rawdescription": "\n",
+                        "description": ""
+                    }
+                },
+                "expiryId": {
+                    "name": "expiryId",
+                    "getSignature": {
+                        "name": "expiryId",
+                        "type": "string",
+                        "returnType": "string",
+                        "line": 87,
+                        "rawdescription": "\n",
+                        "description": ""
+                    }
+                },
+                "describedBy": {
+                    "name": "describedBy",
+                    "getSignature": {
+                        "name": "describedBy",
+                        "type": "unknown",
+                        "returnType": "string | null",
+                        "line": 91,
+                        "rawdescription": "\n",
+                        "description": ""
+                    }
+                }
+            },
+            "relationships": {
+                "incoming": [],
+                "outgoing": [
+                    {
+                        "name": "CommonModule",
+                        "type": "module"
+                    },
+                    {
+                        "name": "IconComponent",
+                        "type": "component"
+                    }
+                ]
+            },
+            "templateData": "<div\n  class=\"dds-otp\"\n  [class.dds-otp--mobile]=\"size === 'mobile'\"\n  [class.dds-otp--error]=\"isError\"\n  [class.dds-otp--disabled]=\"isDisabled\"\n>\n  <label *ngIf=\"showLabel\" class=\"dds-otp__label\" [for]=\"inputId\">\n    {{ label }}\n    <span *ngIf=\"required\" class=\"dds-otp__required\" aria-hidden=\"true\">*</span>\n  </label>\n\n  <div class=\"dds-otp__fields\" (click)=\"focusInput()\">\n    <input\n      #otpInput\n      class=\"dds-otp__native-input\"\n      [id]=\"inputId\"\n      type=\"text\"\n      inputmode=\"numeric\"\n      autocomplete=\"one-time-code\"\n      pattern=\"[0-9]*\"\n      maxlength=\"6\"\n      [value]=\"value\"\n      [required]=\"required\"\n      [disabled]=\"isDisabled\"\n      [attr.aria-label]=\"showLabel ? null : ariaLabel\"\n      [attr.aria-invalid]=\"isError\"\n      [attr.aria-describedby]=\"describedBy\"\n      (input)=\"handleInput($event)\"\n      (focus)=\"hasNativeFocus = true\"\n      (blur)=\"hasNativeFocus = false\"\n    />\n\n    <span\n      *ngFor=\"let index of digits\"\n      class=\"dds-otp__field\"\n      [class.dds-otp__field--active]=\"isActive(index)\"\n      aria-hidden=\"true\"\n    >\n      {{ digitAt(index) }}\n    </span>\n  </div>\n\n  <p\n    *ngIf=\"isError && showErrorMessage\"\n    class=\"dds-otp__error-message\"\n    [id]=\"errorId\"\n    aria-live=\"polite\"\n  >\n    {{ errorMessage }}\n  </p>\n\n  <div\n    *ngIf=\"showCodeExpiry\"\n    class=\"dds-otp__expiry\"\n    [class.dds-otp__expiry--expired]=\"codeExpired\"\n    [id]=\"expiryId\"\n  >\n    <ng-container *ngIf=\"!codeExpired; else expired\">\n      <dds-icon name=\"clock\" [size]=\"size === 'mobile' ? 16 : 14\" aria-hidden=\"true\"></dds-icon>\n      <span>Code expires in</span>\n      <strong>{{ expiryTime }}</strong>\n    </ng-container>\n    <ng-template #expired>Code expired</ng-template>\n  </div>\n</div>\n"
+        },
+        {
             "name": "PasswordInputComponent",
             "id": "component-PasswordInputComponent-7f2a6c6aa18dc1faa8c9aac6abca3070fda4007d98d2f49b0f32609e8823626b190570a8c3a44beb9d4b78f702c766fd0d502466314ceefa7798be8339f1e58f",
             "file": "src/app/components/password-input/password-input.component.ts",
@@ -1563,6 +2073,495 @@
                 ]
             },
             "templateData": "<div\n  class=\"dds-password-input\"\n  [class.dds-password-input--mobile]=\"size === 'mobile'\"\n  [class.dds-password-input--focused]=\"state === 'focused'\"\n  [class.dds-password-input--error]=\"isError\"\n  [class.dds-password-input--disabled]=\"disabled\"\n>\n  <label *ngIf=\"showLabel\" class=\"dds-password-input__label\" [for]=\"inputId\">\n    {{ label }}\n    <span *ngIf=\"required\" class=\"dds-password-input__required\" aria-hidden=\"true\">*</span>\n  </label>\n\n  <div class=\"dds-password-input__field\">\n    <input\n      class=\"dds-password-input__control\"\n      [id]=\"inputId\"\n      [name]=\"name\"\n      [type]=\"visible ? 'text' : 'password'\"\n      [value]=\"value\"\n      [placeholder]=\"placeholder\"\n      [required]=\"required\"\n      [disabled]=\"disabled\"\n      [autocomplete]=\"autocomplete\"\n      [attr.aria-label]=\"showLabel ? null : ariaLabel\"\n      [attr.aria-invalid]=\"isError ? 'true' : null\"\n      [attr.aria-describedby]=\"isError && showErrorMessage ? errorId : null\"\n      (input)=\"handleInput($event)\"\n    />\n\n    <button\n      class=\"dds-password-input__visibility\"\n      type=\"button\"\n      [disabled]=\"disabled\"\n      [attr.aria-label]=\"visible ? 'Hide password' : 'Show password'\"\n      [attr.aria-controls]=\"inputId\"\n      [attr.aria-pressed]=\"visible\"\n      (click)=\"toggleVisibility()\"\n    >\n      <dds-icon [name]=\"visible ? 'eye' : 'eye-off'\" [size]=\"iconSize\"></dds-icon>\n    </button>\n  </div>\n\n  <p *ngIf=\"isError && showErrorMessage\" class=\"dds-password-input__error\" [id]=\"errorId\">\n    {{ errorMessage }}\n  </p>\n</div>\n"
+        },
+        {
+            "name": "SearchComponent",
+            "id": "component-SearchComponent-266eb2cf20eb8b6ab85b72dfe45f10a42a6c432d87472efa922d417f51aac453daf809aed62057a8e547cf56e2ff7cdfb4a7a07d1565c8182390740e4a2dfc8e",
+            "file": "src/app/components/search/search.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "dds-search",
+            "styleUrls": [
+                "./search.component.css"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./search.component.html"
+            ],
+            "templateVariables": [],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "coverageIgnore": false,
+                    "name": "ariaLabel",
+                    "defaultValue": "'Search'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nAccessible name used when the visible label is hidden.",
+                    "description": "<p>Accessible name used when the visible label is hidden.</p>\n",
+                    "line": 46,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "expanded",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nOpens the suggestions menu for controlled previews.",
+                    "description": "<p>Opens the suggestions menu for controlled previews.</p>\n",
+                    "line": 52,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "inputId",
+                    "defaultValue": "`dds-search-${nextSearchId++}`",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nUnique ID used to associate the label, input, and suggestions.",
+                    "description": "<p>Unique ID used to associate the label, input, and suggestions.</p>\n",
+                    "line": 22,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "label",
+                    "defaultValue": "'Search'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nVisible field label.",
+                    "description": "<p>Visible field label.</p>\n",
+                    "line": 25,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "placeholder",
+                    "defaultValue": "'Search...'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nPlaceholder shown when the query is empty.",
+                    "description": "<p>Placeholder shown when the query is empty.</p>\n",
+                    "line": 31,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "required",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nMarks the native search field as required.",
+                    "description": "<p>Marks the native search field as required.</p>\n",
+                    "line": 40,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "showLabel",
+                    "defaultValue": "true",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nShows the visible label.",
+                    "description": "<p>Shows the visible label.</p>\n",
+                    "line": 43,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "size",
+                    "defaultValue": "'large'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nResponsive size from the DDS specification.",
+                    "description": "<p>Responsive size from the DDS specification.</p>\n",
+                    "line": 34,
+                    "type": "SearchSize",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "state",
+                    "defaultValue": "'default'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nDeterministic focus treatment for documentation previews.",
+                    "description": "<p>Deterministic focus treatment for documentation previews.</p>\n",
+                    "line": 37,
+                    "type": "SearchState",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "suggestions",
+                    "defaultValue": "[]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nSuggestions displayed while the combobox is expanded.",
+                    "description": "<p>Suggestions displayed while the combobox is expanded.</p>\n",
+                    "line": 49,
+                    "type": "string[]",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "value",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nCurrent search query.",
+                    "description": "<p>Current search query.</p>\n",
+                    "line": 28,
+                    "type": "string",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "search",
+                    "coverageIgnore": false,
+                    "defaultValue": "new EventEmitter<string>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nEmitted when the user submits the current query.",
+                    "description": "<p>Emitted when the user submits the current query.</p>\n",
+                    "line": 58,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "suggestionSelected",
+                    "coverageIgnore": false,
+                    "defaultValue": "new EventEmitter<string>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nEmitted when the user chooses a suggestion.",
+                    "description": "<p>Emitted when the user chooses a suggestion.</p>\n",
+                    "line": 61,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "valueChange",
+                    "coverageIgnore": false,
+                    "defaultValue": "new EventEmitter<string>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nEmitted whenever the query changes.",
+                    "description": "<p>Emitted whenever the query changes.</p>\n",
+                    "line": 55,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "activeIndex",
+                    "coverageIgnore": false,
+                    "defaultValue": "-1",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 64,
+                    "rawdescription": "\n"
+                },
+                {
+                    "name": "closeTimer",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ReturnType<any>",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 65,
+                    "rawdescription": "\n",
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "hasNativeFocus",
+                    "coverageIgnore": false,
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 63,
+                    "rawdescription": "\n"
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "handleBlur",
+                    "coverageIgnore": false,
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 99,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": ""
+                },
+                {
+                    "name": "handleFocus",
+                    "coverageIgnore": false,
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 90,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": ""
+                },
+                {
+                    "name": "handleInput",
+                    "coverageIgnore": false,
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "Event",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 83,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "Event",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "handleKeydown",
+                    "coverageIgnore": false,
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "KeyboardEvent",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 107,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "KeyboardEvent",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "ngOnDestroy",
+                    "coverageIgnore": false,
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 152,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": ""
+                },
+                {
+                    "name": "selectSuggestion",
+                    "coverageIgnore": false,
+                    "args": [
+                        {
+                            "name": "suggestion",
+                            "type": "string",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 140,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "jsdoctags": [
+                        {
+                            "name": "suggestion",
+                            "type": "string",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "coverageIgnore": false,
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "IconComponent",
+                    "type": "component"
+                }
+            ],
+            "description": "<p>A search field with optional suggestions and accessible combobox keyboard behavior.</p>\n",
+            "rawdescription": "\n\nA search field with optional suggestions and accessible combobox keyboard behavior.\n",
+            "type": "component",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, EventEmitter, Input, OnDestroy, Output } from '@angular/core';\nimport { IconComponent } from '../icon/icon.component';\n\nexport type SearchSize = 'large' | 'small';\nexport type SearchState = 'default' | 'focused';\n\nlet nextSearchId = 0;\n\n/**\n * A search field with optional suggestions and accessible combobox keyboard behavior.\n */\n@Component({\n  selector: 'dds-search',\n  standalone: true,\n  imports: [CommonModule, IconComponent],\n  templateUrl: './search.component.html',\n  styleUrl: './search.component.css',\n})\nexport class SearchComponent implements OnDestroy {\n  /** Unique ID used to associate the label, input, and suggestions. */\n  @Input() inputId = `dds-search-${nextSearchId++}`;\n\n  /** Visible field label. */\n  @Input() label = 'Search';\n\n  /** Current search query. */\n  @Input() value = '';\n\n  /** Placeholder shown when the query is empty. */\n  @Input() placeholder = 'Search...';\n\n  /** Responsive size from the DDS specification. */\n  @Input() size: SearchSize = 'large';\n\n  /** Deterministic focus treatment for documentation previews. */\n  @Input() state: SearchState = 'default';\n\n  /** Marks the native search field as required. */\n  @Input() required = false;\n\n  /** Shows the visible label. */\n  @Input() showLabel = true;\n\n  /** Accessible name used when the visible label is hidden. */\n  @Input() ariaLabel = 'Search';\n\n  /** Suggestions displayed while the combobox is expanded. */\n  @Input() suggestions: string[] = [];\n\n  /** Opens the suggestions menu for controlled previews. */\n  @Input() expanded = false;\n\n  /** Emitted whenever the query changes. */\n  @Output() valueChange = new EventEmitter<string>();\n\n  /** Emitted when the user submits the current query. */\n  @Output() search = new EventEmitter<string>();\n\n  /** Emitted when the user chooses a suggestion. */\n  @Output() suggestionSelected = new EventEmitter<string>();\n\n  hasNativeFocus = false;\n  activeIndex = -1;\n  private closeTimer?: ReturnType<typeof setTimeout>;\n\n  get isFocused(): boolean {\n    return this.hasNativeFocus || this.state === 'focused';\n  }\n\n  get isExpanded(): boolean {\n    return this.expanded && this.suggestions.length > 0;\n  }\n\n  get listboxId(): string {\n    return `${this.inputId}-suggestions`;\n  }\n\n  get activeOptionId(): string | null {\n    return this.activeIndex >= 0 ? `${this.inputId}-option-${this.activeIndex}` : null;\n  }\n\n  handleInput(event: Event): void {\n    this.value = (event.target as HTMLInputElement).value;\n    this.valueChange.emit(this.value);\n    this.expanded = this.suggestions.length > 0;\n    this.activeIndex = -1;\n  }\n\n  handleFocus(): void {\n    if (this.closeTimer) {\n      clearTimeout(this.closeTimer);\n    }\n\n    this.hasNativeFocus = true;\n    this.expanded = this.suggestions.length > 0;\n  }\n\n  handleBlur(): void {\n    this.hasNativeFocus = false;\n    this.closeTimer = setTimeout(() => {\n      this.expanded = false;\n      this.activeIndex = -1;\n    });\n  }\n\n  handleKeydown(event: KeyboardEvent): void {\n    if (event.key === 'ArrowDown' && this.suggestions.length) {\n      event.preventDefault();\n      this.expanded = true;\n      this.activeIndex = (this.activeIndex + 1) % this.suggestions.length;\n      return;\n    }\n\n    if (event.key === 'ArrowUp' && this.suggestions.length) {\n      event.preventDefault();\n      this.expanded = true;\n      this.activeIndex = this.activeIndex <= 0 ? this.suggestions.length - 1 : this.activeIndex - 1;\n      return;\n    }\n\n    if (event.key === 'Escape') {\n      this.expanded = false;\n      this.activeIndex = -1;\n      return;\n    }\n\n    if (event.key === 'Enter') {\n      event.preventDefault();\n\n      if (this.isExpanded && this.activeIndex >= 0) {\n        this.selectSuggestion(this.suggestions[this.activeIndex]);\n      } else {\n        this.search.emit(this.value.trim());\n        this.expanded = false;\n      }\n    }\n  }\n\n  selectSuggestion(suggestion: string): void {\n    if (this.closeTimer) {\n      clearTimeout(this.closeTimer);\n    }\n\n    this.value = suggestion;\n    this.valueChange.emit(suggestion);\n    this.suggestionSelected.emit(suggestion);\n    this.expanded = false;\n    this.activeIndex = -1;\n  }\n\n  ngOnDestroy(): void {\n    if (this.closeTimer) {\n      clearTimeout(this.closeTimer);\n    }\n  }\n}\n",
+            "styleUrl": "./search.component.css",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ":host {\n  display: block;\n  max-width: 100%;\n}\n\n.dds-search {\n  display: flex;\n  flex-direction: column;\n  width: 460px;\n  max-width: 100%;\n  color: var(--text-colour-default);\n  font-family: var(--font-family-primary);\n}\n\n.dds-search__label {\n  display: flex;\n  align-items: center;\n  gap: var(--space-1);\n  padding-bottom: var(--space-1);\n  font-size: var(--font-size-sm);\n  font-weight: var(--font-weight-semibold);\n  line-height: 20px;\n}\n\n.dds-search--small .dds-search__label {\n  font-size: var(--font-size-xs);\n  line-height: 16px;\n}\n\n.dds-search__required {\n  color: var(--text-colour-danger);\n}\n\n.dds-search__field {\n  box-sizing: border-box;\n  display: flex;\n  align-items: center;\n  width: 100%;\n  min-height: 48px;\n  gap: var(--space-2);\n  padding: var(--space-3);\n  border: 1px solid var(--border-colour-default);\n  border-radius: var(--radius-sm);\n  background: var(--bg-colour-white);\n}\n\n.dds-search--small .dds-search__field {\n  min-height: 40px;\n}\n\n.dds-search--focused .dds-search__field,\n.dds-search__field:focus-within {\n  border: 2px solid var(--border-colour-info);\n  padding: 11px;\n}\n\n.dds-search__icon {\n  display: inline-flex;\n  flex: 0 0 auto;\n  color: var(--text-colour-default);\n}\n\n.dds-search__input {\n  flex: 1 1 auto;\n  min-width: 0;\n  padding: 0;\n  border: 0;\n  outline: 0;\n  background: transparent;\n  color: var(--text-colour-default);\n  font: inherit;\n  font-size: var(--font-size-md);\n  line-height: 24px;\n}\n\n.dds-search--small .dds-search__input {\n  font-size: var(--font-size-sm);\n  line-height: 20px;\n}\n\n.dds-search__input::placeholder {\n  color: var(--text-colour-placeholder);\n  opacity: 1;\n}\n\n.dds-search__input::-webkit-search-cancel-button {\n  display: none;\n}\n\n.dds-search__dropdown {\n  padding-top: var(--space-2);\n}\n\n.dds-search__listbox {\n  margin: 0;\n  padding: 0;\n  overflow: hidden;\n  border-radius: var(--radius-sm);\n  background: var(--bg-colour-white);\n  box-shadow: 0 4px 16px rgb(0 0 0 / 8%);\n  list-style: none;\n}\n\n.dds-search__option {\n  box-sizing: border-box;\n  padding: var(--space-2) var(--space-4);\n  font-size: var(--font-size-sm);\n  line-height: 20px;\n  cursor: pointer;\n}\n\n.dds-search__option:hover,\n.dds-search__option--active {\n  background: var(--grey-200);\n}\n",
+                    "styleUrl": "./search.component.css"
+                }
+            ],
+            "stylesData": "",
+            "jsdoctags": [
+                {
+                    "pos": 305,
+                    "end": 399,
+                    "kind": 321,
+                    "id": 0,
+                    "flags": 16777216,
+                    "modifierFlagsCache": 0,
+                    "transformFlags": 0,
+                    "comment": "A search field with optional suggestions and accessible combobox keyboard behavior."
+                }
+            ],
+            "extends": [],
+            "implements": [
+                "OnDestroy"
+            ],
+            "accessors": {
+                "isFocused": {
+                    "name": "isFocused",
+                    "getSignature": {
+                        "name": "isFocused",
+                        "type": "boolean",
+                        "returnType": "boolean",
+                        "line": 67,
+                        "rawdescription": "\n",
+                        "description": ""
+                    }
+                },
+                "isExpanded": {
+                    "name": "isExpanded",
+                    "getSignature": {
+                        "name": "isExpanded",
+                        "type": "boolean",
+                        "returnType": "boolean",
+                        "line": 71,
+                        "rawdescription": "\n",
+                        "description": ""
+                    }
+                },
+                "listboxId": {
+                    "name": "listboxId",
+                    "getSignature": {
+                        "name": "listboxId",
+                        "type": "string",
+                        "returnType": "string",
+                        "line": 75,
+                        "rawdescription": "\n",
+                        "description": ""
+                    }
+                },
+                "activeOptionId": {
+                    "name": "activeOptionId",
+                    "getSignature": {
+                        "name": "activeOptionId",
+                        "type": "unknown",
+                        "returnType": "string | null",
+                        "line": 79,
+                        "rawdescription": "\n",
+                        "description": ""
+                    }
+                }
+            },
+            "relationships": {
+                "incoming": [],
+                "outgoing": [
+                    {
+                        "name": "CommonModule",
+                        "type": "module"
+                    },
+                    {
+                        "name": "IconComponent",
+                        "type": "component"
+                    },
+                    {
+                        "name": "OnDestroy",
+                        "type": "interface"
+                    }
+                ]
+            },
+            "templateData": "<div\n  class=\"dds-search\"\n  [class.dds-search--small]=\"size === 'small'\"\n  [class.dds-search--focused]=\"isFocused\"\n>\n  <label *ngIf=\"showLabel\" class=\"dds-search__label\" [for]=\"inputId\">\n    {{ label }}\n    <span *ngIf=\"required\" class=\"dds-search__required\" aria-hidden=\"true\">*</span>\n  </label>\n\n  <div class=\"dds-search__field\">\n    <dds-icon\n      class=\"dds-search__icon\"\n      name=\"search\"\n      [size]=\"size === 'small' ? 20 : 24\"\n      aria-hidden=\"true\"\n    ></dds-icon>\n    <input\n      class=\"dds-search__input\"\n      [id]=\"inputId\"\n      type=\"search\"\n      role=\"combobox\"\n      autocomplete=\"off\"\n      [value]=\"value\"\n      [placeholder]=\"placeholder\"\n      [required]=\"required\"\n      [attr.aria-label]=\"showLabel ? null : ariaLabel\"\n      [attr.aria-autocomplete]=\"suggestions.length ? 'list' : 'none'\"\n      [attr.aria-controls]=\"suggestions.length ? listboxId : null\"\n      [attr.aria-expanded]=\"isExpanded\"\n      [attr.aria-activedescendant]=\"activeOptionId\"\n      (input)=\"handleInput($event)\"\n      (focus)=\"handleFocus()\"\n      (blur)=\"handleBlur()\"\n      (keydown)=\"handleKeydown($event)\"\n    />\n  </div>\n\n  <div *ngIf=\"isExpanded\" class=\"dds-search__dropdown\">\n    <ul class=\"dds-search__listbox\" role=\"listbox\" [id]=\"listboxId\">\n      <li\n        *ngFor=\"let suggestion of suggestions; let index = index\"\n        class=\"dds-search__option\"\n        role=\"option\"\n        [id]=\"inputId + '-option-' + index\"\n        [attr.aria-selected]=\"index === activeIndex\"\n        [class.dds-search__option--active]=\"index === activeIndex\"\n        (mousedown)=\"$event.preventDefault()\"\n        (click)=\"selectSuggestion(suggestion)\"\n      >\n        {{ suggestion }}\n      </li>\n    </ul>\n  </div>\n</div>\n"
         },
         {
             "name": "ToastComponent",
@@ -2048,10 +3047,32 @@
                 "defaultValue": "[\n  'info',\n  'arrow-right',\n  'arrow-left',\n  'arrow-down',\n  'arrow-up-down',  \n  'arrow-up',\n  'check',\n  'chevron-down',\n  'chevron-right',\n  'chevron-left',\n  'chevron-up',\n  'chevrons-up-down',\n  'list-filter',\n  'columns-3',\n  'search',\n  'menu',\n  'circle-alert',\n  'ellipsis',\n  'plus',\n  'trash-2',\n  'x',\n  'layout-dashboard',\n  'ellipsis-vertical',\n  'house',\n  'map-pin',\n  'panels-top-left',\n  'grip-vertical',\n  'download',\n  'upload',\n  'minus',\n  'archive',\n  'ban',\n  'pencil',\n  'settings',\n  'sliders-horizontal',\n  'square-pen',\n  'copy',\n  'funnel',\n  'external-link',\n  'refresh-cw',\n  'wrench',\n  'brush-cleaning',\n  'cloud-upload',\n  'wand-sparkles',\n  'user',\n  'users',\n  'user-x',\n  'key-round',\n  'lock-keyhole',\n  'user-round',\n  'eye',\n  'eye-off',\n  'log-out',\n  'send-horizontal',\n  'bell',\n  'bell-dot',\n  'message-square-plus',\n  'star',\n  'circle-question-mark',\n  'phone',\n  'share-2',\n  'image',\n  'circle-stop',\n  'circle-play',\n  'headset',\n  'file',\n  'clipboard-list',\n  'printer',\n  'type',\n  'hash',\n  'at-sign',\n  'text-wrap',\n  'circle-dot',\n  'square-check',\n  'list',\n  'toggle-right',\n  'clock',\n  'circle-check',\n  'triangle-alert',\n  'calendar-days',\n  'calendar-1',\n  'loader-circle',\n  'life-buoy',\n  'shopping-cart',\n  'box',\n  'package',\n  'truck',\n  'chart-no-axes-combined',\n  'dollar-sign',\n  'credit-card',\n  'receipt-text',\n  'store',\n  'factory',\n  'chart-no-axes-column',\n  'battery-full',\n  'scan',\n  'person-standing',\n  'monitor-smartphone',\n  'contrast',\n  'wifi',\n  'signal',\n] as const"
             },
             {
+                "name": "nextOtpInputId",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/components/otp-input/otp-input.component.ts",
+                "coverageIgnore": false,
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "number",
+                "defaultValue": "0"
+            },
+            {
                 "name": "nextPasswordInputId",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
                 "file": "src/app/components/password-input/password-input.component.ts",
+                "coverageIgnore": false,
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "number",
+                "defaultValue": "0"
+            },
+            {
+                "name": "nextSearchId",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/components/search/search.component.ts",
                 "coverageIgnore": false,
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -2212,6 +3233,32 @@
                 "kind": 200
             },
             {
+                "name": "OtpInputSize",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "coverageIgnore": false,
+                "rawtype": "\"desktop\" | \"mobile\"",
+                "file": "src/app/components/otp-input/otp-input.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "rawdescription": "",
+                "description": "",
+                "kind": 193
+            },
+            {
+                "name": "OtpInputState",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "coverageIgnore": false,
+                "rawtype": "\"default\" | \"focused\" | \"error\" | \"disabled-loading\"",
+                "file": "src/app/components/otp-input/otp-input.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "rawdescription": "",
+                "description": "",
+                "kind": 193
+            },
+            {
                 "name": "PaginationItem",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
@@ -2244,6 +3291,32 @@
                 "coverageIgnore": false,
                 "rawtype": "\"default\" | \"focused\" | \"error\"",
                 "file": "src/app/components/password-input/password-input.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "rawdescription": "",
+                "description": "",
+                "kind": 193
+            },
+            {
+                "name": "SearchSize",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "coverageIgnore": false,
+                "rawtype": "\"large\" | \"small\"",
+                "file": "src/app/components/search/search.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "rawdescription": "",
+                "description": "",
+                "kind": 193
+            },
+            {
+                "name": "SearchState",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "coverageIgnore": false,
+                "rawtype": "\"default\" | \"focused\"",
+                "file": "src/app/components/search/search.component.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "rawdescription": "",
@@ -2390,12 +3463,38 @@
                     "defaultValue": "[\n  'info',\n  'arrow-right',\n  'arrow-left',\n  'arrow-down',\n  'arrow-up-down',  \n  'arrow-up',\n  'check',\n  'chevron-down',\n  'chevron-right',\n  'chevron-left',\n  'chevron-up',\n  'chevrons-up-down',\n  'list-filter',\n  'columns-3',\n  'search',\n  'menu',\n  'circle-alert',\n  'ellipsis',\n  'plus',\n  'trash-2',\n  'x',\n  'layout-dashboard',\n  'ellipsis-vertical',\n  'house',\n  'map-pin',\n  'panels-top-left',\n  'grip-vertical',\n  'download',\n  'upload',\n  'minus',\n  'archive',\n  'ban',\n  'pencil',\n  'settings',\n  'sliders-horizontal',\n  'square-pen',\n  'copy',\n  'funnel',\n  'external-link',\n  'refresh-cw',\n  'wrench',\n  'brush-cleaning',\n  'cloud-upload',\n  'wand-sparkles',\n  'user',\n  'users',\n  'user-x',\n  'key-round',\n  'lock-keyhole',\n  'user-round',\n  'eye',\n  'eye-off',\n  'log-out',\n  'send-horizontal',\n  'bell',\n  'bell-dot',\n  'message-square-plus',\n  'star',\n  'circle-question-mark',\n  'phone',\n  'share-2',\n  'image',\n  'circle-stop',\n  'circle-play',\n  'headset',\n  'file',\n  'clipboard-list',\n  'printer',\n  'type',\n  'hash',\n  'at-sign',\n  'text-wrap',\n  'circle-dot',\n  'square-check',\n  'list',\n  'toggle-right',\n  'clock',\n  'circle-check',\n  'triangle-alert',\n  'calendar-days',\n  'calendar-1',\n  'loader-circle',\n  'life-buoy',\n  'shopping-cart',\n  'box',\n  'package',\n  'truck',\n  'chart-no-axes-combined',\n  'dollar-sign',\n  'credit-card',\n  'receipt-text',\n  'store',\n  'factory',\n  'chart-no-axes-column',\n  'battery-full',\n  'scan',\n  'person-standing',\n  'monitor-smartphone',\n  'contrast',\n  'wifi',\n  'signal',\n] as const"
                 }
             ],
+            "src/app/components/otp-input/otp-input.component.ts": [
+                {
+                    "name": "nextOtpInputId",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/components/otp-input/otp-input.component.ts",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "defaultValue": "0"
+                }
+            ],
             "src/app/components/password-input/password-input.component.ts": [
                 {
                     "name": "nextPasswordInputId",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
                     "file": "src/app/components/password-input/password-input.component.ts",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "defaultValue": "0"
+                }
+            ],
+            "src/app/components/search/search.component.ts": [
+                {
+                    "name": "nextSearchId",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/components/search/search.component.ts",
                     "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
@@ -2543,6 +3642,34 @@
                     "kind": 200
                 }
             ],
+            "src/app/components/otp-input/otp-input.component.ts": [
+                {
+                    "name": "OtpInputSize",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "coverageIgnore": false,
+                    "rawtype": "\"desktop\" | \"mobile\"",
+                    "file": "src/app/components/otp-input/otp-input.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "",
+                    "description": "",
+                    "kind": 193
+                },
+                {
+                    "name": "OtpInputState",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "coverageIgnore": false,
+                    "rawtype": "\"default\" | \"focused\" | \"error\" | \"disabled-loading\"",
+                    "file": "src/app/components/otp-input/otp-input.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "",
+                    "description": "",
+                    "kind": 193
+                }
+            ],
             "src/app/components/numbered-pagination/numbered-pagination.component.ts": [
                 {
                     "name": "PaginationItem",
@@ -2579,6 +3706,34 @@
                     "coverageIgnore": false,
                     "rawtype": "\"default\" | \"focused\" | \"error\"",
                     "file": "src/app/components/password-input/password-input.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "",
+                    "description": "",
+                    "kind": 193
+                }
+            ],
+            "src/app/components/search/search.component.ts": [
+                {
+                    "name": "SearchSize",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "coverageIgnore": false,
+                    "rawtype": "\"large\" | \"small\"",
+                    "file": "src/app/components/search/search.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "",
+                    "description": "",
+                    "kind": 193
+                },
+                {
+                    "name": "SearchState",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "coverageIgnore": false,
+                    "rawtype": "\"default\" | \"focused\"",
+                    "file": "src/app/components/search/search.component.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "",
@@ -2630,7 +3785,7 @@
         ]
     },
     "coverage": {
-        "count": 10,
+        "count": 11,
         "status": "low",
         "files": [
             {
@@ -2838,6 +3993,45 @@
                 "status": "low"
             },
             {
+                "filePath": "src/app/components/otp-input/otp-input.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "OtpInputComponent",
+                "coveragePercent": 69,
+                "coverageCount": "16/23",
+                "status": "good"
+            },
+            {
+                "filePath": "src/app/components/otp-input/otp-input.component.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "nextOtpInputId",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/otp-input/otp-input.component.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "OtpInputSize",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/otp-input/otp-input.component.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "OtpInputState",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
                 "filePath": "src/app/components/password-input/password-input.component.ts",
                 "type": "component",
                 "linktype": "component",
@@ -2872,6 +4066,45 @@
                 "linktype": "miscellaneous",
                 "linksubtype": "typealias",
                 "name": "PasswordInputState",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/search/search.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "SearchComponent",
+                "coveragePercent": 62,
+                "coverageCount": "15/24",
+                "status": "good"
+            },
+            {
+                "filePath": "src/app/components/search/search.component.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "nextSearchId",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/search/search.component.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "SearchSize",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/search/search.component.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "SearchState",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
