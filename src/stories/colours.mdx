@@ -1,0 +1,468 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Foundations/Colours" />
+
+export const palettes = [
+  {
+    name: 'Grey',
+    description: 'Neutral surfaces, borders, disabled states, and text hierarchy.',
+    colours: [
+      ['--grey-100', '#F7F7F7'],
+      ['--grey-200', '#E5E5E5'],
+      ['--grey-300', '#D4D4D4'],
+      ['--grey-400', '#A3A3A3'],
+      ['--grey-500', '#737373'],
+      ['--grey-600', '#525252'],
+      ['--grey-700', '#404040'],
+      ['--grey-800', '#262626'],
+      ['--grey-900', '#171717'],
+    ],
+  },
+  {
+    name: 'Blue',
+    description: 'Primary brand expression, links, focus, and informational states.',
+    colours: [
+      ['--blue-100', '#F0F4FA'],
+      ['--blue-200', '#D9E4F5'],
+      ['--blue-300', '#B3C9EB'],
+      ['--blue-400', '#82A6DD'],
+      ['--blue-500', '#4D7DCE'],
+      ['--blue-600', '#2F5EAF'],
+      ['--blue-700', '#224583'],
+      ['--blue-800', '#1A223B'],
+      ['--blue-900', '#0B0E1B'],
+    ],
+  },
+  {
+    name: 'Green',
+    description: 'Successful outcomes, confirmation, and positive status.',
+    colours: [
+      ['--green-100', '#E8F5E9'],
+      ['--green-200', '#C8E6C9'],
+      ['--green-300', '#A5D6A7'],
+      ['--green-400', '#81C784'],
+      ['--green-500', '#4CAF50'],
+      ['--green-600', '#43A047'],
+      ['--green-700', '#388E3C'],
+      ['--green-800', '#2E7D32'],
+      ['--green-900', '#1B5E20'],
+    ],
+  },
+  {
+    name: 'Yellow',
+    description: 'Warnings, attention, and states that may require action.',
+    colours: [
+      ['--yellow-100', '#FFFBEB'],
+      ['--yellow-200', '#FFF1C2'],
+      ['--yellow-300', '#FFE8A3'],
+      ['--yellow-400', '#E8B931'],
+      ['--yellow-500', '#E5A000'],
+      ['--yellow-600', '#BF6A02'],
+      ['--yellow-700', '#975102'],
+      ['--yellow-800', '#682D03'],
+      ['--yellow-900', '#522504'],
+    ],
+  },
+  {
+    name: 'Red',
+    description: 'Errors, destructive actions, and critical status.',
+    colours: [
+      ['--red-100', '#FEF2F2'],
+      ['--red-200', '#FEE2E2'],
+      ['--red-300', '#FECACA'],
+      ['--red-400', '#F87171'],
+      ['--red-500', '#EF4444'],
+      ['--red-600', '#DC2626'],
+      ['--red-700', '#B91C1C'],
+      ['--red-800', '#991B1B'],
+      ['--red-900', '#7F1D1D'],
+    ],
+  },
+  {
+    name: 'Teal',
+    description: 'Secondary brand accent used selectively on branded surfaces.',
+    colours: [
+      ['--teal-100', '#CEECF0'],
+      ['--teal-300', '#6EC3CE'],
+      ['--teal-400', '#44A6B3'],
+      ['--teal-500', '#328C98'],
+    ],
+  },
+];
+
+export const semanticGroups = [
+  {
+    name: 'Text',
+    description: 'Choose text tokens by meaning and hierarchy, not by their underlying shade.',
+    tokens: [
+      ['--text-colour-default', '--grey-900', 'Primary body copy and headings'],
+      ['--text-colour-secondary', '--grey-700', 'Supporting copy'],
+      ['--text-colour-tertiary', '--grey-500', 'Low-emphasis metadata'],
+      ['--text-colour-placeholder', '--grey-400', 'Form placeholders'],
+      ['--text-colour-disabled', '--grey-400', 'Unavailable content'],
+      ['--text-colour-inverse', '--colour-neutral-white', 'Text on dark surfaces'],
+      ['--text-colour-accent', '--blue-700', 'Links and branded emphasis'],
+      ['--text-colour-accent-on-brand', '--teal-300', 'Accent text on brand surfaces'],
+      ['--text-colour-info', '--blue-600', 'Informational messages'],
+      ['--text-colour-success', '--green-600', 'Success messages'],
+      ['--text-colour-warning', '--yellow-600', 'Warning messages'],
+      ['--text-colour-danger', '--red-600', 'Errors and destructive content'],
+    ],
+  },
+  {
+    name: 'Background',
+    description: 'Surface and feedback colours for page regions, containers, and overlays.',
+    tokens: [
+      ['--bg-colour-default', '--grey-100', 'Default subtle surface'],
+      ['--bg-colour-secondary', '--grey-600', 'Secondary dark surface'],
+      ['--bg-colour-tertiary', '--grey-400', 'Tertiary surface'],
+      ['--bg-colour-accent-dark', '--blue-800', 'Dark branded surface'],
+      ['--bg-colour-accent', '--blue-700', 'Primary branded surface'],
+      ['--bg-colour-disabled', '--grey-100', 'Disabled controls and regions'],
+      ['--bg-colour-white', '--colour-neutral-white', 'White surface'],
+      ['--bg-colour-info-muted', '--blue-100', 'Subtle information feedback'],
+      ['--bg-colour-success-muted', '--green-100', 'Subtle success feedback'],
+      ['--bg-colour-warning-muted', '--yellow-100', 'Subtle warning feedback'],
+      ['--bg-colour-danger-muted', '--red-100', 'Subtle danger feedback'],
+      ['--bg-colour-overlay-light', 'rgba(255, 255, 255, 0.6)', 'Light overlay'],
+      ['--bg-colour-overlay-dark', 'rgba(0, 0, 0, 0.6)', 'Dark overlay'],
+    ],
+  },
+  {
+    name: 'Border',
+    description: 'Dividers, control outlines, focus treatments, and validation states.',
+    tokens: [
+      ['--border-colour-default', '--grey-300', 'Default border'],
+      ['--border-colour-subtle', '--grey-200', 'Low-emphasis divider'],
+      ['--border-colour-strong', '--grey-400', 'Emphasised control outline'],
+      ['--border-colour-disabled', '--grey-200', 'Disabled outline'],
+      ['--border-colour-info', '--blue-600', 'Information and focus'],
+      ['--border-colour-success', '--green-600', 'Success state'],
+      ['--border-colour-warning', '--yellow-600', 'Warning state'],
+      ['--border-colour-danger', '--red-600', 'Error state'],
+      ['--border-colour-accent-primary', '--blue-700', 'Primary brand outline'],
+      ['--border-colour-accent-secondary', '--teal-300', 'Secondary brand outline'],
+      ['--border-colour-white', '--colour-neutral-white', 'Border on dark surfaces'],
+    ],
+  },
+  {
+    name: 'Icon',
+    description: 'Icon colours aligned with text hierarchy and feedback meaning.',
+    tokens: [
+      ['--icon-colour-default', '--grey-900', 'Default icon'],
+      ['--icon-colour-inverse', '--colour-neutral-white', 'Icon on dark surfaces'],
+      ['--icon-colour-disabled', '--grey-400', 'Disabled icon'],
+      ['--icon-colour-accent', '--blue-700', 'Branded icon'],
+      ['--icon-colour-accent-on-brand', '--teal-300', 'Accent icon on brand surfaces'],
+      ['--icon-colour-info', '--blue-600', 'Information status'],
+      ['--icon-colour-success', '--green-600', 'Success status'],
+      ['--icon-colour-warning', '--yellow-600', 'Warning status'],
+      ['--icon-colour-danger', '--red-600', 'Danger status'],
+    ],
+  },
+  {
+    name: 'Button',
+    description: 'Component-level aliases for supported button variants and interaction states.',
+    tokens: [
+      ['--btn-colour-primary', '--blue-600', 'Primary default'],
+      ['--btn-colour-primary-hover', '--blue-700', 'Primary hover'],
+      ['--btn-colour-primary-disabled', '--grey-200', 'Primary disabled'],
+      ['--btn-colour-secondary', '--colour-neutral-white', 'Secondary default'],
+      ['--btn-colour-secondary-hover', '--blue-100', 'Secondary hover'],
+      ['--btn-colour-secondary-disabled', '--colour-neutral-white', 'Secondary disabled'],
+      ['--btn-colour-danger', '--red-600', 'Danger default'],
+      ['--btn-colour-danger-hover', '--red-700', 'Danger hover'],
+      ['--btn-colour-danger-disabled', '--red-200', 'Danger disabled'],
+      ['--btn-colour-ghost', 'transparent', 'Ghost default'],
+      ['--btn-colour-ghost-hover', '--blue-100', 'Ghost hover'],
+      ['--btn-colour-ghost-disabled', 'transparent', 'Ghost disabled'],
+    ],
+  },
+];
+
+export const PrimitiveSwatch = ({ token, value }) => (
+  <div className="dds-colours__primitive">
+    <div className="dds-colours__swatch" style={{ background: `var(${token})` }} />
+    <div className="dds-colours__primitive-copy">
+      <code>{token}</code>
+      <span>{value}</span>
+    </div>
+  </div>
+);
+
+export const SemanticToken = ({ token, alias, usage }) => (
+  <div className="dds-colours__token">
+    <span className="dds-colours__token-swatch" style={{ background: `var(${token})` }} />
+    <div>
+      <code>{token}</code>
+      <p>{usage}</p>
+    </div>
+    <code>{alias}</code>
+  </div>
+);
+
+<div className="dds-colours">
+  <p className="dds-colours__eyebrow">FOUNDATIONS</p>
+
+# Colours
+
+Colour creates hierarchy, communicates status, and connects every DDS experience to the brand.
+The system separates **primitive palettes** from **semantic tokens** so components express intent
+without depending on a particular shade.
+
+<div className="dds-colours__callout">
+  <strong>Use semantic tokens in product code.</strong>
+  <span>
+    Primitive tokens are the raw palette. Semantic tokens describe purpose and can evolve without
+    requiring component-level changes.
+  </span>
+</div>
+
+## Primitive palette
+
+Primitives are the fixed colour values from which semantic decisions are made. Avoid referencing
+them directly inside components unless a matching semantic token does not yet exist.
+
+{palettes.map((palette) => (
+<section className="dds-colours__palette" key={palette.name}>
+<div className="dds-colours__section-heading">
+<h3>{palette.name}</h3>
+<p>{palette.description}</p>
+</div>
+<div className="dds-colours__primitive-grid">
+{palette.colours.map(([token, value]) => (
+<PrimitiveSwatch key={token} token={token} value={value} />
+))}
+</div>
+</section>
+))}
+
+## Semantic colours
+
+Semantic tokens connect colour to a repeatable role. Select the token whose name matches the
+intended meaning—not the one whose current value merely looks right.
+
+{semanticGroups.map((group) => (
+<section className="dds-colours__semantic-group" key={group.name}>
+<div className="dds-colours__section-heading">
+<h3>{group.name}</h3>
+<p>{group.description}</p>
+</div>
+<div className="dds-colours__token-list">
+{group.tokens.map(([token, alias, usage]) => (
+<SemanticToken key={token} token={token} alias={alias} usage={usage} />
+))}
+</div>
+</section>
+))}
+
+## Accessibility guidance
+
+- Do not use colour as the only way to communicate meaning. Pair status colours with text, an icon,
+  or another visible indicator.
+- Validate text and interactive controls against their actual background. Aim for at least **4.5:1**
+  for regular text and **3:1** for large text and essential graphical elements.
+- Preserve visible focus indicators and test feedback states in context, including disabled and
+  high-contrast environments.
+- Use muted feedback backgrounds with their corresponding strong text, icon, or border token.
+
+## Naming model
+
+<div className="dds-colours__naming">
+  <code>--text-colour-danger</code>
+  <span aria-hidden="true">→</span>
+  <span>
+    <strong>category</strong> · property · role
+  </span>
+</div>
+
+Token names use British English (`colour`) and describe the UI role. Component-specific tokens,
+such as `--btn-colour-primary-hover`, add the component, variant, and state when a global semantic
+name would be ambiguous.
+
+[View the colour source in Figma](https://www.figma.com/design/u0lpCPrGMj68e9RMIRuYxL/DDS---Design-System-v1.0?node-id=451-1987)
+
+</div>
+
+<style>{`
+  .dds-colours {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 24px 16px 72px;
+    color: var(--text-colour-default, #171717);
+    font-family: Inter, system-ui, sans-serif;
+  }
+
+  .dds-colours__eyebrow {
+    margin-bottom: 8px !important;
+    color: var(--text-colour-accent, #224583);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+  }
+
+  .dds-colours > h1 {
+    margin-bottom: 16px;
+    color: var(--text-colour-default, #171717);
+    font-size: 48px;
+    letter-spacing: -0.03em;
+  }
+
+  .dds-colours > h2 {
+    margin-top: 64px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border-colour-subtle, #e5e5e5);
+  }
+
+  .dds-colours__callout {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin: 32px 0;
+    padding: 20px 24px;
+    border-left: 4px solid var(--border-colour-info, #2f5eaf);
+    background: var(--bg-colour-info-muted, #f0f4fa);
+  }
+
+  .dds-colours__callout span,
+  .dds-colours__section-heading p,
+  .dds-colours__token p {
+    color: var(--text-colour-secondary, #404040);
+  }
+
+  .dds-colours__palette,
+  .dds-colours__semantic-group {
+    margin-top: 36px;
+  }
+
+  .dds-colours__section-heading {
+    display: grid;
+    grid-template-columns: minmax(120px, 180px) 1fr;
+    gap: 24px;
+    align-items: baseline;
+    margin-bottom: 16px;
+  }
+
+  .dds-colours__section-heading h3,
+  .dds-colours__section-heading p,
+  .dds-colours__token p {
+    margin: 0;
+  }
+
+  .dds-colours__primitive-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(112px, 1fr));
+    gap: 8px;
+  }
+
+  .dds-colours__primitive {
+    overflow: hidden;
+    min-width: 0;
+    border: 1px solid var(--border-colour-subtle, #e5e5e5);
+    border-radius: 6px;
+    background: #fff;
+  }
+
+  .dds-colours__swatch {
+    height: 88px;
+  }
+
+  .dds-colours__primitive-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 10px;
+  }
+
+  .dds-colours code {
+    overflow-wrap: anywhere;
+    color: var(--text-colour-secondary, #404040);
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  .dds-colours__primitive-copy span {
+    color: var(--text-colour-tertiary, #737373);
+    font-size: 12px;
+    text-transform: uppercase;
+  }
+
+  .dds-colours__token-list {
+    overflow: hidden;
+    border: 1px solid var(--border-colour-subtle, #e5e5e5);
+    border-radius: 8px;
+  }
+
+  .dds-colours__token {
+    display: grid;
+    grid-template-columns: 32px minmax(220px, 1fr) minmax(150px, 0.6fr);
+    gap: 16px;
+    align-items: center;
+    min-height: 64px;
+    padding: 10px 16px;
+    border-bottom: 1px solid var(--border-colour-subtle, #e5e5e5);
+    background: #fff;
+  }
+
+  .dds-colours__token:last-child {
+    border-bottom: 0;
+  }
+
+  .dds-colours__token-swatch {
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--border-colour-subtle, #e5e5e5);
+    border-radius: 4px;
+    background-image: linear-gradient(45deg, #e5e5e5 25%, transparent 25%),
+      linear-gradient(-45deg, #e5e5e5 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, #e5e5e5 75%),
+      linear-gradient(-45deg, transparent 75%, #e5e5e5 75%);
+  }
+
+  .dds-colours__token p {
+    margin-top: 3px;
+    font-size: 13px;
+  }
+
+  .dds-colours__naming {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: center;
+    margin: 20px 0;
+    padding: 20px;
+    border: 1px solid var(--border-colour-subtle, #e5e5e5);
+    border-radius: 8px;
+    background: var(--bg-colour-default, #f7f7f7);
+  }
+
+  .dds-colours__naming code,
+  .dds-colours__token > code:last-child {
+    display: inline-flex;
+    width: fit-content;
+    padding: 0 8px;
+    border: 1px solid var(--border-colour-subtle, #e5e5e5);
+    border-radius: 4px;
+    background: var(--bg-colour-default, #f7f7f7);
+    line-height: 24px;
+  }
+
+  @media (max-width: 640px) {
+    .dds-colours > h1 {
+      font-size: 40px;
+    }
+
+    .dds-colours__section-heading {
+      grid-template-columns: 1fr;
+      gap: 4px;
+    }
+
+    .dds-colours__token {
+      grid-template-columns: 32px 1fr;
+    }
+
+    .dds-colours__token > code:last-child {
+      grid-column: 2;
+    }
+  }
+`}</style>
