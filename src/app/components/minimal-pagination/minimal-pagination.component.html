@@ -1,0 +1,27 @@
+<nav class="dds-minimal-pagination" [attr.aria-label]="ariaLabel">
+  <dds-button
+    variant="secondary"
+    size="medium"
+    iconType="left-icon"
+    icon="chevron-left"
+    [disabled]="isFirstPage"
+    (click)="previous()"
+  >
+    Previous
+  </dds-button>
+
+  <span class="dds-minimal-pagination__status" aria-live="polite">
+    Page {{ normalizedCurrentPage }} of {{ normalizedTotalPages }}
+  </span>
+
+  <dds-button
+    variant="secondary"
+    size="medium"
+    iconType="right-icon"
+    icon="chevron-right"
+    [disabled]="isLastPage"
+    (click)="next()"
+  >
+    Next
+  </dds-button>
+</nav>
