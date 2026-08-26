@@ -38,7 +38,7 @@ const meta: Meta<ButtonStoryArgs> = {
   argTypes: {
     variant: {
       control: 'select',
-      options: ['primary', 'outlined', 'ghost'],
+      options: ['primary', 'secondary', 'ghost'],
       description: 'Visual treatment that signals the button’s importance and purpose.',
     },
     state: {
@@ -127,24 +127,10 @@ const meta: Meta<ButtonStoryArgs> = {
 export default meta;
 type Story = StoryObj<ButtonStoryArgs>;
 
-export const Primary: Story = {
+export const PrimaryNoIcon: Story = {
   args: {
     text: 'Primary action',
     variant: 'primary',
-  },
-};
-
-export const Outlined: Story = {
-  args: {
-    text: 'Outlined action',
-    variant: 'outlined',
-  },
-};
-
-export const Ghost: Story = {
-  args: {
-    text: 'Ghost action',
-    variant: 'ghost',
   },
 };
 
@@ -162,31 +148,104 @@ export const PrimaryWithRightIcon: Story = {
     text: 'Primary action',
     variant: 'primary',
     iconType: 'right-icon',
-    icon: 'info',
+    icon: 'arrow-right',
   },
 };
 
-export const OutlinedWithLeftIcon: Story = {
+export const PrimaryIconOnly: Story = {
   args: {
-    text: 'Outlined action',
-    variant: 'outlined',
+    text: '',
+    variant: 'primary',
+    iconType: 'icon-only',
+    icon: 'info',
+    ariaLabel: 'Primary action',
+  },
+};
+
+export const SecondaryNoIcon: Story = {
+  args: {
+    text: 'Secondary action',
+    variant: 'secondary',
+  },
+};
+
+export const SecondaryWithLeftIcon: Story = {
+  args: {
+    text: 'Secondary action',
+    variant: 'secondary',
     iconType: 'left-icon',
     icon: 'info',
   },
 };
 
-export const OutlinedWithRightIcon: Story = {
+export const SecondaryWithRightIcon: Story = {
   args: {
-    text: 'Outlined action',
-    variant: 'outlined',
+    text: 'Secondary action',
+    variant: 'secondary',
     iconType: 'right-icon',
     icon: 'arrow-right',
   },
 };
 
+export const SecondaryIconOnly: Story = {
+  args: {
+    text: '',
+    variant: 'secondary',
+    iconType: 'icon-only',
+    icon: 'info',
+    ariaLabel: 'Secondary action',
+  },
+};
+
+export const DangerNoIcon: Story = {
+  args: {
+    text: 'Danger action',
+    variant: 'primary',
+    styleType: 'danger',
+  },
+};
+
+export const DangerWithLeftIcon: Story = {
+  args: {
+    text: 'Danger action',
+    variant: 'primary',
+    styleType: 'danger',
+    iconType: 'left-icon',
+    icon: 'trash-2',
+  },
+};
+
+export const DangerWithRightIcon: Story = {
+  args: {
+    text: 'Danger action',
+    variant: 'primary',
+    styleType: 'danger',
+    iconType: 'right-icon',
+    icon: 'arrow-right',
+  },
+};
+
+export const DangerIconOnly: Story = {
+  args: {
+    text: '',
+    variant: 'primary',
+    styleType: 'danger',
+    iconType: 'icon-only',
+    icon: 'trash-2',
+    ariaLabel: 'Delete item',
+  },
+};
+
+export const GhostNoIcon: Story = {
+  args: {
+    text: 'Ghost action',
+    variant: 'ghost',
+  },
+};
+
 export const GhostWithLeftIcon: Story = {
   args: {
-    text: 'Sort by name',
+    text: 'Ghost action',
     variant: 'ghost',
     iconType: 'left-icon',
     icon: 'info',
@@ -206,22 +265,5 @@ export const Disabled: Story = {
   args: {
     text: 'Disabled action',
     state: 'disabled',
-  },
-};
-
-export const Danger: Story = {
-  args: {
-    text: 'Delete',
-    styleType: 'danger',
-  },
-};
-
-export const IconOnly: Story = {
-  args: {
-    text: '',
-    iconType: 'icon-only',
-    icon: 'info',
-    ariaLabel: 'Add item',
-    size: 'large',
   },
 };
