@@ -8,5 +8,5 @@ export const ddsTheme = create({
   brandTarget: '_self',
 
   fontBase: 'Inter, system-ui, sans-serif',
-  fontCode: 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace',
+  fontCode: '"Google Sans Code", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace',
 });
