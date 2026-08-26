@@ -1,13 +1,13 @@
 :root {
 
-    --dds-icon-colour-default: var(--dds-grey-900);
-    --dds-icon-colour-inverse: var(--dds-color-neutral-white);
-    --dds-icon-colour-disabled: var(--dds-grey-400);
-    --dds-icon-colour-accent: var(--dds-blue-700);
-    --dds-icon-colour-accent-on-brand: var(--dds-teal-300);
-    --dds-icon-colour-info: var(--dds-blue-600);
-    --dds-icon-colour-success: var(--dds-green-600);
-    --dds-icon-colour-warning: var(--dds-yellow-600);   
-    --dds-icon-colour-danger: var(--dds-red-600);
+    --icon-colour-default: var(--grey-900);
+    --icon-colour-inverse: var(--color-neutral-white);
+    --icon-colour-disabled: var(--grey-400);
+    --icon-colour-accent: var(--blue-700);
+    --icon-colour-accent-on-brand: var(--teal-300);
+    --icon-colour-info: var(--blue-600);
+    --icon-colour-success: var(--green-600);
+    --icon-colour-warning: var(--yellow-600);   
+    --icon-colour-danger: var(--red-600);
 
 }
