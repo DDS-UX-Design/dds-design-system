@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DdsIconName, IconComponent } from '../icon/icon.component';
 
-export type ButtonVariant = 'primary' | 'outlined' | 'ghost';
+export type ButtonVariant = 'primary' | 'secondary' | 'ghost';
 export type ButtonState = 'default' | 'hover' | 'focused' | 'disabled';
 export type ButtonStyle = 'default' | 'danger';
 export type ButtonSize = 'large' | 'medium' | 'small';
