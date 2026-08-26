@@ -177,7 +177,7 @@ const comparisonMarkup = comparisonRows
 export const Playground: Story = {
   args: {
     text: 'Continue',
-    iconType: 'left-icon',
+    iconType: 'right-icon',
     icon: 'arrow-right',
     ariaLabel: 'Continue',
   },
