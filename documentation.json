@@ -237,7 +237,7 @@
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ":host {\n  display: inline-block;\n}\n\n.dds-button {\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  gap: var(--space-2);\n  border: 1px solid;\n  border-radius: var(--radius-sm);\n  font-family: var(--font-family-primary);\n  font-weight: var(--font-weight-medium);\n  letter-spacing: var(--space-none);\n  cursor: pointer;\n  position: relative;\n  outline: none;\n  transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;\n}\n\n.dds-button:disabled {\n  background-color: var(--btn-colour-primary-disabled);\n  border-color: var(--btn-colour-primary-disabled);\n  cursor: not-allowed;\n  color: var(--text-colour-disabled);\n}\n\n.dds-button--large {\n    height: 48px;\n    min-height: 48px;\n    padding: 12px 24px;\n    font-size: var(--font-size-md);\n}\n\n.dds-button--medium {\n    height: 40px;\n    min-height: 40px;\n    padding: 8px 16px;\n    font-size: var(--font-size-sm);\n}\n\n.dds-button--small {\n  min-height: 32px;\n  padding: 4px 12px;\n  font-size: var(--font-size-xs);\n}\n\n/* Primary Button */\n.dds-button--primary {\n  background-color: var(--btn-colour-primary);\n  border-color: var(--btn-colour-primary);\n  color: var(--text-colour-inverse);\n}\n\n.dds-button--primary:hover:not(:disabled) {\n  background-color: var(--btn-colour-primary-hover);\n  border-color: var(--btn-colour-primary-hover);\n}\n\n.dds-button--primary:focus, .dds-button--primary:focus-visible, .dds-button--primary:active, .dds-button--primary:hover:active {\n  background-color: var(--btn-colour-primary-hover);\n  border-color: var(--btn-colour-primary-hover);\n  box-shadow: var(--btn-primary-focus-ring);\n}\n\n/* Secondary Button */\n.dds-button--secondary {\n  background-color: var(--btn-colour-secondary);\n  border-color: var(--border-colour-default);\n  color: var(--text-colour-default);\n}\n\n.dds-button--secondary:hover:not(:disabled) {\n  background-color: var(--btn-colour-secondary-hover);\n  border-color: var(--border-colour-default);\n}\n\n.dds-button--secondary:focus, .dds-button--secondary:focus-visible, .dds-button--secondary:active, .dds-button--secondary:hover:active {\n  background-color: var(--btn-colour-secondary-hover);\n  border-color: var(--border-colour-default);\n  box-shadow: var(--btn-primary-focus-ring);\n}\n\n/* Ghost Button */\n.dds-button--ghost {\n  background-color: var(--btn-colour-ghost);\n  border: none;\n  color: var(--text-colour-accent);\n}\n\n.dds-button--ghost:hover:not(:disabled) {\n  background-color: var(--btn-colour-ghost-hover);\n}\n\n.dds-button--ghost:focus, .dds-button--ghost:focus-visible, .dds-button--ghost:active, .dds-button--ghost:hover:active {\n  background-color: var(--btn-colour-ghost-hover);\n  border-color: var(--border-colour-default);\n  box-shadow: var(--btn-primary-focus-ring);\n}\n\n.dds-button--ghost .dds-button__label {\n    display: block;\n    height: 100%;\n    position: relative;\n}\n\n.dds-button--ghost .dds-button__label::after {\n    background-color: var(--bg-colour-accent);\n    content: '';\n    display: block;\n    position: absolute;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    width: 100%;\n    height: 1px;\n}\n\n/* Danger Button */\n\n.dds-button--danger.dds-button--primary {\n  background-color: var(--btn-colour-danger);\n  border-color: var(--btn-colour-danger);\n}\n\n.dds-button--danger.dds-button--primary:hover:not(:disabled) {\n  background-color: var(--btn-colour-danger-hover);\n  border-color: var(--btn-colour-danger-hover);\n}\n\n.dds-button--danger.dds-button--primary:focus, .dds-button--danger.dds-button--primary:focus-visible, .dds-button--danger.dds-button--primary:active, .dds-button--danger.dds-button--primary:hover:active {\n  background-color: var(--btn-colour-danger-hover);\n  border-color: var(--btn-colour-danger-hover);\n  box-shadow: var(--btn-danger-focus-ring);\n}\n\n/* Icon Button */\n\n.dds-button__icon {\n  display: inline-flex;\n  line-height: 0;\n}\n\n.dds-button--icon-only {\n  padding: var(--space-0);\n  height: var(--btn-icon-only-size-lg);\n  min-height: var(--btn-icon-only-size-lg);\n  width: var(--btn-icon-only-size-lg);\n}\n\n.dds-button--icon-only.dds-button--medium {\n  width: var(--btn-icon-only-size-md);\n  height: var(--btn-icon-only-size-md);\n  min-height: var(--btn-icon-only-size-md);\n}\n\n.dds-button--icon-only.dds-button--small {\n  width: var(--btn-icon-only-size-sm);\n  height: var(--btn-icon-only-size-sm);\n  min-height: var(--btn-icon-only-size-sm);\n}\n",
+                    "data": ":host {\n  display: inline-block;\n}\n\n.dds-button {\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  gap: var(--space-2);\n  border: 1px solid;\n  border-radius: var(--radius-sm);\n  font-family: var(--font-family-primary);\n  font-weight: var(--font-weight-medium);\n  letter-spacing: var(--space-none);\n  cursor: pointer;\n  position: relative;\n  outline: none;\n  transition:\n    background-color 0.2s ease-in-out,\n    border-color 0.2s ease-in-out,\n    box-shadow 0.2s ease-in-out;\n}\n\n.dds-button:disabled {\n  background-color: var(--btn-colour-primary-disabled);\n  border-color: var(--btn-colour-primary-disabled);\n  cursor: not-allowed;\n  color: var(--text-colour-disabled);\n}\n\n.dds-button--large {\n  height: 48px;\n  min-height: 48px;\n  padding: 12px 24px;\n  font-size: var(--font-size-md);\n}\n\n.dds-button--medium {\n  height: 40px;\n  min-height: 40px;\n  padding: 8px 16px;\n  font-size: var(--font-size-sm);\n}\n\n.dds-button--small {\n  min-height: 32px;\n  padding: 4px 12px;\n  font-size: var(--font-size-xs);\n}\n\n/* Primary Button */\n.dds-button--primary {\n  background-color: var(--btn-colour-primary);\n  border-color: var(--btn-colour-primary);\n  color: var(--text-colour-inverse);\n}\n\n.dds-button--primary:hover:not(:disabled),\n.dds-button--state-hover.dds-button--primary:not(:disabled) {\n  background-color: var(--btn-colour-primary-hover);\n  border-color: var(--btn-colour-primary-hover);\n}\n\n.dds-button--primary:focus,\n.dds-button--primary:focus-visible,\n.dds-button--primary:active,\n.dds-button--primary:hover:active,\n.dds-button--state-focused.dds-button--primary:not(:disabled) {\n  background-color: var(--btn-colour-primary-hover);\n  border-color: var(--btn-colour-primary-hover);\n  box-shadow: var(--btn-primary-focus-ring);\n}\n\n/* Secondary Button */\n.dds-button--secondary {\n  background-color: var(--btn-colour-secondary);\n  border-color: var(--border-colour-default);\n  color: var(--text-colour-default);\n}\n\n.dds-button--secondary:hover:not(:disabled),\n.dds-button--state-hover.dds-button--secondary:not(:disabled) {\n  background-color: var(--btn-colour-secondary-hover);\n  border-color: var(--border-colour-default);\n}\n\n.dds-button--secondary:focus,\n.dds-button--secondary:focus-visible,\n.dds-button--secondary:active,\n.dds-button--secondary:hover:active,\n.dds-button--state-focused.dds-button--secondary:not(:disabled) {\n  background-color: var(--btn-colour-secondary-hover);\n  border-color: var(--border-colour-default);\n  box-shadow: var(--btn-primary-focus-ring);\n}\n\n/* Ghost Button */\n.dds-button--ghost {\n  background-color: var(--btn-colour-ghost);\n  border: none;\n  color: var(--text-colour-accent);\n}\n\n.dds-button--ghost:hover:not(:disabled),\n.dds-button--state-hover.dds-button--ghost:not(:disabled) {\n  background-color: var(--btn-colour-ghost-hover);\n}\n\n.dds-button--ghost:focus,\n.dds-button--ghost:focus-visible,\n.dds-button--ghost:active,\n.dds-button--ghost:hover:active,\n.dds-button--state-focused.dds-button--ghost:not(:disabled) {\n  background-color: var(--btn-colour-ghost-hover);\n  border-color: var(--border-colour-default);\n  box-shadow: var(--btn-primary-focus-ring);\n}\n\n.dds-button--ghost .dds-button__label {\n  display: block;\n  height: 100%;\n  position: relative;\n}\n\n.dds-button--ghost .dds-button__label::after {\n  background-color: var(--bg-colour-accent);\n  content: '';\n  display: block;\n  position: absolute;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  width: 100%;\n  height: 1px;\n}\n\n/* Danger Button */\n\n.dds-button--danger.dds-button--primary {\n  background-color: var(--btn-colour-danger);\n  border-color: var(--btn-colour-danger);\n}\n\n.dds-button--danger.dds-button--primary:hover:not(:disabled),\n.dds-button--danger.dds-button--state-hover.dds-button--primary:not(:disabled) {\n  background-color: var(--btn-colour-danger-hover);\n  border-color: var(--btn-colour-danger-hover);\n}\n\n.dds-button--danger.dds-button--primary:focus,\n.dds-button--danger.dds-button--primary:focus-visible,\n.dds-button--danger.dds-button--primary:active,\n.dds-button--danger.dds-button--primary:hover:active,\n.dds-button--danger.dds-button--state-focused.dds-button--primary:not(:disabled) {\n  background-color: var(--btn-colour-danger-hover);\n  border-color: var(--btn-colour-danger-hover);\n  box-shadow: var(--btn-danger-focus-ring);\n}\n\n/* Disabled states */\n\n.dds-button--primary:disabled {\n  background-color: var(--btn-colour-primary-disabled);\n  border-color: var(--btn-colour-primary-disabled);\n}\n\n.dds-button--secondary:disabled {\n  background-color: var(--btn-colour-secondary-disabled);\n  border-color: var(--border-colour-disabled);\n}\n\n.dds-button--ghost:disabled {\n  background-color: var(--btn-colour-ghost-disabled);\n  border: none;\n}\n\n.dds-button--danger.dds-button--primary:disabled {\n  background-color: var(--btn-colour-danger-disabled);\n  border-color: var(--btn-colour-danger-disabled);\n}\n\n/* Icon Button */\n\n.dds-button__icon {\n  display: inline-flex;\n  line-height: 0;\n}\n\n.dds-button--icon-only {\n  padding: var(--space-0);\n  height: var(--btn-icon-only-size-lg);\n  min-height: var(--btn-icon-only-size-lg);\n  width: var(--btn-icon-only-size-lg);\n}\n\n.dds-button--icon-only.dds-button--medium {\n  width: var(--btn-icon-only-size-md);\n  height: var(--btn-icon-only-size-md);\n  min-height: var(--btn-icon-only-size-md);\n}\n\n.dds-button--icon-only.dds-button--small {\n  width: var(--btn-icon-only-size-sm);\n  height: var(--btn-icon-only-size-sm);\n  min-height: var(--btn-icon-only-size-sm);\n}\n",
                     "styleUrl": "./button.component.css"
                 }
             ],
@@ -438,6 +438,10 @@
                         "name": "ButtonComponent",
                         "type": "component",
                         "description": "A reusable button component for primary actions, secondary actions, and icon-only affordances. Supports variants, size options, semantic..."
+                    },
+                    {
+                        "name": "PasswordInputComponent",
+                        "type": "component"
                     }
                 ],
                 "outgoing": [
@@ -451,6 +455,358 @@
                     }
                 ]
             }
+        },
+        {
+            "name": "PasswordInputComponent",
+            "id": "component-PasswordInputComponent-7f2a6c6aa18dc1faa8c9aac6abca3070fda4007d98d2f49b0f32609e8823626b190570a8c3a44beb9d4b78f702c766fd0d502466314ceefa7798be8339f1e58f",
+            "file": "src/app/components/password-input/password-input.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "dds-password-input",
+            "styleUrls": [
+                "./password-input.component.css"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./password-input.component.html"
+            ],
+            "templateVariables": [],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "coverageIgnore": false,
+                    "name": "ariaLabel",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 28,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "autocomplete",
+                    "defaultValue": "'current-password'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 32,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "disabled",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 30,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "errorMessage",
+                    "defaultValue": "'Password is required'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 22,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "inputId",
+                    "defaultValue": "`dds-password-input-${nextPasswordInputId++}`",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 18,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "label",
+                    "defaultValue": "'Password'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 19,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "name",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 31,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "placeholder",
+                    "defaultValue": "'Enter password'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 20,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "required",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 25,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "showErrorMessage",
+                    "defaultValue": "true",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 27,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "showLabel",
+                    "defaultValue": "true",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 26,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "size",
+                    "defaultValue": "'desktop'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 23,
+                    "type": "PasswordInputSize",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "state",
+                    "defaultValue": "'default'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 24,
+                    "type": "PasswordInputState",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "value",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 21,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "visible",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 29,
+                    "type": "boolean",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "valueChange",
+                    "coverageIgnore": false,
+                    "defaultValue": "new EventEmitter<string>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 34,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "visibleChange",
+                    "coverageIgnore": false,
+                    "defaultValue": "new EventEmitter<boolean>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 35,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "handleInput",
+                    "coverageIgnore": false,
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "Event",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 49,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "Event",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "toggleVisibility",
+                    "coverageIgnore": false,
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 54,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": ""
+                }
+            ],
+            "coverageIgnore": false,
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "IconComponent",
+                    "type": "component"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, EventEmitter, Input, Output } from '@angular/core';\nimport { IconComponent } from '../icon/icon.component';\n\nexport type PasswordInputSize = 'desktop' | 'mobile';\nexport type PasswordInputState = 'default' | 'focused' | 'error';\n\nlet nextPasswordInputId = 0;\n\n@Component({\n  selector: 'dds-password-input',\n  standalone: true,\n  imports: [CommonModule, IconComponent],\n  templateUrl: './password-input.component.html',\n  styleUrl: './password-input.component.css',\n})\nexport class PasswordInputComponent {\n  @Input() inputId = `dds-password-input-${nextPasswordInputId++}`;\n  @Input() label = 'Password';\n  @Input() placeholder = 'Enter password';\n  @Input() value = '';\n  @Input() errorMessage = 'Password is required';\n  @Input() size: PasswordInputSize = 'desktop';\n  @Input() state: PasswordInputState = 'default';\n  @Input() required = false;\n  @Input() showLabel = true;\n  @Input() showErrorMessage = true;\n  @Input() ariaLabel?: string;\n  @Input() visible = false;\n  @Input() disabled = false;\n  @Input() name?: string;\n  @Input() autocomplete = 'current-password';\n\n  @Output() valueChange = new EventEmitter<string>();\n  @Output() visibleChange = new EventEmitter<boolean>();\n\n  get isError(): boolean {\n    return this.state === 'error';\n  }\n\n  get iconSize(): number {\n    return this.size === 'mobile' ? 20 : 24;\n  }\n\n  get errorId(): string {\n    return `${this.inputId}-error`;\n  }\n\n  handleInput(event: Event): void {\n    this.value = (event.target as HTMLInputElement).value;\n    this.valueChange.emit(this.value);\n  }\n\n  toggleVisibility(): void {\n    if (this.disabled) {\n      return;\n    }\n\n    this.visible = !this.visible;\n    this.visibleChange.emit(this.visible);\n  }\n}\n",
+            "styleUrl": "./password-input.component.css",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ":host {\n  display: inline-block;\n  max-width: 100%;\n}\n\n.dds-password-input {\n  display: flex;\n  flex-direction: column;\n  width: 460px;\n  max-width: 100%;\n  font-family: var(--font-family-primary);\n}\n\n.dds-password-input--mobile {\n  width: 332px;\n}\n\n.dds-password-input__label {\n  display: flex;\n  gap: var(--space-1);\n  padding-bottom: var(--space-2);\n  color: var(--text-colour-default);\n  font-size: var(--font-size-sm);\n  font-weight: var(--font-weight-semibold);\n  line-height: 20px;\n}\n\n.dds-password-input--mobile .dds-password-input__label {\n  padding-bottom: var(--space-1);\n  font-size: var(--font-size-xs);\n  line-height: 16px;\n}\n\n.dds-password-input__required,\n.dds-password-input__error {\n  color: var(--text-colour-danger);\n}\n\n.dds-password-input__field {\n  display: flex;\n  align-items: center;\n  min-height: 48px;\n  padding: 0 var(--space-3);\n  border: 1px solid var(--border-colour-strong);\n  border-radius: var(--radius-sm);\n  background-color: var(--colour-neutral-white);\n  box-sizing: border-box;\n}\n\n.dds-password-input--mobile .dds-password-input__field {\n  min-height: 40px;\n}\n\n.dds-password-input__control {\n  flex: 1;\n  min-width: 0;\n  padding: var(--space-none);\n  border: 0;\n  outline: 0;\n  background: transparent;\n  color: var(--text-colour-default);\n  font: inherit;\n  font-size: var(--font-size-md);\n  font-weight: var(--font-weight-regular);\n  line-height: 24px;\n}\n\n.dds-password-input--mobile .dds-password-input__control {\n  font-size: var(--font-size-sm);\n  line-height: 20px;\n}\n\n.dds-password-input__control::placeholder {\n  color: var(--text-colour-placeholder);\n  opacity: 1;\n}\n\n.dds-password-input__visibility {\n  display: inline-flex;\n  flex: 0 0 auto;\n  align-items: center;\n  justify-content: center;\n  width: 24px;\n  height: 24px;\n  padding: var(--space-none);\n  border: 0;\n  outline: 0;\n  background: transparent;\n  color: var(--text-colour-default);\n  cursor: pointer;\n}\n\n.dds-password-input--mobile .dds-password-input__visibility {\n  width: 20px;\n  height: 20px;\n}\n\n.dds-password-input__field:focus-within,\n.dds-password-input--focused .dds-password-input__field {\n  border: 2px solid var(--border-colour-info);\n  padding-right: 11px;\n  padding-left: 11px;\n}\n\n.dds-password-input--error .dds-password-input__field {\n  border: 2px solid var(--border-colour-danger);\n  padding-right: 11px;\n  padding-left: 11px;\n}\n\n.dds-password-input__visibility:focus-visible {\n  border-radius: var(--radius-xs);\n  box-shadow: 0 0 0 2px var(--blue-300);\n}\n\n.dds-password-input__error {\n  margin: var(--space-none);\n  padding-top: var(--space-2);\n  font-size: var(--font-size-xs);\n  font-weight: var(--font-weight-medium);\n  line-height: 16px;\n}\n\n.dds-password-input--disabled {\n  color: var(--text-colour-disabled);\n}\n\n.dds-password-input--disabled .dds-password-input__field {\n  border-color: var(--border-colour-disabled);\n  background-color: var(--bg-colour-disabled);\n}\n\n.dds-password-input--disabled .dds-password-input__control,\n.dds-password-input--disabled .dds-password-input__visibility {\n  color: var(--text-colour-disabled);\n  cursor: not-allowed;\n}\n",
+                    "styleUrl": "./password-input.component.css"
+                }
+            ],
+            "stylesData": "",
+            "extends": [],
+            "accessors": {
+                "isError": {
+                    "name": "isError",
+                    "getSignature": {
+                        "name": "isError",
+                        "type": "boolean",
+                        "returnType": "boolean",
+                        "line": 37,
+                        "rawdescription": "\n",
+                        "description": ""
+                    }
+                },
+                "iconSize": {
+                    "name": "iconSize",
+                    "getSignature": {
+                        "name": "iconSize",
+                        "type": "number",
+                        "returnType": "number",
+                        "line": 41,
+                        "rawdescription": "\n",
+                        "description": ""
+                    }
+                },
+                "errorId": {
+                    "name": "errorId",
+                    "getSignature": {
+                        "name": "errorId",
+                        "type": "string",
+                        "returnType": "string",
+                        "line": 45,
+                        "rawdescription": "\n",
+                        "description": ""
+                    }
+                }
+            },
+            "relationships": {
+                "incoming": [],
+                "outgoing": [
+                    {
+                        "name": "CommonModule",
+                        "type": "module"
+                    },
+                    {
+                        "name": "IconComponent",
+                        "type": "component"
+                    }
+                ]
+            },
+            "templateData": "<div\n  class=\"dds-password-input\"\n  [class.dds-password-input--mobile]=\"size === 'mobile'\"\n  [class.dds-password-input--focused]=\"state === 'focused'\"\n  [class.dds-password-input--error]=\"isError\"\n  [class.dds-password-input--disabled]=\"disabled\"\n>\n  <label *ngIf=\"showLabel\" class=\"dds-password-input__label\" [for]=\"inputId\">\n    {{ label }}\n    <span *ngIf=\"required\" class=\"dds-password-input__required\" aria-hidden=\"true\">*</span>\n  </label>\n\n  <div class=\"dds-password-input__field\">\n    <input\n      class=\"dds-password-input__control\"\n      [id]=\"inputId\"\n      [name]=\"name\"\n      [type]=\"visible ? 'text' : 'password'\"\n      [value]=\"value\"\n      [placeholder]=\"placeholder\"\n      [required]=\"required\"\n      [disabled]=\"disabled\"\n      [autocomplete]=\"autocomplete\"\n      [attr.aria-label]=\"showLabel ? null : ariaLabel\"\n      [attr.aria-invalid]=\"isError ? 'true' : null\"\n      [attr.aria-describedby]=\"isError && showErrorMessage ? errorId : null\"\n      (input)=\"handleInput($event)\"\n    />\n\n    <button\n      class=\"dds-password-input__visibility\"\n      type=\"button\"\n      [disabled]=\"disabled\"\n      [attr.aria-label]=\"visible ? 'Hide password' : 'Show password'\"\n      [attr.aria-controls]=\"inputId\"\n      [attr.aria-pressed]=\"visible\"\n      (click)=\"toggleVisibility()\"\n    >\n      <dds-icon [name]=\"visible ? 'eye' : 'eye-off'\" [size]=\"iconSize\"></dds-icon>\n    </button>\n  </div>\n\n  <p *ngIf=\"isError && showErrorMessage\" class=\"dds-password-input__error\" [id]=\"errorId\">\n    {{ errorMessage }}\n  </p>\n</div>\n"
         },
         {
             "name": "TypographyPageComponent",
@@ -586,6 +942,17 @@
                 "defaultValue": "[\n  'info',\n  'arrow-right',\n  'arrow-left',\n  'arrow-down',\n  'arrow-up-down',  \n  'arrow-up',\n  'check',\n  'chevron-down',\n  'chevron-right',\n  'chevron-left',\n  'chevron-up',\n  'chevrons-up-down',\n  'list-filter',\n  'columns-3',\n  'search',\n  'menu',\n  'circle-alert',\n  'ellipsis',\n  'plus',\n  'trash-2',\n  'x',\n  'layout-dashboard',\n  'ellipsis-vertical',\n  'house',\n  'map-pin',\n  'panels-top-left',\n  'grip-vertical',\n  'download',\n  'upload',\n  'minus',\n  'archive',\n  'ban',\n  'pencil',\n  'settings',\n  'sliders-horizontal',\n  'square-pen',\n  'copy',\n  'funnel',\n  'external-link',\n  'refresh-cw',\n  'wrench',\n  'brush-cleaning',\n  'cloud-upload',\n  'wand-sparkles',\n  'user',\n  'users',\n  'user-x',\n  'key-round',\n  'lock-keyhole',\n  'user-round',\n  'eye',\n  'eye-off',\n  'log-out',\n  'send-horizontal',\n  'bell',\n  'bell-dot',\n  'message-square-plus',\n  'star',\n  'circle-question-mark',\n  'phone',\n  'share-2',\n  'image',\n  'circle-stop',\n  'circle-play',\n  'headset',\n  'file',\n  'clipboard-list',\n  'printer',\n  'type',\n  'hash',\n  'at-sign',\n  'text-wrap',\n  'circle-dot',\n  'square-check',\n  'list',\n  'toggle-right',\n  'clock',\n  'circle-check',\n  'triangle-alert',\n  'calendar-days',\n  'calendar-1',\n  'loader-circle',\n  'life-buoy',\n  'shopping-cart',\n  'box',\n  'package',\n  'truck',\n  'chart-no-axes-combined',\n  'dollar-sign',\n  'credit-card',\n  'receipt-text',\n  'store',\n  'factory',\n  'chart-no-axes-column',\n  'battery-full',\n  'scan',\n  'person-standing',\n  'monitor-smartphone',\n  'contrast',\n  'wifi',\n  'signal',\n] as const"
             },
             {
+                "name": "nextPasswordInputId",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/components/password-input/password-input.component.ts",
+                "coverageIgnore": false,
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "number",
+                "defaultValue": "0"
+            },
+            {
                 "name": "reqHandler",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -711,6 +1078,32 @@
                 "rawdescription": "",
                 "description": "",
                 "kind": 200
+            },
+            {
+                "name": "PasswordInputSize",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "coverageIgnore": false,
+                "rawtype": "\"desktop\" | \"mobile\"",
+                "file": "src/app/components/password-input/password-input.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "rawdescription": "",
+                "description": "",
+                "kind": 193
+            },
+            {
+                "name": "PasswordInputState",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "coverageIgnore": false,
+                "rawtype": "\"default\" | \"focused\" | \"error\"",
+                "file": "src/app/components/password-input/password-input.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "rawdescription": "",
+                "description": "",
+                "kind": 193
             }
         ],
         "enumerations": [],
@@ -826,6 +1219,19 @@
                     "defaultValue": "[\n  'info',\n  'arrow-right',\n  'arrow-left',\n  'arrow-down',\n  'arrow-up-down',  \n  'arrow-up',\n  'check',\n  'chevron-down',\n  'chevron-right',\n  'chevron-left',\n  'chevron-up',\n  'chevrons-up-down',\n  'list-filter',\n  'columns-3',\n  'search',\n  'menu',\n  'circle-alert',\n  'ellipsis',\n  'plus',\n  'trash-2',\n  'x',\n  'layout-dashboard',\n  'ellipsis-vertical',\n  'house',\n  'map-pin',\n  'panels-top-left',\n  'grip-vertical',\n  'download',\n  'upload',\n  'minus',\n  'archive',\n  'ban',\n  'pencil',\n  'settings',\n  'sliders-horizontal',\n  'square-pen',\n  'copy',\n  'funnel',\n  'external-link',\n  'refresh-cw',\n  'wrench',\n  'brush-cleaning',\n  'cloud-upload',\n  'wand-sparkles',\n  'user',\n  'users',\n  'user-x',\n  'key-round',\n  'lock-keyhole',\n  'user-round',\n  'eye',\n  'eye-off',\n  'log-out',\n  'send-horizontal',\n  'bell',\n  'bell-dot',\n  'message-square-plus',\n  'star',\n  'circle-question-mark',\n  'phone',\n  'share-2',\n  'image',\n  'circle-stop',\n  'circle-play',\n  'headset',\n  'file',\n  'clipboard-list',\n  'printer',\n  'type',\n  'hash',\n  'at-sign',\n  'text-wrap',\n  'circle-dot',\n  'square-check',\n  'list',\n  'toggle-right',\n  'clock',\n  'circle-check',\n  'triangle-alert',\n  'calendar-days',\n  'calendar-1',\n  'loader-circle',\n  'life-buoy',\n  'shopping-cart',\n  'box',\n  'package',\n  'truck',\n  'chart-no-axes-combined',\n  'dollar-sign',\n  'credit-card',\n  'receipt-text',\n  'store',\n  'factory',\n  'chart-no-axes-column',\n  'battery-full',\n  'scan',\n  'person-standing',\n  'monitor-smartphone',\n  'contrast',\n  'wifi',\n  'signal',\n] as const"
                 }
             ],
+            "src/app/components/password-input/password-input.component.ts": [
+                {
+                    "name": "nextPasswordInputId",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/components/password-input/password-input.component.ts",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "defaultValue": "0"
+                }
+            ],
             "src/app/app.routes.ts": [
                 {
                     "name": "routes",
@@ -937,6 +1343,34 @@
                     "description": "",
                     "kind": 200
                 }
+            ],
+            "src/app/components/password-input/password-input.component.ts": [
+                {
+                    "name": "PasswordInputSize",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "coverageIgnore": false,
+                    "rawtype": "\"desktop\" | \"mobile\"",
+                    "file": "src/app/components/password-input/password-input.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "",
+                    "description": "",
+                    "kind": 193
+                },
+                {
+                    "name": "PasswordInputState",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "coverageIgnore": false,
+                    "rawtype": "\"default\" | \"focused\" | \"error\"",
+                    "file": "src/app/components/password-input/password-input.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "",
+                    "description": "",
+                    "kind": 193
+                }
             ]
         }
     },
@@ -954,7 +1388,7 @@
         ]
     },
     "coverage": {
-        "count": 9,
+        "count": 8,
         "status": "low",
         "files": [
             {
@@ -1100,6 +1534,45 @@
                 "linktype": "miscellaneous",
                 "linksubtype": "typealias",
                 "name": "DdsIconName",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/password-input/password-input.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "PasswordInputComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/20",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/password-input/password-input.component.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "nextPasswordInputId",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/password-input/password-input.component.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "PasswordInputSize",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/password-input/password-input.component.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "PasswordInputState",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
