@@ -1,0 +1,65 @@
+<div
+  class="dds-otp"
+  [class.dds-otp--mobile]="size === 'mobile'"
+  [class.dds-otp--error]="isError"
+  [class.dds-otp--disabled]="isDisabled"
+>
+  <label *ngIf="showLabel" class="dds-otp__label" [for]="inputId">
+    {{ label }}
+    <span *ngIf="required" class="dds-otp__required" aria-hidden="true">*</span>
+  </label>
+
+  <div class="dds-otp__fields" (click)="focusInput()">
+    <input
+      #otpInput
+      class="dds-otp__native-input"
+      [id]="inputId"
+      type="text"
+      inputmode="numeric"
+      autocomplete="one-time-code"
+      pattern="[0-9]*"
+      maxlength="6"
+      [value]="value"
+      [required]="required"
+      [disabled]="isDisabled"
+      [attr.aria-label]="showLabel ? null : ariaLabel"
+      [attr.aria-invalid]="isError"
+      [attr.aria-describedby]="describedBy"
+      (input)="handleInput($event)"
+      (focus)="hasNativeFocus = true"
+      (blur)="hasNativeFocus = false"
+    />
+
+    <span
+      *ngFor="let index of digits"
+      class="dds-otp__field"
+      [class.dds-otp__field--active]="isActive(index)"
+      aria-hidden="true"
+    >
+      {{ digitAt(index) }}
+    </span>
+  </div>
+
+  <p
+    *ngIf="isError && showErrorMessage"
+    class="dds-otp__error-message"
+    [id]="errorId"
+    aria-live="polite"
+  >
+    {{ errorMessage }}
+  </p>
+
+  <div
+    *ngIf="showCodeExpiry"
+    class="dds-otp__expiry"
+    [class.dds-otp__expiry--expired]="codeExpired"
+    [id]="expiryId"
+  >
+    <ng-container *ngIf="!codeExpired; else expired">
+      <dds-icon name="clock" [size]="size === 'mobile' ? 16 : 14" aria-hidden="true"></dds-icon>
+      <span>Code expires in</span>
+      <strong>{{ expiryTime }}</strong>
+    </ng-container>
+    <ng-template #expired>Code expired</ng-template>
+  </div>
+</div>
