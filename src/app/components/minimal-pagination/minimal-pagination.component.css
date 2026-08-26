@@ -1,0 +1,18 @@
+:host {
+  display: inline-block;
+}
+
+.dds-minimal-pagination {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-family-primary);
+}
+
+.dds-minimal-pagination__status {
+  color: var(--text-colour-tertiary);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-regular);
+  line-height: 20px;
+  white-space: nowrap;
+}
