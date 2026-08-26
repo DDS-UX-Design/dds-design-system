@@ -8,6 +8,256 @@
     "directives": [],
     "components": [
         {
+            "name": "AlertComponent",
+            "id": "component-AlertComponent-084090a1da511362a7888234720485008aaaa03343ea05d9a1b7fa24ca1a1a8e4f77e6a9f96519322b205cb54547a6338bdac80cf60926c31361ceed250323b3",
+            "file": "src/app/components/alert/alert.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "dds-alert",
+            "styleUrls": [
+                "./alert.component.css"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./alert.component.html"
+            ],
+            "templateVariables": [],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "coverageIgnore": false,
+                    "name": "actionLabel",
+                    "defaultValue": "'Action'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nLabel for the optional supporting action.",
+                    "description": "<p>Label for the optional supporting action.</p>\n",
+                    "line": 39,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "dismissible",
+                    "defaultValue": "true",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nShows a control that allows the alert to be dismissed.",
+                    "description": "<p>Shows a control that allows the alert to be dismissed.</p>\n",
+                    "line": 33,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "showAction",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nShows an optional supporting action.",
+                    "description": "<p>Shows an optional supporting action.</p>\n",
+                    "line": 36,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "showIcon",
+                    "defaultValue": "true",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nShows the semantic status icon.",
+                    "description": "<p>Shows the semantic status icon.</p>\n",
+                    "line": 30,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "size",
+                    "defaultValue": "'web'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nResponsive density defined by the DDS component specification.",
+                    "description": "<p>Responsive density defined by the DDS component specification.</p>\n",
+                    "line": 24,
+                    "type": "AlertSize",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "text",
+                    "defaultValue": "'Alert text'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nAlert message displayed to the user.",
+                    "description": "<p>Alert message displayed to the user.</p>\n",
+                    "line": 27,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "tone",
+                    "defaultValue": "'info'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nSemantic tone used to communicate the nature of the message.",
+                    "description": "<p>Semantic tone used to communicate the nature of the message.</p>\n",
+                    "line": 21,
+                    "type": "AlertTone",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "action",
+                    "coverageIgnore": false,
+                    "defaultValue": "new EventEmitter<void>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nEmitted when the supporting action is activated.",
+                    "description": "<p>Emitted when the supporting action is activated.</p>\n",
+                    "line": 45,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "dismissed",
+                    "coverageIgnore": false,
+                    "defaultValue": "new EventEmitter<void>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nEmitted when the dismiss control is activated.",
+                    "description": "<p>Emitted when the dismiss control is activated.</p>\n",
+                    "line": 42,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "activateAction",
+                    "coverageIgnore": false,
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 59,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": ""
+                },
+                {
+                    "name": "dismiss",
+                    "coverageIgnore": false,
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 55,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": ""
+                }
+            ],
+            "coverageIgnore": false,
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "ButtonComponent",
+                    "type": "component"
+                },
+                {
+                    "name": "IconComponent",
+                    "type": "component"
+                }
+            ],
+            "description": "<p>An inline status message that communicates important contextual information.</p>\n",
+            "rawdescription": "\n\nAn inline status message that communicates important contextual information.\n",
+            "type": "component",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, EventEmitter, Input, Output } from '@angular/core';\nimport { ButtonComponent } from '../button/button.component';\nimport { DdsIconName, IconComponent } from '../icon/icon.component';\n\nexport type AlertTone = 'info' | 'warning' | 'success' | 'danger';\nexport type AlertSize = 'web' | 'mobile';\n\n/**\n * An inline status message that communicates important contextual information.\n */\n@Component({\n  selector: 'dds-alert',\n  standalone: true,\n  imports: [CommonModule, ButtonComponent, IconComponent],\n  templateUrl: './alert.component.html',\n  styleUrl: './alert.component.css',\n})\nexport class AlertComponent {\n  /** Semantic tone used to communicate the nature of the message. */\n  @Input() tone: AlertTone = 'info';\n\n  /** Responsive density defined by the DDS component specification. */\n  @Input() size: AlertSize = 'web';\n\n  /** Alert message displayed to the user. */\n  @Input() text = 'Alert text';\n\n  /** Shows the semantic status icon. */\n  @Input() showIcon = true;\n\n  /** Shows a control that allows the alert to be dismissed. */\n  @Input() dismissible = true;\n\n  /** Shows an optional supporting action. */\n  @Input() showAction = false;\n\n  /** Label for the optional supporting action. */\n  @Input() actionLabel = 'Action';\n\n  /** Emitted when the dismiss control is activated. */\n  @Output() dismissed = new EventEmitter<void>();\n\n  /** Emitted when the supporting action is activated. */\n  @Output() action = new EventEmitter<void>();\n\n  get iconName(): DdsIconName {\n    return 'info';\n  }\n\n  get iconSize(): number {\n    return this.size === 'mobile' ? 18 : 24;\n  }\n\n  dismiss(): void {\n    this.dismissed.emit();\n  }\n\n  activateAction(): void {\n    this.action.emit();\n  }\n}\n",
+            "styleUrl": "./alert.component.css",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ":host {\n  display: block;\n  max-width: 100%;\n}\n\n.dds-alert {\n  box-sizing: border-box;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  width: 578px;\n  max-width: 100%;\n  padding: var(--space-3) var(--space-4);\n  border-left: 4px solid;\n  border-radius: var(--radius-sm);\n  color: var(--text-colour-default);\n  font-family: var(--font-family-primary);\n  font-size: var(--font-size-md);\n  line-height: 24px;\n}\n\n.dds-alert--mobile {\n  padding: var(--space-2) var(--space-3);\n  font-size: var(--font-size-xs);\n  line-height: 18px;\n}\n\n.dds-alert--info {\n  background: var(--bg-colour-info-muted);\n  border-color: var(--border-colour-info);\n}\n\n.dds-alert--warning {\n  background: var(--bg-colour-warning-muted);\n  border-color: var(--border-colour-warning);\n}\n\n.dds-alert--success {\n  background: var(--bg-colour-success-muted);\n  border-color: var(--border-colour-success);\n}\n\n.dds-alert--danger {\n  background: var(--bg-colour-danger-muted);\n  border-color: var(--border-colour-danger);\n}\n\n.dds-alert__content {\n  display: flex;\n  flex: 1 1 auto;\n  align-items: center;\n  min-width: 0;\n  gap: var(--space-2);\n}\n\n.dds-alert__status-icon,\n.dds-alert__dismiss dds-icon {\n  display: inline-flex;\n}\n\n.dds-alert__status-icon {\n  flex: 0 0 auto;\n  align-self: flex-start;\n}\n\n.dds-alert--info .dds-alert__status-icon {\n  color: var(--text-colour-info);\n}\n\n.dds-alert--warning .dds-alert__status-icon {\n  color: var(--text-colour-warning);\n}\n\n.dds-alert--success .dds-alert__status-icon {\n  color: var(--text-colour-success);\n}\n\n.dds-alert--danger .dds-alert__status-icon {\n  color: var(--text-colour-danger);\n}\n\n.dds-alert__text {\n  overflow-wrap: anywhere;\n}\n\n.dds-alert__action {\n  flex: 0 0 auto;\n  margin-left: var(--space-4);\n}\n\n.dds-alert__dismiss {\n  display: inline-flex;\n  flex: 0 0 auto;\n  align-items: center;\n  justify-content: center;\n  margin-left: var(--space-3);\n  padding: 0;\n  border: 0;\n  background: transparent;\n  color: var(--text-colour-default);\n  cursor: pointer;\n}\n\n.dds-alert__dismiss:focus-visible {\n  border-radius: var(--radius-xs);\n  outline: 2px solid var(--border-colour-info);\n  outline-offset: 2px;\n}\n\n@media (max-width: 480px) {\n  .dds-alert__action {\n    margin-left: var(--space-2);\n  }\n}\n",
+                    "styleUrl": "./alert.component.css"
+                }
+            ],
+            "stylesData": "",
+            "jsdoctags": [
+                {
+                    "pos": 362,
+                    "end": 449,
+                    "kind": 321,
+                    "id": 0,
+                    "flags": 16777216,
+                    "modifierFlagsCache": 0,
+                    "transformFlags": 0,
+                    "comment": "An inline status message that communicates important contextual information."
+                }
+            ],
+            "extends": [],
+            "accessors": {
+                "iconName": {
+                    "name": "iconName",
+                    "getSignature": {
+                        "name": "iconName",
+                        "type": "unknown",
+                        "returnType": "DdsIconName",
+                        "line": 47,
+                        "rawdescription": "\n",
+                        "description": ""
+                    }
+                },
+                "iconSize": {
+                    "name": "iconSize",
+                    "getSignature": {
+                        "name": "iconSize",
+                        "type": "number",
+                        "returnType": "number",
+                        "line": 51,
+                        "rawdescription": "\n",
+                        "description": ""
+                    }
+                }
+            },
+            "relationships": {
+                "incoming": [],
+                "outgoing": [
+                    {
+                        "name": "CommonModule",
+                        "type": "module"
+                    },
+                    {
+                        "name": "ButtonComponent",
+                        "type": "component",
+                        "description": "A reusable button component for primary actions, secondary actions, and icon-only affordances. Supports variants, size options, semantic..."
+                    },
+                    {
+                        "name": "IconComponent",
+                        "type": "component"
+                    }
+                ]
+            },
+            "templateData": "<div\n  class=\"dds-alert\"\n  role=\"alert\"\n  [class.dds-alert--info]=\"tone === 'info'\"\n  [class.dds-alert--warning]=\"tone === 'warning'\"\n  [class.dds-alert--success]=\"tone === 'success'\"\n  [class.dds-alert--danger]=\"tone === 'danger'\"\n  [class.dds-alert--mobile]=\"size === 'mobile'\"\n>\n  <div class=\"dds-alert__content\">\n    <dds-icon\n      *ngIf=\"showIcon\"\n      class=\"dds-alert__status-icon\"\n      [name]=\"iconName\"\n      [size]=\"iconSize\"\n      aria-hidden=\"true\"\n    ></dds-icon>\n    <span class=\"dds-alert__text\">{{ text }}</span>\n  </div>\n\n  <dds-button\n    *ngIf=\"showAction\"\n    class=\"dds-alert__action\"\n    variant=\"secondary\"\n    size=\"medium\"\n    (click)=\"activateAction()\"\n  >\n    {{ actionLabel }}\n  </dds-button>\n\n  <button\n    *ngIf=\"dismissible\"\n    class=\"dds-alert__dismiss\"\n    type=\"button\"\n    aria-label=\"Dismiss alert\"\n    (click)=\"dismiss()\"\n  >\n    <dds-icon name=\"x\" [size]=\"iconSize\" aria-hidden=\"true\"></dds-icon>\n  </button>\n</div>\n"
+        },
+        {
             "name": "App",
             "id": "component-App-137353843dfb912e7418f37fcfc639ea30a681d0b7476b561ea8af9abb444908eeb5d33fcf2afad2c4a9f1239630b375952bd7da2d0ebd43ec78b9b0f21f877f",
             "file": "src/app/app.ts",
@@ -315,6 +565,11 @@
             "relationships": {
                 "incoming": [
                     {
+                        "name": "AlertComponent",
+                        "type": "component",
+                        "description": "An inline status message that communicates important contextual information."
+                    },
+                    {
                         "name": "MinimalPaginationComponent",
                         "type": "component"
                     }
@@ -440,6 +695,11 @@
             "relationships": {
                 "incoming": [
                     {
+                        "name": "AlertComponent",
+                        "type": "component",
+                        "description": "An inline status message that communicates important contextual information."
+                    },
+                    {
                         "name": "ButtonComponent",
                         "type": "component",
                         "description": "A reusable button component for primary actions, secondary actions, and icon-only affordances. Supports variants, size options, semantic..."
@@ -451,6 +711,11 @@
                     {
                         "name": "PasswordInputComponent",
                         "type": "component"
+                    },
+                    {
+                        "name": "ToastComponent",
+                        "type": "component",
+                        "description": "A temporary elevated notification that confirms an outcome or reports a change."
                     }
                 ],
                 "outgoing": [
@@ -1300,6 +1565,356 @@
             "templateData": "<div\n  class=\"dds-password-input\"\n  [class.dds-password-input--mobile]=\"size === 'mobile'\"\n  [class.dds-password-input--focused]=\"state === 'focused'\"\n  [class.dds-password-input--error]=\"isError\"\n  [class.dds-password-input--disabled]=\"disabled\"\n>\n  <label *ngIf=\"showLabel\" class=\"dds-password-input__label\" [for]=\"inputId\">\n    {{ label }}\n    <span *ngIf=\"required\" class=\"dds-password-input__required\" aria-hidden=\"true\">*</span>\n  </label>\n\n  <div class=\"dds-password-input__field\">\n    <input\n      class=\"dds-password-input__control\"\n      [id]=\"inputId\"\n      [name]=\"name\"\n      [type]=\"visible ? 'text' : 'password'\"\n      [value]=\"value\"\n      [placeholder]=\"placeholder\"\n      [required]=\"required\"\n      [disabled]=\"disabled\"\n      [autocomplete]=\"autocomplete\"\n      [attr.aria-label]=\"showLabel ? null : ariaLabel\"\n      [attr.aria-invalid]=\"isError ? 'true' : null\"\n      [attr.aria-describedby]=\"isError && showErrorMessage ? errorId : null\"\n      (input)=\"handleInput($event)\"\n    />\n\n    <button\n      class=\"dds-password-input__visibility\"\n      type=\"button\"\n      [disabled]=\"disabled\"\n      [attr.aria-label]=\"visible ? 'Hide password' : 'Show password'\"\n      [attr.aria-controls]=\"inputId\"\n      [attr.aria-pressed]=\"visible\"\n      (click)=\"toggleVisibility()\"\n    >\n      <dds-icon [name]=\"visible ? 'eye' : 'eye-off'\" [size]=\"iconSize\"></dds-icon>\n    </button>\n  </div>\n\n  <p *ngIf=\"isError && showErrorMessage\" class=\"dds-password-input__error\" [id]=\"errorId\">\n    {{ errorMessage }}\n  </p>\n</div>\n"
         },
         {
+            "name": "ToastComponent",
+            "id": "component-ToastComponent-7ea05f484d0bd9468d8015ea8f3d9cf9f0641dc1764ff9b29946bccffd754cf8e3483bf63bbcc52d3e15abb1fe86138851a84b3db6266479bacd5b270597406e",
+            "file": "src/app/components/toast/toast.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "dds-toast",
+            "styleUrls": [
+                "./toast.component.css"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./toast.component.html"
+            ],
+            "templateVariables": [],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "coverageIgnore": false,
+                    "name": "autoDismiss",
+                    "defaultValue": "true",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nEnables timed dismissal for Info and Success toasts.",
+                    "description": "<p>Enables timed dismissal for Info and Success toasts.</p>\n",
+                    "line": 41,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "dismissible",
+                    "defaultValue": "true",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nShows a control that allows the toast to be dismissed.",
+                    "description": "<p>Shows a control that allows the toast to be dismissed.</p>\n",
+                    "line": 35,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "duration",
+                    "defaultValue": "5000",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nTime in milliseconds before an Info or Success toast is dismissed.",
+                    "description": "<p>Time in milliseconds before an Info or Success toast is dismissed.</p>\n",
+                    "line": 38,
+                    "type": "number",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "message",
+                    "defaultValue": "'This is an example of a toast notification.'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nSupporting notification message.",
+                    "description": "<p>Supporting notification message.</p>\n",
+                    "line": 29,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "showTitle",
+                    "defaultValue": "true",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nShows the notification title.",
+                    "description": "<p>Shows the notification title.</p>\n",
+                    "line": 32,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "size",
+                    "defaultValue": "'large'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nTypography and icon scale from the DDS component specification.",
+                    "description": "<p>Typography and icon scale from the DDS component specification.</p>\n",
+                    "line": 23,
+                    "type": "ToastSize",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "title",
+                    "defaultValue": "'Toast title'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nOptional concise notification title.",
+                    "description": "<p>Optional concise notification title.</p>\n",
+                    "line": 26,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "tone",
+                    "defaultValue": "'info'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nSemantic tone used to communicate the notification outcome.",
+                    "description": "<p>Semantic tone used to communicate the notification outcome.</p>\n",
+                    "line": 20,
+                    "type": "ToastTone",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "dismissed",
+                    "coverageIgnore": false,
+                    "defaultValue": "new EventEmitter<void>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nEmitted when the dismiss control is activated.",
+                    "description": "<p>Emitted when the dismiss control is activated.</p>\n",
+                    "line": 44,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "dismissTimer",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ReturnType<any>",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 47,
+                    "rawdescription": "\n",
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "visible",
+                    "coverageIgnore": false,
+                    "defaultValue": "true",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 46,
+                    "rawdescription": "\n"
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "clearDismissTimer",
+                    "coverageIgnore": false,
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 97,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "dismiss",
+                    "coverageIgnore": false,
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 81,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": ""
+                },
+                {
+                    "name": "ngOnChanges",
+                    "coverageIgnore": false,
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 72,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": ""
+                },
+                {
+                    "name": "ngOnDestroy",
+                    "coverageIgnore": false,
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 77,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": ""
+                },
+                {
+                    "name": "startDismissTimer",
+                    "coverageIgnore": false,
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 87,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "modifierKind": [
+                        123
+                    ]
+                }
+            ],
+            "coverageIgnore": false,
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "IconComponent",
+                    "type": "component"
+                }
+            ],
+            "description": "<p>A temporary elevated notification that confirms an outcome or reports a change.</p>\n",
+            "rawdescription": "\n\nA temporary elevated notification that confirms an outcome or reports a change.\n",
+            "type": "component",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, EventEmitter, Input, OnChanges, OnDestroy, Output } from '@angular/core';\nimport { DdsIconName, IconComponent } from '../icon/icon.component';\n\nexport type ToastTone = 'info' | 'warning' | 'success' | 'danger';\nexport type ToastSize = 'large' | 'small';\n\n/**\n * A temporary elevated notification that confirms an outcome or reports a change.\n */\n@Component({\n  selector: 'dds-toast',\n  standalone: true,\n  imports: [CommonModule, IconComponent],\n  templateUrl: './toast.component.html',\n  styleUrl: './toast.component.css',\n})\nexport class ToastComponent implements OnChanges, OnDestroy {\n  /** Semantic tone used to communicate the notification outcome. */\n  @Input() tone: ToastTone = 'info';\n\n  /** Typography and icon scale from the DDS component specification. */\n  @Input() size: ToastSize = 'large';\n\n  /** Optional concise notification title. */\n  @Input() title = 'Toast title';\n\n  /** Supporting notification message. */\n  @Input() message = 'This is an example of a toast notification.';\n\n  /** Shows the notification title. */\n  @Input() showTitle = true;\n\n  /** Shows a control that allows the toast to be dismissed. */\n  @Input() dismissible = true;\n\n  /** Time in milliseconds before an Info or Success toast is dismissed. */\n  @Input() duration = 5000;\n\n  /** Enables timed dismissal for Info and Success toasts. */\n  @Input() autoDismiss = true;\n\n  /** Emitted when the dismiss control is activated. */\n  @Output() dismissed = new EventEmitter<void>();\n\n  visible = true;\n  private dismissTimer?: ReturnType<typeof setTimeout>;\n\n  get isTimed(): boolean {\n    return this.autoDismiss && (this.tone === 'info' || this.tone === 'success');\n  }\n\n  get showDismissControl(): boolean {\n    return !this.isTimed || this.dismissible;\n  }\n\n  get iconName(): DdsIconName {\n    const icons: Record<ToastTone, DdsIconName> = {\n      info: 'info',\n      warning: 'triangle-alert',\n      success: 'circle-check',\n      danger: 'circle-alert',\n    };\n\n    return icons[this.tone];\n  }\n\n  get iconSize(): number {\n    return this.size === 'small' ? 20 : 24;\n  }\n\n  ngOnChanges(): void {\n    this.visible = true;\n    this.startDismissTimer();\n  }\n\n  ngOnDestroy(): void {\n    this.clearDismissTimer();\n  }\n\n  dismiss(): void {\n    this.clearDismissTimer();\n    this.visible = false;\n    this.dismissed.emit();\n  }\n\n  private startDismissTimer(): void {\n    this.clearDismissTimer();\n\n    if (!this.isTimed || this.duration <= 0) {\n      return;\n    }\n\n    this.dismissTimer = setTimeout(() => this.dismiss(), this.duration);\n  }\n\n  private clearDismissTimer(): void {\n    if (this.dismissTimer) {\n      clearTimeout(this.dismissTimer);\n      this.dismissTimer = undefined;\n    }\n  }\n}\n",
+            "styleUrl": "./toast.component.css",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ":host {\n  display: block;\n  max-width: 100%;\n}\n\n.dds-toast {\n  position: relative;\n  box-sizing: border-box;\n  display: flex;\n  align-items: center;\n  width: 451px;\n  max-width: 100%;\n  gap: var(--space-2);\n  padding: var(--space-3) var(--space-4);\n  overflow: hidden;\n  border-left: 3px solid;\n  border-radius: var(--radius-sm);\n  box-shadow: 0 4px 16px rgb(0 0 0 / 8%);\n  color: var(--text-colour-default);\n  font-family: var(--font-family-primary);\n  font-size: var(--font-size-md);\n  line-height: 24px;\n}\n\n.dds-toast--small {\n  font-size: var(--font-size-xs);\n  line-height: 16px;\n}\n\n.dds-toast--info {\n  background: var(--bg-colour-info-muted);\n  border-color: var(--border-colour-info);\n}\n\n.dds-toast--warning {\n  background: var(--bg-colour-warning-muted);\n  border-color: var(--border-colour-warning);\n}\n\n.dds-toast--success {\n  background: var(--bg-colour-success-muted);\n  border-color: var(--border-colour-success);\n}\n\n.dds-toast--danger {\n  background: var(--bg-colour-danger-muted);\n  border-color: var(--border-colour-danger);\n}\n\n.dds-toast__status-icon {\n  display: inline-flex;\n  flex: 0 0 auto;\n  align-self: flex-start;\n}\n\n.dds-toast--info .dds-toast__status-icon {\n  color: var(--text-colour-info);\n}\n\n.dds-toast--warning .dds-toast__status-icon {\n  color: var(--text-colour-warning);\n}\n\n.dds-toast--success .dds-toast__status-icon {\n  color: var(--text-colour-success);\n}\n\n.dds-toast--danger .dds-toast__status-icon {\n  color: var(--text-colour-danger);\n}\n\n.dds-toast__content {\n  display: flex;\n  flex: 1 1 auto;\n  flex-direction: column;\n  min-width: 0;\n}\n\n.dds-toast__title,\n.dds-toast__message {\n  display: block;\n  overflow-wrap: anywhere;\n}\n\n.dds-toast__title {\n  font-weight: var(--font-weight-semibold);\n}\n\n.dds-toast__message {\n  font-weight: var(--font-weight-regular);\n}\n\n.dds-toast--small .dds-toast__title {\n  font-size: var(--font-size-sm);\n  line-height: 20px;\n}\n\n.dds-toast__dismiss {\n  display: inline-flex;\n  flex: 0 0 auto;\n  align-items: center;\n  justify-content: center;\n  align-self: stretch;\n  padding: 0;\n  border: 0;\n  background: transparent;\n  color: var(--text-colour-default);\n  cursor: pointer;\n}\n\n.dds-toast__dismiss:focus-visible {\n  border-radius: var(--radius-xs);\n  outline: 2px solid var(--border-colour-info);\n  outline-offset: 2px;\n}\n\n.dds-toast__progress {\n  position: absolute;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  height: 3px;\n  background: currentColor;\n  transform-origin: left center;\n  animation: dds-toast-countdown var(--dds-toast-duration) linear forwards;\n}\n\n.dds-toast--info .dds-toast__progress {\n  color: var(--border-colour-info);\n}\n\n.dds-toast--success .dds-toast__progress {\n  color: var(--border-colour-success);\n}\n\n@keyframes dds-toast-countdown {\n  from {\n    transform: scaleX(1);\n  }\n\n  to {\n    transform: scaleX(0);\n  }\n}\n",
+                    "styleUrl": "./toast.component.css"
+                }
+            ],
+            "stylesData": "",
+            "jsdoctags": [
+                {
+                    "pos": 323,
+                    "end": 413,
+                    "kind": 321,
+                    "id": 0,
+                    "flags": 16777216,
+                    "modifierFlagsCache": 0,
+                    "transformFlags": 0,
+                    "comment": "A temporary elevated notification that confirms an outcome or reports a change."
+                }
+            ],
+            "extends": [],
+            "implements": [
+                "OnChanges",
+                "OnDestroy"
+            ],
+            "accessors": {
+                "isTimed": {
+                    "name": "isTimed",
+                    "getSignature": {
+                        "name": "isTimed",
+                        "type": "boolean",
+                        "returnType": "boolean",
+                        "line": 49,
+                        "rawdescription": "\n",
+                        "description": ""
+                    }
+                },
+                "showDismissControl": {
+                    "name": "showDismissControl",
+                    "getSignature": {
+                        "name": "showDismissControl",
+                        "type": "boolean",
+                        "returnType": "boolean",
+                        "line": 53,
+                        "rawdescription": "\n",
+                        "description": ""
+                    }
+                },
+                "iconName": {
+                    "name": "iconName",
+                    "getSignature": {
+                        "name": "iconName",
+                        "type": "unknown",
+                        "returnType": "DdsIconName",
+                        "line": 57,
+                        "rawdescription": "\n",
+                        "description": ""
+                    }
+                },
+                "iconSize": {
+                    "name": "iconSize",
+                    "getSignature": {
+                        "name": "iconSize",
+                        "type": "number",
+                        "returnType": "number",
+                        "line": 68,
+                        "rawdescription": "\n",
+                        "description": ""
+                    }
+                }
+            },
+            "relationships": {
+                "incoming": [],
+                "outgoing": [
+                    {
+                        "name": "CommonModule",
+                        "type": "module"
+                    },
+                    {
+                        "name": "IconComponent",
+                        "type": "component"
+                    },
+                    {
+                        "name": "OnChanges",
+                        "type": "interface"
+                    },
+                    {
+                        "name": "OnDestroy",
+                        "type": "interface"
+                    }
+                ]
+            },
+            "templateData": "<div\n  *ngIf=\"visible\"\n  class=\"dds-toast\"\n  [attr.role]=\"tone === 'danger' ? 'alert' : 'status'\"\n  [attr.aria-live]=\"tone === 'danger' ? 'assertive' : 'polite'\"\n  [class.dds-toast--info]=\"tone === 'info'\"\n  [class.dds-toast--warning]=\"tone === 'warning'\"\n  [class.dds-toast--success]=\"tone === 'success'\"\n  [class.dds-toast--danger]=\"tone === 'danger'\"\n  [class.dds-toast--small]=\"size === 'small'\"\n  [style.--dds-toast-duration]=\"duration + 'ms'\"\n>\n  <dds-icon\n    class=\"dds-toast__status-icon\"\n    [name]=\"iconName\"\n    [size]=\"iconSize\"\n    aria-hidden=\"true\"\n  ></dds-icon>\n\n  <div class=\"dds-toast__content\">\n    <strong *ngIf=\"showTitle\" class=\"dds-toast__title\">{{ title }}</strong>\n    <span class=\"dds-toast__message\">{{ message }}</span>\n  </div>\n\n  <button\n    *ngIf=\"showDismissControl\"\n    class=\"dds-toast__dismiss\"\n    type=\"button\"\n    aria-label=\"Dismiss notification\"\n    (click)=\"dismiss()\"\n  >\n    <dds-icon name=\"x\" size=\"24\" aria-hidden=\"true\"></dds-icon>\n  </button>\n\n  <span *ngIf=\"isTimed\" class=\"dds-toast__progress\" aria-hidden=\"true\"></span>\n</div>\n"
+        },
+        {
             "name": "TypographyPageComponent",
             "id": "component-TypographyPageComponent-7cc3992cdb1ebfe449d5f88b41f6d28f527a3f567f499cdaecb6b060cadad1f509a80de63e26c1ce217958fb116e224b7088d4762452e77b9e76d47f8b122665",
             "file": "src/app/typography-page.component.ts",
@@ -1493,6 +2108,32 @@
         "functions": [],
         "typealiases": [
             {
+                "name": "AlertSize",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "coverageIgnore": false,
+                "rawtype": "\"web\" | \"mobile\"",
+                "file": "src/app/components/alert/alert.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "rawdescription": "",
+                "description": "",
+                "kind": 193
+            },
+            {
+                "name": "AlertTone",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "coverageIgnore": false,
+                "rawtype": "\"info\" | \"warning\" | \"success\" | \"danger\"",
+                "file": "src/app/components/alert/alert.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "rawdescription": "",
+                "description": "",
+                "kind": 193
+            },
+            {
                 "name": "ButtonIconType",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
@@ -1603,6 +2244,32 @@
                 "coverageIgnore": false,
                 "rawtype": "\"default\" | \"focused\" | \"error\"",
                 "file": "src/app/components/password-input/password-input.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "rawdescription": "",
+                "description": "",
+                "kind": 193
+            },
+            {
+                "name": "ToastSize",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "coverageIgnore": false,
+                "rawtype": "\"large\" | \"small\"",
+                "file": "src/app/components/toast/toast.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "rawdescription": "",
+                "description": "",
+                "kind": 193
+            },
+            {
+                "name": "ToastTone",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "coverageIgnore": false,
+                "rawtype": "\"info\" | \"warning\" | \"success\" | \"danger\"",
+                "file": "src/app/components/toast/toast.component.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "rawdescription": "",
@@ -1766,6 +2433,34 @@
         "groupedFunctions": {},
         "groupedEnumerations": {},
         "groupedTypeAliases": {
+            "src/app/components/alert/alert.component.ts": [
+                {
+                    "name": "AlertSize",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "coverageIgnore": false,
+                    "rawtype": "\"web\" | \"mobile\"",
+                    "file": "src/app/components/alert/alert.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "",
+                    "description": "",
+                    "kind": 193
+                },
+                {
+                    "name": "AlertTone",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "coverageIgnore": false,
+                    "rawtype": "\"info\" | \"warning\" | \"success\" | \"danger\"",
+                    "file": "src/app/components/alert/alert.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "",
+                    "description": "",
+                    "kind": 193
+                }
+            ],
             "src/app/components/button/button.component.ts": [
                 {
                     "name": "ButtonIconType",
@@ -1890,6 +2585,34 @@
                     "description": "",
                     "kind": 193
                 }
+            ],
+            "src/app/components/toast/toast.component.ts": [
+                {
+                    "name": "ToastSize",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "coverageIgnore": false,
+                    "rawtype": "\"large\" | \"small\"",
+                    "file": "src/app/components/toast/toast.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "",
+                    "description": "",
+                    "kind": 193
+                },
+                {
+                    "name": "ToastTone",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "coverageIgnore": false,
+                    "rawtype": "\"info\" | \"warning\" | \"success\" | \"danger\"",
+                    "file": "src/app/components/toast/toast.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "",
+                    "description": "",
+                    "kind": 193
+                }
             ]
         }
     },
@@ -1907,7 +2630,7 @@
         ]
     },
     "coverage": {
-        "count": 7,
+        "count": 10,
         "status": "low",
         "files": [
             {
@@ -1965,6 +2688,35 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "App",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/alert/alert.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "AlertComponent",
+                "coveragePercent": 83,
+                "coverageCount": "10/12",
+                "status": "very-good"
+            },
+            {
+                "filePath": "src/app/components/alert/alert.component.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "AlertSize",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/alert/alert.component.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "AlertTone",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
@@ -2120,6 +2872,35 @@
                 "linktype": "miscellaneous",
                 "linksubtype": "typealias",
                 "name": "PasswordInputState",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/toast/toast.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ToastComponent",
+                "coveragePercent": 58,
+                "coverageCount": "10/17",
+                "status": "good"
+            },
+            {
+                "filePath": "src/app/components/toast/toast.component.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "ToastSize",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/toast/toast.component.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "ToastTone",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
