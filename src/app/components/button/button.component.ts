@@ -17,7 +17,7 @@ export type ButtonIconType = 'no-icon' | 'left-icon' | 'right-icon' | 'icon-only
   standalone: true,
   imports: [CommonModule, IconComponent],
   templateUrl: './button.component.html',
-  styleUrl: './button.component.css'
+  styleUrl: './button.component.css',
 })
 export class ButtonComponent {
   /** Visual treatment for the button, used to communicate action importance. */
@@ -68,13 +68,13 @@ export class ButtonComponent {
 
   get iconSize(): number {
     if (this.size === 'small') {
-      return 14;
-    }
-
-    if (this.size === 'medium') {
       return 16;
     }
 
-    return 18;
+    if (this.size === 'medium') {
+      return 20;
+    }
+
+    return 24;
   }
 }
