@@ -47,6 +47,7 @@ Thumbs.db
 storybook-static
 
 *chromatic.log
+chromatic-diagnostics*.json
 
 .env
 .env.local
