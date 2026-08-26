@@ -723,6 +723,11 @@
                         "description": "A search field with optional suggestions and accessible combobox keyboard behavior."
                     },
                     {
+                        "name": "SelectComponent",
+                        "type": "component",
+                        "description": "A native single-select field with DDS sizing, validation, and helper text treatments."
+                    },
+                    {
                         "name": "ToastComponent",
                         "type": "component",
                         "description": "A temporary elevated notification that confirms an outcome or reports a change."
@@ -2564,6 +2569,709 @@
             "templateData": "<div\n  class=\"dds-search\"\n  [class.dds-search--small]=\"size === 'small'\"\n  [class.dds-search--focused]=\"isFocused\"\n>\n  <label *ngIf=\"showLabel\" class=\"dds-search__label\" [for]=\"inputId\">\n    {{ label }}\n    <span *ngIf=\"required\" class=\"dds-search__required\" aria-hidden=\"true\">*</span>\n  </label>\n\n  <div class=\"dds-search__field\">\n    <dds-icon\n      class=\"dds-search__icon\"\n      name=\"search\"\n      [size]=\"size === 'small' ? 20 : 24\"\n      aria-hidden=\"true\"\n    ></dds-icon>\n    <input\n      class=\"dds-search__input\"\n      [id]=\"inputId\"\n      type=\"search\"\n      role=\"combobox\"\n      autocomplete=\"off\"\n      [value]=\"value\"\n      [placeholder]=\"placeholder\"\n      [required]=\"required\"\n      [attr.aria-label]=\"showLabel ? null : ariaLabel\"\n      [attr.aria-autocomplete]=\"suggestions.length ? 'list' : 'none'\"\n      [attr.aria-controls]=\"suggestions.length ? listboxId : null\"\n      [attr.aria-expanded]=\"isExpanded\"\n      [attr.aria-activedescendant]=\"activeOptionId\"\n      (input)=\"handleInput($event)\"\n      (focus)=\"handleFocus()\"\n      (blur)=\"handleBlur()\"\n      (keydown)=\"handleKeydown($event)\"\n    />\n  </div>\n\n  <div *ngIf=\"isExpanded\" class=\"dds-search__dropdown\">\n    <ul class=\"dds-search__listbox\" role=\"listbox\" [id]=\"listboxId\">\n      <li\n        *ngFor=\"let suggestion of suggestions; let index = index\"\n        class=\"dds-search__option\"\n        role=\"option\"\n        [id]=\"inputId + '-option-' + index\"\n        [attr.aria-selected]=\"index === activeIndex\"\n        [class.dds-search__option--active]=\"index === activeIndex\"\n        (mousedown)=\"$event.preventDefault()\"\n        (click)=\"selectSuggestion(suggestion)\"\n      >\n        {{ suggestion }}\n      </li>\n    </ul>\n  </div>\n</div>\n"
         },
         {
+            "name": "SelectComponent",
+            "id": "component-SelectComponent-590573eb2ec76911479f4305e8a068d5f425c2e0b73e0d54af411adf01fb8d1b2adfd952e06d822d26923893384cc8067436301b5df7165aa11f446d3b4f0f9b",
+            "file": "src/app/components/select/select.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "dds-select",
+            "styleUrls": [
+                "./select.component.css"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./select.component.html"
+            ],
+            "templateVariables": [],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "coverageIgnore": false,
+                    "name": "ariaLabel",
+                    "defaultValue": "'Select option'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nAccessible name used when the visible label is hidden.",
+                    "description": "<p>Accessible name used when the visible label is hidden.</p>\n",
+                    "line": 55,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "errorMessage",
+                    "defaultValue": "'Select an option to continue.'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nValidation guidance shown in the error state.",
+                    "description": "<p>Validation guidance shown in the error state.</p>\n",
+                    "line": 64,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "helperText",
+                    "defaultValue": "'Choose one option.'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nOptional guidance displayed beneath the field.",
+                    "description": "<p>Optional guidance displayed beneath the field.</p>\n",
+                    "line": 58,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "inputId",
+                    "defaultValue": "`dds-select-${nextSelectId++}`",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nUnique ID used to associate the label, field, and supporting text.",
+                    "description": "<p>Unique ID used to associate the label, field, and supporting text.</p>\n",
+                    "line": 28,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "label",
+                    "defaultValue": "'Select option'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nVisible field label.",
+                    "description": "<p>Visible field label.</p>\n",
+                    "line": 31,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "options",
+                    "defaultValue": "[]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nAvailable options in display order.",
+                    "description": "<p>Available options in display order.</p>\n",
+                    "line": 40,
+                    "type": "SelectOption[]",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "placeholder",
+                    "defaultValue": "'Select option'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nPlaceholder shown before an option is selected.",
+                    "description": "<p>Placeholder shown before an option is selected.</p>\n",
+                    "line": 37,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "required",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nMarks the native select as required.",
+                    "description": "<p>Marks the native select as required.</p>\n",
+                    "line": 49,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "showHelperText",
+                    "defaultValue": "true",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nShows optional guidance beneath non-error fields.",
+                    "description": "<p>Shows optional guidance beneath non-error fields.</p>\n",
+                    "line": 61,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "showLabel",
+                    "defaultValue": "true",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nShows the visible field label.",
+                    "description": "<p>Shows the visible field label.</p>\n",
+                    "line": 52,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "size",
+                    "defaultValue": "'large'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nResponsive size from the DDS specification.",
+                    "description": "<p>Responsive size from the DDS specification.</p>\n",
+                    "line": 43,
+                    "type": "SelectSize",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "state",
+                    "defaultValue": "'default'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nDeterministic visual state for validation and documentation.",
+                    "description": "<p>Deterministic visual state for validation and documentation.</p>\n",
+                    "line": 46,
+                    "type": "SelectState",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "value",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nCurrent option value.",
+                    "description": "<p>Current option value.</p>\n",
+                    "line": 34,
+                    "type": "string",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "valueChange",
+                    "coverageIgnore": false,
+                    "defaultValue": "new EventEmitter<string>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nEmitted whenever the selected value changes.",
+                    "description": "<p>Emitted whenever the selected value changes.</p>\n",
+                    "line": 67,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "handleChange",
+                    "coverageIgnore": false,
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "Event",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 93,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "Event",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "coverageIgnore": false,
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "IconComponent",
+                    "type": "component"
+                }
+            ],
+            "description": "<p>A native single-select field with DDS sizing, validation, and helper text treatments.</p>\n",
+            "rawdescription": "\n\nA native single-select field with DDS sizing, validation, and helper text treatments.\n",
+            "type": "component",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, EventEmitter, Input, Output } from '@angular/core';\nimport { IconComponent } from '../icon/icon.component';\n\nexport type SelectSize = 'large' | 'small';\nexport type SelectState = 'default' | 'focused' | 'disabled' | 'error';\n\nexport type SelectOption = {\n  label: string;\n  value: string;\n  disabled?: boolean;\n};\n\nlet nextSelectId = 0;\n\n/**\n * A native single-select field with DDS sizing, validation, and helper text treatments.\n */\n@Component({\n  selector: 'dds-select',\n  standalone: true,\n  imports: [CommonModule, IconComponent],\n  templateUrl: './select.component.html',\n  styleUrl: './select.component.css',\n})\nexport class SelectComponent {\n  /** Unique ID used to associate the label, field, and supporting text. */\n  @Input() inputId = `dds-select-${nextSelectId++}`;\n\n  /** Visible field label. */\n  @Input() label = 'Select option';\n\n  /** Current option value. */\n  @Input() value = '';\n\n  /** Placeholder shown before an option is selected. */\n  @Input() placeholder = 'Select option';\n\n  /** Available options in display order. */\n  @Input() options: SelectOption[] = [];\n\n  /** Responsive size from the DDS specification. */\n  @Input() size: SelectSize = 'large';\n\n  /** Deterministic visual state for validation and documentation. */\n  @Input() state: SelectState = 'default';\n\n  /** Marks the native select as required. */\n  @Input() required = false;\n\n  /** Shows the visible field label. */\n  @Input() showLabel = true;\n\n  /** Accessible name used when the visible label is hidden. */\n  @Input() ariaLabel = 'Select option';\n\n  /** Optional guidance displayed beneath the field. */\n  @Input() helperText = 'Choose one option.';\n\n  /** Shows optional guidance beneath non-error fields. */\n  @Input() showHelperText = true;\n\n  /** Validation guidance shown in the error state. */\n  @Input() errorMessage = 'Select an option to continue.';\n\n  /** Emitted whenever the selected value changes. */\n  @Output() valueChange = new EventEmitter<string>();\n\n  get isDisabled(): boolean {\n    return this.state === 'disabled';\n  }\n\n  get isError(): boolean {\n    return this.state === 'error';\n  }\n\n  get helperId(): string {\n    return `${this.inputId}-helper`;\n  }\n\n  get errorId(): string {\n    return `${this.inputId}-error`;\n  }\n\n  get describedBy(): string | null {\n    if (this.isError) {\n      return this.errorId;\n    }\n\n    return this.showHelperText ? this.helperId : null;\n  }\n\n  handleChange(event: Event): void {\n    this.value = (event.target as HTMLSelectElement).value;\n    this.valueChange.emit(this.value);\n  }\n}\n",
+            "styleUrl": "./select.component.css",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ":host {\n  display: block;\n  max-width: 100%;\n}\n\n.dds-select {\n  display: flex;\n  flex-direction: column;\n  width: 460px;\n  max-width: 100%;\n  color: var(--text-colour-default);\n  font-family: var(--font-family-primary);\n}\n\n.dds-select__label {\n  display: flex;\n  align-items: center;\n  gap: var(--space-1);\n  padding-bottom: var(--space-2);\n  font-size: var(--font-size-sm);\n  font-weight: var(--font-weight-semibold);\n  line-height: 20px;\n}\n\n.dds-select--small .dds-select__label {\n  padding-bottom: var(--space-1);\n  font-size: var(--font-size-xs);\n  line-height: 16px;\n}\n\n.dds-select__required {\n  color: var(--text-colour-danger);\n}\n\n.dds-select__field {\n  position: relative;\n  box-sizing: border-box;\n  display: flex;\n  align-items: center;\n  width: 100%;\n  min-height: 48px;\n  border: 1px solid var(--border-colour-strong);\n  border-radius: var(--radius-sm);\n  background: var(--bg-colour-white);\n}\n\n.dds-select--small .dds-select__field {\n  min-height: 40px;\n}\n\n.dds-select--focused .dds-select__field,\n.dds-select__field:focus-within {\n  border: 2px solid var(--border-colour-info);\n}\n\n.dds-select--error .dds-select__field {\n  border: 2px solid var(--border-colour-danger);\n}\n\n.dds-select--disabled .dds-select__field {\n  background: var(--bg-colour-disabled);\n}\n\n.dds-select__control {\n  position: relative;\n  z-index: 1;\n  width: 100%;\n  min-height: 46px;\n  padding: var(--space-3) 48px var(--space-3) var(--space-3);\n  border: 0;\n  outline: 0;\n  appearance: none;\n  background: transparent;\n  color: var(--text-colour-default);\n  cursor: pointer;\n  font: inherit;\n  font-size: var(--font-size-md);\n  line-height: 24px;\n}\n\n.dds-select--small .dds-select__control {\n  min-height: 38px;\n  padding: 9px 40px 9px var(--space-3);\n  font-size: var(--font-size-sm);\n  line-height: 20px;\n}\n\n.dds-select--focused .dds-select__control,\n.dds-select--error .dds-select__control {\n  min-height: 44px;\n}\n\n.dds-select--small.dds-select--focused .dds-select__control,\n.dds-select--small.dds-select--error .dds-select__control {\n  min-height: 36px;\n  padding-block: 8px;\n}\n\n.dds-select--placeholder .dds-select__control,\n.dds-select--disabled .dds-select__control {\n  color: var(--text-colour-placeholder);\n}\n\n.dds-select--disabled .dds-select__control {\n  cursor: not-allowed;\n}\n\n.dds-select__icon {\n  position: absolute;\n  z-index: 0;\n  right: var(--space-3);\n  display: inline-flex;\n  color: var(--text-colour-default);\n  pointer-events: none;\n}\n\n.dds-select--disabled .dds-select__icon {\n  color: var(--text-colour-placeholder);\n}\n\n.dds-select__supporting-text {\n  margin: 0;\n  padding-top: var(--space-2);\n  color: var(--text-colour-secondary);\n  font-size: var(--font-size-xs);\n  font-weight: var(--font-weight-regular);\n  line-height: 16px;\n}\n\n.dds-select__error {\n  color: var(--text-colour-danger);\n  font-weight: var(--font-weight-medium);\n}\n",
+                    "styleUrl": "./select.component.css"
+                }
+            ],
+            "stylesData": "",
+            "jsdoctags": [
+                {
+                    "pos": 406,
+                    "end": 502,
+                    "kind": 321,
+                    "id": 0,
+                    "flags": 16777216,
+                    "modifierFlagsCache": 0,
+                    "transformFlags": 0,
+                    "comment": "A native single-select field with DDS sizing, validation, and helper text treatments."
+                }
+            ],
+            "extends": [],
+            "accessors": {
+                "isDisabled": {
+                    "name": "isDisabled",
+                    "getSignature": {
+                        "name": "isDisabled",
+                        "type": "boolean",
+                        "returnType": "boolean",
+                        "line": 69,
+                        "rawdescription": "\n",
+                        "description": ""
+                    }
+                },
+                "isError": {
+                    "name": "isError",
+                    "getSignature": {
+                        "name": "isError",
+                        "type": "boolean",
+                        "returnType": "boolean",
+                        "line": 73,
+                        "rawdescription": "\n",
+                        "description": ""
+                    }
+                },
+                "helperId": {
+                    "name": "helperId",
+                    "getSignature": {
+                        "name": "helperId",
+                        "type": "string",
+                        "returnType": "string",
+                        "line": 77,
+                        "rawdescription": "\n",
+                        "description": ""
+                    }
+                },
+                "errorId": {
+                    "name": "errorId",
+                    "getSignature": {
+                        "name": "errorId",
+                        "type": "string",
+                        "returnType": "string",
+                        "line": 81,
+                        "rawdescription": "\n",
+                        "description": ""
+                    }
+                },
+                "describedBy": {
+                    "name": "describedBy",
+                    "getSignature": {
+                        "name": "describedBy",
+                        "type": "unknown",
+                        "returnType": "string | null",
+                        "line": 85,
+                        "rawdescription": "\n",
+                        "description": ""
+                    }
+                }
+            },
+            "relationships": {
+                "incoming": [],
+                "outgoing": [
+                    {
+                        "name": "CommonModule",
+                        "type": "module"
+                    },
+                    {
+                        "name": "IconComponent",
+                        "type": "component"
+                    }
+                ]
+            },
+            "templateData": "<div\n  class=\"dds-select\"\n  [class.dds-select--small]=\"size === 'small'\"\n  [class.dds-select--focused]=\"state === 'focused'\"\n  [class.dds-select--disabled]=\"isDisabled\"\n  [class.dds-select--error]=\"isError\"\n  [class.dds-select--placeholder]=\"!value\"\n>\n  <label *ngIf=\"showLabel\" class=\"dds-select__label\" [for]=\"inputId\">\n    {{ label }}\n    <span *ngIf=\"required\" class=\"dds-select__required\" aria-hidden=\"true\">*</span>\n  </label>\n\n  <div class=\"dds-select__field\">\n    <select\n      class=\"dds-select__control\"\n      [id]=\"inputId\"\n      [value]=\"value\"\n      [required]=\"required\"\n      [disabled]=\"isDisabled\"\n      [attr.aria-label]=\"showLabel ? null : ariaLabel\"\n      [attr.aria-invalid]=\"isError ? 'true' : null\"\n      [attr.aria-describedby]=\"describedBy\"\n      (change)=\"handleChange($event)\"\n    >\n      <option value=\"\" disabled>{{ placeholder }}</option>\n      <option *ngFor=\"let option of options\" [value]=\"option.value\" [disabled]=\"option.disabled\">\n        {{ option.label }}\n      </option>\n    </select>\n    <dds-icon\n      class=\"dds-select__icon\"\n      name=\"chevron-down\"\n      [size]=\"size === 'small' ? 20 : 24\"\n      aria-hidden=\"true\"\n    ></dds-icon>\n  </div>\n\n  <p *ngIf=\"!isError && showHelperText\" class=\"dds-select__supporting-text\" [id]=\"helperId\">\n    {{ helperText }}\n  </p>\n\n  <p *ngIf=\"isError\" class=\"dds-select__supporting-text dds-select__error\" [id]=\"errorId\">\n    {{ errorMessage }}\n  </p>\n</div>\n"
+        },
+        {
+            "name": "TextareaComponent",
+            "id": "component-TextareaComponent-43dda6809bca32325f9db2c20f021003aa0b095bdb05339cb3009be6289d3b77dbf550047c14040e91fbbe73e5a25da3ede7eb365513a432d856c063f61c41bc",
+            "file": "src/app/components/textarea/textarea.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "dds-textarea",
+            "styleUrls": [
+                "./textarea.component.css"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./textarea.component.html"
+            ],
+            "templateVariables": [],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "coverageIgnore": false,
+                    "name": "ariaLabel",
+                    "defaultValue": "'Text response'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nAccessible name used when the visible label is hidden.",
+                    "description": "<p>Accessible name used when the visible label is hidden.</p>\n",
+                    "line": 46,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "errorMessage",
+                    "defaultValue": "'Enter a valid response.'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nValidation guidance shown in the error state.",
+                    "description": "<p>Validation guidance shown in the error state.</p>\n",
+                    "line": 55,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "helperText",
+                    "defaultValue": "'Helper text'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nOptional guidance displayed beneath the field.",
+                    "description": "<p>Optional guidance displayed beneath the field.</p>\n",
+                    "line": 49,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "inputId",
+                    "defaultValue": "`dds-textarea-${nextTextareaId++}`",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nUnique ID used to associate the label, field, and supporting text.",
+                    "description": "<p>Unique ID used to associate the label, field, and supporting text.</p>\n",
+                    "line": 19,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "label",
+                    "defaultValue": "'Label text'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nVisible field label.",
+                    "description": "<p>Visible field label.</p>\n",
+                    "line": 22,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "maxLength",
+                    "defaultValue": "150",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nMaximum number of characters accepted by the field.",
+                    "description": "<p>Maximum number of characters accepted by the field.</p>\n",
+                    "line": 37,
+                    "type": "number",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "placeholder",
+                    "defaultValue": "'Some text here…'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nPrompt displayed when the field is empty.",
+                    "description": "<p>Prompt displayed when the field is empty.</p>\n",
+                    "line": 28,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "required",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nMarks the native textarea as required.",
+                    "description": "<p>Marks the native textarea as required.</p>\n",
+                    "line": 40,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "showCharacterCount",
+                    "defaultValue": "true",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nShows the current and maximum character count inside the field.",
+                    "description": "<p>Shows the current and maximum character count inside the field.</p>\n",
+                    "line": 58,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "showHelperText",
+                    "defaultValue": "true",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nShows optional guidance beneath non-error fields.",
+                    "description": "<p>Shows optional guidance beneath non-error fields.</p>\n",
+                    "line": 52,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "showLabel",
+                    "defaultValue": "true",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nShows the visible field label.",
+                    "description": "<p>Shows the visible field label.</p>\n",
+                    "line": 43,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "size",
+                    "defaultValue": "'large'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nLarge or small typography treatment.",
+                    "description": "<p>Large or small typography treatment.</p>\n",
+                    "line": 31,
+                    "type": "TextareaSize",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "state",
+                    "defaultValue": "'default'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nDeterministic visual state for validation and documentation.",
+                    "description": "<p>Deterministic visual state for validation and documentation.</p>\n",
+                    "line": 34,
+                    "type": "TextareaState",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "value",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nCurrent field value.",
+                    "description": "<p>Current field value.</p>\n",
+                    "line": 25,
+                    "type": "string",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "valueChange",
+                    "coverageIgnore": false,
+                    "defaultValue": "new EventEmitter<string>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nEmitted whenever the field value changes.",
+                    "description": "<p>Emitted whenever the field value changes.</p>\n",
+                    "line": 61,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "handleInput",
+                    "coverageIgnore": false,
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "Event",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 99,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "Event",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "coverageIgnore": false,
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                }
+            ],
+            "description": "<p>A multi-line text field with DDS sizing, validation, helper text, and character-count treatments.</p>\n",
+            "rawdescription": "\nA multi-line text field with DDS sizing, validation, helper text, and character-count treatments.",
+            "type": "component",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, EventEmitter, Input, Output } from '@angular/core';\n\nexport type TextareaSize = 'large' | 'small';\nexport type TextareaState = 'default' | 'focused' | 'disabled' | 'error';\n\nlet nextTextareaId = 0;\n\n/** A multi-line text field with DDS sizing, validation, helper text, and character-count treatments. */\n@Component({\n  selector: 'dds-textarea',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './textarea.component.html',\n  styleUrl: './textarea.component.css',\n})\nexport class TextareaComponent {\n  /** Unique ID used to associate the label, field, and supporting text. */\n  @Input() inputId = `dds-textarea-${nextTextareaId++}`;\n\n  /** Visible field label. */\n  @Input() label = 'Label text';\n\n  /** Current field value. */\n  @Input() value = '';\n\n  /** Prompt displayed when the field is empty. */\n  @Input() placeholder = 'Some text here…';\n\n  /** Large or small typography treatment. */\n  @Input() size: TextareaSize = 'large';\n\n  /** Deterministic visual state for validation and documentation. */\n  @Input() state: TextareaState = 'default';\n\n  /** Maximum number of characters accepted by the field. */\n  @Input() maxLength = 150;\n\n  /** Marks the native textarea as required. */\n  @Input() required = false;\n\n  /** Shows the visible field label. */\n  @Input() showLabel = true;\n\n  /** Accessible name used when the visible label is hidden. */\n  @Input() ariaLabel = 'Text response';\n\n  /** Optional guidance displayed beneath the field. */\n  @Input() helperText = 'Helper text';\n\n  /** Shows optional guidance beneath non-error fields. */\n  @Input() showHelperText = true;\n\n  /** Validation guidance shown in the error state. */\n  @Input() errorMessage = 'Enter a valid response.';\n\n  /** Shows the current and maximum character count inside the field. */\n  @Input() showCharacterCount = true;\n\n  /** Emitted whenever the field value changes. */\n  @Output() valueChange = new EventEmitter<string>();\n\n  get isDisabled(): boolean {\n    return this.state === 'disabled';\n  }\n\n  get isError(): boolean {\n    return this.state === 'error';\n  }\n\n  get helperId(): string {\n    return `${this.inputId}-helper`;\n  }\n\n  get errorId(): string {\n    return `${this.inputId}-error`;\n  }\n\n  get countId(): string {\n    return `${this.inputId}-count`;\n  }\n\n  get describedBy(): string | null {\n    const ids = [];\n\n    if (this.isError) {\n      ids.push(this.errorId);\n    } else if (this.showHelperText) {\n      ids.push(this.helperId);\n    }\n\n    if (this.showCharacterCount) {\n      ids.push(this.countId);\n    }\n\n    return ids.length ? ids.join(' ') : null;\n  }\n\n  handleInput(event: Event): void {\n    this.value = (event.target as HTMLTextAreaElement).value;\n    this.valueChange.emit(this.value);\n  }\n}\n",
+            "styleUrl": "./textarea.component.css",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ":host {\n  display: block;\n  max-width: 100%;\n}\n\n.dds-textarea {\n  display: flex;\n  flex-direction: column;\n  width: 460px;\n  max-width: 100%;\n  color: var(--text-colour-default);\n  font-family: var(--font-family-primary);\n}\n\n.dds-textarea__label {\n  display: flex;\n  align-items: center;\n  gap: var(--space-1);\n  padding-bottom: var(--space-2);\n  color: var(--text-colour-default);\n  font-size: var(--font-size-sm);\n  font-weight: var(--font-weight-semibold);\n  line-height: 20px;\n}\n\n.dds-textarea--small .dds-textarea__label {\n  padding-bottom: var(--space-1);\n  font-size: var(--font-size-xs);\n  line-height: 16px;\n}\n\n.dds-textarea__required,\n.dds-textarea--error .dds-textarea__label {\n  color: var(--text-colour-danger);\n}\n\n.dds-textarea__field {\n  position: relative;\n  box-sizing: border-box;\n  display: flex;\n  min-height: 80px;\n  border: 1px solid var(--border-colour-default);\n  border-radius: var(--radius-sm);\n  background: var(--bg-colour-white);\n}\n\n.dds-textarea--focused .dds-textarea__field,\n.dds-textarea__field:focus-within {\n  border: 2px solid var(--border-colour-info);\n}\n\n.dds-textarea--error .dds-textarea__field {\n  border: 2px solid var(--border-colour-danger);\n}\n\n.dds-textarea--disabled .dds-textarea__field {\n  background: var(--bg-colour-disabled);\n}\n\n.dds-textarea__control {\n  box-sizing: border-box;\n  width: 100%;\n  min-height: 78px;\n  padding: var(--space-3) var(--space-3) 32px;\n  resize: vertical;\n  border: 0;\n  outline: 0;\n  background: transparent;\n  color: var(--text-colour-default);\n  font: inherit;\n  font-size: var(--font-size-md);\n  line-height: 24px;\n}\n\n.dds-textarea--small .dds-textarea__control {\n  font-size: var(--font-size-sm);\n  line-height: 20px;\n}\n\n.dds-textarea--focused .dds-textarea__control,\n.dds-textarea--error .dds-textarea__control {\n  min-height: 76px;\n}\n\n.dds-textarea__control::placeholder {\n  color: var(--text-colour-placeholder);\n  opacity: 1;\n}\n\n.dds-textarea__control:disabled {\n  color: var(--text-colour-disabled);\n  cursor: not-allowed;\n}\n\n.dds-textarea__control:disabled::placeholder {\n  color: var(--text-colour-disabled);\n}\n\n.dds-textarea__count {\n  position: absolute;\n  right: var(--space-2);\n  bottom: var(--space-2);\n  color: var(--text-colour-tertiary);\n  font-size: var(--font-size-xs);\n  font-weight: var(--font-weight-regular);\n  line-height: 16px;\n  pointer-events: none;\n}\n\n.dds-textarea__supporting-text {\n  margin: 0;\n  padding-top: var(--space-2);\n  color: var(--text-colour-tertiary);\n  font-size: var(--font-size-xs);\n  font-weight: var(--font-weight-regular);\n  line-height: 16px;\n}\n\n.dds-textarea__error {\n  color: var(--text-colour-danger);\n  font-weight: var(--font-weight-medium);\n}\n",
+                    "styleUrl": "./textarea.component.css"
+                }
+            ],
+            "stylesData": "",
+            "jsdoctags": [
+                {
+                    "pos": 267,
+                    "end": 371,
+                    "kind": 321,
+                    "id": 0,
+                    "flags": 16777216,
+                    "modifierFlagsCache": 0,
+                    "transformFlags": 0,
+                    "comment": "A multi-line text field with DDS sizing, validation, helper text, and character-count treatments."
+                }
+            ],
+            "extends": [],
+            "accessors": {
+                "isDisabled": {
+                    "name": "isDisabled",
+                    "getSignature": {
+                        "name": "isDisabled",
+                        "type": "boolean",
+                        "returnType": "boolean",
+                        "line": 63,
+                        "rawdescription": "\n",
+                        "description": ""
+                    }
+                },
+                "isError": {
+                    "name": "isError",
+                    "getSignature": {
+                        "name": "isError",
+                        "type": "boolean",
+                        "returnType": "boolean",
+                        "line": 67,
+                        "rawdescription": "\n",
+                        "description": ""
+                    }
+                },
+                "helperId": {
+                    "name": "helperId",
+                    "getSignature": {
+                        "name": "helperId",
+                        "type": "string",
+                        "returnType": "string",
+                        "line": 71,
+                        "rawdescription": "\n",
+                        "description": ""
+                    }
+                },
+                "errorId": {
+                    "name": "errorId",
+                    "getSignature": {
+                        "name": "errorId",
+                        "type": "string",
+                        "returnType": "string",
+                        "line": 75,
+                        "rawdescription": "\n",
+                        "description": ""
+                    }
+                },
+                "countId": {
+                    "name": "countId",
+                    "getSignature": {
+                        "name": "countId",
+                        "type": "string",
+                        "returnType": "string",
+                        "line": 79,
+                        "rawdescription": "\n",
+                        "description": ""
+                    }
+                },
+                "describedBy": {
+                    "name": "describedBy",
+                    "getSignature": {
+                        "name": "describedBy",
+                        "type": "unknown",
+                        "returnType": "string | null",
+                        "line": 83,
+                        "rawdescription": "\n",
+                        "description": ""
+                    }
+                }
+            },
+            "relationships": {
+                "incoming": [],
+                "outgoing": [
+                    {
+                        "name": "CommonModule",
+                        "type": "module"
+                    }
+                ]
+            },
+            "templateData": "<div\n  class=\"dds-textarea\"\n  [class.dds-textarea--small]=\"size === 'small'\"\n  [class.dds-textarea--focused]=\"state === 'focused'\"\n  [class.dds-textarea--disabled]=\"isDisabled\"\n  [class.dds-textarea--error]=\"isError\"\n>\n  <label *ngIf=\"showLabel\" class=\"dds-textarea__label\" [for]=\"inputId\">\n    {{ label }}\n    <span *ngIf=\"required\" class=\"dds-textarea__required\" aria-hidden=\"true\">*</span>\n  </label>\n\n  <div class=\"dds-textarea__field\">\n    <textarea\n      class=\"dds-textarea__control\"\n      [id]=\"inputId\"\n      [value]=\"value\"\n      [placeholder]=\"placeholder\"\n      [required]=\"required\"\n      [disabled]=\"isDisabled\"\n      [attr.maxlength]=\"maxLength > 0 ? maxLength : null\"\n      [attr.aria-label]=\"showLabel ? null : ariaLabel\"\n      [attr.aria-invalid]=\"isError ? 'true' : null\"\n      [attr.aria-describedby]=\"describedBy\"\n      (input)=\"handleInput($event)\"\n    ></textarea>\n\n    <span *ngIf=\"showCharacterCount\" class=\"dds-textarea__count\" [id]=\"countId\" aria-live=\"polite\">\n      {{ value.length }}/{{ maxLength }}\n    </span>\n  </div>\n\n  <p *ngIf=\"!isError && showHelperText\" class=\"dds-textarea__supporting-text\" [id]=\"helperId\">\n    {{ helperText }}\n  </p>\n\n  <p *ngIf=\"isError\" class=\"dds-textarea__supporting-text dds-textarea__error\" [id]=\"errorId\">\n    {{ errorMessage }}\n  </p>\n</div>\n"
+        },
+        {
             "name": "ToastComponent",
             "id": "component-ToastComponent-7ea05f484d0bd9468d8015ea8f3d9cf9f0641dc1764ff9b29946bccffd754cf8e3483bf63bbcc52d3e15abb1fe86138851a84b3db6266479bacd5b270597406e",
             "file": "src/app/components/toast/toast.component.ts",
@@ -3080,6 +3788,28 @@
                 "defaultValue": "0"
             },
             {
+                "name": "nextSelectId",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/components/select/select.component.ts",
+                "coverageIgnore": false,
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "number",
+                "defaultValue": "0"
+            },
+            {
+                "name": "nextTextareaId",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/components/textarea/textarea.component.ts",
+                "coverageIgnore": false,
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "number",
+                "defaultValue": "0"
+            },
+            {
                 "name": "reqHandler",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -3324,6 +4054,71 @@
                 "kind": 193
             },
             {
+                "name": "SelectOption",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "coverageIgnore": false,
+                "rawtype": "{ label: string; value: string; disabled?: boolean }",
+                "file": "src/app/components/select/select.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "rawdescription": "",
+                "description": "",
+                "kind": 188
+            },
+            {
+                "name": "SelectSize",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "coverageIgnore": false,
+                "rawtype": "\"large\" | \"small\"",
+                "file": "src/app/components/select/select.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "rawdescription": "",
+                "description": "",
+                "kind": 193
+            },
+            {
+                "name": "SelectState",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "coverageIgnore": false,
+                "rawtype": "\"default\" | \"focused\" | \"disabled\" | \"error\"",
+                "file": "src/app/components/select/select.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "rawdescription": "",
+                "description": "",
+                "kind": 193
+            },
+            {
+                "name": "TextareaSize",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "coverageIgnore": false,
+                "rawtype": "\"large\" | \"small\"",
+                "file": "src/app/components/textarea/textarea.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "rawdescription": "",
+                "description": "",
+                "kind": 193
+            },
+            {
+                "name": "TextareaState",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "coverageIgnore": false,
+                "rawtype": "\"default\" | \"focused\" | \"disabled\" | \"error\"",
+                "file": "src/app/components/textarea/textarea.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "rawdescription": "",
+                "description": "",
+                "kind": 193
+            },
+            {
                 "name": "ToastSize",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
@@ -3495,6 +4290,32 @@
                     "ctype": "miscellaneous",
                     "subtype": "variable",
                     "file": "src/app/components/search/search.component.ts",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "defaultValue": "0"
+                }
+            ],
+            "src/app/components/select/select.component.ts": [
+                {
+                    "name": "nextSelectId",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/components/select/select.component.ts",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "defaultValue": "0"
+                }
+            ],
+            "src/app/components/textarea/textarea.component.ts": [
+                {
+                    "name": "nextTextareaId",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/components/textarea/textarea.component.ts",
                     "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
@@ -3741,6 +4562,75 @@
                     "kind": 193
                 }
             ],
+            "src/app/components/select/select.component.ts": [
+                {
+                    "name": "SelectOption",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "coverageIgnore": false,
+                    "rawtype": "{ label: string; value: string; disabled?: boolean }",
+                    "file": "src/app/components/select/select.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "",
+                    "description": "",
+                    "kind": 188
+                },
+                {
+                    "name": "SelectSize",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "coverageIgnore": false,
+                    "rawtype": "\"large\" | \"small\"",
+                    "file": "src/app/components/select/select.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "",
+                    "description": "",
+                    "kind": 193
+                },
+                {
+                    "name": "SelectState",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "coverageIgnore": false,
+                    "rawtype": "\"default\" | \"focused\" | \"disabled\" | \"error\"",
+                    "file": "src/app/components/select/select.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "",
+                    "description": "",
+                    "kind": 193
+                }
+            ],
+            "src/app/components/textarea/textarea.component.ts": [
+                {
+                    "name": "TextareaSize",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "coverageIgnore": false,
+                    "rawtype": "\"large\" | \"small\"",
+                    "file": "src/app/components/textarea/textarea.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "",
+                    "description": "",
+                    "kind": 193
+                },
+                {
+                    "name": "TextareaState",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "coverageIgnore": false,
+                    "rawtype": "\"default\" | \"focused\" | \"disabled\" | \"error\"",
+                    "file": "src/app/components/textarea/textarea.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "",
+                    "description": "",
+                    "kind": 193
+                }
+            ],
             "src/app/components/toast/toast.component.ts": [
                 {
                     "name": "ToastSize",
@@ -3785,7 +4675,7 @@
         ]
     },
     "coverage": {
-        "count": 11,
+        "count": 12,
         "status": "low",
         "files": [
             {
@@ -4105,6 +4995,94 @@
                 "linktype": "miscellaneous",
                 "linksubtype": "typealias",
                 "name": "SearchState",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/select/select.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "SelectComponent",
+                "coveragePercent": 93,
+                "coverageCount": "15/16",
+                "status": "very-good"
+            },
+            {
+                "filePath": "src/app/components/select/select.component.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "nextSelectId",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/select/select.component.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "SelectOption",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/select/select.component.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "SelectSize",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/select/select.component.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "SelectState",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/textarea/textarea.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "TextareaComponent",
+                "coveragePercent": 94,
+                "coverageCount": "16/17",
+                "status": "very-good"
+            },
+            {
+                "filePath": "src/app/components/textarea/textarea.component.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "nextTextareaId",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/textarea/textarea.component.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "TextareaSize",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/textarea/textarea.component.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "TextareaState",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
