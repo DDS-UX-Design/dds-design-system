@@ -33,6 +33,7 @@
   min-height: 48px;
   padding: 12px 24px;
   font-size: var(--font-size-md);
+  line-height: 24px;
 }
 
 .dds-button--medium {
@@ -40,12 +41,15 @@
   min-height: 40px;
   padding: 8px 16px;
   font-size: var(--font-size-sm);
+  line-height: 20px;
 }
 
 .dds-button--small {
+  height: 32px;
   min-height: 32px;
   padding: 4px 12px;
   font-size: var(--font-size-xs);
+  line-height: 16px;
 }
 
 /* Primary Button */
@@ -66,8 +70,8 @@
 .dds-button--primary:active,
 .dds-button--primary:hover:active,
 .dds-button--state-focused.dds-button--primary:not(:disabled) {
-  background-color: var(--btn-colour-primary-hover);
-  border-color: var(--btn-colour-primary-hover);
+  background-color: var(--btn-colour-primary);
+  border-color: var(--colour-neutral-white);
   box-shadow: var(--btn-primary-focus-ring);
 }
 
@@ -89,8 +93,8 @@
 .dds-button--secondary:active,
 .dds-button--secondary:hover:active,
 .dds-button--state-focused.dds-button--secondary:not(:disabled) {
-  background-color: var(--btn-colour-secondary-hover);
-  border-color: var(--border-colour-default);
+  background-color: var(--btn-colour-secondary);
+  border-color: var(--colour-neutral-white);
   box-shadow: var(--btn-primary-focus-ring);
 }
 
@@ -152,8 +156,8 @@
 .dds-button--danger.dds-button--primary:active,
 .dds-button--danger.dds-button--primary:hover:active,
 .dds-button--danger.dds-button--state-focused.dds-button--primary:not(:disabled) {
-  background-color: var(--btn-colour-danger-hover);
-  border-color: var(--btn-colour-danger-hover);
+  background-color: var(--btn-colour-danger);
+  border-color: var(--colour-neutral-white);
   box-shadow: var(--btn-danger-focus-ring);
 }
 
@@ -177,6 +181,11 @@
 .dds-button--danger.dds-button--primary:disabled {
   background-color: var(--btn-colour-danger-disabled);
   border-color: var(--btn-colour-danger-disabled);
+  color: var(--btn-colour-danger-text-disabled);
+}
+
+.dds-button--ghost:disabled .dds-button__label::after {
+  background-color: var(--text-colour-disabled);
 }
 
 /* Icon Button */
