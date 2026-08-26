@@ -1,21 +1,17 @@
 :root {
 
-    --dds-text-colour-default: var(--dds-grey-900);
-    --dds-text-colour-secondary: var(--dds-grey-700);
-    --dds-text-colour-tertiary: var(--dds-grey-500);
-    --dds-text-colour-inverse: var(--dds-color-neutral-white);
-    --dds-text-colour-disabled: var(--dds-grey-400);
-    --dds-text-colour-link: var(--dds-blue-600);
-    --dds-text-colour-link-hover: var(--dds-blue-700);
-    --dds-text-colour-placeholder: var(--dds-grey-400);
-
-    --dds-text-colour-accent: var(--dds-blue-700);
-    /* --dds-text-colour-accent-secondary: var(--dds-teal-300); */
-
-    --dds-text-colour-info: var(--dds-blue-600);
-    --dds-text-colour-success: var(--dds-green-600);
-    --dds-text-colour-warning: var(--dds-yellow-600);
-    --dds-text-colour-danger: var(--dds-red-600);
+    --text-colour-default: var(--grey-900); /* Default text colour */
+    --text-colour-secondary: var(--grey-700);
+    --text-colour-tertiary: var(--grey-500);
+    --text-colour-placeholder: var(--grey-400);
+    --text-colour-disabled: var(--grey-400);    
+    --text-colour-inverse: var(--colour-neutral-white);
+    --text-colour-accent: var(--blue-700);
+    --text-colour-accent-on-brand: var(--teal-300);
+    --text-colour-info: var(--blue-600);
+    --text-colour-success: var(--green-600);
+    --text-colour-danger: var(--red-600);    
+    --text-colour-warning: var(--yellow-600);
 
 
 }
