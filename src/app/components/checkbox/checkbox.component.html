@@ -1,0 +1,40 @@
+<div
+  class="dds-checkbox"
+  [class.dds-checkbox--focused]="state === 'focused'"
+  [class.dds-checkbox--disabled]="isDisabled"
+  [class.dds-checkbox--invalid]="isInvalid"
+>
+  <div *ngIf="showLabel" class="dds-checkbox__field-label">
+    {{ label }}
+    <span *ngIf="required" class="dds-checkbox__required" aria-hidden="true">*</span>
+  </div>
+
+  <label class="dds-checkbox__option" [for]="inputId">
+    <input
+      class="dds-checkbox__native"
+      type="checkbox"
+      [id]="inputId"
+      [checked]="isChecked"
+      [indeterminate]="isIndeterminate"
+      [required]="required"
+      [disabled]="isDisabled"
+      [attr.aria-label]="showOption ? null : ariaLabel"
+      [attr.aria-invalid]="isInvalid ? 'true' : null"
+      [attr.aria-describedby]="isInvalid && showErrorMessage ? errorId : null"
+      (change)="handleChange($event)"
+    />
+    <span class="dds-checkbox__box" aria-hidden="true">
+      <dds-icon
+        *ngIf="value !== 'unchecked'"
+        [name]="isIndeterminate ? 'minus' : 'check'"
+        [size]="14"
+        [strokeWidth]="3"
+      ></dds-icon>
+    </span>
+    <span *ngIf="showOption" class="dds-checkbox__option-text">{{ option }}</span>
+  </label>
+
+  <p *ngIf="isInvalid && showErrorMessage" class="dds-checkbox__error" [id]="errorId">
+    {{ errorMessage }}
+  </p>
+</div>
