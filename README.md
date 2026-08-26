@@ -62,6 +62,20 @@ Run the unit test suite:
 npm test
 ```
 
+## Format the project
+
+Format supported source and configuration files:
+
+```bash
+npm run format
+```
+
+Check formatting without changing files:
+
+```bash
+npm run format:check
+```
+
 ## Publish to Chromatic
 
 Chromatic is used to publish Storybook builds for visual review and regression tracking.
