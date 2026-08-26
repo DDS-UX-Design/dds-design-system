@@ -6,7 +6,7 @@ const config: StorybookConfig = {
   framework: '@storybook/angular',
   webpackFinal: async (config) => {
     config.module?.rules?.push({
-      test: /\.md$/,
+      test: /\.(?:md|backlog)$/,
       type: 'asset/source',
     });
 
