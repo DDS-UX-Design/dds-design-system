@@ -1,11 +1,11 @@
 :root {
-  --dds-radius-none: 0;
-  --dds-radius-1: 2px;
-  --dds-radius-2: 4px;
-  --dds-radius-3: 6px;
-  --dds-radius-4: 8px;
-  --dds-radius-5: 12px;   
-  --dds-radius-6: 16px;
-  --dds-radius-7: 24px;
-  --dds-radius-full: 9999px;
+  --radius-none: 0;
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;   
+  --radius-2xl: 16px;
+  --radius-3xl: 24px;
+  --radius-full: 9999px;
 }
