@@ -1,0 +1,293 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Foundations/Spacing" />
+
+export const spaces = [
+  ['--space-0', '0', '0', 'Reset spacing'],
+  ['--space-1', '0.25rem', '4px', 'Fine adjustments and very compact gaps'],
+  ['--space-2', '0.5rem', '8px', 'Related icons, labels, and compact controls'],
+  ['--space-3', '0.75rem', '12px', 'Compact component padding'],
+  ['--space-4', '1rem', '16px', 'Default component gaps and padding'],
+  ['--space-5', '1.25rem', '20px', 'Comfortable content separation'],
+  ['--space-6', '1.5rem', '24px', 'Component groups and generous padding'],
+  ['--space-7', '2rem', '32px', 'Related sections and content regions'],
+  ['--space-8', '2.5rem', '40px', 'Large section spacing'],
+  ['--space-9', '3rem', '48px', 'Page-level section separation'],
+  ['--space-10', '4rem', '64px', 'Major page and layout regions'],
+];
+
+export const SpaceRow = ({ token, rem, px, usage }) => (
+  <div className="dds-spacing__row">
+    <code>{token}</code>
+    <span>{rem}</span>
+    <span>{px}</span>
+    <div className="dds-spacing__example" aria-label={`${px} spacing example`}>
+      <span style={{ width: `var(${token})` }} />
+    </div>
+    <span className="dds-spacing__usage">{usage}</span>
+  </div>
+);
+
+<div className="dds-spacing">
+  <p className="dds-spacing__eyebrow">FOUNDATIONS</p>
+
+# Spacing
+
+The DDS spacing scale creates consistent rhythm and alignment across components and layouts. It
+follows a **4px base unit**, providing enough flexibility for compact interfaces while keeping
+larger compositions visually related.
+
+<div className="dds-spacing__callout">
+  <strong>Use tokens instead of one-off values.</strong>
+  <span>
+    Apply spacing variables to margin, padding, gap, positioning, and layout dimensions so changes
+    remain predictable across the system.
+  </span>
+</div>
+
+## Scale
+
+The scale is shared by desktop and mobile. Responsive layouts change which token is appropriate,
+rather than introducing a separate set of spacing values.
+
+<div className="dds-spacing__table" role="table" aria-label="DDS spacing token scale">
+  <div className="dds-spacing__header" role="row">
+    <span role="columnheader">Token</span>
+    <span role="columnheader">REM</span>
+    <span role="columnheader">PX</span>
+    <span role="columnheader">Example</span>
+    <span role="columnheader">Typical use</span>
+  </div>
+  {spaces.map(([token, rem, px, usage]) => (
+    <SpaceRow key={token} token={token} rem={rem} px={px} usage={usage} />
+  ))}
+</div>
+
+## Applying the scale
+
+<div className="dds-spacing__guidance">
+  <section>
+    <span>01</span>
+    <h3>Start with relationships</h3>
+    <p>
+      Elements that belong together should use smaller gaps. Increase spacing as the relationship
+      between groups becomes weaker.
+    </p>
+  </section>
+  <section>
+    <span>02</span>
+    <h3>Prefer layout gap</h3>
+    <p>
+      Use CSS <code>gap</code> for repeated lists and groups. It keeps spacing owned by the parent
+      layout and avoids special-case margins.
+    </p>
+  </section>
+  <section>
+    <span>03</span>
+    <h3>Adapt intentionally</h3>
+    <p>
+      Reduce large page-level spacing on narrow screens when needed, but keep compact component
+      spacing stable unless the component specification says otherwise.
+    </p>
+  </section>
+</div>
+
+## Usage example
+
+```css
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding: var(--space-6);
+}
+
+.page-section + .page-section {
+  margin-top: var(--space-9);
+}
+```
+
+### Good practice
+
+- Use the smallest token that clearly communicates the intended grouping.
+- Keep spacing responsibilities at the layout or component-container level.
+- Combine spacing with hierarchy, alignment, and typography rather than relying on empty space
+  alone.
+- Treat touch-target size separately: visible content may be small, but interactive targets should
+  remain comfortably operable.
+- Avoid negative spacing and arbitrary pixel values unless the exception is documented by the
+  component specification.
+
+`--space-none` remains available as a backwards-compatible alias for `--space-0`. New code should
+use `--space-0` to match the numbered scale.
+
+[View the spacing source in Figma](https://www.figma.com/design/u0lpCPrGMj68e9RMIRuYxL/DDS---Design-System-v1.0?node-id=383-2971)
+
+</div>
+
+<style>{`
+  .dds-spacing {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 24px 16px 72px;
+    color: var(--text-colour-default, #171717);
+    font-family: Inter, system-ui, sans-serif;
+  }
+
+  .dds-spacing__eyebrow {
+    margin-bottom: 8px !important;
+    color: var(--text-colour-accent, #224583);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+  }
+
+  .dds-spacing > h1 {
+    margin-bottom: 16px;
+    color: var(--text-colour-default, #171717);
+    font-size: 48px;
+    font-weight: 400;
+    letter-spacing: -0.03em;
+  }
+
+  .dds-spacing > h2 {
+    margin-top: 64px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border-colour-subtle, #e5e5e5);
+  }
+
+  .dds-spacing__callout {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1, 4px);
+    margin: var(--space-7, 32px) 0;
+    padding: var(--space-5, 20px) var(--space-6, 24px);
+    border-left: 4px solid var(--border-colour-info, #2f5eaf);
+    background: var(--bg-colour-info-muted, #f0f4fa);
+  }
+
+  .dds-spacing__callout span,
+  .dds-spacing__guidance p {
+    color: var(--text-colour-secondary, #404040);
+  }
+
+  .dds-spacing__table {
+    overflow: hidden;
+    margin-top: var(--space-7, 32px);
+    border: 1px solid var(--border-colour-subtle, #e5e5e5);
+    border-radius: 8px;
+    background: var(--bg-colour-white, #fff);
+  }
+
+  .dds-spacing__header,
+  .dds-spacing__row {
+    display: grid;
+    grid-template-columns: minmax(132px, 0.8fr) minmax(76px, 0.5fr) minmax(64px, 0.4fr) minmax(100px, 0.7fr) minmax(220px, 1.5fr);
+    gap: var(--space-4, 16px);
+    align-items: center;
+    padding: 0 var(--space-5, 20px);
+  }
+
+  .dds-spacing__header {
+    min-height: 52px;
+    border-bottom: 1px solid var(--border-colour-subtle, #e5e5e5);
+    color: var(--text-colour-secondary, #404040);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .dds-spacing__row {
+    min-height: 56px;
+    border-bottom: 1px solid var(--border-colour-subtle, #e5e5e5);
+    font-size: 13px;
+  }
+
+  .dds-spacing__row:last-child {
+    border-bottom: 0;
+  }
+
+  .dds-spacing code {
+    width: fit-content;
+    color: var(--text-colour-secondary, #404040);
+    font-size: 12px;
+  }
+
+  .dds-spacing__row > code,
+  .dds-spacing__guidance code {
+    display: inline-flex;
+    padding: 0 var(--space-2, 8px);
+    border: 1px solid var(--border-colour-subtle, #e5e5e5);
+    border-radius: 4px;
+    background: var(--bg-colour-default, #f7f7f7);
+    line-height: 24px;
+  }
+
+  .dds-spacing__example {
+    display: flex;
+    align-items: center;
+    min-height: 24px;
+  }
+
+  .dds-spacing__example span {
+    display: block;
+    min-width: 0;
+    height: 16px;
+    background: var(--bg-colour-accent, #224583);
+  }
+
+  .dds-spacing__usage {
+    color: var(--text-colour-secondary, #404040);
+  }
+
+  .dds-spacing__guidance {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-4, 16px);
+    margin-top: var(--space-6, 24px);
+  }
+
+  .dds-spacing__guidance section {
+    padding: var(--space-6, 24px);
+    border: 1px solid var(--border-colour-subtle, #e5e5e5);
+    border-radius: 8px;
+    background: #fff;
+  }
+
+  .dds-spacing__guidance section > span {
+    color: var(--text-colour-accent, #224583);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+  }
+
+  .dds-spacing__guidance h3 {
+    margin: var(--space-3, 12px) 0 var(--space-2, 8px);
+    font-size: 18px;
+  }
+
+  .dds-spacing__guidance p {
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 760px) {
+    .dds-spacing > h1 {
+      font-size: 40px;
+    }
+
+    .dds-spacing__table {
+      overflow-x: auto;
+    }
+
+    .dds-spacing__header,
+    .dds-spacing__row {
+      min-width: 760px;
+    }
+
+    .dds-spacing__guidance {
+      grid-template-columns: 1fr;
+    }
+  }
+`}</style>
