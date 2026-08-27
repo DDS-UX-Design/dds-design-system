@@ -1,0 +1,118 @@
+:host {
+  display: inline-block;
+  max-width: 100%;
+}
+
+.dds-date-input {
+  display: flex;
+  flex-direction: column;
+  width: 464px;
+  max-width: 100%;
+  font-family: var(--font-family-primary);
+}
+
+.dds-date-input__label {
+  display: flex;
+  gap: var(--space-1);
+  padding-bottom: var(--space-2);
+  color: var(--text-colour-default);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  line-height: 20px;
+}
+
+.dds-date-input--mobile .dds-date-input__label {
+  padding-bottom: var(--space-1);
+  font-size: var(--font-size-xs);
+  line-height: 16px;
+}
+
+.dds-date-input__required,
+.dds-date-input--error .dds-date-input__label,
+.dds-date-input__message--error {
+  color: var(--text-colour-danger);
+}
+
+.dds-date-input__field {
+  display: flex;
+  align-items: center;
+  min-height: 48px;
+  padding: 0 var(--space-3);
+  border: 1px solid var(--border-colour-default);
+  border-radius: var(--radius-sm);
+  background: var(--bg-colour-white);
+  box-sizing: border-box;
+}
+
+.dds-date-input--mobile .dds-date-input__field {
+  min-height: 40px;
+}
+
+.dds-date-input__control {
+  flex: 1;
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--text-colour-default);
+  font: inherit;
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-regular);
+  line-height: 24px;
+}
+
+.dds-date-input--mobile .dds-date-input__control {
+  font-size: var(--font-size-sm);
+  line-height: 20px;
+}
+
+.dds-date-input__control::placeholder {
+  color: var(--text-colour-placeholder);
+  opacity: 1;
+}
+
+.dds-date-input__icon {
+  display: inline-flex;
+  flex: 0 0 auto;
+  color: var(--icon-colour-default);
+  pointer-events: none;
+}
+
+.dds-date-input__field:focus-within,
+.dds-date-input--focused .dds-date-input__field {
+  border: 2px solid var(--border-colour-info);
+  padding-right: 11px;
+  padding-left: 11px;
+}
+
+.dds-date-input--error .dds-date-input__field {
+  border: 2px solid var(--border-colour-danger);
+  padding-right: 11px;
+  padding-left: 11px;
+}
+
+.dds-date-input__message {
+  margin: 0;
+  padding-top: var(--space-2);
+  color: var(--text-colour-tertiary);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-regular);
+  line-height: 16px;
+}
+
+.dds-date-input--disabled .dds-date-input__field {
+  border-color: var(--border-colour-default);
+  background: var(--bg-colour-disabled);
+}
+
+.dds-date-input--disabled .dds-date-input__control,
+.dds-date-input--disabled .dds-date-input__icon,
+.dds-date-input--disabled .dds-date-input__message {
+  color: var(--text-colour-disabled);
+  cursor: not-allowed;
+}
+
+.dds-date-input--disabled .dds-date-input__control::placeholder {
+  color: var(--text-colour-disabled);
+}
