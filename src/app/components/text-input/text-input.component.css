@@ -1,0 +1,112 @@
+:host {
+  display: inline-block;
+  max-width: 100%;
+}
+
+.dds-text-input {
+  display: flex;
+  flex-direction: column;
+  width: 460px;
+  max-width: 100%;
+  font-family: var(--font-family-primary);
+}
+
+.dds-text-input__label {
+  display: flex;
+  gap: var(--space-1);
+  padding-bottom: var(--space-2);
+  color: var(--text-colour-default);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  line-height: 20px;
+}
+
+.dds-text-input--mobile .dds-text-input__label {
+  padding-bottom: var(--space-1);
+  font-size: var(--font-size-xs);
+  line-height: 16px;
+}
+
+.dds-text-input__required,
+.dds-text-input__message--error {
+  color: var(--text-colour-danger);
+}
+
+.dds-text-input__field {
+  display: flex;
+  align-items: center;
+  min-height: 48px;
+  padding: 0 var(--space-3);
+  border: 1px solid var(--border-colour-strong);
+  border-radius: var(--radius-sm);
+  background: var(--bg-colour-white);
+  box-sizing: border-box;
+}
+
+.dds-text-input--mobile .dds-text-input__field {
+  min-height: 40px;
+}
+
+.dds-text-input__control {
+  width: 100%;
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--text-colour-default);
+  font: inherit;
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-regular);
+  line-height: 24px;
+}
+
+.dds-text-input--mobile .dds-text-input__control {
+  font-size: var(--font-size-sm);
+  line-height: 22px;
+}
+
+.dds-text-input__control::placeholder {
+  color: var(--text-colour-placeholder);
+  opacity: 1;
+}
+
+.dds-text-input__field:focus-within,
+.dds-text-input--focused .dds-text-input__field {
+  border: 2px solid var(--border-colour-info);
+  padding-right: 11px;
+  padding-left: 11px;
+}
+
+.dds-text-input--error .dds-text-input__field {
+  border: 2px solid var(--border-colour-danger);
+  padding-right: 11px;
+  padding-left: 11px;
+}
+
+.dds-text-input__message {
+  margin: 0;
+  padding-top: var(--space-2);
+  color: var(--text-colour-secondary);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-regular);
+  line-height: 16px;
+}
+
+.dds-text-input__message--error {
+  font-weight: var(--font-weight-medium);
+}
+
+.dds-text-input--disabled .dds-text-input__field {
+  border-color: var(--border-colour-strong);
+  background: var(--bg-colour-disabled);
+}
+
+.dds-text-input--disabled .dds-text-input__control {
+  color: var(--text-colour-disabled);
+  cursor: not-allowed;
+}
+
+.dds-text-input--disabled .dds-text-input__control::placeholder {
+  color: var(--text-colour-disabled);
+}

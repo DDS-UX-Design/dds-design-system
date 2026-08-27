@@ -1,0 +1,42 @@
+<div
+  class="dds-text-input"
+  [class.dds-text-input--mobile]="size === 'mobile'"
+  [class.dds-text-input--focused]="state === 'focused'"
+  [class.dds-text-input--error]="isError"
+  [class.dds-text-input--disabled]="disabled"
+>
+  <label *ngIf="showLabel" class="dds-text-input__label" [for]="inputId">
+    {{ label }}
+    <span *ngIf="required" class="dds-text-input__required" aria-hidden="true">*</span>
+  </label>
+
+  <div class="dds-text-input__field">
+    <input
+      class="dds-text-input__control"
+      [id]="inputId"
+      [name]="name"
+      type="text"
+      [value]="value"
+      [placeholder]="placeholder"
+      [required]="required"
+      [disabled]="disabled"
+      [autocomplete]="autocomplete"
+      [attr.maxlength]="maxLength ?? null"
+      [attr.aria-label]="showLabel ? null : ariaLabel"
+      [attr.aria-invalid]="isError ? 'true' : null"
+      [attr.aria-describedby]="describedBy"
+      (input)="handleInput($event)"
+    />
+  </div>
+
+  <p
+    *ngIf="isError && showErrorMessage"
+    class="dds-text-input__message dds-text-input__message--error"
+    [id]="messageId"
+  >
+    {{ errorMessage }}
+  </p>
+  <p *ngIf="!isError && showHelperText" class="dds-text-input__message" [id]="messageId">
+    {{ helperText }}
+  </p>
+</div>

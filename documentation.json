@@ -3952,6 +3952,351 @@
             "templateData": "<div\n  class=\"dds-textarea\"\n  [class.dds-textarea--small]=\"size === 'small'\"\n  [class.dds-textarea--focused]=\"state === 'focused'\"\n  [class.dds-textarea--disabled]=\"isDisabled\"\n  [class.dds-textarea--error]=\"isError\"\n>\n  <label *ngIf=\"showLabel\" class=\"dds-textarea__label\" [for]=\"inputId\">\n    {{ label }}\n    <span *ngIf=\"required\" class=\"dds-textarea__required\" aria-hidden=\"true\">*</span>\n  </label>\n\n  <div class=\"dds-textarea__field\">\n    <textarea\n      class=\"dds-textarea__control\"\n      [id]=\"inputId\"\n      [value]=\"value\"\n      [placeholder]=\"placeholder\"\n      [required]=\"required\"\n      [disabled]=\"isDisabled\"\n      [attr.maxlength]=\"maxLength > 0 ? maxLength : null\"\n      [attr.aria-label]=\"showLabel ? null : ariaLabel\"\n      [attr.aria-invalid]=\"isError ? 'true' : null\"\n      [attr.aria-describedby]=\"describedBy\"\n      (input)=\"handleInput($event)\"\n    ></textarea>\n\n    <span *ngIf=\"showCharacterCount\" class=\"dds-textarea__count\" [id]=\"countId\" aria-live=\"polite\">\n      {{ value.length }}/{{ maxLength }}\n    </span>\n  </div>\n\n  <p *ngIf=\"!isError && showHelperText\" class=\"dds-textarea__supporting-text\" [id]=\"helperId\">\n    {{ helperText }}\n  </p>\n\n  <p *ngIf=\"isError\" class=\"dds-textarea__supporting-text dds-textarea__error\" [id]=\"errorId\">\n    {{ errorMessage }}\n  </p>\n</div>\n"
         },
         {
+            "name": "TextInputComponent",
+            "id": "component-TextInputComponent-6224a5a6362e96744efb2898dd95ab345694cfaff586c74cfe0af423af4755695809aa6c54499d5dce56a9a2c474d5def0df84dce30f86b52319e4f7bb2cdd89",
+            "file": "src/app/components/text-input/text-input.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "dds-text-input",
+            "styleUrls": [
+                "./text-input.component.css"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./text-input.component.html"
+            ],
+            "templateVariables": [],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "coverageIgnore": false,
+                    "name": "ariaLabel",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 29,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "autocomplete",
+                    "defaultValue": "'off'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 32,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "disabled",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 30,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "errorMessage",
+                    "defaultValue": "'Error message'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 22,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "helperText",
+                    "defaultValue": "'Helper text'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 21,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "inputId",
+                    "defaultValue": "`dds-text-input-${nextTextInputId++}`",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 17,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "label",
+                    "defaultValue": "'Label Text'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 18,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "maxLength",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 33,
+                    "type": "number",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "name",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 31,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "placeholder",
+                    "defaultValue": "'Placeholder text...'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 19,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "required",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 25,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "showErrorMessage",
+                    "defaultValue": "true",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 28,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "showHelperText",
+                    "defaultValue": "true",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 27,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "showLabel",
+                    "defaultValue": "true",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 26,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "size",
+                    "defaultValue": "'desktop'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 23,
+                    "type": "TextInputSize",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "state",
+                    "defaultValue": "'default'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 24,
+                    "type": "TextInputState",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "value",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 20,
+                    "type": "string",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "valueChange",
+                    "coverageIgnore": false,
+                    "defaultValue": "new EventEmitter<string>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 35,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "handleInput",
+                    "coverageIgnore": false,
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "Event",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 53,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "Event",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "coverageIgnore": false,
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, EventEmitter, Input, Output } from '@angular/core';\n\nexport type TextInputSize = 'desktop' | 'mobile';\nexport type TextInputState = 'default' | 'focused' | 'error';\n\nlet nextTextInputId = 0;\n\n@Component({\n  selector: 'dds-text-input',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './text-input.component.html',\n  styleUrl: './text-input.component.css',\n})\nexport class TextInputComponent {\n  @Input() inputId = `dds-text-input-${nextTextInputId++}`;\n  @Input() label = 'Label Text';\n  @Input() placeholder = 'Placeholder text...';\n  @Input() value = '';\n  @Input() helperText = 'Helper text';\n  @Input() errorMessage = 'Error message';\n  @Input() size: TextInputSize = 'desktop';\n  @Input() state: TextInputState = 'default';\n  @Input() required = false;\n  @Input() showLabel = true;\n  @Input() showHelperText = true;\n  @Input() showErrorMessage = true;\n  @Input() ariaLabel?: string;\n  @Input() disabled = false;\n  @Input() name?: string;\n  @Input() autocomplete = 'off';\n  @Input() maxLength?: number;\n\n  @Output() valueChange = new EventEmitter<string>();\n\n  get isError(): boolean {\n    return this.state === 'error';\n  }\n\n  get messageId(): string {\n    return `${this.inputId}-${this.isError ? 'error' : 'helper'}`;\n  }\n\n  get describedBy(): string | null {\n    if (this.isError) {\n      return this.showErrorMessage ? this.messageId : null;\n    }\n\n    return this.showHelperText ? this.messageId : null;\n  }\n\n  handleInput(event: Event): void {\n    this.value = (event.target as HTMLInputElement).value;\n    this.valueChange.emit(this.value);\n  }\n}\n",
+            "styleUrl": "./text-input.component.css",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ":host {\n  display: inline-block;\n  max-width: 100%;\n}\n\n.dds-text-input {\n  display: flex;\n  flex-direction: column;\n  width: 460px;\n  max-width: 100%;\n  font-family: var(--font-family-primary);\n}\n\n.dds-text-input__label {\n  display: flex;\n  gap: var(--space-1);\n  padding-bottom: var(--space-2);\n  color: var(--text-colour-default);\n  font-size: var(--font-size-sm);\n  font-weight: var(--font-weight-semibold);\n  line-height: 20px;\n}\n\n.dds-text-input--mobile .dds-text-input__label {\n  padding-bottom: var(--space-1);\n  font-size: var(--font-size-xs);\n  line-height: 16px;\n}\n\n.dds-text-input__required,\n.dds-text-input__message--error {\n  color: var(--text-colour-danger);\n}\n\n.dds-text-input__field {\n  display: flex;\n  align-items: center;\n  min-height: 48px;\n  padding: 0 var(--space-3);\n  border: 1px solid var(--border-colour-strong);\n  border-radius: var(--radius-sm);\n  background: var(--bg-colour-white);\n  box-sizing: border-box;\n}\n\n.dds-text-input--mobile .dds-text-input__field {\n  min-height: 40px;\n}\n\n.dds-text-input__control {\n  width: 100%;\n  min-width: 0;\n  padding: 0;\n  border: 0;\n  outline: 0;\n  background: transparent;\n  color: var(--text-colour-default);\n  font: inherit;\n  font-size: var(--font-size-md);\n  font-weight: var(--font-weight-regular);\n  line-height: 24px;\n}\n\n.dds-text-input--mobile .dds-text-input__control {\n  font-size: var(--font-size-sm);\n  line-height: 22px;\n}\n\n.dds-text-input__control::placeholder {\n  color: var(--text-colour-placeholder);\n  opacity: 1;\n}\n\n.dds-text-input__field:focus-within,\n.dds-text-input--focused .dds-text-input__field {\n  border: 2px solid var(--border-colour-info);\n  padding-right: 11px;\n  padding-left: 11px;\n}\n\n.dds-text-input--error .dds-text-input__field {\n  border: 2px solid var(--border-colour-danger);\n  padding-right: 11px;\n  padding-left: 11px;\n}\n\n.dds-text-input__message {\n  margin: 0;\n  padding-top: var(--space-2);\n  color: var(--text-colour-secondary);\n  font-size: var(--font-size-xs);\n  font-weight: var(--font-weight-regular);\n  line-height: 16px;\n}\n\n.dds-text-input__message--error {\n  font-weight: var(--font-weight-medium);\n}\n\n.dds-text-input--disabled .dds-text-input__field {\n  border-color: var(--border-colour-strong);\n  background: var(--bg-colour-disabled);\n}\n\n.dds-text-input--disabled .dds-text-input__control {\n  color: var(--text-colour-disabled);\n  cursor: not-allowed;\n}\n\n.dds-text-input--disabled .dds-text-input__control::placeholder {\n  color: var(--text-colour-disabled);\n}\n",
+                    "styleUrl": "./text-input.component.css"
+                }
+            ],
+            "stylesData": "",
+            "extends": [],
+            "accessors": {
+                "isError": {
+                    "name": "isError",
+                    "getSignature": {
+                        "name": "isError",
+                        "type": "boolean",
+                        "returnType": "boolean",
+                        "line": 37,
+                        "rawdescription": "\n",
+                        "description": ""
+                    }
+                },
+                "messageId": {
+                    "name": "messageId",
+                    "getSignature": {
+                        "name": "messageId",
+                        "type": "string",
+                        "returnType": "string",
+                        "line": 41,
+                        "rawdescription": "\n",
+                        "description": ""
+                    }
+                },
+                "describedBy": {
+                    "name": "describedBy",
+                    "getSignature": {
+                        "name": "describedBy",
+                        "type": "unknown",
+                        "returnType": "string | null",
+                        "line": 45,
+                        "rawdescription": "\n",
+                        "description": ""
+                    }
+                }
+            },
+            "relationships": {
+                "incoming": [],
+                "outgoing": [
+                    {
+                        "name": "CommonModule",
+                        "type": "module"
+                    }
+                ]
+            },
+            "templateData": "<div\n  class=\"dds-text-input\"\n  [class.dds-text-input--mobile]=\"size === 'mobile'\"\n  [class.dds-text-input--focused]=\"state === 'focused'\"\n  [class.dds-text-input--error]=\"isError\"\n  [class.dds-text-input--disabled]=\"disabled\"\n>\n  <label *ngIf=\"showLabel\" class=\"dds-text-input__label\" [for]=\"inputId\">\n    {{ label }}\n    <span *ngIf=\"required\" class=\"dds-text-input__required\" aria-hidden=\"true\">*</span>\n  </label>\n\n  <div class=\"dds-text-input__field\">\n    <input\n      class=\"dds-text-input__control\"\n      [id]=\"inputId\"\n      [name]=\"name\"\n      type=\"text\"\n      [value]=\"value\"\n      [placeholder]=\"placeholder\"\n      [required]=\"required\"\n      [disabled]=\"disabled\"\n      [autocomplete]=\"autocomplete\"\n      [attr.maxlength]=\"maxLength ?? null\"\n      [attr.aria-label]=\"showLabel ? null : ariaLabel\"\n      [attr.aria-invalid]=\"isError ? 'true' : null\"\n      [attr.aria-describedby]=\"describedBy\"\n      (input)=\"handleInput($event)\"\n    />\n  </div>\n\n  <p\n    *ngIf=\"isError && showErrorMessage\"\n    class=\"dds-text-input__message dds-text-input__message--error\"\n    [id]=\"messageId\"\n  >\n    {{ errorMessage }}\n  </p>\n  <p *ngIf=\"!isError && showHelperText\" class=\"dds-text-input__message\" [id]=\"messageId\">\n    {{ helperText }}\n  </p>\n</div>\n"
+        },
+        {
             "name": "ToastComponent",
             "id": "component-ToastComponent-7ea05f484d0bd9468d8015ea8f3d9cf9f0641dc1764ff9b29946bccffd754cf8e3483bf63bbcc52d3e15abb1fe86138851a84b3db6266479bacd5b270597406e",
             "file": "src/app/components/toast/toast.component.ts",
@@ -4512,6 +4857,17 @@
                 "defaultValue": "0"
             },
             {
+                "name": "nextTextInputId",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/components/text-input/text-input.component.ts",
+                "coverageIgnore": false,
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "number",
+                "defaultValue": "0"
+            },
+            {
                 "name": "reqHandler",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -4873,6 +5229,32 @@
                 "kind": 193
             },
             {
+                "name": "TextInputSize",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "coverageIgnore": false,
+                "rawtype": "\"desktop\" | \"mobile\"",
+                "file": "src/app/components/text-input/text-input.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "rawdescription": "",
+                "description": "",
+                "kind": 193
+            },
+            {
+                "name": "TextInputState",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "coverageIgnore": false,
+                "rawtype": "\"default\" | \"focused\" | \"error\"",
+                "file": "src/app/components/text-input/text-input.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "rawdescription": "",
+                "description": "",
+                "kind": 193
+            },
+            {
                 "name": "ToastSize",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
@@ -5096,6 +5478,19 @@
                     "ctype": "miscellaneous",
                     "subtype": "variable",
                     "file": "src/app/components/textarea/textarea.component.ts",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "defaultValue": "0"
+                }
+            ],
+            "src/app/components/text-input/text-input.component.ts": [
+                {
+                    "name": "nextTextInputId",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/components/text-input/text-input.component.ts",
                     "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
@@ -5467,6 +5862,34 @@
                     "kind": 193
                 }
             ],
+            "src/app/components/text-input/text-input.component.ts": [
+                {
+                    "name": "TextInputSize",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "coverageIgnore": false,
+                    "rawtype": "\"desktop\" | \"mobile\"",
+                    "file": "src/app/components/text-input/text-input.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "",
+                    "description": "",
+                    "kind": 193
+                },
+                {
+                    "name": "TextInputState",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "coverageIgnore": false,
+                    "rawtype": "\"default\" | \"focused\" | \"error\"",
+                    "file": "src/app/components/text-input/text-input.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "",
+                    "description": "",
+                    "kind": 193
+                }
+            ],
             "src/app/components/toast/toast.component.ts": [
                 {
                     "name": "ToastSize",
@@ -5511,7 +5934,7 @@
         ]
     },
     "coverage": {
-        "count": 11,
+        "count": 10,
         "status": "low",
         "files": [
             {
@@ -5958,6 +6381,45 @@
                 "linktype": "miscellaneous",
                 "linksubtype": "typealias",
                 "name": "SelectState",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/text-input/text-input.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "TextInputComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/20",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/text-input/text-input.component.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "nextTextInputId",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/text-input/text-input.component.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "TextInputSize",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/text-input/text-input.component.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "TextInputState",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
