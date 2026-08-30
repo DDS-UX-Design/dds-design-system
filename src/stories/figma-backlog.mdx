@@ -4,7 +4,54 @@ import backlog from './figma-backlog.backlog';
 
 <Meta title="Project/Figma Backlog" />
 
-export const backlogRevision = '30 August 2026 · Loading components added';
+export const backlogRevision = '31 August 2026 · Typography, KPI Card, and Top Bar Nav gaps added';
+
+export const typographyBacklog = `
+## Foundations
+
+### Typography
+
+Figma reference: [Typography — primary font, headings, and body](https://www.figma.com/design/u0lpCPrGMj68e9RMIRuYxL/DDS---Design-System-v1.0?node-id=576-159)
+
+- [ ] **P1 · Confirmed gap** — Add consumable semantic typography tokens or utility classes for every documented heading, body, and label style; the code currently exposes primitive size and weight tokens while the documentation reproduces complete styles locally.
+- [ ] **P1 · Design review** — Reconcile Figma and code token naming and coverage, including the 22px and 28px font sizes and 18px, 22px, 26px, 28px, 30px, 36px, and 40px line heights that are not represented consistently by shared primitives.
+- [ ] **P2 · Design review** — Confirm the intended status of the body-xl, body-xs, and selected label rows highlighted with the danger-muted background in Figma: supported, provisional, or deprecated.
+- [ ] **P2 · Confirmed gap** — Document usage guidance for label variants whose current Usage value is blank, including when to choose regular, medium, or semibold at the same size.
+- [ ] **P2 · Design review** — Specify font-loading behavior and whether metric-compatible fallbacks are required to reduce layout shift while Inter loads.
+      `;
+
+export const dashboardBacklog = `
+## Data display
+
+### KPI Card
+
+Figma reference: [KPI Card — node 361:4700](https://www.figma.com/design/u0lpCPrGMj68e9RMIRuYxL/DDS---Design-System-v1.0?node-id=361-4700)
+
+- [ ] **P1 · Design review** — Separate trend direction from semantic outcome. An upward value can be negative for metrics such as cost or incidents, so arrow direction and success/danger colour should not be implicitly coupled.
+- [ ] **P1 · Confirmed gap** — Add loading, unavailable, error, and no-comparison states so dashboards do not substitute misleading zero values or trend text when data is missing.
+- [ ] **P1 · Design review** — Confirm the component name and public terminology; “KPI Card” is used in code because the Figma component is currently unnamed.
+- [ ] **P2 · Design review** — Define locale-aware number, decimal, percentage, compact-number, and currency formatting, including placement and spacing of prefixes and suffixes.
+- [ ] **P2 · Confirmed gap** — Specify responsive width, minimum and maximum size, dashboard-grid behavior, and handling for long labels, large values, and translated comparison text.
+- [ ] **P2 · Design review** — Decide whether the card can be interactive or link to a drill-down view; if so, add hover, focus, pressed, selected, and disabled treatments without nesting interactive controls.
+- [ ] **P3 · Design review** — Document how trend information is announced when the card updates dynamically and ensure direction is not communicated by colour or icon alone.
+      `;
+
+export const topBarNavBacklog = `
+## Navigation
+
+### Top Bar Nav
+
+Figma reference: [Top Bar Nav — node 107:2798](https://www.figma.com/design/u0lpCPrGMj68e9RMIRuYxL/DDS---Design-System-v1.0?node-id=107-2798)
+
+- [ ] **P1 · Confirmed gap** — Add responsive specifications below the current 1024px Figma width, including title truncation, action priority, count visibility, avatar treatment, and the relationship with mobile or side navigation.
+- [ ] **P1 · Confirmed gap** — Define complete account-menu keyboard behavior: focus placement when opened, Arrow/Home/End navigation, Escape return focus, Tab behavior, outside-click dismissal, and focus restoration after selection.
+- [ ] **P1 · Confirmed gap** — Add hover, focus, pressed, and disabled states for notification, cart, avatar, and menu-item controls.
+- [ ] **P2 · Design review** — Define count rules for zero, hidden counts, independently hidden notification or cart counts, maximum values, and whether “99+” is the universal overflow format.
+- [ ] **P2 · Confirmed gap** — Specify dropdown collision handling, viewport edges, scrolling, maximum height, and whether it may open above or align differently in narrow containers.
+- [ ] **P2 · Design review** — Define supported menu-item content and states, including icons, separators, destructive actions, user identity details, and sign-out placement.
+- [ ] **P2 · Confirmed gap** — Add long page-title, long menu-label, non-Latin initials, and localization examples.
+- [ ] **P3 · Design review** — Clarify whether the notification and cart controls require tooltips in addition to accessible names and whether counts should be announced on every update.
+      `;
 
 export const loadingBacklog = `
 ## Loading
@@ -148,7 +195,7 @@ export const BacklogPage = () => {
   const sections = useMemo(
     () =>
       parseBacklog(
-        `${backlog}\n${checkboxBacklog}\n${dateInputBacklog}\n${textInputBacklog}\n${loadingBacklog}`,
+        `${backlog}\n${checkboxBacklog}\n${dateInputBacklog}\n${textInputBacklog}\n${loadingBacklog}\n${typographyBacklog}\n${dashboardBacklog}\n${topBarNavBacklog}`,
       ),
     [],
   );
