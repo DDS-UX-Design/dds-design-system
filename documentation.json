@@ -6256,7 +6256,7 @@
         },
         {
             "name": "TopBarNavComponent",
-            "id": "component-TopBarNavComponent-871831191e0274d41abd7e23c50659fe04aa12ae8978a4a97df9ca2a19106dae7992d22313bbbe1032bb7f3e4067e717b17a1113ade1fb87b9b44c7765c31b4b",
+            "id": "component-TopBarNavComponent-2c06508cc22199ec18cc5228df13955ef1fbb9008b487b8840fc610329e7b2cb83c9d1e9fb0381124e77c3f0cca59f201d48634a63d44c30ed0fba438f221dcc",
             "file": "src/app/components/top-bar-nav/top-bar-nav.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -6279,7 +6279,7 @@
                 {
                     "coverageIgnore": false,
                     "name": "cartCount",
-                    "defaultValue": "2",
+                    "defaultValue": "3",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n",
@@ -6296,7 +6296,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 25,
+                    "line": 26,
                     "type": "string[]",
                     "decorators": []
                 },
@@ -6308,14 +6308,14 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 26,
+                    "line": 27,
                     "type": "boolean",
                     "decorators": []
                 },
                 {
                     "coverageIgnore": false,
                     "name": "notificationCount",
-                    "defaultValue": "27",
+                    "defaultValue": "100",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n",
@@ -6350,6 +6350,18 @@
                 },
                 {
                     "coverageIgnore": false,
+                    "name": "showCounts",
+                    "defaultValue": "true",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 23,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
                     "name": "showNotifications",
                     "defaultValue": "true",
                     "deprecated": false,
@@ -6368,7 +6380,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 23,
+                    "line": 24,
                     "type": "string",
                     "decorators": []
                 },
@@ -6380,7 +6392,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 24,
+                    "line": 25,
                     "type": "string",
                     "decorators": []
                 }
@@ -6392,7 +6404,7 @@
                     "defaultValue": "new EventEmitter<void>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 29,
+                    "line": 30,
                     "type": "EventEmitter"
                 },
                 {
@@ -6401,7 +6413,7 @@
                     "defaultValue": "new EventEmitter<string>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 31,
+                    "line": 32,
                     "type": "EventEmitter"
                 },
                 {
@@ -6410,7 +6422,7 @@
                     "defaultValue": "new EventEmitter<boolean>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 30,
+                    "line": 31,
                     "type": "EventEmitter"
                 },
                 {
@@ -6419,7 +6431,7 @@
                     "defaultValue": "new EventEmitter<void>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 28,
+                    "line": 29,
                     "type": "EventEmitter"
                 }
             ],
@@ -6451,7 +6463,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 33,
+                    "line": 34,
                     "rawdescription": "\n",
                     "modifierKind": [
                         148
@@ -6466,7 +6478,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 58,
+                    "line": 59,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n",
@@ -6497,7 +6509,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 51,
+                    "line": 52,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n",
@@ -6541,7 +6553,7 @@
                     "optional": false,
                     "returnType": "string",
                     "typeParameters": [],
-                    "line": 37,
+                    "line": 38,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n",
@@ -6576,7 +6588,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 45,
+                    "line": 46,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n",
@@ -6611,7 +6623,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 62,
+                    "line": 63,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n",
@@ -6640,7 +6652,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 41,
+                    "line": 42,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n",
@@ -6670,7 +6682,7 @@
                     ],
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 51
+                    "line": 52
                 },
                 {
                     "coverageIgnore": false,
@@ -6679,7 +6691,7 @@
                     "argsDecorator": [],
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 58
+                    "line": 59
                 }
             ],
             "standalone": true,
@@ -6696,12 +6708,12 @@
             "description": "<p>A dashboard header with a page title, notification and cart actions, and an account menu.</p>\n",
             "rawdescription": "\nA dashboard header with a page title, notification and cart actions, and an account menu.",
             "type": "component",
-            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, ElementRef, EventEmitter, HostListener, Input, Output } from '@angular/core';\nimport { IconComponent } from '../icon/icon.component';\n\nlet topBarNavId = 0;\n\n/** A dashboard header with a page title, notification and cart actions, and an account menu. */\n@Component({\n  selector: 'dds-top-bar-nav',\n  standalone: true,\n  imports: [CommonModule, IconComponent],\n  templateUrl: './top-bar-nav.component.html',\n  styleUrl: './top-bar-nav.component.css',\n})\nexport class TopBarNavComponent {\n  private readonly instanceId = topBarNavId++;\n\n  @Input() pageTitle = 'Page title';\n  @Input() showNotifications = true;\n  @Input() notificationCount = 27;\n  @Input() showCart = true;\n  @Input() cartCount = 2;\n  @Input() userInitials = 'JB';\n  @Input() userName = 'User account';\n  @Input() menuItems: string[] = ['Profile', 'Settings', 'Sign out'];\n  @Input() menuOpen = false;\n\n  @Output() notificationClick = new EventEmitter<void>();\n  @Output() cartClick = new EventEmitter<void>();\n  @Output() menuOpenChange = new EventEmitter<boolean>();\n  @Output() menuItemSelect = new EventEmitter<string>();\n\n  readonly menuId = `dds-top-bar-nav-menu-${this.instanceId}`;\n\n  constructor(private readonly elementRef: ElementRef<HTMLElement>) {}\n\n  formatCount(count: number): string {\n    return count > 99 ? '99+' : Math.max(0, count).toString();\n  }\n\n  toggleMenu(): void {\n    this.setMenuOpen(!this.menuOpen);\n  }\n\n  selectMenuItem(item: string): void {\n    this.menuItemSelect.emit(item);\n    this.setMenuOpen(false);\n  }\n\n  @HostListener('document:click', ['$event'])\n  closeOnOutsideClick(event: MouseEvent): void {\n    if (this.menuOpen && !this.elementRef.nativeElement.contains(event.target as Node)) {\n      this.setMenuOpen(false);\n    }\n  }\n\n  @HostListener('document:keydown.escape')\n  closeOnEscape(): void {\n    if (this.menuOpen) this.setMenuOpen(false);\n  }\n\n  private setMenuOpen(open: boolean): void {\n    this.menuOpen = open;\n    this.menuOpenChange.emit(open);\n  }\n}\n",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, ElementRef, EventEmitter, HostListener, Input, Output } from '@angular/core';\nimport { IconComponent } from '../icon/icon.component';\n\nlet topBarNavId = 0;\n\n/** A dashboard header with a page title, notification and cart actions, and an account menu. */\n@Component({\n  selector: 'dds-top-bar-nav',\n  standalone: true,\n  imports: [CommonModule, IconComponent],\n  templateUrl: './top-bar-nav.component.html',\n  styleUrl: './top-bar-nav.component.css',\n})\nexport class TopBarNavComponent {\n  private readonly instanceId = topBarNavId++;\n\n  @Input() pageTitle = 'Page title';\n  @Input() showNotifications = true;\n  @Input() notificationCount = 100;\n  @Input() showCart = true;\n  @Input() cartCount = 3;\n  @Input() showCounts = true;\n  @Input() userInitials = 'JB';\n  @Input() userName = 'User account';\n  @Input() menuItems: string[] = ['Profile', 'Settings', 'Sign out'];\n  @Input() menuOpen = false;\n\n  @Output() notificationClick = new EventEmitter<void>();\n  @Output() cartClick = new EventEmitter<void>();\n  @Output() menuOpenChange = new EventEmitter<boolean>();\n  @Output() menuItemSelect = new EventEmitter<string>();\n\n  readonly menuId = `dds-top-bar-nav-menu-${this.instanceId}`;\n\n  constructor(private readonly elementRef: ElementRef<HTMLElement>) {}\n\n  formatCount(count: number): string {\n    return count > 99 ? '99+' : Math.max(0, count).toString();\n  }\n\n  toggleMenu(): void {\n    this.setMenuOpen(!this.menuOpen);\n  }\n\n  selectMenuItem(item: string): void {\n    this.menuItemSelect.emit(item);\n    this.setMenuOpen(false);\n  }\n\n  @HostListener('document:click', ['$event'])\n  closeOnOutsideClick(event: MouseEvent): void {\n    if (this.menuOpen && !this.elementRef.nativeElement.contains(event.target as Node)) {\n      this.setMenuOpen(false);\n    }\n  }\n\n  @HostListener('document:keydown.escape')\n  closeOnEscape(): void {\n    if (this.menuOpen) this.setMenuOpen(false);\n  }\n\n  private setMenuOpen(open: boolean): void {\n    this.menuOpen = open;\n    this.menuOpenChange.emit(open);\n  }\n}\n",
             "styleUrl": "./top-bar-nav.component.css",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ":host {\n  display: block;\n  width: 100%;\n  min-width: 0;\n  box-sizing: border-box;\n}\n\n.dds-top-bar-nav {\n  box-sizing: border-box;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  gap: var(--space-4);\n  width: 100%;\n  min-height: 65px;\n  padding: var(--space-2) var(--space-6);\n  border-bottom: 1px solid var(--border-colour-default);\n  background: var(--bg-colour-white);\n  color: var(--text-colour-default);\n}\n\n.dds-top-bar-nav__title {\n  min-width: 0;\n  margin: 0;\n  overflow: hidden;\n  font: var(--font-weight-semibold) var(--font-size-md) / var(--font-size-2xl)\n    var(--font-family-primary);\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n\n.dds-top-bar-nav__actions {\n  display: flex;\n  flex: none;\n  align-items: center;\n  gap: var(--space-3);\n}\n\n.dds-top-bar-nav__icon-button,\n.dds-top-bar-nav__account-trigger,\n.dds-top-bar-nav__menu-item {\n  font-family: var(--font-family-primary);\n  cursor: pointer;\n}\n\n.dds-top-bar-nav__icon-button {\n  position: relative;\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  width: 40px;\n  height: 40px;\n  padding: var(--space-2);\n  border: 1px solid var(--border-colour-default);\n  border-radius: var(--radius-full);\n  background: var(--btn-colour-secondary);\n  color: var(--text-colour-default);\n}\n\n.dds-top-bar-nav__icon-button:hover {\n  background: var(--btn-colour-secondary-hover);\n}\n\n.dds-top-bar-nav__icon-button:focus-visible,\n.dds-top-bar-nav__account-trigger:focus-visible,\n.dds-top-bar-nav__menu-item:focus-visible {\n  outline: 2px solid var(--border-colour-accent-primary);\n  outline-offset: 2px;\n}\n\n.dds-top-bar-nav__count {\n  position: absolute;\n  top: -4px;\n  right: -8px;\n  display: grid;\n  place-items: center;\n  min-width: 24px;\n  height: 24px;\n  padding: 0 var(--space-1);\n  border: 2px solid var(--border-colour-white);\n  border-radius: var(--radius-full);\n  background: var(--bg-colour-accent);\n  color: var(--text-colour-inverse);\n  font: var(--font-weight-medium) var(--font-size-xs) / var(--font-size-md)\n    var(--font-family-primary);\n  font-variant-numeric: tabular-nums;\n}\n\n.dds-top-bar-nav__account {\n  position: relative;\n}\n\n.dds-top-bar-nav__account-trigger {\n  display: inline-flex;\n  align-items: center;\n  gap: var(--space-1);\n  padding: 0;\n  border: 0;\n  border-radius: var(--radius-full);\n  background: transparent;\n  color: var(--text-colour-default);\n}\n\n.dds-top-bar-nav__avatar {\n  display: grid;\n  place-items: center;\n  width: 40px;\n  height: 40px;\n  border-radius: var(--radius-full);\n  background: var(--bg-colour-secondary);\n  color: var(--text-colour-inverse);\n  font: var(--font-weight-medium) var(--font-size-sm) / var(--font-size-xl)\n    var(--font-family-primary);\n  text-transform: uppercase;\n}\n\n.dds-top-bar-nav__chevron {\n  display: inline-flex;\n  transition: transform 150ms ease;\n}\n\n.dds-top-bar-nav__account-trigger[aria-expanded='true'] .dds-top-bar-nav__chevron {\n  transform: rotate(180deg);\n}\n\n.dds-top-bar-nav__menu {\n  position: absolute;\n  z-index: 10;\n  top: calc(100% + var(--space-2));\n  right: 0;\n  width: max-content;\n  min-width: 160px;\n  overflow: hidden;\n  border: 1px solid var(--border-colour-subtle);\n  border-radius: var(--radius-sm);\n  background: var(--bg-colour-white);\n  box-shadow: 0 4px 16px rgb(0 0 0 / 8%);\n}\n\n.dds-top-bar-nav__menu-item {\n  display: block;\n  width: 100%;\n  padding: var(--space-2) var(--space-4);\n  border: 0;\n  background: var(--bg-colour-white);\n  color: var(--text-colour-default);\n  font-size: var(--font-size-sm);\n  line-height: var(--font-size-xl);\n  text-align: left;\n  white-space: nowrap;\n}\n\n.dds-top-bar-nav__menu-item:hover,\n.dds-top-bar-nav__menu-item:focus-visible {\n  background: var(--bg-colour-default);\n}\n\n@media (max-width: 520px) {\n  .dds-top-bar-nav {\n    padding-inline: var(--space-4);\n  }\n\n  .dds-top-bar-nav__actions {\n    gap: var(--space-2);\n  }\n\n  .dds-top-bar-nav__chevron {\n    display: none;\n  }\n}\n\n@media (forced-colors: active) {\n  .dds-top-bar-nav__count,\n  .dds-top-bar-nav__avatar {\n    border: 1px solid CanvasText;\n  }\n}\n",
+                    "data": ":host {\n  display: block;\n  width: 100%;\n  min-width: 0;\n  box-sizing: border-box;\n}\n\n.dds-top-bar-nav {\n  box-sizing: border-box;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  gap: var(--space-4);\n  width: 100%;\n  min-height: 65px;\n  padding: var(--space-2) var(--space-6);\n  border-bottom: 1px solid var(--border-colour-default);\n  background: var(--bg-colour-white);\n  color: var(--text-colour-default);\n}\n\n.dds-top-bar-nav__title {\n  min-width: 0;\n  margin: 0;\n  overflow: hidden;\n  font: var(--font-weight-semibold) var(--font-size-md) / var(--font-size-2xl)\n    var(--font-family-primary);\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n\n.dds-top-bar-nav__actions {\n  display: flex;\n  flex: none;\n  align-items: center;\n  gap: var(--space-2);\n}\n\n.dds-top-bar-nav__icon-button,\n.dds-top-bar-nav__account-trigger,\n.dds-top-bar-nav__menu-item {\n  font-family: var(--font-family-primary);\n  cursor: pointer;\n}\n\n.dds-top-bar-nav__icon-button {\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  gap: var(--space-1);\n  min-width: 40px;\n  min-height: 40px;\n  padding: var(--space-2);\n  border: 1px solid var(--border-colour-default);\n  border-radius: var(--radius-full);\n  background: var(--btn-colour-secondary);\n  color: var(--text-colour-default);\n}\n\n.dds-top-bar-nav__icon-button:hover {\n  background: var(--btn-colour-secondary-hover);\n}\n\n.dds-top-bar-nav__icon-button:focus-visible,\n.dds-top-bar-nav__account-trigger:focus-visible,\n.dds-top-bar-nav__menu-item:focus-visible {\n  outline: 2px solid var(--border-colour-accent-primary);\n  outline-offset: 2px;\n}\n\n.dds-top-bar-nav__count {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  min-width: 24px;\n  height: 24px;\n  padding: 0 var(--space-1);\n  border-radius: var(--radius-full);\n  background: var(--bg-colour-accent);\n  color: var(--text-colour-inverse);\n  font: var(--font-weight-medium) var(--font-size-xs) / var(--font-size-md)\n    var(--font-family-primary);\n  font-variant-numeric: tabular-nums;\n}\n\n.dds-top-bar-nav__account {\n  position: relative;\n}\n\n.dds-top-bar-nav__account-trigger {\n  display: inline-flex;\n  align-items: center;\n  gap: var(--space-1);\n  padding: 0;\n  border: 0;\n  border-radius: var(--radius-full);\n  background: transparent;\n  color: var(--text-colour-default);\n}\n\n.dds-top-bar-nav__avatar {\n  display: grid;\n  place-items: center;\n  width: 40px;\n  height: 40px;\n  border-radius: var(--radius-full);\n  background: var(--bg-colour-secondary);\n  color: var(--text-colour-inverse);\n  font: var(--font-weight-medium) var(--font-size-sm) / var(--font-size-xl)\n    var(--font-family-primary);\n  text-transform: uppercase;\n}\n\n.dds-top-bar-nav__chevron {\n  display: inline-flex;\n  transition: transform 150ms ease;\n}\n\n.dds-top-bar-nav__account-trigger[aria-expanded='true'] .dds-top-bar-nav__chevron {\n  transform: rotate(180deg);\n}\n\n.dds-top-bar-nav__menu {\n  position: absolute;\n  z-index: 10;\n  top: calc(100% + var(--space-2));\n  right: 0;\n  width: max-content;\n  min-width: 140px;\n  overflow: hidden;\n  border: 1px solid var(--border-colour-subtle);\n  border-radius: var(--radius-sm);\n  background: var(--bg-colour-white);\n  box-shadow: 0 4px 16px rgb(0 0 0 / 8%);\n}\n\n.dds-top-bar-nav__menu-item {\n  display: block;\n  width: 100%;\n  padding: var(--space-2) var(--space-4);\n  border: 0;\n  background: var(--bg-colour-white);\n  color: var(--text-colour-default);\n  font-size: var(--font-size-sm);\n  line-height: var(--font-size-xl);\n  text-align: left;\n  white-space: nowrap;\n}\n\n.dds-top-bar-nav__menu-item:hover,\n.dds-top-bar-nav__menu-item:focus-visible {\n  background: var(--bg-colour-default);\n}\n\n@media (max-width: 520px) {\n  .dds-top-bar-nav {\n    padding-inline: var(--space-4);\n  }\n\n  .dds-top-bar-nav__actions {\n    gap: var(--space-2);\n  }\n\n  .dds-top-bar-nav__chevron {\n    display: none;\n  }\n}\n\n@media (forced-colors: active) {\n  .dds-top-bar-nav__count,\n  .dds-top-bar-nav__avatar {\n    border: 1px solid CanvasText;\n  }\n}\n",
                     "styleUrl": "./top-bar-nav.component.css"
                 }
             ],
@@ -6733,7 +6745,7 @@
                         "deprecationMessage": ""
                     }
                 ],
-                "line": 33,
+                "line": 34,
                 "rawdescription": "\n",
                 "jsdoctags": [
                     {
@@ -6763,7 +6775,7 @@
                     }
                 ]
             },
-            "templateData": "<header class=\"dds-top-bar-nav\">\n  <h1 class=\"dds-top-bar-nav__title\">{{ pageTitle }}</h1>\n\n  <nav class=\"dds-top-bar-nav__actions\" aria-label=\"Page actions\">\n    <button\n      *ngIf=\"showNotifications\"\n      class=\"dds-top-bar-nav__icon-button\"\n      type=\"button\"\n      [attr.aria-label]=\"'Notifications, ' + notificationCount + ' unread'\"\n      (click)=\"notificationClick.emit()\"\n    >\n      <dds-icon name=\"bell\" [size]=\"20\" aria-hidden=\"true\"></dds-icon>\n      <span *ngIf=\"notificationCount > 0\" class=\"dds-top-bar-nav__count\" aria-hidden=\"true\">\n        {{ formatCount(notificationCount) }}\n      </span>\n    </button>\n\n    <button\n      *ngIf=\"showCart\"\n      class=\"dds-top-bar-nav__icon-button\"\n      type=\"button\"\n      [attr.aria-label]=\"'Cart, ' + cartCount + ' items'\"\n      (click)=\"cartClick.emit()\"\n    >\n      <dds-icon name=\"shopping-cart\" [size]=\"20\" aria-hidden=\"true\"></dds-icon>\n      <span *ngIf=\"cartCount > 0\" class=\"dds-top-bar-nav__count\" aria-hidden=\"true\">\n        {{ formatCount(cartCount) }}\n      </span>\n    </button>\n\n    <div class=\"dds-top-bar-nav__account\">\n      <button\n        class=\"dds-top-bar-nav__account-trigger\"\n        type=\"button\"\n        [attr.aria-label]=\"userName\"\n        aria-haspopup=\"menu\"\n        [attr.aria-expanded]=\"menuOpen\"\n        [attr.aria-controls]=\"menuOpen ? menuId : null\"\n        (click)=\"toggleMenu()\"\n      >\n        <span class=\"dds-top-bar-nav__avatar\" aria-hidden=\"true\">{{ userInitials }}</span>\n        <dds-icon\n          class=\"dds-top-bar-nav__chevron\"\n          name=\"chevron-down\"\n          [size]=\"24\"\n          aria-hidden=\"true\"\n        ></dds-icon>\n      </button>\n\n      <div *ngIf=\"menuOpen\" class=\"dds-top-bar-nav__menu\" [id]=\"menuId\" role=\"menu\">\n        <button\n          *ngFor=\"let item of menuItems\"\n          class=\"dds-top-bar-nav__menu-item\"\n          type=\"button\"\n          role=\"menuitem\"\n          (click)=\"selectMenuItem(item)\"\n        >\n          {{ item }}\n        </button>\n      </div>\n    </div>\n  </nav>\n</header>\n"
+            "templateData": "<header class=\"dds-top-bar-nav\">\n  <h1 class=\"dds-top-bar-nav__title\">{{ pageTitle }}</h1>\n\n  <nav class=\"dds-top-bar-nav__actions\" aria-label=\"Page actions\">\n    <button\n      *ngIf=\"showNotifications\"\n      class=\"dds-top-bar-nav__icon-button\"\n      type=\"button\"\n      [attr.aria-label]=\"'Notifications, ' + notificationCount + ' unread'\"\n      (click)=\"notificationClick.emit()\"\n    >\n      <dds-icon name=\"bell\" [size]=\"20\" aria-hidden=\"true\"></dds-icon>\n      <span *ngIf=\"showCounts\" class=\"dds-top-bar-nav__count\" aria-hidden=\"true\">\n        {{ formatCount(notificationCount) }}\n      </span>\n    </button>\n\n    <button\n      *ngIf=\"showCart\"\n      class=\"dds-top-bar-nav__icon-button\"\n      type=\"button\"\n      [attr.aria-label]=\"'Cart, ' + cartCount + ' items'\"\n      (click)=\"cartClick.emit()\"\n    >\n      <dds-icon name=\"shopping-cart\" [size]=\"20\" aria-hidden=\"true\"></dds-icon>\n      <span *ngIf=\"showCounts\" class=\"dds-top-bar-nav__count\" aria-hidden=\"true\">\n        {{ formatCount(cartCount) }}\n      </span>\n    </button>\n\n    <div class=\"dds-top-bar-nav__account\">\n      <button\n        class=\"dds-top-bar-nav__account-trigger\"\n        type=\"button\"\n        [attr.aria-label]=\"userName\"\n        aria-haspopup=\"menu\"\n        [attr.aria-expanded]=\"menuOpen\"\n        [attr.aria-controls]=\"menuOpen ? menuId : null\"\n        (click)=\"toggleMenu()\"\n      >\n        <span class=\"dds-top-bar-nav__avatar\" aria-hidden=\"true\">{{ userInitials }}</span>\n        <dds-icon\n          class=\"dds-top-bar-nav__chevron\"\n          name=\"chevron-down\"\n          [size]=\"24\"\n          aria-hidden=\"true\"\n        ></dds-icon>\n      </button>\n\n      <div *ngIf=\"menuOpen\" class=\"dds-top-bar-nav__menu\" [id]=\"menuId\" role=\"menu\">\n        <button\n          *ngFor=\"let item of menuItems\"\n          class=\"dds-top-bar-nav__menu-item\"\n          type=\"button\"\n          role=\"menuitem\"\n          (click)=\"selectMenuItem(item)\"\n        >\n          {{ item }}\n        </button>\n      </div>\n    </div>\n  </nav>\n</header>\n"
         },
         {
             "name": "TypographyPageComponent",
@@ -9066,8 +9078,8 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "TopBarNavComponent",
-                "coveragePercent": 4,
-                "coverageCount": "1/25",
+                "coveragePercent": 3,
+                "coverageCount": "1/26",
                 "status": "low"
             },
             {

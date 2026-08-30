@@ -17,9 +17,10 @@ export class TopBarNavComponent {
 
   @Input() pageTitle = 'Page title';
   @Input() showNotifications = true;
-  @Input() notificationCount = 27;
+  @Input() notificationCount = 100;
   @Input() showCart = true;
-  @Input() cartCount = 2;
+  @Input() cartCount = 3;
+  @Input() showCounts = true;
   @Input() userInitials = 'JB';
   @Input() userName = 'User account';
   @Input() menuItems: string[] = ['Profile', 'Settings', 'Sign out'];

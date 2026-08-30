@@ -29,9 +29,10 @@ const meta: Meta<TopBarNavStoryArgs> = {
   args: {
     pageTitle: 'Dashboard',
     showNotifications: true,
-    notificationCount: 27,
+    notificationCount: 100,
     showCart: true,
-    cartCount: 2,
+    cartCount: 3,
+    showCounts: true,
     userInitials: 'JB',
     userName: 'John Banda account',
     menuItems: ['Profile', 'Settings', 'Sign out'],
@@ -49,6 +50,7 @@ const meta: Meta<TopBarNavStoryArgs> = {
         [notificationCount]="notificationCount"
         [showCart]="showCart"
         [cartCount]="cartCount"
+        [showCounts]="showCounts"
         [userInitials]="userInitials"
         [userName]="userName"
         [menuItems]="menuItems"
@@ -67,7 +69,7 @@ type Story = StoryObj<TopBarNavStoryArgs>;
 export const Default: Story = {};
 export const MenuOpen: Story = { args: { menuOpen: true } };
 export const WithoutCart: Story = { args: { showCart: false } };
-export const NoCounts: Story = { args: { notificationCount: 0, cartCount: 0 } };
+export const WithoutCounts: Story = { args: { showCounts: false } };
 export const LargeCounts: Story = { args: { notificationCount: 124, cartCount: 105 } };
 
 export const AccountMenuInteraction: Story = {

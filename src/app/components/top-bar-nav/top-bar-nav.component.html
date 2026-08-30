@@ -10,7 +10,7 @@
       (click)="notificationClick.emit()"
     >
       <dds-icon name="bell" [size]="20" aria-hidden="true"></dds-icon>
-      <span *ngIf="notificationCount > 0" class="dds-top-bar-nav__count" aria-hidden="true">
+      <span *ngIf="showCounts" class="dds-top-bar-nav__count" aria-hidden="true">
         {{ formatCount(notificationCount) }}
       </span>
     </button>
@@ -23,7 +23,7 @@
       (click)="cartClick.emit()"
     >
       <dds-icon name="shopping-cart" [size]="20" aria-hidden="true"></dds-icon>
-      <span *ngIf="cartCount > 0" class="dds-top-bar-nav__count" aria-hidden="true">
+      <span *ngIf="showCounts" class="dds-top-bar-nav__count" aria-hidden="true">
         {{ formatCount(cartCount) }}
       </span>
     </button>
