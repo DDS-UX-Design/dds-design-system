@@ -1,0 +1,63 @@
+<header class="dds-top-bar-nav">
+  <h1 class="dds-top-bar-nav__title">{{ pageTitle }}</h1>
+
+  <nav class="dds-top-bar-nav__actions" aria-label="Page actions">
+    <button
+      *ngIf="showNotifications"
+      class="dds-top-bar-nav__icon-button"
+      type="button"
+      [attr.aria-label]="'Notifications, ' + notificationCount + ' unread'"
+      (click)="notificationClick.emit()"
+    >
+      <dds-icon name="bell" [size]="20" aria-hidden="true"></dds-icon>
+      <span *ngIf="notificationCount > 0" class="dds-top-bar-nav__count" aria-hidden="true">
+        {{ formatCount(notificationCount) }}
+      </span>
+    </button>
+
+    <button
+      *ngIf="showCart"
+      class="dds-top-bar-nav__icon-button"
+      type="button"
+      [attr.aria-label]="'Cart, ' + cartCount + ' items'"
+      (click)="cartClick.emit()"
+    >
+      <dds-icon name="shopping-cart" [size]="20" aria-hidden="true"></dds-icon>
+      <span *ngIf="cartCount > 0" class="dds-top-bar-nav__count" aria-hidden="true">
+        {{ formatCount(cartCount) }}
+      </span>
+    </button>
+
+    <div class="dds-top-bar-nav__account">
+      <button
+        class="dds-top-bar-nav__account-trigger"
+        type="button"
+        [attr.aria-label]="userName"
+        aria-haspopup="menu"
+        [attr.aria-expanded]="menuOpen"
+        [attr.aria-controls]="menuOpen ? menuId : null"
+        (click)="toggleMenu()"
+      >
+        <span class="dds-top-bar-nav__avatar" aria-hidden="true">{{ userInitials }}</span>
+        <dds-icon
+          class="dds-top-bar-nav__chevron"
+          name="chevron-down"
+          [size]="24"
+          aria-hidden="true"
+        ></dds-icon>
+      </button>
+
+      <div *ngIf="menuOpen" class="dds-top-bar-nav__menu" [id]="menuId" role="menu">
+        <button
+          *ngFor="let item of menuItems"
+          class="dds-top-bar-nav__menu-item"
+          type="button"
+          role="menuitem"
+          (click)="selectMenuItem(item)"
+        >
+          {{ item }}
+        </button>
+      </div>
+    </div>
+  </nav>
+</header>
