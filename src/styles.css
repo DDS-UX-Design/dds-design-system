@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 @import './tokens/primitives/colors.css';
 @import './tokens/primitives/spacing.css';
 @import './tokens/primitives/radius.css';
@@ -10,6 +10,6 @@
 @import './tokens/semantic/border.tokens.css';
 
 body {
-	margin: 0;
-	font-family: var(--font-family-primary);
+  margin: 0;
+  font-family: var(--font-family-primary);
 }
