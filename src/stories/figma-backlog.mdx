@@ -53,6 +53,21 @@ Figma reference: [Top Bar Nav — node 107:2798](https://www.figma.com/design/u0
 - [ ] **P3 · Design review** — Clarify whether the notification and cart controls require tooltips in addition to accessible names and whether counts should be announced on every update.
       `;
 
+export const radioBacklog = `
+## Forms
+
+### Radio and Radio Group
+
+Figma reference: [Radio — node 2:1194](https://www.figma.com/design/u0lpCPrGMj68e9RMIRuYxL/DDS---Design-System-v1.0?node-id=2-1194)
+
+- [ ] **P1 · Confirmed gap** — Add hover and pressed states for individual radio options and define how they combine with checked, invalid, and disabled states.
+- [ ] **P1 · Design review** — Define the keyboard focus ring separately from the blue focused border so focus remains clearly visible for both checked and unchecked options.
+- [ ] **P2 · Confirmed gap** — Add a disabled Radio Group example and clarify whether a disabled required marker remains red or adopts the disabled colour.
+- [ ] **P2 · Confirmed gap** — Define wrapping and alignment for long option labels, optional descriptions, localized field labels, and narrow inline groups.
+- [ ] **P2 · Design review** — Specify when inline groups should wrap versus switch to the stacked layout and whether a maximum inline option count is recommended.
+- [ ] **P3 · Design review** — Document whether helper text is supported independently of validation errors and where it appears relative to the group.
+      `;
+
 export const loadingBacklog = `
 ## Loading
 
@@ -195,7 +210,7 @@ export const BacklogPage = () => {
   const sections = useMemo(
     () =>
       parseBacklog(
-        `${backlog}\n${checkboxBacklog}\n${dateInputBacklog}\n${textInputBacklog}\n${loadingBacklog}\n${typographyBacklog}\n${dashboardBacklog}\n${topBarNavBacklog}`,
+        `${backlog}\n${checkboxBacklog}\n${dateInputBacklog}\n${textInputBacklog}\n${loadingBacklog}\n${typographyBacklog}\n${dashboardBacklog}\n${topBarNavBacklog}\n${radioBacklog}`,
       ),
     [],
   );
