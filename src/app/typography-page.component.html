@@ -1,53 +1,134 @@
 <main class="typography-page">
   <header class="page-header">
-    <p class="eyebrow">Design System</p>
+    <p class="eyebrow">Foundations</p>
     <h1>Typography</h1>
-    <p class="intro">
-      This page defines and previews the primary type styles for the system using Inter.
+    <p class="page-intro">
+      A responsive type system built with Inter. Use these styles to create clear hierarchy and
+      consistent reading experiences across DDS products.
     </p>
   </header>
 
-  <section class="type-specs" aria-labelledby="type-scale-heading">
-    <h2 id="type-scale-heading">Type Scale</h2>
-
-    <article class="type-row">
-      <p class="type-meta">Display · 56/64 · 700</p>
-      <p class="sample display">Design systems make products feel like one voice.</p>
-    </article>
-
-    <article class="type-row">
-      <p class="type-meta">Heading 1 · 40/48 · 700</p>
-      <p class="sample h1">Build a strong visual hierarchy.</p>
-    </article>
-
-    <article class="type-row">
-      <p class="type-meta">Heading 2 · 32/40 · 600</p>
-      <p class="sample h2">Guide attention with rhythm.</p>
-    </article>
-
-    <article class="type-row">
-      <p class="type-meta">Heading 3 · 24/32 · 600</p>
-      <p class="sample h3">Reusable styles reduce drift.</p>
-    </article>
-
-    <article class="type-row">
-      <p class="type-meta">Body Large · 18/28 · 400</p>
-      <p class="sample body-lg">
-        Body large is useful for lead text, summaries, and content that benefits from easier reading.
-      </p>
-    </article>
-
-    <article class="type-row">
-      <p class="type-meta">Body · 16/24 · 400</p>
-      <p class="sample body">
-        Body text is the default for most interfaces and should be highly legible at all viewport sizes.
-      </p>
-    </article>
-
-    <article class="type-row">
-      <p class="type-meta">Caption · 14/20 · 500</p>
-      <p class="sample caption">Use captions for helper text, labels, and supportive metadata.</p>
-    </article>
+  <section class="font-overview" aria-labelledby="primary-font-heading">
+    <div class="font-monogram" aria-hidden="true">Aa</div>
+    <div class="font-details">
+      <p class="section-kicker">Primary typeface</p>
+      <h2 id="primary-font-heading">Inter</h2>
+      <p>A neutral, highly legible sans serif designed for interfaces and dense information.</p>
+    </div>
+    <div class="font-actions">
+      <span>Weights 300–700</span>
+      <a href="https://fonts.google.com/specimen/Inter" target="_blank" rel="noreferrer">
+        View on Google Fonts <span aria-hidden="true">↗</span>
+      </a>
+    </div>
   </section>
 
+  <section class="documentation-section" aria-labelledby="headings-heading">
+    <div class="section-intro">
+      <div>
+        <p class="section-kicker">Hierarchy</p>
+        <h2 id="headings-heading">Headings</h2>
+      </div>
+      <p>
+        Use headings in order to structure a page. Desktop and mobile scales preserve the same
+        hierarchy while adapting to available space.
+      </p>
+    </div>
+
+    <div class="scale-grid">
+      <article class="scale-card">
+        <header>
+          <h3>Desktop scale</h3>
+          <span class="platform-badge">≥ 768px</span>
+        </header>
+        <ng-container
+          *ngTemplateOutlet="
+            typeTable;
+            context: { $implicit: desktopHeadings, label: 'Desktop heading styles' }
+          "
+        />
+      </article>
+      <article class="scale-card">
+        <header>
+          <h3>Mobile scale</h3>
+          <span class="platform-badge">&lt; 768px</span>
+        </header>
+        <ng-container
+          *ngTemplateOutlet="
+            typeTable;
+            context: { $implicit: mobileHeadings, label: 'Mobile heading styles' }
+          "
+        />
+      </article>
+    </div>
+  </section>
+
+  <section class="documentation-section" aria-labelledby="body-heading">
+    <div class="section-intro">
+      <div>
+        <p class="section-kicker">Content</p>
+        <h2 id="body-heading">Body and labels</h2>
+      </div>
+      <p>
+        Body styles support longer reading and interface copy. Label styles add emphasis to short,
+        actionable text such as field names and buttons.
+      </p>
+    </div>
+
+    <div class="content-scales">
+      <article class="scale-card">
+        <header>
+          <h3>Body</h3>
+          <p>Regular · 400</p>
+        </header>
+        <ng-container
+          *ngTemplateOutlet="
+            typeTable;
+            context: { $implicit: bodyStyles, label: 'Body text styles' }
+          "
+        />
+      </article>
+      <article class="scale-card">
+        <header>
+          <h3>Labels</h3>
+          <p>Regular, medium and semibold</p>
+        </header>
+        <ng-container
+          *ngTemplateOutlet="
+            typeTable;
+            context: { $implicit: labelStyles, label: 'Label text styles' }
+          "
+        />
+      </article>
+    </div>
+  </section>
+
+  <aside class="usage-note" aria-labelledby="usage-heading">
+    <div aria-hidden="true">i</div>
+    <div>
+      <h2 id="usage-heading">Keep hierarchy predictable</h2>
+      <p>
+        Choose styles by meaning, not appearance. Avoid skipping heading levels, and reserve labels
+        for concise interface text rather than paragraphs.
+      </p>
+    </div>
+  </aside>
 </main>
+
+<ng-template #typeTable let-rows let-label="label">
+  <div class="type-table" role="table" [attr.aria-label]="label">
+    <div class="table-row table-header" role="row">
+      <span role="columnheader">Style</span><span role="columnheader">Size</span>
+      <span role="columnheader">Weight</span><span role="columnheader">Line</span>
+      <span role="columnheader">Use for</span>
+    </div>
+    @for (row of rows; track row.name) {
+      <div class="table-row" role="row">
+        <span role="cell" class="style-sample" [class]="row.className">{{ row.name }}</span>
+        <span role="cell">{{ row.size }}</span
+        ><span role="cell">{{ row.weight }}</span> <span role="cell">{{ row.lineHeight }}</span
+        ><span role="cell">{{ row.usage }}</span>
+      </div>
+    }
+  </div>
+</ng-template>

@@ -9,7 +9,7 @@ const meta: Meta<TypographyPageComponent> = {
     docs: {
       description: {
         component:
-          'The DDS type scale establishes hierarchy and readable rhythm across product experiences. Use display and heading styles sparingly for structure, body styles for primary content, and captions for supporting metadata—not essential instructions.',
+          'Inter is the DDS primary font. The typography foundation documents responsive heading styles alongside body and label styles for consistent hierarchy and readable rhythm across product experiences.',
       },
     },
     layout: 'fullscreen',
@@ -20,6 +20,6 @@ const meta: Meta<TypographyPageComponent> = {
 export default meta;
 type Story = StoryObj<TypographyPageComponent>;
 
-export const TypeScale: Story = {
-  name: 'Type scale',
+export const Typography: Story = {
+  name: 'Typography',
 };
