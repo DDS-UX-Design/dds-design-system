@@ -1,0 +1,48 @@
+:host {
+  display: inline-flex;
+  line-height: 0;
+}
+
+.dds-spinner {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+}
+
+.dds-spinner--desktop {
+  width: 80px;
+  height: 80px;
+}
+
+.dds-spinner__frame {
+  position: absolute;
+  inset: 0;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.dds-spinner__frame--1 {
+  background-image: url('../../../images/loading/spinner-mobile-1.svg');
+}
+
+.dds-spinner--desktop .dds-spinner__frame--1 {
+  background-image: url('../../../images/loading/spinner-desktop-1.svg');
+}
+
+.dds-spinner--animated .dds-spinner__frame {
+  animation: dds-spinner-rotate 1s linear infinite;
+}
+
+@keyframes dds-spinner-rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dds-spinner--animated .dds-spinner__frame {
+    animation: none;
+  }
+}

@@ -4,7 +4,38 @@ import backlog from './figma-backlog.backlog';
 
 <Meta title="Project/Figma Backlog" />
 
-export const backlogRevision = '27 August 2026 · Text input added';
+export const backlogRevision = '30 August 2026 · Loading components added';
+
+export const loadingBacklog = `
+## Loading
+
+### Skeleton
+
+Figma reference: [Skeleton — node 1309:6956](https://www.figma.com/design/u0lpCPrGMj68e9RMIRuYxL/DDS---Design-System-v1.0?node-id=1309-6956)
+
+- [ ] **P1 · Design review** — Specify shimmer duration, easing, direction, and the reduced-motion treatment; the current component only provides Start and End frames.
+- [ ] **P1 · Confirmed gap** — Add skeleton patterns for headings, paragraphs, avatars, images, controls, cards, and responsive content layouts; the current design only defines a 230×16px text bar.
+- [ ] **P2 · Design review** — Define skeleton colours and contrast for dark surfaces and non-white application backgrounds.
+- [ ] **P2 · Design review** — Document when a skeleton is decorative, when its loading region uses aria-busy, and when a loading status should be announced.
+
+### Spinner
+
+Figma reference: [Spinner — node 27:928](https://www.figma.com/design/u0lpCPrGMj68e9RMIRuYxL/DDS---Design-System-v1.0?node-id=27-928)
+
+- [ ] **P1 · Design review** — Specify animation duration, easing, direction, and the reduced-motion treatment; the current component only defines four visual frames.
+- [ ] **P1 · Confirmed gap** — Define accessible loading-label guidance and whether repeated or long-running loading updates are announced.
+- [ ] **P2 · Design review** — Confirm whether sizes between the current 40px Mobile and 80px Desktop variants are needed for inline controls and compact content regions.
+- [ ] **P2 · Confirmed gap** — Define timeout, failure, retry, and cancellation behavior for operations that do not complete promptly.
+
+### Spinner applications
+
+Figma reference: [Web spinner application — node 141:3079](https://www.figma.com/design/u0lpCPrGMj68e9RMIRuYxL/DDS---Design-System-v1.0?node-id=141-3079)
+
+- [ ] **P1 · Design review** — Specify whether blocking overlays trap focus, make background content inert, prevent scrolling, and intercept pointer input.
+- [ ] **P1 · Confirmed gap** — Add a Mobile dark-overlay treatment; only the Mobile light application is currently defined.
+- [ ] **P2 · Design review** — Reconcile the Mobile light overlay at 80% white with the shared light overlay token at 60% white.
+- [ ] **P2 · Design review** — Define when loading should cover the full viewport, an application shell, or only the content region being updated.
+      `;
 
 export const textInputBacklog = `
 ## Forms
@@ -117,7 +148,7 @@ export const BacklogPage = () => {
   const sections = useMemo(
     () =>
       parseBacklog(
-        `${backlog}\n${checkboxBacklog}\n${dateInputBacklog}\n${textInputBacklog}`,
+        `${backlog}\n${checkboxBacklog}\n${dateInputBacklog}\n${textInputBacklog}\n${loadingBacklog}`,
       ),
     [],
   );
