@@ -1,0 +1,161 @@
+<section class="dds-data-table" [attr.aria-busy]="loading">
+  <div *ngIf="showToolbar && !selectedCount" class="dds-data-table__toolbar">
+    <div class="dds-data-table__controls">
+      <dds-search
+        size="small"
+        [showLabel]="false"
+        [ariaLabel]="searchPlaceholder"
+        [placeholder]="searchPlaceholder"
+        [value]="searchValue"
+        (valueChange)="searchValue = $event; searchChange.emit($event)"
+        (search)="searchSubmit.emit($event)"
+      ></dds-search>
+      <dds-select
+        *ngIf="filterOptions.length"
+        size="small"
+        [showLabel]="false"
+        [showHelperText]="false"
+        [ariaLabel]="filterLabel"
+        [placeholder]="filterLabel"
+        [options]="filterOptions"
+        [value]="filterValue"
+        (valueChange)="filterValue = $event; filterChange.emit($event)"
+      ></dds-select>
+    </div>
+    <dds-button
+      variant="primary"
+      size="medium"
+      iconType="left-icon"
+      [icon]="toolbarActionIcon"
+      (click)="toolbarAction.emit()"
+      >{{ toolbarActionLabel }}</dds-button
+    >
+  </div>
+
+  <div *ngIf="selectable && selectedCount" class="dds-data-table__bulk" aria-live="polite">
+    <div class="dds-data-table__selection-summary">
+      <span>{{ selectedCount }} selected</span>
+      <button type="button" class="dds-data-table__clear" (click)="clearSelection()">Clear</button>
+    </div>
+    <div class="dds-data-table__bulk-actions">
+      <dds-button
+        *ngFor="let action of bulkActions"
+        variant="secondary"
+        size="medium"
+        [styleType]="action.styleType ?? 'default'"
+        [iconType]="action.icon ? 'left-icon' : 'no-icon'"
+        [icon]="action.icon ?? 'info'"
+        (click)="bulkAction.emit(action)"
+        >{{ action.label }}</dds-button
+      >
+    </div>
+  </div>
+
+  <div class="dds-data-table__scroller">
+    <table>
+      <caption class="dds-data-table__caption">
+        {{
+          caption
+        }}
+      </caption>
+      <colgroup>
+        <col *ngIf="selectable" class="dds-data-table__selection-column" />
+        <col *ngFor="let column of columns; trackBy: trackColumn" [style.width]="column.width" />
+        <col *ngIf="rowActions.length" class="dds-data-table__actions-column" />
+      </colgroup>
+      <thead>
+        <tr>
+          <th *ngIf="selectable" scope="col" class="dds-data-table__selection-cell">
+            <dds-checkbox
+              [showLabel]="false"
+              [showOption]="false"
+              ariaLabel="Select all rows"
+              [value]="headerCheckboxValue"
+              (valueChange)="toggleAll($event)"
+            ></dds-checkbox>
+          </th>
+          <th
+            *ngFor="let column of columns; trackBy: trackColumn"
+            scope="col"
+            [attr.data-align]="column.align ?? 'start'"
+          >
+            {{ column.label }}
+          </th>
+          <th *ngIf="rowActions.length" scope="col">
+            <span class="dds-visually-hidden">Actions</span>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngIf="loading; else tableContent">
+          <tr *ngFor="let _ of skeletonRows">
+            <td *ngIf="selectable" class="dds-data-table__selection-cell">
+              <dds-skeleton width="20px" height="20px"></dds-skeleton>
+            </td>
+            <td *ngFor="let column of columns; trackBy: trackColumn">
+              <dds-skeleton width="70%" height="16px"></dds-skeleton>
+            </td>
+            <td *ngIf="rowActions.length">
+              <dds-skeleton width="32px" height="32px"></dds-skeleton>
+            </td>
+          </tr>
+        </ng-container>
+        <ng-template #tableContent>
+          <tr
+            *ngFor="let row of rows; trackBy: trackRow"
+            [class.dds-data-table__row--selected]="isSelected(row)"
+          >
+            <td *ngIf="selectable" class="dds-data-table__selection-cell">
+              <dds-checkbox
+                [showLabel]="false"
+                [showOption]="false"
+                [ariaLabel]="'Select row ' + rowIdentity(row)"
+                [value]="isSelected(row) ? 'checked' : 'unchecked'"
+                (valueChange)="toggleRow(row, $event)"
+              ></dds-checkbox>
+            </td>
+            <td
+              *ngFor="let column of columns; trackBy: trackColumn"
+              [attr.data-align]="column.align ?? 'start'"
+            >
+              <dds-status-badge
+                *ngIf="column.type === 'status'; else textCell"
+                [text]="cellValue(column, row).toString()"
+                [tone]="statusTone(column, row)"
+              ></dds-status-badge>
+              <ng-template #textCell>{{ cellValue(column, row) }}</ng-template>
+            </td>
+            <td *ngIf="rowActions.length" class="dds-data-table__actions-cell">
+              <dds-button
+                *ngFor="let action of rowActions"
+                variant="secondary"
+                size="small"
+                [styleType]="action.styleType ?? 'default'"
+                [iconType]="action.icon ? 'icon-only' : 'no-icon'"
+                [icon]="action.icon ?? 'info'"
+                [ariaLabel]="action.label"
+                (click)="rowAction.emit({ action: action, row: row })"
+                >{{ action.icon ? '' : action.label }}</dds-button
+              >
+            </td>
+          </tr>
+          <tr *ngIf="!rows.length">
+            <td class="dds-data-table__empty" [attr.colspan]="visibleColumnCount">
+              {{ emptyMessage }}
+            </td>
+          </tr>
+        </ng-template>
+      </tbody>
+    </table>
+  </div>
+
+  <footer *ngIf="showPagination && !loading" class="dds-data-table__footer">
+    <span>Displaying {{ displayStart }} to {{ displayEnd }} of {{ totalItems }} items</span>
+    <dds-minimal-pagination
+      [currentPage]="currentPage"
+      [totalPages]="totalPages"
+      ariaLabel="Table pagination"
+      (pageChange)="pageChange.emit($event)"
+    ></dds-minimal-pagination>
+  </footer>
+</section>

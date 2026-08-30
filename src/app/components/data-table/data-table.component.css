@@ -1,0 +1,157 @@
+:host {
+  display: block;
+  min-width: 0;
+}
+
+.dds-data-table {
+  width: 100%;
+  color: var(--text-colour-default);
+  font-family: var(--font-family-primary);
+}
+
+.dds-data-table__toolbar,
+.dds-data-table__bulk {
+  display: flex;
+  min-height: 56px;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding-bottom: var(--space-4);
+}
+
+.dds-data-table__controls,
+.dds-data-table__bulk-actions,
+.dds-data-table__selection-summary {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.dds-data-table__controls dds-search {
+  width: 280px;
+}
+
+.dds-data-table__controls dds-select {
+  width: 180px;
+}
+
+.dds-data-table__bulk {
+  border-bottom: 1px solid var(--border-colour-default);
+}
+
+.dds-data-table__selection-summary {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+}
+
+.dds-data-table__clear {
+  padding: 0;
+  border: 0;
+  border-bottom: 1px solid currentColor;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.dds-data-table__scroller {
+  width: 100%;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  min-width: 720px;
+  border-spacing: 0;
+  border-collapse: collapse;
+  table-layout: fixed;
+  font-size: var(--font-size-sm);
+}
+
+.dds-data-table__caption,
+.dds-visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+th,
+td {
+  height: 54px;
+  padding: var(--space-3);
+  text-align: left;
+  vertical-align: middle;
+}
+
+th {
+  background: var(--bg-colour-default);
+  font-weight: var(--font-weight-medium);
+}
+
+td {
+  border-top: 1px solid var(--border-colour-default);
+  background: var(--bg-colour-white);
+  overflow-wrap: anywhere;
+}
+
+[data-align='center'] {
+  text-align: center;
+}
+[data-align='end'] {
+  text-align: right;
+}
+
+.dds-data-table__selection-column {
+  width: 52px;
+}
+.dds-data-table__actions-column {
+  width: 64px;
+}
+.dds-data-table__selection-cell,
+.dds-data-table__actions-cell {
+  text-align: center;
+}
+.dds-data-table__row--selected td {
+  background: var(--bg-colour-info-muted);
+}
+
+.dds-data-table__empty {
+  height: 112px;
+  color: var(--text-colour-tertiary);
+  text-align: center;
+}
+
+.dds-data-table__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--border-colour-default);
+  color: var(--text-colour-tertiary);
+  font-size: var(--font-size-sm);
+}
+
+@media (max-width: 720px) {
+  .dds-data-table__toolbar,
+  .dds-data-table__bulk,
+  .dds-data-table__footer {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .dds-data-table__controls {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .dds-data-table__controls dds-search,
+  .dds-data-table__controls dds-select {
+    width: 100%;
+  }
+}
