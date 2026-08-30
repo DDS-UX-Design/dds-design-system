@@ -1,0 +1,42 @@
+:host {
+  display: inline-block;
+  max-width: 100%;
+  line-height: 0;
+}
+
+.dds-skeleton {
+  position: relative;
+  display: block;
+  max-width: 100%;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+  background: rgb(0 0 0 / 8%);
+}
+
+.dds-skeleton--animated::after {
+  position: absolute;
+  inset: 0 auto 0 -140px;
+  width: 140px;
+  background: linear-gradient(
+    90deg,
+    rgb(255 255 255 / 0%) 0%,
+    rgb(255 255 255 / 18%) 30%,
+    rgb(255 255 255 / 55%) 50%,
+    rgb(255 255 255 / 18%) 70%,
+    rgb(255 255 255 / 0%) 100%
+  );
+  content: '';
+  animation: dds-skeleton-wave 1.4s ease-in-out infinite;
+}
+
+@keyframes dds-skeleton-wave {
+  to {
+    left: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dds-skeleton--animated::after {
+    animation: none;
+  }
+}

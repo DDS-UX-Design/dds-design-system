@@ -1426,6 +1426,105 @@
             }
         },
         {
+            "name": "LoadingOverlayComponent",
+            "id": "component-LoadingOverlayComponent-2d8c15c002fb68f2a4ccb0c2fed1291784eb8404427471888ced940d6fa9b073d0ee72e18b4d2152f175b0093d2abeeafbcba69558c02f1eea36bc3b02601f30",
+            "file": "src/app/components/loading-overlay/loading-overlay.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "dds-loading-overlay",
+            "styleUrls": [
+                "./loading-overlay.component.css"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./loading-overlay.component.html"
+            ],
+            "templateVariables": [],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "coverageIgnore": false,
+                    "name": "label",
+                    "defaultValue": "'Loading'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 17,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "platform",
+                    "defaultValue": "'web'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 16,
+                    "type": "LoadingOverlayPlatform",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "theme",
+                    "defaultValue": "'light'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 15,
+                    "type": "LoadingOverlayTheme",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "coverageIgnore": false,
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "SpinnerComponent",
+                    "type": "component"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { SpinnerComponent } from '../spinner/spinner.component';\n\nexport type LoadingOverlayTheme = 'light' | 'dark';\nexport type LoadingOverlayPlatform = 'web' | 'mobile';\n\n@Component({\n  selector: 'dds-loading-overlay',\n  standalone: true,\n  imports: [SpinnerComponent],\n  templateUrl: './loading-overlay.component.html',\n  styleUrl: './loading-overlay.component.css',\n})\nexport class LoadingOverlayComponent {\n  @Input() theme: LoadingOverlayTheme = 'light';\n  @Input() platform: LoadingOverlayPlatform = 'web';\n  @Input() label = 'Loading';\n}\n",
+            "styleUrl": "./loading-overlay.component.css",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ":host {\n  position: absolute;\n  inset: 0;\n  z-index: 1;\n  display: block;\n}\n\n.dds-loading-overlay {\n  display: flex;\n  width: 100%;\n  height: 100%;\n  align-items: center;\n  justify-content: center;\n  box-sizing: border-box;\n  background: var(--bg-colour-overlay-light);\n  backdrop-filter: blur(4px);\n}\n\n.dds-loading-overlay--dark {\n  background: var(--bg-colour-overlay-dark);\n}\n\n.dds-loading-overlay--mobile:not(.dds-loading-overlay--dark) {\n  background: rgb(255 255 255 / 80%);\n}\n",
+                    "styleUrl": "./loading-overlay.component.css"
+                }
+            ],
+            "stylesData": "",
+            "extends": [],
+            "relationships": {
+                "incoming": [],
+                "outgoing": [
+                    {
+                        "name": "SpinnerComponent",
+                        "type": "component"
+                    }
+                ]
+            },
+            "templateData": "<div\n  class=\"dds-loading-overlay\"\n  [class.dds-loading-overlay--dark]=\"theme === 'dark'\"\n  [class.dds-loading-overlay--mobile]=\"platform === 'mobile'\"\n>\n  <dds-spinner size=\"desktop\" [label]=\"label\"></dds-spinner>\n</div>\n"
+        },
+        {
             "name": "MinimalPaginationComponent",
             "id": "component-MinimalPaginationComponent-71f25ed836d5edb79631816e57de44bf1029e678e2e62c35d7bed63a4070d56e47eb4012b55463ed2929720e139a31bef845ad1efc240cfa16b70142dfa367af",
             "file": "src/app/components/minimal-pagination/minimal-pagination.component.ts",
@@ -3593,6 +3692,213 @@
             "templateData": "<div\n  class=\"dds-select\"\n  [class.dds-select--small]=\"size === 'small'\"\n  [class.dds-select--focused]=\"state === 'focused'\"\n  [class.dds-select--disabled]=\"isDisabled\"\n  [class.dds-select--error]=\"isError\"\n  [class.dds-select--placeholder]=\"!value\"\n>\n  <label *ngIf=\"showLabel\" class=\"dds-select__label\" [for]=\"inputId\">\n    {{ label }}\n    <span *ngIf=\"required\" class=\"dds-select__required\" aria-hidden=\"true\">*</span>\n  </label>\n\n  <div class=\"dds-select__field\">\n    <select\n      class=\"dds-select__control\"\n      [id]=\"inputId\"\n      [value]=\"value\"\n      [required]=\"required\"\n      [disabled]=\"isDisabled\"\n      [attr.aria-label]=\"showLabel ? null : ariaLabel\"\n      [attr.aria-invalid]=\"isError ? 'true' : null\"\n      [attr.aria-describedby]=\"describedBy\"\n      (change)=\"handleChange($event)\"\n    >\n      <option value=\"\" disabled>{{ placeholder }}</option>\n      <option *ngFor=\"let option of options\" [value]=\"option.value\" [disabled]=\"option.disabled\">\n        {{ option.label }}\n      </option>\n    </select>\n    <dds-icon\n      class=\"dds-select__icon\"\n      name=\"chevron-down\"\n      [size]=\"size === 'small' ? 20 : 24\"\n      aria-hidden=\"true\"\n    ></dds-icon>\n  </div>\n\n  <p *ngIf=\"!isError && showHelperText\" class=\"dds-select__supporting-text\" [id]=\"helperId\">\n    {{ helperText }}\n  </p>\n\n  <p *ngIf=\"isError\" class=\"dds-select__supporting-text dds-select__error\" [id]=\"errorId\">\n    {{ errorMessage }}\n  </p>\n</div>\n"
         },
         {
+            "name": "SkeletonComponent",
+            "id": "component-SkeletonComponent-7c9bcd70631cb5b0870e5bac397864f4450c0d97172c30f6038d77a8c8160d63d6cc0772863b19503373ca2cd63a3d9dbbc9fe071b9d0d9d95ea101d2be2e19e",
+            "file": "src/app/components/skeleton/skeleton.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "dds-skeleton",
+            "styleUrls": [
+                "./skeleton.component.css"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./skeleton.component.html"
+            ],
+            "templateVariables": [],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "coverageIgnore": false,
+                    "name": "animated",
+                    "defaultValue": "true",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 12,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "height",
+                    "defaultValue": "16",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 11,
+                    "type": "string | number",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "width",
+                    "defaultValue": "230",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 10,
+                    "type": "string | number",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "coverageIgnore": false,
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, Input } from '@angular/core';\n\n@Component({\n  selector: 'dds-skeleton',\n  standalone: true,\n  templateUrl: './skeleton.component.html',\n  styleUrl: './skeleton.component.css',\n})\nexport class SkeletonComponent {\n  @Input() width: string | number = 230;\n  @Input() height: string | number = 16;\n  @Input() animated = true;\n\n  get resolvedWidth(): string {\n    return typeof this.width === 'number' ? `${this.width}px` : this.width;\n  }\n\n  get resolvedHeight(): string {\n    return typeof this.height === 'number' ? `${this.height}px` : this.height;\n  }\n}\n",
+            "styleUrl": "./skeleton.component.css",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ":host {\n  display: inline-block;\n  max-width: 100%;\n  line-height: 0;\n}\n\n.dds-skeleton {\n  position: relative;\n  display: block;\n  max-width: 100%;\n  overflow: hidden;\n  border-radius: var(--radius-sm);\n  background: rgb(0 0 0 / 8%);\n}\n\n.dds-skeleton--animated::after {\n  position: absolute;\n  inset: 0 auto 0 -140px;\n  width: 140px;\n  background: linear-gradient(\n    90deg,\n    rgb(255 255 255 / 0%) 0%,\n    rgb(255 255 255 / 18%) 30%,\n    rgb(255 255 255 / 55%) 50%,\n    rgb(255 255 255 / 18%) 70%,\n    rgb(255 255 255 / 0%) 100%\n  );\n  content: '';\n  animation: dds-skeleton-wave 1.4s ease-in-out infinite;\n}\n\n@keyframes dds-skeleton-wave {\n  to {\n    left: 100%;\n  }\n}\n\n@media (prefers-reduced-motion: reduce) {\n  .dds-skeleton--animated::after {\n    animation: none;\n  }\n}\n",
+                    "styleUrl": "./skeleton.component.css"
+                }
+            ],
+            "stylesData": "",
+            "extends": [],
+            "accessors": {
+                "resolvedWidth": {
+                    "name": "resolvedWidth",
+                    "getSignature": {
+                        "name": "resolvedWidth",
+                        "type": "string",
+                        "returnType": "string",
+                        "line": 14,
+                        "rawdescription": "\n",
+                        "description": ""
+                    }
+                },
+                "resolvedHeight": {
+                    "name": "resolvedHeight",
+                    "getSignature": {
+                        "name": "resolvedHeight",
+                        "type": "string",
+                        "returnType": "string",
+                        "line": 18,
+                        "rawdescription": "\n",
+                        "description": ""
+                    }
+                }
+            },
+            "relationships": {
+                "incoming": [],
+                "outgoing": []
+            },
+            "templateData": "<span\n  class=\"dds-skeleton\"\n  [class.dds-skeleton--animated]=\"animated\"\n  [style.width]=\"resolvedWidth\"\n  [style.height]=\"resolvedHeight\"\n  aria-hidden=\"true\"\n></span>\n"
+        },
+        {
+            "name": "SpinnerComponent",
+            "id": "component-SpinnerComponent-9fae9c24366115d15a8fc07bc262b789011f61ceceed14cffaf9c917da4e0be3452882700d4193126011d885bc088047ccd2c193e2dbf8268d02f76d757d7960",
+            "file": "src/app/components/spinner/spinner.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "dds-spinner",
+            "styleUrls": [
+                "./spinner.component.css"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./spinner.component.html"
+            ],
+            "templateVariables": [],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "coverageIgnore": false,
+                    "name": "animated",
+                    "defaultValue": "true",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 14,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "label",
+                    "defaultValue": "'Loading'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 13,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "size",
+                    "defaultValue": "'mobile'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 12,
+                    "type": "SpinnerSize",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "coverageIgnore": false,
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, Input } from '@angular/core';\n\nexport type SpinnerSize = 'mobile' | 'desktop';\n\n@Component({\n  selector: 'dds-spinner',\n  standalone: true,\n  templateUrl: './spinner.component.html',\n  styleUrl: './spinner.component.css',\n})\nexport class SpinnerComponent {\n  @Input() size: SpinnerSize = 'mobile';\n  @Input() label = 'Loading';\n  @Input() animated = true;\n}\n",
+            "styleUrl": "./spinner.component.css",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ":host {\n  display: inline-flex;\n  line-height: 0;\n}\n\n.dds-spinner {\n  position: relative;\n  display: inline-block;\n  width: 40px;\n  height: 40px;\n}\n\n.dds-spinner--desktop {\n  width: 80px;\n  height: 80px;\n}\n\n.dds-spinner__frame {\n  position: absolute;\n  inset: 0;\n  background-position: center;\n  background-repeat: no-repeat;\n  background-size: 100% 100%;\n}\n\n.dds-spinner__frame--1 {\n  background-image: url('../../../images/loading/spinner-mobile-1.svg');\n}\n\n.dds-spinner--desktop .dds-spinner__frame--1 {\n  background-image: url('../../../images/loading/spinner-desktop-1.svg');\n}\n\n.dds-spinner--animated .dds-spinner__frame {\n  animation: dds-spinner-rotate 1s linear infinite;\n}\n\n@keyframes dds-spinner-rotate {\n  to {\n    transform: rotate(360deg);\n  }\n}\n\n@media (prefers-reduced-motion: reduce) {\n  .dds-spinner--animated .dds-spinner__frame {\n    animation: none;\n  }\n}\n",
+                    "styleUrl": "./spinner.component.css"
+                }
+            ],
+            "stylesData": "",
+            "extends": [],
+            "relationships": {
+                "incoming": [
+                    {
+                        "name": "LoadingOverlayComponent",
+                        "type": "component"
+                    }
+                ],
+                "outgoing": []
+            },
+            "templateData": "<span\n  class=\"dds-spinner\"\n  [class.dds-spinner--desktop]=\"size === 'desktop'\"\n  [class.dds-spinner--animated]=\"animated\"\n  role=\"status\"\n  [attr.aria-label]=\"label\"\n>\n  <span class=\"dds-spinner__frame dds-spinner__frame--1\" aria-hidden=\"true\"></span>\n</span>\n"
+        },
+        {
             "name": "TextareaComponent",
             "id": "component-TextareaComponent-43dda6809bca32325f9db2c20f021003aa0b095bdb05339cb3009be6289d3b77dbf550047c14040e91fbbe73e5a25da3ede7eb365513a432d856c063f61c41bc",
             "file": "src/app/components/textarea/textarea.component.ts",
@@ -5073,6 +5379,32 @@
                 "kind": 200
             },
             {
+                "name": "LoadingOverlayPlatform",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "coverageIgnore": false,
+                "rawtype": "\"web\" | \"mobile\"",
+                "file": "src/app/components/loading-overlay/loading-overlay.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "rawdescription": "",
+                "description": "",
+                "kind": 193
+            },
+            {
+                "name": "LoadingOverlayTheme",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "coverageIgnore": false,
+                "rawtype": "\"light\" | \"dark\"",
+                "file": "src/app/components/loading-overlay/loading-overlay.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "rawdescription": "",
+                "description": "",
+                "kind": 193
+            },
+            {
                 "name": "OtpInputSize",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
@@ -5196,6 +5528,19 @@
                 "coverageIgnore": false,
                 "rawtype": "\"default\" | \"focused\" | \"disabled\" | \"error\"",
                 "file": "src/app/components/select/select.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "rawdescription": "",
+                "description": "",
+                "kind": 193
+            },
+            {
+                "name": "SpinnerSize",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "coverageIgnore": false,
+                "rawtype": "\"mobile\" | \"desktop\"",
+                "file": "src/app/components/spinner/spinner.component.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "rawdescription": "",
@@ -5694,6 +6039,34 @@
                     "kind": 200
                 }
             ],
+            "src/app/components/loading-overlay/loading-overlay.component.ts": [
+                {
+                    "name": "LoadingOverlayPlatform",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "coverageIgnore": false,
+                    "rawtype": "\"web\" | \"mobile\"",
+                    "file": "src/app/components/loading-overlay/loading-overlay.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "",
+                    "description": "",
+                    "kind": 193
+                },
+                {
+                    "name": "LoadingOverlayTheme",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "coverageIgnore": false,
+                    "rawtype": "\"light\" | \"dark\"",
+                    "file": "src/app/components/loading-overlay/loading-overlay.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "",
+                    "description": "",
+                    "kind": 193
+                }
+            ],
             "src/app/components/otp-input/otp-input.component.ts": [
                 {
                     "name": "OtpInputSize",
@@ -5834,6 +6207,21 @@
                     "kind": 193
                 }
             ],
+            "src/app/components/spinner/spinner.component.ts": [
+                {
+                    "name": "SpinnerSize",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "coverageIgnore": false,
+                    "rawtype": "\"mobile\" | \"desktop\"",
+                    "file": "src/app/components/spinner/spinner.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "",
+                    "description": "",
+                    "kind": 193
+                }
+            ],
             "src/app/components/textarea/textarea.component.ts": [
                 {
                     "name": "TextareaSize",
@@ -5934,7 +6322,7 @@
         ]
     },
     "coverage": {
-        "count": 10,
+        "count": 9,
         "status": "low",
         "files": [
             {
@@ -6192,6 +6580,35 @@
                 "status": "low"
             },
             {
+                "filePath": "src/app/components/loading-overlay/loading-overlay.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "LoadingOverlayComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/loading-overlay/loading-overlay.component.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "LoadingOverlayPlatform",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/loading-overlay/loading-overlay.component.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "LoadingOverlayTheme",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
                 "filePath": "src/app/components/minimal-pagination/minimal-pagination.component.ts",
                 "type": "component",
                 "linktype": "component",
@@ -6381,6 +6798,34 @@
                 "linktype": "miscellaneous",
                 "linksubtype": "typealias",
                 "name": "SelectState",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/skeleton/skeleton.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "SkeletonComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/spinner/spinner.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "SpinnerComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/spinner/spinner.component.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "SpinnerSize",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
