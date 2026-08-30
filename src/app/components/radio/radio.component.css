@@ -1,0 +1,112 @@
+:host {
+  display: inline-block;
+  max-width: 100%;
+}
+
+.dds-radio {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  color: var(--text-colour-default);
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-sm);
+  line-height: var(--font-size-xl);
+}
+
+.dds-radio__field-label {
+  display: flex;
+  gap: var(--space-1);
+  padding-bottom: var(--space-2);
+  font-weight: var(--font-weight-semibold);
+}
+
+.dds-radio__required,
+.dds-radio__error {
+  color: var(--text-colour-danger);
+}
+
+.dds-radio__option {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  cursor: pointer;
+}
+
+.dds-radio__native {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.dds-radio__circle {
+  box-sizing: border-box;
+  display: grid;
+  flex: 0 0 auto;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  border: 1px solid var(--border-colour-strong);
+  border-radius: var(--radius-full);
+  background: var(--bg-colour-white);
+}
+
+.dds-radio__circle > span {
+  width: 10px;
+  height: 10px;
+  border-radius: var(--radius-full);
+  background: transparent;
+}
+
+.dds-radio__native:checked + .dds-radio__circle {
+  border: 2px solid var(--border-colour-info);
+}
+
+.dds-radio__native:checked + .dds-radio__circle > span {
+  background: var(--bg-colour-accent);
+}
+
+.dds-radio__native:focus-visible + .dds-radio__circle,
+.dds-radio--focused .dds-radio__circle {
+  border: 2px solid var(--border-colour-info);
+  outline: 2px solid var(--bg-colour-info-muted);
+  outline-offset: 2px;
+}
+
+.dds-radio--invalid .dds-radio__circle,
+.dds-radio--invalid .dds-radio__native:checked + .dds-radio__circle {
+  border: 2px solid var(--border-colour-danger);
+}
+
+.dds-radio--disabled {
+  color: var(--text-colour-disabled);
+}
+
+.dds-radio--disabled .dds-radio__option {
+  cursor: not-allowed;
+}
+
+.dds-radio--disabled .dds-radio__circle {
+  border-color: var(--border-colour-strong);
+  background: var(--bg-colour-disabled);
+}
+
+.dds-radio--disabled .dds-radio__native:checked + .dds-radio__circle {
+  border-color: var(--border-colour-strong);
+}
+
+.dds-radio--disabled .dds-radio__native:checked + .dds-radio__circle > span {
+  background: var(--text-colour-disabled);
+}
+
+.dds-radio__error {
+  margin: 0;
+  padding-top: var(--space-2);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--font-size-md);
+}

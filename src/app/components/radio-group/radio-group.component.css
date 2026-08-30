@@ -1,0 +1,56 @@
+:host {
+  display: inline-block;
+  max-width: 100%;
+}
+
+.dds-radio-group {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  color: var(--text-colour-default);
+  font-family: var(--font-family-primary);
+}
+
+.dds-radio-group__legend {
+  padding: 0 0 var(--space-2);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--font-size-xl);
+}
+
+.dds-radio-group__legend span,
+.dds-radio-group__error {
+  color: var(--text-colour-danger);
+}
+
+.dds-radio-group__legend span {
+  margin-left: var(--space-1);
+}
+
+.dds-radio-group__options {
+  display: flex;
+}
+
+.dds-radio-group--inline .dds-radio-group__options {
+  flex-flow: row wrap;
+  gap: var(--space-4);
+}
+
+.dds-radio-group--stacked .dds-radio-group__options {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-3);
+}
+
+.dds-radio-group__error {
+  margin: 0;
+  padding-top: var(--space-2);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--font-size-md);
+}
+
+.dds-radio-group:disabled .dds-radio-group__legend {
+  color: var(--text-colour-disabled);
+}

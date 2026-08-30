@@ -1,0 +1,33 @@
+<fieldset
+  class="dds-radio-group"
+  [class.dds-radio-group--inline]="direction === 'inline'"
+  [class.dds-radio-group--stacked]="direction === 'stacked'"
+  [class.dds-radio-group--invalid]="state === 'invalid'"
+  [disabled]="state === 'disabled'"
+  [attr.aria-describedby]="state === 'invalid' ? errorId : null"
+>
+  <legend *ngIf="showLabel" class="dds-radio-group__legend">
+    {{ label }}<span *ngIf="required" aria-hidden="true">*</span>
+  </legend>
+
+  <div class="dds-radio-group__options">
+    <dds-radio
+      *ngFor="let option of options; let index = index"
+      [inputId]="groupId + '-' + index"
+      [name]="groupId"
+      [option]="option.label"
+      [value]="option.value"
+      [checked]="selectedValue === option.value"
+      [state]="optionState(option)"
+      [required]="required"
+      [showLabel]="false"
+      [showErrorMessage]="false"
+      [describedBy]="state === 'invalid' ? errorId : undefined"
+      (selected)="select($event)"
+    ></dds-radio>
+  </div>
+
+  <p *ngIf="state === 'invalid'" class="dds-radio-group__error" [id]="errorId">
+    {{ errorMessage }}
+  </p>
+</fieldset>

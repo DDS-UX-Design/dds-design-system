@@ -2,6 +2,62 @@
     "pipes": [],
     "interfaces": [
         {
+            "name": "RadioOption",
+            "id": "interface-RadioOption-58bbad0d5f63ed4ce5892f0ad30c4fe64ae2949b6b7c0ed5da7afce4e8053989c08d779224463484bf04dfb249235aaa652c2966efcd52bc7e3f08fa8e2e162c",
+            "file": "src/app/components/radio-group/radio-group.component.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, EventEmitter, Input, Output } from '@angular/core';\nimport { RadioComponent, RadioState } from '../radio/radio.component';\n\nexport type RadioGroupDirection = 'inline' | 'stacked';\nexport type RadioGroupState = 'default' | 'invalid' | 'disabled';\n\nexport interface RadioOption {\n  label: string;\n  value: string;\n  disabled?: boolean;\n}\n\nlet nextRadioGroupId = 0;\n\n/** A labelled set of mutually exclusive radio options in an inline or stacked layout. */\n@Component({\n  selector: 'dds-radio-group',\n  standalone: true,\n  imports: [CommonModule, RadioComponent],\n  templateUrl: './radio-group.component.html',\n  styleUrl: './radio-group.component.css',\n})\nexport class RadioGroupComponent {\n  @Input() groupId = `dds-radio-group-${nextRadioGroupId++}`;\n  @Input() label = 'Label text';\n  @Input() options: RadioOption[] = [\n    { label: 'Option 1', value: 'option-1' },\n    { label: 'Option 2', value: 'option-2' },\n    { label: 'Option 3', value: 'option-3' },\n    { label: 'Option 4', value: 'option-4' },\n  ];\n  @Input() selectedValue = 'option-1';\n  @Input() direction: RadioGroupDirection = 'inline';\n  @Input() state: RadioGroupState = 'default';\n  @Input() required = true;\n  @Input() showLabel = true;\n  @Input() errorMessage = 'Select an option to continue.';\n\n  @Output() selectedValueChange = new EventEmitter<string>();\n\n  get errorId(): string {\n    return `${this.groupId}-error`;\n  }\n\n  optionState(option: RadioOption): RadioState {\n    if (this.state === 'disabled' || option.disabled) return 'disabled';\n    if (this.state === 'invalid') return 'invalid';\n    return 'default';\n  }\n\n  select(value: string): void {\n    this.selectedValue = value;\n    this.selectedValueChange.emit(value);\n  }\n}\n",
+            "displayName": "RadioOption",
+            "properties": [
+                {
+                    "name": "disabled",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 11,
+                    "rawdescription": "\n"
+                },
+                {
+                    "name": "label",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 9,
+                    "rawdescription": "\n"
+                },
+                {
+                    "name": "value",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 10,
+                    "rawdescription": "\n"
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 172,
+            "methods": [],
+            "extends": [],
+            "relationships": {
+                "incoming": [],
+                "outgoing": []
+            }
+        },
+        {
             "name": "TypeStyle",
             "id": "interface-TypeStyle-2035c4c41bfd650b508a3131a433bb693f3df8f86cf2b97013ff8a8e8fdcb01c16e70f0276f19f18aacd39195c0a29f5ef0a3e205c643bedf07e54dfdc76e215",
             "file": "src/app/typography-page.component.ts",
@@ -4064,6 +4120,619 @@
             "templateData": "<div\n  class=\"dds-password-input\"\n  [class.dds-password-input--mobile]=\"size === 'mobile'\"\n  [class.dds-password-input--focused]=\"state === 'focused'\"\n  [class.dds-password-input--error]=\"isError\"\n  [class.dds-password-input--disabled]=\"disabled\"\n>\n  <label *ngIf=\"showLabel\" class=\"dds-password-input__label\" [for]=\"inputId\">\n    {{ label }}\n    <span *ngIf=\"required\" class=\"dds-password-input__required\" aria-hidden=\"true\">*</span>\n  </label>\n\n  <div class=\"dds-password-input__field\">\n    <input\n      class=\"dds-password-input__control\"\n      [id]=\"inputId\"\n      [name]=\"name\"\n      [type]=\"visible ? 'text' : 'password'\"\n      [value]=\"value\"\n      [placeholder]=\"placeholder\"\n      [required]=\"required\"\n      [disabled]=\"disabled\"\n      [autocomplete]=\"autocomplete\"\n      [attr.aria-label]=\"showLabel ? null : ariaLabel\"\n      [attr.aria-invalid]=\"isError ? 'true' : null\"\n      [attr.aria-describedby]=\"isError && showErrorMessage ? errorId : null\"\n      (input)=\"handleInput($event)\"\n    />\n\n    <button\n      class=\"dds-password-input__visibility\"\n      type=\"button\"\n      [disabled]=\"disabled\"\n      [attr.aria-label]=\"visible ? 'Hide password' : 'Show password'\"\n      [attr.aria-controls]=\"inputId\"\n      [attr.aria-pressed]=\"visible\"\n      (click)=\"toggleVisibility()\"\n    >\n      <dds-icon [name]=\"visible ? 'eye' : 'eye-off'\" [size]=\"iconSize\"></dds-icon>\n    </button>\n  </div>\n\n  <p *ngIf=\"isError && showErrorMessage\" class=\"dds-password-input__error\" [id]=\"errorId\">\n    {{ errorMessage }}\n  </p>\n</div>\n"
         },
         {
+            "name": "RadioComponent",
+            "id": "component-RadioComponent-f91cfc97679e028470ef48c6aebcb81c284a8118a2f82a49e48f00abecb283918ab0a02281fb25e9634cef09e9d9b266ce49973ca3a27b2335ceff0bcbde668e",
+            "file": "src/app/components/radio/radio.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "dds-radio",
+            "styleUrls": [
+                "./radio.component.css"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./radio.component.html"
+            ],
+            "templateVariables": [],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "coverageIgnore": false,
+                    "name": "ariaLabel",
+                    "defaultValue": "'Radio option'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 27,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "checked",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 22,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "describedBy",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 30,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "errorMessage",
+                    "defaultValue": "'Select an option to continue.'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 28,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "inputId",
+                    "defaultValue": "`dds-radio-${nextRadioId++}`",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 17,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "label",
+                    "defaultValue": "'Label'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 19,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "name",
+                    "defaultValue": "`dds-radio-group-${nextRadioId}`",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 18,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "option",
+                    "defaultValue": "'Option'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 20,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "required",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 24,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "showErrorMessage",
+                    "defaultValue": "true",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 29,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "showLabel",
+                    "defaultValue": "true",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 25,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "showOption",
+                    "defaultValue": "true",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 26,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "state",
+                    "defaultValue": "'default'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 23,
+                    "type": "RadioState",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "value",
+                    "defaultValue": "'option'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 21,
+                    "type": "string",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "checkedChange",
+                    "coverageIgnore": false,
+                    "defaultValue": "new EventEmitter<boolean>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 32,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "selected",
+                    "coverageIgnore": false,
+                    "defaultValue": "new EventEmitter<string>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 33,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "handleChange",
+                    "coverageIgnore": false,
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 52,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": ""
+                }
+            ],
+            "coverageIgnore": false,
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                }
+            ],
+            "description": "<p>A native radio input with DDS label, validation, focus, and disabled treatments.</p>\n",
+            "rawdescription": "\nA native radio input with DDS label, validation, focus, and disabled treatments.",
+            "type": "component",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, EventEmitter, Input, Output } from '@angular/core';\n\nexport type RadioState = 'default' | 'focused' | 'disabled' | 'invalid';\n\nlet nextRadioId = 0;\n\n/** A native radio input with DDS label, validation, focus, and disabled treatments. */\n@Component({\n  selector: 'dds-radio',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './radio.component.html',\n  styleUrl: './radio.component.css',\n})\nexport class RadioComponent {\n  @Input() inputId = `dds-radio-${nextRadioId++}`;\n  @Input() name = `dds-radio-group-${nextRadioId}`;\n  @Input() label = 'Label';\n  @Input() option = 'Option';\n  @Input() value = 'option';\n  @Input() checked = false;\n  @Input() state: RadioState = 'default';\n  @Input() required = false;\n  @Input() showLabel = true;\n  @Input() showOption = true;\n  @Input() ariaLabel = 'Radio option';\n  @Input() errorMessage = 'Select an option to continue.';\n  @Input() showErrorMessage = true;\n  @Input() describedBy?: string;\n\n  @Output() checkedChange = new EventEmitter<boolean>();\n  @Output() selected = new EventEmitter<string>();\n\n  get isDisabled(): boolean {\n    return this.state === 'disabled';\n  }\n\n  get isInvalid(): boolean {\n    return this.state === 'invalid';\n  }\n\n  get errorId(): string {\n    return `${this.inputId}-error`;\n  }\n\n  get ariaDescribedBy(): string | null {\n    if (this.describedBy) return this.describedBy;\n    return this.isInvalid && this.showErrorMessage ? this.errorId : null;\n  }\n\n  handleChange(): void {\n    this.checked = true;\n    this.checkedChange.emit(true);\n    this.selected.emit(this.value);\n  }\n}\n",
+            "styleUrl": "./radio.component.css",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ":host {\n  display: inline-block;\n  max-width: 100%;\n}\n\n.dds-radio {\n  display: flex;\n  flex-direction: column;\n  align-items: flex-start;\n  color: var(--text-colour-default);\n  font-family: var(--font-family-primary);\n  font-size: var(--font-size-sm);\n  line-height: var(--font-size-xl);\n}\n\n.dds-radio__field-label {\n  display: flex;\n  gap: var(--space-1);\n  padding-bottom: var(--space-2);\n  font-weight: var(--font-weight-semibold);\n}\n\n.dds-radio__required,\n.dds-radio__error {\n  color: var(--text-colour-danger);\n}\n\n.dds-radio__option {\n  display: inline-flex;\n  align-items: center;\n  gap: var(--space-2);\n  cursor: pointer;\n}\n\n.dds-radio__native {\n  position: absolute;\n  width: 1px;\n  height: 1px;\n  margin: -1px;\n  overflow: hidden;\n  clip: rect(0 0 0 0);\n  clip-path: inset(50%);\n  white-space: nowrap;\n}\n\n.dds-radio__circle {\n  box-sizing: border-box;\n  display: grid;\n  flex: 0 0 auto;\n  place-items: center;\n  width: 20px;\n  height: 20px;\n  border: 1px solid var(--border-colour-strong);\n  border-radius: var(--radius-full);\n  background: var(--bg-colour-white);\n}\n\n.dds-radio__circle > span {\n  width: 10px;\n  height: 10px;\n  border-radius: var(--radius-full);\n  background: transparent;\n}\n\n.dds-radio__native:checked + .dds-radio__circle {\n  border: 2px solid var(--border-colour-info);\n}\n\n.dds-radio__native:checked + .dds-radio__circle > span {\n  background: var(--bg-colour-accent);\n}\n\n.dds-radio__native:focus-visible + .dds-radio__circle,\n.dds-radio--focused .dds-radio__circle {\n  border: 2px solid var(--border-colour-info);\n  outline: 2px solid var(--bg-colour-info-muted);\n  outline-offset: 2px;\n}\n\n.dds-radio--invalid .dds-radio__circle,\n.dds-radio--invalid .dds-radio__native:checked + .dds-radio__circle {\n  border: 2px solid var(--border-colour-danger);\n}\n\n.dds-radio--disabled {\n  color: var(--text-colour-disabled);\n}\n\n.dds-radio--disabled .dds-radio__option {\n  cursor: not-allowed;\n}\n\n.dds-radio--disabled .dds-radio__circle {\n  border-color: var(--border-colour-strong);\n  background: var(--bg-colour-disabled);\n}\n\n.dds-radio--disabled .dds-radio__native:checked + .dds-radio__circle {\n  border-color: var(--border-colour-strong);\n}\n\n.dds-radio--disabled .dds-radio__native:checked + .dds-radio__circle > span {\n  background: var(--text-colour-disabled);\n}\n\n.dds-radio__error {\n  margin: 0;\n  padding-top: var(--space-2);\n  font-size: var(--font-size-xs);\n  font-weight: var(--font-weight-medium);\n  line-height: var(--font-size-md);\n}\n",
+                    "styleUrl": "./radio.component.css"
+                }
+            ],
+            "stylesData": "",
+            "jsdoctags": [
+                {
+                    "pos": 217,
+                    "end": 304,
+                    "kind": 321,
+                    "id": 0,
+                    "flags": 16777216,
+                    "modifierFlagsCache": 0,
+                    "transformFlags": 0,
+                    "comment": "A native radio input with DDS label, validation, focus, and disabled treatments."
+                }
+            ],
+            "extends": [],
+            "accessors": {
+                "isDisabled": {
+                    "name": "isDisabled",
+                    "getSignature": {
+                        "name": "isDisabled",
+                        "type": "boolean",
+                        "returnType": "boolean",
+                        "line": 35,
+                        "rawdescription": "\n",
+                        "description": ""
+                    }
+                },
+                "isInvalid": {
+                    "name": "isInvalid",
+                    "getSignature": {
+                        "name": "isInvalid",
+                        "type": "boolean",
+                        "returnType": "boolean",
+                        "line": 39,
+                        "rawdescription": "\n",
+                        "description": ""
+                    }
+                },
+                "errorId": {
+                    "name": "errorId",
+                    "getSignature": {
+                        "name": "errorId",
+                        "type": "string",
+                        "returnType": "string",
+                        "line": 43,
+                        "rawdescription": "\n",
+                        "description": ""
+                    }
+                },
+                "ariaDescribedBy": {
+                    "name": "ariaDescribedBy",
+                    "getSignature": {
+                        "name": "ariaDescribedBy",
+                        "type": "unknown",
+                        "returnType": "string | null",
+                        "line": 47,
+                        "rawdescription": "\n",
+                        "description": ""
+                    }
+                }
+            },
+            "relationships": {
+                "incoming": [
+                    {
+                        "name": "RadioGroupComponent",
+                        "type": "component",
+                        "description": "A labelled set of mutually exclusive radio options in an inline or stacked layout."
+                    }
+                ],
+                "outgoing": [
+                    {
+                        "name": "CommonModule",
+                        "type": "module"
+                    }
+                ]
+            },
+            "templateData": "<div\n  class=\"dds-radio\"\n  [class.dds-radio--focused]=\"state === 'focused'\"\n  [class.dds-radio--disabled]=\"isDisabled\"\n  [class.dds-radio--invalid]=\"isInvalid\"\n>\n  <div *ngIf=\"showLabel\" class=\"dds-radio__field-label\">\n    {{ label }}<span *ngIf=\"required\" class=\"dds-radio__required\" aria-hidden=\"true\">*</span>\n  </div>\n\n  <label class=\"dds-radio__option\" [for]=\"inputId\">\n    <input\n      class=\"dds-radio__native\"\n      type=\"radio\"\n      [id]=\"inputId\"\n      [name]=\"name\"\n      [value]=\"value\"\n      [checked]=\"checked\"\n      [required]=\"required\"\n      [disabled]=\"isDisabled\"\n      [attr.aria-label]=\"showOption ? null : ariaLabel\"\n      [attr.aria-invalid]=\"isInvalid ? 'true' : null\"\n      [attr.aria-describedby]=\"ariaDescribedBy\"\n      (change)=\"handleChange()\"\n    />\n    <span class=\"dds-radio__circle\" aria-hidden=\"true\"><span></span></span>\n    <span *ngIf=\"showOption\" class=\"dds-radio__option-text\">{{ option }}</span>\n  </label>\n\n  <p *ngIf=\"isInvalid && showErrorMessage\" class=\"dds-radio__error\" [id]=\"errorId\">\n    {{ errorMessage }}\n  </p>\n</div>\n"
+        },
+        {
+            "name": "RadioGroupComponent",
+            "id": "component-RadioGroupComponent-58bbad0d5f63ed4ce5892f0ad30c4fe64ae2949b6b7c0ed5da7afce4e8053989c08d779224463484bf04dfb249235aaa652c2966efcd52bc7e3f08fa8e2e162c",
+            "file": "src/app/components/radio-group/radio-group.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "dds-radio-group",
+            "styleUrls": [
+                "./radio-group.component.css"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./radio-group.component.html"
+            ],
+            "templateVariables": [],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "coverageIgnore": false,
+                    "name": "direction",
+                    "defaultValue": "'inline'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 34,
+                    "type": "RadioGroupDirection",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "errorMessage",
+                    "defaultValue": "'Select an option to continue.'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 38,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "groupId",
+                    "defaultValue": "`dds-radio-group-${nextRadioGroupId++}`",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 25,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "label",
+                    "defaultValue": "'Label text'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 26,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "options",
+                    "defaultValue": "[\n    { label: 'Option 1', value: 'option-1' },\n    { label: 'Option 2', value: 'option-2' },\n    { label: 'Option 3', value: 'option-3' },\n    { label: 'Option 4', value: 'option-4' },\n  ]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 27,
+                    "type": "RadioOption[]",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "required",
+                    "defaultValue": "true",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 36,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "selectedValue",
+                    "defaultValue": "'option-1'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 33,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "showLabel",
+                    "defaultValue": "true",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 37,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "state",
+                    "defaultValue": "'default'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 35,
+                    "type": "RadioGroupState",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "selectedValueChange",
+                    "coverageIgnore": false,
+                    "defaultValue": "new EventEmitter<string>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 40,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "optionState",
+                    "coverageIgnore": false,
+                    "args": [
+                        {
+                            "name": "option",
+                            "type": "RadioOption",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "RadioState",
+                    "typeParameters": [],
+                    "line": 46,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "jsdoctags": [
+                        {
+                            "name": "option",
+                            "type": "RadioOption",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "select",
+                    "coverageIgnore": false,
+                    "args": [
+                        {
+                            "name": "value",
+                            "type": "string",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 52,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "jsdoctags": [
+                        {
+                            "name": "value",
+                            "type": "string",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "coverageIgnore": false,
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "RadioComponent",
+                    "type": "component"
+                }
+            ],
+            "description": "<p>A labelled set of mutually exclusive radio options in an inline or stacked layout.</p>\n",
+            "rawdescription": "\nA labelled set of mutually exclusive radio options in an inline or stacked layout.",
+            "type": "component",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, EventEmitter, Input, Output } from '@angular/core';\nimport { RadioComponent, RadioState } from '../radio/radio.component';\n\nexport type RadioGroupDirection = 'inline' | 'stacked';\nexport type RadioGroupState = 'default' | 'invalid' | 'disabled';\n\nexport interface RadioOption {\n  label: string;\n  value: string;\n  disabled?: boolean;\n}\n\nlet nextRadioGroupId = 0;\n\n/** A labelled set of mutually exclusive radio options in an inline or stacked layout. */\n@Component({\n  selector: 'dds-radio-group',\n  standalone: true,\n  imports: [CommonModule, RadioComponent],\n  templateUrl: './radio-group.component.html',\n  styleUrl: './radio-group.component.css',\n})\nexport class RadioGroupComponent {\n  @Input() groupId = `dds-radio-group-${nextRadioGroupId++}`;\n  @Input() label = 'Label text';\n  @Input() options: RadioOption[] = [\n    { label: 'Option 1', value: 'option-1' },\n    { label: 'Option 2', value: 'option-2' },\n    { label: 'Option 3', value: 'option-3' },\n    { label: 'Option 4', value: 'option-4' },\n  ];\n  @Input() selectedValue = 'option-1';\n  @Input() direction: RadioGroupDirection = 'inline';\n  @Input() state: RadioGroupState = 'default';\n  @Input() required = true;\n  @Input() showLabel = true;\n  @Input() errorMessage = 'Select an option to continue.';\n\n  @Output() selectedValueChange = new EventEmitter<string>();\n\n  get errorId(): string {\n    return `${this.groupId}-error`;\n  }\n\n  optionState(option: RadioOption): RadioState {\n    if (this.state === 'disabled' || option.disabled) return 'disabled';\n    if (this.state === 'invalid') return 'invalid';\n    return 'default';\n  }\n\n  select(value: string): void {\n    this.selectedValue = value;\n    this.selectedValueChange.emit(value);\n  }\n}\n",
+            "styleUrl": "./radio-group.component.css",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ":host {\n  display: inline-block;\n  max-width: 100%;\n}\n\n.dds-radio-group {\n  min-width: 0;\n  margin: 0;\n  padding: 0;\n  border: 0;\n  color: var(--text-colour-default);\n  font-family: var(--font-family-primary);\n}\n\n.dds-radio-group__legend {\n  padding: 0 0 var(--space-2);\n  font-size: var(--font-size-sm);\n  font-weight: var(--font-weight-semibold);\n  line-height: var(--font-size-xl);\n}\n\n.dds-radio-group__legend span,\n.dds-radio-group__error {\n  color: var(--text-colour-danger);\n}\n\n.dds-radio-group__legend span {\n  margin-left: var(--space-1);\n}\n\n.dds-radio-group__options {\n  display: flex;\n}\n\n.dds-radio-group--inline .dds-radio-group__options {\n  flex-flow: row wrap;\n  gap: var(--space-4);\n}\n\n.dds-radio-group--stacked .dds-radio-group__options {\n  flex-direction: column;\n  align-items: flex-start;\n  gap: var(--space-3);\n}\n\n.dds-radio-group__error {\n  margin: 0;\n  padding-top: var(--space-2);\n  font-size: var(--font-size-xs);\n  font-weight: var(--font-weight-medium);\n  line-height: var(--font-size-md);\n}\n\n.dds-radio-group:disabled .dds-radio-group__legend {\n  color: var(--text-colour-disabled);\n}\n",
+                    "styleUrl": "./radio-group.component.css"
+                }
+            ],
+            "stylesData": "",
+            "jsdoctags": [
+                {
+                    "pos": 432,
+                    "end": 521,
+                    "kind": 321,
+                    "id": 0,
+                    "flags": 16777216,
+                    "modifierFlagsCache": 0,
+                    "transformFlags": 0,
+                    "comment": "A labelled set of mutually exclusive radio options in an inline or stacked layout."
+                }
+            ],
+            "extends": [],
+            "accessors": {
+                "errorId": {
+                    "name": "errorId",
+                    "getSignature": {
+                        "name": "errorId",
+                        "type": "string",
+                        "returnType": "string",
+                        "line": 42,
+                        "rawdescription": "\n",
+                        "description": ""
+                    }
+                }
+            },
+            "relationships": {
+                "incoming": [],
+                "outgoing": [
+                    {
+                        "name": "CommonModule",
+                        "type": "module"
+                    },
+                    {
+                        "name": "RadioComponent",
+                        "type": "component",
+                        "description": "A native radio input with DDS label, validation, focus, and disabled treatments."
+                    }
+                ]
+            },
+            "templateData": "<fieldset\n  class=\"dds-radio-group\"\n  [class.dds-radio-group--inline]=\"direction === 'inline'\"\n  [class.dds-radio-group--stacked]=\"direction === 'stacked'\"\n  [class.dds-radio-group--invalid]=\"state === 'invalid'\"\n  [disabled]=\"state === 'disabled'\"\n  [attr.aria-describedby]=\"state === 'invalid' ? errorId : null\"\n>\n  <legend *ngIf=\"showLabel\" class=\"dds-radio-group__legend\">\n    {{ label }}<span *ngIf=\"required\" aria-hidden=\"true\">*</span>\n  </legend>\n\n  <div class=\"dds-radio-group__options\">\n    <dds-radio\n      *ngFor=\"let option of options; let index = index\"\n      [inputId]=\"groupId + '-' + index\"\n      [name]=\"groupId\"\n      [option]=\"option.label\"\n      [value]=\"option.value\"\n      [checked]=\"selectedValue === option.value\"\n      [state]=\"optionState(option)\"\n      [required]=\"required\"\n      [showLabel]=\"false\"\n      [showErrorMessage]=\"false\"\n      [describedBy]=\"state === 'invalid' ? errorId : undefined\"\n      (selected)=\"select($event)\"\n    ></dds-radio>\n  </div>\n\n  <p *ngIf=\"state === 'invalid'\" class=\"dds-radio-group__error\" [id]=\"errorId\">\n    {{ errorMessage }}\n  </p>\n</fieldset>\n"
+        },
+        {
             "name": "SearchComponent",
             "id": "component-SearchComponent-266eb2cf20eb8b6ab85b72dfe45f10a42a6c432d87472efa922d417f51aac453daf809aed62057a8e547cf56e2ff7cdfb4a7a07d1565c8182390740e4a2dfc8e",
             "file": "src/app/components/search/search.component.ts",
@@ -7029,6 +7698,28 @@
                 "defaultValue": "0"
             },
             {
+                "name": "nextRadioGroupId",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/components/radio-group/radio-group.component.ts",
+                "coverageIgnore": false,
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "number",
+                "defaultValue": "0"
+            },
+            {
+                "name": "nextRadioId",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/components/radio/radio.component.ts",
+                "coverageIgnore": false,
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "number",
+                "defaultValue": "0"
+            },
+            {
                 "name": "nextSearchId",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -7432,6 +8123,45 @@
                 "kind": 193
             },
             {
+                "name": "RadioGroupDirection",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "coverageIgnore": false,
+                "rawtype": "\"inline\" | \"stacked\"",
+                "file": "src/app/components/radio-group/radio-group.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "rawdescription": "",
+                "description": "",
+                "kind": 193
+            },
+            {
+                "name": "RadioGroupState",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "coverageIgnore": false,
+                "rawtype": "\"default\" | \"invalid\" | \"disabled\"",
+                "file": "src/app/components/radio-group/radio-group.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "rawdescription": "",
+                "description": "",
+                "kind": 193
+            },
+            {
+                "name": "RadioState",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "coverageIgnore": false,
+                "rawtype": "\"default\" | \"focused\" | \"disabled\" | \"invalid\"",
+                "file": "src/app/components/radio/radio.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "rawdescription": "",
+                "description": "",
+                "kind": 193
+            },
+            {
                 "name": "SearchSize",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
@@ -7759,6 +8489,32 @@
                     "ctype": "miscellaneous",
                     "subtype": "variable",
                     "file": "src/app/components/password-input/password-input.component.ts",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "defaultValue": "0"
+                }
+            ],
+            "src/app/components/radio-group/radio-group.component.ts": [
+                {
+                    "name": "nextRadioGroupId",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/components/radio-group/radio-group.component.ts",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "defaultValue": "0"
+                }
+            ],
+            "src/app/components/radio/radio.component.ts": [
+                {
+                    "name": "nextRadioId",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/components/radio/radio.component.ts",
                     "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
@@ -8182,6 +8938,49 @@
                     "kind": 193
                 }
             ],
+            "src/app/components/radio-group/radio-group.component.ts": [
+                {
+                    "name": "RadioGroupDirection",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "coverageIgnore": false,
+                    "rawtype": "\"inline\" | \"stacked\"",
+                    "file": "src/app/components/radio-group/radio-group.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "",
+                    "description": "",
+                    "kind": 193
+                },
+                {
+                    "name": "RadioGroupState",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "coverageIgnore": false,
+                    "rawtype": "\"default\" | \"invalid\" | \"disabled\"",
+                    "file": "src/app/components/radio-group/radio-group.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "",
+                    "description": "",
+                    "kind": 193
+                }
+            ],
+            "src/app/components/radio/radio.component.ts": [
+                {
+                    "name": "RadioState",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "coverageIgnore": false,
+                    "rawtype": "\"default\" | \"focused\" | \"disabled\" | \"invalid\"",
+                    "file": "src/app/components/radio/radio.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "",
+                    "description": "",
+                    "kind": 193
+                }
+            ],
             "src/app/components/search/search.component.ts": [
                 {
                     "name": "SearchSize",
@@ -8381,7 +9180,7 @@
         ]
     },
     "coverage": {
-        "count": 9,
+        "count": 8,
         "status": "low",
         "files": [
             {
@@ -8827,6 +9626,83 @@
                 "linktype": "miscellaneous",
                 "linksubtype": "typealias",
                 "name": "PasswordInputState",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/radio-group/radio-group.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "RadioGroupComponent",
+                "coveragePercent": 7,
+                "coverageCount": "1/13",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/radio-group/radio-group.component.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "RadioOption",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/radio-group/radio-group.component.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "nextRadioGroupId",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/radio-group/radio-group.component.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "RadioGroupDirection",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/radio-group/radio-group.component.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "RadioGroupState",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/radio/radio.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "RadioComponent",
+                "coveragePercent": 5,
+                "coverageCount": "1/18",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/radio/radio.component.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "nextRadioId",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/radio/radio.component.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "RadioState",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
