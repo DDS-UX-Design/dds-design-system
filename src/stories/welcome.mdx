@@ -1,9 +1,11 @@
 import { Meta } from '@storybook/addon-docs/blocks';
+import ddsLogo from '../images/dds-logo.png';
 
 <Meta title="Welcome" />
 
 <div className="dds-welcome">
   <p className="dds-welcome__eyebrow">DDS DESIGN SYSTEM</p>
+  <img className="dds-welcome__logo" src={ddsLogo} alt="DDS" />
 
 # Building consistent experiences for DDS products.
 
@@ -73,7 +75,15 @@ contribution workflow, and local setup instructions in the
     letter-spacing: 0.12em;
   }
 
+  .dds-welcome__logo {
+    display: block;
+    width: min(400px, 70vw);
+    height: auto;
+    margin-bottom: 24px;
+  }
+
   .dds-welcome h1 {
+    display: none;
     max-width: 760px;
     margin-bottom: 20px;
     color: var(--dds-accent-dark);
