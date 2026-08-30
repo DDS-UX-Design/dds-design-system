@@ -42,7 +42,7 @@ export const TextBlock: Story = {
   render: () => ({
     template: `
       <div aria-busy="true" aria-label="Loading article" style="display:grid; gap:12px; width:min(420px, 80vw)">
-        <dds-skeleton width="55%" [height]="20"></dds-skeleton>
+        <dds-skeleton width="55%"></dds-skeleton>
         <dds-skeleton width="100%"></dds-skeleton>
         <dds-skeleton width="92%"></dds-skeleton>
         <dds-skeleton width="72%"></dds-skeleton>
