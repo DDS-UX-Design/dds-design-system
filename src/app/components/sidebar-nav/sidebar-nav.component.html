@@ -1,0 +1,93 @@
+<aside class="dds-sidebar-nav">
+  <header class="dds-sidebar-nav__header">{{ title }}</header>
+
+  <nav class="dds-sidebar-nav__body" [attr.aria-label]="ariaLabel">
+    <ul class="dds-sidebar-nav__list">
+      <li *ngFor="let item of items" class="dds-sidebar-nav__item">
+        <button
+          *ngIf="item.children?.length; else leafItem"
+          class="dds-sidebar-nav__parent"
+          type="button"
+          [class.dds-sidebar-nav__parent--active]="isActive(item) || hasActiveChild(item)"
+          [disabled]="item.disabled"
+          [attr.aria-expanded]="isExpanded(item)"
+          [attr.aria-controls]="submenuId(item)"
+          (click)="toggle(item)"
+        >
+          <dds-icon [name]="item.icon || 'info'" [size]="20" aria-hidden="true"></dds-icon>
+          <span>{{ item.label }}</span>
+          <dds-icon
+            class="dds-sidebar-nav__chevron"
+            [name]="isExpanded(item) ? 'chevron-up' : 'chevron-down'"
+            [size]="20"
+            aria-hidden="true"
+          ></dds-icon>
+        </button>
+
+        <ng-template #leafItem>
+          <a
+            *ngIf="item.href; else leafButton"
+            class="dds-sidebar-nav__parent"
+            [class.dds-sidebar-nav__parent--active]="isActive(item)"
+            [class.dds-sidebar-nav__parent--disabled]="item.disabled"
+            [attr.href]="item.disabled ? null : item.href"
+            [attr.aria-current]="isActive(item) ? 'page' : null"
+            [attr.aria-disabled]="item.disabled ? 'true' : null"
+            (click)="select(item, $event)"
+          >
+            <dds-icon [name]="item.icon || 'info'" [size]="20" aria-hidden="true"></dds-icon>
+            <span>{{ item.label }}</span>
+          </a>
+          <ng-template #leafButton>
+            <button
+              class="dds-sidebar-nav__parent"
+              type="button"
+              [class.dds-sidebar-nav__parent--active]="isActive(item)"
+              [disabled]="item.disabled"
+              [attr.aria-current]="isActive(item) ? 'page' : null"
+              (click)="select(item)"
+            >
+              <dds-icon [name]="item.icon || 'info'" [size]="20" aria-hidden="true"></dds-icon>
+              <span>{{ item.label }}</span>
+            </button>
+          </ng-template>
+        </ng-template>
+
+        <ul
+          *ngIf="item.children?.length && isExpanded(item)"
+          class="dds-sidebar-nav__submenu"
+          [id]="submenuId(item)"
+        >
+          <li *ngFor="let child of item.children">
+            <a
+              *ngIf="child.href; else childButton"
+              class="dds-sidebar-nav__child"
+              [class.dds-sidebar-nav__child--active]="isActive(child)"
+              [class.dds-sidebar-nav__child--disabled]="child.disabled"
+              [attr.href]="child.disabled ? null : child.href"
+              [attr.aria-current]="isActive(child) ? 'page' : null"
+              [attr.aria-disabled]="child.disabled ? 'true' : null"
+              (click)="select(child, $event)"
+            >
+              {{ child.label }}
+            </a>
+            <ng-template #childButton>
+              <button
+                class="dds-sidebar-nav__child"
+                type="button"
+                [class.dds-sidebar-nav__child--active]="isActive(child)"
+                [disabled]="child.disabled"
+                [attr.aria-current]="isActive(child) ? 'page' : null"
+                (click)="select(child)"
+              >
+                {{ child.label }}
+              </button>
+            </ng-template>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+
+  <footer class="dds-sidebar-nav__footer">{{ footer }}</footer>
+</aside>

@@ -58,6 +58,98 @@
             }
         },
         {
+            "name": "SidebarNavItem",
+            "id": "interface-SidebarNavItem-ae23c216dd065c580c754a00ca47b91603685251f7e2351e5234237c04914ed9ae4dfbec9eeb2c48ecb3756c7c91308412dc62aa709ac8af6fb0c79488b0b670",
+            "file": "src/app/components/sidebar-nav/sidebar-nav.component.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, EventEmitter, Input, Output } from '@angular/core';\nimport { DdsIconName, IconComponent } from '../icon/icon.component';\n\nexport interface SidebarNavItem {\n  id: string;\n  label: string;\n  href?: string;\n  icon?: DdsIconName;\n  disabled?: boolean;\n  children?: SidebarNavItem[];\n}\n\n/** A persistent application sidebar with one level of expandable navigation groups. */\n@Component({\n  selector: 'dds-sidebar-nav',\n  standalone: true,\n  imports: [CommonModule, IconComponent],\n  templateUrl: './sidebar-nav.component.html',\n  styleUrl: './sidebar-nav.component.css',\n})\nexport class SidebarNavComponent {\n  @Input() title = 'DDS Enterprise';\n  @Input() footer = 'Version 1.0.0';\n  @Input() ariaLabel = 'Primary navigation';\n  @Input() items: SidebarNavItem[] = [];\n  @Input() activeItemId?: string;\n  @Input() expandedIds: string[] = [];\n\n  @Output() activeItemIdChange = new EventEmitter<string>();\n  @Output() expandedIdsChange = new EventEmitter<string[]>();\n  @Output() itemSelect = new EventEmitter<SidebarNavItem>();\n\n  isExpanded(item: SidebarNavItem): boolean {\n    return this.expandedIds.includes(item.id);\n  }\n\n  isActive(item: SidebarNavItem): boolean {\n    return this.activeItemId === item.id;\n  }\n\n  hasActiveChild(item: SidebarNavItem): boolean {\n    return Boolean(item.children?.some((child) => child.id === this.activeItemId));\n  }\n\n  submenuId(item: SidebarNavItem): string {\n    return `dds-sidebar-nav-${item.id}-submenu`;\n  }\n\n  toggle(item: SidebarNavItem): void {\n    if (item.disabled) return;\n\n    const expanded = this.isExpanded(item);\n    this.expandedIds = expanded\n      ? this.expandedIds.filter((id) => id !== item.id)\n      : [...this.expandedIds, item.id];\n    this.expandedIdsChange.emit(this.expandedIds);\n  }\n\n  select(item: SidebarNavItem, event?: Event): void {\n    if (item.disabled) {\n      event?.preventDefault();\n      return;\n    }\n\n    this.activeItemId = item.id;\n    this.activeItemIdChange.emit(item.id);\n    this.itemSelect.emit(item);\n  }\n}\n",
+            "displayName": "SidebarNavItem",
+            "properties": [
+                {
+                    "name": "children",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "SidebarNavItem[]",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 11,
+                    "rawdescription": "\n"
+                },
+                {
+                    "name": "disabled",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 10,
+                    "rawdescription": "\n"
+                },
+                {
+                    "name": "href",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 8,
+                    "rawdescription": "\n"
+                },
+                {
+                    "name": "icon",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "DdsIconName",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 9,
+                    "rawdescription": "\n"
+                },
+                {
+                    "name": "id",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 6,
+                    "rawdescription": "\n"
+                },
+                {
+                    "name": "label",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 7,
+                    "rawdescription": "\n"
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 172,
+            "methods": [],
+            "extends": [],
+            "relationships": {
+                "incoming": [],
+                "outgoing": []
+            }
+        },
+        {
             "name": "TypeStyle",
             "id": "interface-TypeStyle-2035c4c41bfd650b508a3131a433bb693f3df8f86cf2b97013ff8a8e8fdcb01c16e70f0276f19f18aacd39195c0a29f5ef0a3e205c643bedf07e54dfdc76e215",
             "file": "src/app/typography-page.component.ts",
@@ -2478,6 +2570,11 @@
                         "name": "SelectComponent",
                         "type": "component",
                         "description": "A native single-select field with DDS sizing, validation, and helper text treatments."
+                    },
+                    {
+                        "name": "SidebarNavComponent",
+                        "type": "component",
+                        "description": "A persistent application sidebar with one level of expandable navigation groups."
                     },
                     {
                         "name": "ToastComponent",
@@ -5574,6 +5671,418 @@
                 ]
             },
             "templateData": "<div\n  class=\"dds-select\"\n  [class.dds-select--small]=\"size === 'small'\"\n  [class.dds-select--focused]=\"state === 'focused'\"\n  [class.dds-select--disabled]=\"isDisabled\"\n  [class.dds-select--error]=\"isError\"\n  [class.dds-select--placeholder]=\"!value\"\n>\n  <label *ngIf=\"showLabel\" class=\"dds-select__label\" [for]=\"inputId\">\n    {{ label }}\n    <span *ngIf=\"required\" class=\"dds-select__required\" aria-hidden=\"true\">*</span>\n  </label>\n\n  <div class=\"dds-select__field\">\n    <select\n      class=\"dds-select__control\"\n      [id]=\"inputId\"\n      [value]=\"value\"\n      [required]=\"required\"\n      [disabled]=\"isDisabled\"\n      [attr.aria-label]=\"showLabel ? null : ariaLabel\"\n      [attr.aria-invalid]=\"isError ? 'true' : null\"\n      [attr.aria-describedby]=\"describedBy\"\n      (change)=\"handleChange($event)\"\n    >\n      <option value=\"\" disabled>{{ placeholder }}</option>\n      <option *ngFor=\"let option of options\" [value]=\"option.value\" [disabled]=\"option.disabled\">\n        {{ option.label }}\n      </option>\n    </select>\n    <dds-icon\n      class=\"dds-select__icon\"\n      name=\"chevron-down\"\n      [size]=\"size === 'small' ? 20 : 24\"\n      aria-hidden=\"true\"\n    ></dds-icon>\n  </div>\n\n  <p *ngIf=\"!isError && showHelperText\" class=\"dds-select__supporting-text\" [id]=\"helperId\">\n    {{ helperText }}\n  </p>\n\n  <p *ngIf=\"isError\" class=\"dds-select__supporting-text dds-select__error\" [id]=\"errorId\">\n    {{ errorMessage }}\n  </p>\n</div>\n"
+        },
+        {
+            "name": "SidebarNavComponent",
+            "id": "component-SidebarNavComponent-ae23c216dd065c580c754a00ca47b91603685251f7e2351e5234237c04914ed9ae4dfbec9eeb2c48ecb3756c7c91308412dc62aa709ac8af6fb0c79488b0b670",
+            "file": "src/app/components/sidebar-nav/sidebar-nav.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "dds-sidebar-nav",
+            "styleUrls": [
+                "./sidebar-nav.component.css"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./sidebar-nav.component.html"
+            ],
+            "templateVariables": [],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "coverageIgnore": false,
+                    "name": "activeItemId",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 27,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "ariaLabel",
+                    "defaultValue": "'Primary navigation'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 25,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "expandedIds",
+                    "defaultValue": "[]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 28,
+                    "type": "string[]",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "footer",
+                    "defaultValue": "'Version 1.0.0'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 24,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "items",
+                    "defaultValue": "[]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 26,
+                    "type": "SidebarNavItem[]",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "title",
+                    "defaultValue": "'DDS Enterprise'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 23,
+                    "type": "string",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "activeItemIdChange",
+                    "coverageIgnore": false,
+                    "defaultValue": "new EventEmitter<string>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 30,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "expandedIdsChange",
+                    "coverageIgnore": false,
+                    "defaultValue": "new EventEmitter<string[]>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 31,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "itemSelect",
+                    "coverageIgnore": false,
+                    "defaultValue": "new EventEmitter<SidebarNavItem>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 32,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "hasActiveChild",
+                    "coverageIgnore": false,
+                    "args": [
+                        {
+                            "name": "item",
+                            "type": "SidebarNavItem",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "boolean",
+                    "typeParameters": [],
+                    "line": 42,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "jsdoctags": [
+                        {
+                            "name": "item",
+                            "type": "SidebarNavItem",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "isActive",
+                    "coverageIgnore": false,
+                    "args": [
+                        {
+                            "name": "item",
+                            "type": "SidebarNavItem",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "boolean",
+                    "typeParameters": [],
+                    "line": 38,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "jsdoctags": [
+                        {
+                            "name": "item",
+                            "type": "SidebarNavItem",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "isExpanded",
+                    "coverageIgnore": false,
+                    "args": [
+                        {
+                            "name": "item",
+                            "type": "SidebarNavItem",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "boolean",
+                    "typeParameters": [],
+                    "line": 34,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "jsdoctags": [
+                        {
+                            "name": "item",
+                            "type": "SidebarNavItem",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "select",
+                    "coverageIgnore": false,
+                    "args": [
+                        {
+                            "name": "item",
+                            "type": "SidebarNavItem",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "event",
+                            "type": "Event",
+                            "optional": true,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 60,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "jsdoctags": [
+                        {
+                            "name": "item",
+                            "type": "SidebarNavItem",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "event",
+                            "type": "Event",
+                            "optional": true,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "submenuId",
+                    "coverageIgnore": false,
+                    "args": [
+                        {
+                            "name": "item",
+                            "type": "SidebarNavItem",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "string",
+                    "typeParameters": [],
+                    "line": 46,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "jsdoctags": [
+                        {
+                            "name": "item",
+                            "type": "SidebarNavItem",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "toggle",
+                    "coverageIgnore": false,
+                    "args": [
+                        {
+                            "name": "item",
+                            "type": "SidebarNavItem",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 50,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "jsdoctags": [
+                        {
+                            "name": "item",
+                            "type": "SidebarNavItem",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "coverageIgnore": false,
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "IconComponent",
+                    "type": "component"
+                }
+            ],
+            "description": "<p>A persistent application sidebar with one level of expandable navigation groups.</p>\n",
+            "rawdescription": "\nA persistent application sidebar with one level of expandable navigation groups.",
+            "type": "component",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, EventEmitter, Input, Output } from '@angular/core';\nimport { DdsIconName, IconComponent } from '../icon/icon.component';\n\nexport interface SidebarNavItem {\n  id: string;\n  label: string;\n  href?: string;\n  icon?: DdsIconName;\n  disabled?: boolean;\n  children?: SidebarNavItem[];\n}\n\n/** A persistent application sidebar with one level of expandable navigation groups. */\n@Component({\n  selector: 'dds-sidebar-nav',\n  standalone: true,\n  imports: [CommonModule, IconComponent],\n  templateUrl: './sidebar-nav.component.html',\n  styleUrl: './sidebar-nav.component.css',\n})\nexport class SidebarNavComponent {\n  @Input() title = 'DDS Enterprise';\n  @Input() footer = 'Version 1.0.0';\n  @Input() ariaLabel = 'Primary navigation';\n  @Input() items: SidebarNavItem[] = [];\n  @Input() activeItemId?: string;\n  @Input() expandedIds: string[] = [];\n\n  @Output() activeItemIdChange = new EventEmitter<string>();\n  @Output() expandedIdsChange = new EventEmitter<string[]>();\n  @Output() itemSelect = new EventEmitter<SidebarNavItem>();\n\n  isExpanded(item: SidebarNavItem): boolean {\n    return this.expandedIds.includes(item.id);\n  }\n\n  isActive(item: SidebarNavItem): boolean {\n    return this.activeItemId === item.id;\n  }\n\n  hasActiveChild(item: SidebarNavItem): boolean {\n    return Boolean(item.children?.some((child) => child.id === this.activeItemId));\n  }\n\n  submenuId(item: SidebarNavItem): string {\n    return `dds-sidebar-nav-${item.id}-submenu`;\n  }\n\n  toggle(item: SidebarNavItem): void {\n    if (item.disabled) return;\n\n    const expanded = this.isExpanded(item);\n    this.expandedIds = expanded\n      ? this.expandedIds.filter((id) => id !== item.id)\n      : [...this.expandedIds, item.id];\n    this.expandedIdsChange.emit(this.expandedIds);\n  }\n\n  select(item: SidebarNavItem, event?: Event): void {\n    if (item.disabled) {\n      event?.preventDefault();\n      return;\n    }\n\n    this.activeItemId = item.id;\n    this.activeItemIdChange.emit(item.id);\n    this.itemSelect.emit(item);\n  }\n}\n",
+            "styleUrl": "./sidebar-nav.component.css",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ":host {\n  display: block;\n  width: 250px;\n  max-width: 100%;\n  height: 100%;\n  min-height: 0;\n}\n\n.dds-sidebar-nav {\n  box-sizing: border-box;\n  display: flex;\n  flex-direction: column;\n  width: 100%;\n  height: 100%;\n  min-height: 360px;\n  background: var(--bg-colour-accent-dark);\n  color: var(--text-colour-inverse);\n  font-family: var(--font-family-primary);\n}\n\n.dds-sidebar-nav__header,\n.dds-sidebar-nav__footer {\n  box-sizing: border-box;\n  display: flex;\n  flex: 0 0 65px;\n  align-items: center;\n  min-width: 0;\n  padding: var(--space-4);\n  border-color: var(--border-colour-accent-primary);\n}\n\n.dds-sidebar-nav__header {\n  border-bottom: 1px solid var(--border-colour-accent-primary);\n  font-size: var(--font-size-md);\n  font-weight: var(--font-weight-semibold);\n  line-height: var(--font-size-2xl);\n}\n\n.dds-sidebar-nav__footer {\n  border-top: 1px solid var(--border-colour-accent-primary);\n  font-size: var(--font-size-xs);\n  line-height: var(--font-size-md);\n}\n\n.dds-sidebar-nav__body {\n  flex: 1 1 auto;\n  min-height: 0;\n  overflow-y: auto;\n  overscroll-behavior: contain;\n}\n\n.dds-sidebar-nav__list,\n.dds-sidebar-nav__submenu {\n  margin: 0;\n  padding: 0;\n  list-style: none;\n}\n\n.dds-sidebar-nav__item:first-child {\n  padding-top: var(--space-4);\n}\n\n.dds-sidebar-nav__item:last-child {\n  padding-bottom: var(--space-4);\n}\n\n.dds-sidebar-nav__parent,\n.dds-sidebar-nav__child {\n  box-sizing: border-box;\n  display: flex;\n  align-items: center;\n  width: 100%;\n  border: 0;\n  background: transparent;\n  color: var(--text-colour-inverse);\n  font-family: var(--font-family-primary);\n  font-size: var(--font-size-sm);\n  line-height: var(--font-size-xl);\n  text-align: left;\n  text-decoration: none;\n  cursor: pointer;\n}\n\n.dds-sidebar-nav__parent {\n  gap: var(--space-2);\n  min-height: 56px;\n  padding: var(--space-3) var(--space-4);\n}\n\n.dds-sidebar-nav__parent > span {\n  min-width: 0;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n\n.dds-sidebar-nav__parent dds-icon:first-child {\n  display: inline-flex;\n  flex: none;\n  color: var(--text-colour-accent-on-brand);\n}\n\n.dds-sidebar-nav__chevron {\n  display: inline-flex;\n  flex: none;\n  margin-left: auto;\n  color: var(--text-colour-accent-on-brand);\n}\n\n.dds-sidebar-nav__parent:hover:not(:disabled),\n.dds-sidebar-nav__parent--active {\n  background: var(--bg-colour-accent);\n}\n\n.dds-sidebar-nav__parent--active {\n  font-weight: var(--font-weight-semibold);\n}\n\n.dds-sidebar-nav__parent--active dds-icon:first-child {\n  color: var(--text-colour-inverse);\n}\n\n.dds-sidebar-nav__parent:focus-visible,\n.dds-sidebar-nav__child:focus-visible {\n  position: relative;\n  z-index: 1;\n  outline: 2px solid var(--border-colour-white);\n  outline-offset: -3px;\n}\n\n.dds-sidebar-nav__parent:disabled,\n.dds-sidebar-nav__parent--disabled,\n.dds-sidebar-nav__child:disabled,\n.dds-sidebar-nav__child--disabled {\n  color: var(--text-colour-disabled);\n  cursor: not-allowed;\n}\n\n.dds-sidebar-nav__submenu {\n  padding: var(--space-1) 0 var(--space-3);\n}\n\n.dds-sidebar-nav__child {\n  min-height: 36px;\n  padding: var(--space-2) var(--space-4) var(--space-2) 44px;\n}\n\n.dds-sidebar-nav__child:hover:not(:disabled),\n.dds-sidebar-nav__child--active {\n  color: var(--text-colour-accent-on-brand);\n}\n\n.dds-sidebar-nav__child--active {\n  font-weight: var(--font-weight-semibold);\n}\n\n@media (forced-colors: active) {\n  .dds-sidebar-nav__parent--active,\n  .dds-sidebar-nav__child--active {\n    outline: 1px solid CanvasText;\n    outline-offset: -2px;\n  }\n}\n",
+                    "styleUrl": "./sidebar-nav.component.css"
+                }
+            ],
+            "stylesData": "",
+            "jsdoctags": [
+                {
+                    "pos": 350,
+                    "end": 437,
+                    "kind": 321,
+                    "id": 0,
+                    "flags": 16777216,
+                    "modifierFlagsCache": 0,
+                    "transformFlags": 0,
+                    "comment": "A persistent application sidebar with one level of expandable navigation groups."
+                }
+            ],
+            "extends": [],
+            "relationships": {
+                "incoming": [],
+                "outgoing": [
+                    {
+                        "name": "CommonModule",
+                        "type": "module"
+                    },
+                    {
+                        "name": "IconComponent",
+                        "type": "component"
+                    }
+                ]
+            },
+            "templateData": "<aside class=\"dds-sidebar-nav\">\n  <header class=\"dds-sidebar-nav__header\">{{ title }}</header>\n\n  <nav class=\"dds-sidebar-nav__body\" [attr.aria-label]=\"ariaLabel\">\n    <ul class=\"dds-sidebar-nav__list\">\n      <li *ngFor=\"let item of items\" class=\"dds-sidebar-nav__item\">\n        <button\n          *ngIf=\"item.children?.length; else leafItem\"\n          class=\"dds-sidebar-nav__parent\"\n          type=\"button\"\n          [class.dds-sidebar-nav__parent--active]=\"isActive(item) || hasActiveChild(item)\"\n          [disabled]=\"item.disabled\"\n          [attr.aria-expanded]=\"isExpanded(item)\"\n          [attr.aria-controls]=\"submenuId(item)\"\n          (click)=\"toggle(item)\"\n        >\n          <dds-icon [name]=\"item.icon || 'info'\" [size]=\"20\" aria-hidden=\"true\"></dds-icon>\n          <span>{{ item.label }}</span>\n          <dds-icon\n            class=\"dds-sidebar-nav__chevron\"\n            [name]=\"isExpanded(item) ? 'chevron-up' : 'chevron-down'\"\n            [size]=\"20\"\n            aria-hidden=\"true\"\n          ></dds-icon>\n        </button>\n\n        <ng-template #leafItem>\n          <a\n            *ngIf=\"item.href; else leafButton\"\n            class=\"dds-sidebar-nav__parent\"\n            [class.dds-sidebar-nav__parent--active]=\"isActive(item)\"\n            [class.dds-sidebar-nav__parent--disabled]=\"item.disabled\"\n            [attr.href]=\"item.disabled ? null : item.href\"\n            [attr.aria-current]=\"isActive(item) ? 'page' : null\"\n            [attr.aria-disabled]=\"item.disabled ? 'true' : null\"\n            (click)=\"select(item, $event)\"\n          >\n            <dds-icon [name]=\"item.icon || 'info'\" [size]=\"20\" aria-hidden=\"true\"></dds-icon>\n            <span>{{ item.label }}</span>\n          </a>\n          <ng-template #leafButton>\n            <button\n              class=\"dds-sidebar-nav__parent\"\n              type=\"button\"\n              [class.dds-sidebar-nav__parent--active]=\"isActive(item)\"\n              [disabled]=\"item.disabled\"\n              [attr.aria-current]=\"isActive(item) ? 'page' : null\"\n              (click)=\"select(item)\"\n            >\n              <dds-icon [name]=\"item.icon || 'info'\" [size]=\"20\" aria-hidden=\"true\"></dds-icon>\n              <span>{{ item.label }}</span>\n            </button>\n          </ng-template>\n        </ng-template>\n\n        <ul\n          *ngIf=\"item.children?.length && isExpanded(item)\"\n          class=\"dds-sidebar-nav__submenu\"\n          [id]=\"submenuId(item)\"\n        >\n          <li *ngFor=\"let child of item.children\">\n            <a\n              *ngIf=\"child.href; else childButton\"\n              class=\"dds-sidebar-nav__child\"\n              [class.dds-sidebar-nav__child--active]=\"isActive(child)\"\n              [class.dds-sidebar-nav__child--disabled]=\"child.disabled\"\n              [attr.href]=\"child.disabled ? null : child.href\"\n              [attr.aria-current]=\"isActive(child) ? 'page' : null\"\n              [attr.aria-disabled]=\"child.disabled ? 'true' : null\"\n              (click)=\"select(child, $event)\"\n            >\n              {{ child.label }}\n            </a>\n            <ng-template #childButton>\n              <button\n                class=\"dds-sidebar-nav__child\"\n                type=\"button\"\n                [class.dds-sidebar-nav__child--active]=\"isActive(child)\"\n                [disabled]=\"child.disabled\"\n                [attr.aria-current]=\"isActive(child) ? 'page' : null\"\n                (click)=\"select(child)\"\n              >\n                {{ child.label }}\n              </button>\n            </ng-template>\n          </li>\n        </ul>\n      </li>\n    </ul>\n  </nav>\n\n  <footer class=\"dds-sidebar-nav__footer\">{{ footer }}</footer>\n</aside>\n"
         },
         {
             "name": "SkeletonComponent",
@@ -9793,6 +10302,24 @@
                 "name": "SelectState",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/sidebar-nav/sidebar-nav.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "SidebarNavComponent",
+                "coveragePercent": 6,
+                "coverageCount": "1/16",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/sidebar-nav/sidebar-nav.component.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "SidebarNavItem",
+                "coveragePercent": 0,
+                "coverageCount": "0/7",
                 "status": "low"
             },
             {
