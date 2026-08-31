@@ -1,0 +1,51 @@
+<div class="customer-page">
+  <dds-sidebar-nav
+    class="customer-page__sidebar"
+    title="DDS Enterprise"
+    footer="Version 1.0.0"
+    [items]="navigationItems"
+    [(activeItemId)]="activeItemId"
+    [(expandedIds)]="expandedIds"
+  ></dds-sidebar-nav>
+
+  <main class="customer-page__main">
+    <dds-top-bar-nav
+      pageTitle="Customers"
+      [notificationCount]="128"
+      [cartCount]="3"
+      userInitials="JB"
+      userName="Jordan Blake"
+    ></dds-top-bar-nav>
+
+    <dds-page-toolbar
+      searchPlaceholder="Search by customer, ID, or location"
+      filterLabel="All statuses"
+      actionLabel="New customer"
+      [filterOptions]="statusOptions"
+      [searchValue]="searchValue"
+      [filterValue]="statusFilter"
+      (searchValueChange)="updateSearch($event)"
+      (filterValueChange)="updateStatus($event)"
+      (refresh)="refreshTable()"
+    ></dds-page-toolbar>
+
+    <section class="customer-page__content" aria-label="Customer records">
+      <div class="customer-page__table-card">
+        <dds-data-table
+          caption="Customers"
+          [columns]="columns"
+          [rows]="visibleCustomers"
+          [selectable]="true"
+          [currentPage]="currentPage"
+          [totalPages]="totalPages"
+          [totalItems]="filteredCustomers.length"
+          [pageSize]="pageSize"
+          [selectedKeys]="selectedKeys"
+          emptyMessage="No customers match your filters."
+          (selectedKeysChange)="selectedKeys = $event"
+          (pageChange)="currentPage = $event"
+        ></dds-data-table>
+      </div>
+    </section>
+  </main>
+</div>
