@@ -14,9 +14,6 @@ Storybook to explore foundations, understand component behaviour, test states, a
 accessible interfaces with confidence.
 
 <div className="dds-welcome__actions">
-  <a className="dds-welcome__primary-action" href="?path=/docs/foundations-typography--docs">
-    Explore foundations
-  </a>
   <a
     className="dds-welcome__secondary-action"
     href="https://github.com/DDS-UX-Design/dds-design-system"
@@ -26,31 +23,6 @@ accessible interfaces with confidence.
     View on GitHub ↗
   </a>
 </div>
-
-<div className="dds-welcome__grid">
-  <section>
-    <span aria-hidden="true">◈</span>
-    <h2>Foundations</h2>
-    <p>Learn the typography, colour, icon, and token choices behind the DDS visual language.</p>
-  </section>
-  <section>
-    <span aria-hidden="true">▣</span>
-    <h2>Components</h2>
-    <p>Review component variants, states, controls, accessibility, and implementation guidance.</p>
-  </section>
-  <section>
-    <span aria-hidden="true">✓</span>
-    <h2>Test with confidence</h2>
-    <p>Use interactive stories and visual checks to catch regressions before they reach users.</p>
-  </section>
-</div>
-
-## Getting started
-
-Choose a category from the sidebar. Each component page includes interactive examples and
-controls so you can evaluate its supported options. Developers can find the source,
-contribution workflow, and local setup instructions in the
-[DDS Design System repository](https://github.com/DDS-UX-Design/dds-design-system).
 
 </div>
 
@@ -70,7 +42,7 @@ contribution workflow, and local setup instructions in the
   .dds-welcome__eyebrow {
     margin: 0 0 16px;
     color: var(--dds-accent);
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 700;
     letter-spacing: 0.12em;
   }
@@ -95,8 +67,8 @@ contribution workflow, and local setup instructions in the
   .dds-welcome > p:not(.dds-welcome__eyebrow) {
     max-width: 760px;
     color: var(--dds-muted);
-    font-size: 18px;
-    line-height: 1.7;
+    font-size: 16px;
+    line-height: 24px;
   }
 
   .dds-welcome__actions {
@@ -109,17 +81,10 @@ contribution workflow, and local setup instructions in the
   .dds-welcome__actions a {
     display: inline-flex;
     align-items: center;
-    min-height: 44px;
-    padding: 0 20px;
-    border: 1px solid var(--dds-accent-dark);
+    min-height: 40px;
     border-radius: 6px;
     font-weight: 600;
     text-decoration: none;
-  }
-
-  .dds-welcome__primary-action, .dds-welcome__primary-action > * {
-    background: var(--dds-accent-dark);
-    color: #fff !important;
   }
 
   .dds-welcome__secondary-action {
