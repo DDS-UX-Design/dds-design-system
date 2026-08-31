@@ -5,42 +5,57 @@
   [class.dds-select--disabled]="isDisabled"
   [class.dds-select--error]="isError"
   [class.dds-select--placeholder]="!value"
+  [class.dds-select--loading]="loading"
+  [attr.aria-busy]="loading ? 'true' : null"
+  [attr.aria-label]="loading ? 'Loading select' : null"
 >
-  <label *ngIf="showLabel" class="dds-select__label" [for]="inputId">
-    {{ label }}
-    <span *ngIf="required" class="dds-select__required" aria-hidden="true">*</span>
-  </label>
+  <ng-container *ngIf="loading; else loadedContent">
+    <div *ngIf="showLabel" class="dds-select__skeleton-label">
+      <dds-skeleton width="96px" [height]="size === 'small' ? 16 : 20"></dds-skeleton>
+    </div>
+    <dds-skeleton width="100%" [height]="size === 'small' ? 40 : 48"></dds-skeleton>
+    <div *ngIf="showHelperText" class="dds-select__skeleton-supporting-text">
+      <dds-skeleton width="45%" height="16px"></dds-skeleton>
+    </div>
+  </ng-container>
 
-  <div class="dds-select__field">
-    <select
-      class="dds-select__control"
-      [id]="inputId"
-      [value]="value"
-      [required]="required"
-      [disabled]="isDisabled"
-      [attr.aria-label]="showLabel ? null : ariaLabel"
-      [attr.aria-invalid]="isError ? 'true' : null"
-      [attr.aria-describedby]="describedBy"
-      (change)="handleChange($event)"
-    >
-      <option value="" disabled>{{ placeholder }}</option>
-      <option *ngFor="let option of options" [value]="option.value" [disabled]="option.disabled">
-        {{ option.label }}
-      </option>
-    </select>
-    <dds-icon
-      class="dds-select__icon"
-      name="chevron-down"
-      [size]="size === 'small' ? 20 : 24"
-      aria-hidden="true"
-    ></dds-icon>
-  </div>
+  <ng-template #loadedContent>
+    <label *ngIf="showLabel" class="dds-select__label" [for]="inputId">
+      {{ label }}
+      <span *ngIf="required" class="dds-select__required" aria-hidden="true">*</span>
+    </label>
 
-  <p *ngIf="!isError && showHelperText" class="dds-select__supporting-text" [id]="helperId">
-    {{ helperText }}
-  </p>
+    <div class="dds-select__field">
+      <select
+        class="dds-select__control"
+        [id]="inputId"
+        [value]="value"
+        [required]="required"
+        [disabled]="isDisabled"
+        [attr.aria-label]="showLabel ? null : ariaLabel"
+        [attr.aria-invalid]="isError ? 'true' : null"
+        [attr.aria-describedby]="describedBy"
+        (change)="handleChange($event)"
+      >
+        <option value="" disabled>{{ placeholder }}</option>
+        <option *ngFor="let option of options" [value]="option.value" [disabled]="option.disabled">
+          {{ option.label }}
+        </option>
+      </select>
+      <dds-icon
+        class="dds-select__icon"
+        name="chevron-down"
+        [size]="size === 'small' ? 20 : 24"
+        aria-hidden="true"
+      ></dds-icon>
+    </div>
 
-  <p *ngIf="isError" class="dds-select__supporting-text dds-select__error" [id]="errorId">
-    {{ errorMessage }}
-  </p>
+    <p *ngIf="!isError && showHelperText" class="dds-select__supporting-text" [id]="helperId">
+      {{ helperText }}
+    </p>
+
+    <p *ngIf="isError" class="dds-select__supporting-text dds-select__error" [id]="errorId">
+      {{ errorMessage }}
+    </p>
+  </ng-template>
 </div>

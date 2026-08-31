@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { IconComponent } from '../icon/icon.component';
+import { SkeletonComponent } from '../skeleton/skeleton.component';
 
 export type SelectSize = 'large' | 'small';
 export type SelectState = 'default' | 'focused' | 'disabled' | 'error';
@@ -19,7 +20,7 @@ let nextSelectId = 0;
 @Component({
   selector: 'dds-select',
   standalone: true,
-  imports: [CommonModule, IconComponent],
+  imports: [CommonModule, IconComponent, SkeletonComponent],
   templateUrl: './select.component.html',
   styleUrl: './select.component.css',
 })
@@ -62,6 +63,9 @@ export class SelectComponent {
 
   /** Validation guidance shown in the error state. */
   @Input() errorMessage = 'Select an option to continue.';
+
+  /** Replaces the field content with shape-matched skeletons while options are loading. */
+  @Input() loading = false;
 
   /** Emitted whenever the selected value changes. */
   @Output() valueChange = new EventEmitter<string>();

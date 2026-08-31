@@ -20,6 +20,7 @@ type SelectStoryArgs = {
   helperText: string;
   showHelperText: boolean;
   errorMessage: string;
+  loading: boolean;
   onValueChange: ReturnType<typeof fn>;
 };
 
@@ -111,6 +112,7 @@ const meta: Meta<SelectStoryArgs> = {
       if: { arg: 'state', eq: 'error' },
       table: { category: 'Validation' },
     },
+    loading: { control: 'boolean', table: { category: 'State' } },
     onValueChange: { table: { disable: true } },
   },
   args: {
@@ -126,6 +128,7 @@ const meta: Meta<SelectStoryArgs> = {
     helperText: 'Choose your country of residence.',
     showHelperText: true,
     errorMessage: 'Select a country to continue.',
+    loading: false,
     onValueChange: fn(),
   },
   render: (args) => ({
@@ -144,6 +147,7 @@ const meta: Meta<SelectStoryArgs> = {
         [helperText]="helperText"
         [showHelperText]="showHelperText"
         [errorMessage]="errorMessage"
+        [loading]="loading"
         (valueChange)="value = $event; onValueChange($event)"
       ></dds-select>
     `,
@@ -175,6 +179,15 @@ export const Disabled: Story = {
 
 export const Small: Story = {
   args: { size: 'small' },
+};
+
+export const Loading: Story = {
+  args: { loading: true },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await expect(canvas.getByLabelText('Loading select')).toHaveAttribute('aria-busy', 'true');
+    await expect(canvas.queryByRole('combobox')).not.toBeInTheDocument();
+  },
 };
 
 export const WithoutVisibleLabel: Story = {

@@ -131,3 +131,15 @@
   color: var(--text-colour-danger);
   font-weight: var(--font-weight-medium);
 }
+
+.dds-select__skeleton-label {
+  padding-bottom: var(--space-2);
+}
+
+.dds-select--small .dds-select__skeleton-label {
+  padding-bottom: var(--space-1);
+}
+
+.dds-select__skeleton-supporting-text {
+  padding-top: var(--space-2);
+}
