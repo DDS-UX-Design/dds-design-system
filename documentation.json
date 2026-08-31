@@ -2163,7 +2163,7 @@
         },
         {
             "name": "DataTableComponent",
-            "id": "component-DataTableComponent-ad95da7135e0caad357092cd9056a21d62c18979d5a4a3005e80a51e7315ac5b64bf0c0ed81731ead72e6b1140ea9080d12b476d90d73c8b0af89e043a69d767",
+            "id": "component-DataTableComponent-efc57704318a457ca3c883ab900a1c7d6e2e93a3138d9dc0ffee6289809b5d5692c8f866b1281735e563a7c93de15759eeee9f0bdd0de2d3aac9cf860e617519",
             "file": "src/app/components/data-table/data-table.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -2191,7 +2191,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 68,
+                    "line": 56,
                     "type": "DataTableAction[]",
                     "decorators": []
                 },
@@ -2203,7 +2203,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 47,
+                    "line": 43,
                     "type": "string",
                     "decorators": []
                 },
@@ -2215,7 +2215,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 48,
+                    "line": 44,
                     "type": "DataTableColumn[]",
                     "decorators": []
                 },
@@ -2227,7 +2227,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 56,
+                    "line": 51,
                     "type": "number",
                     "decorators": []
                 },
@@ -2239,43 +2239,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 69,
-                    "type": "string",
-                    "decorators": []
-                },
-                {
-                    "coverageIgnore": false,
-                    "name": "filterLabel",
-                    "defaultValue": "'Filter'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\n",
-                    "description": "",
-                    "line": 62,
-                    "type": "string",
-                    "decorators": []
-                },
-                {
-                    "coverageIgnore": false,
-                    "name": "filterOptions",
-                    "defaultValue": "[]",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\n",
-                    "description": "",
-                    "line": 64,
-                    "type": "SelectOption[]",
-                    "decorators": []
-                },
-                {
-                    "coverageIgnore": false,
-                    "name": "filterValue",
-                    "defaultValue": "''",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\n",
-                    "description": "",
-                    "line": 63,
+                    "line": 57,
                     "type": "string",
                     "decorators": []
                 },
@@ -2287,7 +2251,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 52,
+                    "line": 48,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -2299,7 +2263,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 53,
+                    "line": 49,
                     "type": "number",
                     "decorators": []
                 },
@@ -2311,7 +2275,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 59,
+                    "line": 54,
                     "type": "number",
                     "decorators": []
                 },
@@ -2323,7 +2287,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 67,
+                    "line": 55,
                     "type": "DataTableAction[]",
                     "decorators": []
                 },
@@ -2335,7 +2299,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 50,
+                    "line": 46,
                     "type": "string",
                     "decorators": []
                 },
@@ -2347,32 +2311,8 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 49,
+                    "line": 45,
                     "type": "DataTableRow[]",
-                    "decorators": []
-                },
-                {
-                    "coverageIgnore": false,
-                    "name": "searchPlaceholder",
-                    "defaultValue": "'Search...'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\n",
-                    "description": "",
-                    "line": 61,
-                    "type": "string",
-                    "decorators": []
-                },
-                {
-                    "coverageIgnore": false,
-                    "name": "searchValue",
-                    "defaultValue": "''",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\n",
-                    "description": "",
-                    "line": 60,
-                    "type": "string",
                     "decorators": []
                 },
                 {
@@ -2383,7 +2323,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 51,
+                    "line": 47,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -2395,7 +2335,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 70,
+                    "line": 58,
                     "type": "Array<string | number>",
                     "decorators": []
                 },
@@ -2407,44 +2347,8 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 55,
+                    "line": 50,
                     "type": "boolean",
-                    "decorators": []
-                },
-                {
-                    "coverageIgnore": false,
-                    "name": "showToolbar",
-                    "defaultValue": "false",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\n",
-                    "description": "",
-                    "line": 54,
-                    "type": "boolean",
-                    "decorators": []
-                },
-                {
-                    "coverageIgnore": false,
-                    "name": "toolbarActionIcon",
-                    "defaultValue": "'plus'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\n",
-                    "description": "",
-                    "line": 66,
-                    "type": "DdsIconName",
-                    "decorators": []
-                },
-                {
-                    "coverageIgnore": false,
-                    "name": "toolbarActionLabel",
-                    "defaultValue": "'Add new'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\n",
-                    "description": "",
-                    "line": 65,
-                    "type": "string",
                     "decorators": []
                 },
                 {
@@ -2455,7 +2359,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 58,
+                    "line": 53,
                     "type": "number",
                     "decorators": []
                 },
@@ -2467,7 +2371,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 57,
+                    "line": 52,
                     "type": "number",
                     "decorators": []
                 }
@@ -2479,16 +2383,7 @@
                     "defaultValue": "new EventEmitter<DataTableAction>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 79,
-                    "type": "EventEmitter"
-                },
-                {
-                    "name": "filterChange",
-                    "coverageIgnore": false,
-                    "defaultValue": "new EventEmitter<string>()",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 76,
+                    "line": 63,
                     "type": "EventEmitter"
                 },
                 {
@@ -2497,7 +2392,7 @@
                     "defaultValue": "new EventEmitter<number>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 73,
+                    "line": 61,
                     "type": "EventEmitter"
                 },
                 {
@@ -2506,25 +2401,7 @@
                     "defaultValue": "new EventEmitter<{ action: DataTableAction; row: DataTableRow }>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 78,
-                    "type": "EventEmitter"
-                },
-                {
-                    "name": "searchChange",
-                    "coverageIgnore": false,
-                    "defaultValue": "new EventEmitter<string>()",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 74,
-                    "type": "EventEmitter"
-                },
-                {
-                    "name": "searchSubmit",
-                    "coverageIgnore": false,
-                    "defaultValue": "new EventEmitter<string>()",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 75,
+                    "line": 62,
                     "type": "EventEmitter"
                 },
                 {
@@ -2533,16 +2410,7 @@
                     "defaultValue": "new EventEmitter<Array<string | number>>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 72,
-                    "type": "EventEmitter"
-                },
-                {
-                    "name": "toolbarAction",
-                    "coverageIgnore": false,
-                    "defaultValue": "new EventEmitter<void>()",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 77,
+                    "line": 60,
                     "type": "EventEmitter"
                 }
             ],
@@ -2557,7 +2425,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 150,
+                    "line": 134,
                     "rawdescription": "\n"
                 },
                 {
@@ -2570,7 +2438,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 149,
+                    "line": 133,
                     "rawdescription": "\n"
                 }
             ],
@@ -2599,7 +2467,7 @@
                     "optional": false,
                     "returnType": "string | number",
                     "typeParameters": [],
-                    "line": 138,
+                    "line": 122,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n",
@@ -2636,7 +2504,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 134,
+                    "line": 118,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n",
@@ -2658,7 +2526,7 @@
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 115,
+                    "line": 99,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n",
@@ -2693,7 +2561,7 @@
                     "optional": false,
                     "returnType": "string | number",
                     "typeParameters": [],
-                    "line": 110,
+                    "line": 94,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n",
@@ -2736,7 +2604,7 @@
                     "optional": false,
                     "returnType": "StatusBadgeTone",
                     "typeParameters": [],
-                    "line": 143,
+                    "line": 127,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n",
@@ -2782,7 +2650,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 126,
+                    "line": 110,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n",
@@ -2825,7 +2693,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 119,
+                    "line": 103,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n",
@@ -2871,7 +2739,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 152,
+                    "line": 136,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n",
@@ -2918,14 +2786,6 @@
                     "type": "component"
                 },
                 {
-                    "name": "SearchComponent",
-                    "type": "component"
-                },
-                {
-                    "name": "SelectComponent",
-                    "type": "component"
-                },
-                {
                     "name": "SkeletonComponent",
                     "type": "component"
                 },
@@ -2937,12 +2797,12 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, EventEmitter, Input, Output } from '@angular/core';\nimport { ButtonComponent } from '../button/button.component';\nimport { CheckboxComponent, CheckboxValue } from '../checkbox/checkbox.component';\nimport { DdsIconName } from '../icon/icon.component';\nimport { MinimalPaginationComponent } from '../minimal-pagination/minimal-pagination.component';\nimport { SearchComponent } from '../search/search.component';\nimport { SelectComponent, SelectOption } from '../select/select.component';\nimport { SkeletonComponent } from '../skeleton/skeleton.component';\nimport { StatusBadgeComponent, StatusBadgeTone } from '../status-badge/status-badge.component';\n\nexport type DataTableRow = Record<string, unknown>;\n\nexport type DataTableColumn = {\n  key: string;\n  label: string;\n  width?: string;\n  align?: 'start' | 'center' | 'end';\n  type?: 'text' | 'status';\n  statusTone?: StatusBadgeTone | ((row: DataTableRow) => StatusBadgeTone);\n  value?: (row: DataTableRow) => string | number | null | undefined;\n};\n\nexport type DataTableAction = {\n  label: string;\n  icon?: DdsIconName;\n  styleType?: 'default' | 'danger';\n};\n\n@Component({\n  selector: 'dds-data-table',\n  standalone: true,\n  imports: [\n    CommonModule,\n    ButtonComponent,\n    CheckboxComponent,\n    MinimalPaginationComponent,\n    SearchComponent,\n    SelectComponent,\n    SkeletonComponent,\n    StatusBadgeComponent,\n  ],\n  templateUrl: './data-table.component.html',\n  styleUrl: './data-table.component.css',\n})\nexport class DataTableComponent {\n  @Input() caption = 'Data table';\n  @Input() columns: DataTableColumn[] = [];\n  @Input() rows: DataTableRow[] = [];\n  @Input() rowKey = 'id';\n  @Input() selectable = false;\n  @Input() loading = false;\n  @Input() loadingRows = 5;\n  @Input() showToolbar = false;\n  @Input() showPagination = true;\n  @Input() currentPage = 1;\n  @Input() totalPages = 1;\n  @Input() totalItems = 0;\n  @Input() pageSize = 10;\n  @Input() searchValue = '';\n  @Input() searchPlaceholder = 'Search...';\n  @Input() filterLabel = 'Filter';\n  @Input() filterValue = '';\n  @Input() filterOptions: SelectOption[] = [];\n  @Input() toolbarActionLabel = 'Add new';\n  @Input() toolbarActionIcon: DdsIconName = 'plus';\n  @Input() rowActions: DataTableAction[] = [{ label: 'More actions', icon: 'ellipsis' }];\n  @Input() bulkActions: DataTableAction[] = [];\n  @Input() emptyMessage = 'No results found.';\n  @Input() selectedKeys: Array<string | number> = [];\n\n  @Output() selectedKeysChange = new EventEmitter<Array<string | number>>();\n  @Output() pageChange = new EventEmitter<number>();\n  @Output() searchChange = new EventEmitter<string>();\n  @Output() searchSubmit = new EventEmitter<string>();\n  @Output() filterChange = new EventEmitter<string>();\n  @Output() toolbarAction = new EventEmitter<void>();\n  @Output() rowAction = new EventEmitter<{ action: DataTableAction; row: DataTableRow }>();\n  @Output() bulkAction = new EventEmitter<DataTableAction>();\n\n  get visibleColumnCount(): number {\n    return this.columns.length + (this.selectable ? 1 : 0) + (this.rowActions.length ? 1 : 0);\n  }\n\n  get skeletonRows(): number[] {\n    return Array.from({ length: Math.max(1, this.loadingRows) }, (_, index) => index);\n  }\n\n  get selectedCount(): number {\n    return this.rows.filter((row) => this.isSelected(row)).length;\n  }\n\n  get allSelected(): boolean {\n    return this.rows.length > 0 && this.selectedCount === this.rows.length;\n  }\n\n  get headerCheckboxValue(): CheckboxValue {\n    if (this.allSelected) return 'checked';\n    return this.selectedCount > 0 ? 'indeterminate' : 'unchecked';\n  }\n\n  get displayStart(): number {\n    return this.totalItems === 0 ? 0 : (this.currentPage - 1) * this.pageSize + 1;\n  }\n\n  get displayEnd(): number {\n    return Math.min(this.currentPage * this.pageSize, this.totalItems);\n  }\n\n  rowIdentity(row: DataTableRow): string | number {\n    const value = row[this.rowKey];\n    return typeof value === 'string' || typeof value === 'number' ? value : this.rows.indexOf(row);\n  }\n\n  isSelected(row: DataTableRow): boolean {\n    return this.selectedKeys.includes(this.rowIdentity(row));\n  }\n\n  toggleRow(row: DataTableRow, value: CheckboxValue): void {\n    const key = this.rowIdentity(row);\n    const next = new Set(this.selectedKeys);\n    value === 'checked' ? next.add(key) : next.delete(key);\n    this.updateSelection([...next]);\n  }\n\n  toggleAll(value: CheckboxValue): void {\n    const visibleKeys = this.rows.map((row) => this.rowIdentity(row));\n    const next = new Set(this.selectedKeys);\n    if (value === 'checked') visibleKeys.forEach((key) => next.add(key));\n    else visibleKeys.forEach((key) => next.delete(key));\n    this.updateSelection([...next]);\n  }\n\n  clearSelection(): void {\n    this.updateSelection([]);\n  }\n\n  cellValue(column: DataTableColumn, row: DataTableRow): string | number {\n    const value = column.value ? column.value(row) : row[column.key];\n    return typeof value === 'string' || typeof value === 'number' ? value : '';\n  }\n\n  statusTone(column: DataTableColumn, row: DataTableRow): StatusBadgeTone {\n    return typeof column.statusTone === 'function'\n      ? column.statusTone(row)\n      : (column.statusTone ?? 'info');\n  }\n\n  trackRow = (_index: number, row: DataTableRow): string | number => this.rowIdentity(row);\n  trackColumn = (_index: number, column: DataTableColumn): string => column.key;\n\n  private updateSelection(keys: Array<string | number>): void {\n    this.selectedKeys = keys;\n    this.selectedKeysChange.emit(keys);\n  }\n}\n",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, EventEmitter, Input, Output } from '@angular/core';\nimport { ButtonComponent } from '../button/button.component';\nimport { CheckboxComponent, CheckboxValue } from '../checkbox/checkbox.component';\nimport { DdsIconName } from '../icon/icon.component';\nimport { MinimalPaginationComponent } from '../minimal-pagination/minimal-pagination.component';\nimport { SkeletonComponent } from '../skeleton/skeleton.component';\nimport { StatusBadgeComponent, StatusBadgeTone } from '../status-badge/status-badge.component';\n\nexport type DataTableRow = Record<string, unknown>;\n\nexport type DataTableColumn = {\n  key: string;\n  label: string;\n  width?: string;\n  align?: 'start' | 'center' | 'end';\n  type?: 'text' | 'status';\n  statusTone?: StatusBadgeTone | ((row: DataTableRow) => StatusBadgeTone);\n  value?: (row: DataTableRow) => string | number | null | undefined;\n};\n\nexport type DataTableAction = {\n  label: string;\n  icon?: DdsIconName;\n  styleType?: 'default' | 'danger';\n};\n\n@Component({\n  selector: 'dds-data-table',\n  standalone: true,\n  imports: [\n    CommonModule,\n    ButtonComponent,\n    CheckboxComponent,\n    MinimalPaginationComponent,\n    SkeletonComponent,\n    StatusBadgeComponent,\n  ],\n  templateUrl: './data-table.component.html',\n  styleUrl: './data-table.component.css',\n})\nexport class DataTableComponent {\n  @Input() caption = 'Data table';\n  @Input() columns: DataTableColumn[] = [];\n  @Input() rows: DataTableRow[] = [];\n  @Input() rowKey = 'id';\n  @Input() selectable = false;\n  @Input() loading = false;\n  @Input() loadingRows = 5;\n  @Input() showPagination = true;\n  @Input() currentPage = 1;\n  @Input() totalPages = 1;\n  @Input() totalItems = 0;\n  @Input() pageSize = 10;\n  @Input() rowActions: DataTableAction[] = [{ label: 'More actions', icon: 'ellipsis' }];\n  @Input() bulkActions: DataTableAction[] = [];\n  @Input() emptyMessage = 'No results found.';\n  @Input() selectedKeys: Array<string | number> = [];\n\n  @Output() selectedKeysChange = new EventEmitter<Array<string | number>>();\n  @Output() pageChange = new EventEmitter<number>();\n  @Output() rowAction = new EventEmitter<{ action: DataTableAction; row: DataTableRow }>();\n  @Output() bulkAction = new EventEmitter<DataTableAction>();\n\n  get visibleColumnCount(): number {\n    return this.columns.length + (this.selectable ? 1 : 0) + (this.rowActions.length ? 1 : 0);\n  }\n\n  get skeletonRows(): number[] {\n    return Array.from({ length: Math.max(1, this.loadingRows) }, (_, index) => index);\n  }\n\n  get selectedCount(): number {\n    return this.rows.filter((row) => this.isSelected(row)).length;\n  }\n\n  get allSelected(): boolean {\n    return this.rows.length > 0 && this.selectedCount === this.rows.length;\n  }\n\n  get headerCheckboxValue(): CheckboxValue {\n    if (this.allSelected) return 'checked';\n    return this.selectedCount > 0 ? 'indeterminate' : 'unchecked';\n  }\n\n  get displayStart(): number {\n    return this.totalItems === 0 ? 0 : (this.currentPage - 1) * this.pageSize + 1;\n  }\n\n  get displayEnd(): number {\n    return Math.min(this.currentPage * this.pageSize, this.totalItems);\n  }\n\n  rowIdentity(row: DataTableRow): string | number {\n    const value = row[this.rowKey];\n    return typeof value === 'string' || typeof value === 'number' ? value : this.rows.indexOf(row);\n  }\n\n  isSelected(row: DataTableRow): boolean {\n    return this.selectedKeys.includes(this.rowIdentity(row));\n  }\n\n  toggleRow(row: DataTableRow, value: CheckboxValue): void {\n    const key = this.rowIdentity(row);\n    const next = new Set(this.selectedKeys);\n    value === 'checked' ? next.add(key) : next.delete(key);\n    this.updateSelection([...next]);\n  }\n\n  toggleAll(value: CheckboxValue): void {\n    const visibleKeys = this.rows.map((row) => this.rowIdentity(row));\n    const next = new Set(this.selectedKeys);\n    if (value === 'checked') visibleKeys.forEach((key) => next.add(key));\n    else visibleKeys.forEach((key) => next.delete(key));\n    this.updateSelection([...next]);\n  }\n\n  clearSelection(): void {\n    this.updateSelection([]);\n  }\n\n  cellValue(column: DataTableColumn, row: DataTableRow): string | number {\n    const value = column.value ? column.value(row) : row[column.key];\n    return typeof value === 'string' || typeof value === 'number' ? value : '';\n  }\n\n  statusTone(column: DataTableColumn, row: DataTableRow): StatusBadgeTone {\n    return typeof column.statusTone === 'function'\n      ? column.statusTone(row)\n      : (column.statusTone ?? 'info');\n  }\n\n  trackRow = (_index: number, row: DataTableRow): string | number => this.rowIdentity(row);\n  trackColumn = (_index: number, column: DataTableColumn): string => column.key;\n\n  private updateSelection(keys: Array<string | number>): void {\n    this.selectedKeys = keys;\n    this.selectedKeysChange.emit(keys);\n  }\n}\n",
             "styleUrl": "./data-table.component.css",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ":host {\n  display: block;\n  min-width: 0;\n}\n\n.dds-data-table {\n  width: 100%;\n  color: var(--text-colour-default);\n  font-family: var(--font-family-primary);\n}\n\n.dds-data-table__toolbar,\n.dds-data-table__bulk {\n  display: flex;\n  min-height: 56px;\n  align-items: center;\n  justify-content: space-between;\n  gap: var(--space-4);\n  padding-bottom: var(--space-4);\n}\n\n.dds-data-table__controls,\n.dds-data-table__bulk-actions,\n.dds-data-table__selection-summary {\n  display: flex;\n  align-items: center;\n  gap: var(--space-2);\n}\n\n.dds-data-table__controls dds-search {\n  width: 280px;\n}\n\n.dds-data-table__controls dds-select {\n  width: 180px;\n}\n\n.dds-data-table__bulk {\n  border-bottom: 1px solid var(--border-colour-default);\n}\n\n.dds-data-table__selection-summary {\n  font-size: var(--font-size-sm);\n  font-weight: var(--font-weight-medium);\n}\n\n.dds-data-table__clear {\n  padding: 0;\n  border: 0;\n  border-bottom: 1px solid currentColor;\n  background: transparent;\n  color: inherit;\n  font: inherit;\n  cursor: pointer;\n}\n\n.dds-data-table__scroller {\n  width: 100%;\n  overflow-x: auto;\n}\n\ntable {\n  width: 100%;\n  min-width: 720px;\n  border-spacing: 0;\n  border-collapse: collapse;\n  table-layout: fixed;\n  font-size: var(--font-size-sm);\n}\n\n.dds-data-table__caption,\n.dds-visually-hidden {\n  position: absolute;\n  width: 1px;\n  height: 1px;\n  padding: 0;\n  overflow: hidden;\n  clip: rect(0, 0, 0, 0);\n  white-space: nowrap;\n  border: 0;\n}\n\nth,\ntd {\n  height: auto;\n  padding: var(--space-3);\n  text-align: left;\n  vertical-align: middle;\n}\n\nth {\n  background: var(--bg-colour-default);\n  font-weight: var(--font-weight-medium);\n}\n\ntd {\n  border-top: 1px solid var(--border-colour-default);\n  background: var(--bg-colour-white);\n  overflow-wrap: anywhere;\n}\n\n[data-align='center'] {\n  text-align: center;\n}\n[data-align='end'] {\n  text-align: right;\n}\n\n.dds-data-table__selection-column {\n  width: 52px;\n}\n.dds-data-table__actions-column {\n  width: 64px;\n}\n.dds-data-table__selection-cell,\n.dds-data-table__actions-cell {\n  text-align: center;\n}\n.dds-data-table__row--selected td {\n  background: var(--bg-colour-info-muted);\n}\n\n.dds-data-table__empty {\n  height: 112px;\n  color: var(--text-colour-tertiary);\n  text-align: center;\n}\n\n.dds-data-table__footer {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  gap: var(--space-4);\n  padding-top: var(--space-4);\n  border-top: 1px solid var(--border-colour-default);\n  color: var(--text-colour-tertiary);\n  font-size: var(--font-size-sm);\n}\n\n@media (max-width: 720px) {\n  .dds-data-table__toolbar,\n  .dds-data-table__bulk,\n  .dds-data-table__footer {\n    align-items: stretch;\n    flex-direction: column;\n  }\n\n  .dds-data-table__controls {\n    align-items: stretch;\n    flex-direction: column;\n  }\n\n  .dds-data-table__controls dds-search,\n  .dds-data-table__controls dds-select {\n    width: 100%;\n  }\n}\n",
+                    "data": ":host {\n  display: block;\n  min-width: 0;\n}\n\n.dds-data-table {\n  width: 100%;\n  color: var(--text-colour-default);\n  font-family: var(--font-family-primary);\n}\n\n.dds-data-table__bulk {\n  display: flex;\n  min-height: 56px;\n  align-items: center;\n  justify-content: space-between;\n  gap: var(--space-4);\n  padding-bottom: var(--space-4);\n}\n\n.dds-data-table__bulk-actions,\n.dds-data-table__selection-summary {\n  display: flex;\n  align-items: center;\n  gap: var(--space-2);\n}\n\n.dds-data-table__bulk {\n  border-bottom: 1px solid var(--border-colour-default);\n}\n\n.dds-data-table__selection-summary {\n  font-size: var(--font-size-sm);\n  font-weight: var(--font-weight-medium);\n}\n\n.dds-data-table__clear {\n  padding: 0;\n  border: 0;\n  border-bottom: 1px solid currentColor;\n  background: transparent;\n  color: inherit;\n  font: inherit;\n  cursor: pointer;\n}\n\n.dds-data-table__scroller {\n  width: 100%;\n  overflow-x: auto;\n}\n\ntable {\n  width: 100%;\n  min-width: 720px;\n  border-spacing: 0;\n  border-collapse: collapse;\n  table-layout: fixed;\n  font-size: var(--font-size-sm);\n}\n\n.dds-data-table__caption,\n.dds-visually-hidden {\n  position: absolute;\n  width: 1px;\n  height: 1px;\n  padding: 0;\n  overflow: hidden;\n  clip: rect(0, 0, 0, 0);\n  white-space: nowrap;\n  border: 0;\n}\n\nth,\ntd {\n  height: auto;\n  padding: var(--space-3);\n  text-align: left;\n  vertical-align: middle;\n}\n\nth {\n  background: var(--bg-colour-default);\n  font-weight: var(--font-weight-medium);\n}\n\ntd {\n  border-top: 1px solid var(--border-colour-default);\n  background: var(--bg-colour-white);\n  overflow-wrap: anywhere;\n  transition: background-color 120ms ease-out;\n}\n\n[data-align='center'] {\n  text-align: center;\n}\n[data-align='end'] {\n  text-align: right;\n}\n\n.dds-data-table__selection-column {\n  width: 52px;\n}\n.dds-data-table__actions-column {\n  width: 64px;\n}\n.dds-data-table__selection-cell,\n.dds-data-table__actions-cell {\n  text-align: center;\n}\n.dds-data-table__row:not(.dds-data-table__row--selected):hover td {\n  background: var(--bg-colour-row-hover);\n}\n\n.dds-data-table__row--selected td {\n  background: var(--bg-colour-row-selected);\n}\n\n.dds-data-table__empty {\n  height: 112px;\n  color: var(--text-colour-tertiary);\n  text-align: center;\n}\n\n.dds-data-table__footer {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  gap: var(--space-4);\n  padding-top: var(--space-4);\n  border-top: 1px solid var(--border-colour-default);\n  color: var(--text-colour-tertiary);\n  font-size: var(--font-size-sm);\n}\n\n@media (max-width: 720px) {\n  .dds-data-table__bulk,\n  .dds-data-table__footer {\n    align-items: stretch;\n    flex-direction: column;\n  }\n}\n",
                     "styleUrl": "./data-table.component.css"
                 }
             ],
@@ -2955,7 +2815,7 @@
                         "name": "visibleColumnCount",
                         "type": "number",
                         "returnType": "number",
-                        "line": 81,
+                        "line": 65,
                         "rawdescription": "\n",
                         "description": ""
                     }
@@ -2966,7 +2826,7 @@
                         "name": "skeletonRows",
                         "type": "[]",
                         "returnType": "number[]",
-                        "line": 85,
+                        "line": 69,
                         "rawdescription": "\n",
                         "description": ""
                     }
@@ -2977,7 +2837,7 @@
                         "name": "selectedCount",
                         "type": "number",
                         "returnType": "number",
-                        "line": 89,
+                        "line": 73,
                         "rawdescription": "\n",
                         "description": ""
                     }
@@ -2988,7 +2848,7 @@
                         "name": "allSelected",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 93,
+                        "line": 77,
                         "rawdescription": "\n",
                         "description": ""
                     }
@@ -2999,7 +2859,7 @@
                         "name": "headerCheckboxValue",
                         "type": "unknown",
                         "returnType": "CheckboxValue",
-                        "line": 97,
+                        "line": 81,
                         "rawdescription": "\n",
                         "description": ""
                     }
@@ -3010,7 +2870,7 @@
                         "name": "displayStart",
                         "type": "number",
                         "returnType": "number",
-                        "line": 102,
+                        "line": 86,
                         "rawdescription": "\n",
                         "description": ""
                     }
@@ -3021,7 +2881,7 @@
                         "name": "displayEnd",
                         "type": "number",
                         "returnType": "number",
-                        "line": 106,
+                        "line": 90,
                         "rawdescription": "\n",
                         "description": ""
                     }
@@ -3055,16 +2915,6 @@
                         "type": "component"
                     },
                     {
-                        "name": "SearchComponent",
-                        "type": "component",
-                        "description": "A search field with optional suggestions and accessible combobox keyboard behavior."
-                    },
-                    {
-                        "name": "SelectComponent",
-                        "type": "component",
-                        "description": "A native single-select field with DDS sizing, validation, and helper text treatments."
-                    },
-                    {
                         "name": "SkeletonComponent",
                         "type": "component"
                     },
@@ -3074,7 +2924,7 @@
                     }
                 ]
             },
-            "templateData": "<section class=\"dds-data-table\" [attr.aria-busy]=\"loading\">\n  <div *ngIf=\"showToolbar && !selectedCount\" class=\"dds-data-table__toolbar\">\n    <div class=\"dds-data-table__controls\">\n      <dds-search\n        size=\"small\"\n        [showLabel]=\"false\"\n        [ariaLabel]=\"searchPlaceholder\"\n        [placeholder]=\"searchPlaceholder\"\n        [value]=\"searchValue\"\n        (valueChange)=\"searchValue = $event; searchChange.emit($event)\"\n        (search)=\"searchSubmit.emit($event)\"\n      ></dds-search>\n      <dds-select\n        *ngIf=\"filterOptions.length\"\n        size=\"small\"\n        [showLabel]=\"false\"\n        [showHelperText]=\"false\"\n        [ariaLabel]=\"filterLabel\"\n        [placeholder]=\"filterLabel\"\n        [options]=\"filterOptions\"\n        [value]=\"filterValue\"\n        (valueChange)=\"filterValue = $event; filterChange.emit($event)\"\n      ></dds-select>\n    </div>\n    <dds-button\n      variant=\"primary\"\n      size=\"medium\"\n      iconType=\"left-icon\"\n      [icon]=\"toolbarActionIcon\"\n      (click)=\"toolbarAction.emit()\"\n      >{{ toolbarActionLabel }}</dds-button\n    >\n  </div>\n\n  <div *ngIf=\"selectable && selectedCount\" class=\"dds-data-table__bulk\" aria-live=\"polite\">\n    <div class=\"dds-data-table__selection-summary\">\n      <span>{{ selectedCount }} selected</span>\n      <button type=\"button\" class=\"dds-data-table__clear\" (click)=\"clearSelection()\">Clear</button>\n    </div>\n    <div class=\"dds-data-table__bulk-actions\">\n      <dds-button\n        *ngFor=\"let action of bulkActions\"\n        [variant]=\"action.styleType === 'danger' ? 'primary' : 'secondary'\"\n        size=\"small\"\n        [styleType]=\"action.styleType ?? 'default'\"\n        [iconType]=\"action.icon ? 'left-icon' : 'no-icon'\"\n        [icon]=\"action.icon ?? 'info'\"\n        (click)=\"bulkAction.emit(action)\"\n        >{{ action.label }}</dds-button\n      >\n    </div>\n  </div>\n\n  <div class=\"dds-data-table__scroller\">\n    <table>\n      <caption class=\"dds-data-table__caption\">\n        {{\n          caption\n        }}\n      </caption>\n      <colgroup>\n        <col *ngIf=\"selectable\" class=\"dds-data-table__selection-column\" />\n        <col *ngFor=\"let column of columns; trackBy: trackColumn\" [style.width]=\"column.width\" />\n        <col *ngIf=\"rowActions.length\" class=\"dds-data-table__actions-column\" />\n      </colgroup>\n      <thead>\n        <tr>\n          <th *ngIf=\"selectable\" scope=\"col\" class=\"dds-data-table__selection-cell\">\n            <dds-checkbox\n              [showLabel]=\"false\"\n              [showOption]=\"false\"\n              ariaLabel=\"Select all rows\"\n              [value]=\"headerCheckboxValue\"\n              (valueChange)=\"toggleAll($event)\"\n            ></dds-checkbox>\n          </th>\n          <th\n            *ngFor=\"let column of columns; trackBy: trackColumn\"\n            scope=\"col\"\n            [attr.data-align]=\"column.align ?? 'start'\"\n          >\n            {{ column.label }}\n          </th>\n          <th *ngIf=\"rowActions.length\" scope=\"col\">\n            <span class=\"dds-visually-hidden\">Actions</span>\n          </th>\n        </tr>\n      </thead>\n      <tbody>\n        <ng-container *ngIf=\"loading; else tableContent\">\n          <tr *ngFor=\"let _ of skeletonRows\">\n            <td *ngIf=\"selectable\" class=\"dds-data-table__selection-cell\">\n              <dds-skeleton width=\"20px\" height=\"20px\"></dds-skeleton>\n            </td>\n            <td *ngFor=\"let column of columns; trackBy: trackColumn\">\n              <dds-skeleton width=\"70%\" height=\"16px\"></dds-skeleton>\n            </td>\n            <td *ngIf=\"rowActions.length\">\n              <dds-skeleton width=\"32px\" height=\"32px\"></dds-skeleton>\n            </td>\n          </tr>\n        </ng-container>\n        <ng-template #tableContent>\n          <tr\n            *ngFor=\"let row of rows; trackBy: trackRow\"\n            [class.dds-data-table__row--selected]=\"isSelected(row)\"\n          >\n            <td *ngIf=\"selectable\" class=\"dds-data-table__selection-cell\">\n              <dds-checkbox\n                [showLabel]=\"false\"\n                [showOption]=\"false\"\n                [ariaLabel]=\"'Select row ' + rowIdentity(row)\"\n                [value]=\"isSelected(row) ? 'checked' : 'unchecked'\"\n                (valueChange)=\"toggleRow(row, $event)\"\n              ></dds-checkbox>\n            </td>\n            <td\n              *ngFor=\"let column of columns; trackBy: trackColumn\"\n              [attr.data-align]=\"column.align ?? 'start'\"\n            >\n              <dds-status-badge\n                *ngIf=\"column.type === 'status'; else textCell\"\n                [text]=\"cellValue(column, row).toString()\"\n                [tone]=\"statusTone(column, row)\"\n              ></dds-status-badge>\n              <ng-template #textCell>{{ cellValue(column, row) }}</ng-template>\n            </td>\n            <td *ngIf=\"rowActions.length\" class=\"dds-data-table__actions-cell\">\n              <dds-button\n                *ngFor=\"let action of rowActions\"\n                variant=\"secondary\"\n                size=\"small\"\n                [styleType]=\"action.styleType ?? 'default'\"\n                [iconType]=\"action.icon ? 'icon-only' : 'no-icon'\"\n                [icon]=\"action.icon ?? 'info'\"\n                [ariaLabel]=\"action.label\"\n                (click)=\"rowAction.emit({ action: action, row: row })\"\n                >{{ action.icon ? '' : action.label }}</dds-button\n              >\n            </td>\n          </tr>\n          <tr *ngIf=\"!rows.length\">\n            <td class=\"dds-data-table__empty\" [attr.colspan]=\"visibleColumnCount\">\n              {{ emptyMessage }}\n            </td>\n          </tr>\n        </ng-template>\n      </tbody>\n    </table>\n  </div>\n\n  <footer *ngIf=\"showPagination && !loading\" class=\"dds-data-table__footer\">\n    <span>Displaying {{ displayStart }} to {{ displayEnd }} of {{ totalItems }} items</span>\n    <dds-minimal-pagination\n      [currentPage]=\"currentPage\"\n      [totalPages]=\"totalPages\"\n      ariaLabel=\"Table pagination\"\n      (pageChange)=\"pageChange.emit($event)\"\n    ></dds-minimal-pagination>\n  </footer>\n</section>\n"
+            "templateData": "<section class=\"dds-data-table\" [attr.aria-busy]=\"loading\">\n  <div *ngIf=\"selectable && selectedCount\" class=\"dds-data-table__bulk\" aria-live=\"polite\">\n    <div class=\"dds-data-table__selection-summary\">\n      <span>{{ selectedCount }} selected</span>\n      <button type=\"button\" class=\"dds-data-table__clear\" (click)=\"clearSelection()\">Clear</button>\n    </div>\n    <div class=\"dds-data-table__bulk-actions\">\n      <dds-button\n        *ngFor=\"let action of bulkActions\"\n        [variant]=\"action.styleType === 'danger' ? 'primary' : 'secondary'\"\n        size=\"small\"\n        [styleType]=\"action.styleType ?? 'default'\"\n        [iconType]=\"action.icon ? 'left-icon' : 'no-icon'\"\n        [icon]=\"action.icon ?? 'info'\"\n        (click)=\"bulkAction.emit(action)\"\n        >{{ action.label }}</dds-button\n      >\n    </div>\n  </div>\n\n  <div class=\"dds-data-table__scroller\">\n    <table>\n      <caption class=\"dds-data-table__caption\">\n        {{\n          caption\n        }}\n      </caption>\n      <colgroup>\n        <col *ngIf=\"selectable\" class=\"dds-data-table__selection-column\" />\n        <col *ngFor=\"let column of columns; trackBy: trackColumn\" [style.width]=\"column.width\" />\n        <col *ngIf=\"rowActions.length\" class=\"dds-data-table__actions-column\" />\n      </colgroup>\n      <thead>\n        <tr>\n          <th *ngIf=\"selectable\" scope=\"col\" class=\"dds-data-table__selection-cell\">\n            <dds-checkbox\n              [showLabel]=\"false\"\n              [showOption]=\"false\"\n              ariaLabel=\"Select all rows\"\n              [value]=\"headerCheckboxValue\"\n              (valueChange)=\"toggleAll($event)\"\n            ></dds-checkbox>\n          </th>\n          <th\n            *ngFor=\"let column of columns; trackBy: trackColumn\"\n            scope=\"col\"\n            [attr.data-align]=\"column.align ?? 'start'\"\n          >\n            {{ column.label }}\n          </th>\n          <th *ngIf=\"rowActions.length\" scope=\"col\">\n            <span class=\"dds-visually-hidden\">Actions</span>\n          </th>\n        </tr>\n      </thead>\n      <tbody>\n        <ng-container *ngIf=\"loading; else tableContent\">\n          <tr *ngFor=\"let _ of skeletonRows\">\n            <td *ngIf=\"selectable\" class=\"dds-data-table__selection-cell\">\n              <dds-skeleton width=\"20px\" height=\"20px\"></dds-skeleton>\n            </td>\n            <td *ngFor=\"let column of columns; trackBy: trackColumn\">\n              <dds-skeleton width=\"70%\" height=\"16px\"></dds-skeleton>\n            </td>\n            <td *ngIf=\"rowActions.length\">\n              <dds-skeleton width=\"32px\" height=\"32px\"></dds-skeleton>\n            </td>\n          </tr>\n        </ng-container>\n        <ng-template #tableContent>\n          <tr\n            *ngFor=\"let row of rows; trackBy: trackRow\"\n            class=\"dds-data-table__row\"\n            [class.dds-data-table__row--selected]=\"isSelected(row)\"\n          >\n            <td *ngIf=\"selectable\" class=\"dds-data-table__selection-cell\">\n              <dds-checkbox\n                [showLabel]=\"false\"\n                [showOption]=\"false\"\n                [ariaLabel]=\"'Select row ' + rowIdentity(row)\"\n                [value]=\"isSelected(row) ? 'checked' : 'unchecked'\"\n                (valueChange)=\"toggleRow(row, $event)\"\n              ></dds-checkbox>\n            </td>\n            <td\n              *ngFor=\"let column of columns; trackBy: trackColumn\"\n              [attr.data-align]=\"column.align ?? 'start'\"\n            >\n              <dds-status-badge\n                *ngIf=\"column.type === 'status'; else textCell\"\n                [text]=\"cellValue(column, row).toString()\"\n                [tone]=\"statusTone(column, row)\"\n                size=\"small\"\n              ></dds-status-badge>\n              <ng-template #textCell>{{ cellValue(column, row) }}</ng-template>\n            </td>\n            <td *ngIf=\"rowActions.length\" class=\"dds-data-table__actions-cell\">\n              <dds-button\n                *ngFor=\"let action of rowActions\"\n                variant=\"secondary\"\n                size=\"small\"\n                [styleType]=\"action.styleType ?? 'default'\"\n                [iconType]=\"action.icon ? 'icon-only' : 'no-icon'\"\n                [icon]=\"action.icon ?? 'info'\"\n                [ariaLabel]=\"action.label\"\n                (click)=\"rowAction.emit({ action: action, row: row })\"\n                >{{ action.icon ? '' : action.label }}</dds-button\n              >\n            </td>\n          </tr>\n          <tr *ngIf=\"!rows.length\">\n            <td class=\"dds-data-table__empty\" [attr.colspan]=\"visibleColumnCount\">\n              {{ emptyMessage }}\n            </td>\n          </tr>\n        </ng-template>\n      </tbody>\n    </table>\n  </div>\n\n  <footer *ngIf=\"showPagination && !loading\" class=\"dds-data-table__footer\">\n    <span>Displaying {{ displayStart }} to {{ displayEnd }} of {{ totalItems }} items</span>\n    <dds-minimal-pagination\n      [currentPage]=\"currentPage\"\n      [totalPages]=\"totalPages\"\n      ariaLabel=\"Table pagination\"\n      (pageChange)=\"pageChange.emit($event)\"\n    ></dds-minimal-pagination>\n  </footer>\n</section>\n"
         },
         {
             "name": "DateInputComponent",
@@ -6661,10 +6511,6 @@
             "relationships": {
                 "incoming": [
                     {
-                        "name": "DataTableComponent",
-                        "type": "component"
-                    },
-                    {
                         "name": "PageToolbarComponent",
                         "type": "component",
                         "description": "A page-level action bar combining search, filtering, refresh, and a primary action."
@@ -7018,10 +6864,6 @@
             },
             "relationships": {
                 "incoming": [
-                    {
-                        "name": "DataTableComponent",
-                        "type": "component"
-                    },
                     {
                         "name": "PageToolbarComponent",
                         "type": "component",
@@ -7697,7 +7539,7 @@
         },
         {
             "name": "StatusBadgeComponent",
-            "id": "component-StatusBadgeComponent-9c09bdcd88f83b86dac20df7b9c28f258bb9dc3daba89c8fc098063eae482abaeefafa25ac5059ec5fac1bad4922a894fc7b57659997261073b75fd4216e6525",
+            "id": "component-StatusBadgeComponent-72cba56521a31ea502a8e8bca3fb2b7d91446f1e388c895bbbd6b8d5dbfb89e2e5c86212745648391f33da6e1d1d3d86cc2ca37b79b37f517e76188972a393d7",
             "file": "src/app/components/status-badge/status-badge.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -7719,13 +7561,25 @@
             "inputsClass": [
                 {
                     "coverageIgnore": false,
+                    "name": "size",
+                    "defaultValue": "'large'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 15,
+                    "type": "StatusBadgeSize",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
                     "name": "text",
                     "defaultValue": "'Status'",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 12,
+                    "line": 13,
                     "type": "string",
                     "decorators": []
                 },
@@ -7737,7 +7591,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 13,
+                    "line": 14,
                     "type": "StatusBadgeTone",
                     "decorators": []
                 }
@@ -7755,12 +7609,12 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input } from '@angular/core';\n\nexport type StatusBadgeTone = 'info' | 'success' | 'warning' | 'danger' | 'neutral';\n\n@Component({\n  selector: 'dds-status-badge',\n  standalone: true,\n  templateUrl: './status-badge.component.html',\n  styleUrl: './status-badge.component.css',\n})\nexport class StatusBadgeComponent {\n  @Input() text = 'Status';\n  @Input() tone: StatusBadgeTone = 'info';\n}\n",
+            "sourceCode": "import { Component, Input } from '@angular/core';\n\nexport type StatusBadgeTone = 'info' | 'success' | 'warning' | 'danger' | 'neutral';\nexport type StatusBadgeSize = 'large' | 'small';\n\n@Component({\n  selector: 'dds-status-badge',\n  standalone: true,\n  templateUrl: './status-badge.component.html',\n  styleUrl: './status-badge.component.css',\n})\nexport class StatusBadgeComponent {\n  @Input() text = 'Status';\n  @Input() tone: StatusBadgeTone = 'info';\n  @Input() size: StatusBadgeSize = 'large';\n}\n",
             "styleUrl": "./status-badge.component.css",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ":host {\n  display: inline-flex;\n}\n\n.dds-status-badge {\n  display: inline-flex;\n  align-items: center;\n  min-height: 28px;\n  padding: var(--space-1) var(--space-3);\n  border-radius: var(--radius-full);\n  background: var(--dds-status-background, var(--bg-colour-info-muted));\n  color: var(--dds-status-colour, var(--text-colour-info));\n  font: var(--font-weight-medium) var(--font-size-sm) / var(--font-size-xl)\n    var(--font-family-primary);\n  white-space: nowrap;\n}\n\n.dds-status-badge[data-tone='success'] {\n  --dds-status-background: var(--bg-colour-success-muted);\n  --dds-status-colour: var(--text-colour-success);\n}\n\n.dds-status-badge[data-tone='warning'] {\n  --dds-status-background: var(--bg-colour-warning-muted);\n  --dds-status-colour: var(--text-colour-warning);\n}\n\n.dds-status-badge[data-tone='danger'] {\n  --dds-status-background: var(--bg-colour-danger-muted);\n  --dds-status-colour: var(--text-colour-danger);\n}\n\n.dds-status-badge[data-tone='neutral'] {\n  --dds-status-background: var(--bg-colour-default);\n  --dds-status-colour: var(--text-colour-tertiary);\n}\n",
+                    "data": ":host {\n  display: inline-flex;\n}\n\n.dds-status-badge {\n  box-sizing: border-box;\n  display: inline-flex;\n  align-items: center;\n  min-height: 28px;\n  padding: var(--space-1) var(--space-3);\n  border-radius: var(--radius-full);\n  background: var(--dds-status-background, var(--bg-colour-info-muted));\n  color: var(--dds-status-colour, var(--text-colour-info));\n  font: var(--font-weight-medium) var(--font-size-sm) / var(--font-size-xl)\n    var(--font-family-primary);\n  white-space: nowrap;\n}\n\n.dds-status-badge[data-tone='success'] {\n  --dds-status-background: var(--bg-colour-success-muted);\n  --dds-status-colour: var(--text-colour-success);\n}\n\n.dds-status-badge[data-tone='warning'] {\n  --dds-status-background: var(--bg-colour-warning-muted);\n  --dds-status-colour: var(--text-colour-warning);\n}\n\n.dds-status-badge[data-tone='danger'] {\n  --dds-status-background: var(--bg-colour-danger-muted);\n  --dds-status-colour: var(--text-colour-danger);\n}\n\n.dds-status-badge[data-tone='neutral'] {\n  --dds-status-background: var(--bg-colour-default);\n  --dds-status-colour: var(--text-colour-tertiary);\n}\n\n.dds-status-badge[data-size='small'] {\n  min-height: 24px;\n  font-size: var(--font-size-xs);\n  line-height: var(--font-size-md);\n}\n",
                     "styleUrl": "./status-badge.component.css"
                 }
             ],
@@ -7775,7 +7629,7 @@
                 ],
                 "outgoing": []
             },
-            "templateData": "<span class=\"dds-status-badge\" [attr.data-tone]=\"tone\">{{ text }}</span>\n"
+            "templateData": "<span class=\"dds-status-badge\" [attr.data-tone]=\"tone\" [attr.data-size]=\"size\">{{ text }}</span>\n"
         },
         {
             "name": "TextareaComponent",
@@ -10217,6 +10071,19 @@
                 "kind": 193
             },
             {
+                "name": "StatusBadgeSize",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "coverageIgnore": false,
+                "rawtype": "\"large\" | \"small\"",
+                "file": "src/app/components/status-badge/status-badge.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "rawdescription": "",
+                "description": "",
+                "kind": 193
+            },
+            {
                 "name": "StatusBadgeTone",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
@@ -11113,6 +10980,19 @@
             ],
             "src/app/components/status-badge/status-badge.component.ts": [
                 {
+                    "name": "StatusBadgeSize",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "coverageIgnore": false,
+                    "rawtype": "\"large\" | \"small\"",
+                    "file": "src/app/components/status-badge/status-badge.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "",
+                    "description": "",
+                    "kind": 193
+                },
+                {
                     "name": "StatusBadgeTone",
                     "ctype": "miscellaneous",
                     "subtype": "typealias",
@@ -11226,7 +11106,7 @@
         ]
     },
     "coverage": {
-        "count": 9,
+        "count": 8,
         "status": "low",
         "files": [
             {
@@ -11479,7 +11359,7 @@
                 "linktype": "component",
                 "name": "DataTableComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/43",
+                "coverageCount": "0/31",
                 "status": "low"
             },
             {
@@ -11960,7 +11840,17 @@
                 "linktype": "component",
                 "name": "StatusBadgeComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/3",
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/status-badge/status-badge.component.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "StatusBadgeSize",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
                 "status": "low"
             },
             {
