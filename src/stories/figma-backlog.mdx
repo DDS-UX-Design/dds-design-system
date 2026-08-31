@@ -4,7 +4,8 @@ import backlog from './figma-backlog.backlog';
 
 <Meta title="Project/Figma Backlog" />
 
-export const backlogRevision = '31 August 2026 · Sidebar Nav and recent component gaps added';
+export const backlogRevision =
+  '31 August 2026 · Page Toolbar, Checkbox Group, Data Table, Status Badge, and example-page gaps added';
 
 export const typographyBacklog = `
 ## Foundations
@@ -157,9 +158,78 @@ Figma reference: [Checkbox — node 20:1131](https://www.figma.com/design/u0lpCP
 - [ ] **P1 · Confirmed gap** — Define keyboard-focus styling as a focus ring with sufficient separation from the invalid border; the current Focus variant only changes the box border.
 - [ ] **P1 · Design review** — Specify whether an invalid checkbox label and required marker remain in their default colours or also use the danger colour.
 - [ ] **P2 · Confirmed gap** — Define wrapping and alignment for long option labels, field labels, and error messages on narrow screens.
-- [ ] **P2 · Confirmed gap** — Add checkbox-group guidance, including group labels, shared validation, select-all behavior, and how indeterminate values are calculated.
 - [ ] **P2 · Design review** — Confirm whether the 20px visual box is intentionally below the shared minimum touch-target guidance and document the larger interactive hit area.
 - [ ] **P3 · Design review** — Clarify whether error text may be hidden while the control remains invalid and how that state should be announced.
+
+### Checkbox Group
+
+Figma reference: [Checkbox Group — node 20:1186](https://www.figma.com/design/u0lpCPrGMj68e9RMIRuYxL/DDS---Design-System-v1.0?node-id=20-1186)
+
+- [ ] **P1 · Design review** — Define required-group validation semantics, including whether one, all, or a configurable minimum number of options must be selected.
+- [ ] **P1 · Confirmed gap** — Add select-all behavior and specify how checked and indeterminate values are calculated as options change.
+- [ ] **P2 · Confirmed gap** — Define wrapping and breakpoint behavior for inline groups with long labels, localized content, or many options.
+- [ ] **P2 · Design review** — Specify maximum- and minimum-selection rules, dynamically added or removed options, and how disabled selected values are handled.
+- [ ] **P2 · Confirmed gap** — Add focused, hover, and pressed examples within both Default and Error group states.
+      `;
+
+export const pageToolbarBacklog = `
+## Navigation
+
+### Page Toolbar
+
+Figma reference: [Page Toolbar — node 1467:8132](https://www.figma.com/design/u0lpCPrGMj68e9RMIRuYxL/DDS---Design-System-v1.0?node-id=1467-8132)
+
+- [ ] **P1 · Confirmed gap** — Define the narrow-screen layout, including control order, wrapping, full-width actions, and the breakpoint where the filter moves to a second row.
+- [ ] **P1 · Design review** — Specify refresh progress and completion feedback, including whether existing results remain interactive and how updates are announced.
+- [ ] **P1 · Design review** — Confirm whether search is immediate, debounced, or submitted explicitly and define loading, no-results, and request-error behavior.
+- [ ] **P2 · Confirmed gap** — Add configurations for no filter, no primary action, multiple filters, and active-filter chips with clear-all behavior.
+- [ ] **P2 · Design review** — Define truncation and minimum widths for long filter values and localized primary-action labels.
+- [ ] **P3 · Design review** — Confirm whether the refresh icon rotates continuously, only on activation, or follows a shared loading-motion token.
+      `;
+
+export const dataTableBacklog = `
+## Data display
+
+### Data Table
+
+Figma reference: [Data Table — node 76:498](https://www.figma.com/design/u0lpCPrGMj68e9RMIRuYxL/DDS---Design-System-v1.0?node-id=76-498)
+
+- [ ] **P1 · Design review** — Remove or deprecate the embedded Toolbar variants in Figma now that page-level search and filtering are owned by Page Toolbar.
+- [ ] **P1 · Confirmed gap** — Define sortable-column behavior and ascending, descending, hover, focus, and unavailable-sort states; the current Figma headers only show sorting disabled.
+- [ ] **P1 · Design review** — Specify selection across pagination, including select-all scope, retained selections, bulk-action counts, and clearing selection after data refreshes.
+- [ ] **P1 · Confirmed gap** — Design the row-action menu opened by the ellipsis control, including keyboard behavior, destructive actions, collision handling, and disabled items.
+- [ ] **P2 · Confirmed gap** — Add request-error, no-results, and unavailable-data treatments distinct from an intentionally empty table.
+- [ ] **P2 · Design review** — Confirm distinct hover and selected-row colours and add semantic tokens in Figma; both code tokens currently map to the default border colour.
+- [ ] **P2 · Confirmed gap** — Define responsive column priority, horizontal scrolling, sticky headers or columns, and behavior for long or multiline cell content.
+- [ ] **P2 · Design review** — Specify server- versus client-side pagination, loading behavior between pages, and range text when the last page is partial.
+      `;
+
+export const statusBadgeBacklog = `
+## Data display
+
+### Status Badge
+
+Figma reference: [Status Badge — node 70:275](https://www.figma.com/design/u0lpCPrGMj68e9RMIRuYxL/DDS---Design-System-v1.0?node-id=70-275)
+
+- [ ] **P1 · Design review** — Define semantic naming independently from example copy: Warning versus Pending and Danger versus Failure should not become interchangeable API values.
+- [ ] **P2 · Design review** — Confirm neutral background and foreground token mappings between Figma and code and document their contrast requirements.
+- [ ] **P2 · Confirmed gap** — Define maximum width and truncation or wrapping behavior for long and localized status labels.
+- [ ] **P2 · Design review** — Decide whether badges may include icons, dots, dismiss controls, or counts, or explicitly constrain them to text-only status labels.
+- [ ] **P3 · Confirmed gap** — Add usage guidance for choosing Large versus Small, including the Small treatment now used in data-table cells.
+      `;
+
+export const examplePageBacklog = `
+## Examples
+
+### Customer Management Page
+
+Figma reference: [Customer management example — node 1451:5507](https://www.figma.com/design/u0lpCPrGMj68e9RMIRuYxL/DDS---Design-System-v1.0?node-id=1451-5507)
+
+- [ ] **P1 · Confirmed gap** — Define a responsive application-shell composition below desktop width, including the relationship between Sidebar Nav, Top Bar Nav, and Page Toolbar.
+- [ ] **P1 · Design review** — Specify page-level loading, empty, filtered-empty, request-error, and permission-restricted states using the composed components.
+- [ ] **P2 · Design review** — Define how navigation selection maps to routes and page titles and how state is retained when users return to the customer list.
+- [ ] **P2 · Confirmed gap** — Add the New Customer workflow and row-action destinations so the example demonstrates complete task paths rather than inert actions.
+- [ ] **P3 · Design review** — Establish guidance for Storybook example pages: realistic data, component reuse, supported viewport sizes, and which product behavior may be mocked.
       `;
 
 export const parseBacklog = (source) => {
@@ -227,7 +297,7 @@ export const BacklogPage = () => {
   const sections = useMemo(
     () =>
       parseBacklog(
-        `${backlog}\n${checkboxBacklog}\n${dateInputBacklog}\n${textInputBacklog}\n${loadingBacklog}\n${typographyBacklog}\n${dashboardBacklog}\n${topBarNavBacklog}\n${radioBacklog}\n${sidebarNavBacklog}`,
+        `${backlog}\n${checkboxBacklog}\n${dateInputBacklog}\n${textInputBacklog}\n${loadingBacklog}\n${typographyBacklog}\n${dashboardBacklog}\n${statusBadgeBacklog}\n${dataTableBacklog}\n${topBarNavBacklog}\n${pageToolbarBacklog}\n${radioBacklog}\n${sidebarNavBacklog}\n${examplePageBacklog}`,
       ),
     [],
   );
