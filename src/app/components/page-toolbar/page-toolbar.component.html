@@ -1,0 +1,50 @@
+<section class="dds-page-toolbar" aria-label="Page controls" [attr.aria-busy]="refreshing">
+  <dds-search
+    class="dds-page-toolbar__search"
+    size="small"
+    [showLabel]="false"
+    [ariaLabel]="searchPlaceholder"
+    [placeholder]="searchPlaceholder"
+    [value]="searchValue"
+    (valueChange)="updateSearch($event)"
+    (search)="searchSubmit.emit($event)"
+  ></dds-search>
+
+  <div class="dds-page-toolbar__controls">
+    <dds-select
+      class="dds-page-toolbar__filter"
+      [class.dds-page-toolbar__filter--hidden]="!showFilter"
+      size="small"
+      [showLabel]="false"
+      [showHelperText]="false"
+      [ariaLabel]="filterLabel"
+      [placeholder]="filterLabel"
+      [options]="filterOptions"
+      [value]="filterValue"
+      [state]="refreshing ? 'disabled' : 'default'"
+      (valueChange)="updateFilter($event)"
+    ></dds-select>
+
+    <dds-button
+      variant="secondary"
+      size="medium"
+      iconType="icon-only"
+      icon="refresh-cw"
+      [iconAnimation]="refreshing ? 'spin' : 'spin-on-press'"
+      [ariaLabel]="refreshing ? 'Refreshing data' : 'Refresh data'"
+      [disabled]="refreshing"
+      (click)="refresh.emit()"
+    ></dds-button>
+
+    <dds-button
+      variant="primary"
+      size="medium"
+      iconType="left-icon"
+      [icon]="actionIcon"
+      [disabled]="refreshing || actionDisabled"
+      (click)="action.emit()"
+    >
+      {{ actionLabel }}
+    </dds-button>
+  </div>
+</section>
