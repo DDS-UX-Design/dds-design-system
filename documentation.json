@@ -3,12 +3,12 @@
     "interfaces": [
         {
             "name": "CheckboxGroupOption",
-            "id": "interface-CheckboxGroupOption-1c6e9bc0695dfc7097d0fdda5ac35dfa6b783f0187b0ff5dc65a635684c9a567849b665b7006dccf190580c20583e31f21bfc214c37fb0a67fcdb816e675e1fc",
+            "id": "interface-CheckboxGroupOption-00ead9e559b4850b1ac79475c83fb50eb7c60715cd65cb75d6c7b3dce5d82602b34595426b07ba49478d868ff231646f322932d4840f1214666325554dd89715",
             "file": "src/app/components/checkbox-group/checkbox-group.component.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, EventEmitter, Input, Output } from '@angular/core';\nimport { CheckboxComponent, CheckboxState, CheckboxValue } from '../checkbox/checkbox.component';\n\nexport type CheckboxGroupDirection = 'inline' | 'stacked';\nexport type CheckboxGroupState = 'default' | 'invalid' | 'disabled';\n\nexport interface CheckboxGroupOption {\n  label: string;\n  value: string;\n  disabled?: boolean;\n}\n\nlet nextCheckboxGroupId = 0;\n\n/** A labelled set of independent checkbox options in an inline or stacked layout. */\n@Component({\n  selector: 'dds-checkbox-group',\n  standalone: true,\n  imports: [CommonModule, CheckboxComponent],\n  templateUrl: './checkbox-group.component.html',\n  styleUrl: './checkbox-group.component.css',\n})\nexport class CheckboxGroupComponent {\n  @Input() groupId = `dds-checkbox-group-${nextCheckboxGroupId++}`;\n  @Input() label = 'Label';\n  @Input() options: CheckboxGroupOption[] = [\n    { label: 'Option 1', value: 'option-1' },\n    { label: 'Option 2', value: 'option-2' },\n    { label: 'Option 3', value: 'option-3' },\n    { label: 'Option 4', value: 'option-4' },\n  ];\n  @Input() selectedValues: string[] = [];\n  @Input() direction: CheckboxGroupDirection = 'inline';\n  @Input() state: CheckboxGroupState = 'default';\n  @Input() required = true;\n  @Input() showLabel = true;\n  @Input() helperText = 'Select all options that apply.';\n  @Input() showHelperText = false;\n  @Input() errorMessage = 'Select at least one option.';\n\n  @Output() selectedValuesChange = new EventEmitter<string[]>();\n\n  get supportingTextId(): string {\n    return `${this.groupId}-${this.state === 'invalid' ? 'error' : 'helper'}`;\n  }\n\n  get describedBy(): string | undefined {\n    return this.state === 'invalid' || this.showHelperText ? this.supportingTextId : undefined;\n  }\n\n  optionState(option: CheckboxGroupOption): CheckboxState {\n    if (this.state === 'disabled' || option.disabled) return 'disabled';\n    if (this.state === 'invalid') return 'invalid';\n    return 'default';\n  }\n\n  optionValue(option: CheckboxGroupOption): CheckboxValue {\n    return this.selectedValues.includes(option.value) ? 'checked' : 'unchecked';\n  }\n\n  toggle(option: CheckboxGroupOption, value: CheckboxValue): void {\n    const selected = new Set(this.selectedValues);\n    value === 'checked' ? selected.add(option.value) : selected.delete(option.value);\n    this.selectedValues = [...selected];\n    this.selectedValuesChange.emit(this.selectedValues);\n  }\n}\n",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, EventEmitter, Input, Output } from '@angular/core';\nimport { CheckboxComponent, CheckboxState, CheckboxValue } from '../checkbox/checkbox.component';\nimport { SkeletonComponent } from '../skeleton/skeleton.component';\n\nexport type CheckboxGroupDirection = 'inline' | 'stacked';\nexport type CheckboxGroupState = 'default' | 'invalid' | 'disabled';\n\nexport interface CheckboxGroupOption {\n  label: string;\n  value: string;\n  disabled?: boolean;\n}\n\nlet nextCheckboxGroupId = 0;\n\n/** A labelled set of independent checkbox options in an inline or stacked layout. */\n@Component({\n  selector: 'dds-checkbox-group',\n  standalone: true,\n  imports: [CommonModule, CheckboxComponent, SkeletonComponent],\n  templateUrl: './checkbox-group.component.html',\n  styleUrl: './checkbox-group.component.css',\n})\nexport class CheckboxGroupComponent {\n  @Input() groupId = `dds-checkbox-group-${nextCheckboxGroupId++}`;\n  @Input() label = 'Label';\n  @Input() options: CheckboxGroupOption[] = [\n    { label: 'Option 1', value: 'option-1' },\n    { label: 'Option 2', value: 'option-2' },\n    { label: 'Option 3', value: 'option-3' },\n    { label: 'Option 4', value: 'option-4' },\n  ];\n  @Input() selectedValues: string[] = [];\n  @Input() direction: CheckboxGroupDirection = 'inline';\n  @Input() state: CheckboxGroupState = 'default';\n  @Input() required = true;\n  @Input() showLabel = true;\n  @Input() helperText = 'Select all options that apply.';\n  @Input() showHelperText = false;\n  @Input() errorMessage = 'Select at least one option.';\n  @Input() loading = false;\n\n  @Output() selectedValuesChange = new EventEmitter<string[]>();\n\n  get supportingTextId(): string {\n    return `${this.groupId}-${this.state === 'invalid' ? 'error' : 'helper'}`;\n  }\n\n  get describedBy(): string | undefined {\n    return this.state === 'invalid' || this.showHelperText ? this.supportingTextId : undefined;\n  }\n\n  optionState(option: CheckboxGroupOption): CheckboxState {\n    if (this.state === 'disabled' || option.disabled) return 'disabled';\n    if (this.state === 'invalid') return 'invalid';\n    return 'default';\n  }\n\n  optionValue(option: CheckboxGroupOption): CheckboxValue {\n    return this.selectedValues.includes(option.value) ? 'checked' : 'unchecked';\n  }\n\n  toggle(option: CheckboxGroupOption, value: CheckboxValue): void {\n    const selected = new Set(this.selectedValues);\n    value === 'checked' ? selected.add(option.value) : selected.delete(option.value);\n    this.selectedValues = [...selected];\n    this.selectedValuesChange.emit(this.selectedValues);\n  }\n}\n",
             "displayName": "CheckboxGroupOption",
             "properties": [
                 {
@@ -20,7 +20,7 @@
                     "indexKey": "",
                     "optional": true,
                     "description": "",
-                    "line": 11,
+                    "line": 12,
                     "rawdescription": "\n"
                 },
                 {
@@ -32,7 +32,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 9,
+                    "line": 10,
                     "rawdescription": "\n"
                 },
                 {
@@ -44,7 +44,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 10,
+                    "line": 11,
                     "rawdescription": "\n"
                 }
             ],
@@ -103,12 +103,12 @@
         },
         {
             "name": "RadioOption",
-            "id": "interface-RadioOption-58bbad0d5f63ed4ce5892f0ad30c4fe64ae2949b6b7c0ed5da7afce4e8053989c08d779224463484bf04dfb249235aaa652c2966efcd52bc7e3f08fa8e2e162c",
+            "id": "interface-RadioOption-f5f03b7e89d0d8f28fe23271108c162c72be3026d2a54d703ff3f5fdc5a40804b5a1189a335b9fa4ca60f47aab1a127f23d907982e3f2849b62ae10c7d4cef0e",
             "file": "src/app/components/radio-group/radio-group.component.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, EventEmitter, Input, Output } from '@angular/core';\nimport { RadioComponent, RadioState } from '../radio/radio.component';\n\nexport type RadioGroupDirection = 'inline' | 'stacked';\nexport type RadioGroupState = 'default' | 'invalid' | 'disabled';\n\nexport interface RadioOption {\n  label: string;\n  value: string;\n  disabled?: boolean;\n}\n\nlet nextRadioGroupId = 0;\n\n/** A labelled set of mutually exclusive radio options in an inline or stacked layout. */\n@Component({\n  selector: 'dds-radio-group',\n  standalone: true,\n  imports: [CommonModule, RadioComponent],\n  templateUrl: './radio-group.component.html',\n  styleUrl: './radio-group.component.css',\n})\nexport class RadioGroupComponent {\n  @Input() groupId = `dds-radio-group-${nextRadioGroupId++}`;\n  @Input() label = 'Label text';\n  @Input() options: RadioOption[] = [\n    { label: 'Option 1', value: 'option-1' },\n    { label: 'Option 2', value: 'option-2' },\n    { label: 'Option 3', value: 'option-3' },\n    { label: 'Option 4', value: 'option-4' },\n  ];\n  @Input() selectedValue = 'option-1';\n  @Input() direction: RadioGroupDirection = 'inline';\n  @Input() state: RadioGroupState = 'default';\n  @Input() required = true;\n  @Input() showLabel = true;\n  @Input() errorMessage = 'Select an option to continue.';\n\n  @Output() selectedValueChange = new EventEmitter<string>();\n\n  get errorId(): string {\n    return `${this.groupId}-error`;\n  }\n\n  optionState(option: RadioOption): RadioState {\n    if (this.state === 'disabled' || option.disabled) return 'disabled';\n    if (this.state === 'invalid') return 'invalid';\n    return 'default';\n  }\n\n  select(value: string): void {\n    this.selectedValue = value;\n    this.selectedValueChange.emit(value);\n  }\n}\n",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, EventEmitter, Input, Output } from '@angular/core';\nimport { RadioComponent, RadioState } from '../radio/radio.component';\nimport { SkeletonComponent } from '../skeleton/skeleton.component';\n\nexport type RadioGroupDirection = 'inline' | 'stacked';\nexport type RadioGroupState = 'default' | 'invalid' | 'disabled';\n\nexport interface RadioOption {\n  label: string;\n  value: string;\n  disabled?: boolean;\n}\n\nlet nextRadioGroupId = 0;\n\n/** A labelled set of mutually exclusive radio options in an inline or stacked layout. */\n@Component({\n  selector: 'dds-radio-group',\n  standalone: true,\n  imports: [CommonModule, RadioComponent, SkeletonComponent],\n  templateUrl: './radio-group.component.html',\n  styleUrl: './radio-group.component.css',\n})\nexport class RadioGroupComponent {\n  @Input() groupId = `dds-radio-group-${nextRadioGroupId++}`;\n  @Input() label = 'Label text';\n  @Input() options: RadioOption[] = [\n    { label: 'Option 1', value: 'option-1' },\n    { label: 'Option 2', value: 'option-2' },\n    { label: 'Option 3', value: 'option-3' },\n    { label: 'Option 4', value: 'option-4' },\n  ];\n  @Input() selectedValue = 'option-1';\n  @Input() direction: RadioGroupDirection = 'inline';\n  @Input() state: RadioGroupState = 'default';\n  @Input() required = true;\n  @Input() showLabel = true;\n  @Input() errorMessage = 'Select an option to continue.';\n  @Input() loading = false;\n\n  @Output() selectedValueChange = new EventEmitter<string>();\n\n  get errorId(): string {\n    return `${this.groupId}-error`;\n  }\n\n  optionState(option: RadioOption): RadioState {\n    if (this.state === 'disabled' || option.disabled) return 'disabled';\n    if (this.state === 'invalid') return 'invalid';\n    return 'default';\n  }\n\n  select(value: string): void {\n    this.selectedValue = value;\n    this.selectedValueChange.emit(value);\n  }\n}\n",
             "displayName": "RadioOption",
             "properties": [
                 {
@@ -120,7 +120,7 @@
                     "indexKey": "",
                     "optional": true,
                     "description": "",
-                    "line": 11,
+                    "line": 12,
                     "rawdescription": "\n"
                 },
                 {
@@ -132,7 +132,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 9,
+                    "line": 10,
                     "rawdescription": "\n"
                 },
                 {
@@ -144,7 +144,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 10,
+                    "line": 11,
                     "rawdescription": "\n"
                 }
             ],
@@ -1240,7 +1240,7 @@
         },
         {
             "name": "CheckboxComponent",
-            "id": "component-CheckboxComponent-2069f4675a443aef1effdbfb25140be802b62ec0a47b6883f3568c185a7d987fafe00bb13d733393301273fc7ad82e9f5baa705f0d4284db59a4044ca1cd64cd",
+            "id": "component-CheckboxComponent-4927fed15436398d18a92882c0f9cd4a32e7935b91901b3a3ca759bbf4f5c3cf6e86f85d75f88f21391c0421753ec8ab7feb0b45178f737392c0769b4764ac98",
             "file": "src/app/components/checkbox/checkbox.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -1268,7 +1268,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 28,
+                    "line": 29,
                     "type": "string",
                     "decorators": []
                 },
@@ -1279,7 +1279,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 31,
+                    "line": 32,
                     "type": "string",
                     "decorators": []
                 },
@@ -1291,7 +1291,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 29,
+                    "line": 30,
                     "type": "string",
                     "decorators": []
                 },
@@ -1303,7 +1303,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nUnique ID used to associate the native control and its visible option label.",
                     "description": "<p>Unique ID used to associate the native control and its visible option label.</p>\n",
-                    "line": 20,
+                    "line": 21,
                     "type": "string",
                     "decorators": []
                 },
@@ -1315,8 +1315,20 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 21,
+                    "line": 22,
                     "type": "string",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "loading",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 33,
+                    "type": "boolean",
                     "decorators": []
                 },
                 {
@@ -1327,7 +1339,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 22,
+                    "line": 23,
                     "type": "string",
                     "decorators": []
                 },
@@ -1339,7 +1351,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 25,
+                    "line": 26,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -1351,7 +1363,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 30,
+                    "line": 31,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -1363,7 +1375,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 26,
+                    "line": 27,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -1375,7 +1387,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 27,
+                    "line": 28,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -1387,7 +1399,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 24,
+                    "line": 25,
                     "type": "CheckboxState",
                     "decorators": []
                 },
@@ -1399,7 +1411,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 23,
+                    "line": 24,
                     "type": "CheckboxValue",
                     "decorators": []
                 }
@@ -1411,7 +1423,7 @@
                     "defaultValue": "new EventEmitter<CheckboxValue>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 33,
+                    "line": 35,
                     "type": "EventEmitter"
                 }
             ],
@@ -1433,7 +1445,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 60,
+                    "line": 62,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n",
@@ -1467,25 +1479,29 @@
                 {
                     "name": "IconComponent",
                     "type": "component"
+                },
+                {
+                    "name": "SkeletonComponent",
+                    "type": "component"
                 }
             ],
             "description": "<p>A native checkbox with DDS labels, validation, disabled, and mixed-value treatments.</p>\n",
             "rawdescription": "\nA native checkbox with DDS labels, validation, disabled, and mixed-value treatments.",
             "type": "component",
-            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, EventEmitter, Input, Output } from '@angular/core';\nimport { IconComponent } from '../icon/icon.component';\n\nexport type CheckboxValue = 'unchecked' | 'checked' | 'indeterminate';\nexport type CheckboxState = 'default' | 'focused' | 'disabled' | 'invalid';\n\nlet nextCheckboxId = 0;\n\n/** A native checkbox with DDS labels, validation, disabled, and mixed-value treatments. */\n@Component({\n  selector: 'dds-checkbox',\n  standalone: true,\n  imports: [CommonModule, IconComponent],\n  templateUrl: './checkbox.component.html',\n  styleUrl: './checkbox.component.css',\n})\nexport class CheckboxComponent {\n  /** Unique ID used to associate the native control and its visible option label. */\n  @Input() inputId = `dds-checkbox-${nextCheckboxId++}`;\n  @Input() label = 'Label';\n  @Input() option = 'Option';\n  @Input() value: CheckboxValue = 'unchecked';\n  @Input() state: CheckboxState = 'default';\n  @Input() required = false;\n  @Input() showLabel = true;\n  @Input() showOption = true;\n  @Input() ariaLabel = 'Checkbox option';\n  @Input() errorMessage = 'Select this option to continue.';\n  @Input() showErrorMessage = true;\n  @Input() describedBy?: string;\n\n  @Output() valueChange = new EventEmitter<CheckboxValue>();\n\n  get isChecked(): boolean {\n    return this.value === 'checked';\n  }\n\n  get isIndeterminate(): boolean {\n    return this.value === 'indeterminate';\n  }\n\n  get isDisabled(): boolean {\n    return this.state === 'disabled';\n  }\n\n  get isInvalid(): boolean {\n    return this.state === 'invalid';\n  }\n\n  get errorId(): string {\n    return `${this.inputId}-error`;\n  }\n\n  get ariaDescribedBy(): string | null {\n    if (this.describedBy) return this.describedBy;\n    return this.isInvalid && this.showErrorMessage ? this.errorId : null;\n  }\n\n  handleChange(event: Event): void {\n    const input = event.target as HTMLInputElement;\n    this.value = input.checked ? 'checked' : 'unchecked';\n    this.valueChange.emit(this.value);\n  }\n}\n",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, EventEmitter, Input, Output } from '@angular/core';\nimport { IconComponent } from '../icon/icon.component';\nimport { SkeletonComponent } from '../skeleton/skeleton.component';\n\nexport type CheckboxValue = 'unchecked' | 'checked' | 'indeterminate';\nexport type CheckboxState = 'default' | 'focused' | 'disabled' | 'invalid';\n\nlet nextCheckboxId = 0;\n\n/** A native checkbox with DDS labels, validation, disabled, and mixed-value treatments. */\n@Component({\n  selector: 'dds-checkbox',\n  standalone: true,\n  imports: [CommonModule, IconComponent, SkeletonComponent],\n  templateUrl: './checkbox.component.html',\n  styleUrl: './checkbox.component.css',\n})\nexport class CheckboxComponent {\n  /** Unique ID used to associate the native control and its visible option label. */\n  @Input() inputId = `dds-checkbox-${nextCheckboxId++}`;\n  @Input() label = 'Label';\n  @Input() option = 'Option';\n  @Input() value: CheckboxValue = 'unchecked';\n  @Input() state: CheckboxState = 'default';\n  @Input() required = false;\n  @Input() showLabel = true;\n  @Input() showOption = true;\n  @Input() ariaLabel = 'Checkbox option';\n  @Input() errorMessage = 'Select this option to continue.';\n  @Input() showErrorMessage = true;\n  @Input() describedBy?: string;\n  @Input() loading = false;\n\n  @Output() valueChange = new EventEmitter<CheckboxValue>();\n\n  get isChecked(): boolean {\n    return this.value === 'checked';\n  }\n\n  get isIndeterminate(): boolean {\n    return this.value === 'indeterminate';\n  }\n\n  get isDisabled(): boolean {\n    return this.state === 'disabled';\n  }\n\n  get isInvalid(): boolean {\n    return this.state === 'invalid';\n  }\n\n  get errorId(): string {\n    return `${this.inputId}-error`;\n  }\n\n  get ariaDescribedBy(): string | null {\n    if (this.describedBy) return this.describedBy;\n    return this.isInvalid && this.showErrorMessage ? this.errorId : null;\n  }\n\n  handleChange(event: Event): void {\n    const input = event.target as HTMLInputElement;\n    this.value = input.checked ? 'checked' : 'unchecked';\n    this.valueChange.emit(this.value);\n  }\n}\n",
             "styleUrl": "./checkbox.component.css",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ":host {\n  display: inline-block;\n  max-width: 100%;\n}\n\n.dds-checkbox {\n  display: flex;\n  flex-direction: column;\n  align-items: flex-start;\n  color: var(--text-colour-default);\n  font-family: var(--font-family-primary);\n  font-size: var(--font-size-sm);\n  line-height: 20px;\n}\n\n.dds-checkbox__field-label {\n  display: flex;\n  gap: var(--space-1);\n  padding-bottom: var(--space-2);\n  font-weight: var(--font-weight-medium);\n}\n\n.dds-checkbox__required,\n.dds-checkbox__error {\n  color: var(--text-colour-danger);\n}\n\n.dds-checkbox__option {\n  display: inline-flex;\n  align-items: center;\n  gap: var(--space-2);\n  cursor: pointer;\n}\n\n.dds-checkbox__native {\n  position: absolute;\n  width: 1px;\n  height: 1px;\n  margin: -1px;\n  overflow: hidden;\n  clip: rect(0 0 0 0);\n  clip-path: inset(50%);\n  white-space: nowrap;\n}\n\n.dds-checkbox__box {\n  box-sizing: border-box;\n  display: inline-flex;\n  flex: 0 0 auto;\n  align-items: center;\n  justify-content: center;\n  width: 20px;\n  height: 20px;\n  overflow: hidden;\n  border: 1px solid var(--border-colour-default);\n  border-radius: var(--radius-sm);\n  background: var(--bg-colour-white);\n  color: var(--icon-colour-default);\n}\n\n.dds-checkbox__box dds-icon {\n  display: grid;\n  width: 14px;\n  height: 14px;\n  place-items: center;\n  line-height: 0;\n}\n\n.dds-checkbox__native:focus-visible + .dds-checkbox__box,\n.dds-checkbox--focused .dds-checkbox__box {\n  border: 2px solid var(--border-colour-info);\n}\n\n.dds-checkbox--invalid .dds-checkbox__box {\n  border: 2px solid var(--border-colour-danger);\n}\n\n.dds-checkbox--disabled {\n  color: var(--text-colour-disabled);\n}\n\n.dds-checkbox--disabled .dds-checkbox__option {\n  cursor: not-allowed;\n}\n\n.dds-checkbox--disabled .dds-checkbox__box {\n  color: var(--icon-colour-disabled);\n}\n\n.dds-checkbox__error {\n  margin: 0;\n  padding-top: var(--space-2);\n  font-size: var(--font-size-xs);\n  font-weight: var(--font-weight-medium);\n  line-height: 16px;\n}\n",
+                    "data": ":host {\n  display: inline-block;\n  max-width: 100%;\n}\n\n.dds-checkbox {\n  display: flex;\n  flex-direction: column;\n  align-items: flex-start;\n  color: var(--text-colour-default);\n  font-family: var(--font-family-primary);\n  font-size: var(--font-size-sm);\n  line-height: 20px;\n}\n\n.dds-checkbox__field-label {\n  display: flex;\n  gap: var(--space-1);\n  padding-bottom: var(--space-2);\n  font-weight: var(--font-weight-medium);\n}\n\n.dds-checkbox__required,\n.dds-checkbox__error {\n  color: var(--text-colour-danger);\n}\n\n.dds-checkbox__skeleton-label {\n  padding-bottom: var(--space-2);\n}\n\n.dds-checkbox__skeleton-option {\n  display: flex;\n  align-items: center;\n  gap: var(--space-2);\n}\n\n.dds-checkbox__option {\n  display: inline-flex;\n  align-items: center;\n  gap: var(--space-2);\n  cursor: pointer;\n}\n\n.dds-checkbox__native {\n  position: absolute;\n  width: 1px;\n  height: 1px;\n  margin: -1px;\n  overflow: hidden;\n  clip: rect(0 0 0 0);\n  clip-path: inset(50%);\n  white-space: nowrap;\n}\n\n.dds-checkbox__box {\n  box-sizing: border-box;\n  display: inline-flex;\n  flex: 0 0 auto;\n  align-items: center;\n  justify-content: center;\n  width: 20px;\n  height: 20px;\n  overflow: hidden;\n  border: 1px solid var(--border-colour-default);\n  border-radius: var(--radius-sm);\n  background: var(--bg-colour-white);\n  color: var(--icon-colour-default);\n}\n\n.dds-checkbox__box dds-icon {\n  display: grid;\n  width: 14px;\n  height: 14px;\n  place-items: center;\n  line-height: 0;\n}\n\n.dds-checkbox__native:focus-visible + .dds-checkbox__box,\n.dds-checkbox--focused .dds-checkbox__box {\n  border: 2px solid var(--border-colour-info);\n}\n\n.dds-checkbox--invalid .dds-checkbox__box {\n  border: 2px solid var(--border-colour-danger);\n}\n\n.dds-checkbox--disabled {\n  color: var(--text-colour-disabled);\n}\n\n.dds-checkbox--disabled .dds-checkbox__option {\n  cursor: not-allowed;\n}\n\n.dds-checkbox--disabled .dds-checkbox__box {\n  color: var(--icon-colour-disabled);\n}\n\n.dds-checkbox__error {\n  margin: 0;\n  padding-top: var(--space-2);\n  font-size: var(--font-size-xs);\n  font-weight: var(--font-weight-medium);\n  line-height: 16px;\n}\n",
                     "styleUrl": "./checkbox.component.css"
                 }
             ],
             "stylesData": "",
             "jsdoctags": [
                 {
-                    "pos": 350,
-                    "end": 441,
+                    "pos": 418,
+                    "end": 509,
                     "kind": 321,
                     "id": 0,
                     "flags": 16777216,
@@ -1502,7 +1518,7 @@
                         "name": "isChecked",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 35,
+                        "line": 37,
                         "rawdescription": "\n",
                         "description": ""
                     }
@@ -1513,7 +1529,7 @@
                         "name": "isIndeterminate",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 39,
+                        "line": 41,
                         "rawdescription": "\n",
                         "description": ""
                     }
@@ -1524,7 +1540,7 @@
                         "name": "isDisabled",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 43,
+                        "line": 45,
                         "rawdescription": "\n",
                         "description": ""
                     }
@@ -1535,7 +1551,7 @@
                         "name": "isInvalid",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 47,
+                        "line": 49,
                         "rawdescription": "\n",
                         "description": ""
                     }
@@ -1546,7 +1562,7 @@
                         "name": "errorId",
                         "type": "string",
                         "returnType": "string",
-                        "line": 51,
+                        "line": 53,
                         "rawdescription": "\n",
                         "description": ""
                     }
@@ -1557,7 +1573,7 @@
                         "name": "ariaDescribedBy",
                         "type": "unknown",
                         "returnType": "string | null",
-                        "line": 55,
+                        "line": 57,
                         "rawdescription": "\n",
                         "description": ""
                     }
@@ -1583,14 +1599,18 @@
                     {
                         "name": "IconComponent",
                         "type": "component"
+                    },
+                    {
+                        "name": "SkeletonComponent",
+                        "type": "component"
                     }
                 ]
             },
-            "templateData": "<div\n  class=\"dds-checkbox\"\n  [class.dds-checkbox--focused]=\"state === 'focused'\"\n  [class.dds-checkbox--disabled]=\"isDisabled\"\n  [class.dds-checkbox--invalid]=\"isInvalid\"\n>\n  <div *ngIf=\"showLabel\" class=\"dds-checkbox__field-label\">\n    {{ label }}\n    <span *ngIf=\"required\" class=\"dds-checkbox__required\" aria-hidden=\"true\">*</span>\n  </div>\n\n  <label class=\"dds-checkbox__option\" [for]=\"inputId\">\n    <input\n      class=\"dds-checkbox__native\"\n      type=\"checkbox\"\n      [id]=\"inputId\"\n      [checked]=\"isChecked\"\n      [indeterminate]=\"isIndeterminate\"\n      [required]=\"required\"\n      [disabled]=\"isDisabled\"\n      [attr.aria-label]=\"showOption ? null : ariaLabel\"\n      [attr.aria-invalid]=\"isInvalid ? 'true' : null\"\n      [attr.aria-describedby]=\"ariaDescribedBy\"\n      (change)=\"handleChange($event)\"\n    />\n    <span class=\"dds-checkbox__box\" aria-hidden=\"true\">\n      <dds-icon\n        *ngIf=\"value !== 'unchecked'\"\n        [name]=\"isIndeterminate ? 'minus' : 'check'\"\n        [size]=\"14\"\n        [strokeWidth]=\"3\"\n      ></dds-icon>\n    </span>\n    <span *ngIf=\"showOption\" class=\"dds-checkbox__option-text\">{{ option }}</span>\n  </label>\n\n  <p *ngIf=\"isInvalid && showErrorMessage\" class=\"dds-checkbox__error\" [id]=\"errorId\">\n    {{ errorMessage }}\n  </p>\n</div>\n"
+            "templateData": "<div\n  class=\"dds-checkbox\"\n  [class.dds-checkbox--focused]=\"state === 'focused'\"\n  [class.dds-checkbox--disabled]=\"isDisabled\"\n  [class.dds-checkbox--invalid]=\"isInvalid\"\n  [attr.aria-busy]=\"loading ? 'true' : null\"\n  [attr.aria-label]=\"loading ? 'Loading checkbox' : null\"\n>\n  <ng-container *ngIf=\"loading\">\n    <div *ngIf=\"showLabel\" class=\"dds-checkbox__skeleton-label\">\n      <dds-skeleton width=\"88px\" height=\"20px\"></dds-skeleton>\n    </div>\n    <div class=\"dds-checkbox__skeleton-option\">\n      <dds-skeleton width=\"20px\" height=\"20px\"></dds-skeleton>\n      <dds-skeleton *ngIf=\"showOption\" width=\"160px\" height=\"20px\"></dds-skeleton>\n    </div>\n  </ng-container>\n\n  <div *ngIf=\"!loading && showLabel\" class=\"dds-checkbox__field-label\">\n    {{ label }}\n    <span *ngIf=\"required\" class=\"dds-checkbox__required\" aria-hidden=\"true\">*</span>\n  </div>\n\n  <label *ngIf=\"!loading\" class=\"dds-checkbox__option\" [for]=\"inputId\">\n    <input\n      class=\"dds-checkbox__native\"\n      type=\"checkbox\"\n      [id]=\"inputId\"\n      [checked]=\"isChecked\"\n      [indeterminate]=\"isIndeterminate\"\n      [required]=\"required\"\n      [disabled]=\"isDisabled\"\n      [attr.aria-label]=\"showOption ? null : ariaLabel\"\n      [attr.aria-invalid]=\"isInvalid ? 'true' : null\"\n      [attr.aria-describedby]=\"ariaDescribedBy\"\n      (change)=\"handleChange($event)\"\n    />\n    <span class=\"dds-checkbox__box\" aria-hidden=\"true\">\n      <dds-icon\n        *ngIf=\"value !== 'unchecked'\"\n        [name]=\"isIndeterminate ? 'minus' : 'check'\"\n        [size]=\"14\"\n        [strokeWidth]=\"3\"\n      ></dds-icon>\n    </span>\n    <span *ngIf=\"showOption\" class=\"dds-checkbox__option-text\">{{ option }}</span>\n  </label>\n\n  <p *ngIf=\"!loading && isInvalid && showErrorMessage\" class=\"dds-checkbox__error\" [id]=\"errorId\">\n    {{ errorMessage }}\n  </p>\n</div>\n"
         },
         {
             "name": "CheckboxGroupComponent",
-            "id": "component-CheckboxGroupComponent-1c6e9bc0695dfc7097d0fdda5ac35dfa6b783f0187b0ff5dc65a635684c9a567849b665b7006dccf190580c20583e31f21bfc214c37fb0a67fcdb816e675e1fc",
+            "id": "component-CheckboxGroupComponent-00ead9e559b4850b1ac79475c83fb50eb7c60715cd65cb75d6c7b3dce5d82602b34595426b07ba49478d868ff231646f322932d4840f1214666325554dd89715",
             "file": "src/app/components/checkbox-group/checkbox-group.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -1618,7 +1638,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 34,
+                    "line": 35,
                     "type": "CheckboxGroupDirection",
                     "decorators": []
                 },
@@ -1630,7 +1650,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 40,
+                    "line": 41,
                     "type": "string",
                     "decorators": []
                 },
@@ -1642,7 +1662,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 25,
+                    "line": 26,
                     "type": "string",
                     "decorators": []
                 },
@@ -1654,7 +1674,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 38,
+                    "line": 39,
                     "type": "string",
                     "decorators": []
                 },
@@ -1666,8 +1686,20 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 26,
+                    "line": 27,
                     "type": "string",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "loading",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 42,
+                    "type": "boolean",
                     "decorators": []
                 },
                 {
@@ -1678,7 +1710,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 27,
+                    "line": 28,
                     "type": "CheckboxGroupOption[]",
                     "decorators": []
                 },
@@ -1690,7 +1722,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 36,
+                    "line": 37,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -1702,7 +1734,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 33,
+                    "line": 34,
                     "type": "string[]",
                     "decorators": []
                 },
@@ -1714,7 +1746,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 39,
+                    "line": 40,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -1726,7 +1758,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 37,
+                    "line": 38,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -1738,7 +1770,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 35,
+                    "line": 36,
                     "type": "CheckboxGroupState",
                     "decorators": []
                 }
@@ -1750,7 +1782,7 @@
                     "defaultValue": "new EventEmitter<string[]>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 42,
+                    "line": 44,
                     "type": "EventEmitter"
                 }
             ],
@@ -1772,7 +1804,7 @@
                     "optional": false,
                     "returnType": "CheckboxState",
                     "typeParameters": [],
-                    "line": 52,
+                    "line": 54,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n",
@@ -1807,7 +1839,7 @@
                     "optional": false,
                     "returnType": "CheckboxValue",
                     "typeParameters": [],
-                    "line": 58,
+                    "line": 60,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n",
@@ -1850,7 +1882,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 62,
+                    "line": 64,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n",
@@ -1895,25 +1927,29 @@
                 {
                     "name": "CheckboxComponent",
                     "type": "component"
+                },
+                {
+                    "name": "SkeletonComponent",
+                    "type": "component"
                 }
             ],
             "description": "<p>A labelled set of independent checkbox options in an inline or stacked layout.</p>\n",
             "rawdescription": "\nA labelled set of independent checkbox options in an inline or stacked layout.",
             "type": "component",
-            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, EventEmitter, Input, Output } from '@angular/core';\nimport { CheckboxComponent, CheckboxState, CheckboxValue } from '../checkbox/checkbox.component';\n\nexport type CheckboxGroupDirection = 'inline' | 'stacked';\nexport type CheckboxGroupState = 'default' | 'invalid' | 'disabled';\n\nexport interface CheckboxGroupOption {\n  label: string;\n  value: string;\n  disabled?: boolean;\n}\n\nlet nextCheckboxGroupId = 0;\n\n/** A labelled set of independent checkbox options in an inline or stacked layout. */\n@Component({\n  selector: 'dds-checkbox-group',\n  standalone: true,\n  imports: [CommonModule, CheckboxComponent],\n  templateUrl: './checkbox-group.component.html',\n  styleUrl: './checkbox-group.component.css',\n})\nexport class CheckboxGroupComponent {\n  @Input() groupId = `dds-checkbox-group-${nextCheckboxGroupId++}`;\n  @Input() label = 'Label';\n  @Input() options: CheckboxGroupOption[] = [\n    { label: 'Option 1', value: 'option-1' },\n    { label: 'Option 2', value: 'option-2' },\n    { label: 'Option 3', value: 'option-3' },\n    { label: 'Option 4', value: 'option-4' },\n  ];\n  @Input() selectedValues: string[] = [];\n  @Input() direction: CheckboxGroupDirection = 'inline';\n  @Input() state: CheckboxGroupState = 'default';\n  @Input() required = true;\n  @Input() showLabel = true;\n  @Input() helperText = 'Select all options that apply.';\n  @Input() showHelperText = false;\n  @Input() errorMessage = 'Select at least one option.';\n\n  @Output() selectedValuesChange = new EventEmitter<string[]>();\n\n  get supportingTextId(): string {\n    return `${this.groupId}-${this.state === 'invalid' ? 'error' : 'helper'}`;\n  }\n\n  get describedBy(): string | undefined {\n    return this.state === 'invalid' || this.showHelperText ? this.supportingTextId : undefined;\n  }\n\n  optionState(option: CheckboxGroupOption): CheckboxState {\n    if (this.state === 'disabled' || option.disabled) return 'disabled';\n    if (this.state === 'invalid') return 'invalid';\n    return 'default';\n  }\n\n  optionValue(option: CheckboxGroupOption): CheckboxValue {\n    return this.selectedValues.includes(option.value) ? 'checked' : 'unchecked';\n  }\n\n  toggle(option: CheckboxGroupOption, value: CheckboxValue): void {\n    const selected = new Set(this.selectedValues);\n    value === 'checked' ? selected.add(option.value) : selected.delete(option.value);\n    this.selectedValues = [...selected];\n    this.selectedValuesChange.emit(this.selectedValues);\n  }\n}\n",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, EventEmitter, Input, Output } from '@angular/core';\nimport { CheckboxComponent, CheckboxState, CheckboxValue } from '../checkbox/checkbox.component';\nimport { SkeletonComponent } from '../skeleton/skeleton.component';\n\nexport type CheckboxGroupDirection = 'inline' | 'stacked';\nexport type CheckboxGroupState = 'default' | 'invalid' | 'disabled';\n\nexport interface CheckboxGroupOption {\n  label: string;\n  value: string;\n  disabled?: boolean;\n}\n\nlet nextCheckboxGroupId = 0;\n\n/** A labelled set of independent checkbox options in an inline or stacked layout. */\n@Component({\n  selector: 'dds-checkbox-group',\n  standalone: true,\n  imports: [CommonModule, CheckboxComponent, SkeletonComponent],\n  templateUrl: './checkbox-group.component.html',\n  styleUrl: './checkbox-group.component.css',\n})\nexport class CheckboxGroupComponent {\n  @Input() groupId = `dds-checkbox-group-${nextCheckboxGroupId++}`;\n  @Input() label = 'Label';\n  @Input() options: CheckboxGroupOption[] = [\n    { label: 'Option 1', value: 'option-1' },\n    { label: 'Option 2', value: 'option-2' },\n    { label: 'Option 3', value: 'option-3' },\n    { label: 'Option 4', value: 'option-4' },\n  ];\n  @Input() selectedValues: string[] = [];\n  @Input() direction: CheckboxGroupDirection = 'inline';\n  @Input() state: CheckboxGroupState = 'default';\n  @Input() required = true;\n  @Input() showLabel = true;\n  @Input() helperText = 'Select all options that apply.';\n  @Input() showHelperText = false;\n  @Input() errorMessage = 'Select at least one option.';\n  @Input() loading = false;\n\n  @Output() selectedValuesChange = new EventEmitter<string[]>();\n\n  get supportingTextId(): string {\n    return `${this.groupId}-${this.state === 'invalid' ? 'error' : 'helper'}`;\n  }\n\n  get describedBy(): string | undefined {\n    return this.state === 'invalid' || this.showHelperText ? this.supportingTextId : undefined;\n  }\n\n  optionState(option: CheckboxGroupOption): CheckboxState {\n    if (this.state === 'disabled' || option.disabled) return 'disabled';\n    if (this.state === 'invalid') return 'invalid';\n    return 'default';\n  }\n\n  optionValue(option: CheckboxGroupOption): CheckboxValue {\n    return this.selectedValues.includes(option.value) ? 'checked' : 'unchecked';\n  }\n\n  toggle(option: CheckboxGroupOption, value: CheckboxValue): void {\n    const selected = new Set(this.selectedValues);\n    value === 'checked' ? selected.add(option.value) : selected.delete(option.value);\n    this.selectedValues = [...selected];\n    this.selectedValuesChange.emit(this.selectedValues);\n  }\n}\n",
             "styleUrl": "./checkbox-group.component.css",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ":host {\n  display: inline-block;\n  max-width: 100%;\n}\n\n.dds-checkbox-group {\n  min-width: 0;\n  margin: 0;\n  padding: 0;\n  border: 0;\n  color: var(--text-colour-default);\n  font-family: var(--font-family-primary);\n}\n\n.dds-checkbox-group__legend {\n  padding: 0 0 var(--space-2);\n  font-size: var(--font-size-sm);\n  font-weight: var(--font-weight-medium);\n  line-height: var(--font-size-xl);\n}\n\n.dds-checkbox-group__legend span,\n.dds-checkbox-group__supporting-text--error {\n  color: var(--text-colour-danger);\n}\n\n.dds-checkbox-group__legend span {\n  margin-left: var(--space-1);\n}\n\n.dds-checkbox-group__options {\n  display: flex;\n}\n\n.dds-checkbox-group--inline .dds-checkbox-group__options {\n  flex-flow: row wrap;\n  gap: var(--space-4);\n}\n\n.dds-checkbox-group--stacked .dds-checkbox-group__options {\n  flex-direction: column;\n  align-items: flex-start;\n  gap: var(--space-3);\n}\n\n.dds-checkbox-group__supporting-text {\n  margin: 0;\n  padding-top: var(--space-2);\n  color: var(--text-colour-tertiary);\n  font-size: var(--font-size-xs);\n  font-weight: var(--font-weight-regular);\n  line-height: var(--font-size-md);\n}\n\n.dds-checkbox-group__supporting-text--error {\n  color: var(--text-colour-danger);\n  font-weight: var(--font-weight-medium);\n}\n\n.dds-checkbox-group:disabled .dds-checkbox-group__legend {\n  color: var(--text-colour-disabled);\n}\n",
+                    "data": ":host {\n  display: inline-block;\n  max-width: 100%;\n}\n\n.dds-checkbox-group {\n  min-width: 0;\n  margin: 0;\n  padding: 0;\n  border: 0;\n  color: var(--text-colour-default);\n  font-family: var(--font-family-primary);\n}\n\n.dds-checkbox-group__legend {\n  padding: 0 0 var(--space-2);\n  font-size: var(--font-size-sm);\n  font-weight: var(--font-weight-medium);\n  line-height: var(--font-size-xl);\n}\n\n.dds-checkbox-group__legend span,\n.dds-checkbox-group__supporting-text--error {\n  color: var(--text-colour-danger);\n}\n\n.dds-checkbox-group__legend span {\n  margin-left: var(--space-1);\n}\n\n.dds-checkbox-group__options {\n  display: flex;\n}\n\n.dds-checkbox-group--inline .dds-checkbox-group__options {\n  flex-flow: row wrap;\n  gap: var(--space-4);\n}\n\n.dds-checkbox-group--stacked .dds-checkbox-group__options {\n  flex-direction: column;\n  align-items: flex-start;\n  gap: var(--space-3);\n}\n\n.dds-checkbox-group__supporting-text {\n  margin: 0;\n  padding-top: var(--space-2);\n  color: var(--text-colour-tertiary);\n  font-size: var(--font-size-xs);\n  font-weight: var(--font-weight-regular);\n  line-height: var(--font-size-md);\n}\n\n.dds-checkbox-group__supporting-text--error {\n  color: var(--text-colour-danger);\n  font-weight: var(--font-weight-medium);\n}\n\n.dds-checkbox-group:disabled .dds-checkbox-group__legend {\n  color: var(--text-colour-disabled);\n}\n\n.dds-checkbox-group__skeleton-legend {\n  padding-bottom: var(--space-2);\n}\n\n.dds-checkbox-group__skeleton-options {\n  display: flex;\n}\n\n.dds-checkbox-group--inline .dds-checkbox-group__skeleton-options {\n  flex-flow: row wrap;\n  gap: var(--space-4);\n}\n\n.dds-checkbox-group--stacked .dds-checkbox-group__skeleton-options {\n  flex-direction: column;\n  gap: var(--space-3);\n}\n\n.dds-checkbox-group__skeleton-option {\n  display: flex;\n  align-items: center;\n  gap: var(--space-2);\n}\n\n.dds-checkbox-group__skeleton-supporting-text {\n  padding-top: var(--space-2);\n}\n",
                     "styleUrl": "./checkbox-group.component.css"
                 }
             ],
             "stylesData": "",
             "jsdoctags": [
                 {
-                    "pos": 476,
-                    "end": 561,
+                    "pos": 544,
+                    "end": 629,
                     "kind": 321,
                     "id": 0,
                     "flags": 16777216,
@@ -1930,7 +1966,7 @@
                         "name": "supportingTextId",
                         "type": "string",
                         "returnType": "string",
-                        "line": 44,
+                        "line": 46,
                         "rawdescription": "\n",
                         "description": ""
                     }
@@ -1941,7 +1977,7 @@
                         "name": "describedBy",
                         "type": "unknown",
                         "returnType": "string | undefined",
-                        "line": 48,
+                        "line": 50,
                         "rawdescription": "\n",
                         "description": ""
                     }
@@ -1958,10 +1994,14 @@
                         "name": "CheckboxComponent",
                         "type": "component",
                         "description": "A native checkbox with DDS labels, validation, disabled, and mixed-value treatments."
+                    },
+                    {
+                        "name": "SkeletonComponent",
+                        "type": "component"
                     }
                 ]
             },
-            "templateData": "<fieldset\n  class=\"dds-checkbox-group\"\n  [class.dds-checkbox-group--inline]=\"direction === 'inline'\"\n  [class.dds-checkbox-group--stacked]=\"direction === 'stacked'\"\n  [class.dds-checkbox-group--invalid]=\"state === 'invalid'\"\n  [disabled]=\"state === 'disabled'\"\n  [attr.aria-describedby]=\"describedBy\"\n  [attr.aria-required]=\"required\"\n>\n  <legend *ngIf=\"showLabel\" class=\"dds-checkbox-group__legend\">\n    {{ label }}<span *ngIf=\"required\" aria-hidden=\"true\">*</span>\n  </legend>\n\n  <div class=\"dds-checkbox-group__options\">\n    <dds-checkbox\n      *ngFor=\"let option of options; let index = index\"\n      [inputId]=\"groupId + '-' + index\"\n      [option]=\"option.label\"\n      [value]=\"optionValue(option)\"\n      [state]=\"optionState(option)\"\n      [showLabel]=\"false\"\n      [showErrorMessage]=\"false\"\n      [describedBy]=\"describedBy\"\n      (valueChange)=\"toggle(option, $event)\"\n    ></dds-checkbox>\n  </div>\n\n  <p\n    *ngIf=\"state === 'invalid' || showHelperText\"\n    class=\"dds-checkbox-group__supporting-text\"\n    [class.dds-checkbox-group__supporting-text--error]=\"state === 'invalid'\"\n    [id]=\"supportingTextId\"\n  >\n    {{ state === 'invalid' ? errorMessage : helperText }}\n  </p>\n</fieldset>\n"
+            "templateData": "<fieldset\n  class=\"dds-checkbox-group\"\n  [class.dds-checkbox-group--inline]=\"direction === 'inline'\"\n  [class.dds-checkbox-group--stacked]=\"direction === 'stacked'\"\n  [class.dds-checkbox-group--invalid]=\"state === 'invalid'\"\n  [disabled]=\"state === 'disabled' || loading\"\n  [attr.aria-describedby]=\"describedBy\"\n  [attr.aria-required]=\"required\"\n  [attr.aria-busy]=\"loading ? 'true' : null\"\n  [attr.aria-label]=\"loading ? 'Loading checkbox group' : null\"\n>\n  <div *ngIf=\"loading && showLabel\" class=\"dds-checkbox-group__skeleton-legend\">\n    <dds-skeleton width=\"144px\" height=\"20px\"></dds-skeleton>\n  </div>\n\n  <div *ngIf=\"loading\" class=\"dds-checkbox-group__skeleton-options\">\n    <div *ngFor=\"let option of options\" class=\"dds-checkbox-group__skeleton-option\">\n      <dds-skeleton width=\"20px\" height=\"20px\"></dds-skeleton>\n      <dds-skeleton width=\"72px\" height=\"20px\"></dds-skeleton>\n    </div>\n  </div>\n\n  <div *ngIf=\"loading && showHelperText\" class=\"dds-checkbox-group__skeleton-supporting-text\">\n    <dds-skeleton width=\"180px\" height=\"16px\"></dds-skeleton>\n  </div>\n\n  <legend *ngIf=\"!loading && showLabel\" class=\"dds-checkbox-group__legend\">\n    {{ label }}<span *ngIf=\"required\" aria-hidden=\"true\">*</span>\n  </legend>\n\n  <div *ngIf=\"!loading\" class=\"dds-checkbox-group__options\">\n    <dds-checkbox\n      *ngFor=\"let option of options; let index = index\"\n      [inputId]=\"groupId + '-' + index\"\n      [option]=\"option.label\"\n      [value]=\"optionValue(option)\"\n      [state]=\"optionState(option)\"\n      [showLabel]=\"false\"\n      [showErrorMessage]=\"false\"\n      [describedBy]=\"describedBy\"\n      (valueChange)=\"toggle(option, $event)\"\n    ></dds-checkbox>\n  </div>\n\n  <p\n    *ngIf=\"!loading && (state === 'invalid' || showHelperText)\"\n    class=\"dds-checkbox-group__supporting-text\"\n    [class.dds-checkbox-group__supporting-text--error]=\"state === 'invalid'\"\n    [id]=\"supportingTextId\"\n  >\n    {{ state === 'invalid' ? errorMessage : helperText }}\n  </p>\n</fieldset>\n"
         },
         {
             "name": "CustomerManagementPageComponent",
@@ -4581,7 +4621,7 @@
         },
         {
             "name": "OtpInputComponent",
-            "id": "component-OtpInputComponent-fbb41fb633c641c4207303dfa0e464248ec019a34c704a2aa1819547418ee18db43c45886634499b7dbd7e7f34219fc32c5d21dc879272f91cf4f68a56ae2474",
+            "id": "component-OtpInputComponent-16538ac6121cfee4aec621da7edf51ccce62cef2c7989359aa979d6cd7aa757794e88b760a68264e24ea0c06abe5dfd0bce79ff8a01c5d826f53376f2abf11eb",
             "file": "src/app/components/otp-input/otp-input.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -4609,7 +4649,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nAccessible name used when the visible label is hidden.",
                     "description": "<p>Accessible name used when the visible label is hidden.</p>\n",
-                    "line": 45,
+                    "line": 46,
                     "type": "string",
                     "decorators": []
                 },
@@ -4621,7 +4661,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nSwitches the expiry information to its expired treatment.",
                     "description": "<p>Switches the expiry information to its expired treatment.</p>\n",
-                    "line": 57,
+                    "line": 58,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -4633,7 +4673,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nValidation guidance shown in the error state.",
                     "description": "<p>Validation guidance shown in the error state.</p>\n",
-                    "line": 48,
+                    "line": 49,
                     "type": "string",
                     "decorators": []
                 },
@@ -4645,7 +4685,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nFormatted time remaining for the current code.",
                     "description": "<p>Formatted time remaining for the current code.</p>\n",
-                    "line": 60,
+                    "line": 61,
                     "type": "string",
                     "decorators": []
                 },
@@ -4657,7 +4697,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nUnique ID for the native input and visible label.",
                     "description": "<p>Unique ID for the native input and visible label.</p>\n",
-                    "line": 24,
+                    "line": 25,
                     "type": "string",
                     "decorators": []
                 },
@@ -4669,8 +4709,20 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nVisible field label.",
                     "description": "<p>Visible field label.</p>\n",
-                    "line": 27,
+                    "line": 28,
                     "type": "string",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "loading",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nReplaces the code fields and optional surrounding content with skeletons while loading.",
+                    "description": "<p>Replaces the code fields and optional surrounding content with skeletons while loading.</p>\n",
+                    "line": 64,
+                    "type": "boolean",
                     "decorators": []
                 },
                 {
@@ -4681,7 +4733,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nMarks the native input as required.",
                     "description": "<p>Marks the native input as required.</p>\n",
-                    "line": 39,
+                    "line": 40,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -4693,7 +4745,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nShows the expiry information beneath the fields.",
                     "description": "<p>Shows the expiry information beneath the fields.</p>\n",
-                    "line": 54,
+                    "line": 55,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -4705,7 +4757,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nShows validation guidance in the error state.",
                     "description": "<p>Shows validation guidance in the error state.</p>\n",
-                    "line": 51,
+                    "line": 52,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -4717,7 +4769,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nShows the visible field label.",
                     "description": "<p>Shows the visible field label.</p>\n",
-                    "line": 42,
+                    "line": 43,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -4729,7 +4781,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nResponsive dimensions from the DDS specification.",
                     "description": "<p>Responsive dimensions from the DDS specification.</p>\n",
-                    "line": 33,
+                    "line": 34,
                     "type": "OtpInputSize",
                     "decorators": []
                 },
@@ -4741,7 +4793,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nDeterministic visual state for validation and documentation.",
                     "description": "<p>Deterministic visual state for validation and documentation.</p>\n",
-                    "line": 36,
+                    "line": 37,
                     "type": "OtpInputState",
                     "decorators": []
                 },
@@ -4753,7 +4805,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nCurrent numeric one-time code.",
                     "description": "<p>Current numeric one-time code.</p>\n",
-                    "line": 30,
+                    "line": 31,
                     "type": "string",
                     "decorators": []
                 }
@@ -4767,7 +4819,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nEmitted once all six digits have been entered.",
                     "description": "<p>Emitted once all six digits have been entered.</p>\n",
-                    "line": 66,
+                    "line": 70,
                     "type": "EventEmitter"
                 },
                 {
@@ -4778,7 +4830,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nEmitted whenever the numeric code changes.",
                     "description": "<p>Emitted whenever the numeric code changes.</p>\n",
-                    "line": 63,
+                    "line": 67,
                     "type": "EventEmitter"
                 }
             ],
@@ -4793,7 +4845,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 68,
+                    "line": 72,
                     "rawdescription": "\n",
                     "modifierKind": [
                         148
@@ -4809,7 +4861,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 69,
+                    "line": 73,
                     "rawdescription": "\n"
                 },
                 {
@@ -4821,7 +4873,7 @@
                     "indexKey": "",
                     "optional": true,
                     "description": "",
-                    "line": 21,
+                    "line": 22,
                     "rawdescription": "\n",
                     "decorators": [
                         {
@@ -4851,7 +4903,7 @@
                     "optional": false,
                     "returnType": "string",
                     "typeParameters": [],
-                    "line": 105,
+                    "line": 109,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n",
@@ -4877,7 +4929,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 117,
+                    "line": 121,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n",
@@ -4899,7 +4951,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 123,
+                    "line": 127,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n",
@@ -4934,7 +4986,7 @@
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 109,
+                    "line": 113,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n",
@@ -4968,25 +5020,29 @@
                 {
                     "name": "IconComponent",
                     "type": "component"
+                },
+                {
+                    "name": "SkeletonComponent",
+                    "type": "component"
                 }
             ],
             "description": "<p>A six-digit one-time-code field with paste, mobile autofill, and validation support.</p>\n",
             "rawdescription": "\n\nA six-digit one-time-code field with paste, mobile autofill, and validation support.\n",
             "type": "component",
-            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';\nimport { IconComponent } from '../icon/icon.component';\n\nexport type OtpInputSize = 'desktop' | 'mobile';\nexport type OtpInputState = 'default' | 'focused' | 'error' | 'disabled-loading';\n\nlet nextOtpInputId = 0;\n\n/**\n * A six-digit one-time-code field with paste, mobile autofill, and validation support.\n */\n@Component({\n  selector: 'dds-otp-input',\n  standalone: true,\n  imports: [CommonModule, IconComponent],\n  templateUrl: './otp-input.component.html',\n  styleUrl: './otp-input.component.css',\n})\nexport class OtpInputComponent {\n  @ViewChild('otpInput') otpInput?: ElementRef<HTMLInputElement>;\n\n  /** Unique ID for the native input and visible label. */\n  @Input() inputId = `dds-otp-input-${nextOtpInputId++}`;\n\n  /** Visible field label. */\n  @Input() label = 'Verification code';\n\n  /** Current numeric one-time code. */\n  @Input() value = '';\n\n  /** Responsive dimensions from the DDS specification. */\n  @Input() size: OtpInputSize = 'desktop';\n\n  /** Deterministic visual state for validation and documentation. */\n  @Input() state: OtpInputState = 'default';\n\n  /** Marks the native input as required. */\n  @Input() required = true;\n\n  /** Shows the visible field label. */\n  @Input() showLabel = false;\n\n  /** Accessible name used when the visible label is hidden. */\n  @Input() ariaLabel = 'Six-digit verification code';\n\n  /** Validation guidance shown in the error state. */\n  @Input() errorMessage = 'Enter the complete six-digit code.';\n\n  /** Shows validation guidance in the error state. */\n  @Input() showErrorMessage = true;\n\n  /** Shows the expiry information beneath the fields. */\n  @Input() showCodeExpiry = true;\n\n  /** Switches the expiry information to its expired treatment. */\n  @Input() codeExpired = false;\n\n  /** Formatted time remaining for the current code. */\n  @Input() expiryTime = '02:57';\n\n  /** Emitted whenever the numeric code changes. */\n  @Output() valueChange = new EventEmitter<string>();\n\n  /** Emitted once all six digits have been entered. */\n  @Output() completed = new EventEmitter<string>();\n\n  readonly digits = Array.from({ length: 6 }, (_, index) => index);\n  hasNativeFocus = false;\n\n  get isDisabled(): boolean {\n    return this.state === 'disabled-loading';\n  }\n\n  get isError(): boolean {\n    return this.state === 'error';\n  }\n\n  get activeIndex(): number {\n    return Math.min(this.value.length, this.digits.length - 1);\n  }\n\n  get errorId(): string {\n    return `${this.inputId}-error`;\n  }\n\n  get expiryId(): string {\n    return `${this.inputId}-expiry`;\n  }\n\n  get describedBy(): string | null {\n    const ids: string[] = [];\n\n    if (this.isError && this.showErrorMessage) {\n      ids.push(this.errorId);\n    }\n\n    if (this.showCodeExpiry) {\n      ids.push(this.expiryId);\n    }\n\n    return ids.length ? ids.join(' ') : null;\n  }\n\n  digitAt(index: number): string {\n    return this.value[index] ?? '';\n  }\n\n  isActive(index: number): boolean {\n    return (\n      !this.isDisabled &&\n      (this.hasNativeFocus || this.state === 'focused') &&\n      index === this.activeIndex\n    );\n  }\n\n  focusInput(): void {\n    if (!this.isDisabled) {\n      this.otpInput?.nativeElement.focus();\n    }\n  }\n\n  handleInput(event: Event): void {\n    const input = event.target as HTMLInputElement;\n    const nextValue = input.value.replace(/\\D/g, '').slice(0, this.digits.length);\n\n    input.value = nextValue;\n    this.value = nextValue;\n    this.valueChange.emit(nextValue);\n\n    if (nextValue.length === this.digits.length) {\n      this.completed.emit(nextValue);\n    }\n  }\n}\n",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';\nimport { IconComponent } from '../icon/icon.component';\nimport { SkeletonComponent } from '../skeleton/skeleton.component';\n\nexport type OtpInputSize = 'desktop' | 'mobile';\nexport type OtpInputState = 'default' | 'focused' | 'error' | 'disabled-loading';\n\nlet nextOtpInputId = 0;\n\n/**\n * A six-digit one-time-code field with paste, mobile autofill, and validation support.\n */\n@Component({\n  selector: 'dds-otp-input',\n  standalone: true,\n  imports: [CommonModule, IconComponent, SkeletonComponent],\n  templateUrl: './otp-input.component.html',\n  styleUrl: './otp-input.component.css',\n})\nexport class OtpInputComponent {\n  @ViewChild('otpInput') otpInput?: ElementRef<HTMLInputElement>;\n\n  /** Unique ID for the native input and visible label. */\n  @Input() inputId = `dds-otp-input-${nextOtpInputId++}`;\n\n  /** Visible field label. */\n  @Input() label = 'Verification code';\n\n  /** Current numeric one-time code. */\n  @Input() value = '';\n\n  /** Responsive dimensions from the DDS specification. */\n  @Input() size: OtpInputSize = 'desktop';\n\n  /** Deterministic visual state for validation and documentation. */\n  @Input() state: OtpInputState = 'default';\n\n  /** Marks the native input as required. */\n  @Input() required = true;\n\n  /** Shows the visible field label. */\n  @Input() showLabel = false;\n\n  /** Accessible name used when the visible label is hidden. */\n  @Input() ariaLabel = 'Six-digit verification code';\n\n  /** Validation guidance shown in the error state. */\n  @Input() errorMessage = 'Enter the complete six-digit code.';\n\n  /** Shows validation guidance in the error state. */\n  @Input() showErrorMessage = true;\n\n  /** Shows the expiry information beneath the fields. */\n  @Input() showCodeExpiry = true;\n\n  /** Switches the expiry information to its expired treatment. */\n  @Input() codeExpired = false;\n\n  /** Formatted time remaining for the current code. */\n  @Input() expiryTime = '02:57';\n\n  /** Replaces the code fields and optional surrounding content with skeletons while loading. */\n  @Input() loading = false;\n\n  /** Emitted whenever the numeric code changes. */\n  @Output() valueChange = new EventEmitter<string>();\n\n  /** Emitted once all six digits have been entered. */\n  @Output() completed = new EventEmitter<string>();\n\n  readonly digits = Array.from({ length: 6 }, (_, index) => index);\n  hasNativeFocus = false;\n\n  get isDisabled(): boolean {\n    return this.state === 'disabled-loading';\n  }\n\n  get isError(): boolean {\n    return this.state === 'error';\n  }\n\n  get activeIndex(): number {\n    return Math.min(this.value.length, this.digits.length - 1);\n  }\n\n  get errorId(): string {\n    return `${this.inputId}-error`;\n  }\n\n  get expiryId(): string {\n    return `${this.inputId}-expiry`;\n  }\n\n  get describedBy(): string | null {\n    const ids: string[] = [];\n\n    if (this.isError && this.showErrorMessage) {\n      ids.push(this.errorId);\n    }\n\n    if (this.showCodeExpiry) {\n      ids.push(this.expiryId);\n    }\n\n    return ids.length ? ids.join(' ') : null;\n  }\n\n  digitAt(index: number): string {\n    return this.value[index] ?? '';\n  }\n\n  isActive(index: number): boolean {\n    return (\n      !this.isDisabled &&\n      (this.hasNativeFocus || this.state === 'focused') &&\n      index === this.activeIndex\n    );\n  }\n\n  focusInput(): void {\n    if (!this.isDisabled) {\n      this.otpInput?.nativeElement.focus();\n    }\n  }\n\n  handleInput(event: Event): void {\n    const input = event.target as HTMLInputElement;\n    const nextValue = input.value.replace(/\\D/g, '').slice(0, this.digits.length);\n\n    input.value = nextValue;\n    this.value = nextValue;\n    this.valueChange.emit(nextValue);\n\n    if (nextValue.length === this.digits.length) {\n      this.completed.emit(nextValue);\n    }\n  }\n}\n",
             "styleUrl": "./otp-input.component.css",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ":host {\n  display: inline-block;\n  max-width: 100%;\n}\n\n.dds-otp {\n  display: flex;\n  flex-direction: column;\n  width: 388px;\n  max-width: 100%;\n  color: var(--text-colour-default);\n  font-family: var(--font-family-primary);\n}\n\n.dds-otp--mobile {\n  width: 304px;\n}\n\n.dds-otp__label {\n  display: flex;\n  gap: var(--space-1);\n  padding-bottom: var(--space-2);\n  font-size: var(--font-size-sm);\n  font-weight: var(--font-weight-semibold);\n  line-height: 20px;\n}\n\n.dds-otp__required {\n  color: var(--red-700);\n}\n\n.dds-otp__fields {\n  position: relative;\n  display: grid;\n  grid-template-columns: repeat(6, minmax(0, 1fr));\n  gap: var(--space-2);\n  width: 100%;\n  cursor: text;\n}\n\n.dds-otp__native-input {\n  position: absolute;\n  z-index: 1;\n  inset: 0;\n  width: 100%;\n  height: 100%;\n  padding: 0;\n  border: 0;\n  opacity: 0;\n  cursor: text;\n}\n\n.dds-otp__native-input:focus {\n  outline: none;\n}\n\n.dds-otp__field {\n  box-sizing: border-box;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  height: 67px;\n  border: 1px solid var(--border-colour-strong);\n  border-radius: var(--radius-sm);\n  background: var(--bg-colour-white);\n  font-size: var(--font-size-xl);\n  font-weight: var(--font-weight-semibold);\n  line-height: 24px;\n}\n\n.dds-otp--mobile .dds-otp__field {\n  width: 44px;\n  height: 44px;\n  font-size: var(--font-size-sm);\n  line-height: 20px;\n}\n\n.dds-otp__field--active {\n  border: 2px solid var(--border-colour-info);\n}\n\n.dds-otp--error .dds-otp__field {\n  border: 2px solid var(--border-colour-danger);\n}\n\n.dds-otp--disabled .dds-otp__fields {\n  cursor: not-allowed;\n}\n\n.dds-otp--disabled .dds-otp__native-input {\n  cursor: not-allowed;\n}\n\n.dds-otp--disabled .dds-otp__field {\n  border-color: var(--border-colour-default);\n  background: var(--bg-colour-disabled);\n  color: var(--text-colour-disabled);\n}\n\n.dds-otp__error-message {\n  margin: 0;\n  padding-top: var(--space-2);\n  color: var(--text-colour-danger);\n  font-size: var(--font-size-xs);\n  font-weight: var(--font-weight-medium);\n  line-height: 16px;\n  text-align: center;\n}\n\n.dds-otp__expiry {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  gap: var(--space-1);\n  margin: 0;\n  padding-top: var(--space-4);\n  color: var(--text-colour-tertiary);\n  font-size: var(--font-size-xs);\n  font-weight: var(--font-weight-regular);\n  line-height: 16px;\n  text-align: center;\n}\n\n.dds-otp__expiry dds-icon {\n  display: inline-flex;\n}\n\n.dds-otp__expiry strong {\n  color: var(--text-colour-default);\n  font-weight: var(--font-weight-semibold);\n}\n\n.dds-otp__expiry--expired {\n  color: var(--text-colour-danger);\n  font-weight: var(--font-weight-medium);\n}\n",
+                    "data": ":host {\n  display: inline-block;\n  max-width: 100%;\n}\n\n.dds-otp {\n  display: flex;\n  flex-direction: column;\n  width: 388px;\n  max-width: 100%;\n  color: var(--text-colour-default);\n  font-family: var(--font-family-primary);\n}\n\n.dds-otp--mobile {\n  width: 304px;\n}\n\n.dds-otp__label {\n  display: flex;\n  gap: var(--space-1);\n  padding-bottom: var(--space-2);\n  font-size: var(--font-size-sm);\n  font-weight: var(--font-weight-semibold);\n  line-height: 20px;\n}\n\n.dds-otp__required {\n  color: var(--red-700);\n}\n\n.dds-otp__fields {\n  position: relative;\n  display: grid;\n  grid-template-columns: repeat(6, minmax(0, 1fr));\n  gap: var(--space-2);\n  width: 100%;\n  cursor: text;\n}\n\n.dds-otp__native-input {\n  position: absolute;\n  z-index: 1;\n  inset: 0;\n  width: 100%;\n  height: 100%;\n  padding: 0;\n  border: 0;\n  opacity: 0;\n  cursor: text;\n}\n\n.dds-otp__native-input:focus {\n  outline: none;\n}\n\n.dds-otp__field {\n  box-sizing: border-box;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  height: 67px;\n  border: 1px solid var(--border-colour-strong);\n  border-radius: var(--radius-sm);\n  background: var(--bg-colour-white);\n  font-size: var(--font-size-xl);\n  font-weight: var(--font-weight-semibold);\n  line-height: 24px;\n}\n\n.dds-otp--mobile .dds-otp__field {\n  width: 44px;\n  height: 44px;\n  font-size: var(--font-size-sm);\n  line-height: 20px;\n}\n\n.dds-otp__field--active {\n  border: 2px solid var(--border-colour-info);\n}\n\n.dds-otp--error .dds-otp__field {\n  border: 2px solid var(--border-colour-danger);\n}\n\n.dds-otp--disabled .dds-otp__fields {\n  cursor: not-allowed;\n}\n\n.dds-otp--disabled .dds-otp__native-input {\n  cursor: not-allowed;\n}\n\n.dds-otp--disabled .dds-otp__field {\n  border-color: var(--border-colour-default);\n  background: var(--bg-colour-disabled);\n  color: var(--text-colour-disabled);\n}\n\n.dds-otp__error-message {\n  margin: 0;\n  padding-top: var(--space-2);\n  color: var(--text-colour-danger);\n  font-size: var(--font-size-xs);\n  font-weight: var(--font-weight-medium);\n  line-height: 16px;\n  text-align: center;\n}\n\n.dds-otp__expiry {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  gap: var(--space-1);\n  margin: 0;\n  padding-top: var(--space-4);\n  color: var(--text-colour-tertiary);\n  font-size: var(--font-size-xs);\n  font-weight: var(--font-weight-regular);\n  line-height: 16px;\n  text-align: center;\n}\n\n.dds-otp__expiry dds-icon {\n  display: inline-flex;\n}\n\n.dds-otp__expiry strong {\n  color: var(--text-colour-default);\n  font-weight: var(--font-weight-semibold);\n}\n\n.dds-otp__expiry--expired {\n  color: var(--text-colour-danger);\n  font-weight: var(--font-weight-medium);\n}\n\n.dds-otp__skeleton-label {\n  padding-bottom: var(--space-2);\n}\n\n.dds-otp__skeleton-fields {\n  display: grid;\n  grid-template-columns: repeat(6, minmax(0, 1fr));\n  gap: var(--space-2);\n  width: 100%;\n}\n\n.dds-otp__skeleton-expiry {\n  display: flex;\n  justify-content: center;\n  padding-top: var(--space-4);\n}\n",
                     "styleUrl": "./otp-input.component.css"
                 }
             ],
             "stylesData": "",
             "jsdoctags": [
                 {
-                    "pos": 357,
-                    "end": 452,
+                    "pos": 425,
+                    "end": 520,
                     "kind": 321,
                     "id": 0,
                     "flags": 16777216,
@@ -5003,7 +5059,7 @@
                         "name": "isDisabled",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 71,
+                        "line": 75,
                         "rawdescription": "\n",
                         "description": ""
                     }
@@ -5014,7 +5070,7 @@
                         "name": "isError",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 75,
+                        "line": 79,
                         "rawdescription": "\n",
                         "description": ""
                     }
@@ -5025,7 +5081,7 @@
                         "name": "activeIndex",
                         "type": "number",
                         "returnType": "number",
-                        "line": 79,
+                        "line": 83,
                         "rawdescription": "\n",
                         "description": ""
                     }
@@ -5036,7 +5092,7 @@
                         "name": "errorId",
                         "type": "string",
                         "returnType": "string",
-                        "line": 83,
+                        "line": 87,
                         "rawdescription": "\n",
                         "description": ""
                     }
@@ -5047,7 +5103,7 @@
                         "name": "expiryId",
                         "type": "string",
                         "returnType": "string",
-                        "line": 87,
+                        "line": 91,
                         "rawdescription": "\n",
                         "description": ""
                     }
@@ -5058,7 +5114,7 @@
                         "name": "describedBy",
                         "type": "unknown",
                         "returnType": "string | null",
-                        "line": 91,
+                        "line": 95,
                         "rawdescription": "\n",
                         "description": ""
                     }
@@ -5074,10 +5130,14 @@
                     {
                         "name": "IconComponent",
                         "type": "component"
+                    },
+                    {
+                        "name": "SkeletonComponent",
+                        "type": "component"
                     }
                 ]
             },
-            "templateData": "<div\n  class=\"dds-otp\"\n  [class.dds-otp--mobile]=\"size === 'mobile'\"\n  [class.dds-otp--error]=\"isError\"\n  [class.dds-otp--disabled]=\"isDisabled\"\n>\n  <label *ngIf=\"showLabel\" class=\"dds-otp__label\" [for]=\"inputId\">\n    {{ label }}\n    <span *ngIf=\"required\" class=\"dds-otp__required\" aria-hidden=\"true\">*</span>\n  </label>\n\n  <div class=\"dds-otp__fields\" (click)=\"focusInput()\">\n    <input\n      #otpInput\n      class=\"dds-otp__native-input\"\n      [id]=\"inputId\"\n      type=\"text\"\n      inputmode=\"numeric\"\n      autocomplete=\"one-time-code\"\n      pattern=\"[0-9]*\"\n      maxlength=\"6\"\n      [value]=\"value\"\n      [required]=\"required\"\n      [disabled]=\"isDisabled\"\n      [attr.aria-label]=\"showLabel ? null : ariaLabel\"\n      [attr.aria-invalid]=\"isError\"\n      [attr.aria-describedby]=\"describedBy\"\n      (input)=\"handleInput($event)\"\n      (focus)=\"hasNativeFocus = true\"\n      (blur)=\"hasNativeFocus = false\"\n    />\n\n    <span\n      *ngFor=\"let index of digits\"\n      class=\"dds-otp__field\"\n      [class.dds-otp__field--active]=\"isActive(index)\"\n      aria-hidden=\"true\"\n    >\n      {{ digitAt(index) }}\n    </span>\n  </div>\n\n  <p\n    *ngIf=\"isError && showErrorMessage\"\n    class=\"dds-otp__error-message\"\n    [id]=\"errorId\"\n    aria-live=\"polite\"\n  >\n    {{ errorMessage }}\n  </p>\n\n  <div\n    *ngIf=\"showCodeExpiry\"\n    class=\"dds-otp__expiry\"\n    [class.dds-otp__expiry--expired]=\"codeExpired\"\n    [id]=\"expiryId\"\n  >\n    <ng-container *ngIf=\"!codeExpired; else expired\">\n      <dds-icon name=\"clock\" [size]=\"size === 'mobile' ? 16 : 14\" aria-hidden=\"true\"></dds-icon>\n      <span>Code expires in</span>\n      <strong>{{ expiryTime }}</strong>\n    </ng-container>\n    <ng-template #expired>Code expired</ng-template>\n  </div>\n</div>\n"
+            "templateData": "<div\n  class=\"dds-otp\"\n  [class.dds-otp--mobile]=\"size === 'mobile'\"\n  [class.dds-otp--error]=\"isError\"\n  [class.dds-otp--disabled]=\"isDisabled\"\n  [attr.aria-busy]=\"loading ? 'true' : null\"\n  [attr.aria-label]=\"loading ? 'Loading verification code input' : null\"\n>\n  <div *ngIf=\"loading && showLabel\" class=\"dds-otp__skeleton-label\">\n    <dds-skeleton width=\"136px\" height=\"20px\"></dds-skeleton>\n  </div>\n\n  <div *ngIf=\"loading\" class=\"dds-otp__skeleton-fields\">\n    <dds-skeleton\n      *ngFor=\"let index of digits\"\n      width=\"100%\"\n      [height]=\"size === 'mobile' ? 44 : 67\"\n    ></dds-skeleton>\n  </div>\n\n  <div *ngIf=\"loading && showCodeExpiry\" class=\"dds-otp__skeleton-expiry\">\n    <dds-skeleton width=\"136px\" height=\"16px\"></dds-skeleton>\n  </div>\n\n  <label *ngIf=\"!loading && showLabel\" class=\"dds-otp__label\" [for]=\"inputId\">\n    {{ label }}\n    <span *ngIf=\"required\" class=\"dds-otp__required\" aria-hidden=\"true\">*</span>\n  </label>\n\n  <div *ngIf=\"!loading\" class=\"dds-otp__fields\" (click)=\"focusInput()\">\n    <input\n      #otpInput\n      class=\"dds-otp__native-input\"\n      [id]=\"inputId\"\n      type=\"text\"\n      inputmode=\"numeric\"\n      autocomplete=\"one-time-code\"\n      pattern=\"[0-9]*\"\n      maxlength=\"6\"\n      [value]=\"value\"\n      [required]=\"required\"\n      [disabled]=\"isDisabled\"\n      [attr.aria-label]=\"showLabel ? null : ariaLabel\"\n      [attr.aria-invalid]=\"isError\"\n      [attr.aria-describedby]=\"describedBy\"\n      (input)=\"handleInput($event)\"\n      (focus)=\"hasNativeFocus = true\"\n      (blur)=\"hasNativeFocus = false\"\n    />\n\n    <span\n      *ngFor=\"let index of digits\"\n      class=\"dds-otp__field\"\n      [class.dds-otp__field--active]=\"isActive(index)\"\n      aria-hidden=\"true\"\n    >\n      {{ digitAt(index) }}\n    </span>\n  </div>\n\n  <p\n    *ngIf=\"!loading && isError && showErrorMessage\"\n    class=\"dds-otp__error-message\"\n    [id]=\"errorId\"\n    aria-live=\"polite\"\n  >\n    {{ errorMessage }}\n  </p>\n\n  <div\n    *ngIf=\"!loading && showCodeExpiry\"\n    class=\"dds-otp__expiry\"\n    [class.dds-otp__expiry--expired]=\"codeExpired\"\n    [id]=\"expiryId\"\n  >\n    <ng-container *ngIf=\"!codeExpired; else expired\">\n      <dds-icon name=\"clock\" [size]=\"size === 'mobile' ? 16 : 14\" aria-hidden=\"true\"></dds-icon>\n      <span>Code expires in</span>\n      <strong>{{ expiryTime }}</strong>\n    </ng-container>\n    <ng-template #expired>Code expired</ng-template>\n  </div>\n</div>\n"
         },
         {
             "name": "PageToolbarComponent",
@@ -5428,7 +5488,7 @@
         },
         {
             "name": "PasswordInputComponent",
-            "id": "component-PasswordInputComponent-7f2a6c6aa18dc1faa8c9aac6abca3070fda4007d98d2f49b0f32609e8823626b190570a8c3a44beb9d4b78f702c766fd0d502466314ceefa7798be8339f1e58f",
+            "id": "component-PasswordInputComponent-341835549b945ca8d70525d2b91024210a9f3efd3b6bac06296041978bd17799bb487c288048d8a5debdfaf949549bf6e5e3d0bdd62531f5df2133a39e5dcfd8",
             "file": "src/app/components/password-input/password-input.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -5455,7 +5515,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 28,
+                    "line": 29,
                     "type": "string",
                     "decorators": []
                 },
@@ -5467,7 +5527,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 32,
+                    "line": 33,
                     "type": "string",
                     "decorators": []
                 },
@@ -5479,7 +5539,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 30,
+                    "line": 31,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -5491,7 +5551,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 22,
+                    "line": 23,
                     "type": "string",
                     "decorators": []
                 },
@@ -5503,7 +5563,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 18,
+                    "line": 19,
                     "type": "string",
                     "decorators": []
                 },
@@ -5515,8 +5575,20 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 19,
+                    "line": 20,
                     "type": "string",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "loading",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 34,
+                    "type": "boolean",
                     "decorators": []
                 },
                 {
@@ -5526,7 +5598,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 31,
+                    "line": 32,
                     "type": "string",
                     "decorators": []
                 },
@@ -5538,7 +5610,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 20,
+                    "line": 21,
                     "type": "string",
                     "decorators": []
                 },
@@ -5550,7 +5622,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 25,
+                    "line": 26,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -5562,7 +5634,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 27,
+                    "line": 28,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -5574,7 +5646,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 26,
+                    "line": 27,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -5586,7 +5658,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 23,
+                    "line": 24,
                     "type": "PasswordInputSize",
                     "decorators": []
                 },
@@ -5598,7 +5670,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 24,
+                    "line": 25,
                     "type": "PasswordInputState",
                     "decorators": []
                 },
@@ -5610,7 +5682,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 21,
+                    "line": 22,
                     "type": "string",
                     "decorators": []
                 },
@@ -5622,7 +5694,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 29,
+                    "line": 30,
                     "type": "boolean",
                     "decorators": []
                 }
@@ -5634,7 +5706,7 @@
                     "defaultValue": "new EventEmitter<string>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 34,
+                    "line": 36,
                     "type": "EventEmitter"
                 },
                 {
@@ -5643,7 +5715,7 @@
                     "defaultValue": "new EventEmitter<boolean>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 35,
+                    "line": 37,
                     "type": "EventEmitter"
                 }
             ],
@@ -5665,7 +5737,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 49,
+                    "line": 51,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n",
@@ -5691,7 +5763,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 54,
+                    "line": 56,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n",
@@ -5712,17 +5784,21 @@
                 {
                     "name": "IconComponent",
                     "type": "component"
+                },
+                {
+                    "name": "SkeletonComponent",
+                    "type": "component"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, EventEmitter, Input, Output } from '@angular/core';\nimport { IconComponent } from '../icon/icon.component';\n\nexport type PasswordInputSize = 'desktop' | 'mobile';\nexport type PasswordInputState = 'default' | 'focused' | 'error';\n\nlet nextPasswordInputId = 0;\n\n@Component({\n  selector: 'dds-password-input',\n  standalone: true,\n  imports: [CommonModule, IconComponent],\n  templateUrl: './password-input.component.html',\n  styleUrl: './password-input.component.css',\n})\nexport class PasswordInputComponent {\n  @Input() inputId = `dds-password-input-${nextPasswordInputId++}`;\n  @Input() label = 'Password';\n  @Input() placeholder = 'Enter password';\n  @Input() value = '';\n  @Input() errorMessage = 'Password is required';\n  @Input() size: PasswordInputSize = 'desktop';\n  @Input() state: PasswordInputState = 'default';\n  @Input() required = false;\n  @Input() showLabel = true;\n  @Input() showErrorMessage = true;\n  @Input() ariaLabel?: string;\n  @Input() visible = false;\n  @Input() disabled = false;\n  @Input() name?: string;\n  @Input() autocomplete = 'current-password';\n\n  @Output() valueChange = new EventEmitter<string>();\n  @Output() visibleChange = new EventEmitter<boolean>();\n\n  get isError(): boolean {\n    return this.state === 'error';\n  }\n\n  get iconSize(): number {\n    return this.size === 'mobile' ? 20 : 24;\n  }\n\n  get errorId(): string {\n    return `${this.inputId}-error`;\n  }\n\n  handleInput(event: Event): void {\n    this.value = (event.target as HTMLInputElement).value;\n    this.valueChange.emit(this.value);\n  }\n\n  toggleVisibility(): void {\n    if (this.disabled) {\n      return;\n    }\n\n    this.visible = !this.visible;\n    this.visibleChange.emit(this.visible);\n  }\n}\n",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, EventEmitter, Input, Output } from '@angular/core';\nimport { IconComponent } from '../icon/icon.component';\nimport { SkeletonComponent } from '../skeleton/skeleton.component';\n\nexport type PasswordInputSize = 'desktop' | 'mobile';\nexport type PasswordInputState = 'default' | 'focused' | 'error';\n\nlet nextPasswordInputId = 0;\n\n@Component({\n  selector: 'dds-password-input',\n  standalone: true,\n  imports: [CommonModule, IconComponent, SkeletonComponent],\n  templateUrl: './password-input.component.html',\n  styleUrl: './password-input.component.css',\n})\nexport class PasswordInputComponent {\n  @Input() inputId = `dds-password-input-${nextPasswordInputId++}`;\n  @Input() label = 'Password';\n  @Input() placeholder = 'Enter password';\n  @Input() value = '';\n  @Input() errorMessage = 'Password is required';\n  @Input() size: PasswordInputSize = 'desktop';\n  @Input() state: PasswordInputState = 'default';\n  @Input() required = false;\n  @Input() showLabel = true;\n  @Input() showErrorMessage = true;\n  @Input() ariaLabel?: string;\n  @Input() visible = false;\n  @Input() disabled = false;\n  @Input() name?: string;\n  @Input() autocomplete = 'current-password';\n  @Input() loading = false;\n\n  @Output() valueChange = new EventEmitter<string>();\n  @Output() visibleChange = new EventEmitter<boolean>();\n\n  get isError(): boolean {\n    return this.state === 'error';\n  }\n\n  get iconSize(): number {\n    return this.size === 'mobile' ? 20 : 24;\n  }\n\n  get errorId(): string {\n    return `${this.inputId}-error`;\n  }\n\n  handleInput(event: Event): void {\n    this.value = (event.target as HTMLInputElement).value;\n    this.valueChange.emit(this.value);\n  }\n\n  toggleVisibility(): void {\n    if (this.disabled) {\n      return;\n    }\n\n    this.visible = !this.visible;\n    this.visibleChange.emit(this.visible);\n  }\n}\n",
             "styleUrl": "./password-input.component.css",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ":host {\n  display: inline-block;\n  max-width: 100%;\n}\n\n.dds-password-input {\n  display: flex;\n  flex-direction: column;\n  width: 460px;\n  max-width: 100%;\n  font-family: var(--font-family-primary);\n}\n\n.dds-password-input--mobile {\n  width: 332px;\n}\n\n.dds-password-input__label {\n  display: flex;\n  gap: var(--space-1);\n  padding-bottom: var(--space-2);\n  color: var(--text-colour-default);\n  font-size: var(--font-size-sm);\n  font-weight: var(--font-weight-semibold);\n  line-height: 20px;\n}\n\n.dds-password-input--mobile .dds-password-input__label {\n  padding-bottom: var(--space-1);\n  font-size: var(--font-size-xs);\n  line-height: 16px;\n}\n\n.dds-password-input__required,\n.dds-password-input__error {\n  color: var(--text-colour-danger);\n}\n\n.dds-password-input__field {\n  display: flex;\n  align-items: center;\n  min-height: 48px;\n  padding: 0 var(--space-3);\n  border: 1px solid var(--border-colour-strong);\n  border-radius: var(--radius-sm);\n  background-color: var(--colour-neutral-white);\n  box-sizing: border-box;\n}\n\n.dds-password-input--mobile .dds-password-input__field {\n  min-height: 40px;\n}\n\n.dds-password-input__control {\n  flex: 1;\n  min-width: 0;\n  padding: var(--space-none);\n  border: 0;\n  outline: 0;\n  background: transparent;\n  color: var(--text-colour-default);\n  font: inherit;\n  font-size: var(--font-size-md);\n  font-weight: var(--font-weight-regular);\n  line-height: 24px;\n}\n\n.dds-password-input--mobile .dds-password-input__control {\n  font-size: var(--font-size-sm);\n  line-height: 20px;\n}\n\n.dds-password-input__control::placeholder {\n  color: var(--text-colour-placeholder);\n  opacity: 1;\n}\n\n.dds-password-input__visibility {\n  display: inline-flex;\n  flex: 0 0 auto;\n  align-items: center;\n  justify-content: center;\n  width: 24px;\n  height: 24px;\n  padding: var(--space-none);\n  border: 0;\n  outline: 0;\n  background: transparent;\n  color: var(--text-colour-default);\n  cursor: pointer;\n}\n\n.dds-password-input--mobile .dds-password-input__visibility {\n  width: 20px;\n  height: 20px;\n}\n\n.dds-password-input__field:focus-within,\n.dds-password-input--focused .dds-password-input__field {\n  border: 2px solid var(--border-colour-info);\n  padding-right: 11px;\n  padding-left: 11px;\n}\n\n.dds-password-input--error .dds-password-input__field {\n  border: 2px solid var(--border-colour-danger);\n  padding-right: 11px;\n  padding-left: 11px;\n}\n\n.dds-password-input__visibility:focus-visible {\n  border-radius: var(--radius-xs);\n  box-shadow: 0 0 0 2px var(--blue-300);\n}\n\n.dds-password-input__error {\n  margin: var(--space-none);\n  padding-top: var(--space-2);\n  font-size: var(--font-size-xs);\n  font-weight: var(--font-weight-medium);\n  line-height: 16px;\n}\n\n.dds-password-input--disabled {\n  color: var(--text-colour-disabled);\n}\n\n.dds-password-input--disabled .dds-password-input__field {\n  border-color: var(--border-colour-disabled);\n  background-color: var(--bg-colour-disabled);\n}\n\n.dds-password-input--disabled .dds-password-input__control,\n.dds-password-input--disabled .dds-password-input__visibility {\n  color: var(--text-colour-disabled);\n  cursor: not-allowed;\n}\n",
+                    "data": ":host {\n  display: inline-block;\n  max-width: 100%;\n}\n\n.dds-password-input {\n  display: flex;\n  flex-direction: column;\n  width: 460px;\n  max-width: 100%;\n  font-family: var(--font-family-primary);\n}\n\n.dds-password-input--mobile {\n  width: 332px;\n}\n\n.dds-password-input__label {\n  display: flex;\n  gap: var(--space-1);\n  padding-bottom: var(--space-2);\n  color: var(--text-colour-default);\n  font-size: var(--font-size-sm);\n  font-weight: var(--font-weight-semibold);\n  line-height: 20px;\n}\n\n.dds-password-input--mobile .dds-password-input__label {\n  padding-bottom: var(--space-1);\n  font-size: var(--font-size-xs);\n  line-height: 16px;\n}\n\n.dds-password-input__required,\n.dds-password-input__error {\n  color: var(--text-colour-danger);\n}\n\n.dds-password-input__field {\n  display: flex;\n  align-items: center;\n  min-height: 48px;\n  padding: 0 var(--space-3);\n  border: 1px solid var(--border-colour-strong);\n  border-radius: var(--radius-sm);\n  background-color: var(--colour-neutral-white);\n  box-sizing: border-box;\n}\n\n.dds-password-input--mobile .dds-password-input__field {\n  min-height: 40px;\n}\n\n.dds-password-input__control {\n  flex: 1;\n  min-width: 0;\n  padding: var(--space-none);\n  border: 0;\n  outline: 0;\n  background: transparent;\n  color: var(--text-colour-default);\n  font: inherit;\n  font-size: var(--font-size-md);\n  font-weight: var(--font-weight-regular);\n  line-height: 24px;\n}\n\n.dds-password-input--mobile .dds-password-input__control {\n  font-size: var(--font-size-sm);\n  line-height: 20px;\n}\n\n.dds-password-input__control::placeholder {\n  color: var(--text-colour-placeholder);\n  opacity: 1;\n}\n\n.dds-password-input__visibility {\n  display: inline-flex;\n  flex: 0 0 auto;\n  align-items: center;\n  justify-content: center;\n  width: 24px;\n  height: 24px;\n  padding: var(--space-none);\n  border: 0;\n  outline: 0;\n  background: transparent;\n  color: var(--text-colour-default);\n  cursor: pointer;\n}\n\n.dds-password-input--mobile .dds-password-input__visibility {\n  width: 20px;\n  height: 20px;\n}\n\n.dds-password-input__field:focus-within,\n.dds-password-input--focused .dds-password-input__field {\n  border: 2px solid var(--border-colour-info);\n  padding-right: 11px;\n  padding-left: 11px;\n}\n\n.dds-password-input--error .dds-password-input__field {\n  border: 2px solid var(--border-colour-danger);\n  padding-right: 11px;\n  padding-left: 11px;\n}\n\n.dds-password-input__visibility:focus-visible {\n  border-radius: var(--radius-xs);\n  box-shadow: 0 0 0 2px var(--blue-300);\n}\n\n.dds-password-input__error {\n  margin: var(--space-none);\n  padding-top: var(--space-2);\n  font-size: var(--font-size-xs);\n  font-weight: var(--font-weight-medium);\n  line-height: 16px;\n}\n\n.dds-password-input--disabled {\n  color: var(--text-colour-disabled);\n}\n\n.dds-password-input--disabled .dds-password-input__field {\n  border-color: var(--border-colour-disabled);\n  background-color: var(--bg-colour-disabled);\n}\n\n.dds-password-input--disabled .dds-password-input__control,\n.dds-password-input--disabled .dds-password-input__visibility {\n  color: var(--text-colour-disabled);\n  cursor: not-allowed;\n}\n\n.dds-password-input__skeleton-label {\n  padding-bottom: var(--space-2);\n}\n\n.dds-password-input--mobile .dds-password-input__skeleton-label {\n  padding-bottom: var(--space-1);\n}\n",
                     "styleUrl": "./password-input.component.css"
                 }
             ],
@@ -5735,7 +5811,7 @@
                         "name": "isError",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 37,
+                        "line": 39,
                         "rawdescription": "\n",
                         "description": ""
                     }
@@ -5746,7 +5822,7 @@
                         "name": "iconSize",
                         "type": "number",
                         "returnType": "number",
-                        "line": 41,
+                        "line": 43,
                         "rawdescription": "\n",
                         "description": ""
                     }
@@ -5757,7 +5833,7 @@
                         "name": "errorId",
                         "type": "string",
                         "returnType": "string",
-                        "line": 45,
+                        "line": 47,
                         "rawdescription": "\n",
                         "description": ""
                     }
@@ -5773,14 +5849,18 @@
                     {
                         "name": "IconComponent",
                         "type": "component"
+                    },
+                    {
+                        "name": "SkeletonComponent",
+                        "type": "component"
                     }
                 ]
             },
-            "templateData": "<div\n  class=\"dds-password-input\"\n  [class.dds-password-input--mobile]=\"size === 'mobile'\"\n  [class.dds-password-input--focused]=\"state === 'focused'\"\n  [class.dds-password-input--error]=\"isError\"\n  [class.dds-password-input--disabled]=\"disabled\"\n>\n  <label *ngIf=\"showLabel\" class=\"dds-password-input__label\" [for]=\"inputId\">\n    {{ label }}\n    <span *ngIf=\"required\" class=\"dds-password-input__required\" aria-hidden=\"true\">*</span>\n  </label>\n\n  <div class=\"dds-password-input__field\">\n    <input\n      class=\"dds-password-input__control\"\n      [id]=\"inputId\"\n      [name]=\"name\"\n      [type]=\"visible ? 'text' : 'password'\"\n      [value]=\"value\"\n      [placeholder]=\"placeholder\"\n      [required]=\"required\"\n      [disabled]=\"disabled\"\n      [autocomplete]=\"autocomplete\"\n      [attr.aria-label]=\"showLabel ? null : ariaLabel\"\n      [attr.aria-invalid]=\"isError ? 'true' : null\"\n      [attr.aria-describedby]=\"isError && showErrorMessage ? errorId : null\"\n      (input)=\"handleInput($event)\"\n    />\n\n    <button\n      class=\"dds-password-input__visibility\"\n      type=\"button\"\n      [disabled]=\"disabled\"\n      [attr.aria-label]=\"visible ? 'Hide password' : 'Show password'\"\n      [attr.aria-controls]=\"inputId\"\n      [attr.aria-pressed]=\"visible\"\n      (click)=\"toggleVisibility()\"\n    >\n      <dds-icon [name]=\"visible ? 'eye' : 'eye-off'\" [size]=\"iconSize\"></dds-icon>\n    </button>\n  </div>\n\n  <p *ngIf=\"isError && showErrorMessage\" class=\"dds-password-input__error\" [id]=\"errorId\">\n    {{ errorMessage }}\n  </p>\n</div>\n"
+            "templateData": "<div\n  class=\"dds-password-input\"\n  [class.dds-password-input--mobile]=\"size === 'mobile'\"\n  [class.dds-password-input--focused]=\"state === 'focused'\"\n  [class.dds-password-input--error]=\"isError\"\n  [class.dds-password-input--disabled]=\"disabled\"\n  [attr.aria-busy]=\"loading ? 'true' : null\"\n  [attr.aria-label]=\"loading ? 'Loading password input' : null\"\n>\n  <ng-container *ngIf=\"loading\">\n    <div *ngIf=\"showLabel\" class=\"dds-password-input__skeleton-label\">\n      <dds-skeleton width=\"88px\" [height]=\"size === 'mobile' ? 16 : 20\"></dds-skeleton>\n    </div>\n    <dds-skeleton width=\"100%\" [height]=\"size === 'mobile' ? 40 : 48\"></dds-skeleton>\n  </ng-container>\n\n  <label *ngIf=\"!loading && showLabel\" class=\"dds-password-input__label\" [for]=\"inputId\">\n    {{ label }}\n    <span *ngIf=\"required\" class=\"dds-password-input__required\" aria-hidden=\"true\">*</span>\n  </label>\n\n  <div *ngIf=\"!loading\" class=\"dds-password-input__field\">\n    <input\n      class=\"dds-password-input__control\"\n      [id]=\"inputId\"\n      [name]=\"name\"\n      [type]=\"visible ? 'text' : 'password'\"\n      [value]=\"value\"\n      [placeholder]=\"placeholder\"\n      [required]=\"required\"\n      [disabled]=\"disabled\"\n      [autocomplete]=\"autocomplete\"\n      [attr.aria-label]=\"showLabel ? null : ariaLabel\"\n      [attr.aria-invalid]=\"isError ? 'true' : null\"\n      [attr.aria-describedby]=\"isError && showErrorMessage ? errorId : null\"\n      (input)=\"handleInput($event)\"\n    />\n\n    <button\n      class=\"dds-password-input__visibility\"\n      type=\"button\"\n      [disabled]=\"disabled\"\n      [attr.aria-label]=\"visible ? 'Hide password' : 'Show password'\"\n      [attr.aria-controls]=\"inputId\"\n      [attr.aria-pressed]=\"visible\"\n      (click)=\"toggleVisibility()\"\n    >\n      <dds-icon [name]=\"visible ? 'eye' : 'eye-off'\" [size]=\"iconSize\"></dds-icon>\n    </button>\n  </div>\n\n  <p\n    *ngIf=\"!loading && isError && showErrorMessage\"\n    class=\"dds-password-input__error\"\n    [id]=\"errorId\"\n  >\n    {{ errorMessage }}\n  </p>\n</div>\n"
         },
         {
             "name": "RadioComponent",
-            "id": "component-RadioComponent-f91cfc97679e028470ef48c6aebcb81c284a8118a2f82a49e48f00abecb283918ab0a02281fb25e9634cef09e9d9b266ce49973ca3a27b2335ceff0bcbde668e",
+            "id": "component-RadioComponent-f6cd5c7dcced4d1fe475fbd928c10497548fdd129ea9e17c69c748c3d80f7b8b1534b81b7afb478c7000bba33a76448d6152c7e70a141cad6a6e492385a814ee",
             "file": "src/app/components/radio/radio.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -5808,7 +5888,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 27,
+                    "line": 28,
                     "type": "string",
                     "decorators": []
                 },
@@ -5820,7 +5900,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 22,
+                    "line": 23,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -5831,7 +5911,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 30,
+                    "line": 31,
                     "type": "string",
                     "decorators": []
                 },
@@ -5843,7 +5923,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 28,
+                    "line": 29,
                     "type": "string",
                     "decorators": []
                 },
@@ -5855,7 +5935,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 17,
+                    "line": 18,
                     "type": "string",
                     "decorators": []
                 },
@@ -5867,8 +5947,20 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 19,
+                    "line": 20,
                     "type": "string",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "loading",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 32,
+                    "type": "boolean",
                     "decorators": []
                 },
                 {
@@ -5879,7 +5971,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 18,
+                    "line": 19,
                     "type": "string",
                     "decorators": []
                 },
@@ -5891,7 +5983,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 20,
+                    "line": 21,
                     "type": "string",
                     "decorators": []
                 },
@@ -5903,7 +5995,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 24,
+                    "line": 25,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -5915,7 +6007,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 29,
+                    "line": 30,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -5927,7 +6019,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 25,
+                    "line": 26,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -5939,7 +6031,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 26,
+                    "line": 27,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -5951,7 +6043,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 23,
+                    "line": 24,
                     "type": "RadioState",
                     "decorators": []
                 },
@@ -5963,7 +6055,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 21,
+                    "line": 22,
                     "type": "string",
                     "decorators": []
                 }
@@ -5975,7 +6067,7 @@
                     "defaultValue": "new EventEmitter<boolean>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 32,
+                    "line": 34,
                     "type": "EventEmitter"
                 },
                 {
@@ -5984,7 +6076,7 @@
                     "defaultValue": "new EventEmitter<string>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 33,
+                    "line": 35,
                     "type": "EventEmitter"
                 }
             ],
@@ -5997,7 +6089,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 52,
+                    "line": 54,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n",
@@ -6014,25 +6106,29 @@
                 {
                     "name": "CommonModule",
                     "type": "module"
+                },
+                {
+                    "name": "SkeletonComponent",
+                    "type": "component"
                 }
             ],
             "description": "<p>A native radio input with DDS label, validation, focus, and disabled treatments.</p>\n",
             "rawdescription": "\nA native radio input with DDS label, validation, focus, and disabled treatments.",
             "type": "component",
-            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, EventEmitter, Input, Output } from '@angular/core';\n\nexport type RadioState = 'default' | 'focused' | 'disabled' | 'invalid';\n\nlet nextRadioId = 0;\n\n/** A native radio input with DDS label, validation, focus, and disabled treatments. */\n@Component({\n  selector: 'dds-radio',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './radio.component.html',\n  styleUrl: './radio.component.css',\n})\nexport class RadioComponent {\n  @Input() inputId = `dds-radio-${nextRadioId++}`;\n  @Input() name = `dds-radio-group-${nextRadioId}`;\n  @Input() label = 'Label';\n  @Input() option = 'Option';\n  @Input() value = 'option';\n  @Input() checked = false;\n  @Input() state: RadioState = 'default';\n  @Input() required = false;\n  @Input() showLabel = true;\n  @Input() showOption = true;\n  @Input() ariaLabel = 'Radio option';\n  @Input() errorMessage = 'Select an option to continue.';\n  @Input() showErrorMessage = true;\n  @Input() describedBy?: string;\n\n  @Output() checkedChange = new EventEmitter<boolean>();\n  @Output() selected = new EventEmitter<string>();\n\n  get isDisabled(): boolean {\n    return this.state === 'disabled';\n  }\n\n  get isInvalid(): boolean {\n    return this.state === 'invalid';\n  }\n\n  get errorId(): string {\n    return `${this.inputId}-error`;\n  }\n\n  get ariaDescribedBy(): string | null {\n    if (this.describedBy) return this.describedBy;\n    return this.isInvalid && this.showErrorMessage ? this.errorId : null;\n  }\n\n  handleChange(): void {\n    this.checked = true;\n    this.checkedChange.emit(true);\n    this.selected.emit(this.value);\n  }\n}\n",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, EventEmitter, Input, Output } from '@angular/core';\nimport { SkeletonComponent } from '../skeleton/skeleton.component';\n\nexport type RadioState = 'default' | 'focused' | 'disabled' | 'invalid';\n\nlet nextRadioId = 0;\n\n/** A native radio input with DDS label, validation, focus, and disabled treatments. */\n@Component({\n  selector: 'dds-radio',\n  standalone: true,\n  imports: [CommonModule, SkeletonComponent],\n  templateUrl: './radio.component.html',\n  styleUrl: './radio.component.css',\n})\nexport class RadioComponent {\n  @Input() inputId = `dds-radio-${nextRadioId++}`;\n  @Input() name = `dds-radio-group-${nextRadioId}`;\n  @Input() label = 'Label';\n  @Input() option = 'Option';\n  @Input() value = 'option';\n  @Input() checked = false;\n  @Input() state: RadioState = 'default';\n  @Input() required = false;\n  @Input() showLabel = true;\n  @Input() showOption = true;\n  @Input() ariaLabel = 'Radio option';\n  @Input() errorMessage = 'Select an option to continue.';\n  @Input() showErrorMessage = true;\n  @Input() describedBy?: string;\n  @Input() loading = false;\n\n  @Output() checkedChange = new EventEmitter<boolean>();\n  @Output() selected = new EventEmitter<string>();\n\n  get isDisabled(): boolean {\n    return this.state === 'disabled';\n  }\n\n  get isInvalid(): boolean {\n    return this.state === 'invalid';\n  }\n\n  get errorId(): string {\n    return `${this.inputId}-error`;\n  }\n\n  get ariaDescribedBy(): string | null {\n    if (this.describedBy) return this.describedBy;\n    return this.isInvalid && this.showErrorMessage ? this.errorId : null;\n  }\n\n  handleChange(): void {\n    this.checked = true;\n    this.checkedChange.emit(true);\n    this.selected.emit(this.value);\n  }\n}\n",
             "styleUrl": "./radio.component.css",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ":host {\n  display: inline-block;\n  max-width: 100%;\n}\n\n.dds-radio {\n  display: flex;\n  flex-direction: column;\n  align-items: flex-start;\n  color: var(--text-colour-default);\n  font-family: var(--font-family-primary);\n  font-size: var(--font-size-sm);\n  line-height: var(--font-size-xl);\n}\n\n.dds-radio__field-label {\n  display: flex;\n  gap: var(--space-1);\n  padding-bottom: var(--space-2);\n  font-weight: var(--font-weight-semibold);\n}\n\n.dds-radio__required,\n.dds-radio__error {\n  color: var(--text-colour-danger);\n}\n\n.dds-radio__option {\n  display: inline-flex;\n  align-items: center;\n  gap: var(--space-2);\n  cursor: pointer;\n}\n\n.dds-radio__native {\n  position: absolute;\n  width: 1px;\n  height: 1px;\n  margin: -1px;\n  overflow: hidden;\n  clip: rect(0 0 0 0);\n  clip-path: inset(50%);\n  white-space: nowrap;\n}\n\n.dds-radio__circle {\n  box-sizing: border-box;\n  display: grid;\n  flex: 0 0 auto;\n  place-items: center;\n  width: 20px;\n  height: 20px;\n  border: 1px solid var(--border-colour-strong);\n  border-radius: var(--radius-full);\n  background: var(--bg-colour-white);\n}\n\n.dds-radio__circle > span {\n  width: 10px;\n  height: 10px;\n  border-radius: var(--radius-full);\n  background: transparent;\n}\n\n.dds-radio__native:checked + .dds-radio__circle {\n  border: 2px solid var(--border-colour-info);\n}\n\n.dds-radio__native:checked + .dds-radio__circle > span {\n  background: var(--bg-colour-accent);\n}\n\n.dds-radio__native:focus-visible + .dds-radio__circle,\n.dds-radio--focused .dds-radio__circle {\n  border: 2px solid var(--border-colour-info);\n  outline: 2px solid var(--bg-colour-info-muted);\n  outline-offset: 2px;\n}\n\n.dds-radio--invalid .dds-radio__circle,\n.dds-radio--invalid .dds-radio__native:checked + .dds-radio__circle {\n  border: 2px solid var(--border-colour-danger);\n}\n\n.dds-radio--disabled {\n  color: var(--text-colour-disabled);\n}\n\n.dds-radio--disabled .dds-radio__option {\n  cursor: not-allowed;\n}\n\n.dds-radio--disabled .dds-radio__circle {\n  border-color: var(--border-colour-strong);\n  background: var(--bg-colour-disabled);\n}\n\n.dds-radio--disabled .dds-radio__native:checked + .dds-radio__circle {\n  border-color: var(--border-colour-strong);\n}\n\n.dds-radio--disabled .dds-radio__native:checked + .dds-radio__circle > span {\n  background: var(--text-colour-disabled);\n}\n\n.dds-radio__error {\n  margin: 0;\n  padding-top: var(--space-2);\n  font-size: var(--font-size-xs);\n  font-weight: var(--font-weight-medium);\n  line-height: var(--font-size-md);\n}\n",
+                    "data": ":host {\n  display: inline-block;\n  max-width: 100%;\n}\n\n.dds-radio {\n  display: flex;\n  flex-direction: column;\n  align-items: flex-start;\n  color: var(--text-colour-default);\n  font-family: var(--font-family-primary);\n  font-size: var(--font-size-sm);\n  line-height: var(--font-size-xl);\n}\n\n.dds-radio__field-label {\n  display: flex;\n  gap: var(--space-1);\n  padding-bottom: var(--space-2);\n  font-weight: var(--font-weight-semibold);\n}\n\n.dds-radio__required,\n.dds-radio__error {\n  color: var(--text-colour-danger);\n}\n\n.dds-radio__skeleton-label {\n  padding-bottom: var(--space-2);\n}\n\n.dds-radio__skeleton-option {\n  display: flex;\n  align-items: center;\n  gap: var(--space-2);\n}\n\n.dds-radio__option {\n  display: inline-flex;\n  align-items: center;\n  gap: var(--space-2);\n  cursor: pointer;\n}\n\n.dds-radio__native {\n  position: absolute;\n  width: 1px;\n  height: 1px;\n  margin: -1px;\n  overflow: hidden;\n  clip: rect(0 0 0 0);\n  clip-path: inset(50%);\n  white-space: nowrap;\n}\n\n.dds-radio__circle {\n  box-sizing: border-box;\n  display: grid;\n  flex: 0 0 auto;\n  place-items: center;\n  width: 20px;\n  height: 20px;\n  border: 1px solid var(--border-colour-strong);\n  border-radius: var(--radius-full);\n  background: var(--bg-colour-white);\n}\n\n.dds-radio__circle > span {\n  width: 10px;\n  height: 10px;\n  border-radius: var(--radius-full);\n  background: transparent;\n}\n\n.dds-radio__native:checked + .dds-radio__circle {\n  border: 2px solid var(--border-colour-info);\n}\n\n.dds-radio__native:checked + .dds-radio__circle > span {\n  background: var(--bg-colour-accent);\n}\n\n.dds-radio__native:focus-visible + .dds-radio__circle,\n.dds-radio--focused .dds-radio__circle {\n  border: 2px solid var(--border-colour-info);\n  outline: 2px solid var(--bg-colour-info-muted);\n  outline-offset: 2px;\n}\n\n.dds-radio--invalid .dds-radio__circle,\n.dds-radio--invalid .dds-radio__native:checked + .dds-radio__circle {\n  border: 2px solid var(--border-colour-danger);\n}\n\n.dds-radio--disabled {\n  color: var(--text-colour-disabled);\n}\n\n.dds-radio--disabled .dds-radio__option {\n  cursor: not-allowed;\n}\n\n.dds-radio--disabled .dds-radio__circle {\n  border-color: var(--border-colour-strong);\n  background: var(--bg-colour-disabled);\n}\n\n.dds-radio--disabled .dds-radio__native:checked + .dds-radio__circle {\n  border-color: var(--border-colour-strong);\n}\n\n.dds-radio--disabled .dds-radio__native:checked + .dds-radio__circle > span {\n  background: var(--text-colour-disabled);\n}\n\n.dds-radio__error {\n  margin: 0;\n  padding-top: var(--space-2);\n  font-size: var(--font-size-xs);\n  font-weight: var(--font-weight-medium);\n  line-height: var(--font-size-md);\n}\n",
                     "styleUrl": "./radio.component.css"
                 }
             ],
             "stylesData": "",
             "jsdoctags": [
                 {
-                    "pos": 217,
-                    "end": 304,
+                    "pos": 285,
+                    "end": 372,
                     "kind": 321,
                     "id": 0,
                     "flags": 16777216,
@@ -6049,7 +6145,7 @@
                         "name": "isDisabled",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 35,
+                        "line": 37,
                         "rawdescription": "\n",
                         "description": ""
                     }
@@ -6060,7 +6156,7 @@
                         "name": "isInvalid",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 39,
+                        "line": 41,
                         "rawdescription": "\n",
                         "description": ""
                     }
@@ -6071,7 +6167,7 @@
                         "name": "errorId",
                         "type": "string",
                         "returnType": "string",
-                        "line": 43,
+                        "line": 45,
                         "rawdescription": "\n",
                         "description": ""
                     }
@@ -6082,7 +6178,7 @@
                         "name": "ariaDescribedBy",
                         "type": "unknown",
                         "returnType": "string | null",
-                        "line": 47,
+                        "line": 49,
                         "rawdescription": "\n",
                         "description": ""
                     }
@@ -6100,14 +6196,18 @@
                     {
                         "name": "CommonModule",
                         "type": "module"
+                    },
+                    {
+                        "name": "SkeletonComponent",
+                        "type": "component"
                     }
                 ]
             },
-            "templateData": "<div\n  class=\"dds-radio\"\n  [class.dds-radio--focused]=\"state === 'focused'\"\n  [class.dds-radio--disabled]=\"isDisabled\"\n  [class.dds-radio--invalid]=\"isInvalid\"\n>\n  <div *ngIf=\"showLabel\" class=\"dds-radio__field-label\">\n    {{ label }}<span *ngIf=\"required\" class=\"dds-radio__required\" aria-hidden=\"true\">*</span>\n  </div>\n\n  <label class=\"dds-radio__option\" [for]=\"inputId\">\n    <input\n      class=\"dds-radio__native\"\n      type=\"radio\"\n      [id]=\"inputId\"\n      [name]=\"name\"\n      [value]=\"value\"\n      [checked]=\"checked\"\n      [required]=\"required\"\n      [disabled]=\"isDisabled\"\n      [attr.aria-label]=\"showOption ? null : ariaLabel\"\n      [attr.aria-invalid]=\"isInvalid ? 'true' : null\"\n      [attr.aria-describedby]=\"ariaDescribedBy\"\n      (change)=\"handleChange()\"\n    />\n    <span class=\"dds-radio__circle\" aria-hidden=\"true\"><span></span></span>\n    <span *ngIf=\"showOption\" class=\"dds-radio__option-text\">{{ option }}</span>\n  </label>\n\n  <p *ngIf=\"isInvalid && showErrorMessage\" class=\"dds-radio__error\" [id]=\"errorId\">\n    {{ errorMessage }}\n  </p>\n</div>\n"
+            "templateData": "<div\n  class=\"dds-radio\"\n  [class.dds-radio--focused]=\"state === 'focused'\"\n  [class.dds-radio--disabled]=\"isDisabled\"\n  [class.dds-radio--invalid]=\"isInvalid\"\n  [attr.aria-busy]=\"loading ? 'true' : null\"\n  [attr.aria-label]=\"loading ? 'Loading radio' : null\"\n>\n  <ng-container *ngIf=\"loading\">\n    <div *ngIf=\"showLabel\" class=\"dds-radio__skeleton-label\">\n      <dds-skeleton width=\"112px\" height=\"20px\"></dds-skeleton>\n    </div>\n    <div class=\"dds-radio__skeleton-option\">\n      <dds-skeleton width=\"20px\" height=\"20px\"></dds-skeleton>\n      <dds-skeleton *ngIf=\"showOption\" width=\"136px\" height=\"20px\"></dds-skeleton>\n    </div>\n  </ng-container>\n\n  <div *ngIf=\"!loading && showLabel\" class=\"dds-radio__field-label\">\n    {{ label }}<span *ngIf=\"required\" class=\"dds-radio__required\" aria-hidden=\"true\">*</span>\n  </div>\n\n  <label *ngIf=\"!loading\" class=\"dds-radio__option\" [for]=\"inputId\">\n    <input\n      class=\"dds-radio__native\"\n      type=\"radio\"\n      [id]=\"inputId\"\n      [name]=\"name\"\n      [value]=\"value\"\n      [checked]=\"checked\"\n      [required]=\"required\"\n      [disabled]=\"isDisabled\"\n      [attr.aria-label]=\"showOption ? null : ariaLabel\"\n      [attr.aria-invalid]=\"isInvalid ? 'true' : null\"\n      [attr.aria-describedby]=\"ariaDescribedBy\"\n      (change)=\"handleChange()\"\n    />\n    <span class=\"dds-radio__circle\" aria-hidden=\"true\"><span></span></span>\n    <span *ngIf=\"showOption\" class=\"dds-radio__option-text\">{{ option }}</span>\n  </label>\n\n  <p *ngIf=\"!loading && isInvalid && showErrorMessage\" class=\"dds-radio__error\" [id]=\"errorId\">\n    {{ errorMessage }}\n  </p>\n</div>\n"
         },
         {
             "name": "RadioGroupComponent",
-            "id": "component-RadioGroupComponent-58bbad0d5f63ed4ce5892f0ad30c4fe64ae2949b6b7c0ed5da7afce4e8053989c08d779224463484bf04dfb249235aaa652c2966efcd52bc7e3f08fa8e2e162c",
+            "id": "component-RadioGroupComponent-f5f03b7e89d0d8f28fe23271108c162c72be3026d2a54d703ff3f5fdc5a40804b5a1189a335b9fa4ca60f47aab1a127f23d907982e3f2849b62ae10c7d4cef0e",
             "file": "src/app/components/radio-group/radio-group.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -6135,7 +6235,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 34,
+                    "line": 35,
                     "type": "RadioGroupDirection",
                     "decorators": []
                 },
@@ -6147,7 +6247,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 38,
+                    "line": 39,
                     "type": "string",
                     "decorators": []
                 },
@@ -6159,7 +6259,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 25,
+                    "line": 26,
                     "type": "string",
                     "decorators": []
                 },
@@ -6171,8 +6271,20 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 26,
+                    "line": 27,
                     "type": "string",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "loading",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 40,
+                    "type": "boolean",
                     "decorators": []
                 },
                 {
@@ -6183,7 +6295,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 27,
+                    "line": 28,
                     "type": "RadioOption[]",
                     "decorators": []
                 },
@@ -6195,7 +6307,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 36,
+                    "line": 37,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -6207,7 +6319,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 33,
+                    "line": 34,
                     "type": "string",
                     "decorators": []
                 },
@@ -6219,7 +6331,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 37,
+                    "line": 38,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -6231,7 +6343,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 35,
+                    "line": 36,
                     "type": "RadioGroupState",
                     "decorators": []
                 }
@@ -6243,7 +6355,7 @@
                     "defaultValue": "new EventEmitter<string>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 40,
+                    "line": 42,
                     "type": "EventEmitter"
                 }
             ],
@@ -6265,7 +6377,7 @@
                     "optional": false,
                     "returnType": "RadioState",
                     "typeParameters": [],
-                    "line": 46,
+                    "line": 48,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n",
@@ -6300,7 +6412,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 52,
+                    "line": 54,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n",
@@ -6334,25 +6446,29 @@
                 {
                     "name": "RadioComponent",
                     "type": "component"
+                },
+                {
+                    "name": "SkeletonComponent",
+                    "type": "component"
                 }
             ],
             "description": "<p>A labelled set of mutually exclusive radio options in an inline or stacked layout.</p>\n",
             "rawdescription": "\nA labelled set of mutually exclusive radio options in an inline or stacked layout.",
             "type": "component",
-            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, EventEmitter, Input, Output } from '@angular/core';\nimport { RadioComponent, RadioState } from '../radio/radio.component';\n\nexport type RadioGroupDirection = 'inline' | 'stacked';\nexport type RadioGroupState = 'default' | 'invalid' | 'disabled';\n\nexport interface RadioOption {\n  label: string;\n  value: string;\n  disabled?: boolean;\n}\n\nlet nextRadioGroupId = 0;\n\n/** A labelled set of mutually exclusive radio options in an inline or stacked layout. */\n@Component({\n  selector: 'dds-radio-group',\n  standalone: true,\n  imports: [CommonModule, RadioComponent],\n  templateUrl: './radio-group.component.html',\n  styleUrl: './radio-group.component.css',\n})\nexport class RadioGroupComponent {\n  @Input() groupId = `dds-radio-group-${nextRadioGroupId++}`;\n  @Input() label = 'Label text';\n  @Input() options: RadioOption[] = [\n    { label: 'Option 1', value: 'option-1' },\n    { label: 'Option 2', value: 'option-2' },\n    { label: 'Option 3', value: 'option-3' },\n    { label: 'Option 4', value: 'option-4' },\n  ];\n  @Input() selectedValue = 'option-1';\n  @Input() direction: RadioGroupDirection = 'inline';\n  @Input() state: RadioGroupState = 'default';\n  @Input() required = true;\n  @Input() showLabel = true;\n  @Input() errorMessage = 'Select an option to continue.';\n\n  @Output() selectedValueChange = new EventEmitter<string>();\n\n  get errorId(): string {\n    return `${this.groupId}-error`;\n  }\n\n  optionState(option: RadioOption): RadioState {\n    if (this.state === 'disabled' || option.disabled) return 'disabled';\n    if (this.state === 'invalid') return 'invalid';\n    return 'default';\n  }\n\n  select(value: string): void {\n    this.selectedValue = value;\n    this.selectedValueChange.emit(value);\n  }\n}\n",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, EventEmitter, Input, Output } from '@angular/core';\nimport { RadioComponent, RadioState } from '../radio/radio.component';\nimport { SkeletonComponent } from '../skeleton/skeleton.component';\n\nexport type RadioGroupDirection = 'inline' | 'stacked';\nexport type RadioGroupState = 'default' | 'invalid' | 'disabled';\n\nexport interface RadioOption {\n  label: string;\n  value: string;\n  disabled?: boolean;\n}\n\nlet nextRadioGroupId = 0;\n\n/** A labelled set of mutually exclusive radio options in an inline or stacked layout. */\n@Component({\n  selector: 'dds-radio-group',\n  standalone: true,\n  imports: [CommonModule, RadioComponent, SkeletonComponent],\n  templateUrl: './radio-group.component.html',\n  styleUrl: './radio-group.component.css',\n})\nexport class RadioGroupComponent {\n  @Input() groupId = `dds-radio-group-${nextRadioGroupId++}`;\n  @Input() label = 'Label text';\n  @Input() options: RadioOption[] = [\n    { label: 'Option 1', value: 'option-1' },\n    { label: 'Option 2', value: 'option-2' },\n    { label: 'Option 3', value: 'option-3' },\n    { label: 'Option 4', value: 'option-4' },\n  ];\n  @Input() selectedValue = 'option-1';\n  @Input() direction: RadioGroupDirection = 'inline';\n  @Input() state: RadioGroupState = 'default';\n  @Input() required = true;\n  @Input() showLabel = true;\n  @Input() errorMessage = 'Select an option to continue.';\n  @Input() loading = false;\n\n  @Output() selectedValueChange = new EventEmitter<string>();\n\n  get errorId(): string {\n    return `${this.groupId}-error`;\n  }\n\n  optionState(option: RadioOption): RadioState {\n    if (this.state === 'disabled' || option.disabled) return 'disabled';\n    if (this.state === 'invalid') return 'invalid';\n    return 'default';\n  }\n\n  select(value: string): void {\n    this.selectedValue = value;\n    this.selectedValueChange.emit(value);\n  }\n}\n",
             "styleUrl": "./radio-group.component.css",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ":host {\n  display: inline-block;\n  max-width: 100%;\n}\n\n.dds-radio-group {\n  min-width: 0;\n  margin: 0;\n  padding: 0;\n  border: 0;\n  color: var(--text-colour-default);\n  font-family: var(--font-family-primary);\n}\n\n.dds-radio-group__legend {\n  padding: 0 0 var(--space-2);\n  font-size: var(--font-size-sm);\n  font-weight: var(--font-weight-semibold);\n  line-height: var(--font-size-xl);\n}\n\n.dds-radio-group__legend span,\n.dds-radio-group__error {\n  color: var(--text-colour-danger);\n}\n\n.dds-radio-group__legend span {\n  margin-left: var(--space-1);\n}\n\n.dds-radio-group__options {\n  display: flex;\n}\n\n.dds-radio-group--inline .dds-radio-group__options {\n  flex-flow: row wrap;\n  gap: var(--space-4);\n}\n\n.dds-radio-group--stacked .dds-radio-group__options {\n  flex-direction: column;\n  align-items: flex-start;\n  gap: var(--space-3);\n}\n\n.dds-radio-group__error {\n  margin: 0;\n  padding-top: var(--space-2);\n  font-size: var(--font-size-xs);\n  font-weight: var(--font-weight-medium);\n  line-height: var(--font-size-md);\n}\n\n.dds-radio-group:disabled .dds-radio-group__legend {\n  color: var(--text-colour-disabled);\n}\n",
+                    "data": ":host {\n  display: inline-block;\n  max-width: 100%;\n}\n\n.dds-radio-group {\n  min-width: 0;\n  margin: 0;\n  padding: 0;\n  border: 0;\n  color: var(--text-colour-default);\n  font-family: var(--font-family-primary);\n}\n\n.dds-radio-group__legend {\n  padding: 0 0 var(--space-2);\n  font-size: var(--font-size-sm);\n  font-weight: var(--font-weight-semibold);\n  line-height: var(--font-size-xl);\n}\n\n.dds-radio-group__legend span,\n.dds-radio-group__error {\n  color: var(--text-colour-danger);\n}\n\n.dds-radio-group__legend span {\n  margin-left: var(--space-1);\n}\n\n.dds-radio-group__options {\n  display: flex;\n}\n\n.dds-radio-group--inline .dds-radio-group__options {\n  flex-flow: row wrap;\n  gap: var(--space-4);\n}\n\n.dds-radio-group--stacked .dds-radio-group__options {\n  flex-direction: column;\n  align-items: flex-start;\n  gap: var(--space-3);\n}\n\n.dds-radio-group__error {\n  margin: 0;\n  padding-top: var(--space-2);\n  font-size: var(--font-size-xs);\n  font-weight: var(--font-weight-medium);\n  line-height: var(--font-size-md);\n}\n\n.dds-radio-group:disabled .dds-radio-group__legend {\n  color: var(--text-colour-disabled);\n}\n\n.dds-radio-group__skeleton-legend {\n  padding-bottom: var(--space-2);\n}\n\n.dds-radio-group__skeleton-options {\n  display: flex;\n}\n\n.dds-radio-group--inline .dds-radio-group__skeleton-options {\n  flex-flow: row wrap;\n  gap: var(--space-4);\n}\n\n.dds-radio-group--stacked .dds-radio-group__skeleton-options {\n  flex-direction: column;\n  gap: var(--space-3);\n}\n\n.dds-radio-group__skeleton-option {\n  display: flex;\n  align-items: center;\n  gap: var(--space-2);\n}\n",
                     "styleUrl": "./radio-group.component.css"
                 }
             ],
             "stylesData": "",
             "jsdoctags": [
                 {
-                    "pos": 432,
-                    "end": 521,
+                    "pos": 500,
+                    "end": 589,
                     "kind": 321,
                     "id": 0,
                     "flags": 16777216,
@@ -6369,7 +6485,7 @@
                         "name": "errorId",
                         "type": "string",
                         "returnType": "string",
-                        "line": 42,
+                        "line": 44,
                         "rawdescription": "\n",
                         "description": ""
                     }
@@ -6386,10 +6502,14 @@
                         "name": "RadioComponent",
                         "type": "component",
                         "description": "A native radio input with DDS label, validation, focus, and disabled treatments."
+                    },
+                    {
+                        "name": "SkeletonComponent",
+                        "type": "component"
                     }
                 ]
             },
-            "templateData": "<fieldset\n  class=\"dds-radio-group\"\n  [class.dds-radio-group--inline]=\"direction === 'inline'\"\n  [class.dds-radio-group--stacked]=\"direction === 'stacked'\"\n  [class.dds-radio-group--invalid]=\"state === 'invalid'\"\n  [disabled]=\"state === 'disabled'\"\n  [attr.aria-describedby]=\"state === 'invalid' ? errorId : null\"\n>\n  <legend *ngIf=\"showLabel\" class=\"dds-radio-group__legend\">\n    {{ label }}<span *ngIf=\"required\" aria-hidden=\"true\">*</span>\n  </legend>\n\n  <div class=\"dds-radio-group__options\">\n    <dds-radio\n      *ngFor=\"let option of options; let index = index\"\n      [inputId]=\"groupId + '-' + index\"\n      [name]=\"groupId\"\n      [option]=\"option.label\"\n      [value]=\"option.value\"\n      [checked]=\"selectedValue === option.value\"\n      [state]=\"optionState(option)\"\n      [required]=\"required\"\n      [showLabel]=\"false\"\n      [showErrorMessage]=\"false\"\n      [describedBy]=\"state === 'invalid' ? errorId : undefined\"\n      (selected)=\"select($event)\"\n    ></dds-radio>\n  </div>\n\n  <p *ngIf=\"state === 'invalid'\" class=\"dds-radio-group__error\" [id]=\"errorId\">\n    {{ errorMessage }}\n  </p>\n</fieldset>\n"
+            "templateData": "<fieldset\n  class=\"dds-radio-group\"\n  [class.dds-radio-group--inline]=\"direction === 'inline'\"\n  [class.dds-radio-group--stacked]=\"direction === 'stacked'\"\n  [class.dds-radio-group--invalid]=\"state === 'invalid'\"\n  [disabled]=\"state === 'disabled' || loading\"\n  [attr.aria-describedby]=\"state === 'invalid' ? errorId : null\"\n  [attr.aria-busy]=\"loading ? 'true' : null\"\n  [attr.aria-label]=\"loading ? 'Loading radio group' : null\"\n>\n  <div *ngIf=\"loading && showLabel\" class=\"dds-radio-group__skeleton-legend\">\n    <dds-skeleton width=\"128px\" height=\"20px\"></dds-skeleton>\n  </div>\n\n  <div *ngIf=\"loading\" class=\"dds-radio-group__skeleton-options\">\n    <div *ngFor=\"let option of options\" class=\"dds-radio-group__skeleton-option\">\n      <dds-skeleton width=\"20px\" height=\"20px\"></dds-skeleton>\n      <dds-skeleton width=\"80px\" height=\"20px\"></dds-skeleton>\n    </div>\n  </div>\n\n  <legend *ngIf=\"!loading && showLabel\" class=\"dds-radio-group__legend\">\n    {{ label }}<span *ngIf=\"required\" aria-hidden=\"true\">*</span>\n  </legend>\n\n  <div *ngIf=\"!loading\" class=\"dds-radio-group__options\">\n    <dds-radio\n      *ngFor=\"let option of options; let index = index\"\n      [inputId]=\"groupId + '-' + index\"\n      [name]=\"groupId\"\n      [option]=\"option.label\"\n      [value]=\"option.value\"\n      [checked]=\"selectedValue === option.value\"\n      [state]=\"optionState(option)\"\n      [required]=\"required\"\n      [showLabel]=\"false\"\n      [showErrorMessage]=\"false\"\n      [describedBy]=\"state === 'invalid' ? errorId : undefined\"\n      (selected)=\"select($event)\"\n    ></dds-radio>\n  </div>\n\n  <p *ngIf=\"!loading && state === 'invalid'\" class=\"dds-radio-group__error\" [id]=\"errorId\">\n    {{ errorMessage }}\n  </p>\n</fieldset>\n"
         },
         {
             "name": "SearchComponent",
@@ -7828,12 +7948,41 @@
             "relationships": {
                 "incoming": [
                     {
+                        "name": "CheckboxComponent",
+                        "type": "component",
+                        "description": "A native checkbox with DDS labels, validation, disabled, and mixed-value treatments."
+                    },
+                    {
+                        "name": "CheckboxGroupComponent",
+                        "type": "component",
+                        "description": "A labelled set of independent checkbox options in an inline or stacked layout."
+                    },
+                    {
                         "name": "DataTableComponent",
                         "type": "component"
                     },
                     {
                         "name": "DateInputComponent",
                         "type": "component"
+                    },
+                    {
+                        "name": "OtpInputComponent",
+                        "type": "component",
+                        "description": "A six-digit one-time-code field with paste, mobile autofill, and validation support."
+                    },
+                    {
+                        "name": "PasswordInputComponent",
+                        "type": "component"
+                    },
+                    {
+                        "name": "RadioComponent",
+                        "type": "component",
+                        "description": "A native radio input with DDS label, validation, focus, and disabled treatments."
+                    },
+                    {
+                        "name": "RadioGroupComponent",
+                        "type": "component",
+                        "description": "A labelled set of mutually exclusive radio options in an inline or stacked layout."
                     },
                     {
                         "name": "SearchComponent",
@@ -11853,8 +12002,8 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "CheckboxGroupComponent",
-                "coveragePercent": 6,
-                "coverageCount": "1/16",
+                "coveragePercent": 5,
+                "coverageCount": "1/17",
                 "status": "low"
             },
             {
@@ -11901,8 +12050,8 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "CheckboxComponent",
-                "coveragePercent": 13,
-                "coverageCount": "2/15",
+                "coveragePercent": 12,
+                "coverageCount": "2/16",
                 "status": "low"
             },
             {
@@ -12123,8 +12272,8 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "OtpInputComponent",
-                "coveragePercent": 69,
-                "coverageCount": "16/23",
+                "coveragePercent": 70,
+                "coverageCount": "17/24",
                 "status": "good"
             },
             {
@@ -12172,7 +12321,7 @@
                 "linktype": "component",
                 "name": "PasswordInputComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/20",
+                "coverageCount": "0/21",
                 "status": "low"
             },
             {
@@ -12211,7 +12360,7 @@
                 "linktype": "component",
                 "name": "RadioGroupComponent",
                 "coveragePercent": 7,
-                "coverageCount": "1/13",
+                "coverageCount": "1/14",
                 "status": "low"
             },
             {
@@ -12259,7 +12408,7 @@
                 "linktype": "component",
                 "name": "RadioComponent",
                 "coveragePercent": 5,
-                "coverageCount": "1/18",
+                "coverageCount": "1/19",
                 "status": "low"
             },
             {
