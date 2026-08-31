@@ -58,6 +58,14 @@
   color: var(--icon-colour-default);
 }
 
+.dds-checkbox__box dds-icon {
+  display: grid;
+  width: 14px;
+  height: 14px;
+  place-items: center;
+  line-height: 0;
+}
+
 .dds-checkbox__native:focus-visible + .dds-checkbox__box,
 .dds-checkbox--focused .dds-checkbox__box {
   border: 2px solid var(--border-colour-info);

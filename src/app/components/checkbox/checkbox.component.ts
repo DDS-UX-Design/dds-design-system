@@ -28,6 +28,7 @@ export class CheckboxComponent {
   @Input() ariaLabel = 'Checkbox option';
   @Input() errorMessage = 'Select this option to continue.';
   @Input() showErrorMessage = true;
+  @Input() describedBy?: string;
 
   @Output() valueChange = new EventEmitter<CheckboxValue>();
 
@@ -49,6 +50,11 @@ export class CheckboxComponent {
 
   get errorId(): string {
     return `${this.inputId}-error`;
+  }
+
+  get ariaDescribedBy(): string | null {
+    if (this.describedBy) return this.describedBy;
+    return this.isInvalid && this.showErrorMessage ? this.errorId : null;
   }
 
   handleChange(event: Event): void {

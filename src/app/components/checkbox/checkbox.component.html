@@ -20,7 +20,7 @@
       [disabled]="isDisabled"
       [attr.aria-label]="showOption ? null : ariaLabel"
       [attr.aria-invalid]="isInvalid ? 'true' : null"
-      [attr.aria-describedby]="isInvalid && showErrorMessage ? errorId : null"
+      [attr.aria-describedby]="ariaDescribedBy"
       (change)="handleChange($event)"
     />
     <span class="dds-checkbox__box" aria-hidden="true">
