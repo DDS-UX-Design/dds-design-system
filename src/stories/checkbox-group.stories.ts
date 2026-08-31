@@ -42,6 +42,7 @@ const meta: Meta<CheckboxGroupStoryArgs> = {
     helperText: 'Select all channels that apply.',
     showHelperText: false,
     errorMessage: 'Select at least one notification channel.',
+    loading: false,
     onSelectedValuesChange: fn(),
   },
   argTypes: {
@@ -53,6 +54,7 @@ const meta: Meta<CheckboxGroupStoryArgs> = {
       control: 'radio',
       options: ['default', 'invalid', 'disabled'] satisfies CheckboxGroupState[],
     },
+    loading: { control: 'boolean', table: { category: 'State' } },
     onSelectedValuesChange: { table: { disable: true } },
   },
   render: (args) => ({
@@ -63,6 +65,7 @@ const meta: Meta<CheckboxGroupStoryArgs> = {
         [direction]="direction" [state]="state" [required]="required"
         [showLabel]="showLabel" [helperText]="helperText"
         [showHelperText]="showHelperText" [errorMessage]="errorMessage"
+        [loading]="loading"
         (selectedValuesChange)="selectedValues = $event; onSelectedValuesChange($event)"
       ></dds-checkbox-group>
     `,
@@ -77,6 +80,17 @@ export const Stacked: Story = { args: { direction: 'stacked' } };
 export const WithHelperText: Story = { args: { showHelperText: true } };
 export const Invalid: Story = { args: { state: 'invalid', selectedValues: [] } };
 export const Disabled: Story = { args: { state: 'disabled' } };
+export const Loading: Story = {
+  args: { loading: true },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await expect(canvas.getByLabelText('Loading checkbox group')).toHaveAttribute(
+      'aria-busy',
+      'true',
+    );
+    await expect(canvas.queryByRole('checkbox')).not.toBeInTheDocument();
+  },
+};
 export const WithDisabledOption: Story = {
   args: {
     direction: 'stacked',

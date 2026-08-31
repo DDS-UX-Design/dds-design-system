@@ -3,15 +3,32 @@
   [class.dds-checkbox-group--inline]="direction === 'inline'"
   [class.dds-checkbox-group--stacked]="direction === 'stacked'"
   [class.dds-checkbox-group--invalid]="state === 'invalid'"
-  [disabled]="state === 'disabled'"
+  [disabled]="state === 'disabled' || loading"
   [attr.aria-describedby]="describedBy"
   [attr.aria-required]="required"
+  [attr.aria-busy]="loading ? 'true' : null"
+  [attr.aria-label]="loading ? 'Loading checkbox group' : null"
 >
-  <legend *ngIf="showLabel" class="dds-checkbox-group__legend">
+  <div *ngIf="loading && showLabel" class="dds-checkbox-group__skeleton-legend">
+    <dds-skeleton width="144px" height="20px"></dds-skeleton>
+  </div>
+
+  <div *ngIf="loading" class="dds-checkbox-group__skeleton-options">
+    <div *ngFor="let option of options" class="dds-checkbox-group__skeleton-option">
+      <dds-skeleton width="20px" height="20px"></dds-skeleton>
+      <dds-skeleton width="72px" height="20px"></dds-skeleton>
+    </div>
+  </div>
+
+  <div *ngIf="loading && showHelperText" class="dds-checkbox-group__skeleton-supporting-text">
+    <dds-skeleton width="180px" height="16px"></dds-skeleton>
+  </div>
+
+  <legend *ngIf="!loading && showLabel" class="dds-checkbox-group__legend">
     {{ label }}<span *ngIf="required" aria-hidden="true">*</span>
   </legend>
 
-  <div class="dds-checkbox-group__options">
+  <div *ngIf="!loading" class="dds-checkbox-group__options">
     <dds-checkbox
       *ngFor="let option of options; let index = index"
       [inputId]="groupId + '-' + index"
@@ -26,7 +43,7 @@
   </div>
 
   <p
-    *ngIf="state === 'invalid' || showHelperText"
+    *ngIf="!loading && (state === 'invalid' || showHelperText)"
     class="dds-checkbox-group__supporting-text"
     [class.dds-checkbox-group__supporting-text--error]="state === 'invalid'"
     [id]="supportingTextId"

@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CheckboxComponent, CheckboxState, CheckboxValue } from '../checkbox/checkbox.component';
+import { SkeletonComponent } from '../skeleton/skeleton.component';
 
 export type CheckboxGroupDirection = 'inline' | 'stacked';
 export type CheckboxGroupState = 'default' | 'invalid' | 'disabled';
@@ -17,7 +18,7 @@ let nextCheckboxGroupId = 0;
 @Component({
   selector: 'dds-checkbox-group',
   standalone: true,
-  imports: [CommonModule, CheckboxComponent],
+  imports: [CommonModule, CheckboxComponent, SkeletonComponent],
   templateUrl: './checkbox-group.component.html',
   styleUrl: './checkbox-group.component.css',
 })
@@ -38,6 +39,7 @@ export class CheckboxGroupComponent {
   @Input() helperText = 'Select all options that apply.';
   @Input() showHelperText = false;
   @Input() errorMessage = 'Select at least one option.';
+  @Input() loading = false;
 
   @Output() selectedValuesChange = new EventEmitter<string[]>();
 

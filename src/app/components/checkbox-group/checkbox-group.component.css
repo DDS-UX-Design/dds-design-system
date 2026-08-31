@@ -60,3 +60,31 @@
 .dds-checkbox-group:disabled .dds-checkbox-group__legend {
   color: var(--text-colour-disabled);
 }
+
+.dds-checkbox-group__skeleton-legend {
+  padding-bottom: var(--space-2);
+}
+
+.dds-checkbox-group__skeleton-options {
+  display: flex;
+}
+
+.dds-checkbox-group--inline .dds-checkbox-group__skeleton-options {
+  flex-flow: row wrap;
+  gap: var(--space-4);
+}
+
+.dds-checkbox-group--stacked .dds-checkbox-group__skeleton-options {
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.dds-checkbox-group__skeleton-option {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.dds-checkbox-group__skeleton-supporting-text {
+  padding-top: var(--space-2);
+}
