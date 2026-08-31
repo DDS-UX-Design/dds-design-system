@@ -39,7 +39,7 @@
   align-items: center;
   width: 100%;
   min-height: 48px;
-  border: 1px solid var(--border-colour-strong);
+  border: 1px solid var(--border-colour-default);
   border-radius: var(--radius-sm);
   background: var(--bg-colour-white);
 }
