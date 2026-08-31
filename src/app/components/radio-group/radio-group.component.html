@@ -3,14 +3,27 @@
   [class.dds-radio-group--inline]="direction === 'inline'"
   [class.dds-radio-group--stacked]="direction === 'stacked'"
   [class.dds-radio-group--invalid]="state === 'invalid'"
-  [disabled]="state === 'disabled'"
+  [disabled]="state === 'disabled' || loading"
   [attr.aria-describedby]="state === 'invalid' ? errorId : null"
+  [attr.aria-busy]="loading ? 'true' : null"
+  [attr.aria-label]="loading ? 'Loading radio group' : null"
 >
-  <legend *ngIf="showLabel" class="dds-radio-group__legend">
+  <div *ngIf="loading && showLabel" class="dds-radio-group__skeleton-legend">
+    <dds-skeleton width="128px" height="20px"></dds-skeleton>
+  </div>
+
+  <div *ngIf="loading" class="dds-radio-group__skeleton-options">
+    <div *ngFor="let option of options" class="dds-radio-group__skeleton-option">
+      <dds-skeleton width="20px" height="20px"></dds-skeleton>
+      <dds-skeleton width="80px" height="20px"></dds-skeleton>
+    </div>
+  </div>
+
+  <legend *ngIf="!loading && showLabel" class="dds-radio-group__legend">
     {{ label }}<span *ngIf="required" aria-hidden="true">*</span>
   </legend>
 
-  <div class="dds-radio-group__options">
+  <div *ngIf="!loading" class="dds-radio-group__options">
     <dds-radio
       *ngFor="let option of options; let index = index"
       [inputId]="groupId + '-' + index"
@@ -27,7 +40,7 @@
     ></dds-radio>
   </div>
 
-  <p *ngIf="state === 'invalid'" class="dds-radio-group__error" [id]="errorId">
+  <p *ngIf="!loading && state === 'invalid'" class="dds-radio-group__error" [id]="errorId">
     {{ errorMessage }}
   </p>
 </fieldset>

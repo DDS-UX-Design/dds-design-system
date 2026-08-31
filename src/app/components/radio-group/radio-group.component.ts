@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { RadioComponent, RadioState } from '../radio/radio.component';
+import { SkeletonComponent } from '../skeleton/skeleton.component';
 
 export type RadioGroupDirection = 'inline' | 'stacked';
 export type RadioGroupState = 'default' | 'invalid' | 'disabled';
@@ -17,7 +18,7 @@ let nextRadioGroupId = 0;
 @Component({
   selector: 'dds-radio-group',
   standalone: true,
-  imports: [CommonModule, RadioComponent],
+  imports: [CommonModule, RadioComponent, SkeletonComponent],
   templateUrl: './radio-group.component.html',
   styleUrl: './radio-group.component.css',
 })
@@ -36,6 +37,7 @@ export class RadioGroupComponent {
   @Input() required = true;
   @Input() showLabel = true;
   @Input() errorMessage = 'Select an option to continue.';
+  @Input() loading = false;
 
   @Output() selectedValueChange = new EventEmitter<string>();
 

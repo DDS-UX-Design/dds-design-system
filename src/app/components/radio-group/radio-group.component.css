@@ -54,3 +54,27 @@
 .dds-radio-group:disabled .dds-radio-group__legend {
   color: var(--text-colour-disabled);
 }
+
+.dds-radio-group__skeleton-legend {
+  padding-bottom: var(--space-2);
+}
+
+.dds-radio-group__skeleton-options {
+  display: flex;
+}
+
+.dds-radio-group--inline .dds-radio-group__skeleton-options {
+  flex-flow: row wrap;
+  gap: var(--space-4);
+}
+
+.dds-radio-group--stacked .dds-radio-group__skeleton-options {
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.dds-radio-group__skeleton-option {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}

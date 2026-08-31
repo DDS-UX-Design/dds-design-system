@@ -40,6 +40,7 @@ const meta: Meta<RadioGroupStoryArgs> = {
     required: true,
     showLabel: true,
     errorMessage: 'Select a delivery method.',
+    loading: false,
     onSelectedValueChange: fn(),
   },
   argTypes: {
@@ -51,6 +52,7 @@ const meta: Meta<RadioGroupStoryArgs> = {
       control: 'radio',
       options: ['default', 'invalid', 'disabled'] satisfies RadioGroupState[],
     },
+    loading: { control: 'boolean', table: { category: 'State' } },
     onSelectedValueChange: { table: { disable: true } },
   },
   render: (args) => ({
@@ -60,6 +62,7 @@ const meta: Meta<RadioGroupStoryArgs> = {
         [label]="label" [options]="options" [selectedValue]="selectedValue"
         [direction]="direction" [state]="state" [required]="required"
         [showLabel]="showLabel" [errorMessage]="errorMessage"
+        [loading]="loading"
         (selectedValueChange)="selectedValue = $event; onSelectedValueChange($event)"
       ></dds-radio-group>
     `,
@@ -73,6 +76,14 @@ export const Inline: Story = {};
 export const Stacked: Story = { args: { direction: 'stacked' } };
 export const Invalid: Story = { args: { state: 'invalid', selectedValue: '' } };
 export const Disabled: Story = { args: { state: 'disabled' } };
+export const Loading: Story = {
+  args: { loading: true },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await expect(canvas.getByLabelText('Loading radio group')).toHaveAttribute('aria-busy', 'true');
+    await expect(canvas.queryByRole('radio')).not.toBeInTheDocument();
+  },
+};
 export const WithDisabledOption: Story = {
   args: {
     direction: 'stacked',
