@@ -5,7 +5,7 @@ import backlog from './figma-backlog.backlog';
 <Meta title="Project/Figma Backlog" />
 
 export const backlogRevision =
-  '31 August 2026 · Experimental Chart.js components and data-visualisation gaps added';
+  '31 August 2026 · Textarea, Select, Search, and Date Input loading skeletons added';
 
 export const typographyBacklog = `
 ## Foundations
@@ -124,6 +124,7 @@ export const textInputBacklog = `
 
 Figma reference: [Text input — node 2:659](https://www.figma.com/design/u0lpCPrGMj68e9RMIRuYxL/DDS---Design-System-v1.0?node-id=2-659)
 
+- [x] **P1 · Implemented** — Add a loading treatment that reserves space for the label, input field, and optional helper text using the shared Skeleton component.
 - [ ] **P1 · Confirmed gap** — Add a read-only state and clarify how it differs visually and semantically from Disabled.
 - [ ] **P1 · Confirmed gap** — Add hover styling and specify how hover interacts with Focus, Error, and Disabled states.
 - [ ] **P1 · Design review** — Specify validation timing: on input, blur, form submission, or a combination.
@@ -145,6 +146,26 @@ Figma reference: [Date input — node 2:917](https://www.figma.com/design/u0lpCP
 - [ ] **P1 · Design review** — Define parsing, validation, and localization rules for typed dates, including the displayed date format and how incomplete or ambiguous values are handled.
 - [ ] **P2 · Design review** — Confirm whether clicking the calendar icon opens the future picker and specify its accessible name and focus behavior.
 - [ ] **P2 · Confirmed gap** — Add guidance for minimum and maximum dates, unavailable dates, and date constraints supplied by a product.
+      `;
+
+export const formLoadingBacklog = `
+## Forms
+
+### Textarea
+
+- [x] **P1 · Implemented** — Add a loading treatment that reserves space for the label, multiline field, and optional helper text using the shared Skeleton component.
+
+### Select
+
+- [x] **P1 · Implemented** — Add a loading treatment that reserves space for the label, select field, and optional helper text while options are loading.
+
+### Search
+
+- [x] **P1 · Implemented** — Add a loading treatment that reserves space for the label and search field and suppresses the suggestion menu.
+
+### Date input
+
+- [x] **P1 · Implemented** — Add a loading treatment that reserves space for the label, date field, and optional helper text using the shared Skeleton component.
       `;
 
 export const checkboxBacklog = `
@@ -314,7 +335,7 @@ export const BacklogPage = () => {
   const sections = useMemo(
     () =>
       parseBacklog(
-        `${backlog}\n${checkboxBacklog}\n${dateInputBacklog}\n${textInputBacklog}\n${loadingBacklog}\n${typographyBacklog}\n${dashboardBacklog}\n${statusBadgeBacklog}\n${chartBacklog}\n${dataTableBacklog}\n${topBarNavBacklog}\n${pageToolbarBacklog}\n${radioBacklog}\n${sidebarNavBacklog}\n${examplePageBacklog}`,
+        `${backlog}\n${checkboxBacklog}\n${dateInputBacklog}\n${textInputBacklog}\n${formLoadingBacklog}\n${loadingBacklog}\n${typographyBacklog}\n${dashboardBacklog}\n${statusBadgeBacklog}\n${chartBacklog}\n${dataTableBacklog}\n${topBarNavBacklog}\n${pageToolbarBacklog}\n${radioBacklog}\n${sidebarNavBacklog}\n${examplePageBacklog}`,
       ),
     [],
   );

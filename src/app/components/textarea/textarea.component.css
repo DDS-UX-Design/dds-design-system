@@ -120,3 +120,15 @@
   color: var(--text-colour-danger);
   font-weight: var(--font-weight-medium);
 }
+
+.dds-textarea__skeleton-label {
+  padding-bottom: var(--space-2);
+}
+
+.dds-textarea--small .dds-textarea__skeleton-label {
+  padding-bottom: var(--space-1);
+}
+
+.dds-textarea__skeleton-supporting-text {
+  padding-top: var(--space-2);
+}

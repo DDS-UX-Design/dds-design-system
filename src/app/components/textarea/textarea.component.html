@@ -4,37 +4,57 @@
   [class.dds-textarea--focused]="state === 'focused'"
   [class.dds-textarea--disabled]="isDisabled"
   [class.dds-textarea--error]="isError"
+  [class.dds-textarea--loading]="loading"
+  [attr.aria-busy]="loading ? 'true' : null"
+  [attr.aria-label]="loading ? 'Loading textarea' : null"
 >
-  <label *ngIf="showLabel" class="dds-textarea__label" [for]="inputId">
-    {{ label }}
-    <span *ngIf="required" class="dds-textarea__required" aria-hidden="true">*</span>
-  </label>
+  <ng-container *ngIf="loading; else loadedContent">
+    <div *ngIf="showLabel" class="dds-textarea__skeleton-label">
+      <dds-skeleton width="112px" [height]="size === 'small' ? 16 : 20"></dds-skeleton>
+    </div>
+    <dds-skeleton width="100%" height="80px"></dds-skeleton>
+    <div *ngIf="showHelperText" class="dds-textarea__skeleton-supporting-text">
+      <dds-skeleton width="55%" height="16px"></dds-skeleton>
+    </div>
+  </ng-container>
 
-  <div class="dds-textarea__field">
-    <textarea
-      class="dds-textarea__control"
-      [id]="inputId"
-      [value]="value"
-      [placeholder]="placeholder"
-      [required]="required"
-      [disabled]="isDisabled"
-      [attr.maxlength]="maxLength > 0 ? maxLength : null"
-      [attr.aria-label]="showLabel ? null : ariaLabel"
-      [attr.aria-invalid]="isError ? 'true' : null"
-      [attr.aria-describedby]="describedBy"
-      (input)="handleInput($event)"
-    ></textarea>
+  <ng-template #loadedContent>
+    <label *ngIf="showLabel" class="dds-textarea__label" [for]="inputId">
+      {{ label }}
+      <span *ngIf="required" class="dds-textarea__required" aria-hidden="true">*</span>
+    </label>
 
-    <span *ngIf="showCharacterCount" class="dds-textarea__count" [id]="countId" aria-live="polite">
-      {{ value.length }}/{{ maxLength }}
-    </span>
-  </div>
+    <div class="dds-textarea__field">
+      <textarea
+        class="dds-textarea__control"
+        [id]="inputId"
+        [value]="value"
+        [placeholder]="placeholder"
+        [required]="required"
+        [disabled]="isDisabled"
+        [attr.maxlength]="maxLength > 0 ? maxLength : null"
+        [attr.aria-label]="showLabel ? null : ariaLabel"
+        [attr.aria-invalid]="isError ? 'true' : null"
+        [attr.aria-describedby]="describedBy"
+        (input)="handleInput($event)"
+      ></textarea>
 
-  <p *ngIf="!isError && showHelperText" class="dds-textarea__supporting-text" [id]="helperId">
-    {{ helperText }}
-  </p>
+      <span
+        *ngIf="showCharacterCount"
+        class="dds-textarea__count"
+        [id]="countId"
+        aria-live="polite"
+      >
+        {{ value.length }}/{{ maxLength }}
+      </span>
+    </div>
 
-  <p *ngIf="isError" class="dds-textarea__supporting-text dds-textarea__error" [id]="errorId">
-    {{ errorMessage }}
-  </p>
+    <p *ngIf="!isError && showHelperText" class="dds-textarea__supporting-text" [id]="helperId">
+      {{ helperText }}
+    </p>
+
+    <p *ngIf="isError" class="dds-textarea__supporting-text dds-textarea__error" [id]="errorId">
+      {{ errorMessage }}
+    </p>
+  </ng-template>
 </div>

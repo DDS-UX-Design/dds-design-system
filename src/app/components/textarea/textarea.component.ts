@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { SkeletonComponent } from '../skeleton/skeleton.component';
 
 export type TextareaSize = 'large' | 'small';
 export type TextareaState = 'default' | 'focused' | 'disabled' | 'error';
@@ -10,7 +11,7 @@ let nextTextareaId = 0;
 @Component({
   selector: 'dds-textarea',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, SkeletonComponent],
   templateUrl: './textarea.component.html',
   styleUrl: './textarea.component.css',
 })
@@ -56,6 +57,9 @@ export class TextareaComponent {
 
   /** Shows the current and maximum character count inside the field. */
   @Input() showCharacterCount = true;
+
+  /** Replaces the field content with shape-matched skeletons while data is loading. */
+  @Input() loading = false;
 
   /** Emitted whenever the field value changes. */
   @Output() valueChange = new EventEmitter<string>();

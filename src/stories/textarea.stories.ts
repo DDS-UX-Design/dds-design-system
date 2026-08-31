@@ -20,6 +20,7 @@ type TextareaStoryArgs = {
   showHelperText: boolean;
   errorMessage: string;
   showCharacterCount: boolean;
+  loading: boolean;
   onValueChange: ReturnType<typeof fn>;
 };
 
@@ -105,6 +106,7 @@ const meta: Meta<TextareaStoryArgs> = {
       description: 'Shows the live current and maximum character count.',
       table: { category: 'Validation' },
     },
+    loading: { control: 'boolean', table: { category: 'State' } },
     onValueChange: { table: { disable: true } },
   },
   args: {
@@ -121,6 +123,7 @@ const meta: Meta<TextareaStoryArgs> = {
     showHelperText: true,
     errorMessage: 'Enter some information before continuing.',
     showCharacterCount: true,
+    loading: false,
     onValueChange: fn(),
   },
   render: (args) => ({
@@ -140,6 +143,7 @@ const meta: Meta<TextareaStoryArgs> = {
         [showHelperText]="showHelperText"
         [errorMessage]="errorMessage"
         [showCharacterCount]="showCharacterCount"
+        [loading]="loading"
         (valueChange)="value = $event; onValueChange($event)"
       ></dds-textarea>
     `,
@@ -172,6 +176,15 @@ export const Disabled: Story = {
 
 export const Small: Story = {
   args: { size: 'small' },
+};
+
+export const Loading: Story = {
+  args: { loading: true },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await expect(canvas.getByLabelText('Loading textarea')).toHaveAttribute('aria-busy', 'true');
+    await expect(canvas.queryByRole('textbox')).not.toBeInTheDocument();
+  },
 };
 
 export const WithoutCharacterCount: Story = {
