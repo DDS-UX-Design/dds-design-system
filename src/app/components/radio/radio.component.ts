@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { SkeletonComponent } from '../skeleton/skeleton.component';
 
 export type RadioState = 'default' | 'focused' | 'disabled' | 'invalid';
 
@@ -9,7 +10,7 @@ let nextRadioId = 0;
 @Component({
   selector: 'dds-radio',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, SkeletonComponent],
   templateUrl: './radio.component.html',
   styleUrl: './radio.component.css',
 })
@@ -28,6 +29,7 @@ export class RadioComponent {
   @Input() errorMessage = 'Select an option to continue.';
   @Input() showErrorMessage = true;
   @Input() describedBy?: string;
+  @Input() loading = false;
 
   @Output() checkedChange = new EventEmitter<boolean>();
   @Output() selected = new EventEmitter<string>();

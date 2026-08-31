@@ -3,12 +3,24 @@
   [class.dds-radio--focused]="state === 'focused'"
   [class.dds-radio--disabled]="isDisabled"
   [class.dds-radio--invalid]="isInvalid"
+  [attr.aria-busy]="loading ? 'true' : null"
+  [attr.aria-label]="loading ? 'Loading radio' : null"
 >
-  <div *ngIf="showLabel" class="dds-radio__field-label">
+  <ng-container *ngIf="loading">
+    <div *ngIf="showLabel" class="dds-radio__skeleton-label">
+      <dds-skeleton width="112px" height="20px"></dds-skeleton>
+    </div>
+    <div class="dds-radio__skeleton-option">
+      <dds-skeleton width="20px" height="20px"></dds-skeleton>
+      <dds-skeleton *ngIf="showOption" width="136px" height="20px"></dds-skeleton>
+    </div>
+  </ng-container>
+
+  <div *ngIf="!loading && showLabel" class="dds-radio__field-label">
     {{ label }}<span *ngIf="required" class="dds-radio__required" aria-hidden="true">*</span>
   </div>
 
-  <label class="dds-radio__option" [for]="inputId">
+  <label *ngIf="!loading" class="dds-radio__option" [for]="inputId">
     <input
       class="dds-radio__native"
       type="radio"
@@ -27,7 +39,7 @@
     <span *ngIf="showOption" class="dds-radio__option-text">{{ option }}</span>
   </label>
 
-  <p *ngIf="isInvalid && showErrorMessage" class="dds-radio__error" [id]="errorId">
+  <p *ngIf="!loading && isInvalid && showErrorMessage" class="dds-radio__error" [id]="errorId">
     {{ errorMessage }}
   </p>
 </div>

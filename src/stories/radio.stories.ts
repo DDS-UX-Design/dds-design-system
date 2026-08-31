@@ -29,6 +29,7 @@ const meta: Meta<RadioStoryArgs> = {
     ariaLabel: 'Standard delivery',
     errorMessage: 'Select a delivery method.',
     showErrorMessage: true,
+    loading: false,
     onSelected: fn(),
   },
   argTypes: {
@@ -36,6 +37,7 @@ const meta: Meta<RadioStoryArgs> = {
       control: 'radio',
       options: ['default', 'focused', 'invalid', 'disabled'] satisfies RadioState[],
     },
+    loading: { control: 'boolean', table: { category: 'State' } },
     onSelected: { table: { disable: true } },
   },
   render: (args) => ({
@@ -46,6 +48,7 @@ const meta: Meta<RadioStoryArgs> = {
         [state]="state" [required]="required" [showLabel]="showLabel"
         [showOption]="showOption" [ariaLabel]="ariaLabel"
         [errorMessage]="errorMessage" [showErrorMessage]="showErrorMessage"
+        [loading]="loading"
         (checkedChange)="checked = $event" (selected)="onSelected($event)"
       ></dds-radio>
     `,
@@ -60,6 +63,14 @@ export const Checked: Story = { args: { checked: true } };
 export const Focused: Story = { args: { checked: true, state: 'focused' } };
 export const Invalid: Story = { args: { state: 'invalid' } };
 export const Disabled: Story = { args: { checked: true, state: 'disabled' } };
+export const Loading: Story = {
+  args: { loading: true },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await expect(canvas.getByLabelText('Loading radio')).toHaveAttribute('aria-busy', 'true');
+    await expect(canvas.queryByRole('radio')).not.toBeInTheDocument();
+  },
+};
 export const WithoutFieldLabel: Story = { args: { showLabel: false, required: false } };
 
 export const Select: Story = {
