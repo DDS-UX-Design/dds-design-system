@@ -80,7 +80,7 @@ const meta: Meta<DataTableStoryArgs> = {
   decorators: [
     componentWrapperDecorator(
       (story) => `
-        <div style="box-sizing: border-box; width: 993px; max-width: 100%; margin: 0 auto; padding: 24px;">
+        <div style="width: 945px; max-width: calc(100% - 48px); margin: 24px auto;">
           ${story}
         </div>
       `,
@@ -91,7 +91,7 @@ const meta: Meta<DataTableStoryArgs> = {
     docs: {
       description: {
         component:
-          'A responsive, accessible data table with optional search and filter controls, row selection, bulk actions, loading placeholders, status badges, row actions, and minimal pagination.',
+          'A responsive, accessible data table with row selection, bulk actions, loading placeholders, status badges, row actions, and minimal pagination. Use Page Toolbar for page-level search and filtering.',
       },
     },
   },
@@ -103,6 +103,7 @@ const meta: Meta<DataTableStoryArgs> = {
     totalPages: 2,
     currentPage: 1,
     pageSize: 10,
+    selectedKeys: [],
     rowActions: [{ label: 'More actions', icon: 'ellipsis' }],
     bulkActions: [
       { label: 'Archive', icon: 'archive' },
@@ -116,10 +117,10 @@ const meta: Meta<DataTableStoryArgs> = {
     template: `
       <dds-data-table
         [caption]="caption" [columns]="columns" [rows]="rows"
-        [selectable]="selectable" [showToolbar]="showToolbar" [loading]="loading"
+        [selectable]="selectable" [loading]="loading"
         [showPagination]="showPagination" [currentPage]="currentPage"
         [totalPages]="totalPages" [totalItems]="totalItems" [pageSize]="pageSize"
-        [filterOptions]="filterOptions" [rowActions]="rowActions" [bulkActions]="bulkActions"
+        [rowActions]="rowActions" [bulkActions]="bulkActions"
         [(selectedKeys)]="selectedKeys"
         (pageChange)="currentPage = $event"
         (rowAction)="onRowAction($event)" (bulkAction)="onBulkAction($event)"
@@ -132,9 +133,20 @@ export default meta;
 type Story = StoryObj<DataTableStoryArgs>;
 
 export const Default: Story = {};
+export const Pagination: Story = {
+  args: {
+    showPagination: true,
+    currentPage: 1,
+    totalPages: 12,
+    totalItems: 20,
+    pageSize: 10,
+  },
+};
 export const Selectable: Story = { args: { selectable: true } };
 export const BulkActions: Story = { args: { selectable: true, selectedKeys: [1, 2] } };
-export const Loading: Story = { args: { loading: true, showPagination: false } };
+export const Loading: Story = {
+  args: { loading: true, showPagination: false, rowActions: [] },
+};
 export const Empty: Story = { args: { rows: [], totalItems: 0, totalPages: 1 } };
 
 export const RowSelection: Story = {
