@@ -102,6 +102,50 @@
             }
         },
         {
+            "name": "DdsChartSeries",
+            "id": "interface-DdsChartSeries-b41455ce2accc15e377f14feba14f613566460e87d804e00a0ae0b50e697baa05c54885f71ad9ecc8a64c2c821e55fb4b3a32fc483e3bfa02afd380ee66a6bf4",
+            "file": "src/app/components/chart/chart.component.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "import { isPlatformBrowser } from '@angular/common';\nimport {\n  AfterViewInit,\n  Component,\n  ElementRef,\n  Inject,\n  Input,\n  OnChanges,\n  OnDestroy,\n  PLATFORM_ID,\n  SimpleChanges,\n  ViewChild,\n} from '@angular/core';\nimport {\n  BarController,\n  BarElement,\n  CategoryScale,\n  Chart,\n  ChartConfiguration,\n  ChartDataset,\n  DoughnutController,\n  ArcElement,\n  Legend,\n  LinearScale,\n  PieController,\n  Tooltip,\n} from 'chart.js';\n\nexport type DdsChartType = 'donut' | 'pie' | 'horizontal-bar' | 'grouped-bar' | 'stacked-bar';\nexport type DdsChartLegendPosition = 'right' | 'bottom' | 'top';\n\nexport interface DdsChartSeries {\n  label: string;\n  data: number[];\n}\n\nChart.register(\n  ArcElement,\n  BarController,\n  BarElement,\n  CategoryScale,\n  DoughnutController,\n  Legend,\n  LinearScale,\n  PieController,\n  Tooltip,\n);\n\nconst CHART_COLOURS = [\n  '--chart-1',\n  '--chart-2',\n  '--chart-3',\n  '--chart-4',\n  '--chart-5',\n  '--chart-6',\n] as const;\n\n/** Experimental Chart.js wrapper for documenting DDS data-visualisation colour usage. */\n@Component({\n  selector: 'dds-chart',\n  standalone: true,\n  templateUrl: './chart.component.html',\n  styleUrl: './chart.component.css',\n})\nexport class ChartComponent implements AfterViewInit, OnChanges, OnDestroy {\n  @ViewChild('canvas') canvas?: ElementRef<HTMLCanvasElement>;\n\n  /** Chart pattern to render. */\n  @Input() type: DdsChartType = 'donut';\n\n  /** Category labels used by bar charts and circular segments. */\n  @Input() labels: string[] = ['Series 1', 'Series 2', 'Series 3'];\n\n  /** Data series. Circular charts use the first series and colour each value. */\n  @Input() series: DdsChartSeries[] = [{ label: 'Value', data: [75, 15, 10] }];\n\n  /** Legend placement. */\n  @Input() legendPosition: DdsChartLegendPosition = 'right';\n\n  /** Accessible summary announced instead of the visual canvas. */\n  @Input() accessibleLabel = 'Chart';\n\n  private chart?: Chart;\n\n  constructor(@Inject(PLATFORM_ID) private readonly platformId: object) {}\n\n  ngAfterViewInit(): void {\n    this.renderChart();\n  }\n\n  ngOnChanges(_changes: SimpleChanges): void {\n    if (this.canvas) this.renderChart();\n  }\n\n  ngOnDestroy(): void {\n    this.chart?.destroy();\n  }\n\n  private renderChart(): void {\n    if (!isPlatformBrowser(this.platformId) || !this.canvas) return;\n\n    this.chart?.destroy();\n    const styles = getComputedStyle(this.canvas.nativeElement);\n    const colours = CHART_COLOURS.map((token) => styles.getPropertyValue(token).trim());\n    const isCircular = this.type === 'donut' || this.type === 'pie';\n    const isStacked = this.type === 'stacked-bar';\n    const datasets: ChartDataset<'bar' | 'doughnut' | 'pie', number[]>[] = isCircular\n      ? [\n          {\n            label: this.series[0]?.label ?? 'Value',\n            data: this.series[0]?.data ?? [],\n            backgroundColor: colours,\n            borderColor: styles.getPropertyValue('--bg-colour-white').trim() || '#fff',\n            borderWidth: 1,\n          },\n        ]\n      : this.series.map((series, index) => ({\n          ...series,\n          backgroundColor:\n            this.type === 'horizontal-bar'\n              ? series.data.map((_, colourIndex) => colours[colourIndex % colours.length])\n              : colours[index % colours.length],\n          borderWidth: 0,\n          barPercentage: isStacked ? 0.72 : 0.68,\n          categoryPercentage: isStacked ? 0.8 : 0.72,\n        }));\n\n    const configuration: ChartConfiguration<'bar' | 'doughnut' | 'pie', number[], string> = {\n      type: isCircular ? (this.type === 'donut' ? 'doughnut' : 'pie') : 'bar',\n      data: { labels: this.labels, datasets },\n      options: {\n        responsive: true,\n        maintainAspectRatio: false,\n        animation: false,\n        indexAxis: isCircular ? undefined : 'y',\n        cutout: this.type === 'donut' ? '58%' : undefined,\n        plugins: {\n          legend: {\n            display: isCircular || this.type !== 'horizontal-bar',\n            position: this.legendPosition,\n            labels: {\n              boxWidth: 48,\n              boxHeight: 12,\n              color: styles.getPropertyValue('--text-colour-default').trim(),\n              font: { family: styles.getPropertyValue('--font-family-primary').trim(), size: 14 },\n              padding: 12,\n            },\n          },\n        },\n        scales: isCircular\n          ? undefined\n          : {\n              x: {\n                beginAtZero: true,\n                stacked: isStacked,\n                border: { color: '#d4d4d4' },\n                grid: { display: false },\n                ticks: { color: '#171717' },\n              },\n              y: {\n                stacked: isStacked,\n                border: { color: '#d4d4d4' },\n                grid: { display: false },\n                ticks: { color: '#171717' },\n              },\n            },\n      },\n    };\n\n    this.chart = new Chart(this.canvas.nativeElement, configuration);\n  }\n}\n",
+            "displayName": "DdsChartSeries",
+            "properties": [
+                {
+                    "name": "data",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number[]",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 34,
+                    "rawdescription": "\n"
+                },
+                {
+                    "name": "label",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 33,
+                    "rawdescription": "\n"
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 172,
+            "methods": [],
+            "extends": [],
+            "relationships": {
+                "incoming": [],
+                "outgoing": []
+            }
+        },
+        {
             "name": "RadioOption",
             "id": "interface-RadioOption-f5f03b7e89d0d8f28fe23271108c162c72be3026d2a54d703ff3f5fdc5a40804b5a1189a335b9fa4ca60f47aab1a127f23d907982e3f2849b62ae10c7d4cef0e",
             "file": "src/app/components/radio-group/radio-group.component.ts",
