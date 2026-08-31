@@ -195,6 +195,27 @@
   line-height: 0;
 }
 
+.dds-button--icon-spin .dds-button__icon {
+  animation: dds-button-icon-spin 800ms linear infinite;
+}
+
+.dds-button--icon-spin-on-press:active:not(:disabled) .dds-button__icon {
+  animation: dds-button-icon-spin 350ms ease-out;
+}
+
+@keyframes dds-button-icon-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dds-button--icon-spin .dds-button__icon,
+  .dds-button--icon-spin-on-press:active:not(:disabled) .dds-button__icon {
+    animation: none;
+  }
+}
+
 .dds-button--icon-only {
   padding: var(--space-0);
   height: var(--btn-icon-only-size-lg);
