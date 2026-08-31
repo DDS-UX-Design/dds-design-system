@@ -1,37 +1,4 @@
 <section class="dds-data-table" [attr.aria-busy]="loading">
-  <div *ngIf="showToolbar && !selectedCount" class="dds-data-table__toolbar">
-    <div class="dds-data-table__controls">
-      <dds-search
-        size="small"
-        [showLabel]="false"
-        [ariaLabel]="searchPlaceholder"
-        [placeholder]="searchPlaceholder"
-        [value]="searchValue"
-        (valueChange)="searchValue = $event; searchChange.emit($event)"
-        (search)="searchSubmit.emit($event)"
-      ></dds-search>
-      <dds-select
-        *ngIf="filterOptions.length"
-        size="small"
-        [showLabel]="false"
-        [showHelperText]="false"
-        [ariaLabel]="filterLabel"
-        [placeholder]="filterLabel"
-        [options]="filterOptions"
-        [value]="filterValue"
-        (valueChange)="filterValue = $event; filterChange.emit($event)"
-      ></dds-select>
-    </div>
-    <dds-button
-      variant="primary"
-      size="medium"
-      iconType="left-icon"
-      [icon]="toolbarActionIcon"
-      (click)="toolbarAction.emit()"
-      >{{ toolbarActionLabel }}</dds-button
-    >
-  </div>
-
   <div *ngIf="selectable && selectedCount" class="dds-data-table__bulk" aria-live="polite">
     <div class="dds-data-table__selection-summary">
       <span>{{ selectedCount }} selected</span>
@@ -103,6 +70,7 @@
         <ng-template #tableContent>
           <tr
             *ngFor="let row of rows; trackBy: trackRow"
+            class="dds-data-table__row"
             [class.dds-data-table__row--selected]="isSelected(row)"
           >
             <td *ngIf="selectable" class="dds-data-table__selection-cell">
@@ -122,6 +90,7 @@
                 *ngIf="column.type === 'status'; else textCell"
                 [text]="cellValue(column, row).toString()"
                 [tone]="statusTone(column, row)"
+                size="small"
               ></dds-status-badge>
               <ng-template #textCell>{{ cellValue(column, row) }}</ng-template>
             </td>

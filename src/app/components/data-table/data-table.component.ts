@@ -4,8 +4,6 @@ import { ButtonComponent } from '../button/button.component';
 import { CheckboxComponent, CheckboxValue } from '../checkbox/checkbox.component';
 import { DdsIconName } from '../icon/icon.component';
 import { MinimalPaginationComponent } from '../minimal-pagination/minimal-pagination.component';
-import { SearchComponent } from '../search/search.component';
-import { SelectComponent, SelectOption } from '../select/select.component';
 import { SkeletonComponent } from '../skeleton/skeleton.component';
 import { StatusBadgeComponent, StatusBadgeTone } from '../status-badge/status-badge.component';
 
@@ -35,8 +33,6 @@ export type DataTableAction = {
     ButtonComponent,
     CheckboxComponent,
     MinimalPaginationComponent,
-    SearchComponent,
-    SelectComponent,
     SkeletonComponent,
     StatusBadgeComponent,
   ],
@@ -51,19 +47,11 @@ export class DataTableComponent {
   @Input() selectable = false;
   @Input() loading = false;
   @Input() loadingRows = 5;
-  @Input() showToolbar = false;
   @Input() showPagination = true;
   @Input() currentPage = 1;
   @Input() totalPages = 1;
   @Input() totalItems = 0;
   @Input() pageSize = 10;
-  @Input() searchValue = '';
-  @Input() searchPlaceholder = 'Search...';
-  @Input() filterLabel = 'Filter';
-  @Input() filterValue = '';
-  @Input() filterOptions: SelectOption[] = [];
-  @Input() toolbarActionLabel = 'Add new';
-  @Input() toolbarActionIcon: DdsIconName = 'plus';
   @Input() rowActions: DataTableAction[] = [{ label: 'More actions', icon: 'ellipsis' }];
   @Input() bulkActions: DataTableAction[] = [];
   @Input() emptyMessage = 'No results found.';
@@ -71,10 +59,6 @@ export class DataTableComponent {
 
   @Output() selectedKeysChange = new EventEmitter<Array<string | number>>();
   @Output() pageChange = new EventEmitter<number>();
-  @Output() searchChange = new EventEmitter<string>();
-  @Output() searchSubmit = new EventEmitter<string>();
-  @Output() filterChange = new EventEmitter<string>();
-  @Output() toolbarAction = new EventEmitter<void>();
   @Output() rowAction = new EventEmitter<{ action: DataTableAction; row: DataTableRow }>();
   @Output() bulkAction = new EventEmitter<DataTableAction>();
 

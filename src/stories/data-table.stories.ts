@@ -103,12 +103,6 @@ const meta: Meta<DataTableStoryArgs> = {
     totalPages: 2,
     currentPage: 1,
     pageSize: 10,
-    selectedKeys: [],
-    filterOptions: [
-      { label: 'All statuses', value: 'all' },
-      { label: 'Success', value: 'success' },
-      { label: 'Warning', value: 'warning' },
-    ],
     rowActions: [{ label: 'More actions', icon: 'ellipsis' }],
     bulkActions: [
       { label: 'Archive', icon: 'archive' },
@@ -138,8 +132,7 @@ export default meta;
 type Story = StoryObj<DataTableStoryArgs>;
 
 export const Default: Story = {};
-export const WithToolbar: Story = { args: { showToolbar: true } };
-export const Selectable: Story = { args: { selectable: true, showToolbar: true } };
+export const Selectable: Story = { args: { selectable: true } };
 export const BulkActions: Story = { args: { selectable: true, selectedKeys: [1, 2] } };
 export const Loading: Story = { args: { loading: true, showPagination: false } };
 export const Empty: Story = { args: { rows: [], totalItems: 0, totalPages: 1 } };
