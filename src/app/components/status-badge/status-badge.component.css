@@ -3,6 +3,7 @@
 }
 
 .dds-status-badge {
+  box-sizing: border-box;
   display: inline-flex;
   align-items: center;
   min-height: 28px;
@@ -33,4 +34,10 @@
 .dds-status-badge[data-tone='neutral'] {
   --dds-status-background: var(--bg-colour-default);
   --dds-status-colour: var(--text-colour-tertiary);
+}
+
+.dds-status-badge[data-size='small'] {
+  min-height: 24px;
+  font-size: var(--font-size-xs);
+  line-height: var(--font-size-md);
 }
