@@ -6,7 +6,7 @@
 .dds-search {
   display: flex;
   flex-direction: column;
-  width: 460px;
+  width: 100%;
   max-width: 100%;
   color: var(--text-colour-default);
   font-family: var(--font-family-primary);
@@ -45,6 +45,7 @@
 }
 
 .dds-search--small .dds-search__field {
+  height: 40px;
   min-height: 40px;
 }
 
