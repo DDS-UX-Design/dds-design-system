@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, HostBinding, Input } from '@angular/core';
 
 @Component({
   selector: 'dds-skeleton',
@@ -17,5 +17,10 @@ export class SkeletonComponent {
 
   get resolvedHeight(): string {
     return typeof this.height === 'number' ? `${this.height}px` : this.height;
+  }
+
+  @HostBinding('style.width')
+  get hostWidth(): string {
+    return this.resolvedWidth;
   }
 }
