@@ -82,7 +82,7 @@ table {
 
 th,
 td {
-  height: 54px;
+  height: auto;
   padding: var(--space-3);
   text-align: left;
   vertical-align: middle;

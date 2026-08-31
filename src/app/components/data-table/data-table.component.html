@@ -40,8 +40,8 @@
     <div class="dds-data-table__bulk-actions">
       <dds-button
         *ngFor="let action of bulkActions"
-        variant="secondary"
-        size="medium"
+        [variant]="action.styleType === 'danger' ? 'primary' : 'secondary'"
+        size="small"
         [styleType]="action.styleType ?? 'default'"
         [iconType]="action.icon ? 'left-icon' : 'no-icon'"
         [icon]="action.icon ?? 'info'"

@@ -79,7 +79,11 @@ const meta: Meta<DataTableStoryArgs> = {
   tags: ['autodocs'],
   decorators: [
     componentWrapperDecorator(
-      (story) => `<div style="width: 945px; max-width: 100%">${story}</div>`,
+      (story) => `
+        <div style="box-sizing: border-box; width: 993px; max-width: 100%; margin: 0 auto; padding: 24px;">
+          ${story}
+        </div>
+      `,
     ),
   ],
   parameters: {
@@ -99,6 +103,7 @@ const meta: Meta<DataTableStoryArgs> = {
     totalPages: 2,
     currentPage: 1,
     pageSize: 10,
+    selectedKeys: [],
     filterOptions: [
       { label: 'All statuses', value: 'all' },
       { label: 'Success', value: 'success' },
