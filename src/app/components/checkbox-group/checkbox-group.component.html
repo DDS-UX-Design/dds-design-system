@@ -1,0 +1,36 @@
+<fieldset
+  class="dds-checkbox-group"
+  [class.dds-checkbox-group--inline]="direction === 'inline'"
+  [class.dds-checkbox-group--stacked]="direction === 'stacked'"
+  [class.dds-checkbox-group--invalid]="state === 'invalid'"
+  [disabled]="state === 'disabled'"
+  [attr.aria-describedby]="describedBy"
+  [attr.aria-required]="required"
+>
+  <legend *ngIf="showLabel" class="dds-checkbox-group__legend">
+    {{ label }}<span *ngIf="required" aria-hidden="true">*</span>
+  </legend>
+
+  <div class="dds-checkbox-group__options">
+    <dds-checkbox
+      *ngFor="let option of options; let index = index"
+      [inputId]="groupId + '-' + index"
+      [option]="option.label"
+      [value]="optionValue(option)"
+      [state]="optionState(option)"
+      [showLabel]="false"
+      [showErrorMessage]="false"
+      [describedBy]="describedBy"
+      (valueChange)="toggle(option, $event)"
+    ></dds-checkbox>
+  </div>
+
+  <p
+    *ngIf="state === 'invalid' || showHelperText"
+    class="dds-checkbox-group__supporting-text"
+    [class.dds-checkbox-group__supporting-text--error]="state === 'invalid'"
+    [id]="supportingTextId"
+  >
+    {{ state === 'invalid' ? errorMessage : helperText }}
+  </p>
+</fieldset>
