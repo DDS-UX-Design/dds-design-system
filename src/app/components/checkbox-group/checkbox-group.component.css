@@ -53,6 +53,7 @@
 }
 
 .dds-checkbox-group__supporting-text--error {
+  color: var(--text-colour-danger);
   font-weight: var(--font-weight-medium);
 }
 
