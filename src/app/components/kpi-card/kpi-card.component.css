@@ -13,7 +13,6 @@
   border-radius: var(--radius-sm);
   background: var(--bg-colour-white);
   color: var(--text-colour-default);
-  box-shadow: 0 4px 16px rgb(0 0 0 / 8%);
 }
 
 .dds-kpi-card__label,
