@@ -2,6 +2,62 @@
     "pipes": [],
     "interfaces": [
         {
+            "name": "CheckboxGroupOption",
+            "id": "interface-CheckboxGroupOption-1c6e9bc0695dfc7097d0fdda5ac35dfa6b783f0187b0ff5dc65a635684c9a567849b665b7006dccf190580c20583e31f21bfc214c37fb0a67fcdb816e675e1fc",
+            "file": "src/app/components/checkbox-group/checkbox-group.component.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, EventEmitter, Input, Output } from '@angular/core';\nimport { CheckboxComponent, CheckboxState, CheckboxValue } from '../checkbox/checkbox.component';\n\nexport type CheckboxGroupDirection = 'inline' | 'stacked';\nexport type CheckboxGroupState = 'default' | 'invalid' | 'disabled';\n\nexport interface CheckboxGroupOption {\n  label: string;\n  value: string;\n  disabled?: boolean;\n}\n\nlet nextCheckboxGroupId = 0;\n\n/** A labelled set of independent checkbox options in an inline or stacked layout. */\n@Component({\n  selector: 'dds-checkbox-group',\n  standalone: true,\n  imports: [CommonModule, CheckboxComponent],\n  templateUrl: './checkbox-group.component.html',\n  styleUrl: './checkbox-group.component.css',\n})\nexport class CheckboxGroupComponent {\n  @Input() groupId = `dds-checkbox-group-${nextCheckboxGroupId++}`;\n  @Input() label = 'Label';\n  @Input() options: CheckboxGroupOption[] = [\n    { label: 'Option 1', value: 'option-1' },\n    { label: 'Option 2', value: 'option-2' },\n    { label: 'Option 3', value: 'option-3' },\n    { label: 'Option 4', value: 'option-4' },\n  ];\n  @Input() selectedValues: string[] = [];\n  @Input() direction: CheckboxGroupDirection = 'inline';\n  @Input() state: CheckboxGroupState = 'default';\n  @Input() required = true;\n  @Input() showLabel = true;\n  @Input() helperText = 'Select all options that apply.';\n  @Input() showHelperText = false;\n  @Input() errorMessage = 'Select at least one option.';\n\n  @Output() selectedValuesChange = new EventEmitter<string[]>();\n\n  get supportingTextId(): string {\n    return `${this.groupId}-${this.state === 'invalid' ? 'error' : 'helper'}`;\n  }\n\n  get describedBy(): string | undefined {\n    return this.state === 'invalid' || this.showHelperText ? this.supportingTextId : undefined;\n  }\n\n  optionState(option: CheckboxGroupOption): CheckboxState {\n    if (this.state === 'disabled' || option.disabled) return 'disabled';\n    if (this.state === 'invalid') return 'invalid';\n    return 'default';\n  }\n\n  optionValue(option: CheckboxGroupOption): CheckboxValue {\n    return this.selectedValues.includes(option.value) ? 'checked' : 'unchecked';\n  }\n\n  toggle(option: CheckboxGroupOption, value: CheckboxValue): void {\n    const selected = new Set(this.selectedValues);\n    value === 'checked' ? selected.add(option.value) : selected.delete(option.value);\n    this.selectedValues = [...selected];\n    this.selectedValuesChange.emit(this.selectedValues);\n  }\n}\n",
+            "displayName": "CheckboxGroupOption",
+            "properties": [
+                {
+                    "name": "disabled",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 11,
+                    "rawdescription": "\n"
+                },
+                {
+                    "name": "label",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 9,
+                    "rawdescription": "\n"
+                },
+                {
+                    "name": "value",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 10,
+                    "rawdescription": "\n"
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 172,
+            "methods": [],
+            "extends": [],
+            "relationships": {
+                "incoming": [],
+                "outgoing": []
+            }
+        },
+        {
             "name": "RadioOption",
             "id": "interface-RadioOption-58bbad0d5f63ed4ce5892f0ad30c4fe64ae2949b6b7c0ed5da7afce4e8053989c08d779224463484bf04dfb249235aaa652c2966efcd52bc7e3f08fa8e2e162c",
             "file": "src/app/components/radio-group/radio-group.component.ts",
@@ -561,7 +617,7 @@
         },
         {
             "name": "ButtonComponent",
-            "id": "component-ButtonComponent-c80c420d1c53544b83127e38c64340040d8977088614bef00f485523c83d78b86376dd011fb7fe6372ff82a4a59424224dfa98cb96098e97c4b6f58c7f6cc2d1",
+            "id": "component-ButtonComponent-b068ef17fa3930816fb0145118da6b01562788b55197ca85e2cd70a6d4bd2851f8bb041bc39ca8f5aaff24c487c335a9eeee5ca1d4e8b26e2fa47c3856f5598a",
             "file": "src/app/components/button/button.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -588,7 +644,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nAccessible label for icon-only buttons when the visible label is not present.",
                     "description": "<p>Accessible label for icon-only buttons when the visible label is not present.</p>\n",
-                    "line": 42,
+                    "line": 46,
                     "type": "string",
                     "decorators": []
                 },
@@ -600,7 +656,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nDisables interaction and applies the disabled visual treatment.",
                     "description": "<p>Disables interaction and applies the disabled visual treatment.</p>\n",
-                    "line": 48,
+                    "line": 52,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -612,7 +668,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nExpands the button to fill the available width of its container.",
                     "description": "<p>Expands the button to fill the available width of its container.</p>\n",
-                    "line": 51,
+                    "line": 55,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -624,8 +680,20 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nName of the icon to display when icon placement is enabled.",
                     "description": "<p>Name of the icon to display when icon placement is enabled.</p>\n",
-                    "line": 39,
+                    "line": 40,
                     "type": "DdsIconName",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "iconAnimation",
+                    "defaultValue": "'none'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nOptional motion treatment for animated action icons.",
+                    "description": "<p>Optional motion treatment for animated action icons.</p>\n",
+                    "line": 43,
+                    "type": "ButtonIconAnimation",
                     "decorators": []
                 },
                 {
@@ -636,7 +704,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nPlacement of the icon, or whether the button should render as icon-only.",
                     "description": "<p>Placement of the icon, or whether the button should render as icon-only.</p>\n",
-                    "line": 36,
+                    "line": 37,
                     "type": "ButtonIconType",
                     "decorators": []
                 },
@@ -648,7 +716,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nSize of the button to match surrounding layout and hierarchy.",
                     "description": "<p>Size of the button to match surrounding layout and hierarchy.</p>\n",
-                    "line": 33,
+                    "line": 34,
                     "type": "ButtonSize",
                     "decorators": []
                 },
@@ -660,7 +728,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nVisual state used for design previews and interaction feedback.",
                     "description": "<p>Visual state used for design previews and interaction feedback.</p>\n",
-                    "line": 27,
+                    "line": 28,
                     "type": "ButtonState",
                     "decorators": []
                 },
@@ -672,7 +740,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nSemantic style that can switch the button to a destructive treatment.",
                     "description": "<p>Semantic style that can switch the button to a destructive treatment.</p>\n",
-                    "line": 30,
+                    "line": 31,
                     "type": "ButtonStyle",
                     "decorators": []
                 },
@@ -684,7 +752,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nNative button type used for form submission and button semantics.",
                     "description": "<p>Native button type used for form submission and button semantics.</p>\n",
-                    "line": 45,
+                    "line": 49,
                     "type": "\"button\" | \"submit\" | \"reset\"",
                     "decorators": []
                 },
@@ -696,7 +764,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nVisual treatment for the button, used to communicate action importance.",
                     "description": "<p>Visual treatment for the button, used to communicate action importance.</p>\n",
-                    "line": 24,
+                    "line": 25,
                     "type": "ButtonVariant",
                     "decorators": []
                 }
@@ -723,20 +791,20 @@
             "description": "<p>A reusable button component for primary actions, secondary actions, and icon-only affordances.\nSupports variants, size options, semantic states, and optional leading or trailing icons.</p>\n",
             "rawdescription": "\n\nA reusable button component for primary actions, secondary actions, and icon-only affordances.\nSupports variants, size options, semantic states, and optional leading or trailing icons.\n",
             "type": "component",
-            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { DdsIconName, IconComponent } from '../icon/icon.component';\n\nexport type ButtonVariant = 'primary' | 'secondary' | 'ghost';\nexport type ButtonState = 'default' | 'hover' | 'focused' | 'disabled';\nexport type ButtonStyle = 'default' | 'danger';\nexport type ButtonSize = 'large' | 'medium' | 'small';\nexport type ButtonIconType = 'no-icon' | 'left-icon' | 'right-icon' | 'icon-only';\n\n/**\n * A reusable button component for primary actions, secondary actions, and icon-only affordances.\n * Supports variants, size options, semantic states, and optional leading or trailing icons.\n */\n@Component({\n  selector: 'dds-button',\n  standalone: true,\n  imports: [CommonModule, IconComponent],\n  templateUrl: './button.component.html',\n  styleUrl: './button.component.css',\n})\nexport class ButtonComponent {\n  /** Visual treatment for the button, used to communicate action importance. */\n  @Input() variant: ButtonVariant = 'primary';\n\n  /** Visual state used for design previews and interaction feedback. */\n  @Input() state: ButtonState = 'default';\n\n  /** Semantic style that can switch the button to a destructive treatment. */\n  @Input() styleType: ButtonStyle = 'default';\n\n  /** Size of the button to match surrounding layout and hierarchy. */\n  @Input() size: ButtonSize = 'large';\n\n  /** Placement of the icon, or whether the button should render as icon-only. */\n  @Input() iconType: ButtonIconType = 'no-icon';\n\n  /** Name of the icon to display when icon placement is enabled. */\n  @Input() icon: DdsIconName = 'info';\n\n  /** Accessible label for icon-only buttons when the visible label is not present. */\n  @Input() ariaLabel?: string;\n\n  /** Native button type used for form submission and button semantics. */\n  @Input() type: 'button' | 'submit' | 'reset' = 'button';\n\n  /** Disables interaction and applies the disabled visual treatment. */\n  @Input() disabled = false;\n\n  /** Expands the button to fill the available width of its container. */\n  @Input() fullWidth = false;\n\n  get isDisabled(): boolean {\n    return this.disabled || this.state === 'disabled';\n  }\n\n  get hasLeftIcon(): boolean {\n    return this.iconType === 'left-icon';\n  }\n\n  get hasRightIcon(): boolean {\n    return this.iconType === 'right-icon';\n  }\n\n  get isIconOnly(): boolean {\n    return this.iconType === 'icon-only';\n  }\n\n  get iconSize(): number {\n    if (this.size === 'small') {\n      return 16;\n    }\n\n    if (this.size === 'medium') {\n      return 20;\n    }\n\n    return 24;\n  }\n}\n",
+            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { DdsIconName, IconComponent } from '../icon/icon.component';\n\nexport type ButtonVariant = 'primary' | 'secondary' | 'ghost';\nexport type ButtonState = 'default' | 'hover' | 'focused' | 'disabled';\nexport type ButtonStyle = 'default' | 'danger';\nexport type ButtonSize = 'large' | 'medium' | 'small';\nexport type ButtonIconType = 'no-icon' | 'left-icon' | 'right-icon' | 'icon-only';\nexport type ButtonIconAnimation = 'none' | 'spin' | 'spin-on-press';\n\n/**\n * A reusable button component for primary actions, secondary actions, and icon-only affordances.\n * Supports variants, size options, semantic states, and optional leading or trailing icons.\n */\n@Component({\n  selector: 'dds-button',\n  standalone: true,\n  imports: [CommonModule, IconComponent],\n  templateUrl: './button.component.html',\n  styleUrl: './button.component.css',\n})\nexport class ButtonComponent {\n  /** Visual treatment for the button, used to communicate action importance. */\n  @Input() variant: ButtonVariant = 'primary';\n\n  /** Visual state used for design previews and interaction feedback. */\n  @Input() state: ButtonState = 'default';\n\n  /** Semantic style that can switch the button to a destructive treatment. */\n  @Input() styleType: ButtonStyle = 'default';\n\n  /** Size of the button to match surrounding layout and hierarchy. */\n  @Input() size: ButtonSize = 'large';\n\n  /** Placement of the icon, or whether the button should render as icon-only. */\n  @Input() iconType: ButtonIconType = 'no-icon';\n\n  /** Name of the icon to display when icon placement is enabled. */\n  @Input() icon: DdsIconName = 'info';\n\n  /** Optional motion treatment for animated action icons. */\n  @Input() iconAnimation: ButtonIconAnimation = 'none';\n\n  /** Accessible label for icon-only buttons when the visible label is not present. */\n  @Input() ariaLabel?: string;\n\n  /** Native button type used for form submission and button semantics. */\n  @Input() type: 'button' | 'submit' | 'reset' = 'button';\n\n  /** Disables interaction and applies the disabled visual treatment. */\n  @Input() disabled = false;\n\n  /** Expands the button to fill the available width of its container. */\n  @Input() fullWidth = false;\n\n  get isDisabled(): boolean {\n    return this.disabled || this.state === 'disabled';\n  }\n\n  get hasLeftIcon(): boolean {\n    return this.iconType === 'left-icon';\n  }\n\n  get hasRightIcon(): boolean {\n    return this.iconType === 'right-icon';\n  }\n\n  get isIconOnly(): boolean {\n    return this.iconType === 'icon-only';\n  }\n\n  get iconSize(): number {\n    if (this.size === 'small') {\n      return 16;\n    }\n\n    if (this.size === 'medium') {\n      return 20;\n    }\n\n    return 24;\n  }\n}\n",
             "styleUrl": "./button.component.css",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ":host {\n  display: inline-block;\n}\n\n.dds-button {\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  gap: var(--space-2);\n  border: 1px solid;\n  border-radius: var(--radius-sm);\n  font-family: var(--font-family-primary);\n  font-weight: var(--font-weight-medium);\n  letter-spacing: var(--space-none);\n  cursor: pointer;\n  position: relative;\n  outline: none;\n  transition:\n    background-color 0.2s ease-in-out,\n    border-color 0.2s ease-in-out,\n    box-shadow 0.2s ease-in-out;\n}\n\n.dds-button:disabled {\n  background-color: var(--btn-colour-primary-disabled);\n  border-color: var(--btn-colour-primary-disabled);\n  cursor: not-allowed;\n  color: var(--text-colour-disabled);\n}\n\n.dds-button--large {\n  height: 48px;\n  min-height: 48px;\n  padding: 12px 24px;\n  font-size: var(--font-size-md);\n  line-height: 24px;\n}\n\n.dds-button--medium {\n  height: 40px;\n  min-height: 40px;\n  padding: 8px 16px;\n  font-size: var(--font-size-sm);\n  line-height: 20px;\n}\n\n.dds-button--small {\n  height: 32px;\n  min-height: 32px;\n  padding: 4px 12px;\n  font-size: var(--font-size-xs);\n  line-height: 16px;\n}\n\n/* Primary Button */\n.dds-button--primary {\n  background-color: var(--btn-colour-primary);\n  border-color: var(--btn-colour-primary);\n  color: var(--text-colour-inverse);\n}\n\n.dds-button--primary:hover:not(:disabled),\n.dds-button--state-hover.dds-button--primary:not(:disabled) {\n  background-color: var(--btn-colour-primary-hover);\n  border-color: var(--btn-colour-primary-hover);\n}\n\n.dds-button--primary:focus,\n.dds-button--primary:focus-visible,\n.dds-button--primary:active,\n.dds-button--primary:hover:active,\n.dds-button--state-focused.dds-button--primary:not(:disabled) {\n  background-color: var(--btn-colour-primary);\n  border-color: var(--colour-neutral-white);\n  box-shadow: var(--btn-primary-focus-ring);\n}\n\n/* Secondary Button */\n.dds-button--secondary {\n  background-color: var(--btn-colour-secondary);\n  border-color: var(--border-colour-default);\n  color: var(--text-colour-default);\n}\n\n.dds-button--secondary:hover:not(:disabled),\n.dds-button--state-hover.dds-button--secondary:not(:disabled) {\n  background-color: var(--btn-colour-secondary-hover);\n  border-color: var(--border-colour-default);\n}\n\n.dds-button--secondary:focus,\n.dds-button--secondary:focus-visible,\n.dds-button--secondary:active,\n.dds-button--secondary:hover:active,\n.dds-button--state-focused.dds-button--secondary:not(:disabled) {\n  background-color: var(--btn-colour-secondary);\n  border-color: var(--colour-neutral-white);\n  box-shadow: var(--btn-primary-focus-ring);\n}\n\n/* Ghost Button */\n.dds-button--ghost {\n  background-color: var(--btn-colour-ghost);\n  border: none;\n  color: var(--text-colour-accent);\n}\n\n.dds-button--ghost:hover:not(:disabled),\n.dds-button--state-hover.dds-button--ghost:not(:disabled) {\n  background-color: var(--btn-colour-ghost-hover);\n}\n\n.dds-button--ghost:focus,\n.dds-button--ghost:focus-visible,\n.dds-button--ghost:active,\n.dds-button--ghost:hover:active,\n.dds-button--state-focused.dds-button--ghost:not(:disabled) {\n  background-color: var(--btn-colour-ghost-hover);\n  border-color: var(--border-colour-default);\n  box-shadow: var(--btn-primary-focus-ring);\n}\n\n.dds-button--ghost .dds-button__label {\n  display: block;\n  height: 100%;\n  position: relative;\n}\n\n.dds-button--ghost .dds-button__label::after {\n  background-color: var(--bg-colour-accent);\n  content: '';\n  display: block;\n  position: absolute;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  width: 100%;\n  height: 1px;\n}\n\n/* Danger Button */\n\n.dds-button--danger.dds-button--primary {\n  background-color: var(--btn-colour-danger);\n  border-color: var(--btn-colour-danger);\n}\n\n.dds-button--danger.dds-button--primary:hover:not(:disabled),\n.dds-button--danger.dds-button--state-hover.dds-button--primary:not(:disabled) {\n  background-color: var(--btn-colour-danger-hover);\n  border-color: var(--btn-colour-danger-hover);\n}\n\n.dds-button--danger.dds-button--primary:focus,\n.dds-button--danger.dds-button--primary:focus-visible,\n.dds-button--danger.dds-button--primary:active,\n.dds-button--danger.dds-button--primary:hover:active,\n.dds-button--danger.dds-button--state-focused.dds-button--primary:not(:disabled) {\n  background-color: var(--btn-colour-danger);\n  border-color: var(--colour-neutral-white);\n  box-shadow: var(--btn-danger-focus-ring);\n}\n\n/* Disabled states */\n\n.dds-button--primary:disabled {\n  background-color: var(--btn-colour-primary-disabled);\n  border-color: var(--btn-colour-primary-disabled);\n}\n\n.dds-button--secondary:disabled {\n  background-color: var(--btn-colour-secondary-disabled);\n  border-color: var(--border-colour-disabled);\n}\n\n.dds-button--ghost:disabled {\n  background-color: var(--btn-colour-ghost-disabled);\n  border: none;\n}\n\n.dds-button--danger.dds-button--primary:disabled {\n  background-color: var(--btn-colour-danger-disabled);\n  border-color: var(--btn-colour-danger-disabled);\n  color: var(--btn-colour-danger-text-disabled);\n}\n\n.dds-button--ghost:disabled .dds-button__label::after {\n  background-color: var(--text-colour-disabled);\n}\n\n/* Icon Button */\n\n.dds-button__icon {\n  display: inline-flex;\n  line-height: 0;\n}\n\n.dds-button--icon-only {\n  padding: var(--space-0);\n  height: var(--btn-icon-only-size-lg);\n  min-height: var(--btn-icon-only-size-lg);\n  width: var(--btn-icon-only-size-lg);\n}\n\n.dds-button--icon-only.dds-button--medium {\n  width: var(--btn-icon-only-size-md);\n  height: var(--btn-icon-only-size-md);\n  min-height: var(--btn-icon-only-size-md);\n}\n\n.dds-button--icon-only.dds-button--small {\n  width: var(--btn-icon-only-size-sm);\n  height: var(--btn-icon-only-size-sm);\n  min-height: var(--btn-icon-only-size-sm);\n}\n",
+                    "data": ":host {\n  display: inline-block;\n}\n\n.dds-button {\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  gap: var(--space-2);\n  border: 1px solid;\n  border-radius: var(--radius-sm);\n  font-family: var(--font-family-primary);\n  font-weight: var(--font-weight-medium);\n  letter-spacing: var(--space-none);\n  cursor: pointer;\n  position: relative;\n  outline: none;\n  transition:\n    background-color 0.2s ease-in-out,\n    border-color 0.2s ease-in-out,\n    box-shadow 0.2s ease-in-out;\n}\n\n.dds-button:disabled {\n  background-color: var(--btn-colour-primary-disabled);\n  border-color: var(--btn-colour-primary-disabled);\n  cursor: not-allowed;\n  color: var(--text-colour-disabled);\n}\n\n.dds-button--large {\n  height: 48px;\n  min-height: 48px;\n  padding: 12px 24px;\n  font-size: var(--font-size-md);\n  line-height: 24px;\n}\n\n.dds-button--medium {\n  height: 40px;\n  min-height: 40px;\n  padding: 8px 16px;\n  font-size: var(--font-size-sm);\n  line-height: 20px;\n}\n\n.dds-button--small {\n  height: 32px;\n  min-height: 32px;\n  padding: 4px 12px;\n  font-size: var(--font-size-xs);\n  line-height: 16px;\n}\n\n/* Primary Button */\n.dds-button--primary {\n  background-color: var(--btn-colour-primary);\n  border-color: var(--btn-colour-primary);\n  color: var(--text-colour-inverse);\n}\n\n.dds-button--primary:hover:not(:disabled),\n.dds-button--state-hover.dds-button--primary:not(:disabled) {\n  background-color: var(--btn-colour-primary-hover);\n  border-color: var(--btn-colour-primary-hover);\n}\n\n.dds-button--primary:focus,\n.dds-button--primary:focus-visible,\n.dds-button--primary:active,\n.dds-button--primary:hover:active,\n.dds-button--state-focused.dds-button--primary:not(:disabled) {\n  background-color: var(--btn-colour-primary);\n  border-color: var(--colour-neutral-white);\n  box-shadow: var(--btn-primary-focus-ring);\n}\n\n/* Secondary Button */\n.dds-button--secondary {\n  background-color: var(--btn-colour-secondary);\n  border-color: var(--border-colour-default);\n  color: var(--text-colour-default);\n}\n\n.dds-button--secondary:hover:not(:disabled),\n.dds-button--state-hover.dds-button--secondary:not(:disabled) {\n  background-color: var(--btn-colour-secondary-hover);\n  border-color: var(--border-colour-default);\n}\n\n.dds-button--secondary:focus,\n.dds-button--secondary:focus-visible,\n.dds-button--secondary:active,\n.dds-button--secondary:hover:active,\n.dds-button--state-focused.dds-button--secondary:not(:disabled) {\n  background-color: var(--btn-colour-secondary);\n  border-color: var(--colour-neutral-white);\n  box-shadow: var(--btn-primary-focus-ring);\n}\n\n/* Ghost Button */\n.dds-button--ghost {\n  background-color: var(--btn-colour-ghost);\n  border: none;\n  color: var(--text-colour-accent);\n}\n\n.dds-button--ghost:hover:not(:disabled),\n.dds-button--state-hover.dds-button--ghost:not(:disabled) {\n  background-color: var(--btn-colour-ghost-hover);\n}\n\n.dds-button--ghost:focus,\n.dds-button--ghost:focus-visible,\n.dds-button--ghost:active,\n.dds-button--ghost:hover:active,\n.dds-button--state-focused.dds-button--ghost:not(:disabled) {\n  background-color: var(--btn-colour-ghost-hover);\n  border-color: var(--border-colour-default);\n  box-shadow: var(--btn-primary-focus-ring);\n}\n\n.dds-button--ghost .dds-button__label {\n  display: block;\n  height: 100%;\n  position: relative;\n}\n\n.dds-button--ghost .dds-button__label::after {\n  background-color: var(--bg-colour-accent);\n  content: '';\n  display: block;\n  position: absolute;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  width: 100%;\n  height: 1px;\n}\n\n/* Danger Button */\n\n.dds-button--danger.dds-button--primary {\n  background-color: var(--btn-colour-danger);\n  border-color: var(--btn-colour-danger);\n}\n\n.dds-button--danger.dds-button--primary:hover:not(:disabled),\n.dds-button--danger.dds-button--state-hover.dds-button--primary:not(:disabled) {\n  background-color: var(--btn-colour-danger-hover);\n  border-color: var(--btn-colour-danger-hover);\n}\n\n.dds-button--danger.dds-button--primary:focus,\n.dds-button--danger.dds-button--primary:focus-visible,\n.dds-button--danger.dds-button--primary:active,\n.dds-button--danger.dds-button--primary:hover:active,\n.dds-button--danger.dds-button--state-focused.dds-button--primary:not(:disabled) {\n  background-color: var(--btn-colour-danger);\n  border-color: var(--colour-neutral-white);\n  box-shadow: var(--btn-danger-focus-ring);\n}\n\n/* Disabled states */\n\n.dds-button--primary:disabled {\n  background-color: var(--btn-colour-primary-disabled);\n  border-color: var(--btn-colour-primary-disabled);\n}\n\n.dds-button--secondary:disabled {\n  background-color: var(--btn-colour-secondary-disabled);\n  border-color: var(--border-colour-disabled);\n}\n\n.dds-button--ghost:disabled {\n  background-color: var(--btn-colour-ghost-disabled);\n  border: none;\n}\n\n.dds-button--danger.dds-button--primary:disabled {\n  background-color: var(--btn-colour-danger-disabled);\n  border-color: var(--btn-colour-danger-disabled);\n  color: var(--btn-colour-danger-text-disabled);\n}\n\n.dds-button--ghost:disabled .dds-button__label::after {\n  background-color: var(--text-colour-disabled);\n}\n\n/* Icon Button */\n\n.dds-button__icon {\n  display: inline-flex;\n  line-height: 0;\n}\n\n.dds-button--icon-spin .dds-button__icon {\n  animation: dds-button-icon-spin 800ms linear infinite;\n}\n\n.dds-button--icon-spin-on-press:active:not(:disabled) .dds-button__icon {\n  animation: dds-button-icon-spin 350ms ease-out;\n}\n\n@keyframes dds-button-icon-spin {\n  to {\n    transform: rotate(360deg);\n  }\n}\n\n@media (prefers-reduced-motion: reduce) {\n  .dds-button--icon-spin .dds-button__icon,\n  .dds-button--icon-spin-on-press:active:not(:disabled) .dds-button__icon {\n    animation: none;\n  }\n}\n\n.dds-button--icon-only {\n  padding: var(--space-0);\n  height: var(--btn-icon-only-size-lg);\n  min-height: var(--btn-icon-only-size-lg);\n  width: var(--btn-icon-only-size-lg);\n}\n\n.dds-button--icon-only.dds-button--medium {\n  width: var(--btn-icon-only-size-md);\n  height: var(--btn-icon-only-size-md);\n  min-height: var(--btn-icon-only-size-md);\n}\n\n.dds-button--icon-only.dds-button--small {\n  width: var(--btn-icon-only-size-sm);\n  height: var(--btn-icon-only-size-sm);\n  min-height: var(--btn-icon-only-size-sm);\n}\n",
                     "styleUrl": "./button.component.css"
                 }
             ],
             "stylesData": "",
             "jsdoctags": [
                 {
-                    "pos": 490,
-                    "end": 688,
+                    "pos": 559,
+                    "end": 757,
                     "kind": 321,
                     "id": 0,
                     "flags": 16777216,
@@ -753,7 +821,7 @@
                         "name": "isDisabled",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 53,
+                        "line": 57,
                         "rawdescription": "\n",
                         "description": ""
                     }
@@ -764,7 +832,7 @@
                         "name": "hasLeftIcon",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 57,
+                        "line": 61,
                         "rawdescription": "\n",
                         "description": ""
                     }
@@ -775,7 +843,7 @@
                         "name": "hasRightIcon",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 61,
+                        "line": 65,
                         "rawdescription": "\n",
                         "description": ""
                     }
@@ -786,7 +854,7 @@
                         "name": "isIconOnly",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 65,
+                        "line": 69,
                         "rawdescription": "\n",
                         "description": ""
                     }
@@ -797,7 +865,7 @@
                         "name": "iconSize",
                         "type": "number",
                         "returnType": "number",
-                        "line": 69,
+                        "line": 73,
                         "rawdescription": "\n",
                         "description": ""
                     }
@@ -835,11 +903,11 @@
                     }
                 ]
             },
-            "templateData": "<button\n  class=\"dds-button\"\n  [attr.type]=\"type\"\n  [disabled]=\"isDisabled\"\n  [attr.aria-label]=\"isIconOnly ? (ariaLabel || 'Icon button') : null\"\n  [class.dds-button--primary]=\"variant === 'primary'\"\n  [class.dds-button--secondary]=\"variant === 'secondary'\"\n  [class.dds-button--ghost]=\"variant === 'ghost'\"\n  [class.dds-button--danger]=\"styleType === 'danger'\"\n  [class.dds-button--large]=\"size === 'large'\"\n  [class.dds-button--small]=\"size === 'small'\"\n  [class.dds-button--medium]=\"size === 'medium'\"\n  [class.dds-button--state-hover]=\"state === 'hover'\"\n  [class.dds-button--state-focused]=\"state === 'focused'\"\n  [class.dds-button--state-disabled]=\"state === 'disabled'\"\n  [class.dds-button--icon-only]=\"isIconOnly\"\n  [class.dds-button--full-width]=\"fullWidth\"\n>\n  <dds-icon class=\"dds-button__icon\" *ngIf=\"hasLeftIcon || isIconOnly\" [name]=\"icon\" [size]=\"iconSize\"></dds-icon>\n  <span class=\"dds-button__label\" *ngIf=\"!isIconOnly\"><ng-content></ng-content></span>\n  <dds-icon class=\"dds-button__icon\" *ngIf=\"hasRightIcon\" [name]=\"icon\" [size]=\"iconSize\"></dds-icon>\n</button>\n"
+            "templateData": "<button\n  class=\"dds-button\"\n  [attr.type]=\"type\"\n  [disabled]=\"isDisabled\"\n  [attr.aria-label]=\"isIconOnly ? ariaLabel || 'Icon button' : null\"\n  [class.dds-button--primary]=\"variant === 'primary'\"\n  [class.dds-button--secondary]=\"variant === 'secondary'\"\n  [class.dds-button--ghost]=\"variant === 'ghost'\"\n  [class.dds-button--danger]=\"styleType === 'danger'\"\n  [class.dds-button--large]=\"size === 'large'\"\n  [class.dds-button--small]=\"size === 'small'\"\n  [class.dds-button--medium]=\"size === 'medium'\"\n  [class.dds-button--state-hover]=\"state === 'hover'\"\n  [class.dds-button--state-focused]=\"state === 'focused'\"\n  [class.dds-button--state-disabled]=\"state === 'disabled'\"\n  [class.dds-button--icon-only]=\"isIconOnly\"\n  [class.dds-button--icon-spin]=\"iconAnimation === 'spin'\"\n  [class.dds-button--icon-spin-on-press]=\"iconAnimation === 'spin-on-press'\"\n  [class.dds-button--full-width]=\"fullWidth\"\n>\n  <dds-icon\n    class=\"dds-button__icon\"\n    *ngIf=\"hasLeftIcon || isIconOnly\"\n    [name]=\"icon\"\n    [size]=\"iconSize\"\n  ></dds-icon>\n  <span class=\"dds-button__label\" *ngIf=\"!isIconOnly\"><ng-content></ng-content></span>\n  <dds-icon\n    class=\"dds-button__icon\"\n    *ngIf=\"hasRightIcon\"\n    [name]=\"icon\"\n    [size]=\"iconSize\"\n  ></dds-icon>\n</button>\n"
         },
         {
             "name": "CheckboxComponent",
-            "id": "component-CheckboxComponent-2bba19d0eb6eee1a751eb0ee3223cf64ed2cb8c42190e2532784c967904e44cf742d2c7cae67bcb3e88e0283a9eba81403eebeebc0e53c8424a99fe8a2f1eee9",
+            "id": "component-CheckboxComponent-2069f4675a443aef1effdbfb25140be802b62ec0a47b6883f3568c185a7d987fafe00bb13d733393301273fc7ad82e9f5baa705f0d4284db59a4044ca1cd64cd",
             "file": "src/app/components/checkbox/checkbox.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -868,6 +936,17 @@
                     "rawdescription": "\n",
                     "description": "",
                     "line": 28,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "describedBy",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 31,
                     "type": "string",
                     "decorators": []
                 },
@@ -999,7 +1078,7 @@
                     "defaultValue": "new EventEmitter<CheckboxValue>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 32,
+                    "line": 33,
                     "type": "EventEmitter"
                 }
             ],
@@ -1021,7 +1100,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 54,
+                    "line": 60,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n",
@@ -1060,12 +1139,12 @@
             "description": "<p>A native checkbox with DDS labels, validation, disabled, and mixed-value treatments.</p>\n",
             "rawdescription": "\nA native checkbox with DDS labels, validation, disabled, and mixed-value treatments.",
             "type": "component",
-            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, EventEmitter, Input, Output } from '@angular/core';\nimport { IconComponent } from '../icon/icon.component';\n\nexport type CheckboxValue = 'unchecked' | 'checked' | 'indeterminate';\nexport type CheckboxState = 'default' | 'focused' | 'disabled' | 'invalid';\n\nlet nextCheckboxId = 0;\n\n/** A native checkbox with DDS labels, validation, disabled, and mixed-value treatments. */\n@Component({\n  selector: 'dds-checkbox',\n  standalone: true,\n  imports: [CommonModule, IconComponent],\n  templateUrl: './checkbox.component.html',\n  styleUrl: './checkbox.component.css',\n})\nexport class CheckboxComponent {\n  /** Unique ID used to associate the native control and its visible option label. */\n  @Input() inputId = `dds-checkbox-${nextCheckboxId++}`;\n  @Input() label = 'Label';\n  @Input() option = 'Option';\n  @Input() value: CheckboxValue = 'unchecked';\n  @Input() state: CheckboxState = 'default';\n  @Input() required = false;\n  @Input() showLabel = true;\n  @Input() showOption = true;\n  @Input() ariaLabel = 'Checkbox option';\n  @Input() errorMessage = 'Select this option to continue.';\n  @Input() showErrorMessage = true;\n\n  @Output() valueChange = new EventEmitter<CheckboxValue>();\n\n  get isChecked(): boolean {\n    return this.value === 'checked';\n  }\n\n  get isIndeterminate(): boolean {\n    return this.value === 'indeterminate';\n  }\n\n  get isDisabled(): boolean {\n    return this.state === 'disabled';\n  }\n\n  get isInvalid(): boolean {\n    return this.state === 'invalid';\n  }\n\n  get errorId(): string {\n    return `${this.inputId}-error`;\n  }\n\n  handleChange(event: Event): void {\n    const input = event.target as HTMLInputElement;\n    this.value = input.checked ? 'checked' : 'unchecked';\n    this.valueChange.emit(this.value);\n  }\n}\n",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, EventEmitter, Input, Output } from '@angular/core';\nimport { IconComponent } from '../icon/icon.component';\n\nexport type CheckboxValue = 'unchecked' | 'checked' | 'indeterminate';\nexport type CheckboxState = 'default' | 'focused' | 'disabled' | 'invalid';\n\nlet nextCheckboxId = 0;\n\n/** A native checkbox with DDS labels, validation, disabled, and mixed-value treatments. */\n@Component({\n  selector: 'dds-checkbox',\n  standalone: true,\n  imports: [CommonModule, IconComponent],\n  templateUrl: './checkbox.component.html',\n  styleUrl: './checkbox.component.css',\n})\nexport class CheckboxComponent {\n  /** Unique ID used to associate the native control and its visible option label. */\n  @Input() inputId = `dds-checkbox-${nextCheckboxId++}`;\n  @Input() label = 'Label';\n  @Input() option = 'Option';\n  @Input() value: CheckboxValue = 'unchecked';\n  @Input() state: CheckboxState = 'default';\n  @Input() required = false;\n  @Input() showLabel = true;\n  @Input() showOption = true;\n  @Input() ariaLabel = 'Checkbox option';\n  @Input() errorMessage = 'Select this option to continue.';\n  @Input() showErrorMessage = true;\n  @Input() describedBy?: string;\n\n  @Output() valueChange = new EventEmitter<CheckboxValue>();\n\n  get isChecked(): boolean {\n    return this.value === 'checked';\n  }\n\n  get isIndeterminate(): boolean {\n    return this.value === 'indeterminate';\n  }\n\n  get isDisabled(): boolean {\n    return this.state === 'disabled';\n  }\n\n  get isInvalid(): boolean {\n    return this.state === 'invalid';\n  }\n\n  get errorId(): string {\n    return `${this.inputId}-error`;\n  }\n\n  get ariaDescribedBy(): string | null {\n    if (this.describedBy) return this.describedBy;\n    return this.isInvalid && this.showErrorMessage ? this.errorId : null;\n  }\n\n  handleChange(event: Event): void {\n    const input = event.target as HTMLInputElement;\n    this.value = input.checked ? 'checked' : 'unchecked';\n    this.valueChange.emit(this.value);\n  }\n}\n",
             "styleUrl": "./checkbox.component.css",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ":host {\n  display: inline-block;\n  max-width: 100%;\n}\n\n.dds-checkbox {\n  display: flex;\n  flex-direction: column;\n  align-items: flex-start;\n  color: var(--text-colour-default);\n  font-family: var(--font-family-primary);\n  font-size: var(--font-size-sm);\n  line-height: 20px;\n}\n\n.dds-checkbox__field-label {\n  display: flex;\n  gap: var(--space-1);\n  padding-bottom: var(--space-2);\n  font-weight: var(--font-weight-medium);\n}\n\n.dds-checkbox__required,\n.dds-checkbox__error {\n  color: var(--text-colour-danger);\n}\n\n.dds-checkbox__option {\n  display: inline-flex;\n  align-items: center;\n  gap: var(--space-2);\n  cursor: pointer;\n}\n\n.dds-checkbox__native {\n  position: absolute;\n  width: 1px;\n  height: 1px;\n  margin: -1px;\n  overflow: hidden;\n  clip: rect(0 0 0 0);\n  clip-path: inset(50%);\n  white-space: nowrap;\n}\n\n.dds-checkbox__box {\n  box-sizing: border-box;\n  display: inline-flex;\n  flex: 0 0 auto;\n  align-items: center;\n  justify-content: center;\n  width: 20px;\n  height: 20px;\n  overflow: hidden;\n  border: 1px solid var(--border-colour-default);\n  border-radius: var(--radius-sm);\n  background: var(--bg-colour-white);\n  color: var(--icon-colour-default);\n}\n\n.dds-checkbox__native:focus-visible + .dds-checkbox__box,\n.dds-checkbox--focused .dds-checkbox__box {\n  border: 2px solid var(--border-colour-info);\n}\n\n.dds-checkbox--invalid .dds-checkbox__box {\n  border: 2px solid var(--border-colour-danger);\n}\n\n.dds-checkbox--disabled {\n  color: var(--text-colour-disabled);\n}\n\n.dds-checkbox--disabled .dds-checkbox__option {\n  cursor: not-allowed;\n}\n\n.dds-checkbox--disabled .dds-checkbox__box {\n  color: var(--icon-colour-disabled);\n}\n\n.dds-checkbox__error {\n  margin: 0;\n  padding-top: var(--space-2);\n  font-size: var(--font-size-xs);\n  font-weight: var(--font-weight-medium);\n  line-height: 16px;\n}\n",
+                    "data": ":host {\n  display: inline-block;\n  max-width: 100%;\n}\n\n.dds-checkbox {\n  display: flex;\n  flex-direction: column;\n  align-items: flex-start;\n  color: var(--text-colour-default);\n  font-family: var(--font-family-primary);\n  font-size: var(--font-size-sm);\n  line-height: 20px;\n}\n\n.dds-checkbox__field-label {\n  display: flex;\n  gap: var(--space-1);\n  padding-bottom: var(--space-2);\n  font-weight: var(--font-weight-medium);\n}\n\n.dds-checkbox__required,\n.dds-checkbox__error {\n  color: var(--text-colour-danger);\n}\n\n.dds-checkbox__option {\n  display: inline-flex;\n  align-items: center;\n  gap: var(--space-2);\n  cursor: pointer;\n}\n\n.dds-checkbox__native {\n  position: absolute;\n  width: 1px;\n  height: 1px;\n  margin: -1px;\n  overflow: hidden;\n  clip: rect(0 0 0 0);\n  clip-path: inset(50%);\n  white-space: nowrap;\n}\n\n.dds-checkbox__box {\n  box-sizing: border-box;\n  display: inline-flex;\n  flex: 0 0 auto;\n  align-items: center;\n  justify-content: center;\n  width: 20px;\n  height: 20px;\n  overflow: hidden;\n  border: 1px solid var(--border-colour-default);\n  border-radius: var(--radius-sm);\n  background: var(--bg-colour-white);\n  color: var(--icon-colour-default);\n}\n\n.dds-checkbox__box dds-icon {\n  display: grid;\n  width: 14px;\n  height: 14px;\n  place-items: center;\n  line-height: 0;\n}\n\n.dds-checkbox__native:focus-visible + .dds-checkbox__box,\n.dds-checkbox--focused .dds-checkbox__box {\n  border: 2px solid var(--border-colour-info);\n}\n\n.dds-checkbox--invalid .dds-checkbox__box {\n  border: 2px solid var(--border-colour-danger);\n}\n\n.dds-checkbox--disabled {\n  color: var(--text-colour-disabled);\n}\n\n.dds-checkbox--disabled .dds-checkbox__option {\n  cursor: not-allowed;\n}\n\n.dds-checkbox--disabled .dds-checkbox__box {\n  color: var(--icon-colour-disabled);\n}\n\n.dds-checkbox__error {\n  margin: 0;\n  padding-top: var(--space-2);\n  font-size: var(--font-size-xs);\n  font-weight: var(--font-weight-medium);\n  line-height: 16px;\n}\n",
                     "styleUrl": "./checkbox.component.css"
                 }
             ],
@@ -1090,7 +1169,7 @@
                         "name": "isChecked",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 34,
+                        "line": 35,
                         "rawdescription": "\n",
                         "description": ""
                     }
@@ -1101,7 +1180,7 @@
                         "name": "isIndeterminate",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 38,
+                        "line": 39,
                         "rawdescription": "\n",
                         "description": ""
                     }
@@ -1112,7 +1191,7 @@
                         "name": "isDisabled",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 42,
+                        "line": 43,
                         "rawdescription": "\n",
                         "description": ""
                     }
@@ -1123,7 +1202,7 @@
                         "name": "isInvalid",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 46,
+                        "line": 47,
                         "rawdescription": "\n",
                         "description": ""
                     }
@@ -1134,7 +1213,18 @@
                         "name": "errorId",
                         "type": "string",
                         "returnType": "string",
-                        "line": 50,
+                        "line": 51,
+                        "rawdescription": "\n",
+                        "description": ""
+                    }
+                },
+                "ariaDescribedBy": {
+                    "name": "ariaDescribedBy",
+                    "getSignature": {
+                        "name": "ariaDescribedBy",
+                        "type": "unknown",
+                        "returnType": "string | null",
+                        "line": 55,
                         "rawdescription": "\n",
                         "description": ""
                     }
@@ -1142,6 +1232,11 @@
             },
             "relationships": {
                 "incoming": [
+                    {
+                        "name": "CheckboxGroupComponent",
+                        "type": "component",
+                        "description": "A labelled set of independent checkbox options in an inline or stacked layout."
+                    },
                     {
                         "name": "DataTableComponent",
                         "type": "component"
@@ -1158,7 +1253,382 @@
                     }
                 ]
             },
-            "templateData": "<div\n  class=\"dds-checkbox\"\n  [class.dds-checkbox--focused]=\"state === 'focused'\"\n  [class.dds-checkbox--disabled]=\"isDisabled\"\n  [class.dds-checkbox--invalid]=\"isInvalid\"\n>\n  <div *ngIf=\"showLabel\" class=\"dds-checkbox__field-label\">\n    {{ label }}\n    <span *ngIf=\"required\" class=\"dds-checkbox__required\" aria-hidden=\"true\">*</span>\n  </div>\n\n  <label class=\"dds-checkbox__option\" [for]=\"inputId\">\n    <input\n      class=\"dds-checkbox__native\"\n      type=\"checkbox\"\n      [id]=\"inputId\"\n      [checked]=\"isChecked\"\n      [indeterminate]=\"isIndeterminate\"\n      [required]=\"required\"\n      [disabled]=\"isDisabled\"\n      [attr.aria-label]=\"showOption ? null : ariaLabel\"\n      [attr.aria-invalid]=\"isInvalid ? 'true' : null\"\n      [attr.aria-describedby]=\"isInvalid && showErrorMessage ? errorId : null\"\n      (change)=\"handleChange($event)\"\n    />\n    <span class=\"dds-checkbox__box\" aria-hidden=\"true\">\n      <dds-icon\n        *ngIf=\"value !== 'unchecked'\"\n        [name]=\"isIndeterminate ? 'minus' : 'check'\"\n        [size]=\"14\"\n        [strokeWidth]=\"3\"\n      ></dds-icon>\n    </span>\n    <span *ngIf=\"showOption\" class=\"dds-checkbox__option-text\">{{ option }}</span>\n  </label>\n\n  <p *ngIf=\"isInvalid && showErrorMessage\" class=\"dds-checkbox__error\" [id]=\"errorId\">\n    {{ errorMessage }}\n  </p>\n</div>\n"
+            "templateData": "<div\n  class=\"dds-checkbox\"\n  [class.dds-checkbox--focused]=\"state === 'focused'\"\n  [class.dds-checkbox--disabled]=\"isDisabled\"\n  [class.dds-checkbox--invalid]=\"isInvalid\"\n>\n  <div *ngIf=\"showLabel\" class=\"dds-checkbox__field-label\">\n    {{ label }}\n    <span *ngIf=\"required\" class=\"dds-checkbox__required\" aria-hidden=\"true\">*</span>\n  </div>\n\n  <label class=\"dds-checkbox__option\" [for]=\"inputId\">\n    <input\n      class=\"dds-checkbox__native\"\n      type=\"checkbox\"\n      [id]=\"inputId\"\n      [checked]=\"isChecked\"\n      [indeterminate]=\"isIndeterminate\"\n      [required]=\"required\"\n      [disabled]=\"isDisabled\"\n      [attr.aria-label]=\"showOption ? null : ariaLabel\"\n      [attr.aria-invalid]=\"isInvalid ? 'true' : null\"\n      [attr.aria-describedby]=\"ariaDescribedBy\"\n      (change)=\"handleChange($event)\"\n    />\n    <span class=\"dds-checkbox__box\" aria-hidden=\"true\">\n      <dds-icon\n        *ngIf=\"value !== 'unchecked'\"\n        [name]=\"isIndeterminate ? 'minus' : 'check'\"\n        [size]=\"14\"\n        [strokeWidth]=\"3\"\n      ></dds-icon>\n    </span>\n    <span *ngIf=\"showOption\" class=\"dds-checkbox__option-text\">{{ option }}</span>\n  </label>\n\n  <p *ngIf=\"isInvalid && showErrorMessage\" class=\"dds-checkbox__error\" [id]=\"errorId\">\n    {{ errorMessage }}\n  </p>\n</div>\n"
+        },
+        {
+            "name": "CheckboxGroupComponent",
+            "id": "component-CheckboxGroupComponent-1c6e9bc0695dfc7097d0fdda5ac35dfa6b783f0187b0ff5dc65a635684c9a567849b665b7006dccf190580c20583e31f21bfc214c37fb0a67fcdb816e675e1fc",
+            "file": "src/app/components/checkbox-group/checkbox-group.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "dds-checkbox-group",
+            "styleUrls": [
+                "./checkbox-group.component.css"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./checkbox-group.component.html"
+            ],
+            "templateVariables": [],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "coverageIgnore": false,
+                    "name": "direction",
+                    "defaultValue": "'inline'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 34,
+                    "type": "CheckboxGroupDirection",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "errorMessage",
+                    "defaultValue": "'Select at least one option.'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 40,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "groupId",
+                    "defaultValue": "`dds-checkbox-group-${nextCheckboxGroupId++}`",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 25,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "helperText",
+                    "defaultValue": "'Select all options that apply.'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 38,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "label",
+                    "defaultValue": "'Label'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 26,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "options",
+                    "defaultValue": "[\n    { label: 'Option 1', value: 'option-1' },\n    { label: 'Option 2', value: 'option-2' },\n    { label: 'Option 3', value: 'option-3' },\n    { label: 'Option 4', value: 'option-4' },\n  ]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 27,
+                    "type": "CheckboxGroupOption[]",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "required",
+                    "defaultValue": "true",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 36,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "selectedValues",
+                    "defaultValue": "[]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 33,
+                    "type": "string[]",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "showHelperText",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 39,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "showLabel",
+                    "defaultValue": "true",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 37,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "state",
+                    "defaultValue": "'default'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 35,
+                    "type": "CheckboxGroupState",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "selectedValuesChange",
+                    "coverageIgnore": false,
+                    "defaultValue": "new EventEmitter<string[]>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 42,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "optionState",
+                    "coverageIgnore": false,
+                    "args": [
+                        {
+                            "name": "option",
+                            "type": "CheckboxGroupOption",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "CheckboxState",
+                    "typeParameters": [],
+                    "line": 52,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "jsdoctags": [
+                        {
+                            "name": "option",
+                            "type": "CheckboxGroupOption",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "optionValue",
+                    "coverageIgnore": false,
+                    "args": [
+                        {
+                            "name": "option",
+                            "type": "CheckboxGroupOption",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "CheckboxValue",
+                    "typeParameters": [],
+                    "line": 58,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "jsdoctags": [
+                        {
+                            "name": "option",
+                            "type": "CheckboxGroupOption",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "toggle",
+                    "coverageIgnore": false,
+                    "args": [
+                        {
+                            "name": "option",
+                            "type": "CheckboxGroupOption",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "value",
+                            "type": "CheckboxValue",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 62,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "jsdoctags": [
+                        {
+                            "name": "option",
+                            "type": "CheckboxGroupOption",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "value",
+                            "type": "CheckboxValue",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "coverageIgnore": false,
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "CheckboxComponent",
+                    "type": "component"
+                }
+            ],
+            "description": "<p>A labelled set of independent checkbox options in an inline or stacked layout.</p>\n",
+            "rawdescription": "\nA labelled set of independent checkbox options in an inline or stacked layout.",
+            "type": "component",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, EventEmitter, Input, Output } from '@angular/core';\nimport { CheckboxComponent, CheckboxState, CheckboxValue } from '../checkbox/checkbox.component';\n\nexport type CheckboxGroupDirection = 'inline' | 'stacked';\nexport type CheckboxGroupState = 'default' | 'invalid' | 'disabled';\n\nexport interface CheckboxGroupOption {\n  label: string;\n  value: string;\n  disabled?: boolean;\n}\n\nlet nextCheckboxGroupId = 0;\n\n/** A labelled set of independent checkbox options in an inline or stacked layout. */\n@Component({\n  selector: 'dds-checkbox-group',\n  standalone: true,\n  imports: [CommonModule, CheckboxComponent],\n  templateUrl: './checkbox-group.component.html',\n  styleUrl: './checkbox-group.component.css',\n})\nexport class CheckboxGroupComponent {\n  @Input() groupId = `dds-checkbox-group-${nextCheckboxGroupId++}`;\n  @Input() label = 'Label';\n  @Input() options: CheckboxGroupOption[] = [\n    { label: 'Option 1', value: 'option-1' },\n    { label: 'Option 2', value: 'option-2' },\n    { label: 'Option 3', value: 'option-3' },\n    { label: 'Option 4', value: 'option-4' },\n  ];\n  @Input() selectedValues: string[] = [];\n  @Input() direction: CheckboxGroupDirection = 'inline';\n  @Input() state: CheckboxGroupState = 'default';\n  @Input() required = true;\n  @Input() showLabel = true;\n  @Input() helperText = 'Select all options that apply.';\n  @Input() showHelperText = false;\n  @Input() errorMessage = 'Select at least one option.';\n\n  @Output() selectedValuesChange = new EventEmitter<string[]>();\n\n  get supportingTextId(): string {\n    return `${this.groupId}-${this.state === 'invalid' ? 'error' : 'helper'}`;\n  }\n\n  get describedBy(): string | undefined {\n    return this.state === 'invalid' || this.showHelperText ? this.supportingTextId : undefined;\n  }\n\n  optionState(option: CheckboxGroupOption): CheckboxState {\n    if (this.state === 'disabled' || option.disabled) return 'disabled';\n    if (this.state === 'invalid') return 'invalid';\n    return 'default';\n  }\n\n  optionValue(option: CheckboxGroupOption): CheckboxValue {\n    return this.selectedValues.includes(option.value) ? 'checked' : 'unchecked';\n  }\n\n  toggle(option: CheckboxGroupOption, value: CheckboxValue): void {\n    const selected = new Set(this.selectedValues);\n    value === 'checked' ? selected.add(option.value) : selected.delete(option.value);\n    this.selectedValues = [...selected];\n    this.selectedValuesChange.emit(this.selectedValues);\n  }\n}\n",
+            "styleUrl": "./checkbox-group.component.css",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ":host {\n  display: inline-block;\n  max-width: 100%;\n}\n\n.dds-checkbox-group {\n  min-width: 0;\n  margin: 0;\n  padding: 0;\n  border: 0;\n  color: var(--text-colour-default);\n  font-family: var(--font-family-primary);\n}\n\n.dds-checkbox-group__legend {\n  padding: 0 0 var(--space-2);\n  font-size: var(--font-size-sm);\n  font-weight: var(--font-weight-medium);\n  line-height: var(--font-size-xl);\n}\n\n.dds-checkbox-group__legend span,\n.dds-checkbox-group__supporting-text--error {\n  color: var(--text-colour-danger);\n}\n\n.dds-checkbox-group__legend span {\n  margin-left: var(--space-1);\n}\n\n.dds-checkbox-group__options {\n  display: flex;\n}\n\n.dds-checkbox-group--inline .dds-checkbox-group__options {\n  flex-flow: row wrap;\n  gap: var(--space-4);\n}\n\n.dds-checkbox-group--stacked .dds-checkbox-group__options {\n  flex-direction: column;\n  align-items: flex-start;\n  gap: var(--space-3);\n}\n\n.dds-checkbox-group__supporting-text {\n  margin: 0;\n  padding-top: var(--space-2);\n  color: var(--text-colour-tertiary);\n  font-size: var(--font-size-xs);\n  font-weight: var(--font-weight-regular);\n  line-height: var(--font-size-md);\n}\n\n.dds-checkbox-group__supporting-text--error {\n  font-weight: var(--font-weight-medium);\n}\n\n.dds-checkbox-group:disabled .dds-checkbox-group__legend {\n  color: var(--text-colour-disabled);\n}\n",
+                    "styleUrl": "./checkbox-group.component.css"
+                }
+            ],
+            "stylesData": "",
+            "jsdoctags": [
+                {
+                    "pos": 476,
+                    "end": 561,
+                    "kind": 321,
+                    "id": 0,
+                    "flags": 16777216,
+                    "modifierFlagsCache": 0,
+                    "transformFlags": 0,
+                    "comment": "A labelled set of independent checkbox options in an inline or stacked layout."
+                }
+            ],
+            "extends": [],
+            "accessors": {
+                "supportingTextId": {
+                    "name": "supportingTextId",
+                    "getSignature": {
+                        "name": "supportingTextId",
+                        "type": "string",
+                        "returnType": "string",
+                        "line": 44,
+                        "rawdescription": "\n",
+                        "description": ""
+                    }
+                },
+                "describedBy": {
+                    "name": "describedBy",
+                    "getSignature": {
+                        "name": "describedBy",
+                        "type": "unknown",
+                        "returnType": "string | undefined",
+                        "line": 48,
+                        "rawdescription": "\n",
+                        "description": ""
+                    }
+                }
+            },
+            "relationships": {
+                "incoming": [],
+                "outgoing": [
+                    {
+                        "name": "CommonModule",
+                        "type": "module"
+                    },
+                    {
+                        "name": "CheckboxComponent",
+                        "type": "component",
+                        "description": "A native checkbox with DDS labels, validation, disabled, and mixed-value treatments."
+                    }
+                ]
+            },
+            "templateData": "<fieldset\n  class=\"dds-checkbox-group\"\n  [class.dds-checkbox-group--inline]=\"direction === 'inline'\"\n  [class.dds-checkbox-group--stacked]=\"direction === 'stacked'\"\n  [class.dds-checkbox-group--invalid]=\"state === 'invalid'\"\n  [disabled]=\"state === 'disabled'\"\n  [attr.aria-describedby]=\"describedBy\"\n  [attr.aria-required]=\"required\"\n>\n  <legend *ngIf=\"showLabel\" class=\"dds-checkbox-group__legend\">\n    {{ label }}<span *ngIf=\"required\" aria-hidden=\"true\">*</span>\n  </legend>\n\n  <div class=\"dds-checkbox-group__options\">\n    <dds-checkbox\n      *ngFor=\"let option of options; let index = index\"\n      [inputId]=\"groupId + '-' + index\"\n      [option]=\"option.label\"\n      [value]=\"optionValue(option)\"\n      [state]=\"optionState(option)\"\n      [showLabel]=\"false\"\n      [showErrorMessage]=\"false\"\n      [describedBy]=\"describedBy\"\n      (valueChange)=\"toggle(option, $event)\"\n    ></dds-checkbox>\n  </div>\n\n  <p\n    *ngIf=\"state === 'invalid' || showHelperText\"\n    class=\"dds-checkbox-group__supporting-text\"\n    [class.dds-checkbox-group__supporting-text--error]=\"state === 'invalid'\"\n    [id]=\"supportingTextId\"\n  >\n    {{ state === 'invalid' ? errorMessage : helperText }}\n  </p>\n</fieldset>\n"
         },
         {
             "name": "CustomerManagementPageComponent",
@@ -2961,7 +3431,7 @@
         },
         {
             "name": "IconComponent",
-            "id": "component-IconComponent-27e19adc53f0030391332ab088096febf1ec7a49cdbe03ab09087a6610bb91801c1ea08571bbc6b345bf605b82b0c9a5370c7c281b6b5b16f3fd149c454136d5",
+            "id": "component-IconComponent-fbe0b558cbbba30f133601ab077eb7bfb0d52c49d0f1f9b31320f775b9c0d0e7e32053c048114a26daefb0a15d56947667fb6e3e9fa2a71779c680b9b879a2a7",
             "file": "src/app/components/icon/icon.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -2976,7 +3446,7 @@
             "selector": "dds-icon",
             "styleUrls": [],
             "styles": [],
-            "template": "<svg\n  [lucideIcon]=\"name\"\n  [size]=\"size\"\n  [attr.aria-hidden]=\"decorative ? 'true' : null\"\n  [title]=\"decorative ? null : title\"\n></svg>\n",
+            "template": "<svg\n  [lucideIcon]=\"name\"\n  [size]=\"size\"\n  [strokeWidth]=\"strokeWidth\"\n  [attr.aria-hidden]=\"decorative ? 'true' : null\"\n  [title]=\"decorative ? null : title\"\n></svg>\n",
             "templateUrl": [],
             "templateVariables": [],
             "viewProviders": [],
@@ -2990,7 +3460,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 338,
+                    "line": 337,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -3002,7 +3472,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 335,
+                    "line": 334,
                     "type": "DdsIconName",
                     "decorators": []
                 },
@@ -3014,7 +3484,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 336,
+                    "line": 335,
                     "type": "number",
                     "decorators": []
                 },
@@ -3026,7 +3496,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 337,
+                    "line": 336,
                     "type": "number | string",
                     "decorators": []
                 },
@@ -3037,7 +3507,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 339,
+                    "line": 338,
                     "type": "string",
                     "decorators": []
                 }
@@ -3059,7 +3529,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input } from '@angular/core';\nimport {\n  LucideArrowRight,\n  LucideArrowLeft,\n  LucideArrowDown,\n  LucideArrowUp,\n  LucideArrowUpDown,\n  LucideCheck,\n  LucideChevronRight,\n  LucideChevronUp,\n  LucideChevronLeft,\n  LucideChevronDown,\n  LucideChevronsUpDown,\n  LucideListFilter,\n  LucideCircleAlert,\n  LucideDynamicIcon,\n  LucideEllipsis,\n  LucideInfo,\n  LucidePlus,\n  LucideTrash2,\n  LucideX,\n  provideLucideIcons,\n  LucideMenu,\n  LucideColumns3,\n  LucideSearch,\n  LucideLayoutDashboard,\n  LucideEllipsisVertical,\n  LucideHouse,\n  LucideMapPin,\n  LucidePanelsTopLeft,\n  LucideGripVertical,\n  LucideDownload,\n  LucideUpload,\n  LucideMinus,\n  LucideArchive,\n  LucideBan,\n  LucidePencil,\n  LucideSettings,\n  LucideSlidersHorizontal,\n  LucideSquarePen,\n  LucideCopy,\n  LucideFunnel,\n  LucideExternalLink,\n  LucideRefreshCw,\n  LucideWrench, \n  LucideBrushCleaning,\n  LucideCloudUpload,\n  LucideWandSparkles,\n  LucideUser,\n  LucideUsers,\n  LucideUserX,\n  LucideKeyRound,\n  LucideLockKeyhole,\n  LucideUserRound,\n  LucideEye,\n  LucideEyeOff,\n  LucideLogOut,\n  LucideSendHorizontal,\n  LucideBell,\n  LucideBellDot,\n  LucideMessageSquarePlus,\n  LucideStar,\n  LucideCircleQuestionMark,\n  LucidePhone,\n  LucideShare2,\n  LucideImage,\n  LucideCircleStop,\n  LucideCirclePlay,\n  LucideHeadset,\n  LucideFile,\n  LucideClipboardList,\n  LucidePrinter,\n  LucideType,\n  LucideHash,\n  LucideAtSign,\n  LucideTextWrap,\n  LucideCircleDot,\n  LucideSquareCheck,\n  LucideList,\n  LucideToggleRight,\n  LucideClock,\n  LucideCircleCheck,\n  LucideTriangleAlert,\n  LucideCalendarDays,\n  LucideCalendar1,\n  LucideLoaderCircle,\n  LucideLifeBuoy,\n  LucideShoppingCart,\n  LucideBox,\n  LucidePackage,\n  LucideTruck,\n  LucideChartNoAxesCombined,\n  LucideDollarSign,\n  LucideCreditCard,\n  LucideReceiptText,\n  LucideStore,\n  LucideFactory,\n  LucideChartNoAxesColumn,\n  LucideBatteryFull,\n  LucideScan,\n  LucidePersonStanding,\n  LucideMonitorSmartphone,\n  LucideContrast,\n  LucideWifi,\n  LucideSignal,\n\n  \n} from '@lucide/angular';\n\nexport const DDS_ICON_NAMES = [\n  'info',\n  'arrow-right',\n  'arrow-left',\n  'arrow-down',\n  'arrow-up-down',  \n  'arrow-up',\n  'check',\n  'chevron-down',\n  'chevron-right',\n  'chevron-left',\n  'chevron-up',\n  'chevrons-up-down',\n  'list-filter',\n  'columns-3',\n  'search',\n  'menu',\n  'circle-alert',\n  'ellipsis',\n  'plus',\n  'trash-2',\n  'x',\n  'layout-dashboard',\n  'ellipsis-vertical',\n  'house',\n  'map-pin',\n  'panels-top-left',\n  'grip-vertical',\n  'download',\n  'upload',\n  'minus',\n  'archive',\n  'ban',\n  'pencil',\n  'settings',\n  'sliders-horizontal',\n  'square-pen',\n  'copy',\n  'funnel',\n  'external-link',\n  'refresh-cw',\n  'wrench',\n  'brush-cleaning',\n  'cloud-upload',\n  'wand-sparkles',\n  'user',\n  'users',\n  'user-x',\n  'key-round',\n  'lock-keyhole',\n  'user-round',\n  'eye',\n  'eye-off',\n  'log-out',\n  'send-horizontal',\n  'bell',\n  'bell-dot',\n  'message-square-plus',\n  'star',\n  'circle-question-mark',\n  'phone',\n  'share-2',\n  'image',\n  'circle-stop',\n  'circle-play',\n  'headset',\n  'file',\n  'clipboard-list',\n  'printer',\n  'type',\n  'hash',\n  'at-sign',\n  'text-wrap',\n  'circle-dot',\n  'square-check',\n  'list',\n  'toggle-right',\n  'clock',\n  'circle-check',\n  'triangle-alert',\n  'calendar-days',\n  'calendar-1',\n  'loader-circle',\n  'life-buoy',\n  'shopping-cart',\n  'box',\n  'package',\n  'truck',\n  'chart-no-axes-combined',\n  'dollar-sign',\n  'credit-card',\n  'receipt-text',\n  'store',\n  'factory',\n  'chart-no-axes-column',\n  'battery-full',\n  'scan',\n  'person-standing',\n  'monitor-smartphone',\n  'contrast',\n  'wifi',\n  'signal',\n] as const;\n\nexport type DdsIconName = (typeof DDS_ICON_NAMES)[number];\n\n@Component({\n  selector: 'dds-icon',\n  standalone: true,\n  imports: [LucideDynamicIcon],\n  providers: [\n    provideLucideIcons(\n      LucideArrowRight,\n      LucideArrowLeft,\n      LucideArrowDown,\n      LucideArrowUp,\n      LucideCheck,\n      LucideChevronRight,\n      LucideChevronDown,\n      LucideChevronsUpDown,\n      LucideListFilter,\n      LucideMenu,\n      LucideCircleAlert,\n      LucideEllipsis,\n      LucideInfo,\n      LucidePlus,\n      LucideTrash2,\n      LucideX,\n      LucideArrowUpDown,\n      LucideChevronUp,\n      LucideChevronLeft,\n      LucideColumns3,\n      LucideSearch,\n      LucideLayoutDashboard,\n      LucideEllipsisVertical,\n      LucideHouse,\n      LucideMapPin,\n      LucidePanelsTopLeft,\n      LucideGripVertical,\n      LucideDownload,\n      LucideUpload,\n      LucideMinus,\n      LucideArchive,\n      LucideBan,\n      LucidePencil,\n      LucideSettings,\n      LucideSlidersHorizontal,\n      LucideSquarePen,\n      LucideCopy,\n      LucideFunnel,\n      LucideExternalLink,\n      LucideRefreshCw,\n      LucideWrench,\n      LucideBrushCleaning,\n      LucideCloudUpload,\n      LucideWandSparkles,\n      LucideUser,\n      LucideUsers,\n      LucideUserX,\n      LucideKeyRound,\n      LucideLockKeyhole,\n      LucideUserRound,\n      LucideEye,\n      LucideEyeOff,\n      LucideLogOut,\n      LucideSendHorizontal,\n      LucideBell,\n      LucideBellDot,\n      LucideMessageSquarePlus,\n      LucideStar,\n      LucideCircleQuestionMark,\n      LucidePhone,\n      LucideShare2,\n      LucideImage,\n      LucideCircleStop,\n      LucideCirclePlay,\n      LucideHeadset,\n      LucideFile,\n      LucideClipboardList,\n      LucidePrinter,\n      LucideType,\n      LucideHash,\n      LucideAtSign,\n      LucideTextWrap,\n      LucideCircleDot,\n      LucideSquareCheck,\n      LucideList,\n      LucideToggleRight,\n      LucideClock,\n      LucideCircleCheck,\n      LucideTriangleAlert,\n      LucideCalendarDays,\n      LucideCalendar1,\n      LucideLoaderCircle,\n      LucideLifeBuoy,\n      LucideShoppingCart,\n      LucideBox,\n      LucidePackage,\n      LucideTruck,\n      LucideChartNoAxesCombined,\n      LucideDollarSign,\n      LucideCreditCard,\n      LucideReceiptText,\n      LucideStore,\n      LucideFactory,\n      LucideChartNoAxesColumn,\n      LucideBatteryFull,\n      LucideScan,\n      LucidePersonStanding,\n      LucideMonitorSmartphone,\n      LucideContrast,\n      LucideWifi,\n      LucideSignal\n    )\n  ],\n  template: `\n    <svg\n      [lucideIcon]=\"name\"\n      [size]=\"size\"\n      [attr.aria-hidden]=\"decorative ? 'true' : null\"\n      [title]=\"decorative ? null : title\"\n    ></svg>\n  `\n})\nexport class IconComponent {\n  @Input() name: DdsIconName = 'info';\n  @Input() size = 16;\n  @Input() strokeWidth: number | string = 2;\n  @Input() decorative = true;\n  @Input() title?: string;\n}",
+            "sourceCode": "import { Component, Input } from '@angular/core';\nimport {\n  LucideArrowRight,\n  LucideArrowLeft,\n  LucideArrowDown,\n  LucideArrowUp,\n  LucideArrowUpDown,\n  LucideCheck,\n  LucideChevronRight,\n  LucideChevronUp,\n  LucideChevronLeft,\n  LucideChevronDown,\n  LucideChevronsUpDown,\n  LucideListFilter,\n  LucideCircleAlert,\n  LucideDynamicIcon,\n  LucideEllipsis,\n  LucideInfo,\n  LucidePlus,\n  LucideTrash2,\n  LucideX,\n  provideLucideIcons,\n  LucideMenu,\n  LucideColumns3,\n  LucideSearch,\n  LucideLayoutDashboard,\n  LucideEllipsisVertical,\n  LucideHouse,\n  LucideMapPin,\n  LucidePanelsTopLeft,\n  LucideGripVertical,\n  LucideDownload,\n  LucideUpload,\n  LucideMinus,\n  LucideArchive,\n  LucideBan,\n  LucidePencil,\n  LucideSettings,\n  LucideSlidersHorizontal,\n  LucideSquarePen,\n  LucideCopy,\n  LucideFunnel,\n  LucideExternalLink,\n  LucideRefreshCw,\n  LucideWrench,\n  LucideBrushCleaning,\n  LucideCloudUpload,\n  LucideWandSparkles,\n  LucideUser,\n  LucideUsers,\n  LucideUserX,\n  LucideKeyRound,\n  LucideLockKeyhole,\n  LucideUserRound,\n  LucideEye,\n  LucideEyeOff,\n  LucideLogOut,\n  LucideSendHorizontal,\n  LucideBell,\n  LucideBellDot,\n  LucideMessageSquarePlus,\n  LucideStar,\n  LucideCircleQuestionMark,\n  LucidePhone,\n  LucideShare2,\n  LucideImage,\n  LucideCircleStop,\n  LucideCirclePlay,\n  LucideHeadset,\n  LucideFile,\n  LucideClipboardList,\n  LucidePrinter,\n  LucideType,\n  LucideHash,\n  LucideAtSign,\n  LucideTextWrap,\n  LucideCircleDot,\n  LucideSquareCheck,\n  LucideList,\n  LucideToggleRight,\n  LucideClock,\n  LucideCircleCheck,\n  LucideTriangleAlert,\n  LucideCalendarDays,\n  LucideCalendar1,\n  LucideLoaderCircle,\n  LucideLifeBuoy,\n  LucideShoppingCart,\n  LucideBox,\n  LucidePackage,\n  LucideTruck,\n  LucideChartNoAxesCombined,\n  LucideDollarSign,\n  LucideCreditCard,\n  LucideReceiptText,\n  LucideStore,\n  LucideFactory,\n  LucideChartNoAxesColumn,\n  LucideBatteryFull,\n  LucideScan,\n  LucidePersonStanding,\n  LucideMonitorSmartphone,\n  LucideContrast,\n  LucideWifi,\n  LucideSignal,\n} from '@lucide/angular';\n\nexport const DDS_ICON_NAMES = [\n  'info',\n  'arrow-right',\n  'arrow-left',\n  'arrow-down',\n  'arrow-up-down',\n  'arrow-up',\n  'check',\n  'chevron-down',\n  'chevron-right',\n  'chevron-left',\n  'chevron-up',\n  'chevrons-up-down',\n  'list-filter',\n  'columns-3',\n  'search',\n  'menu',\n  'circle-alert',\n  'ellipsis',\n  'plus',\n  'trash-2',\n  'x',\n  'layout-dashboard',\n  'ellipsis-vertical',\n  'house',\n  'map-pin',\n  'panels-top-left',\n  'grip-vertical',\n  'download',\n  'upload',\n  'minus',\n  'archive',\n  'ban',\n  'pencil',\n  'settings',\n  'sliders-horizontal',\n  'square-pen',\n  'copy',\n  'funnel',\n  'external-link',\n  'refresh-cw',\n  'wrench',\n  'brush-cleaning',\n  'cloud-upload',\n  'wand-sparkles',\n  'user',\n  'users',\n  'user-x',\n  'key-round',\n  'lock-keyhole',\n  'user-round',\n  'eye',\n  'eye-off',\n  'log-out',\n  'send-horizontal',\n  'bell',\n  'bell-dot',\n  'message-square-plus',\n  'star',\n  'circle-question-mark',\n  'phone',\n  'share-2',\n  'image',\n  'circle-stop',\n  'circle-play',\n  'headset',\n  'file',\n  'clipboard-list',\n  'printer',\n  'type',\n  'hash',\n  'at-sign',\n  'text-wrap',\n  'circle-dot',\n  'square-check',\n  'list',\n  'toggle-right',\n  'clock',\n  'circle-check',\n  'triangle-alert',\n  'calendar-days',\n  'calendar-1',\n  'loader-circle',\n  'life-buoy',\n  'shopping-cart',\n  'box',\n  'package',\n  'truck',\n  'chart-no-axes-combined',\n  'dollar-sign',\n  'credit-card',\n  'receipt-text',\n  'store',\n  'factory',\n  'chart-no-axes-column',\n  'battery-full',\n  'scan',\n  'person-standing',\n  'monitor-smartphone',\n  'contrast',\n  'wifi',\n  'signal',\n] as const;\n\nexport type DdsIconName = (typeof DDS_ICON_NAMES)[number];\n\n@Component({\n  selector: 'dds-icon',\n  standalone: true,\n  imports: [LucideDynamicIcon],\n  providers: [\n    provideLucideIcons(\n      LucideArrowRight,\n      LucideArrowLeft,\n      LucideArrowDown,\n      LucideArrowUp,\n      LucideCheck,\n      LucideChevronRight,\n      LucideChevronDown,\n      LucideChevronsUpDown,\n      LucideListFilter,\n      LucideMenu,\n      LucideCircleAlert,\n      LucideEllipsis,\n      LucideInfo,\n      LucidePlus,\n      LucideTrash2,\n      LucideX,\n      LucideArrowUpDown,\n      LucideChevronUp,\n      LucideChevronLeft,\n      LucideColumns3,\n      LucideSearch,\n      LucideLayoutDashboard,\n      LucideEllipsisVertical,\n      LucideHouse,\n      LucideMapPin,\n      LucidePanelsTopLeft,\n      LucideGripVertical,\n      LucideDownload,\n      LucideUpload,\n      LucideMinus,\n      LucideArchive,\n      LucideBan,\n      LucidePencil,\n      LucideSettings,\n      LucideSlidersHorizontal,\n      LucideSquarePen,\n      LucideCopy,\n      LucideFunnel,\n      LucideExternalLink,\n      LucideRefreshCw,\n      LucideWrench,\n      LucideBrushCleaning,\n      LucideCloudUpload,\n      LucideWandSparkles,\n      LucideUser,\n      LucideUsers,\n      LucideUserX,\n      LucideKeyRound,\n      LucideLockKeyhole,\n      LucideUserRound,\n      LucideEye,\n      LucideEyeOff,\n      LucideLogOut,\n      LucideSendHorizontal,\n      LucideBell,\n      LucideBellDot,\n      LucideMessageSquarePlus,\n      LucideStar,\n      LucideCircleQuestionMark,\n      LucidePhone,\n      LucideShare2,\n      LucideImage,\n      LucideCircleStop,\n      LucideCirclePlay,\n      LucideHeadset,\n      LucideFile,\n      LucideClipboardList,\n      LucidePrinter,\n      LucideType,\n      LucideHash,\n      LucideAtSign,\n      LucideTextWrap,\n      LucideCircleDot,\n      LucideSquareCheck,\n      LucideList,\n      LucideToggleRight,\n      LucideClock,\n      LucideCircleCheck,\n      LucideTriangleAlert,\n      LucideCalendarDays,\n      LucideCalendar1,\n      LucideLoaderCircle,\n      LucideLifeBuoy,\n      LucideShoppingCart,\n      LucideBox,\n      LucidePackage,\n      LucideTruck,\n      LucideChartNoAxesCombined,\n      LucideDollarSign,\n      LucideCreditCard,\n      LucideReceiptText,\n      LucideStore,\n      LucideFactory,\n      LucideChartNoAxesColumn,\n      LucideBatteryFull,\n      LucideScan,\n      LucidePersonStanding,\n      LucideMonitorSmartphone,\n      LucideContrast,\n      LucideWifi,\n      LucideSignal,\n    ),\n  ],\n  template: `\n    <svg\n      [lucideIcon]=\"name\"\n      [size]=\"size\"\n      [strokeWidth]=\"strokeWidth\"\n      [attr.aria-hidden]=\"decorative ? 'true' : null\"\n      [title]=\"decorative ? null : title\"\n    ></svg>\n  `,\n})\nexport class IconComponent {\n  @Input() name: DdsIconName = 'info';\n  @Input() size = 16;\n  @Input() strokeWidth: number | string = 2;\n  @Input() decorative = true;\n  @Input() title?: string;\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -4707,7 +5177,7 @@
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ":host {\n  display: block;\n  width: 100%;\n  min-width: 0;\n}\n\n.dds-page-toolbar {\n  box-sizing: border-box;\n  display: flex;\n  align-items: center;\n  gap: var(--space-2);\n  width: 100%;\n  min-height: 65px;\n  padding: var(--space-3) var(--space-6);\n  border-bottom: 1px solid var(--border-colour-default);\n  background: var(--bg-colour-white);\n}\n\n.dds-page-toolbar__search {\n  flex: 3 1 0;\n  min-width: 160px;\n}\n\n.dds-page-toolbar__search .dds-search {\n  width: 100%;\n}\n\n.dds-page-toolbar__controls {\n  display: flex;\n  flex: 1 1 0;\n  align-items: center;\n  gap: var(--space-2);\n  min-width: 0;\n}\n\n.dds-page-toolbar__filter {\n  flex: 1 1 auto;\n  min-width: 120px;\n}\n\n.dds-page-toolbar__filter--hidden {\n  display: none;\n}\n\n@media (max-width: 720px) {\n  .dds-page-toolbar {\n    flex-wrap: wrap;\n    padding-inline: var(--space-4);\n  }\n\n  .dds-page-toolbar__search {\n    flex-basis: 100%;\n  }\n\n  .dds-page-toolbar__controls {\n    flex: 1 0 100%;\n  }\n\n  .dds-page-toolbar__filter {\n    min-width: 160px;\n  }\n}\n",
+                    "data": ":host {\n  display: block;\n  width: 100%;\n  min-width: 0;\n}\n\n.dds-page-toolbar {\n  box-sizing: border-box;\n  display: flex;\n  align-items: center;\n  gap: var(--space-2);\n  width: 100%;\n  min-height: 65px;\n  padding: var(--space-3) var(--space-6);\n  border-bottom: 1px solid var(--border-colour-default);\n  background: var(--bg-colour-white);\n}\n\n.dds-page-toolbar__search {\n  flex: 1 1 auto;\n  min-width: 160px;\n}\n\n.dds-page-toolbar__controls {\n  display: flex;\n  flex: 0 1 auto;\n  align-items: center;\n  gap: var(--space-2);\n  min-width: 0;\n}\n\n.dds-page-toolbar__filter {\n  flex: 0 1 260px;\n  width: 260px;\n  min-width: 120px;\n}\n\n.dds-page-toolbar__filter--hidden {\n  display: none;\n}\n\n@media (max-width: 720px) {\n  .dds-page-toolbar {\n    flex-wrap: wrap;\n    padding-inline: var(--space-4);\n  }\n\n  .dds-page-toolbar__search {\n    flex-basis: 100%;\n  }\n\n  .dds-page-toolbar__controls {\n    flex: 1 0 100%;\n  }\n\n  .dds-page-toolbar__filter {\n    min-width: 160px;\n  }\n}\n",
                     "styleUrl": "./page-toolbar.component.css"
                 }
             ],
@@ -4751,7 +5221,7 @@
                     }
                 ]
             },
-            "templateData": "<section class=\"dds-page-toolbar\" aria-label=\"Page controls\" [attr.aria-busy]=\"refreshing\">\n  <dds-search\n    class=\"dds-page-toolbar__search\"\n    size=\"small\"\n    [showLabel]=\"false\"\n    [ariaLabel]=\"searchPlaceholder\"\n    [placeholder]=\"searchPlaceholder\"\n    [value]=\"searchValue\"\n    (valueChange)=\"updateSearch($event)\"\n    (search)=\"searchSubmit.emit($event)\"\n  ></dds-search>\n\n  <div class=\"dds-page-toolbar__controls\">\n    <dds-select\n      class=\"dds-page-toolbar__filter\"\n      [class.dds-page-toolbar__filter--hidden]=\"!showFilter\"\n      size=\"small\"\n      [showLabel]=\"false\"\n      [showHelperText]=\"false\"\n      [ariaLabel]=\"filterLabel\"\n      [placeholder]=\"filterLabel\"\n      [options]=\"filterOptions\"\n      [value]=\"filterValue\"\n      (valueChange)=\"updateFilter($event)\"\n    ></dds-select>\n\n    <dds-button\n      variant=\"secondary\"\n      size=\"medium\"\n      iconType=\"icon-only\"\n      icon=\"refresh-cw\"\n      [ariaLabel]=\"refreshing ? 'Refreshing data' : 'Refresh data'\"\n      [disabled]=\"refreshing\"\n      (click)=\"refresh.emit()\"\n    ></dds-button>\n\n    <dds-button\n      variant=\"primary\"\n      size=\"medium\"\n      iconType=\"left-icon\"\n      [icon]=\"actionIcon\"\n      [disabled]=\"refreshing || actionDisabled\"\n      (click)=\"action.emit()\"\n    >\n      {{ actionLabel }}\n    </dds-button>\n  </div>\n</section>\n"
+            "templateData": "<section class=\"dds-page-toolbar\" aria-label=\"Page controls\" [attr.aria-busy]=\"refreshing\">\n  <dds-search\n    class=\"dds-page-toolbar__search\"\n    size=\"small\"\n    [showLabel]=\"false\"\n    [ariaLabel]=\"searchPlaceholder\"\n    [placeholder]=\"searchPlaceholder\"\n    [value]=\"searchValue\"\n    (valueChange)=\"updateSearch($event)\"\n    (search)=\"searchSubmit.emit($event)\"\n  ></dds-search>\n\n  <div class=\"dds-page-toolbar__controls\">\n    <dds-select\n      class=\"dds-page-toolbar__filter\"\n      [class.dds-page-toolbar__filter--hidden]=\"!showFilter\"\n      size=\"small\"\n      [showLabel]=\"false\"\n      [showHelperText]=\"false\"\n      [ariaLabel]=\"filterLabel\"\n      [placeholder]=\"filterLabel\"\n      [options]=\"filterOptions\"\n      [value]=\"filterValue\"\n      [state]=\"refreshing ? 'disabled' : 'default'\"\n      (valueChange)=\"updateFilter($event)\"\n    ></dds-select>\n\n    <dds-button\n      variant=\"secondary\"\n      size=\"medium\"\n      iconType=\"icon-only\"\n      icon=\"refresh-cw\"\n      [iconAnimation]=\"refreshing ? 'spin' : 'spin-on-press'\"\n      [ariaLabel]=\"refreshing ? 'Refreshing data' : 'Refresh data'\"\n      [disabled]=\"refreshing\"\n      (click)=\"refresh.emit()\"\n    ></dds-button>\n\n    <dds-button\n      variant=\"primary\"\n      size=\"medium\"\n      iconType=\"left-icon\"\n      [icon]=\"actionIcon\"\n      [disabled]=\"refreshing || actionDisabled\"\n      (click)=\"action.emit()\"\n    >\n      {{ actionLabel }}\n    </dds-button>\n  </div>\n</section>\n"
         },
         {
             "name": "PasswordInputComponent",
@@ -6121,7 +6591,7 @@
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ":host {\n  display: block;\n  max-width: 100%;\n}\n\n.dds-search {\n  display: flex;\n  flex-direction: column;\n  width: 460px;\n  max-width: 100%;\n  color: var(--text-colour-default);\n  font-family: var(--font-family-primary);\n}\n\n.dds-search__label {\n  display: flex;\n  align-items: center;\n  gap: var(--space-1);\n  padding-bottom: var(--space-1);\n  font-size: var(--font-size-sm);\n  font-weight: var(--font-weight-semibold);\n  line-height: 20px;\n}\n\n.dds-search--small .dds-search__label {\n  font-size: var(--font-size-xs);\n  line-height: 16px;\n}\n\n.dds-search__required {\n  color: var(--text-colour-danger);\n}\n\n.dds-search__field {\n  box-sizing: border-box;\n  display: flex;\n  align-items: center;\n  width: 100%;\n  min-height: 48px;\n  gap: var(--space-2);\n  padding: var(--space-3);\n  border: 1px solid var(--border-colour-default);\n  border-radius: var(--radius-sm);\n  background: var(--bg-colour-white);\n}\n\n.dds-search--small .dds-search__field {\n  height: 40px;\n  min-height: 40px;\n}\n\n.dds-search--focused .dds-search__field,\n.dds-search__field:focus-within {\n  border: 2px solid var(--border-colour-info);\n  padding: 11px;\n}\n\n.dds-search__icon {\n  display: inline-flex;\n  flex: 0 0 auto;\n  color: var(--text-colour-default);\n}\n\n.dds-search__input {\n  flex: 1 1 auto;\n  min-width: 0;\n  padding: 0;\n  border: 0;\n  outline: 0;\n  background: transparent;\n  color: var(--text-colour-default);\n  font: inherit;\n  font-size: var(--font-size-md);\n  line-height: 24px;\n}\n\n.dds-search--small .dds-search__input {\n  font-size: var(--font-size-sm);\n  line-height: 20px;\n}\n\n.dds-search__input::placeholder {\n  color: var(--text-colour-placeholder);\n  opacity: 1;\n}\n\n.dds-search__input::-webkit-search-cancel-button {\n  display: none;\n}\n\n.dds-search__dropdown {\n  padding-top: var(--space-2);\n}\n\n.dds-search__listbox {\n  margin: 0;\n  padding: 0;\n  overflow: hidden;\n  border-radius: var(--radius-sm);\n  background: var(--bg-colour-white);\n  box-shadow: 0 4px 16px rgb(0 0 0 / 8%);\n  list-style: none;\n}\n\n.dds-search__option {\n  box-sizing: border-box;\n  padding: var(--space-2) var(--space-4);\n  font-size: var(--font-size-sm);\n  line-height: 20px;\n  cursor: pointer;\n}\n\n.dds-search__option:hover,\n.dds-search__option--active {\n  background: var(--grey-200);\n}\n",
+                    "data": ":host {\n  display: block;\n  max-width: 100%;\n}\n\n.dds-search {\n  display: flex;\n  flex-direction: column;\n  width: 100%;\n  max-width: 100%;\n  color: var(--text-colour-default);\n  font-family: var(--font-family-primary);\n}\n\n.dds-search__label {\n  display: flex;\n  align-items: center;\n  gap: var(--space-1);\n  padding-bottom: var(--space-1);\n  font-size: var(--font-size-sm);\n  font-weight: var(--font-weight-semibold);\n  line-height: 20px;\n}\n\n.dds-search--small .dds-search__label {\n  font-size: var(--font-size-xs);\n  line-height: 16px;\n}\n\n.dds-search__required {\n  color: var(--text-colour-danger);\n}\n\n.dds-search__field {\n  box-sizing: border-box;\n  display: flex;\n  align-items: center;\n  width: 100%;\n  min-height: 48px;\n  gap: var(--space-2);\n  padding: var(--space-3);\n  border: 1px solid var(--border-colour-default);\n  border-radius: var(--radius-sm);\n  background: var(--bg-colour-white);\n}\n\n.dds-search--small .dds-search__field {\n  height: 40px;\n  min-height: 40px;\n}\n\n.dds-search--focused .dds-search__field,\n.dds-search__field:focus-within {\n  border: 2px solid var(--border-colour-info);\n  padding: 11px;\n}\n\n.dds-search__icon {\n  display: inline-flex;\n  flex: 0 0 auto;\n  color: var(--text-colour-default);\n}\n\n.dds-search__input {\n  flex: 1 1 auto;\n  min-width: 0;\n  padding: 0;\n  border: 0;\n  outline: 0;\n  background: transparent;\n  color: var(--text-colour-default);\n  font: inherit;\n  font-size: var(--font-size-md);\n  line-height: 24px;\n}\n\n.dds-search--small .dds-search__input {\n  font-size: var(--font-size-sm);\n  line-height: 20px;\n}\n\n.dds-search__input::placeholder {\n  color: var(--text-colour-placeholder);\n  opacity: 1;\n}\n\n.dds-search__input::-webkit-search-cancel-button {\n  display: none;\n}\n\n.dds-search__dropdown {\n  padding-top: var(--space-2);\n}\n\n.dds-search__listbox {\n  margin: 0;\n  padding: 0;\n  overflow: hidden;\n  border-radius: var(--radius-sm);\n  background: var(--bg-colour-white);\n  box-shadow: 0 4px 16px rgb(0 0 0 / 8%);\n  list-style: none;\n}\n\n.dds-search__option {\n  box-sizing: border-box;\n  padding: var(--space-2) var(--space-4);\n  font-size: var(--font-size-sm);\n  line-height: 20px;\n  cursor: pointer;\n}\n\n.dds-search__option:hover,\n.dds-search__option--active {\n  background: var(--grey-200);\n}\n",
                     "styleUrl": "./search.component.css"
                 }
             ],
@@ -9071,7 +9541,18 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "unknown",
-                "defaultValue": "[\n  'info',\n  'arrow-right',\n  'arrow-left',\n  'arrow-down',\n  'arrow-up-down',  \n  'arrow-up',\n  'check',\n  'chevron-down',\n  'chevron-right',\n  'chevron-left',\n  'chevron-up',\n  'chevrons-up-down',\n  'list-filter',\n  'columns-3',\n  'search',\n  'menu',\n  'circle-alert',\n  'ellipsis',\n  'plus',\n  'trash-2',\n  'x',\n  'layout-dashboard',\n  'ellipsis-vertical',\n  'house',\n  'map-pin',\n  'panels-top-left',\n  'grip-vertical',\n  'download',\n  'upload',\n  'minus',\n  'archive',\n  'ban',\n  'pencil',\n  'settings',\n  'sliders-horizontal',\n  'square-pen',\n  'copy',\n  'funnel',\n  'external-link',\n  'refresh-cw',\n  'wrench',\n  'brush-cleaning',\n  'cloud-upload',\n  'wand-sparkles',\n  'user',\n  'users',\n  'user-x',\n  'key-round',\n  'lock-keyhole',\n  'user-round',\n  'eye',\n  'eye-off',\n  'log-out',\n  'send-horizontal',\n  'bell',\n  'bell-dot',\n  'message-square-plus',\n  'star',\n  'circle-question-mark',\n  'phone',\n  'share-2',\n  'image',\n  'circle-stop',\n  'circle-play',\n  'headset',\n  'file',\n  'clipboard-list',\n  'printer',\n  'type',\n  'hash',\n  'at-sign',\n  'text-wrap',\n  'circle-dot',\n  'square-check',\n  'list',\n  'toggle-right',\n  'clock',\n  'circle-check',\n  'triangle-alert',\n  'calendar-days',\n  'calendar-1',\n  'loader-circle',\n  'life-buoy',\n  'shopping-cart',\n  'box',\n  'package',\n  'truck',\n  'chart-no-axes-combined',\n  'dollar-sign',\n  'credit-card',\n  'receipt-text',\n  'store',\n  'factory',\n  'chart-no-axes-column',\n  'battery-full',\n  'scan',\n  'person-standing',\n  'monitor-smartphone',\n  'contrast',\n  'wifi',\n  'signal',\n] as const"
+                "defaultValue": "[\n  'info',\n  'arrow-right',\n  'arrow-left',\n  'arrow-down',\n  'arrow-up-down',\n  'arrow-up',\n  'check',\n  'chevron-down',\n  'chevron-right',\n  'chevron-left',\n  'chevron-up',\n  'chevrons-up-down',\n  'list-filter',\n  'columns-3',\n  'search',\n  'menu',\n  'circle-alert',\n  'ellipsis',\n  'plus',\n  'trash-2',\n  'x',\n  'layout-dashboard',\n  'ellipsis-vertical',\n  'house',\n  'map-pin',\n  'panels-top-left',\n  'grip-vertical',\n  'download',\n  'upload',\n  'minus',\n  'archive',\n  'ban',\n  'pencil',\n  'settings',\n  'sliders-horizontal',\n  'square-pen',\n  'copy',\n  'funnel',\n  'external-link',\n  'refresh-cw',\n  'wrench',\n  'brush-cleaning',\n  'cloud-upload',\n  'wand-sparkles',\n  'user',\n  'users',\n  'user-x',\n  'key-round',\n  'lock-keyhole',\n  'user-round',\n  'eye',\n  'eye-off',\n  'log-out',\n  'send-horizontal',\n  'bell',\n  'bell-dot',\n  'message-square-plus',\n  'star',\n  'circle-question-mark',\n  'phone',\n  'share-2',\n  'image',\n  'circle-stop',\n  'circle-play',\n  'headset',\n  'file',\n  'clipboard-list',\n  'printer',\n  'type',\n  'hash',\n  'at-sign',\n  'text-wrap',\n  'circle-dot',\n  'square-check',\n  'list',\n  'toggle-right',\n  'clock',\n  'circle-check',\n  'triangle-alert',\n  'calendar-days',\n  'calendar-1',\n  'loader-circle',\n  'life-buoy',\n  'shopping-cart',\n  'box',\n  'package',\n  'truck',\n  'chart-no-axes-combined',\n  'dollar-sign',\n  'credit-card',\n  'receipt-text',\n  'store',\n  'factory',\n  'chart-no-axes-column',\n  'battery-full',\n  'scan',\n  'person-standing',\n  'monitor-smartphone',\n  'contrast',\n  'wifi',\n  'signal',\n] as const"
+            },
+            {
+                "name": "nextCheckboxGroupId",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/components/checkbox-group/checkbox-group.component.ts",
+                "coverageIgnore": false,
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "number",
+                "defaultValue": "0"
             },
             {
                 "name": "nextCheckboxId",
@@ -9270,6 +9751,19 @@
                 "kind": 193
             },
             {
+                "name": "ButtonIconAnimation",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "coverageIgnore": false,
+                "rawtype": "\"none\" | \"spin\" | \"spin-on-press\"",
+                "file": "src/app/components/button/button.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "rawdescription": "",
+                "description": "",
+                "kind": 193
+            },
+            {
                 "name": "ButtonIconType",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
@@ -9328,6 +9822,32 @@
                 "coverageIgnore": false,
                 "rawtype": "\"primary\" | \"secondary\" | \"ghost\"",
                 "file": "src/app/components/button/button.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "rawdescription": "",
+                "description": "",
+                "kind": 193
+            },
+            {
+                "name": "CheckboxGroupDirection",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "coverageIgnore": false,
+                "rawtype": "\"inline\" | \"stacked\"",
+                "file": "src/app/components/checkbox-group/checkbox-group.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "rawdescription": "",
+                "description": "",
+                "kind": 193
+            },
+            {
+                "name": "CheckboxGroupState",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "coverageIgnore": false,
+                "rawtype": "\"default\" | \"invalid\" | \"disabled\"",
+                "file": "src/app/components/checkbox-group/checkbox-group.component.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "rawdescription": "",
@@ -9874,7 +10394,20 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "unknown",
-                    "defaultValue": "[\n  'info',\n  'arrow-right',\n  'arrow-left',\n  'arrow-down',\n  'arrow-up-down',  \n  'arrow-up',\n  'check',\n  'chevron-down',\n  'chevron-right',\n  'chevron-left',\n  'chevron-up',\n  'chevrons-up-down',\n  'list-filter',\n  'columns-3',\n  'search',\n  'menu',\n  'circle-alert',\n  'ellipsis',\n  'plus',\n  'trash-2',\n  'x',\n  'layout-dashboard',\n  'ellipsis-vertical',\n  'house',\n  'map-pin',\n  'panels-top-left',\n  'grip-vertical',\n  'download',\n  'upload',\n  'minus',\n  'archive',\n  'ban',\n  'pencil',\n  'settings',\n  'sliders-horizontal',\n  'square-pen',\n  'copy',\n  'funnel',\n  'external-link',\n  'refresh-cw',\n  'wrench',\n  'brush-cleaning',\n  'cloud-upload',\n  'wand-sparkles',\n  'user',\n  'users',\n  'user-x',\n  'key-round',\n  'lock-keyhole',\n  'user-round',\n  'eye',\n  'eye-off',\n  'log-out',\n  'send-horizontal',\n  'bell',\n  'bell-dot',\n  'message-square-plus',\n  'star',\n  'circle-question-mark',\n  'phone',\n  'share-2',\n  'image',\n  'circle-stop',\n  'circle-play',\n  'headset',\n  'file',\n  'clipboard-list',\n  'printer',\n  'type',\n  'hash',\n  'at-sign',\n  'text-wrap',\n  'circle-dot',\n  'square-check',\n  'list',\n  'toggle-right',\n  'clock',\n  'circle-check',\n  'triangle-alert',\n  'calendar-days',\n  'calendar-1',\n  'loader-circle',\n  'life-buoy',\n  'shopping-cart',\n  'box',\n  'package',\n  'truck',\n  'chart-no-axes-combined',\n  'dollar-sign',\n  'credit-card',\n  'receipt-text',\n  'store',\n  'factory',\n  'chart-no-axes-column',\n  'battery-full',\n  'scan',\n  'person-standing',\n  'monitor-smartphone',\n  'contrast',\n  'wifi',\n  'signal',\n] as const"
+                    "defaultValue": "[\n  'info',\n  'arrow-right',\n  'arrow-left',\n  'arrow-down',\n  'arrow-up-down',\n  'arrow-up',\n  'check',\n  'chevron-down',\n  'chevron-right',\n  'chevron-left',\n  'chevron-up',\n  'chevrons-up-down',\n  'list-filter',\n  'columns-3',\n  'search',\n  'menu',\n  'circle-alert',\n  'ellipsis',\n  'plus',\n  'trash-2',\n  'x',\n  'layout-dashboard',\n  'ellipsis-vertical',\n  'house',\n  'map-pin',\n  'panels-top-left',\n  'grip-vertical',\n  'download',\n  'upload',\n  'minus',\n  'archive',\n  'ban',\n  'pencil',\n  'settings',\n  'sliders-horizontal',\n  'square-pen',\n  'copy',\n  'funnel',\n  'external-link',\n  'refresh-cw',\n  'wrench',\n  'brush-cleaning',\n  'cloud-upload',\n  'wand-sparkles',\n  'user',\n  'users',\n  'user-x',\n  'key-round',\n  'lock-keyhole',\n  'user-round',\n  'eye',\n  'eye-off',\n  'log-out',\n  'send-horizontal',\n  'bell',\n  'bell-dot',\n  'message-square-plus',\n  'star',\n  'circle-question-mark',\n  'phone',\n  'share-2',\n  'image',\n  'circle-stop',\n  'circle-play',\n  'headset',\n  'file',\n  'clipboard-list',\n  'printer',\n  'type',\n  'hash',\n  'at-sign',\n  'text-wrap',\n  'circle-dot',\n  'square-check',\n  'list',\n  'toggle-right',\n  'clock',\n  'circle-check',\n  'triangle-alert',\n  'calendar-days',\n  'calendar-1',\n  'loader-circle',\n  'life-buoy',\n  'shopping-cart',\n  'box',\n  'package',\n  'truck',\n  'chart-no-axes-combined',\n  'dollar-sign',\n  'credit-card',\n  'receipt-text',\n  'store',\n  'factory',\n  'chart-no-axes-column',\n  'battery-full',\n  'scan',\n  'person-standing',\n  'monitor-smartphone',\n  'contrast',\n  'wifi',\n  'signal',\n] as const"
+                }
+            ],
+            "src/app/components/checkbox-group/checkbox-group.component.ts": [
+                {
+                    "name": "nextCheckboxGroupId",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/components/checkbox-group/checkbox-group.component.ts",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "defaultValue": "0"
                 }
             ],
             "src/app/components/checkbox/checkbox.component.ts": [
@@ -10080,6 +10613,19 @@
             ],
             "src/app/components/button/button.component.ts": [
                 {
+                    "name": "ButtonIconAnimation",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "coverageIgnore": false,
+                    "rawtype": "\"none\" | \"spin\" | \"spin-on-press\"",
+                    "file": "src/app/components/button/button.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "",
+                    "description": "",
+                    "kind": 193
+                },
+                {
                     "name": "ButtonIconType",
                     "ctype": "miscellaneous",
                     "subtype": "typealias",
@@ -10138,6 +10684,34 @@
                     "coverageIgnore": false,
                     "rawtype": "\"primary\" | \"secondary\" | \"ghost\"",
                     "file": "src/app/components/button/button.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "",
+                    "description": "",
+                    "kind": 193
+                }
+            ],
+            "src/app/components/checkbox-group/checkbox-group.component.ts": [
+                {
+                    "name": "CheckboxGroupDirection",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "coverageIgnore": false,
+                    "rawtype": "\"inline\" | \"stacked\"",
+                    "file": "src/app/components/checkbox-group/checkbox-group.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "",
+                    "description": "",
+                    "kind": 193
+                },
+                {
+                    "name": "CheckboxGroupState",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "coverageIgnore": false,
+                    "rawtype": "\"default\" | \"invalid\" | \"disabled\"",
+                    "file": "src/app/components/checkbox-group/checkbox-group.component.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "",
@@ -10725,8 +11299,18 @@
                 "linktype": "component",
                 "name": "ButtonComponent",
                 "coveragePercent": 100,
-                "coverageCount": "11/11",
+                "coverageCount": "12/12",
                 "status": "very-good"
+            },
+            {
+                "filePath": "src/app/components/button/button.component.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "ButtonIconAnimation",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
             },
             {
                 "filePath": "src/app/components/button/button.component.ts",
@@ -10779,12 +11363,60 @@
                 "status": "low"
             },
             {
+                "filePath": "src/app/components/checkbox-group/checkbox-group.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "CheckboxGroupComponent",
+                "coveragePercent": 6,
+                "coverageCount": "1/16",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/checkbox-group/checkbox-group.component.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "CheckboxGroupOption",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/checkbox-group/checkbox-group.component.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "nextCheckboxGroupId",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/checkbox-group/checkbox-group.component.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "CheckboxGroupDirection",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/checkbox-group/checkbox-group.component.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "CheckboxGroupState",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
                 "filePath": "src/app/components/checkbox/checkbox.component.ts",
                 "type": "component",
                 "linktype": "component",
                 "name": "CheckboxComponent",
-                "coveragePercent": 14,
-                "coverageCount": "2/14",
+                "coveragePercent": 13,
+                "coverageCount": "2/15",
                 "status": "low"
             },
             {
