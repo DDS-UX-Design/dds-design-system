@@ -19,6 +19,7 @@ type OtpInputStoryArgs = {
   showCodeExpiry: boolean;
   codeExpired: boolean;
   expiryTime: string;
+  loading: boolean;
   onComplete: ReturnType<typeof fn>;
 };
 
@@ -104,6 +105,7 @@ const meta: Meta<OtpInputStoryArgs> = {
       if: { arg: 'codeExpired', eq: false },
       table: { category: 'Expiry', defaultValue: { summary: '02:57' } },
     },
+    loading: { control: 'boolean', table: { category: 'State' } },
     onComplete: { table: { disable: true } },
   },
   args: {
@@ -119,6 +121,7 @@ const meta: Meta<OtpInputStoryArgs> = {
     showCodeExpiry: true,
     codeExpired: false,
     expiryTime: '02:57',
+    loading: false,
     onComplete: fn(),
   },
   render: (args) => ({
@@ -137,6 +140,7 @@ const meta: Meta<OtpInputStoryArgs> = {
         [showCodeExpiry]="showCodeExpiry"
         [codeExpired]="codeExpired"
         [expiryTime]="expiryTime"
+        [loading]="loading"
         (valueChange)="value = $event"
         (completed)="onComplete($event)"
       ></dds-otp-input>
@@ -179,6 +183,18 @@ export const DisabledLoading: Story = {
   args: {
     state: 'disabled-loading',
     value: '378531',
+  },
+};
+
+export const Loading: Story = {
+  args: { loading: true, showLabel: true },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await expect(canvas.getByLabelText('Loading verification code input')).toHaveAttribute(
+      'aria-busy',
+      'true',
+    );
+    await expect(canvas.queryByRole('textbox')).not.toBeInTheDocument();
   },
 };
 

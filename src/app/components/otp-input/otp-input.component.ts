@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { IconComponent } from '../icon/icon.component';
+import { SkeletonComponent } from '../skeleton/skeleton.component';
 
 export type OtpInputSize = 'desktop' | 'mobile';
 export type OtpInputState = 'default' | 'focused' | 'error' | 'disabled-loading';
@@ -13,7 +14,7 @@ let nextOtpInputId = 0;
 @Component({
   selector: 'dds-otp-input',
   standalone: true,
-  imports: [CommonModule, IconComponent],
+  imports: [CommonModule, IconComponent, SkeletonComponent],
   templateUrl: './otp-input.component.html',
   styleUrl: './otp-input.component.css',
 })
@@ -58,6 +59,9 @@ export class OtpInputComponent {
 
   /** Formatted time remaining for the current code. */
   @Input() expiryTime = '02:57';
+
+  /** Replaces the code fields and optional surrounding content with skeletons while loading. */
+  @Input() loading = false;
 
   /** Emitted whenever the numeric code changes. */
   @Output() valueChange = new EventEmitter<string>();
