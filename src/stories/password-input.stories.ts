@@ -21,6 +21,7 @@ type PasswordInputStoryArgs = {
   disabled: boolean;
   name: string;
   autocomplete: string;
+  loading: boolean;
 };
 
 const meta: Meta<PasswordInputStoryArgs> = {
@@ -113,6 +114,7 @@ const meta: Meta<PasswordInputStoryArgs> = {
       description: 'Helps browsers and password managers fill the correct credential.',
       table: { category: 'Form', defaultValue: { summary: 'current-password' } },
     },
+    loading: { control: 'boolean', table: { category: 'State' } },
   },
   args: {
     label: 'Password',
@@ -129,6 +131,7 @@ const meta: Meta<PasswordInputStoryArgs> = {
     disabled: false,
     name: 'password',
     autocomplete: 'current-password',
+    loading: false,
   },
   render: (args) => ({
     props: args,
@@ -148,6 +151,7 @@ const meta: Meta<PasswordInputStoryArgs> = {
         [disabled]="disabled"
         [name]="name"
         [autocomplete]="autocomplete"
+        [loading]="loading"
         (valueChange)="value = $event"
         (visibleChange)="visible = $event"
       ></dds-password-input>
@@ -195,6 +199,19 @@ export const Disabled: Story = {
   args: {
     value: 'UnavailablePassword',
     disabled: true,
+  },
+};
+
+export const Loading: Story = {
+  args: { loading: true },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await expect(canvas.getByLabelText('Loading password input')).toHaveAttribute(
+      'aria-busy',
+      'true',
+    );
+    await expect(canvas.queryByLabelText('Password')).not.toBeInTheDocument();
+    await expect(canvas.queryByRole('button')).not.toBeInTheDocument();
   },
 };
 

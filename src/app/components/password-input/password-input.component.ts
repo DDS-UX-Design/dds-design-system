@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { IconComponent } from '../icon/icon.component';
+import { SkeletonComponent } from '../skeleton/skeleton.component';
 
 export type PasswordInputSize = 'desktop' | 'mobile';
 export type PasswordInputState = 'default' | 'focused' | 'error';
@@ -10,7 +11,7 @@ let nextPasswordInputId = 0;
 @Component({
   selector: 'dds-password-input',
   standalone: true,
-  imports: [CommonModule, IconComponent],
+  imports: [CommonModule, IconComponent, SkeletonComponent],
   templateUrl: './password-input.component.html',
   styleUrl: './password-input.component.css',
 })
@@ -30,6 +31,7 @@ export class PasswordInputComponent {
   @Input() disabled = false;
   @Input() name?: string;
   @Input() autocomplete = 'current-password';
+  @Input() loading = false;
 
   @Output() valueChange = new EventEmitter<string>();
   @Output() visibleChange = new EventEmitter<boolean>();
