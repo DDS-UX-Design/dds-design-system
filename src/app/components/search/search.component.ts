@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, OnDestroy, Output } from '@angular/core';
 import { IconComponent } from '../icon/icon.component';
+import { SkeletonComponent } from '../skeleton/skeleton.component';
 
 export type SearchSize = 'large' | 'small';
 export type SearchState = 'default' | 'focused';
@@ -13,7 +14,7 @@ let nextSearchId = 0;
 @Component({
   selector: 'dds-search',
   standalone: true,
-  imports: [CommonModule, IconComponent],
+  imports: [CommonModule, IconComponent, SkeletonComponent],
   templateUrl: './search.component.html',
   styleUrl: './search.component.css',
 })
@@ -51,6 +52,9 @@ export class SearchComponent implements OnDestroy {
   /** Opens the suggestions menu for controlled previews. */
   @Input() expanded = false;
 
+  /** Replaces the label and search field with shape-matched skeletons while loading. */
+  @Input() loading = false;
+
   /** Emitted whenever the query changes. */
   @Output() valueChange = new EventEmitter<string>();
 
@@ -69,7 +73,7 @@ export class SearchComponent implements OnDestroy {
   }
 
   get isExpanded(): boolean {
-    return this.expanded && this.suggestions.length > 0;
+    return !this.loading && this.expanded && this.suggestions.length > 0;
   }
 
   get listboxId(): string {

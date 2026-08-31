@@ -114,3 +114,7 @@
 .dds-search__option--active {
   background: var(--grey-200);
 }
+
+.dds-search__skeleton-label {
+  padding-bottom: var(--space-1);
+}

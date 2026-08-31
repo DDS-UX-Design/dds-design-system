@@ -17,6 +17,7 @@ type SearchStoryArgs = {
   ariaLabel: string;
   suggestions: string[];
   expanded: boolean;
+  loading: boolean;
   onSearch: ReturnType<typeof fn>;
   onSuggestionSelected: ReturnType<typeof fn>;
 };
@@ -91,6 +92,7 @@ const meta: Meta<SearchStoryArgs> = {
       description: 'Opens the suggestions menu for controlled previews.',
       table: { category: 'Suggestions', defaultValue: { summary: 'false' } },
     },
+    loading: { control: 'boolean', table: { category: 'State' } },
     onSearch: { table: { disable: true } },
     onSuggestionSelected: { table: { disable: true } },
   },
@@ -105,6 +107,7 @@ const meta: Meta<SearchStoryArgs> = {
     ariaLabel: 'Search customers',
     suggestions: [],
     expanded: false,
+    loading: false,
     onSearch: fn(),
     onSuggestionSelected: fn(),
   },
@@ -122,6 +125,7 @@ const meta: Meta<SearchStoryArgs> = {
         [ariaLabel]="ariaLabel"
         [suggestions]="suggestions"
         [expanded]="expanded"
+        [loading]="loading"
         (valueChange)="value = $event"
         (search)="onSearch($event)"
         (suggestionSelected)="onSuggestionSelected($event)"
@@ -147,6 +151,15 @@ export const Focused: Story = {
 
 export const Small: Story = {
   args: { size: 'small' },
+};
+
+export const Loading: Story = {
+  args: { loading: true },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await expect(canvas.getByLabelText('Loading search')).toHaveAttribute('aria-busy', 'true');
+    await expect(canvas.queryByRole('combobox')).not.toBeInTheDocument();
+  },
 };
 
 export const WithSuggestions: Story = {

@@ -2,54 +2,66 @@
   class="dds-search"
   [class.dds-search--small]="size === 'small'"
   [class.dds-search--focused]="isFocused"
+  [class.dds-search--loading]="loading"
+  [attr.aria-busy]="loading ? 'true' : null"
+  [attr.aria-label]="loading ? 'Loading search' : null"
 >
-  <label *ngIf="showLabel" class="dds-search__label" [for]="inputId">
-    {{ label }}
-    <span *ngIf="required" class="dds-search__required" aria-hidden="true">*</span>
-  </label>
+  <ng-container *ngIf="loading; else loadedContent">
+    <div *ngIf="showLabel" class="dds-search__skeleton-label">
+      <dds-skeleton width="104px" [height]="size === 'small' ? 16 : 20"></dds-skeleton>
+    </div>
+    <dds-skeleton width="100%" [height]="size === 'small' ? 40 : 48"></dds-skeleton>
+  </ng-container>
 
-  <div class="dds-search__field">
-    <dds-icon
-      class="dds-search__icon"
-      name="search"
-      [size]="size === 'small' ? 20 : 24"
-      aria-hidden="true"
-    ></dds-icon>
-    <input
-      class="dds-search__input"
-      [id]="inputId"
-      type="search"
-      role="combobox"
-      autocomplete="off"
-      [value]="value"
-      [placeholder]="placeholder"
-      [required]="required"
-      [attr.aria-label]="showLabel ? null : ariaLabel"
-      [attr.aria-autocomplete]="suggestions.length ? 'list' : 'none'"
-      [attr.aria-controls]="suggestions.length ? listboxId : null"
-      [attr.aria-expanded]="isExpanded"
-      [attr.aria-activedescendant]="activeOptionId"
-      (input)="handleInput($event)"
-      (focus)="handleFocus()"
-      (blur)="handleBlur()"
-      (keydown)="handleKeydown($event)"
-    />
-  </div>
+  <ng-template #loadedContent>
+    <label *ngIf="showLabel" class="dds-search__label" [for]="inputId">
+      {{ label }}
+      <span *ngIf="required" class="dds-search__required" aria-hidden="true">*</span>
+    </label>
 
-  <div *ngIf="isExpanded" class="dds-search__dropdown">
-    <ul class="dds-search__listbox" role="listbox" [id]="listboxId">
-      <li
-        *ngFor="let suggestion of suggestions; let index = index"
-        class="dds-search__option"
-        role="option"
-        [id]="inputId + '-option-' + index"
-        [attr.aria-selected]="index === activeIndex"
-        [class.dds-search__option--active]="index === activeIndex"
-        (mousedown)="$event.preventDefault()"
-        (click)="selectSuggestion(suggestion)"
-      >
-        {{ suggestion }}
-      </li>
-    </ul>
-  </div>
+    <div class="dds-search__field">
+      <dds-icon
+        class="dds-search__icon"
+        name="search"
+        [size]="size === 'small' ? 20 : 24"
+        aria-hidden="true"
+      ></dds-icon>
+      <input
+        class="dds-search__input"
+        [id]="inputId"
+        type="search"
+        role="combobox"
+        autocomplete="off"
+        [value]="value"
+        [placeholder]="placeholder"
+        [required]="required"
+        [attr.aria-label]="showLabel ? null : ariaLabel"
+        [attr.aria-autocomplete]="suggestions.length ? 'list' : 'none'"
+        [attr.aria-controls]="suggestions.length ? listboxId : null"
+        [attr.aria-expanded]="isExpanded"
+        [attr.aria-activedescendant]="activeOptionId"
+        (input)="handleInput($event)"
+        (focus)="handleFocus()"
+        (blur)="handleBlur()"
+        (keydown)="handleKeydown($event)"
+      />
+    </div>
+
+    <div *ngIf="isExpanded" class="dds-search__dropdown">
+      <ul class="dds-search__listbox" role="listbox" [id]="listboxId">
+        <li
+          *ngFor="let suggestion of suggestions; let index = index"
+          class="dds-search__option"
+          role="option"
+          [id]="inputId + '-option-' + index"
+          [attr.aria-selected]="index === activeIndex"
+          [class.dds-search__option--active]="index === activeIndex"
+          (mousedown)="$event.preventDefault()"
+          (click)="selectSuggestion(suggestion)"
+        >
+          {{ suggestion }}
+        </li>
+      </ul>
+    </div>
+  </ng-template>
 </div>
