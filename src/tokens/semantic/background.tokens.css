@@ -11,6 +11,8 @@
   --bg-colour-success-muted: var(--green-100);
   --bg-colour-warning-muted: var(--yellow-100);
   --bg-colour-danger-muted: var(--red-100);
+  --bg-colour-row-hover: var(--border-colour-subtle);
+  --bg-colour-row-selected: var(--border-colour-subtle);
   --bg-colour-overlay-light: rgba(255, 255, 255, 0.6);
   --bg-colour-overlay-dark: rgba(0, 0, 0, 0.6);
 }
