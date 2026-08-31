@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { IconComponent } from '../icon/icon.component';
+import { SkeletonComponent } from '../skeleton/skeleton.component';
 
 export type DateInputSize = 'desktop' | 'mobile';
 export type DateInputState = 'default' | 'focused' | 'error';
@@ -10,7 +11,7 @@ let nextDateInputId = 0;
 @Component({
   selector: 'dds-date-input',
   standalone: true,
-  imports: [CommonModule, IconComponent],
+  imports: [CommonModule, IconComponent, SkeletonComponent],
   templateUrl: './date-input.component.html',
   styleUrl: './date-input.component.css',
 })
@@ -31,6 +32,8 @@ export class DateInputComponent {
   @Input() disabled = false;
   @Input() name?: string;
   @Input() autocomplete = 'off';
+  /** Replaces the field content with shape-matched skeletons while data is loading. */
+  @Input() loading = false;
 
   @Output() valueChange = new EventEmitter<string>();
 

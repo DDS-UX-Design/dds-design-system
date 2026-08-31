@@ -4,40 +4,55 @@
   [class.dds-date-input--focused]="state === 'focused'"
   [class.dds-date-input--error]="isError"
   [class.dds-date-input--disabled]="disabled"
+  [class.dds-date-input--loading]="loading"
+  [attr.aria-busy]="loading ? 'true' : null"
+  [attr.aria-label]="loading ? 'Loading date input' : null"
 >
-  <label *ngIf="showLabel" class="dds-date-input__label" [for]="inputId">
-    {{ label }}
-    <span *ngIf="required" class="dds-date-input__required" aria-hidden="true">*</span>
-  </label>
+  <ng-container *ngIf="loading; else loadedContent">
+    <div *ngIf="showLabel" class="dds-date-input__skeleton-label">
+      <dds-skeleton width="72px" [height]="size === 'mobile' ? 16 : 20"></dds-skeleton>
+    </div>
+    <dds-skeleton width="100%" [height]="size === 'mobile' ? 40 : 48"></dds-skeleton>
+    <div *ngIf="showHelperText" class="dds-date-input__skeleton-message">
+      <dds-skeleton width="52%" height="16px"></dds-skeleton>
+    </div>
+  </ng-container>
 
-  <div class="dds-date-input__field">
-    <input
-      class="dds-date-input__control"
-      [id]="inputId"
-      [name]="name"
-      type="text"
-      inputmode="numeric"
-      [value]="value"
-      [placeholder]="placeholder"
-      [required]="required"
-      [disabled]="disabled"
-      [autocomplete]="autocomplete"
-      [attr.aria-label]="showLabel ? null : ariaLabel"
-      [attr.aria-invalid]="isError ? 'true' : null"
-      [attr.aria-describedby]="describedBy"
-      (input)="handleInput($event)"
-    />
-    <dds-icon class="dds-date-input__icon" name="calendar-days" [size]="iconSize"></dds-icon>
-  </div>
+  <ng-template #loadedContent>
+    <label *ngIf="showLabel" class="dds-date-input__label" [for]="inputId">
+      {{ label }}
+      <span *ngIf="required" class="dds-date-input__required" aria-hidden="true">*</span>
+    </label>
 
-  <p
-    *ngIf="isError && showErrorMessage"
-    class="dds-date-input__message dds-date-input__message--error"
-    [id]="messageId"
-  >
-    {{ errorMessage }}
-  </p>
-  <p *ngIf="!isError && showHelperText" class="dds-date-input__message" [id]="messageId">
-    {{ helperText }}
-  </p>
+    <div class="dds-date-input__field">
+      <input
+        class="dds-date-input__control"
+        [id]="inputId"
+        [name]="name"
+        type="text"
+        inputmode="numeric"
+        [value]="value"
+        [placeholder]="placeholder"
+        [required]="required"
+        [disabled]="disabled"
+        [autocomplete]="autocomplete"
+        [attr.aria-label]="showLabel ? null : ariaLabel"
+        [attr.aria-invalid]="isError ? 'true' : null"
+        [attr.aria-describedby]="describedBy"
+        (input)="handleInput($event)"
+      />
+      <dds-icon class="dds-date-input__icon" name="calendar-days" [size]="iconSize"></dds-icon>
+    </div>
+
+    <p
+      *ngIf="isError && showErrorMessage"
+      class="dds-date-input__message dds-date-input__message--error"
+      [id]="messageId"
+    >
+      {{ errorMessage }}
+    </p>
+    <p *ngIf="!isError && showHelperText" class="dds-date-input__message" [id]="messageId">
+      {{ helperText }}
+    </p>
+  </ng-template>
 </div>

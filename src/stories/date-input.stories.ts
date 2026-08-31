@@ -22,6 +22,7 @@ type DateInputStoryArgs = {
   disabled: boolean;
   name: string;
   autocomplete: string;
+  loading: boolean;
 };
 
 const meta: Meta<DateInputStoryArgs> = {
@@ -65,6 +66,7 @@ const meta: Meta<DateInputStoryArgs> = {
     disabled: { control: 'boolean', table: { category: 'State' } },
     name: { control: 'text', table: { category: 'Form' } },
     autocomplete: { control: 'text', table: { category: 'Form' } },
+    loading: { control: 'boolean', table: { category: 'State' } },
   },
   args: {
     label: 'Date',
@@ -82,6 +84,7 @@ const meta: Meta<DateInputStoryArgs> = {
     disabled: false,
     name: 'date',
     autocomplete: 'off',
+    loading: false,
   },
   render: (args) => ({
     props: args,
@@ -102,6 +105,7 @@ const meta: Meta<DateInputStoryArgs> = {
         [disabled]="disabled"
         [name]="name"
         [autocomplete]="autocomplete"
+        [loading]="loading"
         (valueChange)="value = $event"
       ></dds-date-input>
     `,
@@ -121,6 +125,14 @@ export const Mobile: Story = {
   parameters: { viewport: { defaultViewport: 'mobile' } },
 };
 export const Disabled: Story = { args: { value: '23/05/2026', disabled: true } };
+export const Loading: Story = {
+  args: { loading: true },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await expect(canvas.getByLabelText('Loading date input')).toHaveAttribute('aria-busy', 'true');
+    await expect(canvas.queryByRole('textbox')).not.toBeInTheDocument();
+  },
+};
 export const Entry: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);

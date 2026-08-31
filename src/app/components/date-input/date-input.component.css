@@ -116,3 +116,15 @@
 .dds-date-input--disabled .dds-date-input__control::placeholder {
   color: var(--text-colour-disabled);
 }
+
+.dds-date-input__skeleton-label {
+  padding-bottom: var(--space-2);
+}
+
+.dds-date-input--mobile .dds-date-input__skeleton-label {
+  padding-bottom: var(--space-1);
+}
+
+.dds-date-input__skeleton-message {
+  padding-top: var(--space-2);
+}
