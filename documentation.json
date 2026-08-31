@@ -3261,7 +3261,7 @@
         },
         {
             "name": "DateInputComponent",
-            "id": "component-DateInputComponent-6053aa7ade1a8f2ed59b2ecf224fa0909f61c99070211afd68e3e163f27adc71d4496fe3e93c9df19605337e45d4cbee38c4d6e5a472c34f3d4aeea7b5024206",
+            "id": "component-DateInputComponent-e3e4d2ecac4fb5fe7292ff8104ce7014bfc37ab2700209692fe6c4ef13253baa797bf22c62832cde1d8229de7ab369d6f59e0a307afc9118c1b596442752b3a2",
             "file": "src/app/components/date-input/date-input.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -3288,7 +3288,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 30,
+                    "line": 31,
                     "type": "string",
                     "decorators": []
                 },
@@ -3300,7 +3300,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 33,
+                    "line": 34,
                     "type": "string",
                     "decorators": []
                 },
@@ -3312,7 +3312,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 31,
+                    "line": 32,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -3324,7 +3324,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 23,
+                    "line": 24,
                     "type": "string",
                     "decorators": []
                 },
@@ -3336,7 +3336,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 22,
+                    "line": 23,
                     "type": "string",
                     "decorators": []
                 },
@@ -3348,7 +3348,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 18,
+                    "line": 19,
                     "type": "string",
                     "decorators": []
                 },
@@ -3360,8 +3360,20 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 19,
+                    "line": 20,
                     "type": "string",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "loading",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nReplaces the field content with shape-matched skeletons while data is loading.",
+                    "description": "<p>Replaces the field content with shape-matched skeletons while data is loading.</p>\n",
+                    "line": 36,
+                    "type": "boolean",
                     "decorators": []
                 },
                 {
@@ -3371,7 +3383,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 32,
+                    "line": 33,
                     "type": "string",
                     "decorators": []
                 },
@@ -3383,7 +3395,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 20,
+                    "line": 21,
                     "type": "string",
                     "decorators": []
                 },
@@ -3395,7 +3407,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 26,
+                    "line": 27,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -3407,7 +3419,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 29,
+                    "line": 30,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -3419,7 +3431,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 28,
+                    "line": 29,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -3431,7 +3443,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 27,
+                    "line": 28,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -3443,7 +3455,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 24,
+                    "line": 25,
                     "type": "DateInputSize",
                     "decorators": []
                 },
@@ -3455,7 +3467,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 25,
+                    "line": 26,
                     "type": "DateInputState",
                     "decorators": []
                 },
@@ -3467,7 +3479,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 21,
+                    "line": 22,
                     "type": "string",
                     "decorators": []
                 }
@@ -3479,7 +3491,7 @@
                     "defaultValue": "new EventEmitter<string>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 35,
+                    "line": 38,
                     "type": "EventEmitter"
                 }
             ],
@@ -3501,7 +3513,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 57,
+                    "line": 60,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n",
@@ -3535,17 +3547,21 @@
                 {
                     "name": "IconComponent",
                     "type": "component"
+                },
+                {
+                    "name": "SkeletonComponent",
+                    "type": "component"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, EventEmitter, Input, Output } from '@angular/core';\nimport { IconComponent } from '../icon/icon.component';\n\nexport type DateInputSize = 'desktop' | 'mobile';\nexport type DateInputState = 'default' | 'focused' | 'error';\n\nlet nextDateInputId = 0;\n\n@Component({\n  selector: 'dds-date-input',\n  standalone: true,\n  imports: [CommonModule, IconComponent],\n  templateUrl: './date-input.component.html',\n  styleUrl: './date-input.component.css',\n})\nexport class DateInputComponent {\n  @Input() inputId = `dds-date-input-${nextDateInputId++}`;\n  @Input() label = 'Date';\n  @Input() placeholder = 'DD/MM/YYYY';\n  @Input() value = '';\n  @Input() helperText = 'Enter the date in DD/MM/YYYY format';\n  @Input() errorMessage = 'Enter a valid date in DD/MM/YYYY format';\n  @Input() size: DateInputSize = 'desktop';\n  @Input() state: DateInputState = 'default';\n  @Input() required = false;\n  @Input() showLabel = true;\n  @Input() showHelperText = true;\n  @Input() showErrorMessage = true;\n  @Input() ariaLabel?: string;\n  @Input() disabled = false;\n  @Input() name?: string;\n  @Input() autocomplete = 'off';\n\n  @Output() valueChange = new EventEmitter<string>();\n\n  get isError(): boolean {\n    return this.state === 'error';\n  }\n\n  get messageId(): string {\n    return `${this.inputId}-${this.isError ? 'error' : 'helper'}`;\n  }\n\n  get describedBy(): string | null {\n    if (this.isError) {\n      return this.showErrorMessage ? this.messageId : null;\n    }\n\n    return this.showHelperText ? this.messageId : null;\n  }\n\n  get iconSize(): number {\n    return this.size === 'mobile' ? 20 : 24;\n  }\n\n  handleInput(event: Event): void {\n    this.value = (event.target as HTMLInputElement).value;\n    this.valueChange.emit(this.value);\n  }\n}\n",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, EventEmitter, Input, Output } from '@angular/core';\nimport { IconComponent } from '../icon/icon.component';\nimport { SkeletonComponent } from '../skeleton/skeleton.component';\n\nexport type DateInputSize = 'desktop' | 'mobile';\nexport type DateInputState = 'default' | 'focused' | 'error';\n\nlet nextDateInputId = 0;\n\n@Component({\n  selector: 'dds-date-input',\n  standalone: true,\n  imports: [CommonModule, IconComponent, SkeletonComponent],\n  templateUrl: './date-input.component.html',\n  styleUrl: './date-input.component.css',\n})\nexport class DateInputComponent {\n  @Input() inputId = `dds-date-input-${nextDateInputId++}`;\n  @Input() label = 'Date';\n  @Input() placeholder = 'DD/MM/YYYY';\n  @Input() value = '';\n  @Input() helperText = 'Enter the date in DD/MM/YYYY format';\n  @Input() errorMessage = 'Enter a valid date in DD/MM/YYYY format';\n  @Input() size: DateInputSize = 'desktop';\n  @Input() state: DateInputState = 'default';\n  @Input() required = false;\n  @Input() showLabel = true;\n  @Input() showHelperText = true;\n  @Input() showErrorMessage = true;\n  @Input() ariaLabel?: string;\n  @Input() disabled = false;\n  @Input() name?: string;\n  @Input() autocomplete = 'off';\n  /** Replaces the field content with shape-matched skeletons while data is loading. */\n  @Input() loading = false;\n\n  @Output() valueChange = new EventEmitter<string>();\n\n  get isError(): boolean {\n    return this.state === 'error';\n  }\n\n  get messageId(): string {\n    return `${this.inputId}-${this.isError ? 'error' : 'helper'}`;\n  }\n\n  get describedBy(): string | null {\n    if (this.isError) {\n      return this.showErrorMessage ? this.messageId : null;\n    }\n\n    return this.showHelperText ? this.messageId : null;\n  }\n\n  get iconSize(): number {\n    return this.size === 'mobile' ? 20 : 24;\n  }\n\n  handleInput(event: Event): void {\n    this.value = (event.target as HTMLInputElement).value;\n    this.valueChange.emit(this.value);\n  }\n}\n",
             "styleUrl": "./date-input.component.css",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ":host {\n  display: inline-block;\n  max-width: 100%;\n}\n\n.dds-date-input {\n  display: flex;\n  flex-direction: column;\n  width: 464px;\n  max-width: 100%;\n  font-family: var(--font-family-primary);\n}\n\n.dds-date-input__label {\n  display: flex;\n  gap: var(--space-1);\n  padding-bottom: var(--space-2);\n  color: var(--text-colour-default);\n  font-size: var(--font-size-sm);\n  font-weight: var(--font-weight-semibold);\n  line-height: 20px;\n}\n\n.dds-date-input--mobile .dds-date-input__label {\n  padding-bottom: var(--space-1);\n  font-size: var(--font-size-xs);\n  line-height: 16px;\n}\n\n.dds-date-input__field {\n  display: flex;\n  align-items: center;\n  min-height: 48px;\n  padding: 0 var(--space-3);\n  border: 1px solid var(--border-colour-default);\n  border-radius: var(--radius-sm);\n  background: var(--bg-colour-white);\n  box-sizing: border-box;\n}\n\n.dds-date-input--mobile .dds-date-input__field {\n  min-height: 40px;\n}\n\n.dds-date-input__control {\n  flex: 1;\n  min-width: 0;\n  padding: 0;\n  border: 0;\n  outline: 0;\n  background: transparent;\n  color: var(--text-colour-default);\n  font: inherit;\n  font-size: var(--font-size-md);\n  font-weight: var(--font-weight-regular);\n  line-height: 24px;\n}\n\n.dds-date-input--mobile .dds-date-input__control {\n  font-size: var(--font-size-sm);\n  line-height: 20px;\n}\n\n.dds-date-input__control::placeholder {\n  color: var(--text-colour-placeholder);\n  opacity: 1;\n}\n\n.dds-date-input__icon {\n  display: inline-flex;\n  flex: 0 0 auto;\n  color: var(--icon-colour-default);\n  pointer-events: none;\n}\n\n.dds-date-input__field:focus-within,\n.dds-date-input--focused .dds-date-input__field {\n  border: 2px solid var(--border-colour-info);\n  padding-right: 11px;\n  padding-left: 11px;\n}\n\n.dds-date-input--error .dds-date-input__field {\n  border: 2px solid var(--border-colour-danger);\n  padding-right: 11px;\n  padding-left: 11px;\n}\n\n.dds-date-input__message {\n  margin: 0;\n  padding-top: var(--space-2);\n  color: var(--text-colour-tertiary);\n  font-size: var(--font-size-xs);\n  font-weight: var(--font-weight-regular);\n  line-height: 16px;\n}\n\n.dds-date-input__required,\n.dds-date-input--error .dds-date-input__label,\n.dds-date-input__message--error {\n  color: var(--text-colour-danger);\n}\n\n.dds-date-input--disabled .dds-date-input__field {\n  border-color: var(--border-colour-default);\n  background: var(--bg-colour-disabled);\n}\n\n.dds-date-input--disabled .dds-date-input__control,\n.dds-date-input--disabled .dds-date-input__icon,\n.dds-date-input--disabled .dds-date-input__message {\n  color: var(--text-colour-disabled);\n  cursor: not-allowed;\n}\n\n.dds-date-input--disabled .dds-date-input__control::placeholder {\n  color: var(--text-colour-disabled);\n}\n",
+                    "data": ":host {\n  display: inline-block;\n  max-width: 100%;\n}\n\n.dds-date-input {\n  display: flex;\n  flex-direction: column;\n  width: 464px;\n  max-width: 100%;\n  font-family: var(--font-family-primary);\n}\n\n.dds-date-input__label {\n  display: flex;\n  gap: var(--space-1);\n  padding-bottom: var(--space-2);\n  color: var(--text-colour-default);\n  font-size: var(--font-size-sm);\n  font-weight: var(--font-weight-semibold);\n  line-height: 20px;\n}\n\n.dds-date-input--mobile .dds-date-input__label {\n  padding-bottom: var(--space-1);\n  font-size: var(--font-size-xs);\n  line-height: 16px;\n}\n\n.dds-date-input__field {\n  display: flex;\n  align-items: center;\n  min-height: 48px;\n  padding: 0 var(--space-3);\n  border: 1px solid var(--border-colour-default);\n  border-radius: var(--radius-sm);\n  background: var(--bg-colour-white);\n  box-sizing: border-box;\n}\n\n.dds-date-input--mobile .dds-date-input__field {\n  min-height: 40px;\n}\n\n.dds-date-input__control {\n  flex: 1;\n  min-width: 0;\n  padding: 0;\n  border: 0;\n  outline: 0;\n  background: transparent;\n  color: var(--text-colour-default);\n  font: inherit;\n  font-size: var(--font-size-md);\n  font-weight: var(--font-weight-regular);\n  line-height: 24px;\n}\n\n.dds-date-input--mobile .dds-date-input__control {\n  font-size: var(--font-size-sm);\n  line-height: 20px;\n}\n\n.dds-date-input__control::placeholder {\n  color: var(--text-colour-placeholder);\n  opacity: 1;\n}\n\n.dds-date-input__icon {\n  display: inline-flex;\n  flex: 0 0 auto;\n  color: var(--icon-colour-default);\n  pointer-events: none;\n}\n\n.dds-date-input__field:focus-within,\n.dds-date-input--focused .dds-date-input__field {\n  border: 2px solid var(--border-colour-info);\n  padding-right: 11px;\n  padding-left: 11px;\n}\n\n.dds-date-input--error .dds-date-input__field {\n  border: 2px solid var(--border-colour-danger);\n  padding-right: 11px;\n  padding-left: 11px;\n}\n\n.dds-date-input__message {\n  margin: 0;\n  padding-top: var(--space-2);\n  color: var(--text-colour-tertiary);\n  font-size: var(--font-size-xs);\n  font-weight: var(--font-weight-regular);\n  line-height: 16px;\n}\n\n.dds-date-input__required,\n.dds-date-input--error .dds-date-input__label,\n.dds-date-input__message--error {\n  color: var(--text-colour-danger);\n}\n\n.dds-date-input--disabled .dds-date-input__field {\n  border-color: var(--border-colour-default);\n  background: var(--bg-colour-disabled);\n}\n\n.dds-date-input--disabled .dds-date-input__control,\n.dds-date-input--disabled .dds-date-input__icon,\n.dds-date-input--disabled .dds-date-input__message {\n  color: var(--text-colour-disabled);\n  cursor: not-allowed;\n}\n\n.dds-date-input--disabled .dds-date-input__control::placeholder {\n  color: var(--text-colour-disabled);\n}\n\n.dds-date-input__skeleton-label {\n  padding-bottom: var(--space-2);\n}\n\n.dds-date-input--mobile .dds-date-input__skeleton-label {\n  padding-bottom: var(--space-1);\n}\n\n.dds-date-input__skeleton-message {\n  padding-top: var(--space-2);\n}\n",
                     "styleUrl": "./date-input.component.css"
                 }
             ],
@@ -3558,7 +3574,7 @@
                         "name": "isError",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 37,
+                        "line": 40,
                         "rawdescription": "\n",
                         "description": ""
                     }
@@ -3569,7 +3585,7 @@
                         "name": "messageId",
                         "type": "string",
                         "returnType": "string",
-                        "line": 41,
+                        "line": 44,
                         "rawdescription": "\n",
                         "description": ""
                     }
@@ -3580,7 +3596,7 @@
                         "name": "describedBy",
                         "type": "unknown",
                         "returnType": "string | null",
-                        "line": 45,
+                        "line": 48,
                         "rawdescription": "\n",
                         "description": ""
                     }
@@ -3591,7 +3607,7 @@
                         "name": "iconSize",
                         "type": "number",
                         "returnType": "number",
-                        "line": 53,
+                        "line": 56,
                         "rawdescription": "\n",
                         "description": ""
                     }
@@ -3607,10 +3623,14 @@
                     {
                         "name": "IconComponent",
                         "type": "component"
+                    },
+                    {
+                        "name": "SkeletonComponent",
+                        "type": "component"
                     }
                 ]
             },
-            "templateData": "<div\n  class=\"dds-date-input\"\n  [class.dds-date-input--mobile]=\"size === 'mobile'\"\n  [class.dds-date-input--focused]=\"state === 'focused'\"\n  [class.dds-date-input--error]=\"isError\"\n  [class.dds-date-input--disabled]=\"disabled\"\n>\n  <label *ngIf=\"showLabel\" class=\"dds-date-input__label\" [for]=\"inputId\">\n    {{ label }}\n    <span *ngIf=\"required\" class=\"dds-date-input__required\" aria-hidden=\"true\">*</span>\n  </label>\n\n  <div class=\"dds-date-input__field\">\n    <input\n      class=\"dds-date-input__control\"\n      [id]=\"inputId\"\n      [name]=\"name\"\n      type=\"text\"\n      inputmode=\"numeric\"\n      [value]=\"value\"\n      [placeholder]=\"placeholder\"\n      [required]=\"required\"\n      [disabled]=\"disabled\"\n      [autocomplete]=\"autocomplete\"\n      [attr.aria-label]=\"showLabel ? null : ariaLabel\"\n      [attr.aria-invalid]=\"isError ? 'true' : null\"\n      [attr.aria-describedby]=\"describedBy\"\n      (input)=\"handleInput($event)\"\n    />\n    <dds-icon class=\"dds-date-input__icon\" name=\"calendar-days\" [size]=\"iconSize\"></dds-icon>\n  </div>\n\n  <p\n    *ngIf=\"isError && showErrorMessage\"\n    class=\"dds-date-input__message dds-date-input__message--error\"\n    [id]=\"messageId\"\n  >\n    {{ errorMessage }}\n  </p>\n  <p *ngIf=\"!isError && showHelperText\" class=\"dds-date-input__message\" [id]=\"messageId\">\n    {{ helperText }}\n  </p>\n</div>\n"
+            "templateData": "<div\n  class=\"dds-date-input\"\n  [class.dds-date-input--mobile]=\"size === 'mobile'\"\n  [class.dds-date-input--focused]=\"state === 'focused'\"\n  [class.dds-date-input--error]=\"isError\"\n  [class.dds-date-input--disabled]=\"disabled\"\n  [class.dds-date-input--loading]=\"loading\"\n  [attr.aria-busy]=\"loading ? 'true' : null\"\n  [attr.aria-label]=\"loading ? 'Loading date input' : null\"\n>\n  <ng-container *ngIf=\"loading; else loadedContent\">\n    <div *ngIf=\"showLabel\" class=\"dds-date-input__skeleton-label\">\n      <dds-skeleton width=\"72px\" [height]=\"size === 'mobile' ? 16 : 20\"></dds-skeleton>\n    </div>\n    <dds-skeleton width=\"100%\" [height]=\"size === 'mobile' ? 40 : 48\"></dds-skeleton>\n    <div *ngIf=\"showHelperText\" class=\"dds-date-input__skeleton-message\">\n      <dds-skeleton width=\"52%\" height=\"16px\"></dds-skeleton>\n    </div>\n  </ng-container>\n\n  <ng-template #loadedContent>\n    <label *ngIf=\"showLabel\" class=\"dds-date-input__label\" [for]=\"inputId\">\n      {{ label }}\n      <span *ngIf=\"required\" class=\"dds-date-input__required\" aria-hidden=\"true\">*</span>\n    </label>\n\n    <div class=\"dds-date-input__field\">\n      <input\n        class=\"dds-date-input__control\"\n        [id]=\"inputId\"\n        [name]=\"name\"\n        type=\"text\"\n        inputmode=\"numeric\"\n        [value]=\"value\"\n        [placeholder]=\"placeholder\"\n        [required]=\"required\"\n        [disabled]=\"disabled\"\n        [autocomplete]=\"autocomplete\"\n        [attr.aria-label]=\"showLabel ? null : ariaLabel\"\n        [attr.aria-invalid]=\"isError ? 'true' : null\"\n        [attr.aria-describedby]=\"describedBy\"\n        (input)=\"handleInput($event)\"\n      />\n      <dds-icon class=\"dds-date-input__icon\" name=\"calendar-days\" [size]=\"iconSize\"></dds-icon>\n    </div>\n\n    <p\n      *ngIf=\"isError && showErrorMessage\"\n      class=\"dds-date-input__message dds-date-input__message--error\"\n      [id]=\"messageId\"\n    >\n      {{ errorMessage }}\n    </p>\n    <p *ngIf=\"!isError && showHelperText\" class=\"dds-date-input__message\" [id]=\"messageId\">\n      {{ helperText }}\n    </p>\n  </ng-template>\n</div>\n"
         },
         {
             "name": "IconComponent",
@@ -6373,7 +6393,7 @@
         },
         {
             "name": "SearchComponent",
-            "id": "component-SearchComponent-266eb2cf20eb8b6ab85b72dfe45f10a42a6c432d87472efa922d417f51aac453daf809aed62057a8e547cf56e2ff7cdfb4a7a07d1565c8182390740e4a2dfc8e",
+            "id": "component-SearchComponent-82345c144e3ccc5171380e19da4a95eb215ceb09100079bdcdd7ceb798c1a7687f92d0dc079d15048b858c536e4afd96c58302987640f31e464fdce3a1d29188",
             "file": "src/app/components/search/search.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -6401,7 +6421,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nAccessible name used when the visible label is hidden.",
                     "description": "<p>Accessible name used when the visible label is hidden.</p>\n",
-                    "line": 46,
+                    "line": 47,
                     "type": "string",
                     "decorators": []
                 },
@@ -6413,7 +6433,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nOpens the suggestions menu for controlled previews.",
                     "description": "<p>Opens the suggestions menu for controlled previews.</p>\n",
-                    "line": 52,
+                    "line": 53,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -6425,7 +6445,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nUnique ID used to associate the label, input, and suggestions.",
                     "description": "<p>Unique ID used to associate the label, input, and suggestions.</p>\n",
-                    "line": 22,
+                    "line": 23,
                     "type": "string",
                     "decorators": []
                 },
@@ -6437,8 +6457,20 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nVisible field label.",
                     "description": "<p>Visible field label.</p>\n",
-                    "line": 25,
+                    "line": 26,
                     "type": "string",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "loading",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nReplaces the label and search field with shape-matched skeletons while loading.",
+                    "description": "<p>Replaces the label and search field with shape-matched skeletons while loading.</p>\n",
+                    "line": 56,
+                    "type": "boolean",
                     "decorators": []
                 },
                 {
@@ -6449,7 +6481,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nPlaceholder shown when the query is empty.",
                     "description": "<p>Placeholder shown when the query is empty.</p>\n",
-                    "line": 31,
+                    "line": 32,
                     "type": "string",
                     "decorators": []
                 },
@@ -6461,7 +6493,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nMarks the native search field as required.",
                     "description": "<p>Marks the native search field as required.</p>\n",
-                    "line": 40,
+                    "line": 41,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -6473,7 +6505,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nShows the visible label.",
                     "description": "<p>Shows the visible label.</p>\n",
-                    "line": 43,
+                    "line": 44,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -6485,7 +6517,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nResponsive size from the DDS specification.",
                     "description": "<p>Responsive size from the DDS specification.</p>\n",
-                    "line": 34,
+                    "line": 35,
                     "type": "SearchSize",
                     "decorators": []
                 },
@@ -6497,7 +6529,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nDeterministic focus treatment for documentation previews.",
                     "description": "<p>Deterministic focus treatment for documentation previews.</p>\n",
-                    "line": 37,
+                    "line": 38,
                     "type": "SearchState",
                     "decorators": []
                 },
@@ -6509,7 +6541,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nSuggestions displayed while the combobox is expanded.",
                     "description": "<p>Suggestions displayed while the combobox is expanded.</p>\n",
-                    "line": 49,
+                    "line": 50,
                     "type": "string[]",
                     "decorators": []
                 },
@@ -6521,7 +6553,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nCurrent search query.",
                     "description": "<p>Current search query.</p>\n",
-                    "line": 28,
+                    "line": 29,
                     "type": "string",
                     "decorators": []
                 }
@@ -6535,7 +6567,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nEmitted when the user submits the current query.",
                     "description": "<p>Emitted when the user submits the current query.</p>\n",
-                    "line": 58,
+                    "line": 62,
                     "type": "EventEmitter"
                 },
                 {
@@ -6546,7 +6578,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nEmitted when the user chooses a suggestion.",
                     "description": "<p>Emitted when the user chooses a suggestion.</p>\n",
-                    "line": 61,
+                    "line": 65,
                     "type": "EventEmitter"
                 },
                 {
@@ -6557,7 +6589,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nEmitted whenever the query changes.",
                     "description": "<p>Emitted whenever the query changes.</p>\n",
-                    "line": 55,
+                    "line": 59,
                     "type": "EventEmitter"
                 }
             ],
@@ -6572,7 +6604,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 64,
+                    "line": 68,
                     "rawdescription": "\n"
                 },
                 {
@@ -6584,7 +6616,7 @@
                     "indexKey": "",
                     "optional": true,
                     "description": "",
-                    "line": 65,
+                    "line": 69,
                     "rawdescription": "\n",
                     "modifierKind": [
                         123
@@ -6600,7 +6632,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 63,
+                    "line": 67,
                     "rawdescription": "\n"
                 }
             ],
@@ -6612,7 +6644,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 99,
+                    "line": 103,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n",
@@ -6625,7 +6657,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 90,
+                    "line": 94,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n",
@@ -6647,7 +6679,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 83,
+                    "line": 87,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n",
@@ -6682,7 +6714,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 107,
+                    "line": 111,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n",
@@ -6708,7 +6740,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 152,
+                    "line": 156,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n",
@@ -6730,7 +6762,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 140,
+                    "line": 144,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n",
@@ -6764,25 +6796,29 @@
                 {
                     "name": "IconComponent",
                     "type": "component"
+                },
+                {
+                    "name": "SkeletonComponent",
+                    "type": "component"
                 }
             ],
             "description": "<p>A search field with optional suggestions and accessible combobox keyboard behavior.</p>\n",
             "rawdescription": "\n\nA search field with optional suggestions and accessible combobox keyboard behavior.\n",
             "type": "component",
-            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, EventEmitter, Input, OnDestroy, Output } from '@angular/core';\nimport { IconComponent } from '../icon/icon.component';\n\nexport type SearchSize = 'large' | 'small';\nexport type SearchState = 'default' | 'focused';\n\nlet nextSearchId = 0;\n\n/**\n * A search field with optional suggestions and accessible combobox keyboard behavior.\n */\n@Component({\n  selector: 'dds-search',\n  standalone: true,\n  imports: [CommonModule, IconComponent],\n  templateUrl: './search.component.html',\n  styleUrl: './search.component.css',\n})\nexport class SearchComponent implements OnDestroy {\n  /** Unique ID used to associate the label, input, and suggestions. */\n  @Input() inputId = `dds-search-${nextSearchId++}`;\n\n  /** Visible field label. */\n  @Input() label = 'Search';\n\n  /** Current search query. */\n  @Input() value = '';\n\n  /** Placeholder shown when the query is empty. */\n  @Input() placeholder = 'Search...';\n\n  /** Responsive size from the DDS specification. */\n  @Input() size: SearchSize = 'large';\n\n  /** Deterministic focus treatment for documentation previews. */\n  @Input() state: SearchState = 'default';\n\n  /** Marks the native search field as required. */\n  @Input() required = false;\n\n  /** Shows the visible label. */\n  @Input() showLabel = true;\n\n  /** Accessible name used when the visible label is hidden. */\n  @Input() ariaLabel = 'Search';\n\n  /** Suggestions displayed while the combobox is expanded. */\n  @Input() suggestions: string[] = [];\n\n  /** Opens the suggestions menu for controlled previews. */\n  @Input() expanded = false;\n\n  /** Emitted whenever the query changes. */\n  @Output() valueChange = new EventEmitter<string>();\n\n  /** Emitted when the user submits the current query. */\n  @Output() search = new EventEmitter<string>();\n\n  /** Emitted when the user chooses a suggestion. */\n  @Output() suggestionSelected = new EventEmitter<string>();\n\n  hasNativeFocus = false;\n  activeIndex = -1;\n  private closeTimer?: ReturnType<typeof setTimeout>;\n\n  get isFocused(): boolean {\n    return this.hasNativeFocus || this.state === 'focused';\n  }\n\n  get isExpanded(): boolean {\n    return this.expanded && this.suggestions.length > 0;\n  }\n\n  get listboxId(): string {\n    return `${this.inputId}-suggestions`;\n  }\n\n  get activeOptionId(): string | null {\n    return this.activeIndex >= 0 ? `${this.inputId}-option-${this.activeIndex}` : null;\n  }\n\n  handleInput(event: Event): void {\n    this.value = (event.target as HTMLInputElement).value;\n    this.valueChange.emit(this.value);\n    this.expanded = this.suggestions.length > 0;\n    this.activeIndex = -1;\n  }\n\n  handleFocus(): void {\n    if (this.closeTimer) {\n      clearTimeout(this.closeTimer);\n    }\n\n    this.hasNativeFocus = true;\n    this.expanded = this.suggestions.length > 0;\n  }\n\n  handleBlur(): void {\n    this.hasNativeFocus = false;\n    this.closeTimer = setTimeout(() => {\n      this.expanded = false;\n      this.activeIndex = -1;\n    });\n  }\n\n  handleKeydown(event: KeyboardEvent): void {\n    if (event.key === 'ArrowDown' && this.suggestions.length) {\n      event.preventDefault();\n      this.expanded = true;\n      this.activeIndex = (this.activeIndex + 1) % this.suggestions.length;\n      return;\n    }\n\n    if (event.key === 'ArrowUp' && this.suggestions.length) {\n      event.preventDefault();\n      this.expanded = true;\n      this.activeIndex = this.activeIndex <= 0 ? this.suggestions.length - 1 : this.activeIndex - 1;\n      return;\n    }\n\n    if (event.key === 'Escape') {\n      this.expanded = false;\n      this.activeIndex = -1;\n      return;\n    }\n\n    if (event.key === 'Enter') {\n      event.preventDefault();\n\n      if (this.isExpanded && this.activeIndex >= 0) {\n        this.selectSuggestion(this.suggestions[this.activeIndex]);\n      } else {\n        this.search.emit(this.value.trim());\n        this.expanded = false;\n      }\n    }\n  }\n\n  selectSuggestion(suggestion: string): void {\n    if (this.closeTimer) {\n      clearTimeout(this.closeTimer);\n    }\n\n    this.value = suggestion;\n    this.valueChange.emit(suggestion);\n    this.suggestionSelected.emit(suggestion);\n    this.expanded = false;\n    this.activeIndex = -1;\n  }\n\n  ngOnDestroy(): void {\n    if (this.closeTimer) {\n      clearTimeout(this.closeTimer);\n    }\n  }\n}\n",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, EventEmitter, Input, OnDestroy, Output } from '@angular/core';\nimport { IconComponent } from '../icon/icon.component';\nimport { SkeletonComponent } from '../skeleton/skeleton.component';\n\nexport type SearchSize = 'large' | 'small';\nexport type SearchState = 'default' | 'focused';\n\nlet nextSearchId = 0;\n\n/**\n * A search field with optional suggestions and accessible combobox keyboard behavior.\n */\n@Component({\n  selector: 'dds-search',\n  standalone: true,\n  imports: [CommonModule, IconComponent, SkeletonComponent],\n  templateUrl: './search.component.html',\n  styleUrl: './search.component.css',\n})\nexport class SearchComponent implements OnDestroy {\n  /** Unique ID used to associate the label, input, and suggestions. */\n  @Input() inputId = `dds-search-${nextSearchId++}`;\n\n  /** Visible field label. */\n  @Input() label = 'Search';\n\n  /** Current search query. */\n  @Input() value = '';\n\n  /** Placeholder shown when the query is empty. */\n  @Input() placeholder = 'Search...';\n\n  /** Responsive size from the DDS specification. */\n  @Input() size: SearchSize = 'large';\n\n  /** Deterministic focus treatment for documentation previews. */\n  @Input() state: SearchState = 'default';\n\n  /** Marks the native search field as required. */\n  @Input() required = false;\n\n  /** Shows the visible label. */\n  @Input() showLabel = true;\n\n  /** Accessible name used when the visible label is hidden. */\n  @Input() ariaLabel = 'Search';\n\n  /** Suggestions displayed while the combobox is expanded. */\n  @Input() suggestions: string[] = [];\n\n  /** Opens the suggestions menu for controlled previews. */\n  @Input() expanded = false;\n\n  /** Replaces the label and search field with shape-matched skeletons while loading. */\n  @Input() loading = false;\n\n  /** Emitted whenever the query changes. */\n  @Output() valueChange = new EventEmitter<string>();\n\n  /** Emitted when the user submits the current query. */\n  @Output() search = new EventEmitter<string>();\n\n  /** Emitted when the user chooses a suggestion. */\n  @Output() suggestionSelected = new EventEmitter<string>();\n\n  hasNativeFocus = false;\n  activeIndex = -1;\n  private closeTimer?: ReturnType<typeof setTimeout>;\n\n  get isFocused(): boolean {\n    return this.hasNativeFocus || this.state === 'focused';\n  }\n\n  get isExpanded(): boolean {\n    return !this.loading && this.expanded && this.suggestions.length > 0;\n  }\n\n  get listboxId(): string {\n    return `${this.inputId}-suggestions`;\n  }\n\n  get activeOptionId(): string | null {\n    return this.activeIndex >= 0 ? `${this.inputId}-option-${this.activeIndex}` : null;\n  }\n\n  handleInput(event: Event): void {\n    this.value = (event.target as HTMLInputElement).value;\n    this.valueChange.emit(this.value);\n    this.expanded = this.suggestions.length > 0;\n    this.activeIndex = -1;\n  }\n\n  handleFocus(): void {\n    if (this.closeTimer) {\n      clearTimeout(this.closeTimer);\n    }\n\n    this.hasNativeFocus = true;\n    this.expanded = this.suggestions.length > 0;\n  }\n\n  handleBlur(): void {\n    this.hasNativeFocus = false;\n    this.closeTimer = setTimeout(() => {\n      this.expanded = false;\n      this.activeIndex = -1;\n    });\n  }\n\n  handleKeydown(event: KeyboardEvent): void {\n    if (event.key === 'ArrowDown' && this.suggestions.length) {\n      event.preventDefault();\n      this.expanded = true;\n      this.activeIndex = (this.activeIndex + 1) % this.suggestions.length;\n      return;\n    }\n\n    if (event.key === 'ArrowUp' && this.suggestions.length) {\n      event.preventDefault();\n      this.expanded = true;\n      this.activeIndex = this.activeIndex <= 0 ? this.suggestions.length - 1 : this.activeIndex - 1;\n      return;\n    }\n\n    if (event.key === 'Escape') {\n      this.expanded = false;\n      this.activeIndex = -1;\n      return;\n    }\n\n    if (event.key === 'Enter') {\n      event.preventDefault();\n\n      if (this.isExpanded && this.activeIndex >= 0) {\n        this.selectSuggestion(this.suggestions[this.activeIndex]);\n      } else {\n        this.search.emit(this.value.trim());\n        this.expanded = false;\n      }\n    }\n  }\n\n  selectSuggestion(suggestion: string): void {\n    if (this.closeTimer) {\n      clearTimeout(this.closeTimer);\n    }\n\n    this.value = suggestion;\n    this.valueChange.emit(suggestion);\n    this.suggestionSelected.emit(suggestion);\n    this.expanded = false;\n    this.activeIndex = -1;\n  }\n\n  ngOnDestroy(): void {\n    if (this.closeTimer) {\n      clearTimeout(this.closeTimer);\n    }\n  }\n}\n",
             "styleUrl": "./search.component.css",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ":host {\n  display: block;\n  max-width: 100%;\n}\n\n.dds-search {\n  display: flex;\n  flex-direction: column;\n  width: 100%;\n  max-width: 100%;\n  color: var(--text-colour-default);\n  font-family: var(--font-family-primary);\n}\n\n.dds-search__label {\n  display: flex;\n  align-items: center;\n  gap: var(--space-1);\n  padding-bottom: var(--space-1);\n  font-size: var(--font-size-sm);\n  font-weight: var(--font-weight-semibold);\n  line-height: 20px;\n}\n\n.dds-search--small .dds-search__label {\n  font-size: var(--font-size-xs);\n  line-height: 16px;\n}\n\n.dds-search__required {\n  color: var(--text-colour-danger);\n}\n\n.dds-search__field {\n  box-sizing: border-box;\n  display: flex;\n  align-items: center;\n  width: 100%;\n  min-height: 48px;\n  gap: var(--space-2);\n  padding: var(--space-3);\n  border: 1px solid var(--border-colour-default);\n  border-radius: var(--radius-sm);\n  background: var(--bg-colour-white);\n}\n\n.dds-search--small .dds-search__field {\n  height: 40px;\n  min-height: 40px;\n}\n\n.dds-search--focused .dds-search__field,\n.dds-search__field:focus-within {\n  border: 2px solid var(--border-colour-info);\n  padding: 11px;\n}\n\n.dds-search__icon {\n  display: inline-flex;\n  flex: 0 0 auto;\n  color: var(--text-colour-default);\n}\n\n.dds-search__input {\n  flex: 1 1 auto;\n  min-width: 0;\n  padding: 0;\n  border: 0;\n  outline: 0;\n  background: transparent;\n  color: var(--text-colour-default);\n  font: inherit;\n  font-size: var(--font-size-md);\n  line-height: 24px;\n}\n\n.dds-search--small .dds-search__input {\n  font-size: var(--font-size-sm);\n  line-height: 20px;\n}\n\n.dds-search__input::placeholder {\n  color: var(--text-colour-placeholder);\n  opacity: 1;\n}\n\n.dds-search__input::-webkit-search-cancel-button {\n  display: none;\n}\n\n.dds-search__dropdown {\n  padding-top: var(--space-2);\n}\n\n.dds-search__listbox {\n  margin: 0;\n  padding: 0;\n  overflow: hidden;\n  border-radius: var(--radius-sm);\n  background: var(--bg-colour-white);\n  box-shadow: 0 4px 16px rgb(0 0 0 / 8%);\n  list-style: none;\n}\n\n.dds-search__option {\n  box-sizing: border-box;\n  padding: var(--space-2) var(--space-4);\n  font-size: var(--font-size-sm);\n  line-height: 20px;\n  cursor: pointer;\n}\n\n.dds-search__option:hover,\n.dds-search__option--active {\n  background: var(--grey-200);\n}\n",
+                    "data": ":host {\n  display: block;\n  max-width: 100%;\n}\n\n.dds-search {\n  display: flex;\n  flex-direction: column;\n  width: 100%;\n  max-width: 100%;\n  color: var(--text-colour-default);\n  font-family: var(--font-family-primary);\n}\n\n.dds-search__label {\n  display: flex;\n  align-items: center;\n  gap: var(--space-1);\n  padding-bottom: var(--space-1);\n  font-size: var(--font-size-sm);\n  font-weight: var(--font-weight-semibold);\n  line-height: 20px;\n}\n\n.dds-search--small .dds-search__label {\n  font-size: var(--font-size-xs);\n  line-height: 16px;\n}\n\n.dds-search__required {\n  color: var(--text-colour-danger);\n}\n\n.dds-search__field {\n  box-sizing: border-box;\n  display: flex;\n  align-items: center;\n  width: 100%;\n  min-height: 48px;\n  gap: var(--space-2);\n  padding: var(--space-3);\n  border: 1px solid var(--border-colour-default);\n  border-radius: var(--radius-sm);\n  background: var(--bg-colour-white);\n}\n\n.dds-search--small .dds-search__field {\n  height: 40px;\n  min-height: 40px;\n}\n\n.dds-search--focused .dds-search__field,\n.dds-search__field:focus-within {\n  border: 2px solid var(--border-colour-info);\n  padding: 11px;\n}\n\n.dds-search__icon {\n  display: inline-flex;\n  flex: 0 0 auto;\n  color: var(--text-colour-default);\n}\n\n.dds-search__input {\n  flex: 1 1 auto;\n  min-width: 0;\n  padding: 0;\n  border: 0;\n  outline: 0;\n  background: transparent;\n  color: var(--text-colour-default);\n  font: inherit;\n  font-size: var(--font-size-md);\n  line-height: 24px;\n}\n\n.dds-search--small .dds-search__input {\n  font-size: var(--font-size-sm);\n  line-height: 20px;\n}\n\n.dds-search__input::placeholder {\n  color: var(--text-colour-placeholder);\n  opacity: 1;\n}\n\n.dds-search__input::-webkit-search-cancel-button {\n  display: none;\n}\n\n.dds-search__dropdown {\n  padding-top: var(--space-2);\n}\n\n.dds-search__listbox {\n  margin: 0;\n  padding: 0;\n  overflow: hidden;\n  border-radius: var(--radius-sm);\n  background: var(--bg-colour-white);\n  box-shadow: 0 4px 16px rgb(0 0 0 / 8%);\n  list-style: none;\n}\n\n.dds-search__option {\n  box-sizing: border-box;\n  padding: var(--space-2) var(--space-4);\n  font-size: var(--font-size-sm);\n  line-height: 20px;\n  cursor: pointer;\n}\n\n.dds-search__option:hover,\n.dds-search__option--active {\n  background: var(--grey-200);\n}\n\n.dds-search__skeleton-label {\n  padding-bottom: var(--space-1);\n}\n",
                     "styleUrl": "./search.component.css"
                 }
             ],
             "stylesData": "",
             "jsdoctags": [
                 {
-                    "pos": 305,
-                    "end": 399,
+                    "pos": 373,
+                    "end": 467,
                     "kind": 321,
                     "id": 0,
                     "flags": 16777216,
@@ -6802,7 +6838,7 @@
                         "name": "isFocused",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 67,
+                        "line": 71,
                         "rawdescription": "\n",
                         "description": ""
                     }
@@ -6813,7 +6849,7 @@
                         "name": "isExpanded",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 71,
+                        "line": 75,
                         "rawdescription": "\n",
                         "description": ""
                     }
@@ -6824,7 +6860,7 @@
                         "name": "listboxId",
                         "type": "string",
                         "returnType": "string",
-                        "line": 75,
+                        "line": 79,
                         "rawdescription": "\n",
                         "description": ""
                     }
@@ -6835,7 +6871,7 @@
                         "name": "activeOptionId",
                         "type": "unknown",
                         "returnType": "string | null",
-                        "line": 79,
+                        "line": 83,
                         "rawdescription": "\n",
                         "description": ""
                     }
@@ -6859,16 +6895,20 @@
                         "type": "component"
                     },
                     {
+                        "name": "SkeletonComponent",
+                        "type": "component"
+                    },
+                    {
                         "name": "OnDestroy",
                         "type": "interface"
                     }
                 ]
             },
-            "templateData": "<div\n  class=\"dds-search\"\n  [class.dds-search--small]=\"size === 'small'\"\n  [class.dds-search--focused]=\"isFocused\"\n>\n  <label *ngIf=\"showLabel\" class=\"dds-search__label\" [for]=\"inputId\">\n    {{ label }}\n    <span *ngIf=\"required\" class=\"dds-search__required\" aria-hidden=\"true\">*</span>\n  </label>\n\n  <div class=\"dds-search__field\">\n    <dds-icon\n      class=\"dds-search__icon\"\n      name=\"search\"\n      [size]=\"size === 'small' ? 20 : 24\"\n      aria-hidden=\"true\"\n    ></dds-icon>\n    <input\n      class=\"dds-search__input\"\n      [id]=\"inputId\"\n      type=\"search\"\n      role=\"combobox\"\n      autocomplete=\"off\"\n      [value]=\"value\"\n      [placeholder]=\"placeholder\"\n      [required]=\"required\"\n      [attr.aria-label]=\"showLabel ? null : ariaLabel\"\n      [attr.aria-autocomplete]=\"suggestions.length ? 'list' : 'none'\"\n      [attr.aria-controls]=\"suggestions.length ? listboxId : null\"\n      [attr.aria-expanded]=\"isExpanded\"\n      [attr.aria-activedescendant]=\"activeOptionId\"\n      (input)=\"handleInput($event)\"\n      (focus)=\"handleFocus()\"\n      (blur)=\"handleBlur()\"\n      (keydown)=\"handleKeydown($event)\"\n    />\n  </div>\n\n  <div *ngIf=\"isExpanded\" class=\"dds-search__dropdown\">\n    <ul class=\"dds-search__listbox\" role=\"listbox\" [id]=\"listboxId\">\n      <li\n        *ngFor=\"let suggestion of suggestions; let index = index\"\n        class=\"dds-search__option\"\n        role=\"option\"\n        [id]=\"inputId + '-option-' + index\"\n        [attr.aria-selected]=\"index === activeIndex\"\n        [class.dds-search__option--active]=\"index === activeIndex\"\n        (mousedown)=\"$event.preventDefault()\"\n        (click)=\"selectSuggestion(suggestion)\"\n      >\n        {{ suggestion }}\n      </li>\n    </ul>\n  </div>\n</div>\n"
+            "templateData": "<div\n  class=\"dds-search\"\n  [class.dds-search--small]=\"size === 'small'\"\n  [class.dds-search--focused]=\"isFocused\"\n  [class.dds-search--loading]=\"loading\"\n  [attr.aria-busy]=\"loading ? 'true' : null\"\n  [attr.aria-label]=\"loading ? 'Loading search' : null\"\n>\n  <ng-container *ngIf=\"loading; else loadedContent\">\n    <div *ngIf=\"showLabel\" class=\"dds-search__skeleton-label\">\n      <dds-skeleton width=\"104px\" [height]=\"size === 'small' ? 16 : 20\"></dds-skeleton>\n    </div>\n    <dds-skeleton width=\"100%\" [height]=\"size === 'small' ? 40 : 48\"></dds-skeleton>\n  </ng-container>\n\n  <ng-template #loadedContent>\n    <label *ngIf=\"showLabel\" class=\"dds-search__label\" [for]=\"inputId\">\n      {{ label }}\n      <span *ngIf=\"required\" class=\"dds-search__required\" aria-hidden=\"true\">*</span>\n    </label>\n\n    <div class=\"dds-search__field\">\n      <dds-icon\n        class=\"dds-search__icon\"\n        name=\"search\"\n        [size]=\"size === 'small' ? 20 : 24\"\n        aria-hidden=\"true\"\n      ></dds-icon>\n      <input\n        class=\"dds-search__input\"\n        [id]=\"inputId\"\n        type=\"search\"\n        role=\"combobox\"\n        autocomplete=\"off\"\n        [value]=\"value\"\n        [placeholder]=\"placeholder\"\n        [required]=\"required\"\n        [attr.aria-label]=\"showLabel ? null : ariaLabel\"\n        [attr.aria-autocomplete]=\"suggestions.length ? 'list' : 'none'\"\n        [attr.aria-controls]=\"suggestions.length ? listboxId : null\"\n        [attr.aria-expanded]=\"isExpanded\"\n        [attr.aria-activedescendant]=\"activeOptionId\"\n        (input)=\"handleInput($event)\"\n        (focus)=\"handleFocus()\"\n        (blur)=\"handleBlur()\"\n        (keydown)=\"handleKeydown($event)\"\n      />\n    </div>\n\n    <div *ngIf=\"isExpanded\" class=\"dds-search__dropdown\">\n      <ul class=\"dds-search__listbox\" role=\"listbox\" [id]=\"listboxId\">\n        <li\n          *ngFor=\"let suggestion of suggestions; let index = index\"\n          class=\"dds-search__option\"\n          role=\"option\"\n          [id]=\"inputId + '-option-' + index\"\n          [attr.aria-selected]=\"index === activeIndex\"\n          [class.dds-search__option--active]=\"index === activeIndex\"\n          (mousedown)=\"$event.preventDefault()\"\n          (click)=\"selectSuggestion(suggestion)\"\n        >\n          {{ suggestion }}\n        </li>\n      </ul>\n    </div>\n  </ng-template>\n</div>\n"
         },
         {
             "name": "SelectComponent",
-            "id": "component-SelectComponent-590573eb2ec76911479f4305e8a068d5f425c2e0b73e0d54af411adf01fb8d1b2adfd952e06d822d26923893384cc8067436301b5df7165aa11f446d3b4f0f9b",
+            "id": "component-SelectComponent-8d984bed1bf1e7e71e866ccbabbd33e89710f5398d8026a8a77616c8ef13d5996a824fb7a95c5de8c58af77b342f2ad57fa1f6c1dac2f4e3f556badd641b7ec9",
             "file": "src/app/components/select/select.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -6896,7 +6936,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nAccessible name used when the visible label is hidden.",
                     "description": "<p>Accessible name used when the visible label is hidden.</p>\n",
-                    "line": 55,
+                    "line": 56,
                     "type": "string",
                     "decorators": []
                 },
@@ -6908,7 +6948,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nValidation guidance shown in the error state.",
                     "description": "<p>Validation guidance shown in the error state.</p>\n",
-                    "line": 64,
+                    "line": 65,
                     "type": "string",
                     "decorators": []
                 },
@@ -6920,7 +6960,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nOptional guidance displayed beneath the field.",
                     "description": "<p>Optional guidance displayed beneath the field.</p>\n",
-                    "line": 58,
+                    "line": 59,
                     "type": "string",
                     "decorators": []
                 },
@@ -6932,7 +6972,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nUnique ID used to associate the label, field, and supporting text.",
                     "description": "<p>Unique ID used to associate the label, field, and supporting text.</p>\n",
-                    "line": 28,
+                    "line": 29,
                     "type": "string",
                     "decorators": []
                 },
@@ -6944,8 +6984,20 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nVisible field label.",
                     "description": "<p>Visible field label.</p>\n",
-                    "line": 31,
+                    "line": 32,
                     "type": "string",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "loading",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nReplaces the field content with shape-matched skeletons while options are loading.",
+                    "description": "<p>Replaces the field content with shape-matched skeletons while options are loading.</p>\n",
+                    "line": 68,
+                    "type": "boolean",
                     "decorators": []
                 },
                 {
@@ -6956,7 +7008,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nAvailable options in display order.",
                     "description": "<p>Available options in display order.</p>\n",
-                    "line": 40,
+                    "line": 41,
                     "type": "SelectOption[]",
                     "decorators": []
                 },
@@ -6968,7 +7020,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nPlaceholder shown before an option is selected.",
                     "description": "<p>Placeholder shown before an option is selected.</p>\n",
-                    "line": 37,
+                    "line": 38,
                     "type": "string",
                     "decorators": []
                 },
@@ -6980,7 +7032,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nMarks the native select as required.",
                     "description": "<p>Marks the native select as required.</p>\n",
-                    "line": 49,
+                    "line": 50,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -6992,7 +7044,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nShows optional guidance beneath non-error fields.",
                     "description": "<p>Shows optional guidance beneath non-error fields.</p>\n",
-                    "line": 61,
+                    "line": 62,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -7004,7 +7056,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nShows the visible field label.",
                     "description": "<p>Shows the visible field label.</p>\n",
-                    "line": 52,
+                    "line": 53,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -7016,7 +7068,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nResponsive size from the DDS specification.",
                     "description": "<p>Responsive size from the DDS specification.</p>\n",
-                    "line": 43,
+                    "line": 44,
                     "type": "SelectSize",
                     "decorators": []
                 },
@@ -7028,7 +7080,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nDeterministic visual state for validation and documentation.",
                     "description": "<p>Deterministic visual state for validation and documentation.</p>\n",
-                    "line": 46,
+                    "line": 47,
                     "type": "SelectState",
                     "decorators": []
                 },
@@ -7040,7 +7092,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nCurrent option value.",
                     "description": "<p>Current option value.</p>\n",
-                    "line": 34,
+                    "line": 35,
                     "type": "string",
                     "decorators": []
                 }
@@ -7054,7 +7106,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nEmitted whenever the selected value changes.",
                     "description": "<p>Emitted whenever the selected value changes.</p>\n",
-                    "line": 67,
+                    "line": 71,
                     "type": "EventEmitter"
                 }
             ],
@@ -7076,7 +7128,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 93,
+                    "line": 97,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n",
@@ -7110,25 +7162,29 @@
                 {
                     "name": "IconComponent",
                     "type": "component"
+                },
+                {
+                    "name": "SkeletonComponent",
+                    "type": "component"
                 }
             ],
             "description": "<p>A native single-select field with DDS sizing, validation, and helper text treatments.</p>\n",
             "rawdescription": "\n\nA native single-select field with DDS sizing, validation, and helper text treatments.\n",
             "type": "component",
-            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, EventEmitter, Input, Output } from '@angular/core';\nimport { IconComponent } from '../icon/icon.component';\n\nexport type SelectSize = 'large' | 'small';\nexport type SelectState = 'default' | 'focused' | 'disabled' | 'error';\n\nexport type SelectOption = {\n  label: string;\n  value: string;\n  disabled?: boolean;\n};\n\nlet nextSelectId = 0;\n\n/**\n * A native single-select field with DDS sizing, validation, and helper text treatments.\n */\n@Component({\n  selector: 'dds-select',\n  standalone: true,\n  imports: [CommonModule, IconComponent],\n  templateUrl: './select.component.html',\n  styleUrl: './select.component.css',\n})\nexport class SelectComponent {\n  /** Unique ID used to associate the label, field, and supporting text. */\n  @Input() inputId = `dds-select-${nextSelectId++}`;\n\n  /** Visible field label. */\n  @Input() label = 'Select option';\n\n  /** Current option value. */\n  @Input() value = '';\n\n  /** Placeholder shown before an option is selected. */\n  @Input() placeholder = 'Select option';\n\n  /** Available options in display order. */\n  @Input() options: SelectOption[] = [];\n\n  /** Responsive size from the DDS specification. */\n  @Input() size: SelectSize = 'large';\n\n  /** Deterministic visual state for validation and documentation. */\n  @Input() state: SelectState = 'default';\n\n  /** Marks the native select as required. */\n  @Input() required = false;\n\n  /** Shows the visible field label. */\n  @Input() showLabel = true;\n\n  /** Accessible name used when the visible label is hidden. */\n  @Input() ariaLabel = 'Select option';\n\n  /** Optional guidance displayed beneath the field. */\n  @Input() helperText = 'Choose one option.';\n\n  /** Shows optional guidance beneath non-error fields. */\n  @Input() showHelperText = true;\n\n  /** Validation guidance shown in the error state. */\n  @Input() errorMessage = 'Select an option to continue.';\n\n  /** Emitted whenever the selected value changes. */\n  @Output() valueChange = new EventEmitter<string>();\n\n  get isDisabled(): boolean {\n    return this.state === 'disabled';\n  }\n\n  get isError(): boolean {\n    return this.state === 'error';\n  }\n\n  get helperId(): string {\n    return `${this.inputId}-helper`;\n  }\n\n  get errorId(): string {\n    return `${this.inputId}-error`;\n  }\n\n  get describedBy(): string | null {\n    if (this.isError) {\n      return this.errorId;\n    }\n\n    return this.showHelperText ? this.helperId : null;\n  }\n\n  handleChange(event: Event): void {\n    this.value = (event.target as HTMLSelectElement).value;\n    this.valueChange.emit(this.value);\n  }\n}\n",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, EventEmitter, Input, Output } from '@angular/core';\nimport { IconComponent } from '../icon/icon.component';\nimport { SkeletonComponent } from '../skeleton/skeleton.component';\n\nexport type SelectSize = 'large' | 'small';\nexport type SelectState = 'default' | 'focused' | 'disabled' | 'error';\n\nexport type SelectOption = {\n  label: string;\n  value: string;\n  disabled?: boolean;\n};\n\nlet nextSelectId = 0;\n\n/**\n * A native single-select field with DDS sizing, validation, and helper text treatments.\n */\n@Component({\n  selector: 'dds-select',\n  standalone: true,\n  imports: [CommonModule, IconComponent, SkeletonComponent],\n  templateUrl: './select.component.html',\n  styleUrl: './select.component.css',\n})\nexport class SelectComponent {\n  /** Unique ID used to associate the label, field, and supporting text. */\n  @Input() inputId = `dds-select-${nextSelectId++}`;\n\n  /** Visible field label. */\n  @Input() label = 'Select option';\n\n  /** Current option value. */\n  @Input() value = '';\n\n  /** Placeholder shown before an option is selected. */\n  @Input() placeholder = 'Select option';\n\n  /** Available options in display order. */\n  @Input() options: SelectOption[] = [];\n\n  /** Responsive size from the DDS specification. */\n  @Input() size: SelectSize = 'large';\n\n  /** Deterministic visual state for validation and documentation. */\n  @Input() state: SelectState = 'default';\n\n  /** Marks the native select as required. */\n  @Input() required = false;\n\n  /** Shows the visible field label. */\n  @Input() showLabel = true;\n\n  /** Accessible name used when the visible label is hidden. */\n  @Input() ariaLabel = 'Select option';\n\n  /** Optional guidance displayed beneath the field. */\n  @Input() helperText = 'Choose one option.';\n\n  /** Shows optional guidance beneath non-error fields. */\n  @Input() showHelperText = true;\n\n  /** Validation guidance shown in the error state. */\n  @Input() errorMessage = 'Select an option to continue.';\n\n  /** Replaces the field content with shape-matched skeletons while options are loading. */\n  @Input() loading = false;\n\n  /** Emitted whenever the selected value changes. */\n  @Output() valueChange = new EventEmitter<string>();\n\n  get isDisabled(): boolean {\n    return this.state === 'disabled';\n  }\n\n  get isError(): boolean {\n    return this.state === 'error';\n  }\n\n  get helperId(): string {\n    return `${this.inputId}-helper`;\n  }\n\n  get errorId(): string {\n    return `${this.inputId}-error`;\n  }\n\n  get describedBy(): string | null {\n    if (this.isError) {\n      return this.errorId;\n    }\n\n    return this.showHelperText ? this.helperId : null;\n  }\n\n  handleChange(event: Event): void {\n    this.value = (event.target as HTMLSelectElement).value;\n    this.valueChange.emit(this.value);\n  }\n}\n",
             "styleUrl": "./select.component.css",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ":host {\n  display: block;\n  max-width: 100%;\n}\n\n.dds-select {\n  display: flex;\n  flex-direction: column;\n  width: 460px;\n  max-width: 100%;\n  color: var(--text-colour-default);\n  font-family: var(--font-family-primary);\n}\n\n.dds-select__label {\n  display: flex;\n  align-items: center;\n  gap: var(--space-1);\n  padding-bottom: var(--space-2);\n  font-size: var(--font-size-sm);\n  font-weight: var(--font-weight-semibold);\n  line-height: 20px;\n}\n\n.dds-select--small .dds-select__label {\n  padding-bottom: var(--space-1);\n  font-size: var(--font-size-xs);\n  line-height: 16px;\n}\n\n.dds-select__required {\n  color: var(--text-colour-danger);\n}\n\n.dds-select__field {\n  position: relative;\n  box-sizing: border-box;\n  display: flex;\n  align-items: center;\n  width: 100%;\n  min-height: 48px;\n  border: 1px solid var(--border-colour-default);\n  border-radius: var(--radius-sm);\n  background: var(--bg-colour-white);\n}\n\n.dds-select--small .dds-select__field {\n  min-height: 40px;\n}\n\n.dds-select--focused .dds-select__field,\n.dds-select__field:focus-within {\n  border: 2px solid var(--border-colour-info);\n}\n\n.dds-select--error .dds-select__field {\n  border: 2px solid var(--border-colour-danger);\n}\n\n.dds-select--disabled .dds-select__field {\n  background: var(--bg-colour-disabled);\n}\n\n.dds-select__control {\n  position: relative;\n  z-index: 1;\n  width: 100%;\n  min-height: 46px;\n  padding: var(--space-3) 48px var(--space-3) var(--space-3);\n  border: 0;\n  outline: 0;\n  appearance: none;\n  background: transparent;\n  color: var(--text-colour-default);\n  cursor: pointer;\n  font: inherit;\n  font-size: var(--font-size-md);\n  line-height: 24px;\n}\n\n.dds-select--small .dds-select__control {\n  min-height: 38px;\n  padding: 9px 40px 9px var(--space-3);\n  font-size: var(--font-size-sm);\n  line-height: 20px;\n}\n\n.dds-select--focused .dds-select__control,\n.dds-select--error .dds-select__control {\n  min-height: 44px;\n}\n\n.dds-select--small.dds-select--focused .dds-select__control,\n.dds-select--small.dds-select--error .dds-select__control {\n  min-height: 36px;\n  padding-block: 8px;\n}\n\n.dds-select--placeholder .dds-select__control,\n.dds-select--disabled .dds-select__control {\n  color: var(--text-colour-placeholder);\n}\n\n.dds-select--disabled .dds-select__control {\n  cursor: not-allowed;\n}\n\n.dds-select__icon {\n  position: absolute;\n  z-index: 0;\n  right: var(--space-3);\n  display: inline-flex;\n  color: var(--text-colour-default);\n  pointer-events: none;\n}\n\n.dds-select--disabled .dds-select__icon {\n  color: var(--text-colour-placeholder);\n}\n\n.dds-select__supporting-text {\n  margin: 0;\n  padding-top: var(--space-2);\n  color: var(--text-colour-secondary);\n  font-size: var(--font-size-xs);\n  font-weight: var(--font-weight-regular);\n  line-height: 16px;\n}\n\n.dds-select__error {\n  color: var(--text-colour-danger);\n  font-weight: var(--font-weight-medium);\n}\n",
+                    "data": ":host {\n  display: block;\n  max-width: 100%;\n}\n\n.dds-select {\n  display: flex;\n  flex-direction: column;\n  width: 460px;\n  max-width: 100%;\n  color: var(--text-colour-default);\n  font-family: var(--font-family-primary);\n}\n\n.dds-select__label {\n  display: flex;\n  align-items: center;\n  gap: var(--space-1);\n  padding-bottom: var(--space-2);\n  font-size: var(--font-size-sm);\n  font-weight: var(--font-weight-semibold);\n  line-height: 20px;\n}\n\n.dds-select--small .dds-select__label {\n  padding-bottom: var(--space-1);\n  font-size: var(--font-size-xs);\n  line-height: 16px;\n}\n\n.dds-select__required {\n  color: var(--text-colour-danger);\n}\n\n.dds-select__field {\n  position: relative;\n  box-sizing: border-box;\n  display: flex;\n  align-items: center;\n  width: 100%;\n  min-height: 48px;\n  border: 1px solid var(--border-colour-default);\n  border-radius: var(--radius-sm);\n  background: var(--bg-colour-white);\n}\n\n.dds-select--small .dds-select__field {\n  min-height: 40px;\n}\n\n.dds-select--focused .dds-select__field,\n.dds-select__field:focus-within {\n  border: 2px solid var(--border-colour-info);\n}\n\n.dds-select--error .dds-select__field {\n  border: 2px solid var(--border-colour-danger);\n}\n\n.dds-select--disabled .dds-select__field {\n  background: var(--bg-colour-disabled);\n}\n\n.dds-select__control {\n  position: relative;\n  z-index: 1;\n  width: 100%;\n  min-height: 46px;\n  padding: var(--space-3) 48px var(--space-3) var(--space-3);\n  border: 0;\n  outline: 0;\n  appearance: none;\n  background: transparent;\n  color: var(--text-colour-default);\n  cursor: pointer;\n  font: inherit;\n  font-size: var(--font-size-md);\n  line-height: 24px;\n}\n\n.dds-select--small .dds-select__control {\n  min-height: 38px;\n  padding: 9px 40px 9px var(--space-3);\n  font-size: var(--font-size-sm);\n  line-height: 20px;\n}\n\n.dds-select--focused .dds-select__control,\n.dds-select--error .dds-select__control {\n  min-height: 44px;\n}\n\n.dds-select--small.dds-select--focused .dds-select__control,\n.dds-select--small.dds-select--error .dds-select__control {\n  min-height: 36px;\n  padding-block: 8px;\n}\n\n.dds-select--placeholder .dds-select__control,\n.dds-select--disabled .dds-select__control {\n  color: var(--text-colour-placeholder);\n}\n\n.dds-select--disabled .dds-select__control {\n  cursor: not-allowed;\n}\n\n.dds-select__icon {\n  position: absolute;\n  z-index: 0;\n  right: var(--space-3);\n  display: inline-flex;\n  color: var(--text-colour-default);\n  pointer-events: none;\n}\n\n.dds-select--disabled .dds-select__icon {\n  color: var(--text-colour-placeholder);\n}\n\n.dds-select__supporting-text {\n  margin: 0;\n  padding-top: var(--space-2);\n  color: var(--text-colour-secondary);\n  font-size: var(--font-size-xs);\n  font-weight: var(--font-weight-regular);\n  line-height: 16px;\n}\n\n.dds-select__error {\n  color: var(--text-colour-danger);\n  font-weight: var(--font-weight-medium);\n}\n\n.dds-select__skeleton-label {\n  padding-bottom: var(--space-2);\n}\n\n.dds-select--small .dds-select__skeleton-label {\n  padding-bottom: var(--space-1);\n}\n\n.dds-select__skeleton-supporting-text {\n  padding-top: var(--space-2);\n}\n",
                     "styleUrl": "./select.component.css"
                 }
             ],
             "stylesData": "",
             "jsdoctags": [
                 {
-                    "pos": 406,
-                    "end": 502,
+                    "pos": 474,
+                    "end": 570,
                     "kind": 321,
                     "id": 0,
                     "flags": 16777216,
@@ -7145,7 +7201,7 @@
                         "name": "isDisabled",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 69,
+                        "line": 73,
                         "rawdescription": "\n",
                         "description": ""
                     }
@@ -7156,7 +7212,7 @@
                         "name": "isError",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 73,
+                        "line": 77,
                         "rawdescription": "\n",
                         "description": ""
                     }
@@ -7167,7 +7223,7 @@
                         "name": "helperId",
                         "type": "string",
                         "returnType": "string",
-                        "line": 77,
+                        "line": 81,
                         "rawdescription": "\n",
                         "description": ""
                     }
@@ -7178,7 +7234,7 @@
                         "name": "errorId",
                         "type": "string",
                         "returnType": "string",
-                        "line": 81,
+                        "line": 85,
                         "rawdescription": "\n",
                         "description": ""
                     }
@@ -7189,7 +7245,7 @@
                         "name": "describedBy",
                         "type": "unknown",
                         "returnType": "string | null",
-                        "line": 85,
+                        "line": 89,
                         "rawdescription": "\n",
                         "description": ""
                     }
@@ -7211,10 +7267,14 @@
                     {
                         "name": "IconComponent",
                         "type": "component"
+                    },
+                    {
+                        "name": "SkeletonComponent",
+                        "type": "component"
                     }
                 ]
             },
-            "templateData": "<div\n  class=\"dds-select\"\n  [class.dds-select--small]=\"size === 'small'\"\n  [class.dds-select--focused]=\"state === 'focused'\"\n  [class.dds-select--disabled]=\"isDisabled\"\n  [class.dds-select--error]=\"isError\"\n  [class.dds-select--placeholder]=\"!value\"\n>\n  <label *ngIf=\"showLabel\" class=\"dds-select__label\" [for]=\"inputId\">\n    {{ label }}\n    <span *ngIf=\"required\" class=\"dds-select__required\" aria-hidden=\"true\">*</span>\n  </label>\n\n  <div class=\"dds-select__field\">\n    <select\n      class=\"dds-select__control\"\n      [id]=\"inputId\"\n      [value]=\"value\"\n      [required]=\"required\"\n      [disabled]=\"isDisabled\"\n      [attr.aria-label]=\"showLabel ? null : ariaLabel\"\n      [attr.aria-invalid]=\"isError ? 'true' : null\"\n      [attr.aria-describedby]=\"describedBy\"\n      (change)=\"handleChange($event)\"\n    >\n      <option value=\"\" disabled>{{ placeholder }}</option>\n      <option *ngFor=\"let option of options\" [value]=\"option.value\" [disabled]=\"option.disabled\">\n        {{ option.label }}\n      </option>\n    </select>\n    <dds-icon\n      class=\"dds-select__icon\"\n      name=\"chevron-down\"\n      [size]=\"size === 'small' ? 20 : 24\"\n      aria-hidden=\"true\"\n    ></dds-icon>\n  </div>\n\n  <p *ngIf=\"!isError && showHelperText\" class=\"dds-select__supporting-text\" [id]=\"helperId\">\n    {{ helperText }}\n  </p>\n\n  <p *ngIf=\"isError\" class=\"dds-select__supporting-text dds-select__error\" [id]=\"errorId\">\n    {{ errorMessage }}\n  </p>\n</div>\n"
+            "templateData": "<div\n  class=\"dds-select\"\n  [class.dds-select--small]=\"size === 'small'\"\n  [class.dds-select--focused]=\"state === 'focused'\"\n  [class.dds-select--disabled]=\"isDisabled\"\n  [class.dds-select--error]=\"isError\"\n  [class.dds-select--placeholder]=\"!value\"\n  [class.dds-select--loading]=\"loading\"\n  [attr.aria-busy]=\"loading ? 'true' : null\"\n  [attr.aria-label]=\"loading ? 'Loading select' : null\"\n>\n  <ng-container *ngIf=\"loading; else loadedContent\">\n    <div *ngIf=\"showLabel\" class=\"dds-select__skeleton-label\">\n      <dds-skeleton width=\"96px\" [height]=\"size === 'small' ? 16 : 20\"></dds-skeleton>\n    </div>\n    <dds-skeleton width=\"100%\" [height]=\"size === 'small' ? 40 : 48\"></dds-skeleton>\n    <div *ngIf=\"showHelperText\" class=\"dds-select__skeleton-supporting-text\">\n      <dds-skeleton width=\"45%\" height=\"16px\"></dds-skeleton>\n    </div>\n  </ng-container>\n\n  <ng-template #loadedContent>\n    <label *ngIf=\"showLabel\" class=\"dds-select__label\" [for]=\"inputId\">\n      {{ label }}\n      <span *ngIf=\"required\" class=\"dds-select__required\" aria-hidden=\"true\">*</span>\n    </label>\n\n    <div class=\"dds-select__field\">\n      <select\n        class=\"dds-select__control\"\n        [id]=\"inputId\"\n        [value]=\"value\"\n        [required]=\"required\"\n        [disabled]=\"isDisabled\"\n        [attr.aria-label]=\"showLabel ? null : ariaLabel\"\n        [attr.aria-invalid]=\"isError ? 'true' : null\"\n        [attr.aria-describedby]=\"describedBy\"\n        (change)=\"handleChange($event)\"\n      >\n        <option value=\"\" disabled>{{ placeholder }}</option>\n        <option *ngFor=\"let option of options\" [value]=\"option.value\" [disabled]=\"option.disabled\">\n          {{ option.label }}\n        </option>\n      </select>\n      <dds-icon\n        class=\"dds-select__icon\"\n        name=\"chevron-down\"\n        [size]=\"size === 'small' ? 20 : 24\"\n        aria-hidden=\"true\"\n      ></dds-icon>\n    </div>\n\n    <p *ngIf=\"!isError && showHelperText\" class=\"dds-select__supporting-text\" [id]=\"helperId\">\n      {{ helperText }}\n    </p>\n\n    <p *ngIf=\"isError\" class=\"dds-select__supporting-text dds-select__error\" [id]=\"errorId\">\n      {{ errorMessage }}\n    </p>\n  </ng-template>\n</div>\n"
         },
         {
             "name": "SidebarNavComponent",
@@ -7772,6 +7832,25 @@
                         "type": "component"
                     },
                     {
+                        "name": "DateInputComponent",
+                        "type": "component"
+                    },
+                    {
+                        "name": "SearchComponent",
+                        "type": "component",
+                        "description": "A search field with optional suggestions and accessible combobox keyboard behavior."
+                    },
+                    {
+                        "name": "SelectComponent",
+                        "type": "component",
+                        "description": "A native single-select field with DDS sizing, validation, and helper text treatments."
+                    },
+                    {
+                        "name": "TextareaComponent",
+                        "type": "component",
+                        "description": "A multi-line text field with DDS sizing, validation, helper text, and character-count treatments."
+                    },
+                    {
                         "name": "TextInputComponent",
                         "type": "component"
                     }
@@ -7970,7 +8049,7 @@
         },
         {
             "name": "TextareaComponent",
-            "id": "component-TextareaComponent-43dda6809bca32325f9db2c20f021003aa0b095bdb05339cb3009be6289d3b77dbf550047c14040e91fbbe73e5a25da3ede7eb365513a432d856c063f61c41bc",
+            "id": "component-TextareaComponent-4e1bd8cbdb3fc738b1c49dbf1ed984831abbefe138ee9fde3e41e27c2787741ad28ad8a5b50be6d219ebba15a96bd8b14ae1a0b8f509bfdde467b98add5b9863",
             "file": "src/app/components/textarea/textarea.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -7998,7 +8077,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nAccessible name used when the visible label is hidden.",
                     "description": "<p>Accessible name used when the visible label is hidden.</p>\n",
-                    "line": 46,
+                    "line": 47,
                     "type": "string",
                     "decorators": []
                 },
@@ -8010,7 +8089,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nValidation guidance shown in the error state.",
                     "description": "<p>Validation guidance shown in the error state.</p>\n",
-                    "line": 55,
+                    "line": 56,
                     "type": "string",
                     "decorators": []
                 },
@@ -8022,7 +8101,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nOptional guidance displayed beneath the field.",
                     "description": "<p>Optional guidance displayed beneath the field.</p>\n",
-                    "line": 49,
+                    "line": 50,
                     "type": "string",
                     "decorators": []
                 },
@@ -8034,7 +8113,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nUnique ID used to associate the label, field, and supporting text.",
                     "description": "<p>Unique ID used to associate the label, field, and supporting text.</p>\n",
-                    "line": 19,
+                    "line": 20,
                     "type": "string",
                     "decorators": []
                 },
@@ -8046,8 +8125,20 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nVisible field label.",
                     "description": "<p>Visible field label.</p>\n",
-                    "line": 22,
+                    "line": 23,
                     "type": "string",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "loading",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nReplaces the field content with shape-matched skeletons while data is loading.",
+                    "description": "<p>Replaces the field content with shape-matched skeletons while data is loading.</p>\n",
+                    "line": 62,
+                    "type": "boolean",
                     "decorators": []
                 },
                 {
@@ -8058,7 +8149,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nMaximum number of characters accepted by the field.",
                     "description": "<p>Maximum number of characters accepted by the field.</p>\n",
-                    "line": 37,
+                    "line": 38,
                     "type": "number",
                     "decorators": []
                 },
@@ -8070,7 +8161,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nPrompt displayed when the field is empty.",
                     "description": "<p>Prompt displayed when the field is empty.</p>\n",
-                    "line": 28,
+                    "line": 29,
                     "type": "string",
                     "decorators": []
                 },
@@ -8082,7 +8173,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nMarks the native textarea as required.",
                     "description": "<p>Marks the native textarea as required.</p>\n",
-                    "line": 40,
+                    "line": 41,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -8094,7 +8185,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nShows the current and maximum character count inside the field.",
                     "description": "<p>Shows the current and maximum character count inside the field.</p>\n",
-                    "line": 58,
+                    "line": 59,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -8106,7 +8197,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nShows optional guidance beneath non-error fields.",
                     "description": "<p>Shows optional guidance beneath non-error fields.</p>\n",
-                    "line": 52,
+                    "line": 53,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -8118,7 +8209,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nShows the visible field label.",
                     "description": "<p>Shows the visible field label.</p>\n",
-                    "line": 43,
+                    "line": 44,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -8130,7 +8221,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nLarge or small typography treatment.",
                     "description": "<p>Large or small typography treatment.</p>\n",
-                    "line": 31,
+                    "line": 32,
                     "type": "TextareaSize",
                     "decorators": []
                 },
@@ -8142,7 +8233,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nDeterministic visual state for validation and documentation.",
                     "description": "<p>Deterministic visual state for validation and documentation.</p>\n",
-                    "line": 34,
+                    "line": 35,
                     "type": "TextareaState",
                     "decorators": []
                 },
@@ -8154,7 +8245,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nCurrent field value.",
                     "description": "<p>Current field value.</p>\n",
-                    "line": 25,
+                    "line": 26,
                     "type": "string",
                     "decorators": []
                 }
@@ -8168,7 +8259,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nEmitted whenever the field value changes.",
                     "description": "<p>Emitted whenever the field value changes.</p>\n",
-                    "line": 61,
+                    "line": 65,
                     "type": "EventEmitter"
                 }
             ],
@@ -8190,7 +8281,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 99,
+                    "line": 103,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n",
@@ -8220,25 +8311,29 @@
                 {
                     "name": "CommonModule",
                     "type": "module"
+                },
+                {
+                    "name": "SkeletonComponent",
+                    "type": "component"
                 }
             ],
             "description": "<p>A multi-line text field with DDS sizing, validation, helper text, and character-count treatments.</p>\n",
             "rawdescription": "\nA multi-line text field with DDS sizing, validation, helper text, and character-count treatments.",
             "type": "component",
-            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, EventEmitter, Input, Output } from '@angular/core';\n\nexport type TextareaSize = 'large' | 'small';\nexport type TextareaState = 'default' | 'focused' | 'disabled' | 'error';\n\nlet nextTextareaId = 0;\n\n/** A multi-line text field with DDS sizing, validation, helper text, and character-count treatments. */\n@Component({\n  selector: 'dds-textarea',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './textarea.component.html',\n  styleUrl: './textarea.component.css',\n})\nexport class TextareaComponent {\n  /** Unique ID used to associate the label, field, and supporting text. */\n  @Input() inputId = `dds-textarea-${nextTextareaId++}`;\n\n  /** Visible field label. */\n  @Input() label = 'Label text';\n\n  /** Current field value. */\n  @Input() value = '';\n\n  /** Prompt displayed when the field is empty. */\n  @Input() placeholder = 'Some text here…';\n\n  /** Large or small typography treatment. */\n  @Input() size: TextareaSize = 'large';\n\n  /** Deterministic visual state for validation and documentation. */\n  @Input() state: TextareaState = 'default';\n\n  /** Maximum number of characters accepted by the field. */\n  @Input() maxLength = 150;\n\n  /** Marks the native textarea as required. */\n  @Input() required = false;\n\n  /** Shows the visible field label. */\n  @Input() showLabel = true;\n\n  /** Accessible name used when the visible label is hidden. */\n  @Input() ariaLabel = 'Text response';\n\n  /** Optional guidance displayed beneath the field. */\n  @Input() helperText = 'Helper text';\n\n  /** Shows optional guidance beneath non-error fields. */\n  @Input() showHelperText = true;\n\n  /** Validation guidance shown in the error state. */\n  @Input() errorMessage = 'Enter a valid response.';\n\n  /** Shows the current and maximum character count inside the field. */\n  @Input() showCharacterCount = true;\n\n  /** Emitted whenever the field value changes. */\n  @Output() valueChange = new EventEmitter<string>();\n\n  get isDisabled(): boolean {\n    return this.state === 'disabled';\n  }\n\n  get isError(): boolean {\n    return this.state === 'error';\n  }\n\n  get helperId(): string {\n    return `${this.inputId}-helper`;\n  }\n\n  get errorId(): string {\n    return `${this.inputId}-error`;\n  }\n\n  get countId(): string {\n    return `${this.inputId}-count`;\n  }\n\n  get describedBy(): string | null {\n    const ids = [];\n\n    if (this.isError) {\n      ids.push(this.errorId);\n    } else if (this.showHelperText) {\n      ids.push(this.helperId);\n    }\n\n    if (this.showCharacterCount) {\n      ids.push(this.countId);\n    }\n\n    return ids.length ? ids.join(' ') : null;\n  }\n\n  handleInput(event: Event): void {\n    this.value = (event.target as HTMLTextAreaElement).value;\n    this.valueChange.emit(this.value);\n  }\n}\n",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, EventEmitter, Input, Output } from '@angular/core';\nimport { SkeletonComponent } from '../skeleton/skeleton.component';\n\nexport type TextareaSize = 'large' | 'small';\nexport type TextareaState = 'default' | 'focused' | 'disabled' | 'error';\n\nlet nextTextareaId = 0;\n\n/** A multi-line text field with DDS sizing, validation, helper text, and character-count treatments. */\n@Component({\n  selector: 'dds-textarea',\n  standalone: true,\n  imports: [CommonModule, SkeletonComponent],\n  templateUrl: './textarea.component.html',\n  styleUrl: './textarea.component.css',\n})\nexport class TextareaComponent {\n  /** Unique ID used to associate the label, field, and supporting text. */\n  @Input() inputId = `dds-textarea-${nextTextareaId++}`;\n\n  /** Visible field label. */\n  @Input() label = 'Label text';\n\n  /** Current field value. */\n  @Input() value = '';\n\n  /** Prompt displayed when the field is empty. */\n  @Input() placeholder = 'Some text here…';\n\n  /** Large or small typography treatment. */\n  @Input() size: TextareaSize = 'large';\n\n  /** Deterministic visual state for validation and documentation. */\n  @Input() state: TextareaState = 'default';\n\n  /** Maximum number of characters accepted by the field. */\n  @Input() maxLength = 150;\n\n  /** Marks the native textarea as required. */\n  @Input() required = false;\n\n  /** Shows the visible field label. */\n  @Input() showLabel = true;\n\n  /** Accessible name used when the visible label is hidden. */\n  @Input() ariaLabel = 'Text response';\n\n  /** Optional guidance displayed beneath the field. */\n  @Input() helperText = 'Helper text';\n\n  /** Shows optional guidance beneath non-error fields. */\n  @Input() showHelperText = true;\n\n  /** Validation guidance shown in the error state. */\n  @Input() errorMessage = 'Enter a valid response.';\n\n  /** Shows the current and maximum character count inside the field. */\n  @Input() showCharacterCount = true;\n\n  /** Replaces the field content with shape-matched skeletons while data is loading. */\n  @Input() loading = false;\n\n  /** Emitted whenever the field value changes. */\n  @Output() valueChange = new EventEmitter<string>();\n\n  get isDisabled(): boolean {\n    return this.state === 'disabled';\n  }\n\n  get isError(): boolean {\n    return this.state === 'error';\n  }\n\n  get helperId(): string {\n    return `${this.inputId}-helper`;\n  }\n\n  get errorId(): string {\n    return `${this.inputId}-error`;\n  }\n\n  get countId(): string {\n    return `${this.inputId}-count`;\n  }\n\n  get describedBy(): string | null {\n    const ids = [];\n\n    if (this.isError) {\n      ids.push(this.errorId);\n    } else if (this.showHelperText) {\n      ids.push(this.helperId);\n    }\n\n    if (this.showCharacterCount) {\n      ids.push(this.countId);\n    }\n\n    return ids.length ? ids.join(' ') : null;\n  }\n\n  handleInput(event: Event): void {\n    this.value = (event.target as HTMLTextAreaElement).value;\n    this.valueChange.emit(this.value);\n  }\n}\n",
             "styleUrl": "./textarea.component.css",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ":host {\n  display: block;\n  max-width: 100%;\n}\n\n.dds-textarea {\n  display: flex;\n  flex-direction: column;\n  width: 460px;\n  max-width: 100%;\n  color: var(--text-colour-default);\n  font-family: var(--font-family-primary);\n}\n\n.dds-textarea__label {\n  display: flex;\n  align-items: center;\n  gap: var(--space-1);\n  padding-bottom: var(--space-2);\n  color: var(--text-colour-default);\n  font-size: var(--font-size-sm);\n  font-weight: var(--font-weight-semibold);\n  line-height: 20px;\n}\n\n.dds-textarea--small .dds-textarea__label {\n  padding-bottom: var(--space-1);\n  font-size: var(--font-size-xs);\n  line-height: 16px;\n}\n\n.dds-textarea__required,\n.dds-textarea--error .dds-textarea__label {\n  color: var(--text-colour-danger);\n}\n\n.dds-textarea__field {\n  position: relative;\n  box-sizing: border-box;\n  display: flex;\n  min-height: 80px;\n  border: 1px solid var(--border-colour-default);\n  border-radius: var(--radius-sm);\n  background: var(--bg-colour-white);\n}\n\n.dds-textarea--focused .dds-textarea__field,\n.dds-textarea__field:focus-within {\n  border: 2px solid var(--border-colour-info);\n}\n\n.dds-textarea--error .dds-textarea__field {\n  border: 2px solid var(--border-colour-danger);\n}\n\n.dds-textarea--disabled .dds-textarea__field {\n  background: var(--bg-colour-disabled);\n}\n\n.dds-textarea__control {\n  box-sizing: border-box;\n  width: 100%;\n  min-height: 78px;\n  padding: var(--space-3) var(--space-3) 32px;\n  resize: vertical;\n  border: 0;\n  outline: 0;\n  background: transparent;\n  color: var(--text-colour-default);\n  font: inherit;\n  font-size: var(--font-size-md);\n  line-height: 24px;\n}\n\n.dds-textarea--small .dds-textarea__control {\n  font-size: var(--font-size-sm);\n  line-height: 20px;\n}\n\n.dds-textarea--focused .dds-textarea__control,\n.dds-textarea--error .dds-textarea__control {\n  min-height: 76px;\n}\n\n.dds-textarea__control::placeholder {\n  color: var(--text-colour-placeholder);\n  opacity: 1;\n}\n\n.dds-textarea__control:disabled {\n  color: var(--text-colour-disabled);\n  cursor: not-allowed;\n}\n\n.dds-textarea__control:disabled::placeholder {\n  color: var(--text-colour-disabled);\n}\n\n.dds-textarea__count {\n  position: absolute;\n  right: var(--space-2);\n  bottom: var(--space-2);\n  color: var(--text-colour-tertiary);\n  font-size: var(--font-size-xs);\n  font-weight: var(--font-weight-regular);\n  line-height: 16px;\n  pointer-events: none;\n}\n\n.dds-textarea__supporting-text {\n  margin: 0;\n  padding-top: var(--space-2);\n  color: var(--text-colour-tertiary);\n  font-size: var(--font-size-xs);\n  font-weight: var(--font-weight-regular);\n  line-height: 16px;\n}\n\n.dds-textarea__error {\n  color: var(--text-colour-danger);\n  font-weight: var(--font-weight-medium);\n}\n",
+                    "data": ":host {\n  display: block;\n  max-width: 100%;\n}\n\n.dds-textarea {\n  display: flex;\n  flex-direction: column;\n  width: 460px;\n  max-width: 100%;\n  color: var(--text-colour-default);\n  font-family: var(--font-family-primary);\n}\n\n.dds-textarea__label {\n  display: flex;\n  align-items: center;\n  gap: var(--space-1);\n  padding-bottom: var(--space-2);\n  color: var(--text-colour-default);\n  font-size: var(--font-size-sm);\n  font-weight: var(--font-weight-semibold);\n  line-height: 20px;\n}\n\n.dds-textarea--small .dds-textarea__label {\n  padding-bottom: var(--space-1);\n  font-size: var(--font-size-xs);\n  line-height: 16px;\n}\n\n.dds-textarea__required,\n.dds-textarea--error .dds-textarea__label {\n  color: var(--text-colour-danger);\n}\n\n.dds-textarea__field {\n  position: relative;\n  box-sizing: border-box;\n  display: flex;\n  min-height: 80px;\n  border: 1px solid var(--border-colour-default);\n  border-radius: var(--radius-sm);\n  background: var(--bg-colour-white);\n}\n\n.dds-textarea--focused .dds-textarea__field,\n.dds-textarea__field:focus-within {\n  border: 2px solid var(--border-colour-info);\n}\n\n.dds-textarea--error .dds-textarea__field {\n  border: 2px solid var(--border-colour-danger);\n}\n\n.dds-textarea--disabled .dds-textarea__field {\n  background: var(--bg-colour-disabled);\n}\n\n.dds-textarea__control {\n  box-sizing: border-box;\n  width: 100%;\n  min-height: 78px;\n  padding: var(--space-3) var(--space-3) 32px;\n  resize: vertical;\n  border: 0;\n  outline: 0;\n  background: transparent;\n  color: var(--text-colour-default);\n  font: inherit;\n  font-size: var(--font-size-md);\n  line-height: 24px;\n}\n\n.dds-textarea--small .dds-textarea__control {\n  font-size: var(--font-size-sm);\n  line-height: 20px;\n}\n\n.dds-textarea--focused .dds-textarea__control,\n.dds-textarea--error .dds-textarea__control {\n  min-height: 76px;\n}\n\n.dds-textarea__control::placeholder {\n  color: var(--text-colour-placeholder);\n  opacity: 1;\n}\n\n.dds-textarea__control:disabled {\n  color: var(--text-colour-disabled);\n  cursor: not-allowed;\n}\n\n.dds-textarea__control:disabled::placeholder {\n  color: var(--text-colour-disabled);\n}\n\n.dds-textarea__count {\n  position: absolute;\n  right: var(--space-2);\n  bottom: var(--space-2);\n  color: var(--text-colour-tertiary);\n  font-size: var(--font-size-xs);\n  font-weight: var(--font-weight-regular);\n  line-height: 16px;\n  pointer-events: none;\n}\n\n.dds-textarea__supporting-text {\n  margin: 0;\n  padding-top: var(--space-2);\n  color: var(--text-colour-tertiary);\n  font-size: var(--font-size-xs);\n  font-weight: var(--font-weight-regular);\n  line-height: 16px;\n}\n\n.dds-textarea__error {\n  color: var(--text-colour-danger);\n  font-weight: var(--font-weight-medium);\n}\n\n.dds-textarea__skeleton-label {\n  padding-bottom: var(--space-2);\n}\n\n.dds-textarea--small .dds-textarea__skeleton-label {\n  padding-bottom: var(--space-1);\n}\n\n.dds-textarea__skeleton-supporting-text {\n  padding-top: var(--space-2);\n}\n",
                     "styleUrl": "./textarea.component.css"
                 }
             ],
             "stylesData": "",
             "jsdoctags": [
                 {
-                    "pos": 267,
-                    "end": 371,
+                    "pos": 335,
+                    "end": 439,
                     "kind": 321,
                     "id": 0,
                     "flags": 16777216,
@@ -8255,7 +8350,7 @@
                         "name": "isDisabled",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 63,
+                        "line": 67,
                         "rawdescription": "\n",
                         "description": ""
                     }
@@ -8266,7 +8361,7 @@
                         "name": "isError",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 67,
+                        "line": 71,
                         "rawdescription": "\n",
                         "description": ""
                     }
@@ -8277,7 +8372,7 @@
                         "name": "helperId",
                         "type": "string",
                         "returnType": "string",
-                        "line": 71,
+                        "line": 75,
                         "rawdescription": "\n",
                         "description": ""
                     }
@@ -8288,7 +8383,7 @@
                         "name": "errorId",
                         "type": "string",
                         "returnType": "string",
-                        "line": 75,
+                        "line": 79,
                         "rawdescription": "\n",
                         "description": ""
                     }
@@ -8299,7 +8394,7 @@
                         "name": "countId",
                         "type": "string",
                         "returnType": "string",
-                        "line": 79,
+                        "line": 83,
                         "rawdescription": "\n",
                         "description": ""
                     }
@@ -8310,7 +8405,7 @@
                         "name": "describedBy",
                         "type": "unknown",
                         "returnType": "string | null",
-                        "line": 83,
+                        "line": 87,
                         "rawdescription": "\n",
                         "description": ""
                     }
@@ -8322,10 +8417,14 @@
                     {
                         "name": "CommonModule",
                         "type": "module"
+                    },
+                    {
+                        "name": "SkeletonComponent",
+                        "type": "component"
                     }
                 ]
             },
-            "templateData": "<div\n  class=\"dds-textarea\"\n  [class.dds-textarea--small]=\"size === 'small'\"\n  [class.dds-textarea--focused]=\"state === 'focused'\"\n  [class.dds-textarea--disabled]=\"isDisabled\"\n  [class.dds-textarea--error]=\"isError\"\n>\n  <label *ngIf=\"showLabel\" class=\"dds-textarea__label\" [for]=\"inputId\">\n    {{ label }}\n    <span *ngIf=\"required\" class=\"dds-textarea__required\" aria-hidden=\"true\">*</span>\n  </label>\n\n  <div class=\"dds-textarea__field\">\n    <textarea\n      class=\"dds-textarea__control\"\n      [id]=\"inputId\"\n      [value]=\"value\"\n      [placeholder]=\"placeholder\"\n      [required]=\"required\"\n      [disabled]=\"isDisabled\"\n      [attr.maxlength]=\"maxLength > 0 ? maxLength : null\"\n      [attr.aria-label]=\"showLabel ? null : ariaLabel\"\n      [attr.aria-invalid]=\"isError ? 'true' : null\"\n      [attr.aria-describedby]=\"describedBy\"\n      (input)=\"handleInput($event)\"\n    ></textarea>\n\n    <span *ngIf=\"showCharacterCount\" class=\"dds-textarea__count\" [id]=\"countId\" aria-live=\"polite\">\n      {{ value.length }}/{{ maxLength }}\n    </span>\n  </div>\n\n  <p *ngIf=\"!isError && showHelperText\" class=\"dds-textarea__supporting-text\" [id]=\"helperId\">\n    {{ helperText }}\n  </p>\n\n  <p *ngIf=\"isError\" class=\"dds-textarea__supporting-text dds-textarea__error\" [id]=\"errorId\">\n    {{ errorMessage }}\n  </p>\n</div>\n"
+            "templateData": "<div\n  class=\"dds-textarea\"\n  [class.dds-textarea--small]=\"size === 'small'\"\n  [class.dds-textarea--focused]=\"state === 'focused'\"\n  [class.dds-textarea--disabled]=\"isDisabled\"\n  [class.dds-textarea--error]=\"isError\"\n  [class.dds-textarea--loading]=\"loading\"\n  [attr.aria-busy]=\"loading ? 'true' : null\"\n  [attr.aria-label]=\"loading ? 'Loading textarea' : null\"\n>\n  <ng-container *ngIf=\"loading; else loadedContent\">\n    <div *ngIf=\"showLabel\" class=\"dds-textarea__skeleton-label\">\n      <dds-skeleton width=\"112px\" [height]=\"size === 'small' ? 16 : 20\"></dds-skeleton>\n    </div>\n    <dds-skeleton width=\"100%\" height=\"80px\"></dds-skeleton>\n    <div *ngIf=\"showHelperText\" class=\"dds-textarea__skeleton-supporting-text\">\n      <dds-skeleton width=\"55%\" height=\"16px\"></dds-skeleton>\n    </div>\n  </ng-container>\n\n  <ng-template #loadedContent>\n    <label *ngIf=\"showLabel\" class=\"dds-textarea__label\" [for]=\"inputId\">\n      {{ label }}\n      <span *ngIf=\"required\" class=\"dds-textarea__required\" aria-hidden=\"true\">*</span>\n    </label>\n\n    <div class=\"dds-textarea__field\">\n      <textarea\n        class=\"dds-textarea__control\"\n        [id]=\"inputId\"\n        [value]=\"value\"\n        [placeholder]=\"placeholder\"\n        [required]=\"required\"\n        [disabled]=\"isDisabled\"\n        [attr.maxlength]=\"maxLength > 0 ? maxLength : null\"\n        [attr.aria-label]=\"showLabel ? null : ariaLabel\"\n        [attr.aria-invalid]=\"isError ? 'true' : null\"\n        [attr.aria-describedby]=\"describedBy\"\n        (input)=\"handleInput($event)\"\n      ></textarea>\n\n      <span\n        *ngIf=\"showCharacterCount\"\n        class=\"dds-textarea__count\"\n        [id]=\"countId\"\n        aria-live=\"polite\"\n      >\n        {{ value.length }}/{{ maxLength }}\n      </span>\n    </div>\n\n    <p *ngIf=\"!isError && showHelperText\" class=\"dds-textarea__supporting-text\" [id]=\"helperId\">\n      {{ helperText }}\n    </p>\n\n    <p *ngIf=\"isError\" class=\"dds-textarea__supporting-text dds-textarea__error\" [id]=\"errorId\">\n      {{ errorMessage }}\n    </p>\n  </ng-template>\n</div>\n"
         },
         {
             "name": "TextInputComponent",
@@ -11541,7 +11640,7 @@
         ]
     },
     "coverage": {
-        "count": 8,
+        "count": 9,
         "status": "low",
         "files": [
             {
@@ -11880,8 +11979,8 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "DateInputComponent",
-                "coveragePercent": 0,
-                "coverageCount": "0/19",
+                "coveragePercent": 5,
+                "coverageCount": "1/20",
                 "status": "low"
             },
             {
@@ -12188,8 +12287,8 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "SearchComponent",
-                "coveragePercent": 62,
-                "coverageCount": "15/24",
+                "coveragePercent": 64,
+                "coverageCount": "16/25",
                 "status": "good"
             },
             {
@@ -12227,8 +12326,8 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "SelectComponent",
-                "coveragePercent": 93,
-                "coverageCount": "15/16",
+                "coveragePercent": 94,
+                "coverageCount": "16/17",
                 "status": "very-good"
             },
             {
@@ -12391,7 +12490,7 @@
                 "linktype": "component",
                 "name": "TextareaComponent",
                 "coveragePercent": 94,
-                "coverageCount": "16/17",
+                "coverageCount": "17/18",
                 "status": "very-good"
             },
             {
