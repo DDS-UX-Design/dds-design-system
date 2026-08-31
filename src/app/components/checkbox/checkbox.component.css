@@ -25,6 +25,16 @@
   color: var(--text-colour-danger);
 }
 
+.dds-checkbox__skeleton-label {
+  padding-bottom: var(--space-2);
+}
+
+.dds-checkbox__skeleton-option {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
 .dds-checkbox__option {
   display: inline-flex;
   align-items: center;

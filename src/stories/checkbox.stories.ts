@@ -17,6 +17,7 @@ type CheckboxStoryArgs = {
   ariaLabel: string;
   errorMessage: string;
   showErrorMessage: boolean;
+  loading: boolean;
   onValueChange: ReturnType<typeof fn>;
 };
 
@@ -60,6 +61,7 @@ const meta: Meta<CheckboxStoryArgs> = {
       table: { category: 'Validation' },
     },
     showErrorMessage: { control: 'boolean', table: { category: 'Validation' } },
+    loading: { control: 'boolean', table: { category: 'State' } },
     onValueChange: { table: { disable: true } },
   },
   args: {
@@ -73,6 +75,7 @@ const meta: Meta<CheckboxStoryArgs> = {
     ariaLabel: 'Send me product updates',
     errorMessage: 'Select this option to continue.',
     showErrorMessage: true,
+    loading: false,
     onValueChange: fn(),
   },
   render: (args) => ({
@@ -89,6 +92,7 @@ const meta: Meta<CheckboxStoryArgs> = {
         [ariaLabel]="ariaLabel"
         [errorMessage]="errorMessage"
         [showErrorMessage]="showErrorMessage"
+        [loading]="loading"
         (valueChange)="value = $event; onValueChange($event)"
       ></dds-checkbox>
     `,
@@ -104,6 +108,14 @@ export const Indeterminate: Story = { args: { value: 'indeterminate' } };
 export const Focused: Story = { args: { value: 'checked', state: 'focused' } };
 export const Invalid: Story = { args: { state: 'invalid' } };
 export const Disabled: Story = { args: { value: 'checked', state: 'disabled' } };
+export const Loading: Story = {
+  args: { loading: true },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await expect(canvas.getByLabelText('Loading checkbox')).toHaveAttribute('aria-busy', 'true');
+    await expect(canvas.queryByRole('checkbox')).not.toBeInTheDocument();
+  },
+};
 export const WithoutFieldLabel: Story = {
   name: 'Without field label',
   args: { showLabel: false, required: false },

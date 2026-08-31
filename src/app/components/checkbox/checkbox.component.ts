@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { IconComponent } from '../icon/icon.component';
+import { SkeletonComponent } from '../skeleton/skeleton.component';
 
 export type CheckboxValue = 'unchecked' | 'checked' | 'indeterminate';
 export type CheckboxState = 'default' | 'focused' | 'disabled' | 'invalid';
@@ -11,7 +12,7 @@ let nextCheckboxId = 0;
 @Component({
   selector: 'dds-checkbox',
   standalone: true,
-  imports: [CommonModule, IconComponent],
+  imports: [CommonModule, IconComponent, SkeletonComponent],
   templateUrl: './checkbox.component.html',
   styleUrl: './checkbox.component.css',
 })
@@ -29,6 +30,7 @@ export class CheckboxComponent {
   @Input() errorMessage = 'Select this option to continue.';
   @Input() showErrorMessage = true;
   @Input() describedBy?: string;
+  @Input() loading = false;
 
   @Output() valueChange = new EventEmitter<CheckboxValue>();
 
