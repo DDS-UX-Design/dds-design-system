@@ -27,12 +27,6 @@
   line-height: 16px;
 }
 
-.dds-date-input__required,
-.dds-date-input--error .dds-date-input__label,
-.dds-date-input__message--error {
-  color: var(--text-colour-danger);
-}
-
 .dds-date-input__field {
   display: flex;
   align-items: center;
@@ -99,6 +93,12 @@
   font-size: var(--font-size-xs);
   font-weight: var(--font-weight-regular);
   line-height: 16px;
+}
+
+.dds-date-input__required,
+.dds-date-input--error .dds-date-input__label,
+.dds-date-input__message--error {
+  color: var(--text-colour-danger);
 }
 
 .dds-date-input--disabled .dds-date-input__field {
