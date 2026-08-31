@@ -97,6 +97,18 @@
   font-weight: var(--font-weight-medium);
 }
 
+.dds-text-input__skeleton-label {
+  padding-bottom: var(--space-2);
+}
+
+.dds-text-input--mobile .dds-text-input__skeleton-label {
+  padding-bottom: var(--space-1);
+}
+
+.dds-text-input__skeleton-message {
+  padding-top: var(--space-2);
+}
+
 .dds-text-input--disabled .dds-text-input__field {
   border-color: var(--border-colour-strong);
   background: var(--bg-colour-disabled);

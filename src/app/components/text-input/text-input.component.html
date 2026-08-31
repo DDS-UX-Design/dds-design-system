@@ -4,39 +4,56 @@
   [class.dds-text-input--focused]="state === 'focused'"
   [class.dds-text-input--error]="isError"
   [class.dds-text-input--disabled]="disabled"
+  [class.dds-text-input--loading]="loading"
+  [attr.aria-busy]="loading ? 'true' : null"
+  [attr.aria-label]="loading ? 'Loading text input' : null"
 >
-  <label *ngIf="showLabel" class="dds-text-input__label" [for]="inputId">
-    {{ label }}
-    <span *ngIf="required" class="dds-text-input__required" aria-hidden="true">*</span>
-  </label>
+  <ng-container *ngIf="loading; else loadedContent">
+    <div *ngIf="showLabel" class="dds-text-input__skeleton-label">
+      <dds-skeleton width="96px" [height]="size === 'mobile' ? 16 : 20"></dds-skeleton>
+    </div>
 
-  <div class="dds-text-input__field">
-    <input
-      class="dds-text-input__control"
-      [id]="inputId"
-      [name]="name"
-      type="text"
-      [value]="value"
-      [placeholder]="placeholder"
-      [required]="required"
-      [disabled]="disabled"
-      [autocomplete]="autocomplete"
-      [attr.maxlength]="maxLength ?? null"
-      [attr.aria-label]="showLabel ? null : ariaLabel"
-      [attr.aria-invalid]="isError ? 'true' : null"
-      [attr.aria-describedby]="describedBy"
-      (input)="handleInput($event)"
-    />
-  </div>
+    <dds-skeleton width="100%" [height]="size === 'mobile' ? 40 : 48"></dds-skeleton>
 
-  <p
-    *ngIf="isError && showErrorMessage"
-    class="dds-text-input__message dds-text-input__message--error"
-    [id]="messageId"
-  >
-    {{ errorMessage }}
-  </p>
-  <p *ngIf="!isError && showHelperText" class="dds-text-input__message" [id]="messageId">
-    {{ helperText }}
-  </p>
+    <div *ngIf="showHelperText" class="dds-text-input__skeleton-message">
+      <dds-skeleton width="42%" height="16px"></dds-skeleton>
+    </div>
+  </ng-container>
+
+  <ng-template #loadedContent>
+    <label *ngIf="showLabel" class="dds-text-input__label" [for]="inputId">
+      {{ label }}
+      <span *ngIf="required" class="dds-text-input__required" aria-hidden="true">*</span>
+    </label>
+
+    <div class="dds-text-input__field">
+      <input
+        class="dds-text-input__control"
+        [id]="inputId"
+        [name]="name"
+        type="text"
+        [value]="value"
+        [placeholder]="placeholder"
+        [required]="required"
+        [disabled]="disabled"
+        [autocomplete]="autocomplete"
+        [attr.maxlength]="maxLength ?? null"
+        [attr.aria-label]="showLabel ? null : ariaLabel"
+        [attr.aria-invalid]="isError ? 'true' : null"
+        [attr.aria-describedby]="describedBy"
+        (input)="handleInput($event)"
+      />
+    </div>
+
+    <p
+      *ngIf="isError && showErrorMessage"
+      class="dds-text-input__message dds-text-input__message--error"
+      [id]="messageId"
+    >
+      {{ errorMessage }}
+    </p>
+    <p *ngIf="!isError && showHelperText" class="dds-text-input__message" [id]="messageId">
+      {{ helperText }}
+    </p>
+  </ng-template>
 </div>

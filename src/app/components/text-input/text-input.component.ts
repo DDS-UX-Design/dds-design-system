@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { SkeletonComponent } from '../skeleton/skeleton.component';
 
 export type TextInputSize = 'desktop' | 'mobile';
 export type TextInputState = 'default' | 'focused' | 'error';
@@ -9,7 +10,7 @@ let nextTextInputId = 0;
 @Component({
   selector: 'dds-text-input',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, SkeletonComponent],
   templateUrl: './text-input.component.html',
   styleUrl: './text-input.component.css',
 })
@@ -31,6 +32,8 @@ export class TextInputComponent {
   @Input() name?: string;
   @Input() autocomplete = 'off';
   @Input() maxLength?: number;
+  /** Replaces the field content with shape-matched skeletons while data is loading. */
+  @Input() loading = false;
 
   @Output() valueChange = new EventEmitter<string>();
 

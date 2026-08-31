@@ -23,6 +23,7 @@ type TextInputStoryArgs = {
   name: string;
   autocomplete: string;
   maxLength?: number;
+  loading: boolean;
 };
 
 const meta: Meta<TextInputStoryArgs> = {
@@ -67,6 +68,7 @@ const meta: Meta<TextInputStoryArgs> = {
     name: { control: 'text', table: { category: 'Form' } },
     autocomplete: { control: 'text', table: { category: 'Form' } },
     maxLength: { control: 'number', table: { category: 'Validation' } },
+    loading: { control: 'boolean', table: { category: 'State' } },
   },
   args: {
     label: 'Label Text',
@@ -84,6 +86,7 @@ const meta: Meta<TextInputStoryArgs> = {
     disabled: false,
     name: 'text-input',
     autocomplete: 'off',
+    loading: false,
   },
   render: (args) => ({
     props: args,
@@ -105,6 +108,7 @@ const meta: Meta<TextInputStoryArgs> = {
         [name]="name"
         [autocomplete]="autocomplete"
         [maxLength]="maxLength"
+        [loading]="loading"
         (valueChange)="value = $event"
       ></dds-text-input>
     `,
@@ -126,6 +130,22 @@ export const Mobile: Story = {
   parameters: { viewport: { defaultViewport: 'mobile' } },
 };
 export const Disabled: Story = { args: { value: 'Field text', disabled: true } };
+export const Loading: Story = {
+  args: { loading: true },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Reserves the label, field, and optional helper-text space while the form content is loading. The interactive input is not rendered until loading completes.',
+      },
+    },
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await expect(canvas.getByLabelText('Loading text input')).toHaveAttribute('aria-busy', 'true');
+    await expect(canvas.queryByRole('textbox')).not.toBeInTheDocument();
+  },
+};
 export const WithoutVisibleLabel: Story = {
   args: { showLabel: false, ariaLabel: 'Text input' },
 };

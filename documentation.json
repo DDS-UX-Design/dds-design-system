@@ -7770,6 +7770,10 @@
                     {
                         "name": "DataTableComponent",
                         "type": "component"
+                    },
+                    {
+                        "name": "TextInputComponent",
+                        "type": "component"
                     }
                 ],
                 "outgoing": []
@@ -8325,7 +8329,7 @@
         },
         {
             "name": "TextInputComponent",
-            "id": "component-TextInputComponent-6224a5a6362e96744efb2898dd95ab345694cfaff586c74cfe0af423af4755695809aa6c54499d5dce56a9a2c474d5def0df84dce30f86b52319e4f7bb2cdd89",
+            "id": "component-TextInputComponent-405ba1b6429bc01a5b171490f140d28589f447e04cfb5bcbe25fa678aacfd90969334015f5d1adc4d453ff21b1ac49f1d043112192c8430f8a237abedfb0f1f6",
             "file": "src/app/components/text-input/text-input.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -8352,7 +8356,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 29,
+                    "line": 30,
                     "type": "string",
                     "decorators": []
                 },
@@ -8364,7 +8368,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 32,
+                    "line": 33,
                     "type": "string",
                     "decorators": []
                 },
@@ -8376,7 +8380,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 30,
+                    "line": 31,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -8388,7 +8392,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 22,
+                    "line": 23,
                     "type": "string",
                     "decorators": []
                 },
@@ -8400,7 +8404,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 21,
+                    "line": 22,
                     "type": "string",
                     "decorators": []
                 },
@@ -8412,7 +8416,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 17,
+                    "line": 18,
                     "type": "string",
                     "decorators": []
                 },
@@ -8424,8 +8428,20 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 18,
+                    "line": 19,
                     "type": "string",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "loading",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nReplaces the field content with shape-matched skeletons while data is loading.",
+                    "description": "<p>Replaces the field content with shape-matched skeletons while data is loading.</p>\n",
+                    "line": 36,
+                    "type": "boolean",
                     "decorators": []
                 },
                 {
@@ -8435,7 +8451,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 33,
+                    "line": 34,
                     "type": "number",
                     "decorators": []
                 },
@@ -8446,7 +8462,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 31,
+                    "line": 32,
                     "type": "string",
                     "decorators": []
                 },
@@ -8458,7 +8474,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 19,
+                    "line": 20,
                     "type": "string",
                     "decorators": []
                 },
@@ -8470,7 +8486,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 25,
+                    "line": 26,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -8482,7 +8498,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 28,
+                    "line": 29,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -8494,7 +8510,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 27,
+                    "line": 28,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -8506,7 +8522,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 26,
+                    "line": 27,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -8518,7 +8534,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 23,
+                    "line": 24,
                     "type": "TextInputSize",
                     "decorators": []
                 },
@@ -8530,7 +8546,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 24,
+                    "line": 25,
                     "type": "TextInputState",
                     "decorators": []
                 },
@@ -8542,7 +8558,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
-                    "line": 20,
+                    "line": 21,
                     "type": "string",
                     "decorators": []
                 }
@@ -8554,7 +8570,7 @@
                     "defaultValue": "new EventEmitter<string>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 35,
+                    "line": 38,
                     "type": "EventEmitter"
                 }
             ],
@@ -8576,7 +8592,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 53,
+                    "line": 56,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n",
@@ -8606,17 +8622,21 @@
                 {
                     "name": "CommonModule",
                     "type": "module"
+                },
+                {
+                    "name": "SkeletonComponent",
+                    "type": "component"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, EventEmitter, Input, Output } from '@angular/core';\n\nexport type TextInputSize = 'desktop' | 'mobile';\nexport type TextInputState = 'default' | 'focused' | 'error';\n\nlet nextTextInputId = 0;\n\n@Component({\n  selector: 'dds-text-input',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './text-input.component.html',\n  styleUrl: './text-input.component.css',\n})\nexport class TextInputComponent {\n  @Input() inputId = `dds-text-input-${nextTextInputId++}`;\n  @Input() label = 'Label Text';\n  @Input() placeholder = 'Placeholder text...';\n  @Input() value = '';\n  @Input() helperText = 'Helper text';\n  @Input() errorMessage = 'Error message';\n  @Input() size: TextInputSize = 'desktop';\n  @Input() state: TextInputState = 'default';\n  @Input() required = false;\n  @Input() showLabel = true;\n  @Input() showHelperText = true;\n  @Input() showErrorMessage = true;\n  @Input() ariaLabel?: string;\n  @Input() disabled = false;\n  @Input() name?: string;\n  @Input() autocomplete = 'off';\n  @Input() maxLength?: number;\n\n  @Output() valueChange = new EventEmitter<string>();\n\n  get isError(): boolean {\n    return this.state === 'error';\n  }\n\n  get messageId(): string {\n    return `${this.inputId}-${this.isError ? 'error' : 'helper'}`;\n  }\n\n  get describedBy(): string | null {\n    if (this.isError) {\n      return this.showErrorMessage ? this.messageId : null;\n    }\n\n    return this.showHelperText ? this.messageId : null;\n  }\n\n  handleInput(event: Event): void {\n    this.value = (event.target as HTMLInputElement).value;\n    this.valueChange.emit(this.value);\n  }\n}\n",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, EventEmitter, Input, Output } from '@angular/core';\nimport { SkeletonComponent } from '../skeleton/skeleton.component';\n\nexport type TextInputSize = 'desktop' | 'mobile';\nexport type TextInputState = 'default' | 'focused' | 'error';\n\nlet nextTextInputId = 0;\n\n@Component({\n  selector: 'dds-text-input',\n  standalone: true,\n  imports: [CommonModule, SkeletonComponent],\n  templateUrl: './text-input.component.html',\n  styleUrl: './text-input.component.css',\n})\nexport class TextInputComponent {\n  @Input() inputId = `dds-text-input-${nextTextInputId++}`;\n  @Input() label = 'Label Text';\n  @Input() placeholder = 'Placeholder text...';\n  @Input() value = '';\n  @Input() helperText = 'Helper text';\n  @Input() errorMessage = 'Error message';\n  @Input() size: TextInputSize = 'desktop';\n  @Input() state: TextInputState = 'default';\n  @Input() required = false;\n  @Input() showLabel = true;\n  @Input() showHelperText = true;\n  @Input() showErrorMessage = true;\n  @Input() ariaLabel?: string;\n  @Input() disabled = false;\n  @Input() name?: string;\n  @Input() autocomplete = 'off';\n  @Input() maxLength?: number;\n  /** Replaces the field content with shape-matched skeletons while data is loading. */\n  @Input() loading = false;\n\n  @Output() valueChange = new EventEmitter<string>();\n\n  get isError(): boolean {\n    return this.state === 'error';\n  }\n\n  get messageId(): string {\n    return `${this.inputId}-${this.isError ? 'error' : 'helper'}`;\n  }\n\n  get describedBy(): string | null {\n    if (this.isError) {\n      return this.showErrorMessage ? this.messageId : null;\n    }\n\n    return this.showHelperText ? this.messageId : null;\n  }\n\n  handleInput(event: Event): void {\n    this.value = (event.target as HTMLInputElement).value;\n    this.valueChange.emit(this.value);\n  }\n}\n",
             "styleUrl": "./text-input.component.css",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ":host {\n  display: inline-block;\n  max-width: 100%;\n}\n\n.dds-text-input {\n  display: flex;\n  flex-direction: column;\n  width: 460px;\n  max-width: 100%;\n  font-family: var(--font-family-primary);\n}\n\n.dds-text-input__label {\n  display: flex;\n  gap: var(--space-1);\n  padding-bottom: var(--space-2);\n  color: var(--text-colour-default);\n  font-size: var(--font-size-sm);\n  font-weight: var(--font-weight-semibold);\n  line-height: 20px;\n}\n\n.dds-text-input--mobile .dds-text-input__label {\n  padding-bottom: var(--space-1);\n  font-size: var(--font-size-xs);\n  line-height: 16px;\n}\n\n.dds-text-input__required,\n.dds-text-input__message--error {\n  color: var(--text-colour-danger);\n}\n\n.dds-text-input__field {\n  display: flex;\n  align-items: center;\n  min-height: 48px;\n  padding: 0 var(--space-3);\n  border: 1px solid var(--border-colour-strong);\n  border-radius: var(--radius-sm);\n  background: var(--bg-colour-white);\n  box-sizing: border-box;\n}\n\n.dds-text-input--mobile .dds-text-input__field {\n  min-height: 40px;\n}\n\n.dds-text-input__control {\n  width: 100%;\n  min-width: 0;\n  padding: 0;\n  border: 0;\n  outline: 0;\n  background: transparent;\n  color: var(--text-colour-default);\n  font: inherit;\n  font-size: var(--font-size-md);\n  font-weight: var(--font-weight-regular);\n  line-height: 24px;\n}\n\n.dds-text-input--mobile .dds-text-input__control {\n  font-size: var(--font-size-sm);\n  line-height: 22px;\n}\n\n.dds-text-input__control::placeholder {\n  color: var(--text-colour-placeholder);\n  opacity: 1;\n}\n\n.dds-text-input__field:focus-within,\n.dds-text-input--focused .dds-text-input__field {\n  border: 2px solid var(--border-colour-info);\n  padding-right: 11px;\n  padding-left: 11px;\n}\n\n.dds-text-input--error .dds-text-input__field {\n  border: 2px solid var(--border-colour-danger);\n  padding-right: 11px;\n  padding-left: 11px;\n}\n\n.dds-text-input__message {\n  margin: 0;\n  padding-top: var(--space-2);\n  color: var(--text-colour-secondary);\n  font-size: var(--font-size-xs);\n  font-weight: var(--font-weight-regular);\n  line-height: 16px;\n}\n\n.dds-text-input__message--error {\n  font-weight: var(--font-weight-medium);\n}\n\n.dds-text-input--disabled .dds-text-input__field {\n  border-color: var(--border-colour-strong);\n  background: var(--bg-colour-disabled);\n}\n\n.dds-text-input--disabled .dds-text-input__control {\n  color: var(--text-colour-disabled);\n  cursor: not-allowed;\n}\n\n.dds-text-input--disabled .dds-text-input__control::placeholder {\n  color: var(--text-colour-disabled);\n}\n",
+                    "data": ":host {\n  display: inline-block;\n  max-width: 100%;\n}\n\n.dds-text-input {\n  display: flex;\n  flex-direction: column;\n  width: 460px;\n  max-width: 100%;\n  font-family: var(--font-family-primary);\n}\n\n.dds-text-input__label {\n  display: flex;\n  gap: var(--space-1);\n  padding-bottom: var(--space-2);\n  color: var(--text-colour-default);\n  font-size: var(--font-size-sm);\n  font-weight: var(--font-weight-semibold);\n  line-height: 20px;\n}\n\n.dds-text-input--mobile .dds-text-input__label {\n  padding-bottom: var(--space-1);\n  font-size: var(--font-size-xs);\n  line-height: 16px;\n}\n\n.dds-text-input__required,\n.dds-text-input__message--error {\n  color: var(--text-colour-danger);\n}\n\n.dds-text-input__field {\n  display: flex;\n  align-items: center;\n  min-height: 48px;\n  padding: 0 var(--space-3);\n  border: 1px solid var(--border-colour-strong);\n  border-radius: var(--radius-sm);\n  background: var(--bg-colour-white);\n  box-sizing: border-box;\n}\n\n.dds-text-input--mobile .dds-text-input__field {\n  min-height: 40px;\n}\n\n.dds-text-input__control {\n  width: 100%;\n  min-width: 0;\n  padding: 0;\n  border: 0;\n  outline: 0;\n  background: transparent;\n  color: var(--text-colour-default);\n  font: inherit;\n  font-size: var(--font-size-md);\n  font-weight: var(--font-weight-regular);\n  line-height: 24px;\n}\n\n.dds-text-input--mobile .dds-text-input__control {\n  font-size: var(--font-size-sm);\n  line-height: 22px;\n}\n\n.dds-text-input__control::placeholder {\n  color: var(--text-colour-placeholder);\n  opacity: 1;\n}\n\n.dds-text-input__field:focus-within,\n.dds-text-input--focused .dds-text-input__field {\n  border: 2px solid var(--border-colour-info);\n  padding-right: 11px;\n  padding-left: 11px;\n}\n\n.dds-text-input--error .dds-text-input__field {\n  border: 2px solid var(--border-colour-danger);\n  padding-right: 11px;\n  padding-left: 11px;\n}\n\n.dds-text-input__message {\n  margin: 0;\n  padding-top: var(--space-2);\n  color: var(--text-colour-secondary);\n  font-size: var(--font-size-xs);\n  font-weight: var(--font-weight-regular);\n  line-height: 16px;\n}\n\n.dds-text-input__message--error {\n  font-weight: var(--font-weight-medium);\n}\n\n.dds-text-input__skeleton-label {\n  padding-bottom: var(--space-2);\n}\n\n.dds-text-input--mobile .dds-text-input__skeleton-label {\n  padding-bottom: var(--space-1);\n}\n\n.dds-text-input__skeleton-message {\n  padding-top: var(--space-2);\n}\n\n.dds-text-input--disabled .dds-text-input__field {\n  border-color: var(--border-colour-strong);\n  background: var(--bg-colour-disabled);\n}\n\n.dds-text-input--disabled .dds-text-input__control {\n  color: var(--text-colour-disabled);\n  cursor: not-allowed;\n}\n\n.dds-text-input--disabled .dds-text-input__control::placeholder {\n  color: var(--text-colour-disabled);\n}\n",
                     "styleUrl": "./text-input.component.css"
                 }
             ],
@@ -8629,7 +8649,7 @@
                         "name": "isError",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 37,
+                        "line": 40,
                         "rawdescription": "\n",
                         "description": ""
                     }
@@ -8640,7 +8660,7 @@
                         "name": "messageId",
                         "type": "string",
                         "returnType": "string",
-                        "line": 41,
+                        "line": 44,
                         "rawdescription": "\n",
                         "description": ""
                     }
@@ -8651,7 +8671,7 @@
                         "name": "describedBy",
                         "type": "unknown",
                         "returnType": "string | null",
-                        "line": 45,
+                        "line": 48,
                         "rawdescription": "\n",
                         "description": ""
                     }
@@ -8663,10 +8683,14 @@
                     {
                         "name": "CommonModule",
                         "type": "module"
+                    },
+                    {
+                        "name": "SkeletonComponent",
+                        "type": "component"
                     }
                 ]
             },
-            "templateData": "<div\n  class=\"dds-text-input\"\n  [class.dds-text-input--mobile]=\"size === 'mobile'\"\n  [class.dds-text-input--focused]=\"state === 'focused'\"\n  [class.dds-text-input--error]=\"isError\"\n  [class.dds-text-input--disabled]=\"disabled\"\n>\n  <label *ngIf=\"showLabel\" class=\"dds-text-input__label\" [for]=\"inputId\">\n    {{ label }}\n    <span *ngIf=\"required\" class=\"dds-text-input__required\" aria-hidden=\"true\">*</span>\n  </label>\n\n  <div class=\"dds-text-input__field\">\n    <input\n      class=\"dds-text-input__control\"\n      [id]=\"inputId\"\n      [name]=\"name\"\n      type=\"text\"\n      [value]=\"value\"\n      [placeholder]=\"placeholder\"\n      [required]=\"required\"\n      [disabled]=\"disabled\"\n      [autocomplete]=\"autocomplete\"\n      [attr.maxlength]=\"maxLength ?? null\"\n      [attr.aria-label]=\"showLabel ? null : ariaLabel\"\n      [attr.aria-invalid]=\"isError ? 'true' : null\"\n      [attr.aria-describedby]=\"describedBy\"\n      (input)=\"handleInput($event)\"\n    />\n  </div>\n\n  <p\n    *ngIf=\"isError && showErrorMessage\"\n    class=\"dds-text-input__message dds-text-input__message--error\"\n    [id]=\"messageId\"\n  >\n    {{ errorMessage }}\n  </p>\n  <p *ngIf=\"!isError && showHelperText\" class=\"dds-text-input__message\" [id]=\"messageId\">\n    {{ helperText }}\n  </p>\n</div>\n"
+            "templateData": "<div\n  class=\"dds-text-input\"\n  [class.dds-text-input--mobile]=\"size === 'mobile'\"\n  [class.dds-text-input--focused]=\"state === 'focused'\"\n  [class.dds-text-input--error]=\"isError\"\n  [class.dds-text-input--disabled]=\"disabled\"\n  [class.dds-text-input--loading]=\"loading\"\n  [attr.aria-busy]=\"loading ? 'true' : null\"\n  [attr.aria-label]=\"loading ? 'Loading text input' : null\"\n>\n  <ng-container *ngIf=\"loading; else loadedContent\">\n    <div *ngIf=\"showLabel\" class=\"dds-text-input__skeleton-label\">\n      <dds-skeleton width=\"96px\" [height]=\"size === 'mobile' ? 16 : 20\"></dds-skeleton>\n    </div>\n\n    <dds-skeleton width=\"100%\" [height]=\"size === 'mobile' ? 40 : 48\"></dds-skeleton>\n\n    <div *ngIf=\"showHelperText\" class=\"dds-text-input__skeleton-message\">\n      <dds-skeleton width=\"42%\" height=\"16px\"></dds-skeleton>\n    </div>\n  </ng-container>\n\n  <ng-template #loadedContent>\n    <label *ngIf=\"showLabel\" class=\"dds-text-input__label\" [for]=\"inputId\">\n      {{ label }}\n      <span *ngIf=\"required\" class=\"dds-text-input__required\" aria-hidden=\"true\">*</span>\n    </label>\n\n    <div class=\"dds-text-input__field\">\n      <input\n        class=\"dds-text-input__control\"\n        [id]=\"inputId\"\n        [name]=\"name\"\n        type=\"text\"\n        [value]=\"value\"\n        [placeholder]=\"placeholder\"\n        [required]=\"required\"\n        [disabled]=\"disabled\"\n        [autocomplete]=\"autocomplete\"\n        [attr.maxlength]=\"maxLength ?? null\"\n        [attr.aria-label]=\"showLabel ? null : ariaLabel\"\n        [attr.aria-invalid]=\"isError ? 'true' : null\"\n        [attr.aria-describedby]=\"describedBy\"\n        (input)=\"handleInput($event)\"\n      />\n    </div>\n\n    <p\n      *ngIf=\"isError && showErrorMessage\"\n      class=\"dds-text-input__message dds-text-input__message--error\"\n      [id]=\"messageId\"\n    >\n      {{ errorMessage }}\n    </p>\n    <p *ngIf=\"!isError && showHelperText\" class=\"dds-text-input__message\" [id]=\"messageId\">\n      {{ helperText }}\n    </p>\n  </ng-template>\n</div>\n"
         },
         {
             "name": "ToastComponent",
@@ -12327,8 +12351,8 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "TextInputComponent",
-                "coveragePercent": 0,
-                "coverageCount": "0/20",
+                "coveragePercent": 4,
+                "coverageCount": "1/21",
                 "status": "low"
             },
             {
