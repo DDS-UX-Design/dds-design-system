@@ -2,7 +2,7 @@
   class="dds-button"
   [attr.type]="type"
   [disabled]="isDisabled"
-  [attr.aria-label]="isIconOnly ? (ariaLabel || 'Icon button') : null"
+  [attr.aria-label]="isIconOnly ? ariaLabel || 'Icon button' : null"
   [class.dds-button--primary]="variant === 'primary'"
   [class.dds-button--secondary]="variant === 'secondary'"
   [class.dds-button--ghost]="variant === 'ghost'"
@@ -14,9 +14,21 @@
   [class.dds-button--state-focused]="state === 'focused'"
   [class.dds-button--state-disabled]="state === 'disabled'"
   [class.dds-button--icon-only]="isIconOnly"
+  [class.dds-button--icon-spin]="iconAnimation === 'spin'"
+  [class.dds-button--icon-spin-on-press]="iconAnimation === 'spin-on-press'"
   [class.dds-button--full-width]="fullWidth"
 >
-  <dds-icon class="dds-button__icon" *ngIf="hasLeftIcon || isIconOnly" [name]="icon" [size]="iconSize"></dds-icon>
+  <dds-icon
+    class="dds-button__icon"
+    *ngIf="hasLeftIcon || isIconOnly"
+    [name]="icon"
+    [size]="iconSize"
+  ></dds-icon>
   <span class="dds-button__label" *ngIf="!isIconOnly"><ng-content></ng-content></span>
-  <dds-icon class="dds-button__icon" *ngIf="hasRightIcon" [name]="icon" [size]="iconSize"></dds-icon>
+  <dds-icon
+    class="dds-button__icon"
+    *ngIf="hasRightIcon"
+    [name]="icon"
+    [size]="iconSize"
+  ></dds-icon>
 </button>

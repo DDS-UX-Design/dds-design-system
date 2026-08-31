@@ -7,6 +7,7 @@ export type ButtonState = 'default' | 'hover' | 'focused' | 'disabled';
 export type ButtonStyle = 'default' | 'danger';
 export type ButtonSize = 'large' | 'medium' | 'small';
 export type ButtonIconType = 'no-icon' | 'left-icon' | 'right-icon' | 'icon-only';
+export type ButtonIconAnimation = 'none' | 'spin' | 'spin-on-press';
 
 /**
  * A reusable button component for primary actions, secondary actions, and icon-only affordances.
@@ -37,6 +38,9 @@ export class ButtonComponent {
 
   /** Name of the icon to display when icon placement is enabled. */
   @Input() icon: DdsIconName = 'info';
+
+  /** Optional motion treatment for animated action icons. */
+  @Input() iconAnimation: ButtonIconAnimation = 'none';
 
   /** Accessible label for icon-only buttons when the visible label is not present. */
   @Input() ariaLabel?: string;
