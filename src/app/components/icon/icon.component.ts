@@ -42,7 +42,7 @@ import {
   LucideFunnel,
   LucideExternalLink,
   LucideRefreshCw,
-  LucideWrench, 
+  LucideWrench,
   LucideBrushCleaning,
   LucideCloudUpload,
   LucideWandSparkles,
@@ -103,8 +103,6 @@ import {
   LucideContrast,
   LucideWifi,
   LucideSignal,
-
-  
 } from '@lucide/angular';
 
 export const DDS_ICON_NAMES = [
@@ -112,7 +110,7 @@ export const DDS_ICON_NAMES = [
   'arrow-right',
   'arrow-left',
   'arrow-down',
-  'arrow-up-down',  
+  'arrow-up-down',
   'arrow-up',
   'check',
   'chevron-down',
@@ -319,17 +317,18 @@ export type DdsIconName = (typeof DDS_ICON_NAMES)[number];
       LucideMonitorSmartphone,
       LucideContrast,
       LucideWifi,
-      LucideSignal
-    )
+      LucideSignal,
+    ),
   ],
   template: `
     <svg
       [lucideIcon]="name"
       [size]="size"
+      [strokeWidth]="strokeWidth"
       [attr.aria-hidden]="decorative ? 'true' : null"
       [title]="decorative ? null : title"
     ></svg>
-  `
+  `,
 })
 export class IconComponent {
   @Input() name: DdsIconName = 'info';
