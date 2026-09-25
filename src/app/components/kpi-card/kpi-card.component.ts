@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { DdsIconName, IconComponent } from '../icon/icon.component';
+import { SkeletonComponent } from '../skeleton/skeleton.component';
 
 export type KpiCardTrend = 'positive' | 'neutral' | 'negative';
 
@@ -8,7 +9,7 @@ export type KpiCardTrend = 'positive' | 'neutral' | 'negative';
 @Component({
   selector: 'dds-kpi-card',
   standalone: true,
-  imports: [CommonModule, IconComponent],
+  imports: [CommonModule, IconComponent, SkeletonComponent],
   templateUrl: './kpi-card.component.html',
   styleUrl: './kpi-card.component.css',
 })
@@ -31,6 +32,9 @@ export class KpiCardComponent {
   /** Comparative change and period, such as “8.2% vs last month”. */
   @Input() trendText = '8.2% vs last month';
 
+  /** Replaces the metric content with shape-matched skeletons while data is loading. */
+  @Input() loading = false;
+
   get trendIcon(): DdsIconName | null {
     if (this.trend === 'positive') return 'arrow-up';
     if (this.trend === 'negative') return 'arrow-down';
@@ -38,6 +42,8 @@ export class KpiCardComponent {
   }
 
   get accessibleLabel(): string {
+    if (this.loading) return `${this.label} is loading`;
+
     const metric = [this.prefix, this.value, this.suffix].filter(String).join(' ');
     return `${this.label}: ${metric}. ${this.trendText}`;
   }
