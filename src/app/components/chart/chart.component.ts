@@ -21,12 +21,16 @@ import {
   DoughnutController,
   ArcElement,
   Legend,
+  LineController,
+  LineElement,
   LinearScale,
   PieController,
+  PointElement,
   Tooltip,
 } from 'chart.js';
 
-export type DdsChartType = 'donut' | 'pie' | 'horizontal-bar' | 'grouped-bar' | 'stacked-bar';
+export type DdsChartType =
+  'donut' | 'pie' | 'gauge' | 'line' | 'horizontal-bar' | 'grouped-bar' | 'stacked-bar';
 export type DdsChartLegendPosition = 'right' | 'bottom' | 'top';
 
 export interface DdsChartSeries {
@@ -41,8 +45,11 @@ Chart.register(
   CategoryScale,
   DoughnutController,
   Legend,
+  LineController,
+  LineElement,
   LinearScale,
   PieController,
+  PointElement,
   Tooltip,
 );
 
@@ -96,76 +103,116 @@ export class ChartComponent implements AfterViewInit, OnChanges, OnDestroy {
     this.chart?.destroy();
   }
 
+  get gaugeValue(): number {
+    const values = this.series[0]?.data ?? [];
+    const total = values.reduce((sum, value) => sum + value, 0);
+    return total > 0 ? Math.round((values[0] / total) * 100) : 0;
+  }
+
   private renderChart(): void {
     if (!isPlatformBrowser(this.platformId) || !this.canvas) return;
 
     this.chart?.destroy();
     const styles = getComputedStyle(this.canvas.nativeElement);
     const colours = CHART_COLOURS.map((token) => styles.getPropertyValue(token).trim());
-    const isCircular = this.type === 'donut' || this.type === 'pie';
+    const isGauge = this.type === 'gauge';
+    const isCircular = this.type === 'donut' || this.type === 'pie' || isGauge;
+    const isLine = this.type === 'line';
     const isStacked = this.type === 'stacked-bar';
-    const datasets: ChartDataset<'bar' | 'doughnut' | 'pie', number[]>[] = isCircular
+    const datasets: ChartDataset<'bar' | 'doughnut' | 'pie' | 'line', number[]>[] = isCircular
       ? [
           {
             label: this.series[0]?.label ?? 'Value',
             data: this.series[0]?.data ?? [],
-            backgroundColor: colours,
+            backgroundColor: isGauge
+              ? [colours[0], styles.getPropertyValue('--grey-200').trim()]
+              : colours,
             borderColor: styles.getPropertyValue('--bg-colour-white').trim() || '#fff',
-            borderWidth: 1,
+            borderWidth: isGauge ? 0 : 1,
           },
         ]
-      : this.series.map((series, index) => ({
-          ...series,
-          backgroundColor:
-            this.type === 'horizontal-bar'
-              ? series.data.map((_, colourIndex) => colours[colourIndex % colours.length])
-              : colours[index % colours.length],
-          borderWidth: 0,
-          barPercentage: isStacked ? 0.72 : 0.68,
-          categoryPercentage: isStacked ? 0.8 : 0.72,
-        }));
+      : isLine
+        ? this.series.map((series, index) => ({
+            ...series,
+            backgroundColor: colours[index % colours.length],
+            borderColor: colours[index % colours.length],
+            borderWidth: 2,
+            pointBackgroundColor: colours[index % colours.length],
+            pointBorderColor: styles.getPropertyValue('--bg-colour-white').trim() || '#fff',
+            pointBorderWidth: 2,
+            pointRadius: 4,
+            pointHoverRadius: 6,
+            tension: 0.25,
+          }))
+        : this.series.map((series, index) => ({
+            ...series,
+            backgroundColor:
+              this.type === 'horizontal-bar'
+                ? series.data.map((_, colourIndex) => colours[colourIndex % colours.length])
+                : colours[index % colours.length],
+            borderWidth: 0,
+            barPercentage: isStacked ? 0.72 : 0.68,
+            categoryPercentage: isStacked ? 0.8 : 0.72,
+          }));
 
-    const configuration: ChartConfiguration<'bar' | 'doughnut' | 'pie', number[], string> = {
-      type: isCircular ? (this.type === 'donut' ? 'doughnut' : 'pie') : 'bar',
-      data: { labels: this.labels, datasets },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        animation: false,
-        indexAxis: isCircular ? undefined : 'y',
-        cutout: this.type === 'donut' ? '58%' : undefined,
-        plugins: {
-          legend: {
-            display: isCircular || this.type !== 'horizontal-bar',
-            position: this.legendPosition,
-            labels: {
-              boxWidth: 48,
-              boxHeight: 12,
-              color: styles.getPropertyValue('--text-colour-default').trim(),
-              font: { family: styles.getPropertyValue('--font-family-primary').trim(), size: 14 },
-              padding: 12,
+    const configuration: ChartConfiguration<'bar' | 'doughnut' | 'pie' | 'line', number[], string> =
+      {
+        type: isCircular ? (this.type === 'pie' ? 'pie' : 'doughnut') : isLine ? 'line' : 'bar',
+        data: { labels: this.labels, datasets },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          animation: false,
+          indexAxis: isCircular || isLine ? undefined : 'y',
+          cutout: isGauge ? '70%' : this.type === 'donut' ? '58%' : undefined,
+          rotation: isGauge ? -90 : undefined,
+          circumference: isGauge ? 180 : undefined,
+          plugins: {
+            legend: {
+              display: !isGauge && (isCircular || this.type !== 'horizontal-bar'),
+              position: this.legendPosition,
+              labels: {
+                boxWidth: 48,
+                boxHeight: 12,
+                color: styles.getPropertyValue('--text-colour-default').trim(),
+                font: { family: styles.getPropertyValue('--font-family-primary').trim(), size: 14 },
+                padding: 12,
+              },
             },
           },
+          scales: isCircular
+            ? undefined
+            : isLine
+              ? {
+                  x: {
+                    border: { color: '#d4d4d4' },
+                    grid: { display: false },
+                    ticks: { color: '#171717' },
+                  },
+                  y: {
+                    beginAtZero: true,
+                    border: { color: '#d4d4d4' },
+                    grid: { color: '#e5e5e5' },
+                    ticks: { color: '#171717' },
+                  },
+                }
+              : {
+                  x: {
+                    beginAtZero: true,
+                    stacked: isStacked,
+                    border: { color: '#d4d4d4' },
+                    grid: { display: false },
+                    ticks: { color: '#171717' },
+                  },
+                  y: {
+                    stacked: isStacked,
+                    border: { color: '#d4d4d4' },
+                    grid: { display: false },
+                    ticks: { color: '#171717' },
+                  },
+                },
         },
-        scales: isCircular
-          ? undefined
-          : {
-              x: {
-                beginAtZero: true,
-                stacked: isStacked,
-                border: { color: '#d4d4d4' },
-                grid: { display: false },
-                ticks: { color: '#171717' },
-              },
-              y: {
-                stacked: isStacked,
-                border: { color: '#d4d4d4' },
-                grid: { display: false },
-                ticks: { color: '#171717' },
-              },
-            },
-      },
-    };
+      };
 
     this.chart = new Chart(this.canvas.nativeElement, configuration);
   }
