@@ -66,8 +66,8 @@ const meta: Meta<AlertStoryArgs> = {
       if: { arg: 'showAction', eq: true },
       table: { category: 'Content' },
     },
-    onDismiss: { table: { disable: true } },
-    onAction: { table: { disable: true } },
+    onDismiss: { action: 'dismissed', table: { disable: true } },
+    onAction: { action: 'action', table: { disable: true } },
   },
   args: {
     tone: 'info',
