@@ -1,0 +1,108 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Foundations/Accessibility" />
+
+<div className="dds-a11y">
+  <p className="dds-a11y__eyebrow">FOUNDATIONS</p>
+
+# Accessibility
+
+Shared accessibility guidance for DDS components and product interfaces.
+
+## Touch targets
+
+Interactive targets must be large enough to activate accurately with a pointer or touchscreen. The
+visible icon may be smaller than its interactive area.
+
+<div className="dds-a11y__callout">
+  <strong>Default to 44 × 44 CSS pixels.</strong>
+  <span>
+    Use a minimum 44 × 44px interactive area for standalone buttons, icon-only actions, navigation
+    controls, and frequently used touch interactions.
+  </span>
+</div>
+
+| Context                    | DDS guidance                              | Notes                                                                                                 |
+| -------------------------- | ----------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| Standard button or control | **44 × 44px minimum**                     | Preferred baseline and WCAG 2.2 enhanced target size.                                                 |
+| Icon-only action           | **44 × 44px hit area**                    | The glyph may remain 16–24px; centre it in the larger button.                                         |
+| Compact control            | **24 × 24px absolute minimum**            | Use only where density is necessary and keep adequate separation from adjacent targets.               |
+| Checkbox or radio          | **44px interactive row height preferred** | The visible 20px indicator does not define the hit area; make the indicator and label one target.     |
+| Inline text link           | Governed by line height                   | Inline links are an allowed exception, but must remain visually identifiable and keyboard accessible. |
+
+WCAG 2.2 Level AA requires pointer targets to contain at least a 24 × 24 CSS-pixel area, unless an
+exception applies. The spacing exception can permit a smaller target when 24px circles centred on
+adjacent targets would not overlap. DDS uses 44 × 44px as the preferred default because it is easier
+to activate and aligns with the Level AAA enhanced criterion.
+
+## Compact-control rules
+
+- Do not reduce the hit area merely because the visible icon is small.
+- Prefer padding on the interactive element instead of adding a separate invisible overlay.
+- Keep adjacent compact targets far enough apart to avoid accidental activation.
+- Preserve the target size in loading, selected, pressed, and disabled layouts to prevent movement.
+- Make the whole labelled row interactive for checkboxes and radios.
+- Provide an accessible name for icon-only controls and a visible tooltip when the action is not obvious.
+- Ensure keyboard focus follows the same interactive boundary as pointer activation.
+
+## CSS pattern
+
+```css
+.icon-button {
+  display: inline-grid;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  place-items: center;
+}
+
+.icon-button svg {
+  width: 20px;
+  height: 20px;
+}
+```
+
+## Exceptions and review
+
+Before using a target smaller than 44 × 44px, document why the compact treatment is needed. Targets
+smaller than 24 × 24px require one of the WCAG exceptions, such as adequate spacing, an equivalent
+larger control, inline placement, user-agent sizing, or an essential presentation. Test compact
+clusters at mobile width and with touch input rather than relying only on desktop pointer testing.
+
+## References
+
+- [WCAG 2.2 — Target Size (Minimum), Level AA](https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum)
+- [WCAG 2.2 — Target Size (Enhanced), Level AAA](https://www.w3.org/WAI/WCAG22/Understanding/target-size-enhanced)
+
+</div>
+
+<style>{`
+  .dds-a11y {
+    max-width: 900px;
+    color: #171717;
+    font-family: Inter, system-ui, sans-serif;
+  }
+
+  .dds-a11y__eyebrow {
+    margin: 0 0 8px;
+    color: #224583;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .12em;
+  }
+
+  .dds-a11y__callout {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin: 24px 0;
+    padding: 16px 20px;
+    border-left: 4px solid #2f5eaf;
+    border-radius: 4px;
+    background: #f0f4fa;
+  }
+
+  .dds-a11y__callout span { color: #404040; line-height: 1.6; }
+  .dds-a11y table { width: 100%; }
+  .dds-a11y th { text-align: left; }
+`}</style>
