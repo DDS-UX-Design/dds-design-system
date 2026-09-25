@@ -33,7 +33,7 @@ const preview: Preview = {
         order: [
           'Welcome',
           'Foundations',
-          ['Colours', 'Typography', 'Spacing', 'Icons'],
+          ['Colours', 'Typography', 'Spacing', 'Icons', 'Accessibility'],
           'Components',
           'Patterns',
           'Layouts',
