@@ -1,0 +1,36 @@
+<div
+  class="dds-nav-tab"
+  [class.dds-nav-tab--mobile]="size === 'mobile'"
+  [class.dds-nav-tab--vertical]="orientation === 'vertical'"
+  role="tablist"
+  [attr.aria-label]="ariaLabel"
+  [attr.aria-orientation]="orientation"
+  (focusout)="onFocusOut($event)"
+>
+  @for (item of items; track item.value) {
+    <button
+      #tabButton
+      class="dds-nav-tab__tab"
+      [class.dds-nav-tab__tab--active]="item.value === activeValue"
+      type="button"
+      role="tab"
+      [id]="tabId(item.value)"
+      [disabled]="item.disabled"
+      [attr.aria-selected]="item.value === activeValue"
+      [attr.aria-controls]="item.panelId || null"
+      [tabIndex]="item.value === focusValue ? 0 : -1"
+      (click)="select(item)"
+      (focus)="onFocus(item)"
+      (keydown)="onKeydown($event, item)"
+    >
+      @if (item.icon) {
+        <dds-icon
+          class="dds-nav-tab__icon"
+          [name]="item.icon"
+          [size]="size === 'mobile' ? 16 : 20"
+        />
+      }
+      <span>{{ item.label }}</span>
+    </button>
+  }
+</div>

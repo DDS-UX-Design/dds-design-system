@@ -1,0 +1,101 @@
+:host {
+  display: block;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.dds-nav-tab {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-4);
+  padding-inline-end: var(--space-4);
+  overflow-x: auto;
+  border-bottom: 1px solid var(--border-colour-default);
+  background: var(--bg-colour-white);
+}
+
+.dds-nav-tab__tab {
+  position: relative;
+  box-sizing: border-box;
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 37px;
+  padding: var(--space-2) var(--space-3);
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--text-colour-tertiary);
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-regular);
+  line-height: 20px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.dds-nav-tab__tab--active {
+  color: var(--text-colour-info);
+  font-weight: var(--font-weight-semibold);
+}
+
+.dds-nav-tab__tab--active::after {
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  height: 2px;
+  background: var(--border-colour-info);
+  content: '';
+}
+
+.dds-nav-tab__tab:focus-visible {
+  outline: 2px solid var(--border-colour-info);
+  outline-offset: -2px;
+}
+
+.dds-nav-tab__tab:disabled {
+  color: var(--text-colour-disabled);
+  cursor: not-allowed;
+}
+
+.dds-nav-tab__icon {
+  display: inline-flex;
+  flex: 0 0 20px;
+  width: 20px;
+  height: 20px;
+}
+
+.dds-nav-tab--mobile {
+  gap: var(--space-3);
+  padding-inline: var(--space-4);
+}
+
+.dds-nav-tab--mobile .dds-nav-tab__tab {
+  min-height: 36px;
+  padding: 10px;
+  font-size: var(--font-size-xs);
+  line-height: 16px;
+}
+
+.dds-nav-tab--mobile .dds-nav-tab__icon {
+  flex-basis: 16px;
+  width: 16px;
+  height: 16px;
+}
+
+.dds-nav-tab--vertical {
+  flex-direction: column;
+  gap: var(--space-4);
+  padding: 0;
+  border-bottom: 0;
+}
+
+@media (forced-colors: active) {
+  .dds-nav-tab__tab--active::after {
+    background: Highlight;
+  }
+  .dds-nav-tab__tab:disabled {
+    color: GrayText;
+  }
+}
