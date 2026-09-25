@@ -53,7 +53,7 @@ const meta: Meta<RadioGroupStoryArgs> = {
       options: ['default', 'invalid', 'disabled'] satisfies RadioGroupState[],
     },
     loading: { control: 'boolean', table: { category: 'State' } },
-    onSelectedValueChange: { table: { disable: true } },
+    onSelectedValueChange: { action: 'selectedValueChange', table: { disable: true } },
   },
   render: (args) => ({
     props: args,
