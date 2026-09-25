@@ -14,6 +14,17 @@ canvas {
   max-width: 100%;
 }
 
+.dds-chart__gauge-value {
+  position: absolute;
+  bottom: 22%;
+  left: 50%;
+  color: var(--text-colour-default);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1;
+  transform: translateX(-50%);
+}
+
 @media (max-width: 480px) {
   .dds-chart {
     height: 280px;
