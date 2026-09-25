@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { fn } from 'storybook/test';
+import { By } from '@angular/platform-browser';
 import { TestBed } from '@angular/core/testing';
 // @ts-expect-error Storybook exposes this runtime entry point without type declarations.
 import { applyDecorators } from '@storybook/angular/client/config';
@@ -27,6 +29,8 @@ import { CheckboxComponent } from '../app/components/checkbox/checkbox.component
 import checkboxMeta, { Toggle } from './checkbox.stories';
 import { CheckboxGroupComponent } from '../app/components/checkbox-group/checkbox-group.component';
 import checkboxGroupMeta, { ToggleOptions } from './checkbox-group.stories';
+import { NavTabComponent } from '../app/components/nav-tab/nav-tab.component';
+import navTabMeta, { WithPanels } from './nav-tab.stories';
 import radioMeta, { Select } from './radio.stories';
 import searchMeta, { SubmitQuery, KeyboardSelection } from './search.stories';
 import textareaMeta, { EnterResponse } from './textarea.stories';
@@ -40,6 +44,7 @@ import toastMeta, { DismissInteraction as toastStory } from './toast.stories';
     TextareaComponent,
     SearchComponent,
     RadioComponent,
+    NavTabComponent,
     CheckboxComponent,
     CheckboxGroupComponent,
     RadioGroupComponent,
@@ -52,7 +57,7 @@ import toastMeta, { DismissInteraction as toastStory } from './toast.stories';
     TopBarNavComponent,
   ],
   template:
-    '<dds-alert /><dds-toast /><dds-textarea /><dds-search /><dds-radio /><dds-checkbox /><dds-checkbox-group /><dds-radio-group /><dds-select /><dds-sidebar-nav /><dds-text-input /><dds-date-input /><dds-password-input /><dds-otp-input /><dds-top-bar-nav />',
+    '<dds-alert /><dds-toast /><dds-textarea /><dds-search /><dds-radio /><dds-nav-tab /><dds-checkbox /><dds-checkbox-group /><dds-radio-group /><dds-select /><dds-sidebar-nav /><dds-text-input /><dds-date-input /><dds-password-input /><dds-otp-input /><dds-top-bar-nav />',
 })
 class StoryHost {}
 
@@ -62,6 +67,7 @@ describe('Story interactions', () => {
     ['Toast', toastMeta, toastStory, 'onDismiss'],
     ['Textarea', textareaMeta, EnterResponse, 'onValueChange'],
     ['Radio', radioMeta, Select, 'onSelected'],
+    ['Nav Tab with panels', navTabMeta, WithPanels, null],
     ['Checkbox toggle', checkboxMeta, Toggle, 'onValueChange'],
     ['Checkbox Group toggle options', checkboxGroupMeta, ToggleOptions, 'onSelectedValuesChange'],
     ['Radio Group change selection', radioGroupMeta, ChangeSelection, 'onSelectedValueChange'],
@@ -88,8 +94,21 @@ describe('Story interactions', () => {
         ),
         ...meta.argTypes,
       };
+      if (meta.component === NavTabComponent) {
+        // Model the global action regex and Angular's assignment of non-input props.
+        const pattern = meta.parameters?.['actions']?.argTypesRegex ?? '^on[A-Z].*';
+        for (const name of ['onKeydown', 'onFocus', 'onFocusOut']) {
+          if (new RegExp(pattern).test(name)) {
+            args[name] = fn();
+            (argTypes as any)[name] = { control: 'object' };
+          }
+        }
+      }
       const context = { args, argTypes, component: meta.component } as any;
-      const render = applyDecorators((ctx: any) => (meta.render as Function)(ctx.args), []);
+      const render = applyDecorators(
+        (ctx: any) => ((story.render ?? meta.render) as Function)(ctx.args),
+        [],
+      );
       const rendered = render(context);
       if (callback) expect(rendered.props[callback]).toBe(args[callback]);
       TestBed.overrideComponent(StoryHost, { set: { template: rendered.template } });
@@ -97,6 +116,14 @@ describe('Story interactions', () => {
       const fixture = TestBed.createComponent(StoryHost);
       Object.assign(fixture.componentInstance, rendered.props);
       fixture.detectChanges();
+      if (meta.component === NavTabComponent) {
+        const component = fixture.debugElement.query(
+          By.directive(NavTabComponent),
+        ).componentInstance;
+        for (const name of ['onKeydown', 'onFocus', 'onFocusOut']) {
+          if (name in rendered.props) component[name] = rendered.props[name];
+        }
+      }
       document.body.appendChild(fixture.nativeElement);
       const linkClicks: Event[] = [];
       fixture.nativeElement.addEventListener('click', (event: Event) => {
