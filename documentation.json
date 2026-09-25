@@ -59,12 +59,12 @@
         },
         {
             "name": "DdsChartSeries",
-            "id": "interface-DdsChartSeries-b41455ce2accc15e377f14feba14f613566460e87d804e00a0ae0b50e697baa05c54885f71ad9ecc8a64c2c821e55fb4b3a32fc483e3bfa02afd380ee66a6bf4",
+            "id": "interface-DdsChartSeries-916a7b4575cbe37f1f95d9c5c805974767cf2e75daff1ebe10c62b6e0675da7d4b004e6bd47b8869b39c9c1672b88111cb7d9ed465ff3f2ca65b9d0b7da45f6e",
             "file": "src/app/components/chart/chart.component.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "import { isPlatformBrowser } from '@angular/common';\nimport {\n  AfterViewInit,\n  Component,\n  ElementRef,\n  Inject,\n  Input,\n  OnChanges,\n  OnDestroy,\n  PLATFORM_ID,\n  SimpleChanges,\n  ViewChild,\n} from '@angular/core';\nimport {\n  BarController,\n  BarElement,\n  CategoryScale,\n  Chart,\n  ChartConfiguration,\n  ChartDataset,\n  DoughnutController,\n  ArcElement,\n  Legend,\n  LinearScale,\n  PieController,\n  Tooltip,\n} from 'chart.js';\n\nexport type DdsChartType = 'donut' | 'pie' | 'horizontal-bar' | 'grouped-bar' | 'stacked-bar';\nexport type DdsChartLegendPosition = 'right' | 'bottom' | 'top';\n\nexport interface DdsChartSeries {\n  label: string;\n  data: number[];\n}\n\nChart.register(\n  ArcElement,\n  BarController,\n  BarElement,\n  CategoryScale,\n  DoughnutController,\n  Legend,\n  LinearScale,\n  PieController,\n  Tooltip,\n);\n\nconst CHART_COLOURS = [\n  '--chart-1',\n  '--chart-2',\n  '--chart-3',\n  '--chart-4',\n  '--chart-5',\n  '--chart-6',\n] as const;\n\n/** Experimental Chart.js wrapper for documenting DDS data-visualisation colour usage. */\n@Component({\n  selector: 'dds-chart',\n  standalone: true,\n  templateUrl: './chart.component.html',\n  styleUrl: './chart.component.css',\n})\nexport class ChartComponent implements AfterViewInit, OnChanges, OnDestroy {\n  @ViewChild('canvas') canvas?: ElementRef<HTMLCanvasElement>;\n\n  /** Chart pattern to render. */\n  @Input() type: DdsChartType = 'donut';\n\n  /** Category labels used by bar charts and circular segments. */\n  @Input() labels: string[] = ['Series 1', 'Series 2', 'Series 3'];\n\n  /** Data series. Circular charts use the first series and colour each value. */\n  @Input() series: DdsChartSeries[] = [{ label: 'Value', data: [75, 15, 10] }];\n\n  /** Legend placement. */\n  @Input() legendPosition: DdsChartLegendPosition = 'right';\n\n  /** Accessible summary announced instead of the visual canvas. */\n  @Input() accessibleLabel = 'Chart';\n\n  private chart?: Chart;\n\n  constructor(@Inject(PLATFORM_ID) private readonly platformId: object) {}\n\n  ngAfterViewInit(): void {\n    this.renderChart();\n  }\n\n  ngOnChanges(_changes: SimpleChanges): void {\n    if (this.canvas) this.renderChart();\n  }\n\n  ngOnDestroy(): void {\n    this.chart?.destroy();\n  }\n\n  private renderChart(): void {\n    if (!isPlatformBrowser(this.platformId) || !this.canvas) return;\n\n    this.chart?.destroy();\n    const styles = getComputedStyle(this.canvas.nativeElement);\n    const colours = CHART_COLOURS.map((token) => styles.getPropertyValue(token).trim());\n    const isCircular = this.type === 'donut' || this.type === 'pie';\n    const isStacked = this.type === 'stacked-bar';\n    const datasets: ChartDataset<'bar' | 'doughnut' | 'pie', number[]>[] = isCircular\n      ? [\n          {\n            label: this.series[0]?.label ?? 'Value',\n            data: this.series[0]?.data ?? [],\n            backgroundColor: colours,\n            borderColor: styles.getPropertyValue('--bg-colour-white').trim() || '#fff',\n            borderWidth: 1,\n          },\n        ]\n      : this.series.map((series, index) => ({\n          ...series,\n          backgroundColor:\n            this.type === 'horizontal-bar'\n              ? series.data.map((_, colourIndex) => colours[colourIndex % colours.length])\n              : colours[index % colours.length],\n          borderWidth: 0,\n          barPercentage: isStacked ? 0.72 : 0.68,\n          categoryPercentage: isStacked ? 0.8 : 0.72,\n        }));\n\n    const configuration: ChartConfiguration<'bar' | 'doughnut' | 'pie', number[], string> = {\n      type: isCircular ? (this.type === 'donut' ? 'doughnut' : 'pie') : 'bar',\n      data: { labels: this.labels, datasets },\n      options: {\n        responsive: true,\n        maintainAspectRatio: false,\n        animation: false,\n        indexAxis: isCircular ? undefined : 'y',\n        cutout: this.type === 'donut' ? '58%' : undefined,\n        plugins: {\n          legend: {\n            display: isCircular || this.type !== 'horizontal-bar',\n            position: this.legendPosition,\n            labels: {\n              boxWidth: 48,\n              boxHeight: 12,\n              color: styles.getPropertyValue('--text-colour-default').trim(),\n              font: { family: styles.getPropertyValue('--font-family-primary').trim(), size: 14 },\n              padding: 12,\n            },\n          },\n        },\n        scales: isCircular\n          ? undefined\n          : {\n              x: {\n                beginAtZero: true,\n                stacked: isStacked,\n                border: { color: '#d4d4d4' },\n                grid: { display: false },\n                ticks: { color: '#171717' },\n              },\n              y: {\n                stacked: isStacked,\n                border: { color: '#d4d4d4' },\n                grid: { display: false },\n                ticks: { color: '#171717' },\n              },\n            },\n      },\n    };\n\n    this.chart = new Chart(this.canvas.nativeElement, configuration);\n  }\n}\n",
+            "sourceCode": "import { isPlatformBrowser } from '@angular/common';\nimport {\n  AfterViewInit,\n  Component,\n  ElementRef,\n  Inject,\n  Input,\n  OnChanges,\n  OnDestroy,\n  PLATFORM_ID,\n  SimpleChanges,\n  ViewChild,\n} from '@angular/core';\nimport {\n  BarController,\n  BarElement,\n  CategoryScale,\n  Chart,\n  ChartConfiguration,\n  ChartDataset,\n  DoughnutController,\n  ArcElement,\n  Legend,\n  LineController,\n  LineElement,\n  LinearScale,\n  PieController,\n  PointElement,\n  Tooltip,\n} from 'chart.js';\n\nexport type DdsChartType =\n  'donut' | 'pie' | 'gauge' | 'line' | 'horizontal-bar' | 'grouped-bar' | 'stacked-bar';\nexport type DdsChartLegendPosition = 'right' | 'bottom' | 'top';\n\nexport interface DdsChartSeries {\n  label: string;\n  data: number[];\n}\n\nChart.register(\n  ArcElement,\n  BarController,\n  BarElement,\n  CategoryScale,\n  DoughnutController,\n  Legend,\n  LineController,\n  LineElement,\n  LinearScale,\n  PieController,\n  PointElement,\n  Tooltip,\n);\n\nconst CHART_COLOURS = [\n  '--chart-1',\n  '--chart-2',\n  '--chart-3',\n  '--chart-4',\n  '--chart-5',\n  '--chart-6',\n] as const;\n\n/** Experimental Chart.js wrapper for documenting DDS data-visualisation colour usage. */\n@Component({\n  selector: 'dds-chart',\n  standalone: true,\n  templateUrl: './chart.component.html',\n  styleUrl: './chart.component.css',\n})\nexport class ChartComponent implements AfterViewInit, OnChanges, OnDestroy {\n  @ViewChild('canvas') canvas?: ElementRef<HTMLCanvasElement>;\n\n  /** Chart pattern to render. */\n  @Input() type: DdsChartType = 'donut';\n\n  /** Category labels used by bar charts and circular segments. */\n  @Input() labels: string[] = ['Series 1', 'Series 2', 'Series 3'];\n\n  /** Data series. Circular charts use the first series and colour each value. */\n  @Input() series: DdsChartSeries[] = [{ label: 'Value', data: [75, 15, 10] }];\n\n  /** Legend placement. */\n  @Input() legendPosition: DdsChartLegendPosition = 'right';\n\n  /** Accessible summary announced instead of the visual canvas. */\n  @Input() accessibleLabel = 'Chart';\n\n  private chart?: Chart;\n\n  constructor(@Inject(PLATFORM_ID) private readonly platformId: object) {}\n\n  ngAfterViewInit(): void {\n    this.renderChart();\n  }\n\n  ngOnChanges(_changes: SimpleChanges): void {\n    if (this.canvas) this.renderChart();\n  }\n\n  ngOnDestroy(): void {\n    this.chart?.destroy();\n  }\n\n  get gaugeValue(): number {\n    const values = this.series[0]?.data ?? [];\n    const total = values.reduce((sum, value) => sum + value, 0);\n    return total > 0 ? Math.round((values[0] / total) * 100) : 0;\n  }\n\n  private renderChart(): void {\n    if (!isPlatformBrowser(this.platformId) || !this.canvas) return;\n\n    this.chart?.destroy();\n    const styles = getComputedStyle(this.canvas.nativeElement);\n    const colours = CHART_COLOURS.map((token) => styles.getPropertyValue(token).trim());\n    const isGauge = this.type === 'gauge';\n    const isCircular = this.type === 'donut' || this.type === 'pie' || isGauge;\n    const isLine = this.type === 'line';\n    const isStacked = this.type === 'stacked-bar';\n    const datasets: ChartDataset<'bar' | 'doughnut' | 'pie' | 'line', number[]>[] = isCircular\n      ? [\n          {\n            label: this.series[0]?.label ?? 'Value',\n            data: this.series[0]?.data ?? [],\n            backgroundColor: isGauge\n              ? [colours[0], styles.getPropertyValue('--grey-200').trim()]\n              : colours,\n            borderColor: styles.getPropertyValue('--bg-colour-white').trim() || '#fff',\n            borderWidth: isGauge ? 0 : 1,\n          },\n        ]\n      : isLine\n        ? this.series.map((series, index) => ({\n            ...series,\n            backgroundColor: colours[index % colours.length],\n            borderColor: colours[index % colours.length],\n            borderWidth: 2,\n            pointBackgroundColor: colours[index % colours.length],\n            pointBorderColor: styles.getPropertyValue('--bg-colour-white').trim() || '#fff',\n            pointBorderWidth: 2,\n            pointRadius: 4,\n            pointHoverRadius: 6,\n            tension: 0.25,\n          }))\n        : this.series.map((series, index) => ({\n            ...series,\n            backgroundColor:\n              this.type === 'horizontal-bar'\n                ? series.data.map((_, colourIndex) => colours[colourIndex % colours.length])\n                : colours[index % colours.length],\n            borderWidth: 0,\n            barPercentage: isStacked ? 0.72 : 0.68,\n            categoryPercentage: isStacked ? 0.8 : 0.72,\n          }));\n\n    const configuration: ChartConfiguration<'bar' | 'doughnut' | 'pie' | 'line', number[], string> =\n      {\n        type: isCircular ? (this.type === 'pie' ? 'pie' : 'doughnut') : isLine ? 'line' : 'bar',\n        data: { labels: this.labels, datasets },\n        options: {\n          responsive: true,\n          maintainAspectRatio: false,\n          animation: false,\n          indexAxis: isCircular || isLine ? undefined : 'y',\n          cutout: isGauge ? '70%' : this.type === 'donut' ? '58%' : undefined,\n          rotation: isGauge ? -90 : undefined,\n          circumference: isGauge ? 180 : undefined,\n          plugins: {\n            legend: {\n              display: !isGauge && (isCircular || this.type !== 'horizontal-bar'),\n              position: this.legendPosition,\n              labels: {\n                boxWidth: 48,\n                boxHeight: 12,\n                color: styles.getPropertyValue('--text-colour-default').trim(),\n                font: { family: styles.getPropertyValue('--font-family-primary').trim(), size: 14 },\n                padding: 12,\n              },\n            },\n          },\n          scales: isCircular\n            ? undefined\n            : isLine\n              ? {\n                  x: {\n                    border: { color: '#d4d4d4' },\n                    grid: { display: false },\n                    ticks: { color: '#171717' },\n                  },\n                  y: {\n                    beginAtZero: true,\n                    border: { color: '#d4d4d4' },\n                    grid: { color: '#e5e5e5' },\n                    ticks: { color: '#171717' },\n                  },\n                }\n              : {\n                  x: {\n                    beginAtZero: true,\n                    stacked: isStacked,\n                    border: { color: '#d4d4d4' },\n                    grid: { display: false },\n                    ticks: { color: '#171717' },\n                  },\n                  y: {\n                    stacked: isStacked,\n                    border: { color: '#d4d4d4' },\n                    grid: { display: false },\n                    ticks: { color: '#171717' },\n                  },\n                },\n        },\n      };\n\n    this.chart = new Chart(this.canvas.nativeElement, configuration);\n  }\n}\n",
             "displayName": "DdsChartSeries",
             "properties": [
                 {
@@ -76,7 +76,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 34,
+                    "line": 38,
                     "rawdescription": "\n"
                 },
                 {
@@ -88,8 +88,88 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 33,
+                    "line": 37,
                     "rawdescription": "\n"
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 172,
+            "methods": [],
+            "extends": [],
+            "relationships": {
+                "incoming": [],
+                "outgoing": []
+            }
+        },
+        {
+            "name": "NavTabItem",
+            "id": "interface-NavTabItem-76b616368f697669521bf9a502a3ff4d9c1aedf52d81cd465d0bb7c777afb8b4a5a34f09f24c82215301632aa321859aabadcff6c1268d9c1f1c290616f28a73",
+            "file": "src/app/components/nav-tab/nav-tab.component.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "import {\n  Component,\n  ElementRef,\n  EventEmitter,\n  Input,\n  Output,\n  QueryList,\n  ViewChildren,\n} from '@angular/core';\nimport { DdsIconName, IconComponent } from '../icon/icon.component';\n\nexport interface NavTabItem {\n  /** Unique, stable value within this group. */\n  value: string;\n  label: string;\n  icon?: DdsIconName;\n  disabled?: boolean;\n  /** ID of the content panel rendered by the consumer. */\n  panelId?: string;\n}\n\nlet nextNavTabId = 0;\n\n/** Figma nav tabs for switching between related content panels. */\n@Component({\n  selector: 'dds-nav-tab',\n  standalone: true,\n  imports: [IconComponent],\n  templateUrl: './nav-tab.component.html',\n  styleUrl: './nav-tab.component.css',\n})\nexport class NavTabComponent {\n  /** Supply a stable, page-unique ID when linking panels or server rendering. */\n  @Input() id = `dds-nav-tab-${nextNavTabId++}`;\n  @Input() items: NavTabItem[] = [];\n  /** Falls back to the first enabled tab when absent, removed, or disabled. */\n  @Input() selectedValue = '';\n  @Input() size: 'desktop' | 'mobile' = 'desktop';\n  @Input() orientation: 'horizontal' | 'vertical' = 'horizontal';\n  @Input() ariaLabel = 'Content tabs';\n  /** Arrow keys move focus; Enter or Space activates by default. */\n  @Input() activation: 'manual' | 'automatic' = 'manual';\n  @Output() selectedValueChange = new EventEmitter<string>();\n\n  @ViewChildren('tabButton') private buttons!: QueryList<ElementRef<HTMLButtonElement>>;\n  private focusedValue: string | null = null;\n\n  get activeValue(): string | undefined {\n    return (\n      this.items.find((item) => item.value === this.selectedValue && !item.disabled)?.value ??\n      this.items.find((item) => !item.disabled)?.value\n    );\n  }\n\n  get focusValue(): string | undefined {\n    return (\n      this.items.find((item) => item.value === this.focusedValue && !item.disabled)?.value ??\n      this.activeValue\n    );\n  }\n\n  tabId(value: string): string {\n    return `${this.id}-tab-${encodeURIComponent(value)}`;\n  }\n\n  select(item: NavTabItem): void {\n    if (item.disabled) return;\n    this.focusedValue = item.value;\n    if (item.value === this.activeValue) return;\n    this.selectedValue = item.value;\n    this.selectedValueChange.emit(item.value);\n  }\n\n  onFocus(item: NavTabItem): void {\n    this.focusedValue = item.value;\n  }\n\n  onFocusOut(event: FocusEvent): void {\n    if (!(event.currentTarget as HTMLElement).contains(event.relatedTarget as Node | null)) {\n      this.focusedValue = null;\n    }\n  }\n\n  onKeydown(event: KeyboardEvent, item: NavTabItem): void {\n    if (event.altKey || event.ctrlKey || event.metaKey || item.disabled) return;\n    const previous = this.orientation === 'horizontal' ? 'ArrowLeft' : 'ArrowUp';\n    const next = this.orientation === 'horizontal' ? 'ArrowRight' : 'ArrowDown';\n    if (![previous, next, 'Home', 'End'].includes(event.key)) return;\n    const enabled = this.items.filter((tab) => !tab.disabled);\n    if (!enabled.length) return;\n    event.preventDefault();\n    const index = enabled.indexOf(item);\n    const targetIndex =\n      event.key === 'Home'\n        ? 0\n        : event.key === 'End'\n          ? enabled.length - 1\n          : (index + (event.key === next ? 1 : -1) + enabled.length) % enabled.length;\n    const target = enabled[targetIndex];\n    this.focusedValue = target.value;\n    const button = this.buttons.get(this.items.indexOf(target))?.nativeElement;\n    button?.focus({ preventScroll: true });\n    button?.scrollIntoView?.({ block: 'nearest', inline: 'nearest' });\n    if (this.activation === 'automatic') this.select(target);\n  }\n}\n",
+            "displayName": "NavTabItem",
+            "properties": [
+                {
+                    "name": "disabled",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 17,
+                    "rawdescription": "\n"
+                },
+                {
+                    "name": "icon",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "DdsIconName",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 16,
+                    "rawdescription": "\n"
+                },
+                {
+                    "name": "label",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 15,
+                    "rawdescription": "\n"
+                },
+                {
+                    "name": "panelId",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "<p>ID of the content panel rendered by the consumer.</p>\n",
+                    "line": 19,
+                    "rawdescription": "\nID of the content panel rendered by the consumer."
+                },
+                {
+                    "name": "value",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "<p>Unique, stable value within this group.</p>\n",
+                    "line": 14,
+                    "rawdescription": "\nUnique, stable value within this group."
                 }
             ],
             "indexSignatures": [],
@@ -951,7 +1031,7 @@
         },
         {
             "name": "ChartComponent",
-            "id": "component-ChartComponent-b41455ce2accc15e377f14feba14f613566460e87d804e00a0ae0b50e697baa05c54885f71ad9ecc8a64c2c821e55fb4b3a32fc483e3bfa02afd380ee66a6bf4",
+            "id": "component-ChartComponent-916a7b4575cbe37f1f95d9c5c805974767cf2e75daff1ebe10c62b6e0675da7d4b004e6bd47b8869b39c9c1672b88111cb7d9ed465ff3f2ca65b9d0b7da45f6e",
             "file": "src/app/components/chart/chart.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -979,7 +1059,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nAccessible summary announced instead of the visual canvas.",
                     "description": "<p>Accessible summary announced instead of the visual canvas.</p>\n",
-                    "line": 81,
+                    "line": 88,
                     "type": "string",
                     "decorators": []
                 },
@@ -991,7 +1071,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nCategory labels used by bar charts and circular segments.",
                     "description": "<p>Category labels used by bar charts and circular segments.</p>\n",
-                    "line": 72,
+                    "line": 79,
                     "type": "string[]",
                     "decorators": []
                 },
@@ -1003,7 +1083,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nLegend placement.",
                     "description": "<p>Legend placement.</p>\n",
-                    "line": 78,
+                    "line": 85,
                     "type": "DdsChartLegendPosition",
                     "decorators": []
                 },
@@ -1015,7 +1095,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nData series. Circular charts use the first series and colour each value.",
                     "description": "<p>Data series. Circular charts use the first series and colour each value.</p>\n",
-                    "line": 75,
+                    "line": 82,
                     "type": "DdsChartSeries[]",
                     "decorators": []
                 },
@@ -1027,7 +1107,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nChart pattern to render.",
                     "description": "<p>Chart pattern to render.</p>\n",
-                    "line": 69,
+                    "line": 76,
                     "type": "DdsChartType",
                     "decorators": []
                 }
@@ -1043,7 +1123,7 @@
                     "indexKey": "",
                     "optional": true,
                     "description": "",
-                    "line": 66,
+                    "line": 73,
                     "rawdescription": "\n",
                     "decorators": [
                         {
@@ -1064,7 +1144,7 @@
                     "indexKey": "",
                     "optional": true,
                     "description": "",
-                    "line": 83,
+                    "line": 90,
                     "rawdescription": "\n",
                     "modifierKind": [
                         123
@@ -1079,7 +1159,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 87,
+                    "line": 94,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n",
@@ -1101,7 +1181,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 91,
+                    "line": 98,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n",
@@ -1127,7 +1207,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 95,
+                    "line": 102,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n",
@@ -1140,7 +1220,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 99,
+                    "line": 112,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n",
@@ -1160,20 +1240,20 @@
             "description": "<p>Experimental Chart.js wrapper for documenting DDS data-visualisation colour usage.</p>\n",
             "rawdescription": "\nExperimental Chart.js wrapper for documenting DDS data-visualisation colour usage.",
             "type": "component",
-            "sourceCode": "import { isPlatformBrowser } from '@angular/common';\nimport {\n  AfterViewInit,\n  Component,\n  ElementRef,\n  Inject,\n  Input,\n  OnChanges,\n  OnDestroy,\n  PLATFORM_ID,\n  SimpleChanges,\n  ViewChild,\n} from '@angular/core';\nimport {\n  BarController,\n  BarElement,\n  CategoryScale,\n  Chart,\n  ChartConfiguration,\n  ChartDataset,\n  DoughnutController,\n  ArcElement,\n  Legend,\n  LinearScale,\n  PieController,\n  Tooltip,\n} from 'chart.js';\n\nexport type DdsChartType = 'donut' | 'pie' | 'horizontal-bar' | 'grouped-bar' | 'stacked-bar';\nexport type DdsChartLegendPosition = 'right' | 'bottom' | 'top';\n\nexport interface DdsChartSeries {\n  label: string;\n  data: number[];\n}\n\nChart.register(\n  ArcElement,\n  BarController,\n  BarElement,\n  CategoryScale,\n  DoughnutController,\n  Legend,\n  LinearScale,\n  PieController,\n  Tooltip,\n);\n\nconst CHART_COLOURS = [\n  '--chart-1',\n  '--chart-2',\n  '--chart-3',\n  '--chart-4',\n  '--chart-5',\n  '--chart-6',\n] as const;\n\n/** Experimental Chart.js wrapper for documenting DDS data-visualisation colour usage. */\n@Component({\n  selector: 'dds-chart',\n  standalone: true,\n  templateUrl: './chart.component.html',\n  styleUrl: './chart.component.css',\n})\nexport class ChartComponent implements AfterViewInit, OnChanges, OnDestroy {\n  @ViewChild('canvas') canvas?: ElementRef<HTMLCanvasElement>;\n\n  /** Chart pattern to render. */\n  @Input() type: DdsChartType = 'donut';\n\n  /** Category labels used by bar charts and circular segments. */\n  @Input() labels: string[] = ['Series 1', 'Series 2', 'Series 3'];\n\n  /** Data series. Circular charts use the first series and colour each value. */\n  @Input() series: DdsChartSeries[] = [{ label: 'Value', data: [75, 15, 10] }];\n\n  /** Legend placement. */\n  @Input() legendPosition: DdsChartLegendPosition = 'right';\n\n  /** Accessible summary announced instead of the visual canvas. */\n  @Input() accessibleLabel = 'Chart';\n\n  private chart?: Chart;\n\n  constructor(@Inject(PLATFORM_ID) private readonly platformId: object) {}\n\n  ngAfterViewInit(): void {\n    this.renderChart();\n  }\n\n  ngOnChanges(_changes: SimpleChanges): void {\n    if (this.canvas) this.renderChart();\n  }\n\n  ngOnDestroy(): void {\n    this.chart?.destroy();\n  }\n\n  private renderChart(): void {\n    if (!isPlatformBrowser(this.platformId) || !this.canvas) return;\n\n    this.chart?.destroy();\n    const styles = getComputedStyle(this.canvas.nativeElement);\n    const colours = CHART_COLOURS.map((token) => styles.getPropertyValue(token).trim());\n    const isCircular = this.type === 'donut' || this.type === 'pie';\n    const isStacked = this.type === 'stacked-bar';\n    const datasets: ChartDataset<'bar' | 'doughnut' | 'pie', number[]>[] = isCircular\n      ? [\n          {\n            label: this.series[0]?.label ?? 'Value',\n            data: this.series[0]?.data ?? [],\n            backgroundColor: colours,\n            borderColor: styles.getPropertyValue('--bg-colour-white').trim() || '#fff',\n            borderWidth: 1,\n          },\n        ]\n      : this.series.map((series, index) => ({\n          ...series,\n          backgroundColor:\n            this.type === 'horizontal-bar'\n              ? series.data.map((_, colourIndex) => colours[colourIndex % colours.length])\n              : colours[index % colours.length],\n          borderWidth: 0,\n          barPercentage: isStacked ? 0.72 : 0.68,\n          categoryPercentage: isStacked ? 0.8 : 0.72,\n        }));\n\n    const configuration: ChartConfiguration<'bar' | 'doughnut' | 'pie', number[], string> = {\n      type: isCircular ? (this.type === 'donut' ? 'doughnut' : 'pie') : 'bar',\n      data: { labels: this.labels, datasets },\n      options: {\n        responsive: true,\n        maintainAspectRatio: false,\n        animation: false,\n        indexAxis: isCircular ? undefined : 'y',\n        cutout: this.type === 'donut' ? '58%' : undefined,\n        plugins: {\n          legend: {\n            display: isCircular || this.type !== 'horizontal-bar',\n            position: this.legendPosition,\n            labels: {\n              boxWidth: 48,\n              boxHeight: 12,\n              color: styles.getPropertyValue('--text-colour-default').trim(),\n              font: { family: styles.getPropertyValue('--font-family-primary').trim(), size: 14 },\n              padding: 12,\n            },\n          },\n        },\n        scales: isCircular\n          ? undefined\n          : {\n              x: {\n                beginAtZero: true,\n                stacked: isStacked,\n                border: { color: '#d4d4d4' },\n                grid: { display: false },\n                ticks: { color: '#171717' },\n              },\n              y: {\n                stacked: isStacked,\n                border: { color: '#d4d4d4' },\n                grid: { display: false },\n                ticks: { color: '#171717' },\n              },\n            },\n      },\n    };\n\n    this.chart = new Chart(this.canvas.nativeElement, configuration);\n  }\n}\n",
+            "sourceCode": "import { isPlatformBrowser } from '@angular/common';\nimport {\n  AfterViewInit,\n  Component,\n  ElementRef,\n  Inject,\n  Input,\n  OnChanges,\n  OnDestroy,\n  PLATFORM_ID,\n  SimpleChanges,\n  ViewChild,\n} from '@angular/core';\nimport {\n  BarController,\n  BarElement,\n  CategoryScale,\n  Chart,\n  ChartConfiguration,\n  ChartDataset,\n  DoughnutController,\n  ArcElement,\n  Legend,\n  LineController,\n  LineElement,\n  LinearScale,\n  PieController,\n  PointElement,\n  Tooltip,\n} from 'chart.js';\n\nexport type DdsChartType =\n  'donut' | 'pie' | 'gauge' | 'line' | 'horizontal-bar' | 'grouped-bar' | 'stacked-bar';\nexport type DdsChartLegendPosition = 'right' | 'bottom' | 'top';\n\nexport interface DdsChartSeries {\n  label: string;\n  data: number[];\n}\n\nChart.register(\n  ArcElement,\n  BarController,\n  BarElement,\n  CategoryScale,\n  DoughnutController,\n  Legend,\n  LineController,\n  LineElement,\n  LinearScale,\n  PieController,\n  PointElement,\n  Tooltip,\n);\n\nconst CHART_COLOURS = [\n  '--chart-1',\n  '--chart-2',\n  '--chart-3',\n  '--chart-4',\n  '--chart-5',\n  '--chart-6',\n] as const;\n\n/** Experimental Chart.js wrapper for documenting DDS data-visualisation colour usage. */\n@Component({\n  selector: 'dds-chart',\n  standalone: true,\n  templateUrl: './chart.component.html',\n  styleUrl: './chart.component.css',\n})\nexport class ChartComponent implements AfterViewInit, OnChanges, OnDestroy {\n  @ViewChild('canvas') canvas?: ElementRef<HTMLCanvasElement>;\n\n  /** Chart pattern to render. */\n  @Input() type: DdsChartType = 'donut';\n\n  /** Category labels used by bar charts and circular segments. */\n  @Input() labels: string[] = ['Series 1', 'Series 2', 'Series 3'];\n\n  /** Data series. Circular charts use the first series and colour each value. */\n  @Input() series: DdsChartSeries[] = [{ label: 'Value', data: [75, 15, 10] }];\n\n  /** Legend placement. */\n  @Input() legendPosition: DdsChartLegendPosition = 'right';\n\n  /** Accessible summary announced instead of the visual canvas. */\n  @Input() accessibleLabel = 'Chart';\n\n  private chart?: Chart;\n\n  constructor(@Inject(PLATFORM_ID) private readonly platformId: object) {}\n\n  ngAfterViewInit(): void {\n    this.renderChart();\n  }\n\n  ngOnChanges(_changes: SimpleChanges): void {\n    if (this.canvas) this.renderChart();\n  }\n\n  ngOnDestroy(): void {\n    this.chart?.destroy();\n  }\n\n  get gaugeValue(): number {\n    const values = this.series[0]?.data ?? [];\n    const total = values.reduce((sum, value) => sum + value, 0);\n    return total > 0 ? Math.round((values[0] / total) * 100) : 0;\n  }\n\n  private renderChart(): void {\n    if (!isPlatformBrowser(this.platformId) || !this.canvas) return;\n\n    this.chart?.destroy();\n    const styles = getComputedStyle(this.canvas.nativeElement);\n    const colours = CHART_COLOURS.map((token) => styles.getPropertyValue(token).trim());\n    const isGauge = this.type === 'gauge';\n    const isCircular = this.type === 'donut' || this.type === 'pie' || isGauge;\n    const isLine = this.type === 'line';\n    const isStacked = this.type === 'stacked-bar';\n    const datasets: ChartDataset<'bar' | 'doughnut' | 'pie' | 'line', number[]>[] = isCircular\n      ? [\n          {\n            label: this.series[0]?.label ?? 'Value',\n            data: this.series[0]?.data ?? [],\n            backgroundColor: isGauge\n              ? [colours[0], styles.getPropertyValue('--grey-200').trim()]\n              : colours,\n            borderColor: styles.getPropertyValue('--bg-colour-white').trim() || '#fff',\n            borderWidth: isGauge ? 0 : 1,\n          },\n        ]\n      : isLine\n        ? this.series.map((series, index) => ({\n            ...series,\n            backgroundColor: colours[index % colours.length],\n            borderColor: colours[index % colours.length],\n            borderWidth: 2,\n            pointBackgroundColor: colours[index % colours.length],\n            pointBorderColor: styles.getPropertyValue('--bg-colour-white').trim() || '#fff',\n            pointBorderWidth: 2,\n            pointRadius: 4,\n            pointHoverRadius: 6,\n            tension: 0.25,\n          }))\n        : this.series.map((series, index) => ({\n            ...series,\n            backgroundColor:\n              this.type === 'horizontal-bar'\n                ? series.data.map((_, colourIndex) => colours[colourIndex % colours.length])\n                : colours[index % colours.length],\n            borderWidth: 0,\n            barPercentage: isStacked ? 0.72 : 0.68,\n            categoryPercentage: isStacked ? 0.8 : 0.72,\n          }));\n\n    const configuration: ChartConfiguration<'bar' | 'doughnut' | 'pie' | 'line', number[], string> =\n      {\n        type: isCircular ? (this.type === 'pie' ? 'pie' : 'doughnut') : isLine ? 'line' : 'bar',\n        data: { labels: this.labels, datasets },\n        options: {\n          responsive: true,\n          maintainAspectRatio: false,\n          animation: false,\n          indexAxis: isCircular || isLine ? undefined : 'y',\n          cutout: isGauge ? '70%' : this.type === 'donut' ? '58%' : undefined,\n          rotation: isGauge ? -90 : undefined,\n          circumference: isGauge ? 180 : undefined,\n          plugins: {\n            legend: {\n              display: !isGauge && (isCircular || this.type !== 'horizontal-bar'),\n              position: this.legendPosition,\n              labels: {\n                boxWidth: 48,\n                boxHeight: 12,\n                color: styles.getPropertyValue('--text-colour-default').trim(),\n                font: { family: styles.getPropertyValue('--font-family-primary').trim(), size: 14 },\n                padding: 12,\n              },\n            },\n          },\n          scales: isCircular\n            ? undefined\n            : isLine\n              ? {\n                  x: {\n                    border: { color: '#d4d4d4' },\n                    grid: { display: false },\n                    ticks: { color: '#171717' },\n                  },\n                  y: {\n                    beginAtZero: true,\n                    border: { color: '#d4d4d4' },\n                    grid: { color: '#e5e5e5' },\n                    ticks: { color: '#171717' },\n                  },\n                }\n              : {\n                  x: {\n                    beginAtZero: true,\n                    stacked: isStacked,\n                    border: { color: '#d4d4d4' },\n                    grid: { display: false },\n                    ticks: { color: '#171717' },\n                  },\n                  y: {\n                    stacked: isStacked,\n                    border: { color: '#d4d4d4' },\n                    grid: { display: false },\n                    ticks: { color: '#171717' },\n                  },\n                },\n        },\n      };\n\n    this.chart = new Chart(this.canvas.nativeElement, configuration);\n  }\n}\n",
             "styleUrl": "./chart.component.css",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ":host {\n  display: block;\n  width: min(100%, 720px);\n}\n\n.dds-chart {\n  position: relative;\n  width: 100%;\n  height: 320px;\n  margin: 0;\n}\n\ncanvas {\n  max-width: 100%;\n}\n\n@media (max-width: 480px) {\n  .dds-chart {\n    height: 280px;\n  }\n}\n",
+                    "data": ":host {\n  display: block;\n  width: min(100%, 720px);\n}\n\n.dds-chart {\n  position: relative;\n  width: 100%;\n  height: 320px;\n  margin: 0;\n}\n\ncanvas {\n  max-width: 100%;\n}\n\n.dds-chart__gauge-value {\n  position: absolute;\n  bottom: 22%;\n  left: 50%;\n  color: var(--text-colour-default);\n  font-size: var(--font-size-xl);\n  font-weight: var(--font-weight-semibold);\n  line-height: 1;\n  transform: translateX(-50%);\n}\n\n@media (max-width: 480px) {\n  .dds-chart {\n    height: 280px;\n  }\n}\n",
                     "styleUrl": "./chart.component.css"
                 }
             ],
             "stylesData": "",
             "jsdoctags": [
                 {
-                    "pos": 950,
-                    "end": 1039,
+                    "pos": 1069,
+                    "end": 1158,
                     "kind": 321,
                     "id": 0,
                     "flags": 16777216,
@@ -1197,7 +1277,7 @@
                         "deprecationMessage": ""
                     }
                 ],
-                "line": 83,
+                "line": 90,
                 "rawdescription": "\n",
                 "jsdoctags": [
                     {
@@ -1219,6 +1299,19 @@
                 "OnChanges",
                 "OnDestroy"
             ],
+            "accessors": {
+                "gaugeValue": {
+                    "name": "gaugeValue",
+                    "getSignature": {
+                        "name": "gaugeValue",
+                        "type": "number",
+                        "returnType": "number",
+                        "line": 106,
+                        "rawdescription": "\n",
+                        "description": ""
+                    }
+                }
+            },
             "relationships": {
                 "incoming": [],
                 "outgoing": [
@@ -1236,7 +1329,7 @@
                     }
                 ]
             },
-            "templateData": "<figure class=\"dds-chart\" [attr.aria-label]=\"accessibleLabel\" role=\"img\">\n  <canvas #canvas aria-hidden=\"true\"></canvas>\n</figure>\n"
+            "templateData": "<figure class=\"dds-chart\" [attr.aria-label]=\"accessibleLabel\" role=\"img\">\n  <canvas #canvas aria-hidden=\"true\"></canvas>\n  @if (type === 'gauge') {\n    <span class=\"dds-chart__gauge-value\" aria-hidden=\"true\">{{ gaugeValue }}%</span>\n  }\n</figure>\n"
         },
         {
             "name": "CheckboxComponent",
@@ -3804,6 +3897,11 @@
                         "description": "A compact dashboard card that displays one key metric and its comparative trend."
                     },
                     {
+                        "name": "NavTabComponent",
+                        "type": "component",
+                        "description": "Figma nav tabs for switching between related content panels."
+                    },
+                    {
                         "name": "NumberedPaginationComponent",
                         "type": "component"
                     },
@@ -3824,7 +3922,7 @@
                     {
                         "name": "SelectComponent",
                         "type": "component",
-                        "description": "A native single-select field with DDS sizing, validation, and helper text treatments."
+                        "description": "A native single- or multi-select field with DDS sizing, validation, and helper text treatments."
                     },
                     {
                         "name": "SidebarNavComponent",
@@ -3856,7 +3954,7 @@
         },
         {
             "name": "KpiCardComponent",
-            "id": "component-KpiCardComponent-e8753c1fd236944e1cad34d5589e3d2fdc99a039a2e11819ce0301600ab4a16716c696fcf303ea2a67520ada07d74f7064d5e72edcc5a56ec5e25f681463970a",
+            "id": "component-KpiCardComponent-2e4670363bc040ab8d3ee21bae2c0dc80651e3f69480878907c770072320fb7894643f6c209c00cc35f92f032d06fdd5b02b8e7e8c2657b7189a6f77eeddc7fb",
             "file": "src/app/components/kpi-card/kpi-card.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -3884,8 +3982,20 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nShort label that identifies the metric.",
                     "description": "<p>Short label that identifies the metric.</p>\n",
-                    "line": 17,
+                    "line": 18,
                     "type": "string",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "loading",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nReplaces the metric content with shape-matched skeletons while data is loading.",
+                    "description": "<p>Replaces the metric content with shape-matched skeletons while data is loading.</p>\n",
+                    "line": 36,
+                    "type": "boolean",
                     "decorators": []
                 },
                 {
@@ -3896,7 +4006,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nOptional unit displayed before the value, such as KES or $.",
                     "description": "<p>Optional unit displayed before the value, such as KES or $.</p>\n",
-                    "line": 23,
+                    "line": 24,
                     "type": "string",
                     "decorators": []
                 },
@@ -3908,7 +4018,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nOptional unit displayed after the value, such as % or hrs.",
                     "description": "<p>Optional unit displayed after the value, such as % or hrs.</p>\n",
-                    "line": 26,
+                    "line": 27,
                     "type": "string",
                     "decorators": []
                 },
@@ -3920,7 +4030,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nSemantic direction of change. Neutral trends do not display an arrow.",
                     "description": "<p>Semantic direction of change. Neutral trends do not display an arrow.</p>\n",
-                    "line": 29,
+                    "line": 30,
                     "type": "KpiCardTrend",
                     "decorators": []
                 },
@@ -3932,7 +4042,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nComparative change and period, such as “8.2% vs last month”.",
                     "description": "<p>Comparative change and period, such as “8.2% vs last month”.</p>\n",
-                    "line": 32,
+                    "line": 33,
                     "type": "string",
                     "decorators": []
                 },
@@ -3944,7 +4054,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nCurrent metric value. Strings preserve formatting for large or decimal values.",
                     "description": "<p>Current metric value. Strings preserve formatting for large or decimal values.</p>\n",
-                    "line": 20,
+                    "line": 21,
                     "type": "string | number",
                     "decorators": []
                 }
@@ -3966,25 +4076,29 @@
                 {
                     "name": "IconComponent",
                     "type": "component"
+                },
+                {
+                    "name": "SkeletonComponent",
+                    "type": "component"
                 }
             ],
             "description": "<p>A compact dashboard card that displays one key metric and its comparative trend.</p>\n",
             "rawdescription": "\nA compact dashboard card that displays one key metric and its comparative trend.",
             "type": "component",
-            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, Input } from '@angular/core';\nimport { DdsIconName, IconComponent } from '../icon/icon.component';\n\nexport type KpiCardTrend = 'positive' | 'neutral' | 'negative';\n\n/** A compact dashboard card that displays one key metric and its comparative trend. */\n@Component({\n  selector: 'dds-kpi-card',\n  standalone: true,\n  imports: [CommonModule, IconComponent],\n  templateUrl: './kpi-card.component.html',\n  styleUrl: './kpi-card.component.css',\n})\nexport class KpiCardComponent {\n  /** Short label that identifies the metric. */\n  @Input() label = 'Card title';\n\n  /** Current metric value. Strings preserve formatting for large or decimal values. */\n  @Input() value: string | number = 142;\n\n  /** Optional unit displayed before the value, such as KES or $. */\n  @Input() prefix = '';\n\n  /** Optional unit displayed after the value, such as % or hrs. */\n  @Input() suffix = '';\n\n  /** Semantic direction of change. Neutral trends do not display an arrow. */\n  @Input() trend: KpiCardTrend = 'positive';\n\n  /** Comparative change and period, such as “8.2% vs last month”. */\n  @Input() trendText = '8.2% vs last month';\n\n  get trendIcon(): DdsIconName | null {\n    if (this.trend === 'positive') return 'arrow-up';\n    if (this.trend === 'negative') return 'arrow-down';\n    return null;\n  }\n\n  get accessibleLabel(): string {\n    const metric = [this.prefix, this.value, this.suffix].filter(String).join(' ');\n    return `${this.label}: ${metric}. ${this.trendText}`;\n  }\n}\n",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, Input } from '@angular/core';\nimport { DdsIconName, IconComponent } from '../icon/icon.component';\nimport { SkeletonComponent } from '../skeleton/skeleton.component';\n\nexport type KpiCardTrend = 'positive' | 'neutral' | 'negative';\n\n/** A compact dashboard card that displays one key metric and its comparative trend. */\n@Component({\n  selector: 'dds-kpi-card',\n  standalone: true,\n  imports: [CommonModule, IconComponent, SkeletonComponent],\n  templateUrl: './kpi-card.component.html',\n  styleUrl: './kpi-card.component.css',\n})\nexport class KpiCardComponent {\n  /** Short label that identifies the metric. */\n  @Input() label = 'Card title';\n\n  /** Current metric value. Strings preserve formatting for large or decimal values. */\n  @Input() value: string | number = 142;\n\n  /** Optional unit displayed before the value, such as KES or $. */\n  @Input() prefix = '';\n\n  /** Optional unit displayed after the value, such as % or hrs. */\n  @Input() suffix = '';\n\n  /** Semantic direction of change. Neutral trends do not display an arrow. */\n  @Input() trend: KpiCardTrend = 'positive';\n\n  /** Comparative change and period, such as “8.2% vs last month”. */\n  @Input() trendText = '8.2% vs last month';\n\n  /** Replaces the metric content with shape-matched skeletons while data is loading. */\n  @Input() loading = false;\n\n  get trendIcon(): DdsIconName | null {\n    if (this.trend === 'positive') return 'arrow-up';\n    if (this.trend === 'negative') return 'arrow-down';\n    return null;\n  }\n\n  get accessibleLabel(): string {\n    if (this.loading) return `${this.label} is loading`;\n\n    const metric = [this.prefix, this.value, this.suffix].filter(String).join(' ');\n    return `${this.label}: ${metric}. ${this.trendText}`;\n  }\n}\n",
             "styleUrl": "./kpi-card.component.css",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ":host {\n  display: block;\n  min-width: 0;\n}\n\n.dds-kpi-card {\n  display: flex;\n  flex-direction: column;\n  gap: var(--space-1);\n  min-width: 160px;\n  padding: var(--space-3);\n  border: 1px solid var(--border-colour-subtle);\n  border-radius: var(--radius-sm);\n  background: var(--bg-colour-white);\n  color: var(--text-colour-default);\n}\n\n.dds-kpi-card__label,\n.dds-kpi-card__value {\n  margin: 0;\n}\n\n.dds-kpi-card__label {\n  overflow: hidden;\n  color: var(--text-colour-secondary);\n  font: var(--font-weight-regular) var(--font-size-xs) / var(--font-size-md)\n    var(--font-family-primary);\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n\n.dds-kpi-card__value {\n  display: flex;\n  align-items: baseline;\n  gap: var(--space-1);\n  min-width: 0;\n  font: var(--font-weight-semibold) var(--font-size-xl) / 28px var(--font-family-primary);\n  font-variant-numeric: tabular-nums;\n}\n\n.dds-kpi-card__suffix {\n  margin-left: calc(var(--space-1) * -1);\n}\n\n.dds-kpi-card__trend {\n  display: flex;\n  align-items: center;\n  gap: var(--space-1);\n  min-height: 18px;\n  color: var(--text-colour-tertiary);\n  font: var(--font-weight-semibold) var(--font-size-xs) / var(--font-size-md)\n    var(--font-family-primary);\n}\n\n.dds-kpi-card__trend-icon {\n  display: inline-flex;\n  flex: none;\n}\n\n.dds-kpi-card[data-trend='positive'] .dds-kpi-card__trend {\n  color: var(--text-colour-success);\n}\n\n.dds-kpi-card[data-trend='negative'] .dds-kpi-card__trend {\n  color: var(--text-colour-danger);\n}\n\n@media (forced-colors: active) {\n  .dds-kpi-card {\n    border-color: CanvasText;\n  }\n}\n",
+                    "data": ":host {\n  display: block;\n  min-width: 0;\n}\n\n.dds-kpi-card {\n  display: flex;\n  flex-direction: column;\n  gap: var(--space-1);\n  min-width: 160px;\n  padding: var(--space-3);\n  border: 1px solid var(--border-colour-subtle);\n  border-radius: var(--radius-sm);\n  background: var(--bg-colour-white);\n  color: var(--text-colour-default);\n}\n\n.dds-kpi-card__label,\n.dds-kpi-card__value {\n  margin: 0;\n}\n\n.dds-kpi-card__label {\n  overflow: hidden;\n  color: var(--text-colour-secondary);\n  font: var(--font-weight-regular) var(--font-size-xs) / var(--font-size-md)\n    var(--font-family-primary);\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n\n.dds-kpi-card__value {\n  display: flex;\n  align-items: baseline;\n  gap: var(--space-1);\n  min-width: 0;\n  font: var(--font-weight-semibold) var(--font-size-xl) / 28px var(--font-family-primary);\n  font-variant-numeric: tabular-nums;\n}\n\n.dds-kpi-card__suffix {\n  margin-left: calc(var(--space-1) * -1);\n}\n\n.dds-kpi-card__trend {\n  display: flex;\n  align-items: center;\n  gap: var(--space-1);\n  min-height: 18px;\n  color: var(--text-colour-tertiary);\n  font: var(--font-weight-semibold) var(--font-size-xs) / var(--font-size-md)\n    var(--font-family-primary);\n}\n\n.dds-kpi-card__trend-icon {\n  display: inline-flex;\n  flex: none;\n}\n\n.dds-kpi-card--loading dds-skeleton {\n  flex: none;\n}\n\n.dds-kpi-card[data-trend='positive'] .dds-kpi-card__trend {\n  color: var(--text-colour-success);\n}\n\n.dds-kpi-card[data-trend='negative'] .dds-kpi-card__trend {\n  color: var(--text-colour-danger);\n}\n\n@media (forced-colors: active) {\n  .dds-kpi-card {\n    border-color: CanvasText;\n  }\n}\n",
                     "styleUrl": "./kpi-card.component.css"
                 }
             ],
             "stylesData": "",
             "jsdoctags": [
                 {
-                    "pos": 233,
-                    "end": 320,
+                    "pos": 301,
+                    "end": 388,
                     "kind": 321,
                     "id": 0,
                     "flags": 16777216,
@@ -4001,7 +4115,7 @@
                         "name": "trendIcon",
                         "type": "unknown",
                         "returnType": "DdsIconName | null",
-                        "line": 34,
+                        "line": 38,
                         "rawdescription": "\n",
                         "description": ""
                     }
@@ -4012,7 +4126,7 @@
                         "name": "accessibleLabel",
                         "type": "string",
                         "returnType": "string",
-                        "line": 40,
+                        "line": 44,
                         "rawdescription": "\n",
                         "description": ""
                     }
@@ -4028,10 +4142,14 @@
                     {
                         "name": "IconComponent",
                         "type": "component"
+                    },
+                    {
+                        "name": "SkeletonComponent",
+                        "type": "component"
                     }
                 ]
             },
-            "templateData": "<article class=\"dds-kpi-card\" [attr.data-trend]=\"trend\" [attr.aria-label]=\"accessibleLabel\">\n  <p class=\"dds-kpi-card__label\">{{ label }}</p>\n\n  <p class=\"dds-kpi-card__value\">\n    <span *ngIf=\"prefix\" class=\"dds-kpi-card__prefix\">{{ prefix }}</span>\n    <span>{{ value }}</span\n    ><span *ngIf=\"suffix\" class=\"dds-kpi-card__suffix\">{{ suffix }}</span>\n  </p>\n\n  <div class=\"dds-kpi-card__trend\">\n    <dds-icon\n      *ngIf=\"trendIcon as icon\"\n      class=\"dds-kpi-card__trend-icon\"\n      [name]=\"icon\"\n      [size]=\"16\"\n      aria-hidden=\"true\"\n    ></dds-icon>\n    <span>{{ trendText }}</span>\n  </div>\n</article>\n"
+            "templateData": "<article\n  class=\"dds-kpi-card\"\n  [class.dds-kpi-card--loading]=\"loading\"\n  [attr.data-trend]=\"trend\"\n  [attr.aria-busy]=\"loading ? 'true' : null\"\n  [attr.aria-label]=\"accessibleLabel\"\n>\n  <ng-container *ngIf=\"loading; else loadedContent\">\n    <dds-skeleton width=\"46%\" height=\"16px\"></dds-skeleton>\n    <dds-skeleton width=\"68%\" height=\"28px\"></dds-skeleton>\n    <dds-skeleton width=\"58%\" height=\"18px\"></dds-skeleton>\n  </ng-container>\n\n  <ng-template #loadedContent>\n    <p class=\"dds-kpi-card__label\">{{ label }}</p>\n\n    <p class=\"dds-kpi-card__value\">\n      <span *ngIf=\"prefix\" class=\"dds-kpi-card__prefix\">{{ prefix }}</span>\n      <span>{{ value }}</span\n      ><span *ngIf=\"suffix\" class=\"dds-kpi-card__suffix\">{{ suffix }}</span>\n    </p>\n\n    <div class=\"dds-kpi-card__trend\">\n      <dds-icon\n        *ngIf=\"trendIcon as icon\"\n        class=\"dds-kpi-card__trend-icon\"\n        [name]=\"icon\"\n        [size]=\"16\"\n        aria-hidden=\"true\"\n      ></dds-icon>\n      <span>{{ trendText }}</span>\n    </div>\n  </ng-template>\n</article>\n"
         },
         {
             "name": "LoadingOverlayComponent",
@@ -4319,6 +4437,433 @@
                 ]
             },
             "templateData": "<nav class=\"dds-minimal-pagination\" [attr.aria-label]=\"ariaLabel\">\n  <dds-button\n    variant=\"secondary\"\n    size=\"medium\"\n    iconType=\"left-icon\"\n    icon=\"chevron-left\"\n    [disabled]=\"isFirstPage\"\n    (click)=\"previous()\"\n  >\n    Previous\n  </dds-button>\n\n  <span class=\"dds-minimal-pagination__status\" aria-live=\"polite\">\n    Page {{ normalizedCurrentPage }} of {{ normalizedTotalPages }}\n  </span>\n\n  <dds-button\n    variant=\"secondary\"\n    size=\"medium\"\n    iconType=\"right-icon\"\n    icon=\"chevron-right\"\n    [disabled]=\"isLastPage\"\n    (click)=\"next()\"\n  >\n    Next\n  </dds-button>\n</nav>\n"
+        },
+        {
+            "name": "NavTabComponent",
+            "id": "component-NavTabComponent-76b616368f697669521bf9a502a3ff4d9c1aedf52d81cd465d0bb7c777afb8b4a5a34f09f24c82215301632aa321859aabadcff6c1268d9c1f1c290616f28a73",
+            "file": "src/app/components/nav-tab/nav-tab.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "dds-nav-tab",
+            "styleUrls": [
+                "./nav-tab.component.css"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./nav-tab.component.html"
+            ],
+            "templateVariables": [],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "coverageIgnore": false,
+                    "name": "activation",
+                    "defaultValue": "'manual'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nArrow keys move focus; Enter or Space activates by default.",
+                    "description": "<p>Arrow keys move focus; Enter or Space activates by default.</p>\n",
+                    "line": 42,
+                    "type": "\"manual\" | \"automatic\"",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "ariaLabel",
+                    "defaultValue": "'Content tabs'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 40,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "id",
+                    "defaultValue": "`dds-nav-tab-${nextNavTabId++}`",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nSupply a stable, page-unique ID when linking panels or server rendering.",
+                    "description": "<p>Supply a stable, page-unique ID when linking panels or server rendering.</p>\n",
+                    "line": 34,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "items",
+                    "defaultValue": "[]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 35,
+                    "type": "NavTabItem[]",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "orientation",
+                    "defaultValue": "'horizontal'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 39,
+                    "type": "\"horizontal\" | \"vertical\"",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "selectedValue",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nFalls back to the first enabled tab when absent, removed, or disabled.",
+                    "description": "<p>Falls back to the first enabled tab when absent, removed, or disabled.</p>\n",
+                    "line": 37,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "size",
+                    "defaultValue": "'desktop'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 38,
+                    "type": "\"desktop\" | \"mobile\"",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "selectedValueChange",
+                    "coverageIgnore": false,
+                    "defaultValue": "new EventEmitter<string>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 43,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "buttons",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "QueryList<ElementRef<HTMLButtonElement>>",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 45,
+                    "rawdescription": "\n",
+                    "decorators": [
+                        {
+                            "name": "ViewChildren",
+                            "stringifiedArguments": "'tabButton'"
+                        }
+                    ],
+                    "modifierKind": [
+                        171,
+                        123
+                    ]
+                },
+                {
+                    "name": "focusedValue",
+                    "coverageIgnore": false,
+                    "defaultValue": "null",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string | null",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 46,
+                    "rawdescription": "\n",
+                    "modifierKind": [
+                        123
+                    ]
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "onFocus",
+                    "coverageIgnore": false,
+                    "args": [
+                        {
+                            "name": "item",
+                            "type": "NavTabItem",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 74,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "jsdoctags": [
+                        {
+                            "name": "item",
+                            "type": "NavTabItem",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "onFocusOut",
+                    "coverageIgnore": false,
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "FocusEvent",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 78,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "FocusEvent",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "onKeydown",
+                    "coverageIgnore": false,
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "KeyboardEvent",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "item",
+                            "type": "NavTabItem",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 84,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "KeyboardEvent",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "item",
+                            "type": "NavTabItem",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "select",
+                    "coverageIgnore": false,
+                    "args": [
+                        {
+                            "name": "item",
+                            "type": "NavTabItem",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 66,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "jsdoctags": [
+                        {
+                            "name": "item",
+                            "type": "NavTabItem",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "tabId",
+                    "coverageIgnore": false,
+                    "args": [
+                        {
+                            "name": "value",
+                            "type": "string",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "string",
+                    "typeParameters": [],
+                    "line": 62,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "jsdoctags": [
+                        {
+                            "name": "value",
+                            "type": "string",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "coverageIgnore": false,
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "IconComponent",
+                    "type": "component"
+                }
+            ],
+            "description": "<p>Figma nav tabs for switching between related content panels.</p>\n",
+            "rawdescription": "\nFigma nav tabs for switching between related content panels.",
+            "type": "component",
+            "sourceCode": "import {\n  Component,\n  ElementRef,\n  EventEmitter,\n  Input,\n  Output,\n  QueryList,\n  ViewChildren,\n} from '@angular/core';\nimport { DdsIconName, IconComponent } from '../icon/icon.component';\n\nexport interface NavTabItem {\n  /** Unique, stable value within this group. */\n  value: string;\n  label: string;\n  icon?: DdsIconName;\n  disabled?: boolean;\n  /** ID of the content panel rendered by the consumer. */\n  panelId?: string;\n}\n\nlet nextNavTabId = 0;\n\n/** Figma nav tabs for switching between related content panels. */\n@Component({\n  selector: 'dds-nav-tab',\n  standalone: true,\n  imports: [IconComponent],\n  templateUrl: './nav-tab.component.html',\n  styleUrl: './nav-tab.component.css',\n})\nexport class NavTabComponent {\n  /** Supply a stable, page-unique ID when linking panels or server rendering. */\n  @Input() id = `dds-nav-tab-${nextNavTabId++}`;\n  @Input() items: NavTabItem[] = [];\n  /** Falls back to the first enabled tab when absent, removed, or disabled. */\n  @Input() selectedValue = '';\n  @Input() size: 'desktop' | 'mobile' = 'desktop';\n  @Input() orientation: 'horizontal' | 'vertical' = 'horizontal';\n  @Input() ariaLabel = 'Content tabs';\n  /** Arrow keys move focus; Enter or Space activates by default. */\n  @Input() activation: 'manual' | 'automatic' = 'manual';\n  @Output() selectedValueChange = new EventEmitter<string>();\n\n  @ViewChildren('tabButton') private buttons!: QueryList<ElementRef<HTMLButtonElement>>;\n  private focusedValue: string | null = null;\n\n  get activeValue(): string | undefined {\n    return (\n      this.items.find((item) => item.value === this.selectedValue && !item.disabled)?.value ??\n      this.items.find((item) => !item.disabled)?.value\n    );\n  }\n\n  get focusValue(): string | undefined {\n    return (\n      this.items.find((item) => item.value === this.focusedValue && !item.disabled)?.value ??\n      this.activeValue\n    );\n  }\n\n  tabId(value: string): string {\n    return `${this.id}-tab-${encodeURIComponent(value)}`;\n  }\n\n  select(item: NavTabItem): void {\n    if (item.disabled) return;\n    this.focusedValue = item.value;\n    if (item.value === this.activeValue) return;\n    this.selectedValue = item.value;\n    this.selectedValueChange.emit(item.value);\n  }\n\n  onFocus(item: NavTabItem): void {\n    this.focusedValue = item.value;\n  }\n\n  onFocusOut(event: FocusEvent): void {\n    if (!(event.currentTarget as HTMLElement).contains(event.relatedTarget as Node | null)) {\n      this.focusedValue = null;\n    }\n  }\n\n  onKeydown(event: KeyboardEvent, item: NavTabItem): void {\n    if (event.altKey || event.ctrlKey || event.metaKey || item.disabled) return;\n    const previous = this.orientation === 'horizontal' ? 'ArrowLeft' : 'ArrowUp';\n    const next = this.orientation === 'horizontal' ? 'ArrowRight' : 'ArrowDown';\n    if (![previous, next, 'Home', 'End'].includes(event.key)) return;\n    const enabled = this.items.filter((tab) => !tab.disabled);\n    if (!enabled.length) return;\n    event.preventDefault();\n    const index = enabled.indexOf(item);\n    const targetIndex =\n      event.key === 'Home'\n        ? 0\n        : event.key === 'End'\n          ? enabled.length - 1\n          : (index + (event.key === next ? 1 : -1) + enabled.length) % enabled.length;\n    const target = enabled[targetIndex];\n    this.focusedValue = target.value;\n    const button = this.buttons.get(this.items.indexOf(target))?.nativeElement;\n    button?.focus({ preventScroll: true });\n    button?.scrollIntoView?.({ block: 'nearest', inline: 'nearest' });\n    if (this.activation === 'automatic') this.select(target);\n  }\n}\n",
+            "styleUrl": "./nav-tab.component.css",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ":host {\n  display: block;\n  min-width: 0;\n  max-width: 100%;\n}\n\n.dds-nav-tab {\n  display: flex;\n  align-items: flex-start;\n  gap: var(--space-4);\n  padding-inline-end: var(--space-4);\n  overflow-x: auto;\n  border-bottom: 1px solid var(--border-colour-default);\n  background: var(--bg-colour-white);\n}\n\n.dds-nav-tab__tab {\n  position: relative;\n  box-sizing: border-box;\n  display: inline-flex;\n  flex: 0 0 auto;\n  align-items: center;\n  gap: var(--space-2);\n  min-height: 37px;\n  padding: var(--space-2) var(--space-3);\n  border: 0;\n  border-radius: 0;\n  background: transparent;\n  color: var(--text-colour-tertiary);\n  font-family: var(--font-family-primary);\n  font-size: var(--font-size-sm);\n  font-weight: var(--font-weight-regular);\n  line-height: 20px;\n  white-space: nowrap;\n  cursor: pointer;\n}\n\n.dds-nav-tab__tab--active {\n  color: var(--text-colour-info);\n  font-weight: var(--font-weight-semibold);\n}\n\n.dds-nav-tab__tab--active::after {\n  position: absolute;\n  inset-inline: 0;\n  bottom: 0;\n  height: 2px;\n  background: var(--border-colour-info);\n  content: '';\n}\n\n.dds-nav-tab__tab:focus-visible {\n  outline: 2px solid var(--border-colour-info);\n  outline-offset: -2px;\n}\n\n.dds-nav-tab__tab:disabled {\n  color: var(--text-colour-disabled);\n  cursor: not-allowed;\n}\n\n.dds-nav-tab__icon {\n  display: inline-flex;\n  flex: 0 0 20px;\n  width: 20px;\n  height: 20px;\n}\n\n.dds-nav-tab--mobile {\n  gap: var(--space-3);\n  padding-inline: var(--space-4);\n}\n\n.dds-nav-tab--mobile .dds-nav-tab__tab {\n  min-height: 36px;\n  padding: 10px;\n  font-size: var(--font-size-xs);\n  line-height: 16px;\n}\n\n.dds-nav-tab--mobile .dds-nav-tab__icon {\n  flex-basis: 16px;\n  width: 16px;\n  height: 16px;\n}\n\n.dds-nav-tab--vertical {\n  flex-direction: column;\n  gap: var(--space-4);\n  padding: 0;\n  border-bottom: 0;\n}\n\n@media (forced-colors: active) {\n  .dds-nav-tab__tab--active::after {\n    background: Highlight;\n  }\n  .dds-nav-tab__tab:disabled {\n    color: GrayText;\n  }\n}\n",
+                    "styleUrl": "./nav-tab.component.css"
+                }
+            ],
+            "stylesData": "",
+            "jsdoctags": [
+                {
+                    "pos": 456,
+                    "end": 523,
+                    "kind": 321,
+                    "id": 0,
+                    "flags": 16777216,
+                    "modifierFlagsCache": 0,
+                    "transformFlags": 0,
+                    "comment": "Figma nav tabs for switching between related content panels."
+                }
+            ],
+            "extends": [],
+            "accessors": {
+                "activeValue": {
+                    "name": "activeValue",
+                    "getSignature": {
+                        "name": "activeValue",
+                        "type": "unknown",
+                        "returnType": "string | undefined",
+                        "line": 48,
+                        "rawdescription": "\n",
+                        "description": ""
+                    }
+                },
+                "focusValue": {
+                    "name": "focusValue",
+                    "getSignature": {
+                        "name": "focusValue",
+                        "type": "unknown",
+                        "returnType": "string | undefined",
+                        "line": 55,
+                        "rawdescription": "\n",
+                        "description": ""
+                    }
+                }
+            },
+            "relationships": {
+                "incoming": [],
+                "outgoing": [
+                    {
+                        "name": "IconComponent",
+                        "type": "component"
+                    }
+                ]
+            },
+            "templateData": "<div\n  class=\"dds-nav-tab\"\n  [class.dds-nav-tab--mobile]=\"size === 'mobile'\"\n  [class.dds-nav-tab--vertical]=\"orientation === 'vertical'\"\n  role=\"tablist\"\n  [attr.aria-label]=\"ariaLabel\"\n  [attr.aria-orientation]=\"orientation\"\n  (focusout)=\"onFocusOut($event)\"\n>\n  @for (item of items; track item.value) {\n    <button\n      #tabButton\n      class=\"dds-nav-tab__tab\"\n      [class.dds-nav-tab__tab--active]=\"item.value === activeValue\"\n      type=\"button\"\n      role=\"tab\"\n      [id]=\"tabId(item.value)\"\n      [disabled]=\"item.disabled\"\n      [attr.aria-selected]=\"item.value === activeValue\"\n      [attr.aria-controls]=\"item.panelId || null\"\n      [tabIndex]=\"item.value === focusValue ? 0 : -1\"\n      (click)=\"select(item)\"\n      (focus)=\"onFocus(item)\"\n      (keydown)=\"onKeydown($event, item)\"\n    >\n      @if (item.icon) {\n        <dds-icon\n          class=\"dds-nav-tab__icon\"\n          [name]=\"item.icon\"\n          [size]=\"size === 'mobile' ? 16 : 20\"\n        />\n      }\n      <span>{{ item.label }}</span>\n    </button>\n  }\n</div>\n"
         },
         {
             "name": "NumberedPaginationComponent",
@@ -5480,7 +6025,7 @@
                     {
                         "name": "SelectComponent",
                         "type": "component",
-                        "description": "A native single-select field with DDS sizing, validation, and helper text treatments."
+                        "description": "A native single- or multi-select field with DDS sizing, validation, and helper text treatments."
                     }
                 ]
             },
@@ -7028,7 +7573,7 @@
         },
         {
             "name": "SelectComponent",
-            "id": "component-SelectComponent-8d984bed1bf1e7e71e866ccbabbd33e89710f5398d8026a8a77616c8ef13d5996a824fb7a95c5de8c58af77b342f2ad57fa1f6c1dac2f4e3f556badd641b7ec9",
+            "id": "component-SelectComponent-26662829e6c83debb66f1f9e9d0dbdd94eb44e9c053ad46a186efc0006b0827ff8f6021c40fcfec8a77d7d62028cf7dc1dcbdaced5279e7cef14337b5162410a",
             "file": "src/app/components/select/select.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -7056,7 +7601,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nAccessible name used when the visible label is hidden.",
                     "description": "<p>Accessible name used when the visible label is hidden.</p>\n",
-                    "line": 56,
+                    "line": 65,
                     "type": "string",
                     "decorators": []
                 },
@@ -7068,7 +7613,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nValidation guidance shown in the error state.",
                     "description": "<p>Validation guidance shown in the error state.</p>\n",
-                    "line": 65,
+                    "line": 74,
                     "type": "string",
                     "decorators": []
                 },
@@ -7080,7 +7625,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nOptional guidance displayed beneath the field.",
                     "description": "<p>Optional guidance displayed beneath the field.</p>\n",
-                    "line": 59,
+                    "line": 68,
                     "type": "string",
                     "decorators": []
                 },
@@ -7116,7 +7661,19 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nReplaces the field content with shape-matched skeletons while options are loading.",
                     "description": "<p>Replaces the field content with shape-matched skeletons while options are loading.</p>\n",
-                    "line": 68,
+                    "line": 77,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "multiple",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nEnables the native multi-select variant.",
+                    "description": "<p>Enables the native multi-select variant.</p>\n",
+                    "line": 38,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -7128,7 +7685,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nAvailable options in display order.",
                     "description": "<p>Available options in display order.</p>\n",
-                    "line": 41,
+                    "line": 50,
                     "type": "SelectOption[]",
                     "decorators": []
                 },
@@ -7140,7 +7697,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nPlaceholder shown before an option is selected.",
                     "description": "<p>Placeholder shown before an option is selected.</p>\n",
-                    "line": 38,
+                    "line": 47,
                     "type": "string",
                     "decorators": []
                 },
@@ -7152,8 +7709,20 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nMarks the native select as required.",
                     "description": "<p>Marks the native select as required.</p>\n",
-                    "line": 50,
+                    "line": 59,
                     "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "selectedValues",
+                    "defaultValue": "[]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nSelected option values used by the multi-select variant.",
+                    "description": "<p>Selected option values used by the multi-select variant.</p>\n",
+                    "line": 41,
+                    "type": "string[]",
                     "decorators": []
                 },
                 {
@@ -7164,7 +7733,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nShows optional guidance beneath non-error fields.",
                     "description": "<p>Shows optional guidance beneath non-error fields.</p>\n",
-                    "line": 62,
+                    "line": 71,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -7176,7 +7745,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nShows the visible field label.",
                     "description": "<p>Shows the visible field label.</p>\n",
-                    "line": 53,
+                    "line": 62,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -7188,7 +7757,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nResponsive size from the DDS specification.",
                     "description": "<p>Responsive size from the DDS specification.</p>\n",
-                    "line": 44,
+                    "line": 53,
                     "type": "SelectSize",
                     "decorators": []
                 },
@@ -7200,7 +7769,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nDeterministic visual state for validation and documentation.",
                     "description": "<p>Deterministic visual state for validation and documentation.</p>\n",
-                    "line": 47,
+                    "line": 56,
                     "type": "SelectState",
                     "decorators": []
                 },
@@ -7215,9 +7784,32 @@
                     "line": 35,
                     "type": "string",
                     "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "visibleOptionCount",
+                    "defaultValue": "4",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nNumber of visible rows in the multi-select variant.",
+                    "description": "<p>Number of visible rows in the multi-select variant.</p>\n",
+                    "line": 44,
+                    "type": "number",
+                    "decorators": []
                 }
             ],
             "outputsClass": [
+                {
+                    "name": "selectedValuesChange",
+                    "coverageIgnore": false,
+                    "defaultValue": "new EventEmitter<string[]>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nEmitted whenever the multi-select values change.",
+                    "description": "<p>Emitted whenever the multi-select values change.</p>\n",
+                    "line": 83,
+                    "type": "EventEmitter"
+                },
                 {
                     "name": "valueChange",
                     "coverageIgnore": false,
@@ -7226,7 +7818,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nEmitted whenever the selected value changes.",
                     "description": "<p>Emitted whenever the selected value changes.</p>\n",
-                    "line": 71,
+                    "line": 80,
                     "type": "EventEmitter"
                 }
             ],
@@ -7248,7 +7840,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 97,
+                    "line": 109,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n",
@@ -7288,15 +7880,15 @@
                     "type": "component"
                 }
             ],
-            "description": "<p>A native single-select field with DDS sizing, validation, and helper text treatments.</p>\n",
-            "rawdescription": "\n\nA native single-select field with DDS sizing, validation, and helper text treatments.\n",
+            "description": "<p>A native single- or multi-select field with DDS sizing, validation, and helper text treatments.</p>\n",
+            "rawdescription": "\n\nA native single- or multi-select field with DDS sizing, validation, and helper text treatments.\n",
             "type": "component",
-            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, EventEmitter, Input, Output } from '@angular/core';\nimport { IconComponent } from '../icon/icon.component';\nimport { SkeletonComponent } from '../skeleton/skeleton.component';\n\nexport type SelectSize = 'large' | 'small';\nexport type SelectState = 'default' | 'focused' | 'disabled' | 'error';\n\nexport type SelectOption = {\n  label: string;\n  value: string;\n  disabled?: boolean;\n};\n\nlet nextSelectId = 0;\n\n/**\n * A native single-select field with DDS sizing, validation, and helper text treatments.\n */\n@Component({\n  selector: 'dds-select',\n  standalone: true,\n  imports: [CommonModule, IconComponent, SkeletonComponent],\n  templateUrl: './select.component.html',\n  styleUrl: './select.component.css',\n})\nexport class SelectComponent {\n  /** Unique ID used to associate the label, field, and supporting text. */\n  @Input() inputId = `dds-select-${nextSelectId++}`;\n\n  /** Visible field label. */\n  @Input() label = 'Select option';\n\n  /** Current option value. */\n  @Input() value = '';\n\n  /** Placeholder shown before an option is selected. */\n  @Input() placeholder = 'Select option';\n\n  /** Available options in display order. */\n  @Input() options: SelectOption[] = [];\n\n  /** Responsive size from the DDS specification. */\n  @Input() size: SelectSize = 'large';\n\n  /** Deterministic visual state for validation and documentation. */\n  @Input() state: SelectState = 'default';\n\n  /** Marks the native select as required. */\n  @Input() required = false;\n\n  /** Shows the visible field label. */\n  @Input() showLabel = true;\n\n  /** Accessible name used when the visible label is hidden. */\n  @Input() ariaLabel = 'Select option';\n\n  /** Optional guidance displayed beneath the field. */\n  @Input() helperText = 'Choose one option.';\n\n  /** Shows optional guidance beneath non-error fields. */\n  @Input() showHelperText = true;\n\n  /** Validation guidance shown in the error state. */\n  @Input() errorMessage = 'Select an option to continue.';\n\n  /** Replaces the field content with shape-matched skeletons while options are loading. */\n  @Input() loading = false;\n\n  /** Emitted whenever the selected value changes. */\n  @Output() valueChange = new EventEmitter<string>();\n\n  get isDisabled(): boolean {\n    return this.state === 'disabled';\n  }\n\n  get isError(): boolean {\n    return this.state === 'error';\n  }\n\n  get helperId(): string {\n    return `${this.inputId}-helper`;\n  }\n\n  get errorId(): string {\n    return `${this.inputId}-error`;\n  }\n\n  get describedBy(): string | null {\n    if (this.isError) {\n      return this.errorId;\n    }\n\n    return this.showHelperText ? this.helperId : null;\n  }\n\n  handleChange(event: Event): void {\n    this.value = (event.target as HTMLSelectElement).value;\n    this.valueChange.emit(this.value);\n  }\n}\n",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, EventEmitter, Input, Output } from '@angular/core';\nimport { IconComponent } from '../icon/icon.component';\nimport { SkeletonComponent } from '../skeleton/skeleton.component';\n\nexport type SelectSize = 'large' | 'small';\nexport type SelectState = 'default' | 'focused' | 'disabled' | 'error';\n\nexport type SelectOption = {\n  label: string;\n  value: string;\n  disabled?: boolean;\n};\n\nlet nextSelectId = 0;\n\n/**\n * A native single- or multi-select field with DDS sizing, validation, and helper text treatments.\n */\n@Component({\n  selector: 'dds-select',\n  standalone: true,\n  imports: [CommonModule, IconComponent, SkeletonComponent],\n  templateUrl: './select.component.html',\n  styleUrl: './select.component.css',\n})\nexport class SelectComponent {\n  /** Unique ID used to associate the label, field, and supporting text. */\n  @Input() inputId = `dds-select-${nextSelectId++}`;\n\n  /** Visible field label. */\n  @Input() label = 'Select option';\n\n  /** Current option value. */\n  @Input() value = '';\n\n  /** Enables the native multi-select variant. */\n  @Input() multiple = false;\n\n  /** Selected option values used by the multi-select variant. */\n  @Input() selectedValues: string[] = [];\n\n  /** Number of visible rows in the multi-select variant. */\n  @Input() visibleOptionCount = 4;\n\n  /** Placeholder shown before an option is selected. */\n  @Input() placeholder = 'Select option';\n\n  /** Available options in display order. */\n  @Input() options: SelectOption[] = [];\n\n  /** Responsive size from the DDS specification. */\n  @Input() size: SelectSize = 'large';\n\n  /** Deterministic visual state for validation and documentation. */\n  @Input() state: SelectState = 'default';\n\n  /** Marks the native select as required. */\n  @Input() required = false;\n\n  /** Shows the visible field label. */\n  @Input() showLabel = true;\n\n  /** Accessible name used when the visible label is hidden. */\n  @Input() ariaLabel = 'Select option';\n\n  /** Optional guidance displayed beneath the field. */\n  @Input() helperText = 'Choose one option.';\n\n  /** Shows optional guidance beneath non-error fields. */\n  @Input() showHelperText = true;\n\n  /** Validation guidance shown in the error state. */\n  @Input() errorMessage = 'Select an option to continue.';\n\n  /** Replaces the field content with shape-matched skeletons while options are loading. */\n  @Input() loading = false;\n\n  /** Emitted whenever the selected value changes. */\n  @Output() valueChange = new EventEmitter<string>();\n\n  /** Emitted whenever the multi-select values change. */\n  @Output() selectedValuesChange = new EventEmitter<string[]>();\n\n  get isDisabled(): boolean {\n    return this.state === 'disabled';\n  }\n\n  get isError(): boolean {\n    return this.state === 'error';\n  }\n\n  get helperId(): string {\n    return `${this.inputId}-helper`;\n  }\n\n  get errorId(): string {\n    return `${this.inputId}-error`;\n  }\n\n  get describedBy(): string | null {\n    if (this.isError) {\n      return this.errorId;\n    }\n\n    return this.showHelperText ? this.helperId : null;\n  }\n\n  handleChange(event: Event): void {\n    const select = event.target as HTMLSelectElement;\n\n    if (this.multiple) {\n      this.selectedValues = Array.from(select.selectedOptions, (option) => option.value);\n      this.selectedValuesChange.emit(this.selectedValues);\n      return;\n    }\n\n    this.value = select.value;\n    this.valueChange.emit(this.value);\n  }\n}\n",
             "styleUrl": "./select.component.css",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ":host {\n  display: block;\n  max-width: 100%;\n}\n\n.dds-select {\n  display: flex;\n  flex-direction: column;\n  width: 460px;\n  max-width: 100%;\n  color: var(--text-colour-default);\n  font-family: var(--font-family-primary);\n}\n\n.dds-select__label {\n  display: flex;\n  align-items: center;\n  gap: var(--space-1);\n  padding-bottom: var(--space-2);\n  font-size: var(--font-size-sm);\n  font-weight: var(--font-weight-semibold);\n  line-height: 20px;\n}\n\n.dds-select--small .dds-select__label {\n  padding-bottom: var(--space-1);\n  font-size: var(--font-size-xs);\n  line-height: 16px;\n}\n\n.dds-select__required {\n  color: var(--text-colour-danger);\n}\n\n.dds-select__field {\n  position: relative;\n  box-sizing: border-box;\n  display: flex;\n  align-items: center;\n  width: 100%;\n  min-height: 48px;\n  border: 1px solid var(--border-colour-default);\n  border-radius: var(--radius-sm);\n  background: var(--bg-colour-white);\n}\n\n.dds-select--small .dds-select__field {\n  min-height: 40px;\n}\n\n.dds-select--focused .dds-select__field,\n.dds-select__field:focus-within {\n  border: 2px solid var(--border-colour-info);\n}\n\n.dds-select--error .dds-select__field {\n  border: 2px solid var(--border-colour-danger);\n}\n\n.dds-select--disabled .dds-select__field {\n  background: var(--bg-colour-disabled);\n}\n\n.dds-select__control {\n  position: relative;\n  z-index: 1;\n  width: 100%;\n  min-height: 46px;\n  padding: var(--space-3) 48px var(--space-3) var(--space-3);\n  border: 0;\n  outline: 0;\n  appearance: none;\n  background: transparent;\n  color: var(--text-colour-default);\n  cursor: pointer;\n  font: inherit;\n  font-size: var(--font-size-md);\n  line-height: 24px;\n}\n\n.dds-select--small .dds-select__control {\n  min-height: 38px;\n  padding: 9px 40px 9px var(--space-3);\n  font-size: var(--font-size-sm);\n  line-height: 20px;\n}\n\n.dds-select--focused .dds-select__control,\n.dds-select--error .dds-select__control {\n  min-height: 44px;\n}\n\n.dds-select--small.dds-select--focused .dds-select__control,\n.dds-select--small.dds-select--error .dds-select__control {\n  min-height: 36px;\n  padding-block: 8px;\n}\n\n.dds-select--placeholder .dds-select__control,\n.dds-select--disabled .dds-select__control {\n  color: var(--text-colour-placeholder);\n}\n\n.dds-select--disabled .dds-select__control {\n  cursor: not-allowed;\n}\n\n.dds-select__icon {\n  position: absolute;\n  z-index: 0;\n  right: var(--space-3);\n  display: inline-flex;\n  color: var(--text-colour-default);\n  pointer-events: none;\n}\n\n.dds-select--disabled .dds-select__icon {\n  color: var(--text-colour-placeholder);\n}\n\n.dds-select__supporting-text {\n  margin: 0;\n  padding-top: var(--space-2);\n  color: var(--text-colour-secondary);\n  font-size: var(--font-size-xs);\n  font-weight: var(--font-weight-regular);\n  line-height: 16px;\n}\n\n.dds-select__error {\n  color: var(--text-colour-danger);\n  font-weight: var(--font-weight-medium);\n}\n\n.dds-select__skeleton-label {\n  padding-bottom: var(--space-2);\n}\n\n.dds-select--small .dds-select__skeleton-label {\n  padding-bottom: var(--space-1);\n}\n\n.dds-select__skeleton-supporting-text {\n  padding-top: var(--space-2);\n}\n",
+                    "data": ":host {\n  display: block;\n  max-width: 100%;\n}\n\n.dds-select {\n  display: flex;\n  flex-direction: column;\n  width: 460px;\n  max-width: 100%;\n  color: var(--text-colour-default);\n  font-family: var(--font-family-primary);\n}\n\n.dds-select__label {\n  display: flex;\n  align-items: center;\n  gap: var(--space-1);\n  padding-bottom: var(--space-2);\n  font-size: var(--font-size-sm);\n  font-weight: var(--font-weight-semibold);\n  line-height: 20px;\n}\n\n.dds-select--small .dds-select__label {\n  padding-bottom: var(--space-1);\n  font-size: var(--font-size-xs);\n  line-height: 16px;\n}\n\n.dds-select__required {\n  color: var(--text-colour-danger);\n}\n\n.dds-select__field {\n  position: relative;\n  box-sizing: border-box;\n  display: flex;\n  align-items: center;\n  width: 100%;\n  min-height: 48px;\n  border: 1px solid var(--border-colour-default);\n  border-radius: var(--radius-sm);\n  background: var(--bg-colour-white);\n}\n\n.dds-select--small .dds-select__field {\n  min-height: 40px;\n}\n\n.dds-select--multiple .dds-select__field {\n  align-items: stretch;\n}\n\n.dds-select--focused .dds-select__field,\n.dds-select__field:focus-within {\n  border: 2px solid var(--border-colour-info);\n}\n\n.dds-select--error .dds-select__field {\n  border: 2px solid var(--border-colour-danger);\n}\n\n.dds-select--disabled .dds-select__field {\n  background: var(--bg-colour-disabled);\n}\n\n.dds-select__control {\n  position: relative;\n  z-index: 1;\n  width: 100%;\n  min-height: 46px;\n  padding: var(--space-3) 48px var(--space-3) var(--space-3);\n  border: 0;\n  outline: 0;\n  appearance: none;\n  background: transparent;\n  color: var(--text-colour-default);\n  cursor: pointer;\n  font: inherit;\n  font-size: var(--font-size-md);\n  line-height: 24px;\n}\n\n.dds-select--small .dds-select__control {\n  min-height: 38px;\n  padding: 9px 40px 9px var(--space-3);\n  font-size: var(--font-size-sm);\n  line-height: 20px;\n}\n\n.dds-select--multiple .dds-select__control,\n.dds-select--small.dds-select--multiple .dds-select__control {\n  min-height: auto;\n  padding: var(--space-3);\n  appearance: auto;\n}\n\n.dds-select--multiple .dds-select__control option {\n  padding: var(--space-2);\n}\n\n.dds-select--focused .dds-select__control,\n.dds-select--error .dds-select__control {\n  min-height: 44px;\n}\n\n.dds-select--small.dds-select--focused .dds-select__control,\n.dds-select--small.dds-select--error .dds-select__control {\n  min-height: 36px;\n  padding-block: 8px;\n}\n\n.dds-select--placeholder .dds-select__control,\n.dds-select--disabled .dds-select__control {\n  color: var(--text-colour-placeholder);\n}\n\n.dds-select--disabled .dds-select__control {\n  cursor: not-allowed;\n}\n\n.dds-select__icon {\n  position: absolute;\n  z-index: 0;\n  right: var(--space-3);\n  display: inline-flex;\n  color: var(--text-colour-default);\n  pointer-events: none;\n}\n\n.dds-select--disabled .dds-select__icon {\n  color: var(--text-colour-placeholder);\n}\n\n.dds-select__supporting-text {\n  margin: 0;\n  padding-top: var(--space-2);\n  color: var(--text-colour-secondary);\n  font-size: var(--font-size-xs);\n  font-weight: var(--font-weight-regular);\n  line-height: 16px;\n}\n\n.dds-select__error {\n  color: var(--text-colour-danger);\n  font-weight: var(--font-weight-medium);\n}\n\n.dds-select__skeleton-label {\n  padding-bottom: var(--space-2);\n}\n\n.dds-select--small .dds-select__skeleton-label {\n  padding-bottom: var(--space-1);\n}\n\n.dds-select__skeleton-supporting-text {\n  padding-top: var(--space-2);\n}\n",
                     "styleUrl": "./select.component.css"
                 }
             ],
@@ -7304,13 +7896,13 @@
             "jsdoctags": [
                 {
                     "pos": 474,
-                    "end": 570,
+                    "end": 580,
                     "kind": 321,
                     "id": 0,
                     "flags": 16777216,
                     "modifierFlagsCache": 0,
                     "transformFlags": 0,
-                    "comment": "A native single-select field with DDS sizing, validation, and helper text treatments."
+                    "comment": "A native single- or multi-select field with DDS sizing, validation, and helper text treatments."
                 }
             ],
             "extends": [],
@@ -7321,7 +7913,7 @@
                         "name": "isDisabled",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 73,
+                        "line": 85,
                         "rawdescription": "\n",
                         "description": ""
                     }
@@ -7332,7 +7924,7 @@
                         "name": "isError",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 77,
+                        "line": 89,
                         "rawdescription": "\n",
                         "description": ""
                     }
@@ -7343,7 +7935,7 @@
                         "name": "helperId",
                         "type": "string",
                         "returnType": "string",
-                        "line": 81,
+                        "line": 93,
                         "rawdescription": "\n",
                         "description": ""
                     }
@@ -7354,7 +7946,7 @@
                         "name": "errorId",
                         "type": "string",
                         "returnType": "string",
-                        "line": 85,
+                        "line": 97,
                         "rawdescription": "\n",
                         "description": ""
                     }
@@ -7365,7 +7957,7 @@
                         "name": "describedBy",
                         "type": "unknown",
                         "returnType": "string | null",
-                        "line": 89,
+                        "line": 101,
                         "rawdescription": "\n",
                         "description": ""
                     }
@@ -7394,7 +7986,7 @@
                     }
                 ]
             },
-            "templateData": "<div\n  class=\"dds-select\"\n  [class.dds-select--small]=\"size === 'small'\"\n  [class.dds-select--focused]=\"state === 'focused'\"\n  [class.dds-select--disabled]=\"isDisabled\"\n  [class.dds-select--error]=\"isError\"\n  [class.dds-select--placeholder]=\"!value\"\n  [class.dds-select--loading]=\"loading\"\n  [attr.aria-busy]=\"loading ? 'true' : null\"\n  [attr.aria-label]=\"loading ? 'Loading select' : null\"\n>\n  <ng-container *ngIf=\"loading; else loadedContent\">\n    <div *ngIf=\"showLabel\" class=\"dds-select__skeleton-label\">\n      <dds-skeleton width=\"96px\" [height]=\"size === 'small' ? 16 : 20\"></dds-skeleton>\n    </div>\n    <dds-skeleton width=\"100%\" [height]=\"size === 'small' ? 40 : 48\"></dds-skeleton>\n    <div *ngIf=\"showHelperText\" class=\"dds-select__skeleton-supporting-text\">\n      <dds-skeleton width=\"45%\" height=\"16px\"></dds-skeleton>\n    </div>\n  </ng-container>\n\n  <ng-template #loadedContent>\n    <label *ngIf=\"showLabel\" class=\"dds-select__label\" [for]=\"inputId\">\n      {{ label }}\n      <span *ngIf=\"required\" class=\"dds-select__required\" aria-hidden=\"true\">*</span>\n    </label>\n\n    <div class=\"dds-select__field\">\n      <select\n        class=\"dds-select__control\"\n        [id]=\"inputId\"\n        [value]=\"value\"\n        [required]=\"required\"\n        [disabled]=\"isDisabled\"\n        [attr.aria-label]=\"showLabel ? null : ariaLabel\"\n        [attr.aria-invalid]=\"isError ? 'true' : null\"\n        [attr.aria-describedby]=\"describedBy\"\n        (change)=\"handleChange($event)\"\n      >\n        <option value=\"\" disabled>{{ placeholder }}</option>\n        <option *ngFor=\"let option of options\" [value]=\"option.value\" [disabled]=\"option.disabled\">\n          {{ option.label }}\n        </option>\n      </select>\n      <dds-icon\n        class=\"dds-select__icon\"\n        name=\"chevron-down\"\n        [size]=\"size === 'small' ? 20 : 24\"\n        aria-hidden=\"true\"\n      ></dds-icon>\n    </div>\n\n    <p *ngIf=\"!isError && showHelperText\" class=\"dds-select__supporting-text\" [id]=\"helperId\">\n      {{ helperText }}\n    </p>\n\n    <p *ngIf=\"isError\" class=\"dds-select__supporting-text dds-select__error\" [id]=\"errorId\">\n      {{ errorMessage }}\n    </p>\n  </ng-template>\n</div>\n"
+            "templateData": "<div\n  class=\"dds-select\"\n  [class.dds-select--small]=\"size === 'small'\"\n  [class.dds-select--focused]=\"state === 'focused'\"\n  [class.dds-select--disabled]=\"isDisabled\"\n  [class.dds-select--error]=\"isError\"\n  [class.dds-select--placeholder]=\"multiple ? !selectedValues.length : !value\"\n  [class.dds-select--multiple]=\"multiple\"\n  [class.dds-select--loading]=\"loading\"\n  [attr.aria-busy]=\"loading ? 'true' : null\"\n  [attr.aria-label]=\"loading ? 'Loading select' : null\"\n>\n  <ng-container *ngIf=\"loading; else loadedContent\">\n    <div *ngIf=\"showLabel\" class=\"dds-select__skeleton-label\">\n      <dds-skeleton width=\"96px\" [height]=\"size === 'small' ? 16 : 20\"></dds-skeleton>\n    </div>\n    <dds-skeleton\n      width=\"100%\"\n      [height]=\"multiple ? visibleOptionCount * 36 + 24 : size === 'small' ? 40 : 48\"\n    ></dds-skeleton>\n    <div *ngIf=\"showHelperText\" class=\"dds-select__skeleton-supporting-text\">\n      <dds-skeleton width=\"45%\" height=\"16px\"></dds-skeleton>\n    </div>\n  </ng-container>\n\n  <ng-template #loadedContent>\n    <label *ngIf=\"showLabel\" class=\"dds-select__label\" [for]=\"inputId\">\n      {{ label }}\n      <span *ngIf=\"required\" class=\"dds-select__required\" aria-hidden=\"true\">*</span>\n    </label>\n\n    <div class=\"dds-select__field\">\n      <select\n        class=\"dds-select__control\"\n        [id]=\"inputId\"\n        [value]=\"value\"\n        [multiple]=\"multiple\"\n        [attr.size]=\"multiple ? visibleOptionCount : null\"\n        [required]=\"required\"\n        [disabled]=\"isDisabled\"\n        [attr.aria-label]=\"showLabel ? null : ariaLabel\"\n        [attr.aria-invalid]=\"isError ? 'true' : null\"\n        [attr.aria-describedby]=\"describedBy\"\n        (change)=\"handleChange($event)\"\n      >\n        <option *ngIf=\"!multiple\" value=\"\" disabled>{{ placeholder }}</option>\n        <option\n          *ngFor=\"let option of options\"\n          [value]=\"option.value\"\n          [selected]=\"multiple && selectedValues.includes(option.value)\"\n          [disabled]=\"option.disabled\"\n        >\n          {{ option.label }}\n        </option>\n      </select>\n      <dds-icon\n        *ngIf=\"!multiple\"\n        class=\"dds-select__icon\"\n        name=\"chevron-down\"\n        [size]=\"size === 'small' ? 20 : 24\"\n        aria-hidden=\"true\"\n      ></dds-icon>\n    </div>\n\n    <p *ngIf=\"!isError && showHelperText\" class=\"dds-select__supporting-text\" [id]=\"helperId\">\n      {{ helperText }}\n    </p>\n\n    <p *ngIf=\"isError\" class=\"dds-select__supporting-text dds-select__error\" [id]=\"errorId\">\n      {{ errorMessage }}\n    </p>\n  </ng-template>\n</div>\n"
         },
         {
             "name": "SidebarNavComponent",
@@ -7966,6 +8558,11 @@
                         "type": "component"
                     },
                     {
+                        "name": "KpiCardComponent",
+                        "type": "component",
+                        "description": "A compact dashboard card that displays one key metric and its comparative trend."
+                    },
+                    {
                         "name": "OtpInputComponent",
                         "type": "component",
                         "description": "A six-digit one-time-code field with paste, mobile autofill, and validation support."
@@ -7992,7 +8589,7 @@
                     {
                         "name": "SelectComponent",
                         "type": "component",
-                        "description": "A native single-select field with DDS sizing, validation, and helper text treatments."
+                        "description": "A native single- or multi-select field with DDS sizing, validation, and helper text treatments."
                     },
                     {
                         "name": "TextareaComponent",
@@ -10071,6 +10668,17 @@
                 "defaultValue": "0"
             },
             {
+                "name": "nextNavTabId",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/components/nav-tab/nav-tab.component.ts",
+                "coverageIgnore": false,
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "number",
+                "defaultValue": "0"
+            },
+            {
                 "name": "nextOtpInputId",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -10470,7 +11078,7 @@
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
                 "coverageIgnore": false,
-                "rawtype": "\"donut\" | \"pie\" | \"horizontal-bar\" | \"grouped-bar\" | \"stacked-bar\"",
+                "rawtype": "\"donut\" | \"pie\" | \"gauge\" | \"line\" | \"horizontal-bar\" | \"grouped-bar\" | \"stacked-bar\"",
                 "file": "src/app/components/chart/chart.component.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -10982,6 +11590,19 @@
                     "defaultValue": "0"
                 }
             ],
+            "src/app/components/nav-tab/nav-tab.component.ts": [
+                {
+                    "name": "nextNavTabId",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/components/nav-tab/nav-tab.component.ts",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "defaultValue": "0"
+                }
+            ],
             "src/app/components/otp-input/otp-input.component.ts": [
                 {
                     "name": "nextOtpInputId",
@@ -11396,7 +12017,7 @@
                     "ctype": "miscellaneous",
                     "subtype": "typealias",
                     "coverageIgnore": false,
-                    "rawtype": "\"donut\" | \"pie\" | \"horizontal-bar\" | \"grouped-bar\" | \"stacked-bar\"",
+                    "rawtype": "\"donut\" | \"pie\" | \"gauge\" | \"line\" | \"horizontal-bar\" | \"grouped-bar\" | \"stacked-bar\"",
                     "file": "src/app/components/chart/chart.component.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
@@ -12197,7 +12818,7 @@
                 "linktype": "component",
                 "name": "KpiCardComponent",
                 "coveragePercent": 100,
-                "coverageCount": "7/7",
+                "coverageCount": "8/8",
                 "status": "very-good"
             },
             {
@@ -12246,6 +12867,34 @@
                 "name": "MinimalPaginationComponent",
                 "coveragePercent": 0,
                 "coverageCount": "0/7",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/nav-tab/nav-tab.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "NavTabComponent",
+                "coveragePercent": 25,
+                "coverageCount": "4/16",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/nav-tab/nav-tab.component.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "NavTabItem",
+                "coveragePercent": 33,
+                "coverageCount": "2/6",
+                "status": "medium"
+            },
+            {
+                "filePath": "src/app/components/nav-tab/nav-tab.component.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "nextNavTabId",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
                 "status": "low"
             },
             {
@@ -12475,8 +13124,8 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "SelectComponent",
-                "coveragePercent": 94,
-                "coverageCount": "16/17",
+                "coveragePercent": 95,
+                "coverageCount": "20/21",
                 "status": "very-good"
             },
             {
