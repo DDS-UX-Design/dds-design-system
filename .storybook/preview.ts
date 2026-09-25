@@ -1,6 +1,8 @@
 import type { Preview } from '@storybook/angular';
 import { setCompodocJson } from '@storybook/addon-docs/angular';
+import { create } from 'storybook/theming/create';
 import docJson from '../documentation.json';
+import { ddsTheme } from './dds-theme';
 
 setCompodocJson(docJson);
 
@@ -27,6 +29,7 @@ const preview: Preview = {
     },
     docs: {
       toc: true,
+      theme: create({ base: 'light', fontBase: ddsTheme.fontBase, fontCode: ddsTheme.fontCode }),
     },
     options: {
       storySort: {
