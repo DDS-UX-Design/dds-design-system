@@ -226,7 +226,7 @@ them directly inside components unless a matching semantic token does not yet ex
 {palettes.map((palette) => (
 <section className="dds-colours__palette" key={palette.name}>
 <div className="dds-colours__section-heading">
-<h3>{palette.name}</h3>
+<h3 id={`palette-${palette.name.toLowerCase()}`}>{palette.name}</h3>
 <p>{palette.description}</p>
 </div>
 <div className="dds-colours__primitive-grid">
@@ -245,7 +245,7 @@ intended meaning—not the one whose current value merely looks right.
 {semanticGroups.map((group) => (
 <section className="dds-colours__semantic-group" key={group.name}>
 <div className="dds-colours__section-heading">
-<h3>{group.name}</h3>
+<h3 id={`semantic-${group.name.toLowerCase()}`}>{group.name}</h3>
 <p>{group.description}</p>
 </div>
 <div className="dds-colours__token-list">
