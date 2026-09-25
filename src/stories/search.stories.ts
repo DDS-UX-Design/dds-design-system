@@ -93,8 +93,8 @@ const meta: Meta<SearchStoryArgs> = {
       table: { category: 'Suggestions', defaultValue: { summary: 'false' } },
     },
     loading: { control: 'boolean', table: { category: 'State' } },
-    onSearch: { table: { disable: true } },
-    onSuggestionSelected: { table: { disable: true } },
+    onSearch: { action: 'search', table: { disable: true } },
+    onSuggestionSelected: { action: 'suggestionSelected', table: { disable: true } },
   },
   args: {
     label: 'Search customers',
