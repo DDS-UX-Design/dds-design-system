@@ -132,8 +132,8 @@ const meta: Meta<SelectStoryArgs> = {
       table: { category: 'Validation' },
     },
     loading: { control: 'boolean', table: { category: 'State' } },
-    onValueChange: { table: { disable: true } },
-    onSelectedValuesChange: { table: { disable: true } },
+    onValueChange: { action: 'valueChange', table: { disable: true } },
+    onSelectedValuesChange: { action: 'selectedValuesChange', table: { disable: true } },
   },
   args: {
     label: 'Country',
@@ -215,9 +215,16 @@ export const MultiSelect: Story = {
     const select = canvas.getByRole('listbox', { name: 'Operating countries' });
 
     await userEvent.selectOptions(select, ['gb', 'us']);
-    await expect(canvas.getByRole('option', { name: 'United Kingdom' })).toBeChecked();
-    await expect(canvas.getByRole('option', { name: 'United States' })).toBeChecked();
-    await expect(args.onSelectedValuesChange).toHaveBeenLastCalledWith(['gb', 'us']);
+    await expect(canvas.getByRole('option', { name: 'United Kingdom' })).toHaveProperty(
+      'selected',
+      true,
+    );
+    await expect(canvas.getByRole('option', { name: 'United States' })).toHaveProperty(
+      'selected',
+      true,
+    );
+    await expect(select).toHaveValue(['ke', 'za', 'gb', 'us']);
+    await expect(args.onSelectedValuesChange).toHaveBeenLastCalledWith(['ke', 'za', 'gb', 'us']);
   },
 };
 
