@@ -152,7 +152,7 @@ export const WithoutVisibleLabel: Story = {
 export const Entry: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    const input = canvas.getByLabelText('Label Text');
+    const input = canvas.getByRole('textbox', { name: 'Label Text' });
     await userEvent.type(input, 'Field text');
     await expect(input).toHaveValue('Field text');
   },
