@@ -16,6 +16,8 @@ const meta: Meta<NavTabComponent> = {
   tags: ['autodocs'],
   parameters: {
     layout: 'padded',
+    // Internal onKeydown/onFocus handlers must not become inferred action callbacks.
+    actions: { argTypesRegex: '^$' },
     docs: {
       description: {
         component:
@@ -27,7 +29,7 @@ const meta: Meta<NavTabComponent> = {
     size: { control: 'inline-radio', options: ['desktop', 'mobile'] },
     orientation: { control: 'inline-radio', options: ['horizontal', 'vertical'] },
     activation: { control: 'inline-radio', options: ['manual', 'automatic'] },
-    selectedValueChange: { table: { disable: true } },
+    selectedValueChange: { action: 'selectedValueChange', table: { disable: true } },
   },
   args: {
     items,
@@ -85,7 +87,7 @@ export const WithPanels: Story = {
       }
     `,
   }),
-  play: async ({ canvasElement }) => {
+  play: async ({ args, canvasElement }) => {
     const canvas = within(canvasElement);
     const tabs = canvas.getAllByRole('tab');
     await userEvent.click(tabs[0]);
@@ -94,7 +96,10 @@ export const WithPanels: Story = {
     await expect(tabs[0]).toHaveAttribute('aria-selected', 'true');
     await userEvent.keyboard('{Enter}');
     await expect(tabs[1]).toHaveAttribute('aria-selected', 'true');
-    await expect(canvas.getByRole('tabpanel')).toHaveTextContent('Inactive Tab content');
+    await expect(args.selectedValueChange).toHaveBeenCalledWith('details');
+    await expect(canvas.getByRole('tabpanel', { name: 'Tab 2' })).toHaveTextContent(
+      'Tab 2 Content',
+    );
     await userEvent.keyboard('{ArrowRight}{ArrowRight}');
     await expect(tabs[4]).toHaveFocus();
     await userEvent.keyboard('{Home}');
