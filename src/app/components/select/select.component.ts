@@ -15,7 +15,7 @@ export type SelectOption = {
 let nextSelectId = 0;
 
 /**
- * A native single-select field with DDS sizing, validation, and helper text treatments.
+ * A native single- or multi-select field with DDS sizing, validation, and helper text treatments.
  */
 @Component({
   selector: 'dds-select',
@@ -33,6 +33,15 @@ export class SelectComponent {
 
   /** Current option value. */
   @Input() value = '';
+
+  /** Enables the native multi-select variant. */
+  @Input() multiple = false;
+
+  /** Selected option values used by the multi-select variant. */
+  @Input() selectedValues: string[] = [];
+
+  /** Number of visible rows in the multi-select variant. */
+  @Input() visibleOptionCount = 4;
 
   /** Placeholder shown before an option is selected. */
   @Input() placeholder = 'Select option';
@@ -70,6 +79,9 @@ export class SelectComponent {
   /** Emitted whenever the selected value changes. */
   @Output() valueChange = new EventEmitter<string>();
 
+  /** Emitted whenever the multi-select values change. */
+  @Output() selectedValuesChange = new EventEmitter<string[]>();
+
   get isDisabled(): boolean {
     return this.state === 'disabled';
   }
@@ -95,7 +107,15 @@ export class SelectComponent {
   }
 
   handleChange(event: Event): void {
-    this.value = (event.target as HTMLSelectElement).value;
+    const select = event.target as HTMLSelectElement;
+
+    if (this.multiple) {
+      this.selectedValues = Array.from(select.selectedOptions, (option) => option.value);
+      this.selectedValuesChange.emit(this.selectedValues);
+      return;
+    }
+
+    this.value = select.value;
     this.valueChange.emit(this.value);
   }
 }
