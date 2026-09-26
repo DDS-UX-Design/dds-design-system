@@ -74,7 +74,7 @@ const meta: Meta<ToastStoryArgs> = {
       if: { arg: 'autoDismiss', eq: true },
       table: { category: 'Behavior', defaultValue: { summary: '5000' } },
     },
-    onDismiss: { table: { disable: true } },
+    onDismiss: { action: 'dismissed', table: { disable: true } },
   },
   args: {
     tone: 'info',

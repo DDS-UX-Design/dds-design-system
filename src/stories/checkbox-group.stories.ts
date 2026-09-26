@@ -55,7 +55,7 @@ const meta: Meta<CheckboxGroupStoryArgs> = {
       options: ['default', 'invalid', 'disabled'] satisfies CheckboxGroupState[],
     },
     loading: { control: 'boolean', table: { category: 'State' } },
-    onSelectedValuesChange: { table: { disable: true } },
+    onSelectedValuesChange: { action: 'selectedValuesChange', table: { disable: true } },
   },
   render: (args) => ({
     props: args,

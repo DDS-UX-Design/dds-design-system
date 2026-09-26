@@ -210,7 +210,9 @@ export const Loading: Story = {
       'aria-busy',
       'true',
     );
-    await expect(canvas.queryByLabelText('Password')).not.toBeInTheDocument();
+    await expect(
+      canvas.queryByLabelText(/^Password(?:\s*\*)?$/, { selector: 'input' }),
+    ).not.toBeInTheDocument();
     await expect(canvas.queryByRole('button')).not.toBeInTheDocument();
   },
 };
@@ -222,12 +224,23 @@ export const VisibilityToggle: Story = {
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    const input = canvas.getByLabelText('Password');
+    // Password inputs have no implicit textbox role; allow the label's required indicator.
+    const input = canvas.getByLabelText(/^Password(?:\s*\*)?$/, { selector: 'input' });
     const toggle = canvas.getByRole('button', { name: 'Show password' });
 
+    await expect(input).toHaveAccessibleName('Password');
     await expect(input).toHaveAttribute('type', 'password');
     await userEvent.click(toggle);
     await expect(input).toHaveAttribute('type', 'text');
     await expect(canvas.getByRole('button', { name: 'Hide password' })).toBeVisible();
+    await expect(toggle).toHaveAttribute('aria-pressed', 'true');
+    await expect(input).toHaveValue('CorrectHorseBatteryStaple');
+    await userEvent.click(canvas.getByRole('button', { name: 'Hide password' }));
+    await expect(input).toHaveAttribute('type', 'password');
+    await expect(canvas.getByRole('button', { name: 'Show password' })).toHaveAttribute(
+      'aria-pressed',
+      'false',
+    );
+    await expect(input).toHaveValue('CorrectHorseBatteryStaple');
   },
 };

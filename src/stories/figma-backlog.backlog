@@ -19,7 +19,7 @@ Last audited: 27 August 2026
 - [ ] **P1 · Design review** — Add elevation tokens and document their usage. Dropdowns and Toasts currently use the same `0 4px 16px rgb(0 0 0 / 8%)` shadow without a named design token.
 - [ ] **P1 · Design review** — Add motion tokens for durations and easing, including reduced-motion behavior. Toast countdown and component transitions currently have component-level values.
 - [ ] **P2 · Design review** — Define responsive rules for component widths, wrapping, and breakpoint behavior instead of only Desktop/Mobile snapshots.
-- [ ] **P2 · Design review** — Document minimum touch-target guidance for interactive icons and compact controls.
+- [x] **P2 · Implemented** — Document minimum touch-target guidance for interactive icons and compact controls in Foundations / Accessibility.
 - [ ] **P2 · Design review** — Document focus-ring construction and application across all interactive components.
 - [ ] **P2 · Design review** — Add content guidance for truncation, wrapping, and unusually long translated text.
 

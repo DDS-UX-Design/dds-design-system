@@ -10,6 +10,9 @@ import {
 type SelectStoryArgs = {
   label: string;
   value: string;
+  multiple: boolean;
+  selectedValues: string[];
+  visibleOptionCount: number;
   placeholder: string;
   options: SelectOption[];
   size: SelectSize;
@@ -22,6 +25,7 @@ type SelectStoryArgs = {
   errorMessage: string;
   loading: boolean;
   onValueChange: ReturnType<typeof fn>;
+  onSelectedValuesChange: ReturnType<typeof fn>;
 };
 
 const countryOptions: SelectOption[] = [
@@ -40,7 +44,7 @@ const meta: Meta<SelectStoryArgs> = {
     docs: {
       description: {
         component:
-          'A native single-select field for choosing one option from a predefined list. Use concise option labels, arrange options in a meaningful order, and provide helper or error text when the choice needs explanation.',
+          'A native select field for choosing one or several options from a predefined list. Use concise option labels, arrange options meaningfully, and provide helper or error text when the choice needs explanation. Multi-select users can use Ctrl or Command with pointer selection, or the platform keyboard controls, to select non-adjacent options.',
       },
     },
   },
@@ -56,6 +60,21 @@ const meta: Meta<SelectStoryArgs> = {
       options: ['', 'ke', 'za', 'gb', 'us'],
       description: 'Currently selected option value.',
       table: { category: 'Content' },
+    },
+    multiple: {
+      control: 'boolean',
+      description: 'Enables native selection of multiple options.',
+      table: { category: 'Behavior', defaultValue: { summary: 'false' } },
+    },
+    selectedValues: {
+      control: 'object',
+      if: { arg: 'multiple', eq: true },
+      table: { category: 'Content' },
+    },
+    visibleOptionCount: {
+      control: { type: 'number', min: 2, max: 10, step: 1 },
+      if: { arg: 'multiple', eq: true },
+      table: { category: 'Layout', defaultValue: { summary: '4' } },
     },
     placeholder: {
       control: 'text',
@@ -113,11 +132,15 @@ const meta: Meta<SelectStoryArgs> = {
       table: { category: 'Validation' },
     },
     loading: { control: 'boolean', table: { category: 'State' } },
-    onValueChange: { table: { disable: true } },
+    onValueChange: { action: 'valueChange', table: { disable: true } },
+    onSelectedValuesChange: { action: 'selectedValuesChange', table: { disable: true } },
   },
   args: {
     label: 'Country',
     value: '',
+    multiple: false,
+    selectedValues: [],
+    visibleOptionCount: 4,
     placeholder: 'Select country',
     options: countryOptions,
     size: 'large',
@@ -130,6 +153,7 @@ const meta: Meta<SelectStoryArgs> = {
     errorMessage: 'Select a country to continue.',
     loading: false,
     onValueChange: fn(),
+    onSelectedValuesChange: fn(),
   },
   render: (args) => ({
     props: args,
@@ -137,6 +161,9 @@ const meta: Meta<SelectStoryArgs> = {
       <dds-select
         [label]="label"
         [value]="value"
+        [multiple]="multiple"
+        [selectedValues]="selectedValues"
+        [visibleOptionCount]="visibleOptionCount"
         [placeholder]="placeholder"
         [options]="options"
         [size]="size"
@@ -149,6 +176,7 @@ const meta: Meta<SelectStoryArgs> = {
         [errorMessage]="errorMessage"
         [loading]="loading"
         (valueChange)="value = $event; onValueChange($event)"
+        (selectedValuesChange)="selectedValues = $event; onSelectedValuesChange($event)"
       ></dds-select>
     `,
   }),
@@ -163,6 +191,41 @@ export const Default: Story = {};
 
 export const Selected: Story = {
   args: { value: 'ke' },
+};
+
+export const MultiSelect: Story = {
+  name: 'Multi-select',
+  args: {
+    label: 'Operating countries',
+    multiple: true,
+    selectedValues: ['ke', 'za'],
+    helperText: 'Select all countries where your organisation operates.',
+    required: false,
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'The native multi-select keeps platform keyboard and assistive-technology behaviour. Use it when several choices may be submitted together.',
+      },
+    },
+  },
+  play: async ({ args, canvasElement }) => {
+    const canvas = within(canvasElement);
+    const select = canvas.getByRole('listbox', { name: 'Operating countries' });
+
+    await userEvent.selectOptions(select, ['gb', 'us']);
+    await expect(canvas.getByRole('option', { name: 'United Kingdom' })).toHaveProperty(
+      'selected',
+      true,
+    );
+    await expect(canvas.getByRole('option', { name: 'United States' })).toHaveProperty(
+      'selected',
+      true,
+    );
+    await expect(select).toHaveValue(['ke', 'za', 'gb', 'us']);
+    await expect(args.onSelectedValuesChange).toHaveBeenLastCalledWith(['ke', 'za', 'gb', 'us']);
+  },
 };
 
 export const Focused: Story = {

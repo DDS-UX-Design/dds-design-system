@@ -16,7 +16,7 @@ const meta: Meta<KpiCardComponent> = {
     docs: {
       description: {
         component:
-          'A compact dashboard card for a single key performance indicator. It supports optional units and positive, neutral, or negative comparative trends.',
+          'A compact dashboard card for a single key performance indicator. It supports optional units, positive, neutral, or negative comparative trends, and a skeleton loading state.',
       },
     },
   },
@@ -27,6 +27,7 @@ const meta: Meta<KpiCardComponent> = {
     suffix: '',
     trend: 'positive',
     trendText: '8.2% vs last month',
+    loading: false,
   },
   argTypes: {
     trend: { control: 'select', options: ['positive', 'neutral', 'negative'] },
@@ -54,6 +55,20 @@ export const Percentage: Story = {
     suffix: '%',
     trend: 'negative',
     trendText: '1.3% vs last month',
+  },
+};
+
+export const Loading: Story = {
+  args: {
+    loading: true,
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const card = canvas.getByRole('article', { name: 'Active customers is loading' });
+
+    await expect(card).toHaveAttribute('aria-busy', 'true');
+    await expect(canvas.queryByText('142')).not.toBeInTheDocument();
+    await expect(canvas.queryByText('8.2% vs last month')).not.toBeInTheDocument();
   },
 };
 

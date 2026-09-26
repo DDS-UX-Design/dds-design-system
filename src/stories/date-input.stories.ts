@@ -136,7 +136,7 @@ export const Loading: Story = {
 export const Entry: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    const input = canvas.getByLabelText('Date');
+    const input = canvas.getByRole('textbox', { name: 'Date' });
     await userEvent.type(input, '23/05/2026');
     await expect(input).toHaveValue('23/05/2026');
   },

@@ -38,7 +38,7 @@ const meta: Meta<RadioStoryArgs> = {
       options: ['default', 'focused', 'invalid', 'disabled'] satisfies RadioState[],
     },
     loading: { control: 'boolean', table: { category: 'State' } },
-    onSelected: { table: { disable: true } },
+    onSelected: { action: 'selected', table: { disable: true } },
   },
   render: (args) => ({
     props: args,

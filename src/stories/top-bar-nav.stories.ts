@@ -41,6 +41,11 @@ const meta: Meta<TopBarNavStoryArgs> = {
     onCartClick: fn(),
     onMenuItemSelect: fn(),
   },
+  argTypes: {
+    onNotificationClick: { action: 'notificationClick', table: { disable: true } },
+    onCartClick: { action: 'cartClick', table: { disable: true } },
+    onMenuItemSelect: { action: 'menuItemSelect', table: { disable: true } },
+  },
   render: (args) => ({
     props: args,
     template: `

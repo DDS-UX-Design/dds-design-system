@@ -38,7 +38,7 @@ const meta: Meta<ChartComponent> = {
   argTypes: {
     type: {
       control: 'select',
-      options: ['donut', 'pie', 'horizontal-bar', 'grouped-bar', 'stacked-bar'],
+      options: ['donut', 'pie', 'gauge', 'line', 'horizontal-bar', 'grouped-bar', 'stacked-bar'],
     },
     legendPosition: { control: 'radio', options: ['right', 'bottom', 'top'] },
   },
@@ -57,6 +57,45 @@ export const Donut: Story = {
 
 export const Pie: Story = {
   args: { type: 'pie', legendPosition: 'bottom' },
+};
+
+export const Gauge: Story = {
+  args: {
+    type: 'gauge',
+    labels: ['Completed', 'Remaining'],
+    series: [{ label: 'Completion', data: [72, 28] }],
+    accessibleLabel: 'Completion gauge: 72 percent.',
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Use a gauge for progress toward a known maximum. Supply the completed value first and the remaining value second.',
+      },
+    },
+  },
+};
+
+export const Line: Story = {
+  args: {
+    type: 'line',
+    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+    series: [
+      { label: 'Current period', data: [42, 58, 51, 73, 68, 84] },
+      { label: 'Previous period', data: [35, 44, 48, 55, 61, 66] },
+    ],
+    legendPosition: 'bottom',
+    accessibleLabel:
+      'Line chart comparing the current and previous periods from January to June. Current period ends at 84; previous period ends at 66.',
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Use line charts to show change over an ordered interval. Keep each series colour consistent across related views.',
+      },
+    },
+  },
 };
 
 export const HorizontalBar: Story = {

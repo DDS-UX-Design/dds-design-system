@@ -57,6 +57,10 @@
   flex: none;
 }
 
+.dds-kpi-card--loading dds-skeleton {
+  flex: none;
+}
+
 .dds-kpi-card[data-trend='positive'] .dds-kpi-card__trend {
   color: var(--text-colour-success);
 }

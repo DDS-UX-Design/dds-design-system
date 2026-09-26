@@ -29,7 +29,7 @@
     aria-label="Dismiss notification"
     (click)="dismiss()"
   >
-    <dds-icon name="x" size="24" aria-hidden="true"></dds-icon>
+    <dds-icon name="x" [size]="24" aria-hidden="true"></dds-icon>
   </button>
 
   <span *ngIf="isTimed" class="dds-toast__progress" aria-hidden="true"></span>

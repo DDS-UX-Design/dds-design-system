@@ -1,3 +1,6 @@
 <figure class="dds-chart" [attr.aria-label]="accessibleLabel" role="img">
   <canvas #canvas aria-hidden="true"></canvas>
+  @if (type === 'gauge') {
+    <span class="dds-chart__gauge-value" aria-hidden="true">{{ gaugeValue }}%</span>
+  }
 </figure>

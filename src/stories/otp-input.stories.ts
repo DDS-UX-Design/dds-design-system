@@ -106,7 +106,7 @@ const meta: Meta<OtpInputStoryArgs> = {
       table: { category: 'Expiry', defaultValue: { summary: '02:57' } },
     },
     loading: { control: 'boolean', table: { category: 'State' } },
-    onComplete: { table: { disable: true } },
+    onComplete: { action: 'completed', table: { disable: true } },
   },
   args: {
     label: 'Verification code',

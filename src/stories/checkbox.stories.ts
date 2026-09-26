@@ -62,7 +62,7 @@ const meta: Meta<CheckboxStoryArgs> = {
     },
     showErrorMessage: { control: 'boolean', table: { category: 'Validation' } },
     loading: { control: 'boolean', table: { category: 'State' } },
-    onValueChange: { table: { disable: true } },
+    onValueChange: { action: 'valueChange', table: { disable: true } },
   },
   args: {
     label: 'Preferences',

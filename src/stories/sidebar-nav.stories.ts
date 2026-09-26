@@ -63,13 +63,18 @@ const meta: Meta<SidebarNavStoryArgs> = {
     expandedIds: ['orders'],
     onItemSelect: fn(),
   },
+  argTypes: {
+    onItemSelect: { action: 'itemSelect', table: { disable: true } },
+  },
   render: (args) => ({
     props: args,
     template: `
+      <!-- Demo links update selection without navigating away from the Storybook preview. -->
       <dds-sidebar-nav
         [title]="title" [footer]="footer" [ariaLabel]="ariaLabel" [items]="items"
         [(activeItemId)]="activeItemId" [(expandedIds)]="expandedIds"
         (itemSelect)="onItemSelect($event)"
+        (click)="$event.preventDefault()"
       ></dds-sidebar-nav>
     `,
   }),
@@ -105,7 +110,9 @@ export const ExpandAndSelect: Story = {
     await userEvent.click(orders);
     await expect(orders).toHaveAttribute('aria-expanded', 'true');
 
-    await userEvent.click(canvas.getByRole('link', { name: 'Pending orders' }));
+    const pendingOrders = canvas.getByRole('link', { name: 'Pending orders' });
+    await userEvent.click(pendingOrders);
+    await expect(pendingOrders).toHaveAttribute('aria-current', 'page');
     await expect(args.onItemSelect).toHaveBeenCalledWith(
       expect.objectContaining({ id: 'pending-orders' }),
     );
