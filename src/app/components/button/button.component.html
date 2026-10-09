@@ -1,5 +1,6 @@
 <button
   class="dds-button"
+  (click)="focusOnClick($event)"
   [attr.type]="type"
   [disabled]="isDisabled"
   [attr.aria-label]="isIconOnly ? ariaLabel || 'Icon button' : null"
