@@ -54,6 +54,13 @@ export class ButtonComponent {
   /** Expands the button to fill the available width of its container. */
   @Input() fullWidth = false;
 
+  /** Keep pointer focus consistent in browsers that do not focus buttons on click. */
+  focusOnClick(event: MouseEvent): void {
+    if (!this.isDisabled) {
+      (event.currentTarget as HTMLButtonElement).focus({ preventScroll: true });
+    }
+  }
+
   get isDisabled(): boolean {
     return this.disabled || this.state === 'disabled';
   }
