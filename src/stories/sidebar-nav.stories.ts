@@ -43,7 +43,7 @@ const meta: Meta<SidebarNavStoryArgs> = {
   decorators: [
     componentWrapperDecorator(
       (story) =>
-        `<div style="width: 250px; height: 790px; max-height: calc(100vh - 32px)">${story}</div>`,
+        `<div style="width: fit-content; height: 790px; max-height: calc(100vh - 32px)">${story}</div>`,
     ),
   ],
   parameters: {
@@ -51,11 +51,13 @@ const meta: Meta<SidebarNavStoryArgs> = {
     docs: {
       description: {
         component:
-          'A persistent application sidebar with a branded header, scrollable navigation, one level of expandable groups, active-page indication, and a version footer.',
+          'A persistent application sidebar with a branded header, scrollable navigation, one level of expandable groups, active-page indication, and a version footer. Toggle between the 250px expanded sidebar and 72px icon rail; collapsed groups expand the sidebar to expose child destinations.',
       },
     },
   },
   args: {
+    collapsed: false,
+    logoSrc: 'images/dds-brand-icon.svg',
     title: 'DDS Enterprise',
     footer: 'Version 1.0.0',
     ariaLabel: 'Primary navigation',
@@ -65,6 +67,7 @@ const meta: Meta<SidebarNavStoryArgs> = {
     onItemSelect: fn(),
   },
   argTypes: {
+    collapsed: { control: 'boolean', description: 'Show the 72px icon rail.' },
     onItemSelect: { action: 'itemSelect', table: { disable: true } },
   },
   render: (args) => ({
@@ -72,8 +75,8 @@ const meta: Meta<SidebarNavStoryArgs> = {
     template: `
       <!-- Demo links update selection without navigating away from the Storybook preview. -->
       <dds-sidebar-nav
-        [title]="title" [footer]="footer" [ariaLabel]="ariaLabel" [items]="items"
-        [(activeItemId)]="activeItemId" [(expandedIds)]="expandedIds"
+        [title]="title" [logoSrc]="logoSrc" [footer]="footer" [ariaLabel]="ariaLabel" [items]="items"
+        [(collapsed)]="collapsed" [(activeItemId)]="activeItemId" [(expandedIds)]="expandedIds"
         (itemSelect)="onItemSelect($event)"
         (click)="$event.preventDefault()"
       ></dds-sidebar-nav>
@@ -128,5 +131,31 @@ export const SalesNavigation: Story = {
         story: 'Shared example navigation with Sales as a top-level group and Orders selected.',
       },
     },
+  },
+};
+
+export const Collapsed: Story = { args: { collapsed: true } };
+
+export const CollapseAndExpand: Story = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await userEvent.click(canvas.getByRole('button', { name: 'Collapse sidebar' }));
+    await expect(canvas.getByRole('button', { name: 'Expand sidebar' })).toHaveAttribute(
+      'aria-expanded',
+      'false',
+    );
+    await expect(canvas.queryByRole('link', { name: 'All orders' })).not.toBeInTheDocument();
+    const orders = canvas.getByRole('button', { name: 'Orders' });
+    await userEvent.hover(orders);
+    await expect(canvas.getByRole('tooltip')).toHaveTextContent('Orders');
+    await userEvent.click(orders);
+    await expect(canvas.getByRole('button', { name: 'Collapse sidebar' })).toHaveAttribute(
+      'aria-expanded',
+      'true',
+    );
+    await expect(canvas.getByRole('link', { name: 'All orders' })).toHaveAttribute(
+      'aria-current',
+      'page',
+    );
   },
 };
