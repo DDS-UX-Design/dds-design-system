@@ -1,0 +1,117 @@
+<div class="customer-page" [class.customer-page--nav-open]="mobileNavigationOpen">
+  <div class="customer-page__mobile-nav">
+    <dds-button variant="secondary" (click)="mobileNavigationOpen = !mobileNavigationOpen">{{
+      mobileNavigationOpen ? 'Close navigation' : 'Menu'
+    }}</dds-button>
+  </div>
+  <dds-sidebar-nav
+    class="customer-page__sidebar"
+    title="DDS Enterprise"
+    footer="Version 1.0.0"
+    [items]="navigationItems"
+    activeItemId="orders"
+    [(expandedIds)]="expandedIds"
+    (itemSelect)="navigate($event.id)"
+  ></dds-sidebar-nav>
+  <main class="customer-page__main">
+    <dds-top-bar-nav
+      pageTitle="Orders"
+      [showNotifications]="false"
+      [showCart]="false"
+      [menuItems]="[]"
+      userInitials="JB"
+      userName="Jordan Blake"
+    ></dds-top-bar-nav>
+    <dds-page-toolbar
+      class="customer-page__desktop-toolbar"
+      searchPlaceholder="Search by order ID or customer"
+      filterLabel="Order status"
+      [searchValue]="query"
+      [filterValue]="status"
+      [filterOptions]="statusOptions"
+      actionLabel="Clear filters"
+      actionIcon="x"
+      (searchValueChange)="updateQuery($event)"
+      (filterValueChange)="updateStatus($event)"
+      (refresh)="refresh()"
+      (action)="clearFilters()"
+    ></dds-page-toolbar>
+    <div class="customer-page__mobile-toolbar">
+      <dds-search
+        ariaLabel="Search orders"
+        placeholder="Search by order ID or customer"
+        [showLabel]="false"
+        [value]="query"
+        (valueChange)="updateQuery($event)"
+      ></dds-search>
+      <dds-select
+        ariaLabel="Order status"
+        [showLabel]="false"
+        [showHelperText]="false"
+        [options]="statusOptions"
+        [value]="status"
+        (valueChange)="updateStatus($event)"
+      ></dds-select>
+      <div class="customer-page__actions">
+        <dds-button variant="secondary" (click)="refresh()">Refresh</dds-button
+        ><dds-button (click)="clearFilters()">Clear filters</dds-button>
+      </div>
+    </div>
+    <section class="customer-page__content" aria-label="Sales orders">
+      <div class="orders-summary" aria-label="All orders summary">
+        <dds-kpi-card
+          label="Total orders"
+          [value]="orders.length"
+          trend="neutral"
+          trendText="All orders in this example"
+        ></dds-kpi-card>
+        <dds-kpi-card
+          label="Open orders"
+          [value]="openOrders"
+          trend="neutral"
+          trendText="Pending and processing"
+        ></dds-kpi-card>
+        <dds-kpi-card
+          label="Order value"
+          [value]="currency(totalValue)"
+          trend="neutral"
+          trendText="Excluding cancelled orders"
+        ></dds-kpi-card>
+      </div>
+      <dds-alert *ngIf="notice" tone="info" [text]="notice" (dismissed)="notice = ''"></dds-alert>
+      <section *ngIf="detail" class="customer-page__panel" aria-labelledby="order-detail-title">
+        <h2 id="order-detail-title">Order {{ detail.id }}</h2>
+        <dl>
+          <dt>Customer</dt>
+          <dd>{{ detail.customer }}</dd>
+          <dt>Order date</dt>
+          <dd>{{ detail.date }}</dd>
+          <dt>Status</dt>
+          <dd>{{ detail.status }}</dd>
+          <dt>Total</dt>
+          <dd>{{ currency(detail.amount) }}</dd>
+        </dl>
+        <dds-button variant="secondary" (click)="detail = null">Close details</dds-button>
+      </section>
+      <p role="status">{{ filteredOrders.length }} orders found</p>
+      <div class="customer-page__table-card">
+        <dds-data-table
+          caption="Sales orders"
+          [columns]="columns"
+          [rows]="visibleOrders"
+          [selectable]="true"
+          [selectedKeys]="selectedKeys"
+          (selectedKeysChange)="selectedKeys = $event"
+          [currentPage]="currentPage"
+          [totalPages]="totalPages"
+          [totalItems]="filteredOrders.length"
+          [pageSize]="pageSize"
+          (pageChange)="changePage($event)"
+          [rowActions]="[{ label: 'View order', icon: 'eye' }]"
+          (rowAction)="showDetails($event.row)"
+          emptyMessage="No orders match your filters. Clear filters to try again."
+        ></dds-data-table>
+      </div>
+    </section>
+  </main>
+</div>
