@@ -1,0 +1,19 @@
+.orders-summary {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+dt {
+  color: var(--text-colour-secondary);
+  font-size: 14px;
+}
+dd {
+  margin: 4px 0 16px;
+}
+@media (max-width: 600px) {
+  .orders-summary {
+    grid-template-columns: 1fr;
+    gap: var(--space-2);
+  }
+}
