@@ -1,3 +1,4 @@
+import { EXAMPLE_NAVIGATION } from '../app/examples/example-navigation';
 import { componentWrapperDecorator, type Meta, type StoryObj } from '@storybook/angular';
 import { expect, fn, userEvent, within } from 'storybook/test';
 import {
@@ -116,5 +117,16 @@ export const ExpandAndSelect: Story = {
     await expect(args.onItemSelect).toHaveBeenCalledWith(
       expect.objectContaining({ id: 'pending-orders' }),
     );
+  },
+};
+
+export const SalesNavigation: Story = {
+  args: { items: EXAMPLE_NAVIGATION, activeItemId: 'orders', expandedIds: ['sales'] },
+  parameters: {
+    docs: {
+      description: {
+        story: 'Shared example navigation with Sales as a top-level group and Orders selected.',
+      },
+    },
   },
 };
