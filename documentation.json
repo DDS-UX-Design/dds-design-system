@@ -395,13 +395,9 @@
       "outputs": [],
       "providers": [],
       "selector": "dds-alert",
-      "styleUrls": [
-        "./alert.component.css"
-      ],
+      "styleUrls": ["./alert.component.css"],
       "styles": [],
-      "templateUrl": [
-        "./alert.component.html"
-      ],
+      "templateUrl": ["./alert.component.html"],
       "templateVariables": [],
       "viewProviders": [],
       "hostDirectives": [],
@@ -656,13 +652,9 @@
       "outputs": [],
       "providers": [],
       "selector": "app-root",
-      "styleUrls": [
-        "./app.css"
-      ],
+      "styleUrls": ["./app.css"],
       "styles": [],
-      "templateUrl": [
-        "./app.html"
-      ],
+      "templateUrl": ["./app.html"],
       "templateVariables": [],
       "viewProviders": [],
       "hostDirectives": [],
@@ -717,13 +709,9 @@
       "outputs": [],
       "providers": [],
       "selector": "dds-button",
-      "styleUrls": [
-        "./button.component.css"
-      ],
+      "styleUrls": ["./button.component.css"],
       "styles": [],
-      "templateUrl": [
-        "./button.component.html"
-      ],
+      "templateUrl": ["./button.component.html"],
       "templateVariables": [],
       "viewProviders": [],
       "hostDirectives": [],
@@ -1053,13 +1041,9 @@
       "outputs": [],
       "providers": [],
       "selector": "dds-chart",
-      "styleUrls": [
-        "./chart.component.css"
-      ],
+      "styleUrls": ["./chart.component.css"],
       "styles": [],
-      "templateUrl": [
-        "./chart.component.html"
-      ],
+      "templateUrl": ["./chart.component.html"],
       "templateVariables": [],
       "viewProviders": [],
       "hostDirectives": [],
@@ -1144,9 +1128,7 @@
               "stringifiedArguments": "'canvas'"
             }
           ],
-          "modifierKind": [
-            171
-          ]
+          "modifierKind": [171]
         },
         {
           "name": "chart",
@@ -1159,9 +1141,7 @@
           "description": "",
           "line": 90,
           "rawdescription": "\n",
-          "modifierKind": [
-            123
-          ]
+          "modifierKind": [123]
         }
       ],
       "methodsClass": [
@@ -1238,9 +1218,7 @@
           "deprecationMessage": "",
           "rawdescription": "\n",
           "description": "",
-          "modifierKind": [
-            123
-          ]
+          "modifierKind": [123]
         }
       ],
       "coverageIgnore": false,
@@ -1307,11 +1285,7 @@
         ]
       },
       "extends": [],
-      "implements": [
-        "AfterViewInit",
-        "OnChanges",
-        "OnDestroy"
-      ],
+      "implements": ["AfterViewInit", "OnChanges", "OnDestroy"],
       "accessors": {
         "gaugeValue": {
           "name": "gaugeValue",
@@ -1355,13 +1329,9 @@
       "outputs": [],
       "providers": [],
       "selector": "dds-checkbox",
-      "styleUrls": [
-        "./checkbox.component.css"
-      ],
+      "styleUrls": ["./checkbox.component.css"],
       "styles": [],
-      "templateUrl": [
-        "./checkbox.component.html"
-      ],
+      "templateUrl": ["./checkbox.component.html"],
       "templateVariables": [],
       "viewProviders": [],
       "hostDirectives": [],
@@ -1725,13 +1695,9 @@
       "outputs": [],
       "providers": [],
       "selector": "dds-checkbox-group",
-      "styleUrls": [
-        "./checkbox-group.component.css"
-      ],
+      "styleUrls": ["./checkbox-group.component.css"],
       "styles": [],
-      "templateUrl": [
-        "./checkbox-group.component.html"
-      ],
+      "templateUrl": ["./checkbox-group.component.html"],
       "templateVariables": [],
       "viewProviders": [],
       "hostDirectives": [],
@@ -2120,13 +2086,9 @@
       "outputs": [],
       "providers": [],
       "selector": "dds-customer-management-page",
-      "styleUrls": [
-        "./customer-management-page.component.css"
-      ],
+      "styleUrls": ["./customer-management-page.component.css"],
       "styles": [],
-      "templateUrl": [
-        "./customer-management-page.component.html"
-      ],
+      "templateUrl": ["./customer-management-page.component.html"],
       "templateVariables": [],
       "viewProviders": [],
       "hostDirectives": [],
@@ -2207,10 +2169,7 @@
           "description": "",
           "line": 75,
           "rawdescription": "\n",
-          "modifierKind": [
-            123,
-            148
-          ]
+          "modifierKind": [123, 148]
         },
         {
           "name": "columns",
@@ -2224,9 +2183,7 @@
           "description": "",
           "line": 161,
           "rawdescription": "\n",
-          "modifierKind": [
-            148
-          ]
+          "modifierKind": [148]
         },
         {
           "name": "creating",
@@ -2318,10 +2275,7 @@
           "description": "",
           "line": 77,
           "rawdescription": "\n",
-          "modifierKind": [
-            123,
-            148
-          ]
+          "modifierKind": [123, 148]
         },
         {
           "name": "error",
@@ -2400,9 +2354,7 @@
           "description": "",
           "line": 151,
           "rawdescription": "\n",
-          "modifierKind": [
-            148
-          ]
+          "modifierKind": [148]
         },
         {
           "name": "notice",
@@ -2429,9 +2381,7 @@
           "description": "",
           "line": 291,
           "rawdescription": "\n",
-          "modifierKind": [
-            148
-          ]
+          "modifierKind": [148]
         },
         {
           "name": "requestTimer",
@@ -2444,9 +2394,7 @@
           "description": "",
           "line": 76,
           "rawdescription": "\n",
-          "modifierKind": [
-            123
-          ]
+          "modifierKind": [123]
         },
         {
           "name": "searchValue",
@@ -2499,9 +2447,7 @@
           "description": "",
           "line": 153,
           "rawdescription": "\n",
-          "modifierKind": [
-            148
-          ]
+          "modifierKind": [148]
         },
         {
           "name": "submitted",
@@ -2635,9 +2581,7 @@
           "deprecationMessage": "",
           "rawdescription": "\n",
           "description": "",
-          "modifierKind": [
-            123
-          ],
+          "modifierKind": [123],
           "jsdoctags": [
             {
               "name": "id",
@@ -3020,10 +2964,7 @@
         }
       ],
       "extends": [],
-      "implements": [
-        "OnInit",
-        "OnDestroy"
-      ],
+      "implements": ["OnInit", "OnDestroy"],
       "accessors": {
         "filteredCustomers": {
           "name": "filteredCustomers",
@@ -3132,13 +3073,9 @@
       "outputs": [],
       "providers": [],
       "selector": "dds-data-table",
-      "styleUrls": [
-        "./data-table.component.css"
-      ],
+      "styleUrls": ["./data-table.component.css"],
       "styles": [],
-      "templateUrl": [
-        "./data-table.component.html"
-      ],
+      "templateUrl": ["./data-table.component.html"],
       "templateVariables": [],
       "viewProviders": [],
       "hostDirectives": [],
@@ -3704,9 +3641,7 @@
           "deprecationMessage": "",
           "rawdescription": "\n",
           "description": "",
-          "modifierKind": [
-            123
-          ],
+          "modifierKind": [123],
           "jsdoctags": [
             {
               "name": "keys",
@@ -3902,13 +3837,9 @@
       "outputs": [],
       "providers": [],
       "selector": "dds-date-input",
-      "styleUrls": [
-        "./date-input.component.css"
-      ],
+      "styleUrls": ["./date-input.component.css"],
       "styles": [],
-      "templateUrl": [
-        "./date-input.component.html"
-      ],
+      "templateUrl": ["./date-input.component.html"],
       "templateVariables": [],
       "viewProviders": [],
       "hostDirectives": [],
@@ -4266,7 +4197,7 @@
     },
     {
       "name": "IconComponent",
-      "id": "component-IconComponent-fbe0b558cbbba30f133601ab077eb7bfb0d52c49d0f1f9b31320f775b9c0d0e7e32053c048114a26daefb0a15d56947667fb6e3e9fa2a71779c680b9b879a2a7",
+      "id": "component-IconComponent-fd0bcf1320c4727e4626dd9b0e7688b42d2f35e1dbad22f04c436febc5fe48c4f597d8944371d9e206c75d6009387f5ab9112d0893e85166a2d1305824ea2c67",
       "file": "src/app/components/icon/icon.component.ts",
       "changeDetection": "ChangeDetectionStrategy.OnPush",
       "encapsulation": [],
@@ -4275,7 +4206,7 @@
       "outputs": [],
       "providers": [
         {
-          "name": "provideLucideIcons(LucideArrowRight, LucideArrowLeft, LucideArrowDown, LucideArrowUp, LucideCheck, LucideChevronRight, LucideChevronDown, LucideChevronsUpDown, LucideListFilter, LucideMenu, LucideCircleAlert, LucideEllipsis, LucideInfo, LucidePlus, LucideTrash2, LucideX, LucideArrowUpDown, LucideChevronUp, LucideChevronLeft, LucideColumns3, LucideSearch, LucideLayoutDashboard, LucideEllipsisVertical, LucideHouse, LucideMapPin, LucidePanelsTopLeft, LucideGripVertical, LucideDownload, LucideUpload, LucideMinus, LucideArchive, LucideBan, LucidePencil, LucideSettings, LucideSlidersHorizontal, LucideSquarePen, LucideCopy, LucideFunnel, LucideExternalLink, LucideRefreshCw, LucideWrench, LucideBrushCleaning, LucideCloudUpload, LucideWandSparkles, LucideUser, LucideUsers, LucideUserX, LucideKeyRound, LucideLockKeyhole, LucideUserRound, LucideEye, LucideEyeOff, LucideLogOut, LucideSendHorizontal, LucideBell, LucideBellDot, LucideMessageSquarePlus, LucideStar, LucideCircleQuestionMark, LucidePhone, LucideShare2, LucideImage, LucideCircleStop, LucideCirclePlay, LucideHeadset, LucideFile, LucideClipboardList, LucidePrinter, LucideType, LucideHash, LucideAtSign, LucideTextWrap, LucideCircleDot, LucideSquareCheck, LucideList, LucideToggleRight, LucideClock, LucideCircleCheck, LucideTriangleAlert, LucideCalendarDays, LucideCalendar1, LucideLoaderCircle, LucideLifeBuoy, LucideShoppingCart, LucideBox, LucidePackage, LucideTruck, LucideChartNoAxesCombined, LucideDollarSign, LucideCreditCard, LucideReceiptText, LucideStore, LucideFactory, LucideChartNoAxesColumn, LucideBatteryFull, LucideScan, LucidePersonStanding, LucideMonitorSmartphone, LucideContrast, LucideWifi, LucideSignal)"
+          "name": "provideLucideIcons(LucideArrowRight, LucideArrowLeft, LucideArrowDown, LucideArrowUp, LucideCheck, LucideChevronRight, LucideChevronDown, LucideChevronsUpDown, LucideListFilter, LucideMenu, LucideCircleAlert, LucideEllipsis, LucideInfo, LucidePlus, LucideTrash2, LucideX, LucideArrowUpDown, LucideChevronUp, LucideChevronLeft, LucideColumns3, LucideSearch, LucideLayoutDashboard, LucideEllipsisVertical, LucideHouse, LucideMapPin, LucidePanelsTopLeft, LucideGripVertical, LucideDownload, LucideUpload, LucideMinus, LucideArchive, LucideBan, LucidePencil, LucideSettings, LucideSlidersHorizontal, LucideSquarePen, LucideCopy, LucideFunnel, LucideExternalLink, LucideRefreshCw, LucideWrench, LucideBrushCleaning, LucideCloudUpload, LucideWandSparkles, LucideUser, LucideUsers, LucideUserX, LucideKeyRound, LucideLockKeyhole, LucideUserRound, LucideEye, LucideEyeOff, LucideLogOut, LucideSendHorizontal, LucideBell, LucideBellDot, LucideMessageSquarePlus, LucideStar, LucideCircleQuestionMark, LucidePhone, LucideShare2, LucideImage, LucideCircleStop, LucideCirclePlay, LucideHeadset, LucideFile, LucideClipboardList, LucidePrinter, LucideType, LucideHash, LucideAtSign, LucideTextWrap, LucideCircleDot, LucideSquareCheck, LucideList, LucideToggleRight, LucideClock, LucideCircleCheck, LucideTriangleAlert, LucideCalendarDays, LucideCalendar1, LucideLoaderCircle, LucideLifeBuoy, LucideShoppingCart, LucideBox, LucidePackage, LucideTruck, LucideChartNoAxesCombined, LucideDollarSign, LucideCreditCard, LucideReceiptText, LucideStore, LucideFactory, LucideChartNoAxesColumn, LucideBatteryFull, LucideScan, LucidePersonStanding, LucideMonitorSmartphone, LucideContrast, LucideWifi, LucideSignal, LucidePanelLeftOpen, LucidePanelLeftClose)"
         }
       ],
       "selector": "dds-icon",
@@ -4295,7 +4226,7 @@
           "deprecationMessage": "",
           "rawdescription": "\n",
           "description": "",
-          "line": 337,
+          "line": 343,
           "type": "boolean",
           "decorators": []
         },
@@ -4307,7 +4238,7 @@
           "deprecationMessage": "",
           "rawdescription": "\n",
           "description": "",
-          "line": 334,
+          "line": 340,
           "type": "DdsIconName",
           "decorators": []
         },
@@ -4319,7 +4250,7 @@
           "deprecationMessage": "",
           "rawdescription": "\n",
           "description": "",
-          "line": 335,
+          "line": 341,
           "type": "number",
           "decorators": []
         },
@@ -4331,7 +4262,7 @@
           "deprecationMessage": "",
           "rawdescription": "\n",
           "description": "",
-          "line": 336,
+          "line": 342,
           "type": "number | string",
           "decorators": []
         },
@@ -4342,7 +4273,7 @@
           "deprecationMessage": "",
           "rawdescription": "\n",
           "description": "",
-          "line": 338,
+          "line": 344,
           "type": "string",
           "decorators": []
         }
@@ -4364,7 +4295,7 @@
       "description": "",
       "rawdescription": "\n",
       "type": "component",
-      "sourceCode": "import { Component, Input } from '@angular/core';\nimport {\n  LucideArrowRight,\n  LucideArrowLeft,\n  LucideArrowDown,\n  LucideArrowUp,\n  LucideArrowUpDown,\n  LucideCheck,\n  LucideChevronRight,\n  LucideChevronUp,\n  LucideChevronLeft,\n  LucideChevronDown,\n  LucideChevronsUpDown,\n  LucideListFilter,\n  LucideCircleAlert,\n  LucideDynamicIcon,\n  LucideEllipsis,\n  LucideInfo,\n  LucidePlus,\n  LucideTrash2,\n  LucideX,\n  provideLucideIcons,\n  LucideMenu,\n  LucideColumns3,\n  LucideSearch,\n  LucideLayoutDashboard,\n  LucideEllipsisVertical,\n  LucideHouse,\n  LucideMapPin,\n  LucidePanelsTopLeft,\n  LucideGripVertical,\n  LucideDownload,\n  LucideUpload,\n  LucideMinus,\n  LucideArchive,\n  LucideBan,\n  LucidePencil,\n  LucideSettings,\n  LucideSlidersHorizontal,\n  LucideSquarePen,\n  LucideCopy,\n  LucideFunnel,\n  LucideExternalLink,\n  LucideRefreshCw,\n  LucideWrench,\n  LucideBrushCleaning,\n  LucideCloudUpload,\n  LucideWandSparkles,\n  LucideUser,\n  LucideUsers,\n  LucideUserX,\n  LucideKeyRound,\n  LucideLockKeyhole,\n  LucideUserRound,\n  LucideEye,\n  LucideEyeOff,\n  LucideLogOut,\n  LucideSendHorizontal,\n  LucideBell,\n  LucideBellDot,\n  LucideMessageSquarePlus,\n  LucideStar,\n  LucideCircleQuestionMark,\n  LucidePhone,\n  LucideShare2,\n  LucideImage,\n  LucideCircleStop,\n  LucideCirclePlay,\n  LucideHeadset,\n  LucideFile,\n  LucideClipboardList,\n  LucidePrinter,\n  LucideType,\n  LucideHash,\n  LucideAtSign,\n  LucideTextWrap,\n  LucideCircleDot,\n  LucideSquareCheck,\n  LucideList,\n  LucideToggleRight,\n  LucideClock,\n  LucideCircleCheck,\n  LucideTriangleAlert,\n  LucideCalendarDays,\n  LucideCalendar1,\n  LucideLoaderCircle,\n  LucideLifeBuoy,\n  LucideShoppingCart,\n  LucideBox,\n  LucidePackage,\n  LucideTruck,\n  LucideChartNoAxesCombined,\n  LucideDollarSign,\n  LucideCreditCard,\n  LucideReceiptText,\n  LucideStore,\n  LucideFactory,\n  LucideChartNoAxesColumn,\n  LucideBatteryFull,\n  LucideScan,\n  LucidePersonStanding,\n  LucideMonitorSmartphone,\n  LucideContrast,\n  LucideWifi,\n  LucideSignal,\n} from '@lucide/angular';\n\nexport const DDS_ICON_NAMES = [\n  'info',\n  'arrow-right',\n  'arrow-left',\n  'arrow-down',\n  'arrow-up-down',\n  'arrow-up',\n  'check',\n  'chevron-down',\n  'chevron-right',\n  'chevron-left',\n  'chevron-up',\n  'chevrons-up-down',\n  'list-filter',\n  'columns-3',\n  'search',\n  'menu',\n  'circle-alert',\n  'ellipsis',\n  'plus',\n  'trash-2',\n  'x',\n  'layout-dashboard',\n  'ellipsis-vertical',\n  'house',\n  'map-pin',\n  'panels-top-left',\n  'grip-vertical',\n  'download',\n  'upload',\n  'minus',\n  'archive',\n  'ban',\n  'pencil',\n  'settings',\n  'sliders-horizontal',\n  'square-pen',\n  'copy',\n  'funnel',\n  'external-link',\n  'refresh-cw',\n  'wrench',\n  'brush-cleaning',\n  'cloud-upload',\n  'wand-sparkles',\n  'user',\n  'users',\n  'user-x',\n  'key-round',\n  'lock-keyhole',\n  'user-round',\n  'eye',\n  'eye-off',\n  'log-out',\n  'send-horizontal',\n  'bell',\n  'bell-dot',\n  'message-square-plus',\n  'star',\n  'circle-question-mark',\n  'phone',\n  'share-2',\n  'image',\n  'circle-stop',\n  'circle-play',\n  'headset',\n  'file',\n  'clipboard-list',\n  'printer',\n  'type',\n  'hash',\n  'at-sign',\n  'text-wrap',\n  'circle-dot',\n  'square-check',\n  'list',\n  'toggle-right',\n  'clock',\n  'circle-check',\n  'triangle-alert',\n  'calendar-days',\n  'calendar-1',\n  'loader-circle',\n  'life-buoy',\n  'shopping-cart',\n  'box',\n  'package',\n  'truck',\n  'chart-no-axes-combined',\n  'dollar-sign',\n  'credit-card',\n  'receipt-text',\n  'store',\n  'factory',\n  'chart-no-axes-column',\n  'battery-full',\n  'scan',\n  'person-standing',\n  'monitor-smartphone',\n  'contrast',\n  'wifi',\n  'signal',\n] as const;\n\nexport type DdsIconName = (typeof DDS_ICON_NAMES)[number];\n\n@Component({\n  selector: 'dds-icon',\n  standalone: true,\n  imports: [LucideDynamicIcon],\n  providers: [\n    provideLucideIcons(\n      LucideArrowRight,\n      LucideArrowLeft,\n      LucideArrowDown,\n      LucideArrowUp,\n      LucideCheck,\n      LucideChevronRight,\n      LucideChevronDown,\n      LucideChevronsUpDown,\n      LucideListFilter,\n      LucideMenu,\n      LucideCircleAlert,\n      LucideEllipsis,\n      LucideInfo,\n      LucidePlus,\n      LucideTrash2,\n      LucideX,\n      LucideArrowUpDown,\n      LucideChevronUp,\n      LucideChevronLeft,\n      LucideColumns3,\n      LucideSearch,\n      LucideLayoutDashboard,\n      LucideEllipsisVertical,\n      LucideHouse,\n      LucideMapPin,\n      LucidePanelsTopLeft,\n      LucideGripVertical,\n      LucideDownload,\n      LucideUpload,\n      LucideMinus,\n      LucideArchive,\n      LucideBan,\n      LucidePencil,\n      LucideSettings,\n      LucideSlidersHorizontal,\n      LucideSquarePen,\n      LucideCopy,\n      LucideFunnel,\n      LucideExternalLink,\n      LucideRefreshCw,\n      LucideWrench,\n      LucideBrushCleaning,\n      LucideCloudUpload,\n      LucideWandSparkles,\n      LucideUser,\n      LucideUsers,\n      LucideUserX,\n      LucideKeyRound,\n      LucideLockKeyhole,\n      LucideUserRound,\n      LucideEye,\n      LucideEyeOff,\n      LucideLogOut,\n      LucideSendHorizontal,\n      LucideBell,\n      LucideBellDot,\n      LucideMessageSquarePlus,\n      LucideStar,\n      LucideCircleQuestionMark,\n      LucidePhone,\n      LucideShare2,\n      LucideImage,\n      LucideCircleStop,\n      LucideCirclePlay,\n      LucideHeadset,\n      LucideFile,\n      LucideClipboardList,\n      LucidePrinter,\n      LucideType,\n      LucideHash,\n      LucideAtSign,\n      LucideTextWrap,\n      LucideCircleDot,\n      LucideSquareCheck,\n      LucideList,\n      LucideToggleRight,\n      LucideClock,\n      LucideCircleCheck,\n      LucideTriangleAlert,\n      LucideCalendarDays,\n      LucideCalendar1,\n      LucideLoaderCircle,\n      LucideLifeBuoy,\n      LucideShoppingCart,\n      LucideBox,\n      LucidePackage,\n      LucideTruck,\n      LucideChartNoAxesCombined,\n      LucideDollarSign,\n      LucideCreditCard,\n      LucideReceiptText,\n      LucideStore,\n      LucideFactory,\n      LucideChartNoAxesColumn,\n      LucideBatteryFull,\n      LucideScan,\n      LucidePersonStanding,\n      LucideMonitorSmartphone,\n      LucideContrast,\n      LucideWifi,\n      LucideSignal,\n    ),\n  ],\n  template: `\n    <svg\n      [lucideIcon]=\"name\"\n      [size]=\"size\"\n      [strokeWidth]=\"strokeWidth\"\n      [attr.aria-hidden]=\"decorative ? 'true' : null\"\n      [title]=\"decorative ? null : title\"\n    ></svg>\n  `,\n})\nexport class IconComponent {\n  @Input() name: DdsIconName = 'info';\n  @Input() size = 16;\n  @Input() strokeWidth: number | string = 2;\n  @Input() decorative = true;\n  @Input() title?: string;\n}\n",
+      "sourceCode": "import { Component, Input } from '@angular/core';\nimport {\n  LucideArrowRight,\n  LucideArrowLeft,\n  LucideArrowDown,\n  LucideArrowUp,\n  LucideArrowUpDown,\n  LucideCheck,\n  LucideChevronRight,\n  LucideChevronUp,\n  LucideChevronLeft,\n  LucideChevronDown,\n  LucideChevronsUpDown,\n  LucideListFilter,\n  LucideCircleAlert,\n  LucideDynamicIcon,\n  LucideEllipsis,\n  LucideInfo,\n  LucidePlus,\n  LucideTrash2,\n  LucideX,\n  provideLucideIcons,\n  LucideMenu,\n  LucideColumns3,\n  LucideSearch,\n  LucideLayoutDashboard,\n  LucideEllipsisVertical,\n  LucideHouse,\n  LucideMapPin,\n  LucidePanelsTopLeft,\n  LucideGripVertical,\n  LucideDownload,\n  LucideUpload,\n  LucideMinus,\n  LucideArchive,\n  LucideBan,\n  LucidePencil,\n  LucideSettings,\n  LucideSlidersHorizontal,\n  LucideSquarePen,\n  LucideCopy,\n  LucideFunnel,\n  LucideExternalLink,\n  LucideRefreshCw,\n  LucideWrench,\n  LucideBrushCleaning,\n  LucideCloudUpload,\n  LucideWandSparkles,\n  LucideUser,\n  LucideUsers,\n  LucideUserX,\n  LucideKeyRound,\n  LucideLockKeyhole,\n  LucideUserRound,\n  LucideEye,\n  LucideEyeOff,\n  LucideLogOut,\n  LucideSendHorizontal,\n  LucideBell,\n  LucideBellDot,\n  LucideMessageSquarePlus,\n  LucideStar,\n  LucideCircleQuestionMark,\n  LucidePhone,\n  LucideShare2,\n  LucideImage,\n  LucideCircleStop,\n  LucideCirclePlay,\n  LucideHeadset,\n  LucideFile,\n  LucideClipboardList,\n  LucidePrinter,\n  LucideType,\n  LucideHash,\n  LucideAtSign,\n  LucideTextWrap,\n  LucideCircleDot,\n  LucideSquareCheck,\n  LucideList,\n  LucideToggleRight,\n  LucideClock,\n  LucideCircleCheck,\n  LucideTriangleAlert,\n  LucideCalendarDays,\n  LucideCalendar1,\n  LucideLoaderCircle,\n  LucideLifeBuoy,\n  LucideShoppingCart,\n  LucideBox,\n  LucidePackage,\n  LucideTruck,\n  LucideChartNoAxesCombined,\n  LucideDollarSign,\n  LucideCreditCard,\n  LucideReceiptText,\n  LucideStore,\n  LucideFactory,\n  LucideChartNoAxesColumn,\n  LucideBatteryFull,\n  LucideScan,\n  LucidePersonStanding,\n  LucideMonitorSmartphone,\n  LucideContrast,\n  LucideWifi,\n  LucideSignal,\n  LucidePanelLeftOpen,\n  LucidePanelLeftClose,\n} from '@lucide/angular';\n\nexport const DDS_ICON_NAMES = [\n  'info',\n  'arrow-right',\n  'arrow-left',\n  'arrow-down',\n  'arrow-up-down',\n  'arrow-up',\n  'check',\n  'chevron-down',\n  'chevron-right',\n  'chevron-left',\n  'chevron-up',\n  'chevrons-up-down',\n  'list-filter',\n  'columns-3',\n  'search',\n  'menu',\n  'circle-alert',\n  'ellipsis',\n  'plus',\n  'trash-2',\n  'x',\n  'layout-dashboard',\n  'ellipsis-vertical',\n  'house',\n  'map-pin',\n  'panels-top-left',\n  'grip-vertical',\n  'download',\n  'upload',\n  'minus',\n  'archive',\n  'ban',\n  'pencil',\n  'settings',\n  'sliders-horizontal',\n  'square-pen',\n  'copy',\n  'funnel',\n  'external-link',\n  'refresh-cw',\n  'wrench',\n  'brush-cleaning',\n  'cloud-upload',\n  'wand-sparkles',\n  'user',\n  'users',\n  'user-x',\n  'key-round',\n  'lock-keyhole',\n  'user-round',\n  'eye',\n  'eye-off',\n  'log-out',\n  'send-horizontal',\n  'bell',\n  'bell-dot',\n  'message-square-plus',\n  'star',\n  'circle-question-mark',\n  'phone',\n  'share-2',\n  'image',\n  'circle-stop',\n  'circle-play',\n  'headset',\n  'file',\n  'clipboard-list',\n  'printer',\n  'type',\n  'hash',\n  'at-sign',\n  'text-wrap',\n  'circle-dot',\n  'square-check',\n  'list',\n  'toggle-right',\n  'clock',\n  'circle-check',\n  'triangle-alert',\n  'calendar-days',\n  'calendar-1',\n  'loader-circle',\n  'life-buoy',\n  'shopping-cart',\n  'box',\n  'package',\n  'truck',\n  'chart-no-axes-combined',\n  'dollar-sign',\n  'credit-card',\n  'receipt-text',\n  'store',\n  'factory',\n  'chart-no-axes-column',\n  'battery-full',\n  'scan',\n  'person-standing',\n  'monitor-smartphone',\n  'contrast',\n  'wifi',\n  'signal',\n  'panel-left-open',\n  'panel-left-close',\n] as const;\n\nexport type DdsIconName = (typeof DDS_ICON_NAMES)[number];\n\n@Component({\n  selector: 'dds-icon',\n  standalone: true,\n  imports: [LucideDynamicIcon],\n  providers: [\n    provideLucideIcons(\n      LucideArrowRight,\n      LucideArrowLeft,\n      LucideArrowDown,\n      LucideArrowUp,\n      LucideCheck,\n      LucideChevronRight,\n      LucideChevronDown,\n      LucideChevronsUpDown,\n      LucideListFilter,\n      LucideMenu,\n      LucideCircleAlert,\n      LucideEllipsis,\n      LucideInfo,\n      LucidePlus,\n      LucideTrash2,\n      LucideX,\n      LucideArrowUpDown,\n      LucideChevronUp,\n      LucideChevronLeft,\n      LucideColumns3,\n      LucideSearch,\n      LucideLayoutDashboard,\n      LucideEllipsisVertical,\n      LucideHouse,\n      LucideMapPin,\n      LucidePanelsTopLeft,\n      LucideGripVertical,\n      LucideDownload,\n      LucideUpload,\n      LucideMinus,\n      LucideArchive,\n      LucideBan,\n      LucidePencil,\n      LucideSettings,\n      LucideSlidersHorizontal,\n      LucideSquarePen,\n      LucideCopy,\n      LucideFunnel,\n      LucideExternalLink,\n      LucideRefreshCw,\n      LucideWrench,\n      LucideBrushCleaning,\n      LucideCloudUpload,\n      LucideWandSparkles,\n      LucideUser,\n      LucideUsers,\n      LucideUserX,\n      LucideKeyRound,\n      LucideLockKeyhole,\n      LucideUserRound,\n      LucideEye,\n      LucideEyeOff,\n      LucideLogOut,\n      LucideSendHorizontal,\n      LucideBell,\n      LucideBellDot,\n      LucideMessageSquarePlus,\n      LucideStar,\n      LucideCircleQuestionMark,\n      LucidePhone,\n      LucideShare2,\n      LucideImage,\n      LucideCircleStop,\n      LucideCirclePlay,\n      LucideHeadset,\n      LucideFile,\n      LucideClipboardList,\n      LucidePrinter,\n      LucideType,\n      LucideHash,\n      LucideAtSign,\n      LucideTextWrap,\n      LucideCircleDot,\n      LucideSquareCheck,\n      LucideList,\n      LucideToggleRight,\n      LucideClock,\n      LucideCircleCheck,\n      LucideTriangleAlert,\n      LucideCalendarDays,\n      LucideCalendar1,\n      LucideLoaderCircle,\n      LucideLifeBuoy,\n      LucideShoppingCart,\n      LucideBox,\n      LucidePackage,\n      LucideTruck,\n      LucideChartNoAxesCombined,\n      LucideDollarSign,\n      LucideCreditCard,\n      LucideReceiptText,\n      LucideStore,\n      LucideFactory,\n      LucideChartNoAxesColumn,\n      LucideBatteryFull,\n      LucideScan,\n      LucidePersonStanding,\n      LucideMonitorSmartphone,\n      LucideContrast,\n      LucideWifi,\n      LucideSignal,\n      LucidePanelLeftOpen,\n      LucidePanelLeftClose,\n    ),\n  ],\n  template: `\n    <svg\n      [lucideIcon]=\"name\"\n      [size]=\"size\"\n      [strokeWidth]=\"strokeWidth\"\n      [attr.aria-hidden]=\"decorative ? 'true' : null\"\n      [title]=\"decorative ? null : title\"\n    ></svg>\n  `,\n})\nexport class IconComponent {\n  @Input() name: DdsIconName = 'info';\n  @Input() size = 16;\n  @Input() strokeWidth: number | string = 2;\n  @Input() decorative = true;\n  @Input() title?: string;\n}\n",
       "assetsDirs": [],
       "styleUrlsData": "",
       "stylesData": "",
@@ -4445,7 +4376,7 @@
             "type": "module"
           },
           {
-            "name": "provideLucideIcons(LucideArrowRight, LucideArrowLeft, LucideArrowDown, LucideArrowUp, LucideCheck, LucideChevronRight, LucideChevronDown, LucideChevronsUpDown, LucideListFilter, LucideMenu, LucideCircleAlert, LucideEllipsis, LucideInfo, LucidePlus, LucideTrash2, LucideX, LucideArrowUpDown, LucideChevronUp, LucideChevronLeft, LucideColumns3, LucideSearch, LucideLayoutDashboard, LucideEllipsisVertical, LucideHouse, LucideMapPin, LucidePanelsTopLeft, LucideGripVertical, LucideDownload, LucideUpload, LucideMinus, LucideArchive, LucideBan, LucidePencil, LucideSettings, LucideSlidersHorizontal, LucideSquarePen, LucideCopy, LucideFunnel, LucideExternalLink, LucideRefreshCw, LucideWrench, LucideBrushCleaning, LucideCloudUpload, LucideWandSparkles, LucideUser, LucideUsers, LucideUserX, LucideKeyRound, LucideLockKeyhole, LucideUserRound, LucideEye, LucideEyeOff, LucideLogOut, LucideSendHorizontal, LucideBell, LucideBellDot, LucideMessageSquarePlus, LucideStar, LucideCircleQuestionMark, LucidePhone, LucideShare2, LucideImage, LucideCircleStop, LucideCirclePlay, LucideHeadset, LucideFile, LucideClipboardList, LucidePrinter, LucideType, LucideHash, LucideAtSign, LucideTextWrap, LucideCircleDot, LucideSquareCheck, LucideList, LucideToggleRight, LucideClock, LucideCircleCheck, LucideTriangleAlert, LucideCalendarDays, LucideCalendar1, LucideLoaderCircle, LucideLifeBuoy, LucideShoppingCart, LucideBox, LucidePackage, LucideTruck, LucideChartNoAxesCombined, LucideDollarSign, LucideCreditCard, LucideReceiptText, LucideStore, LucideFactory, LucideChartNoAxesColumn, LucideBatteryFull, LucideScan, LucidePersonStanding, LucideMonitorSmartphone, LucideContrast, LucideWifi, LucideSignal)",
+            "name": "provideLucideIcons(LucideArrowRight, LucideArrowLeft, LucideArrowDown, LucideArrowUp, LucideCheck, LucideChevronRight, LucideChevronDown, LucideChevronsUpDown, LucideListFilter, LucideMenu, LucideCircleAlert, LucideEllipsis, LucideInfo, LucidePlus, LucideTrash2, LucideX, LucideArrowUpDown, LucideChevronUp, LucideChevronLeft, LucideColumns3, LucideSearch, LucideLayoutDashboard, LucideEllipsisVertical, LucideHouse, LucideMapPin, LucidePanelsTopLeft, LucideGripVertical, LucideDownload, LucideUpload, LucideMinus, LucideArchive, LucideBan, LucidePencil, LucideSettings, LucideSlidersHorizontal, LucideSquarePen, LucideCopy, LucideFunnel, LucideExternalLink, LucideRefreshCw, LucideWrench, LucideBrushCleaning, LucideCloudUpload, LucideWandSparkles, LucideUser, LucideUsers, LucideUserX, LucideKeyRound, LucideLockKeyhole, LucideUserRound, LucideEye, LucideEyeOff, LucideLogOut, LucideSendHorizontal, LucideBell, LucideBellDot, LucideMessageSquarePlus, LucideStar, LucideCircleQuestionMark, LucidePhone, LucideShare2, LucideImage, LucideCircleStop, LucideCirclePlay, LucideHeadset, LucideFile, LucideClipboardList, LucidePrinter, LucideType, LucideHash, LucideAtSign, LucideTextWrap, LucideCircleDot, LucideSquareCheck, LucideList, LucideToggleRight, LucideClock, LucideCircleCheck, LucideTriangleAlert, LucideCalendarDays, LucideCalendar1, LucideLoaderCircle, LucideLifeBuoy, LucideShoppingCart, LucideBox, LucidePackage, LucideTruck, LucideChartNoAxesCombined, LucideDollarSign, LucideCreditCard, LucideReceiptText, LucideStore, LucideFactory, LucideChartNoAxesColumn, LucideBatteryFull, LucideScan, LucidePersonStanding, LucideMonitorSmartphone, LucideContrast, LucideWifi, LucideSignal, LucidePanelLeftOpen, LucidePanelLeftClose)",
             "type": "injectable"
           }
         ]
@@ -4462,13 +4393,9 @@
       "outputs": [],
       "providers": [],
       "selector": "dds-kpi-card",
-      "styleUrls": [
-        "./kpi-card.component.css"
-      ],
+      "styleUrls": ["./kpi-card.component.css"],
       "styles": [],
-      "templateUrl": [
-        "./kpi-card.component.html"
-      ],
+      "templateUrl": ["./kpi-card.component.html"],
       "templateVariables": [],
       "viewProviders": [],
       "hostDirectives": [],
@@ -4667,13 +4594,9 @@
       "outputs": [],
       "providers": [],
       "selector": "dds-loading-overlay",
-      "styleUrls": [
-        "./loading-overlay.component.css"
-      ],
+      "styleUrls": ["./loading-overlay.component.css"],
       "styles": [],
-      "templateUrl": [
-        "./loading-overlay.component.html"
-      ],
+      "templateUrl": ["./loading-overlay.component.html"],
       "templateVariables": [],
       "viewProviders": [],
       "hostDirectives": [],
@@ -4766,13 +4689,9 @@
       "outputs": [],
       "providers": [],
       "selector": "dds-minimal-pagination",
-      "styleUrls": [
-        "./minimal-pagination.component.css"
-      ],
+      "styleUrls": ["./minimal-pagination.component.css"],
       "styles": [],
-      "templateUrl": [
-        "./minimal-pagination.component.html"
-      ],
+      "templateUrl": ["./minimal-pagination.component.html"],
       "templateVariables": [],
       "viewProviders": [],
       "hostDirectives": [],
@@ -4954,13 +4873,9 @@
       "outputs": [],
       "providers": [],
       "selector": "dds-nav-tab",
-      "styleUrls": [
-        "./nav-tab.component.css"
-      ],
+      "styleUrls": ["./nav-tab.component.css"],
       "styles": [],
-      "templateUrl": [
-        "./nav-tab.component.html"
-      ],
+      "templateUrl": ["./nav-tab.component.html"],
       "templateVariables": [],
       "viewProviders": [],
       "hostDirectives": [],
@@ -5079,10 +4994,7 @@
               "stringifiedArguments": "'tabButton'"
             }
           ],
-          "modifierKind": [
-            171,
-            123
-          ]
+          "modifierKind": [171, 123]
         },
         {
           "name": "focusedValue",
@@ -5096,9 +5008,7 @@
           "description": "",
           "line": 46,
           "rawdescription": "\n",
-          "modifierKind": [
-            123
-          ]
+          "modifierKind": [123]
         }
       ],
       "methodsClass": [
@@ -5381,13 +5291,9 @@
       "outputs": [],
       "providers": [],
       "selector": "dds-numbered-pagination",
-      "styleUrls": [
-        "./numbered-pagination.component.css"
-      ],
+      "styleUrls": ["./numbered-pagination.component.css"],
       "styles": [],
-      "templateUrl": [
-        "./numbered-pagination.component.html"
-      ],
+      "templateUrl": ["./numbered-pagination.component.html"],
       "templateVariables": [],
       "viewProviders": [],
       "hostDirectives": [],
@@ -5685,9 +5591,7 @@
         "./orders-page.component.css"
       ],
       "styles": [],
-      "templateUrl": [
-        "./orders-page.component.html"
-      ],
+      "templateUrl": ["./orders-page.component.html"],
       "templateVariables": [],
       "viewProviders": [],
       "hostDirectives": [],
@@ -5706,9 +5610,7 @@
           "description": "",
           "line": 135,
           "rawdescription": "\n",
-          "modifierKind": [
-            148
-          ]
+          "modifierKind": [148]
         },
         {
           "name": "currentPage",
@@ -5774,9 +5676,7 @@
           "description": "",
           "line": 52,
           "rawdescription": "\n",
-          "modifierKind": [
-            148
-          ]
+          "modifierKind": [148]
         },
         {
           "name": "notice",
@@ -5803,9 +5703,7 @@
           "description": "",
           "line": 69,
           "rawdescription": "\n",
-          "modifierKind": [
-            148
-          ]
+          "modifierKind": [148]
         },
         {
           "name": "pageSize",
@@ -5819,9 +5717,7 @@
           "description": "",
           "line": 58,
           "rawdescription": "\n",
-          "modifierKind": [
-            148
-          ]
+          "modifierKind": [148]
         },
         {
           "name": "query",
@@ -5874,9 +5770,7 @@
           "description": "",
           "line": 62,
           "rawdescription": "\n",
-          "modifierKind": [
-            148
-          ]
+          "modifierKind": [148]
         }
       ],
       "methodsClass": [
@@ -6023,9 +5917,7 @@
           "deprecationMessage": "",
           "rawdescription": "\n",
           "description": "",
-          "modifierKind": [
-            123
-          ]
+          "modifierKind": [123]
         },
         {
           "name": "showDetails",
@@ -6333,13 +6225,9 @@
       "outputs": [],
       "providers": [],
       "selector": "dds-otp-input",
-      "styleUrls": [
-        "./otp-input.component.css"
-      ],
+      "styleUrls": ["./otp-input.component.css"],
       "styles": [],
-      "templateUrl": [
-        "./otp-input.component.html"
-      ],
+      "templateUrl": ["./otp-input.component.html"],
       "templateVariables": [],
       "viewProviders": [],
       "hostDirectives": [],
@@ -6550,9 +6438,7 @@
           "description": "",
           "line": 72,
           "rawdescription": "\n",
-          "modifierKind": [
-            148
-          ]
+          "modifierKind": [148]
         },
         {
           "name": "hasNativeFocus",
@@ -6584,9 +6470,7 @@
               "stringifiedArguments": "'otpInput'"
             }
           ],
-          "modifierKind": [
-            171
-          ]
+          "modifierKind": [171]
         }
       ],
       "methodsClass": [
@@ -6853,13 +6737,9 @@
       "outputs": [],
       "providers": [],
       "selector": "dds-page-toolbar",
-      "styleUrls": [
-        "./page-toolbar.component.css"
-      ],
+      "styleUrls": ["./page-toolbar.component.css"],
       "styles": [],
-      "templateUrl": [
-        "./page-toolbar.component.html"
-      ],
+      "templateUrl": ["./page-toolbar.component.html"],
       "templateVariables": [],
       "viewProviders": [],
       "hostDirectives": [],
@@ -7205,13 +7085,9 @@
       "outputs": [],
       "providers": [],
       "selector": "dds-password-input",
-      "styleUrls": [
-        "./password-input.component.css"
-      ],
+      "styleUrls": ["./password-input.component.css"],
       "styles": [],
-      "templateUrl": [
-        "./password-input.component.html"
-      ],
+      "templateUrl": ["./password-input.component.html"],
       "templateVariables": [],
       "viewProviders": [],
       "hostDirectives": [],
@@ -7577,13 +7453,9 @@
       "outputs": [],
       "providers": [],
       "selector": "dds-radio",
-      "styleUrls": [
-        "./radio.component.css"
-      ],
+      "styleUrls": ["./radio.component.css"],
       "styles": [],
-      "templateUrl": [
-        "./radio.component.html"
-      ],
+      "templateUrl": ["./radio.component.html"],
       "templateVariables": [],
       "viewProviders": [],
       "hostDirectives": [],
@@ -7924,13 +7796,9 @@
       "outputs": [],
       "providers": [],
       "selector": "dds-radio-group",
-      "styleUrls": [
-        "./radio-group.component.css"
-      ],
+      "styleUrls": ["./radio-group.component.css"],
       "styles": [],
-      "templateUrl": [
-        "./radio-group.component.html"
-      ],
+      "templateUrl": ["./radio-group.component.html"],
       "templateVariables": [],
       "viewProviders": [],
       "hostDirectives": [],
@@ -8230,13 +8098,9 @@
       "outputs": [],
       "providers": [],
       "selector": "dds-search",
-      "styleUrls": [
-        "./search.component.css"
-      ],
+      "styleUrls": ["./search.component.css"],
       "styles": [],
-      "templateUrl": [
-        "./search.component.html"
-      ],
+      "templateUrl": ["./search.component.html"],
       "templateVariables": [],
       "viewProviders": [],
       "hostDirectives": [],
@@ -8446,9 +8310,7 @@
           "description": "",
           "line": 69,
           "rawdescription": "\n",
-          "modifierKind": [
-            123
-          ]
+          "modifierKind": [123]
         },
         {
           "name": "hasNativeFocus",
@@ -8656,9 +8518,7 @@
         }
       ],
       "extends": [],
-      "implements": [
-        "OnDestroy"
-      ],
+      "implements": ["OnDestroy"],
       "accessors": {
         "isFocused": {
           "name": "isFocused",
@@ -8755,13 +8615,9 @@
       "outputs": [],
       "providers": [],
       "selector": "dds-select",
-      "styleUrls": [
-        "./select.component.css"
-      ],
+      "styleUrls": ["./select.component.css"],
       "styles": [],
-      "templateUrl": [
-        "./select.component.html"
-      ],
+      "templateUrl": ["./select.component.html"],
       "templateVariables": [],
       "viewProviders": [],
       "hostDirectives": [],
@@ -9173,7 +9029,7 @@
     },
     {
       "name": "SidebarNavComponent",
-      "id": "component-SidebarNavComponent-ae23c216dd065c580c754a00ca47b91603685251f7e2351e5234237c04914ed9ae4dfbec9eeb2c48ecb3756c7c91308412dc62aa709ac8af6fb0c79488b0b670",
+      "id": "component-SidebarNavComponent-d4b28fba070e9e32c6418a568004d1ef83a8c1e168b20805c03f2dcd3770b13fc59aebcbf503072b44fbb88bdfa5ac7387c0f24ce73567df7c063e29994a9e30",
       "file": "src/app/components/sidebar-nav/sidebar-nav.component.ts",
       "changeDetection": "ChangeDetectionStrategy.OnPush",
       "encapsulation": [],
@@ -9182,13 +9038,9 @@
       "outputs": [],
       "providers": [],
       "selector": "dds-sidebar-nav",
-      "styleUrls": [
-        "./sidebar-nav.component.css"
-      ],
+      "styleUrls": ["./sidebar-nav.component.css"],
       "styles": [],
-      "templateUrl": [
-        "./sidebar-nav.component.html"
-      ],
+      "templateUrl": ["./sidebar-nav.component.html"],
       "templateVariables": [],
       "viewProviders": [],
       "hostDirectives": [],
@@ -9200,7 +9052,7 @@
           "deprecationMessage": "",
           "rawdescription": "\n",
           "description": "",
-          "line": 27,
+          "line": 49,
           "type": "string",
           "decorators": []
         },
@@ -9212,8 +9064,20 @@
           "deprecationMessage": "",
           "rawdescription": "\n",
           "description": "",
-          "line": 25,
+          "line": 47,
           "type": "string",
+          "decorators": []
+        },
+        {
+          "coverageIgnore": false,
+          "name": "collapsed",
+          "defaultValue": "false",
+          "deprecated": false,
+          "deprecationMessage": "",
+          "rawdescription": "\n",
+          "description": "",
+          "line": 28,
+          "type": "boolean",
           "decorators": []
         },
         {
@@ -9224,7 +9088,7 @@
           "deprecationMessage": "",
           "rawdescription": "\n",
           "description": "",
-          "line": 28,
+          "line": 50,
           "type": "string[]",
           "decorators": []
         },
@@ -9236,7 +9100,7 @@
           "deprecationMessage": "",
           "rawdescription": "\n",
           "description": "",
-          "line": 24,
+          "line": 46,
           "type": "string",
           "decorators": []
         },
@@ -9248,8 +9112,20 @@
           "deprecationMessage": "",
           "rawdescription": "\n",
           "description": "",
-          "line": 26,
+          "line": 48,
           "type": "SidebarNavItem[]",
+          "decorators": []
+        },
+        {
+          "coverageIgnore": false,
+          "name": "logoSrc",
+          "defaultValue": "'images/dds-brand-icon.svg'",
+          "deprecated": false,
+          "deprecationMessage": "",
+          "rawdescription": "\n",
+          "description": "",
+          "line": 29,
+          "type": "string",
           "decorators": []
         },
         {
@@ -9260,7 +9136,7 @@
           "deprecationMessage": "",
           "rawdescription": "\n",
           "description": "",
-          "line": 23,
+          "line": 45,
           "type": "string",
           "decorators": []
         }
@@ -9272,6 +9148,15 @@
           "defaultValue": "new EventEmitter<string>()",
           "deprecated": false,
           "deprecationMessage": "",
+          "line": 52,
+          "type": "EventEmitter"
+        },
+        {
+          "name": "collapsedChange",
+          "coverageIgnore": false,
+          "defaultValue": "new EventEmitter<boolean>()",
+          "deprecated": false,
+          "deprecationMessage": "",
           "line": 30,
           "type": "EventEmitter"
         },
@@ -9281,7 +9166,7 @@
           "defaultValue": "new EventEmitter<string[]>()",
           "deprecated": false,
           "deprecationMessage": "",
-          "line": 31,
+          "line": 53,
           "type": "EventEmitter"
         },
         {
@@ -9290,11 +9175,61 @@
           "defaultValue": "new EventEmitter<SidebarNavItem>()",
           "deprecated": false,
           "deprecationMessage": "",
-          "line": 32,
+          "line": 54,
           "type": "EventEmitter"
         }
       ],
-      "propertiesClass": [],
+      "propertiesClass": [
+        {
+          "name": "navigationId",
+          "coverageIgnore": false,
+          "defaultValue": "`dds-sidebar-nav-${nextSidebarId++}`",
+          "deprecated": false,
+          "deprecationMessage": "",
+          "type": "unknown",
+          "indexKey": "",
+          "optional": false,
+          "description": "",
+          "line": 25,
+          "rawdescription": "\n",
+          "modifierKind": [148]
+        },
+        {
+          "name": "tooltip",
+          "coverageIgnore": false,
+          "deprecated": false,
+          "deprecationMessage": "",
+          "type": "{ label: string; top: number; left: number }",
+          "indexKey": "",
+          "optional": true,
+          "description": "",
+          "line": 31,
+          "subProperties": [
+            {
+              "name": "label",
+              "type": "string",
+              "optional": false,
+              "description": "",
+              "rawdescription": "\n"
+            },
+            {
+              "name": "top",
+              "type": "number",
+              "optional": false,
+              "description": "",
+              "rawdescription": "\n"
+            },
+            {
+              "name": "left",
+              "type": "number",
+              "optional": false,
+              "description": "",
+              "rawdescription": "\n"
+            }
+          ],
+          "rawdescription": "\n"
+        }
+      ],
       "methodsClass": [
         {
           "name": "hasActiveChild",
@@ -9312,7 +9247,7 @@
           "optional": false,
           "returnType": "boolean",
           "typeParameters": [],
-          "line": 42,
+          "line": 64,
           "deprecated": false,
           "deprecationMessage": "",
           "rawdescription": "\n",
@@ -9347,7 +9282,7 @@
           "optional": false,
           "returnType": "boolean",
           "typeParameters": [],
-          "line": 38,
+          "line": 60,
           "deprecated": false,
           "deprecationMessage": "",
           "rawdescription": "\n",
@@ -9382,7 +9317,7 @@
           "optional": false,
           "returnType": "boolean",
           "typeParameters": [],
-          "line": 34,
+          "line": 56,
           "deprecated": false,
           "deprecationMessage": "",
           "rawdescription": "\n",
@@ -9425,7 +9360,7 @@
           "optional": false,
           "returnType": "void",
           "typeParameters": [],
-          "line": 60,
+          "line": 87,
           "deprecated": false,
           "deprecationMessage": "",
           "rawdescription": "\n",
@@ -9456,6 +9391,60 @@
           ]
         },
         {
+          "name": "showTooltip",
+          "coverageIgnore": false,
+          "args": [
+            {
+              "name": "item",
+              "type": "SidebarNavItem",
+              "optional": false,
+              "dotDotDotToken": false,
+              "deprecated": false,
+              "deprecationMessage": ""
+            },
+            {
+              "name": "event",
+              "type": "Event",
+              "optional": false,
+              "dotDotDotToken": false,
+              "deprecated": false,
+              "deprecationMessage": ""
+            }
+          ],
+          "optional": false,
+          "returnType": "void",
+          "typeParameters": [],
+          "line": 39,
+          "deprecated": false,
+          "deprecationMessage": "",
+          "rawdescription": "\n",
+          "description": "",
+          "jsdoctags": [
+            {
+              "name": "item",
+              "type": "SidebarNavItem",
+              "optional": false,
+              "dotDotDotToken": false,
+              "deprecated": false,
+              "deprecationMessage": "",
+              "tagName": {
+                "text": "param"
+              }
+            },
+            {
+              "name": "event",
+              "type": "Event",
+              "optional": false,
+              "dotDotDotToken": false,
+              "deprecated": false,
+              "deprecationMessage": "",
+              "tagName": {
+                "text": "param"
+              }
+            }
+          ]
+        },
+        {
           "name": "submenuId",
           "coverageIgnore": false,
           "args": [
@@ -9471,7 +9460,7 @@
           "optional": false,
           "returnType": "string",
           "typeParameters": [],
-          "line": 46,
+          "line": 68,
           "deprecated": false,
           "deprecationMessage": "",
           "rawdescription": "\n",
@@ -9506,7 +9495,7 @@
           "optional": false,
           "returnType": "void",
           "typeParameters": [],
-          "line": 50,
+          "line": 72,
           "deprecated": false,
           "deprecationMessage": "",
           "rawdescription": "\n",
@@ -9524,6 +9513,19 @@
               }
             }
           ]
+        },
+        {
+          "name": "toggleCollapsed",
+          "coverageIgnore": false,
+          "args": [],
+          "optional": false,
+          "returnType": "void",
+          "typeParameters": [],
+          "line": 33,
+          "deprecated": false,
+          "deprecationMessage": "",
+          "rawdescription": "\n",
+          "description": ""
         }
       ],
       "coverageIgnore": false,
@@ -9545,20 +9547,20 @@
       "description": "<p>A persistent application sidebar with one level of expandable navigation groups.</p>\n",
       "rawdescription": "\nA persistent application sidebar with one level of expandable navigation groups.",
       "type": "component",
-      "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, EventEmitter, Input, Output } from '@angular/core';\nimport { DdsIconName, IconComponent } from '../icon/icon.component';\n\nexport interface SidebarNavItem {\n  id: string;\n  label: string;\n  href?: string;\n  icon?: DdsIconName;\n  disabled?: boolean;\n  children?: SidebarNavItem[];\n}\n\n/** A persistent application sidebar with one level of expandable navigation groups. */\n@Component({\n  selector: 'dds-sidebar-nav',\n  standalone: true,\n  imports: [CommonModule, IconComponent],\n  templateUrl: './sidebar-nav.component.html',\n  styleUrl: './sidebar-nav.component.css',\n})\nexport class SidebarNavComponent {\n  @Input() title = 'DDS Enterprise';\n  @Input() footer = 'Version 1.0.0';\n  @Input() ariaLabel = 'Primary navigation';\n  @Input() items: SidebarNavItem[] = [];\n  @Input() activeItemId?: string;\n  @Input() expandedIds: string[] = [];\n\n  @Output() activeItemIdChange = new EventEmitter<string>();\n  @Output() expandedIdsChange = new EventEmitter<string[]>();\n  @Output() itemSelect = new EventEmitter<SidebarNavItem>();\n\n  isExpanded(item: SidebarNavItem): boolean {\n    return this.expandedIds.includes(item.id);\n  }\n\n  isActive(item: SidebarNavItem): boolean {\n    return this.activeItemId === item.id;\n  }\n\n  hasActiveChild(item: SidebarNavItem): boolean {\n    return Boolean(item.children?.some((child) => child.id === this.activeItemId));\n  }\n\n  submenuId(item: SidebarNavItem): string {\n    return `dds-sidebar-nav-${item.id}-submenu`;\n  }\n\n  toggle(item: SidebarNavItem): void {\n    if (item.disabled) return;\n\n    const expanded = this.isExpanded(item);\n    this.expandedIds = expanded\n      ? this.expandedIds.filter((id) => id !== item.id)\n      : [...this.expandedIds, item.id];\n    this.expandedIdsChange.emit(this.expandedIds);\n  }\n\n  select(item: SidebarNavItem, event?: Event): void {\n    if (item.disabled) {\n      event?.preventDefault();\n      return;\n    }\n\n    this.activeItemId = item.id;\n    this.activeItemIdChange.emit(item.id);\n    this.itemSelect.emit(item);\n  }\n}\n",
+      "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, EventEmitter, Input, Output, HostBinding } from '@angular/core';\nimport { DdsIconName, IconComponent } from '../icon/icon.component';\n\nexport interface SidebarNavItem {\n  id: string;\n  label: string;\n  href?: string;\n  icon?: DdsIconName;\n  disabled?: boolean;\n  children?: SidebarNavItem[];\n}\n\nlet nextSidebarId = 0;\n\n/** A persistent application sidebar with one level of expandable navigation groups. */\n@Component({\n  selector: 'dds-sidebar-nav',\n  standalone: true,\n  imports: [CommonModule, IconComponent],\n  templateUrl: './sidebar-nav.component.html',\n  styleUrl: './sidebar-nav.component.css',\n})\nexport class SidebarNavComponent {\n  readonly navigationId = `dds-sidebar-nav-${nextSidebarId++}`;\n  @HostBinding('class.dds-sidebar-nav--collapsed')\n  @Input()\n  collapsed = false;\n  @Input() logoSrc = 'images/dds-brand-icon.svg';\n  @Output() collapsedChange = new EventEmitter<boolean>();\n  tooltip?: { label: string; top: number; left: number };\n\n  toggleCollapsed(): void {\n    this.collapsed = !this.collapsed;\n    this.tooltip = undefined;\n    this.collapsedChange.emit(this.collapsed);\n  }\n\n  showTooltip(item: SidebarNavItem, event: Event): void {\n    if (!this.collapsed) return;\n    const rect = (event.currentTarget as HTMLElement).getBoundingClientRect();\n    this.tooltip = { label: item.label, top: rect.top + rect.height / 2, left: rect.right + 8 };\n  }\n\n  @Input() title = 'DDS Enterprise';\n  @Input() footer = 'Version 1.0.0';\n  @Input() ariaLabel = 'Primary navigation';\n  @Input() items: SidebarNavItem[] = [];\n  @Input() activeItemId?: string;\n  @Input() expandedIds: string[] = [];\n\n  @Output() activeItemIdChange = new EventEmitter<string>();\n  @Output() expandedIdsChange = new EventEmitter<string[]>();\n  @Output() itemSelect = new EventEmitter<SidebarNavItem>();\n\n  isExpanded(item: SidebarNavItem): boolean {\n    return this.expandedIds.includes(item.id);\n  }\n\n  isActive(item: SidebarNavItem): boolean {\n    return this.activeItemId === item.id;\n  }\n\n  hasActiveChild(item: SidebarNavItem): boolean {\n    return Boolean(item.children?.some((child) => child.id === this.activeItemId));\n  }\n\n  submenuId(item: SidebarNavItem): string {\n    return `${this.navigationId}-${item.id}-submenu`;\n  }\n\n  toggle(item: SidebarNavItem): void {\n    if (item.disabled) return;\n\n    if (this.collapsed) {\n      this.toggleCollapsed();\n      if (this.isExpanded(item)) return;\n    }\n\n    const expanded = this.isExpanded(item);\n    this.expandedIds = expanded\n      ? this.expandedIds.filter((id) => id !== item.id)\n      : [...this.expandedIds, item.id];\n    this.expandedIdsChange.emit(this.expandedIds);\n  }\n\n  select(item: SidebarNavItem, event?: Event): void {\n    if (item.disabled) {\n      event?.preventDefault();\n      return;\n    }\n\n    this.activeItemId = item.id;\n    this.activeItemIdChange.emit(item.id);\n    this.itemSelect.emit(item);\n  }\n}\n",
       "styleUrl": "./sidebar-nav.component.css",
       "assetsDirs": [],
       "styleUrlsData": [
         {
-          "data": ":host {\n  display: block;\n  width: 250px;\n  max-width: 100%;\n  height: 100%;\n  min-height: 0;\n}\n\n.dds-sidebar-nav {\n  box-sizing: border-box;\n  display: flex;\n  flex-direction: column;\n  width: 100%;\n  height: 100%;\n  min-height: 360px;\n  background: var(--bg-colour-accent-dark);\n  color: var(--text-colour-inverse);\n  font-family: var(--font-family-primary);\n}\n\n.dds-sidebar-nav__header,\n.dds-sidebar-nav__footer {\n  box-sizing: border-box;\n  display: flex;\n  flex: 0 0 65px;\n  align-items: center;\n  min-width: 0;\n  padding: var(--space-4);\n  border-color: var(--border-colour-accent-primary);\n}\n\n.dds-sidebar-nav__header {\n  border-bottom: 1px solid var(--border-colour-accent-primary);\n  font-size: var(--font-size-md);\n  font-weight: var(--font-weight-semibold);\n  line-height: var(--font-size-2xl);\n}\n\n.dds-sidebar-nav__footer {\n  border-top: 1px solid var(--border-colour-accent-primary);\n  font-size: var(--font-size-xs);\n  line-height: var(--font-size-md);\n}\n\n.dds-sidebar-nav__body {\n  flex: 1 1 auto;\n  min-height: 0;\n  overflow-y: auto;\n  overscroll-behavior: contain;\n}\n\n.dds-sidebar-nav__list,\n.dds-sidebar-nav__submenu {\n  margin: 0;\n  padding: 0;\n  list-style: none;\n}\n\n.dds-sidebar-nav__item:first-child {\n  padding-top: var(--space-4);\n}\n\n.dds-sidebar-nav__item:last-child {\n  padding-bottom: var(--space-4);\n}\n\n.dds-sidebar-nav__parent,\n.dds-sidebar-nav__child {\n  box-sizing: border-box;\n  display: flex;\n  align-items: center;\n  width: 100%;\n  border: 0;\n  background: transparent;\n  color: var(--text-colour-inverse);\n  font-family: var(--font-family-primary);\n  font-size: var(--font-size-sm);\n  line-height: var(--font-size-xl);\n  text-align: left;\n  text-decoration: none;\n  cursor: pointer;\n}\n\n.dds-sidebar-nav__parent {\n  gap: var(--space-2);\n  min-height: 56px;\n  padding: var(--space-3) var(--space-4);\n}\n\n.dds-sidebar-nav__parent > span {\n  min-width: 0;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n\n.dds-sidebar-nav__parent dds-icon:first-child {\n  display: inline-flex;\n  flex: none;\n  color: var(--text-colour-accent-on-brand);\n}\n\n.dds-sidebar-nav__chevron {\n  display: inline-flex;\n  flex: none;\n  margin-left: auto;\n  color: var(--text-colour-accent-on-brand);\n}\n\n.dds-sidebar-nav__parent:hover:not(:disabled),\n.dds-sidebar-nav__parent--active {\n  background: var(--bg-colour-accent);\n}\n\n.dds-sidebar-nav__parent--active {\n  font-weight: var(--font-weight-semibold);\n}\n\n.dds-sidebar-nav__parent--active dds-icon:first-child {\n  color: var(--text-colour-inverse);\n}\n\n.dds-sidebar-nav__parent:focus-visible,\n.dds-sidebar-nav__child:focus-visible {\n  position: relative;\n  z-index: 1;\n  outline: 2px solid var(--border-colour-white);\n  outline-offset: -3px;\n}\n\n.dds-sidebar-nav__parent:disabled,\n.dds-sidebar-nav__parent--disabled,\n.dds-sidebar-nav__child:disabled,\n.dds-sidebar-nav__child--disabled {\n  color: var(--text-colour-disabled);\n  cursor: not-allowed;\n}\n\n.dds-sidebar-nav__submenu {\n  padding: var(--space-1) 0 var(--space-3);\n}\n\n.dds-sidebar-nav__child {\n  min-height: 36px;\n  padding: var(--space-2) var(--space-4) var(--space-2) 44px;\n}\n\n.dds-sidebar-nav__child:hover:not(:disabled),\n.dds-sidebar-nav__child--active {\n  color: var(--text-colour-accent-on-brand);\n}\n\n.dds-sidebar-nav__child--active {\n  font-weight: var(--font-weight-semibold);\n}\n\n@media (forced-colors: active) {\n  .dds-sidebar-nav__parent--active,\n  .dds-sidebar-nav__child--active {\n    outline: 1px solid CanvasText;\n    outline-offset: -2px;\n  }\n}\n",
+          "data": ":host {\n  display: block;\n  width: 250px;\n  max-width: 100%;\n  height: 100%;\n  min-height: 0;\n}\n\n.dds-sidebar-nav {\n  box-sizing: border-box;\n  display: flex;\n  flex-direction: column;\n  width: 100%;\n  height: 100%;\n  min-height: 360px;\n  background: var(--bg-colour-accent-dark);\n  color: var(--text-colour-inverse);\n  font-family: var(--font-family-primary);\n}\n\n.dds-sidebar-nav__header,\n.dds-sidebar-nav__footer {\n  box-sizing: border-box;\n  display: flex;\n  flex: 0 0 65px;\n  align-items: center;\n  min-width: 0;\n  padding: var(--space-4);\n  border-color: var(--border-colour-accent-primary);\n}\n\n.dds-sidebar-nav__header {\n  border-bottom: 1px solid var(--border-colour-accent-primary);\n  font-size: var(--font-size-md);\n  font-weight: var(--font-weight-semibold);\n  line-height: var(--font-size-2xl);\n}\n\n.dds-sidebar-nav__footer {\n  border-top: 1px solid var(--border-colour-accent-primary);\n  font-size: var(--font-size-xs);\n  line-height: var(--font-size-md);\n}\n\n.dds-sidebar-nav__body {\n  flex: 1 1 auto;\n  min-height: 0;\n  overflow-y: auto;\n  overscroll-behavior: contain;\n}\n\n.dds-sidebar-nav__list,\n.dds-sidebar-nav__submenu {\n  margin: 0;\n  padding: 0;\n  list-style: none;\n}\n\n.dds-sidebar-nav__item:first-child {\n  padding-top: var(--space-4);\n}\n\n.dds-sidebar-nav__item:last-child {\n  padding-bottom: var(--space-4);\n}\n\n.dds-sidebar-nav__parent,\n.dds-sidebar-nav__child {\n  box-sizing: border-box;\n  display: flex;\n  align-items: center;\n  width: 100%;\n  border: 0;\n  background: transparent;\n  color: var(--text-colour-inverse);\n  font-family: var(--font-family-primary);\n  font-size: var(--font-size-sm);\n  line-height: var(--font-size-xl);\n  text-align: left;\n  text-decoration: none;\n  cursor: pointer;\n}\n\n.dds-sidebar-nav__parent {\n  gap: var(--space-2);\n  min-height: 48px;\n  padding: var(--space-3) var(--space-4);\n}\n\n.dds-sidebar-nav__parent > span {\n  min-width: 0;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n\n.dds-sidebar-nav__parent dds-icon:first-child {\n  display: inline-flex;\n  flex: none;\n  color: var(--text-colour-accent-on-brand);\n}\n\n.dds-sidebar-nav__chevron {\n  display: inline-flex;\n  flex: none;\n  margin-left: auto;\n  color: var(--text-colour-accent-on-brand);\n}\n\n.dds-sidebar-nav__parent:hover:not(:disabled),\n.dds-sidebar-nav__parent--active {\n  background: var(--bg-colour-accent);\n}\n\n.dds-sidebar-nav__parent--active {\n  font-weight: var(--font-weight-semibold);\n}\n\n.dds-sidebar-nav__parent--active dds-icon:first-child {\n  color: var(--text-colour-inverse);\n}\n\n.dds-sidebar-nav__parent:focus-visible,\n.dds-sidebar-nav__child:focus-visible {\n  position: relative;\n  z-index: 1;\n  outline: 2px solid var(--border-colour-white);\n  outline-offset: -3px;\n}\n\n.dds-sidebar-nav__parent:disabled,\n.dds-sidebar-nav__parent--disabled,\n.dds-sidebar-nav__child:disabled,\n.dds-sidebar-nav__child--disabled {\n  color: var(--text-colour-disabled);\n  cursor: not-allowed;\n}\n\n.dds-sidebar-nav__submenu {\n  padding: var(--space-1) 0 var(--space-3);\n}\n\n.dds-sidebar-nav__child {\n  min-height: 36px;\n  padding: var(--space-2) var(--space-4) var(--space-2) 44px;\n}\n\n.dds-sidebar-nav__child:hover:not(:disabled),\n.dds-sidebar-nav__child--active {\n  color: var(--text-colour-accent-on-brand);\n}\n\n.dds-sidebar-nav__child--active {\n  font-weight: var(--font-weight-semibold);\n}\n\n@media (forced-colors: active) {\n  .dds-sidebar-nav__parent--active,\n  .dds-sidebar-nav__child--active {\n    outline: 1px solid CanvasText;\n    outline-offset: -2px;\n  }\n}\n\n:host(.dds-sidebar-nav--collapsed) {\n  width: 72px;\n}\n[hidden] {\n  display: none !important;\n}\n.dds-sidebar-nav__header {\n  justify-content: space-between;\n  gap: var(--space-2);\n}\n.dds-sidebar-nav__brand {\n  display: flex;\n  align-items: center;\n  gap: var(--space-2);\n  min-width: 0;\n  overflow: hidden;\n  white-space: nowrap;\n}\n.dds-sidebar-nav__brand img {\n  flex: none;\n}\n.dds-sidebar-nav__toggle {\n  display: inline-flex;\n  flex: none;\n  align-items: center;\n  justify-content: center;\n  padding: 0;\n  width: 24px;\n  height: 32px;\n  border: 0;\n  background: transparent;\n  color: inherit;\n  cursor: pointer;\n}\n.dds-sidebar-nav__toggle:focus-visible {\n  outline: 2px solid var(--border-colour-white);\n  outline-offset: 3px;\n}\n:host(.dds-sidebar-nav--collapsed) .dds-sidebar-nav__header {\n  justify-content: center;\n  padding: var(--space-1);\n}\n:host(.dds-sidebar-nav--collapsed) .dds-sidebar-nav__parent {\n  justify-content: center;\n}\n.dds-sidebar-nav__tooltip {\n  position: fixed;\n  z-index: 1000;\n  transform: translateY(-50%);\n  padding: var(--space-2);\n  border-radius: var(--space-1);\n  background: var(--bg-colour-accent-dark);\n  color: var(--text-colour-inverse);\n  font: var(--font-size-sm) var(--font-family-primary);\n  pointer-events: none;\n  white-space: nowrap;\n}\n",
           "styleUrl": "./sidebar-nav.component.css"
         }
       ],
       "stylesData": "",
       "jsdoctags": [
         {
-          "pos": 350,
-          "end": 437,
+          "pos": 387,
+          "end": 474,
           "kind": 321,
           "id": 0,
           "flags": 16777216,
@@ -9592,7 +9594,7 @@
           }
         ]
       },
-      "templateData": "<aside class=\"dds-sidebar-nav\">\n  <header class=\"dds-sidebar-nav__header\">{{ title }}</header>\n\n  <nav class=\"dds-sidebar-nav__body\" [attr.aria-label]=\"ariaLabel\">\n    <ul class=\"dds-sidebar-nav__list\">\n      <li *ngFor=\"let item of items\" class=\"dds-sidebar-nav__item\">\n        <button\n          *ngIf=\"item.children?.length; else leafItem\"\n          class=\"dds-sidebar-nav__parent\"\n          type=\"button\"\n          [class.dds-sidebar-nav__parent--active]=\"isActive(item) || hasActiveChild(item)\"\n          [disabled]=\"item.disabled\"\n          [attr.aria-expanded]=\"isExpanded(item)\"\n          [attr.aria-controls]=\"submenuId(item)\"\n          (click)=\"toggle(item)\"\n        >\n          <dds-icon [name]=\"item.icon || 'info'\" [size]=\"20\" aria-hidden=\"true\"></dds-icon>\n          <span>{{ item.label }}</span>\n          <dds-icon\n            class=\"dds-sidebar-nav__chevron\"\n            [name]=\"isExpanded(item) ? 'chevron-up' : 'chevron-down'\"\n            [size]=\"20\"\n            aria-hidden=\"true\"\n          ></dds-icon>\n        </button>\n\n        <ng-template #leafItem>\n          <a\n            *ngIf=\"item.href; else leafButton\"\n            class=\"dds-sidebar-nav__parent\"\n            [class.dds-sidebar-nav__parent--active]=\"isActive(item)\"\n            [class.dds-sidebar-nav__parent--disabled]=\"item.disabled\"\n            [attr.href]=\"item.disabled ? null : item.href\"\n            [attr.aria-current]=\"isActive(item) ? 'page' : null\"\n            [attr.aria-disabled]=\"item.disabled ? 'true' : null\"\n            (click)=\"select(item, $event)\"\n          >\n            <dds-icon [name]=\"item.icon || 'info'\" [size]=\"20\" aria-hidden=\"true\"></dds-icon>\n            <span>{{ item.label }}</span>\n          </a>\n          <ng-template #leafButton>\n            <button\n              class=\"dds-sidebar-nav__parent\"\n              type=\"button\"\n              [class.dds-sidebar-nav__parent--active]=\"isActive(item)\"\n              [disabled]=\"item.disabled\"\n              [attr.aria-current]=\"isActive(item) ? 'page' : null\"\n              (click)=\"select(item)\"\n            >\n              <dds-icon [name]=\"item.icon || 'info'\" [size]=\"20\" aria-hidden=\"true\"></dds-icon>\n              <span>{{ item.label }}</span>\n            </button>\n          </ng-template>\n        </ng-template>\n\n        <ul\n          *ngIf=\"item.children?.length && isExpanded(item)\"\n          class=\"dds-sidebar-nav__submenu\"\n          [id]=\"submenuId(item)\"\n        >\n          <li *ngFor=\"let child of item.children\">\n            <a\n              *ngIf=\"child.href; else childButton\"\n              class=\"dds-sidebar-nav__child\"\n              [class.dds-sidebar-nav__child--active]=\"isActive(child)\"\n              [class.dds-sidebar-nav__child--disabled]=\"child.disabled\"\n              [attr.href]=\"child.disabled ? null : child.href\"\n              [attr.aria-current]=\"isActive(child) ? 'page' : null\"\n              [attr.aria-disabled]=\"child.disabled ? 'true' : null\"\n              (click)=\"select(child, $event)\"\n            >\n              {{ child.label }}\n            </a>\n            <ng-template #childButton>\n              <button\n                class=\"dds-sidebar-nav__child\"\n                type=\"button\"\n                [class.dds-sidebar-nav__child--active]=\"isActive(child)\"\n                [disabled]=\"child.disabled\"\n                [attr.aria-current]=\"isActive(child) ? 'page' : null\"\n                (click)=\"select(child)\"\n              >\n                {{ child.label }}\n              </button>\n            </ng-template>\n          </li>\n        </ul>\n      </li>\n    </ul>\n  </nav>\n\n  <footer class=\"dds-sidebar-nav__footer\">{{ footer }}</footer>\n</aside>\n"
+      "templateData": "<aside class=\"dds-sidebar-nav\">\n  <header class=\"dds-sidebar-nav__header\">\n    <div class=\"dds-sidebar-nav__brand\" [hidden]=\"collapsed\">\n      <ng-content select=\"[sidebarLogo]\"\n        ><img [src]=\"logoSrc\" width=\"23\" height=\"24\" alt=\"\"\n      /></ng-content>\n      <span>{{ title }}</span>\n    </div>\n    <button\n      class=\"dds-sidebar-nav__toggle\"\n      type=\"button\"\n      [attr.aria-label]=\"collapsed ? 'Expand sidebar' : 'Collapse sidebar'\"\n      [attr.aria-expanded]=\"!collapsed\"\n      [attr.aria-controls]=\"navigationId\"\n      (click)=\"toggleCollapsed()\"\n    >\n      <dds-icon [name]=\"collapsed ? 'panel-left-open' : 'panel-left-close'\" [size]=\"24\"></dds-icon>\n    </button>\n  </header>\n\n  <nav\n    class=\"dds-sidebar-nav__body\"\n    [attr.aria-label]=\"ariaLabel\"\n    [id]=\"navigationId\"\n    (scroll)=\"tooltip = undefined\"\n  >\n    <ul class=\"dds-sidebar-nav__list\">\n      <li *ngFor=\"let item of items\" class=\"dds-sidebar-nav__item\">\n        <button\n          *ngIf=\"item.children?.length; else leafItem\"\n          class=\"dds-sidebar-nav__parent\"\n          [attr.aria-label]=\"item.label\"\n          [attr.aria-describedby]=\"\n            collapsed && tooltip?.label === item.label ? navigationId + '-tooltip' : null\n          \"\n          (mouseenter)=\"showTooltip(item, $event)\"\n          (mouseleave)=\"tooltip = undefined\"\n          (focus)=\"showTooltip(item, $event)\"\n          (blur)=\"tooltip = undefined\"\n          (keydown.escape)=\"tooltip = undefined\"\n          type=\"button\"\n          [class.dds-sidebar-nav__parent--active]=\"isActive(item) || hasActiveChild(item)\"\n          [disabled]=\"item.disabled\"\n          [attr.aria-expanded]=\"!collapsed && isExpanded(item)\"\n          [attr.aria-controls]=\"submenuId(item)\"\n          (click)=\"toggle(item)\"\n        >\n          <dds-icon [name]=\"item.icon || 'info'\" [size]=\"20\" aria-hidden=\"true\"></dds-icon>\n          <span [hidden]=\"collapsed\">{{ item.label }}</span>\n          <dds-icon\n            class=\"dds-sidebar-nav__chevron\"\n            [hidden]=\"collapsed\"\n            [name]=\"isExpanded(item) ? 'chevron-up' : 'chevron-down'\"\n            [size]=\"20\"\n            aria-hidden=\"true\"\n          ></dds-icon>\n        </button>\n\n        <ng-template #leafItem>\n          <a\n            *ngIf=\"item.href; else leafButton\"\n            class=\"dds-sidebar-nav__parent\"\n            [attr.aria-label]=\"item.label\"\n            [attr.aria-describedby]=\"\n              collapsed && tooltip?.label === item.label ? navigationId + '-tooltip' : null\n            \"\n            (mouseenter)=\"showTooltip(item, $event)\"\n            (mouseleave)=\"tooltip = undefined\"\n            (focus)=\"showTooltip(item, $event)\"\n            (blur)=\"tooltip = undefined\"\n            (keydown.escape)=\"tooltip = undefined\"\n            [class.dds-sidebar-nav__parent--active]=\"isActive(item)\"\n            [class.dds-sidebar-nav__parent--disabled]=\"item.disabled\"\n            [attr.href]=\"item.disabled ? null : item.href\"\n            [attr.aria-current]=\"isActive(item) ? 'page' : null\"\n            [attr.aria-disabled]=\"item.disabled ? 'true' : null\"\n            (click)=\"select(item, $event)\"\n          >\n            <dds-icon [name]=\"item.icon || 'info'\" [size]=\"20\" aria-hidden=\"true\"></dds-icon>\n            <span [hidden]=\"collapsed\">{{ item.label }}</span>\n          </a>\n          <ng-template #leafButton>\n            <button\n              class=\"dds-sidebar-nav__parent\"\n              [attr.aria-label]=\"item.label\"\n              [attr.aria-describedby]=\"\n                collapsed && tooltip?.label === item.label ? navigationId + '-tooltip' : null\n              \"\n              (mouseenter)=\"showTooltip(item, $event)\"\n              (mouseleave)=\"tooltip = undefined\"\n              (focus)=\"showTooltip(item, $event)\"\n              (blur)=\"tooltip = undefined\"\n              (keydown.escape)=\"tooltip = undefined\"\n              type=\"button\"\n              [class.dds-sidebar-nav__parent--active]=\"isActive(item)\"\n              [disabled]=\"item.disabled\"\n              [attr.aria-current]=\"isActive(item) ? 'page' : null\"\n              (click)=\"select(item)\"\n            >\n              <dds-icon [name]=\"item.icon || 'info'\" [size]=\"20\" aria-hidden=\"true\"></dds-icon>\n              <span [hidden]=\"collapsed\">{{ item.label }}</span>\n            </button>\n          </ng-template>\n        </ng-template>\n\n        <ul\n          *ngIf=\"item.children?.length && isExpanded(item)\"\n          class=\"dds-sidebar-nav__submenu\"\n          [hidden]=\"collapsed\"\n          [id]=\"submenuId(item)\"\n        >\n          <li *ngFor=\"let child of item.children\">\n            <a\n              *ngIf=\"child.href; else childButton\"\n              class=\"dds-sidebar-nav__child\"\n              [class.dds-sidebar-nav__child--active]=\"isActive(child)\"\n              [class.dds-sidebar-nav__child--disabled]=\"child.disabled\"\n              [attr.href]=\"child.disabled ? null : child.href\"\n              [attr.aria-current]=\"isActive(child) ? 'page' : null\"\n              [attr.aria-disabled]=\"child.disabled ? 'true' : null\"\n              (click)=\"select(child, $event)\"\n            >\n              {{ child.label }}\n            </a>\n            <ng-template #childButton>\n              <button\n                class=\"dds-sidebar-nav__child\"\n                type=\"button\"\n                [class.dds-sidebar-nav__child--active]=\"isActive(child)\"\n                [disabled]=\"child.disabled\"\n                [attr.aria-current]=\"isActive(child) ? 'page' : null\"\n                (click)=\"select(child)\"\n              >\n                {{ child.label }}\n              </button>\n            </ng-template>\n          </li>\n        </ul>\n      </li>\n    </ul>\n  </nav>\n\n  <footer class=\"dds-sidebar-nav__footer\">\n    <span [hidden]=\"collapsed\">{{ footer }}</span>\n  </footer>\n</aside>\n\n<div\n  *ngIf=\"tooltip\"\n  class=\"dds-sidebar-nav__tooltip\"\n  role=\"tooltip\"\n  [id]=\"navigationId + '-tooltip'\"\n  [style.top.px]=\"tooltip.top\"\n  [style.left.px]=\"tooltip.left\"\n>\n  {{ tooltip.label }}\n</div>\n"
     },
     {
       "name": "SkeletonComponent",
@@ -9605,13 +9607,9 @@
       "outputs": [],
       "providers": [],
       "selector": "dds-skeleton",
-      "styleUrls": [
-        "./skeleton.component.css"
-      ],
+      "styleUrls": ["./skeleton.component.css"],
       "styles": [],
-      "templateUrl": [
-        "./skeleton.component.html"
-      ],
+      "templateUrl": ["./skeleton.component.html"],
       "templateVariables": [],
       "viewProviders": [],
       "hostDirectives": [],
@@ -9804,13 +9802,9 @@
       "outputs": [],
       "providers": [],
       "selector": "dds-spinner",
-      "styleUrls": [
-        "./spinner.component.css"
-      ],
+      "styleUrls": ["./spinner.component.css"],
       "styles": [],
-      "templateUrl": [
-        "./spinner.component.html"
-      ],
+      "templateUrl": ["./spinner.component.html"],
       "templateVariables": [],
       "viewProviders": [],
       "hostDirectives": [],
@@ -9898,13 +9892,9 @@
       "outputs": [],
       "providers": [],
       "selector": "dds-status-badge",
-      "styleUrls": [
-        "./status-badge.component.css"
-      ],
+      "styleUrls": ["./status-badge.component.css"],
       "styles": [],
-      "templateUrl": [
-        "./status-badge.component.html"
-      ],
+      "templateUrl": ["./status-badge.component.html"],
       "templateVariables": [],
       "viewProviders": [],
       "hostDirectives": [],
@@ -9992,13 +9982,9 @@
       "outputs": [],
       "providers": [],
       "selector": "dds-textarea",
-      "styleUrls": [
-        "./textarea.component.css"
-      ],
+      "styleUrls": ["./textarea.component.css"],
       "styles": [],
-      "templateUrl": [
-        "./textarea.component.html"
-      ],
+      "templateUrl": ["./textarea.component.html"],
       "templateVariables": [],
       "viewProviders": [],
       "hostDirectives": [],
@@ -10371,13 +10357,9 @@
       "outputs": [],
       "providers": [],
       "selector": "dds-text-input",
-      "styleUrls": [
-        "./text-input.component.css"
-      ],
+      "styleUrls": ["./text-input.component.css"],
       "styles": [],
-      "templateUrl": [
-        "./text-input.component.html"
-      ],
+      "templateUrl": ["./text-input.component.html"],
       "templateVariables": [],
       "viewProviders": [],
       "hostDirectives": [],
@@ -10742,13 +10724,9 @@
       "outputs": [],
       "providers": [],
       "selector": "dds-toast",
-      "styleUrls": [
-        "./toast.component.css"
-      ],
+      "styleUrls": ["./toast.component.css"],
       "styles": [],
-      "templateUrl": [
-        "./toast.component.html"
-      ],
+      "templateUrl": ["./toast.component.html"],
       "templateVariables": [],
       "viewProviders": [],
       "hostDirectives": [],
@@ -10875,9 +10853,7 @@
           "description": "",
           "line": 47,
           "rawdescription": "\n",
-          "modifierKind": [
-            123
-          ]
+          "modifierKind": [123]
         },
         {
           "name": "visible",
@@ -10906,9 +10882,7 @@
           "deprecationMessage": "",
           "rawdescription": "\n",
           "description": "",
-          "modifierKind": [
-            123
-          ]
+          "modifierKind": [123]
         },
         {
           "name": "dismiss",
@@ -10961,9 +10935,7 @@
           "deprecationMessage": "",
           "rawdescription": "\n",
           "description": "",
-          "modifierKind": [
-            123
-          ]
+          "modifierKind": [123]
         }
       ],
       "coverageIgnore": false,
@@ -11008,10 +10980,7 @@
         }
       ],
       "extends": [],
-      "implements": [
-        "OnChanges",
-        "OnDestroy"
-      ],
+      "implements": ["OnChanges", "OnDestroy"],
       "accessors": {
         "isTimed": {
           "name": "isTimed",
@@ -11092,13 +11061,9 @@
       "outputs": [],
       "providers": [],
       "selector": "dds-top-bar-nav",
-      "styleUrls": [
-        "./top-bar-nav.component.css"
-      ],
+      "styleUrls": ["./top-bar-nav.component.css"],
       "styles": [],
-      "templateUrl": [
-        "./top-bar-nav.component.html"
-      ],
+      "templateUrl": ["./top-bar-nav.component.html"],
       "templateVariables": [],
       "viewProviders": [],
       "hostDirectives": [],
@@ -11275,10 +11240,7 @@
           "description": "",
           "line": 16,
           "rawdescription": "\n",
-          "modifierKind": [
-            123,
-            148
-          ]
+          "modifierKind": [123, 148]
         },
         {
           "name": "menuId",
@@ -11292,9 +11254,7 @@
           "description": "",
           "line": 34,
           "rawdescription": "\n",
-          "modifierKind": [
-            148
-          ]
+          "modifierKind": [148]
         }
       ],
       "methodsClass": [
@@ -11316,9 +11276,7 @@
               "stringifiedArguments": "'document:keydown.escape'"
             }
           ],
-          "modifierKind": [
-            171
-          ]
+          "modifierKind": [171]
         },
         {
           "name": "closeOnOutsideClick",
@@ -11347,9 +11305,7 @@
               "stringifiedArguments": "'document:click', ['$event']"
             }
           ],
-          "modifierKind": [
-            171
-          ],
+          "modifierKind": [171],
           "jsdoctags": [
             {
               "name": "event",
@@ -11455,9 +11411,7 @@
           "deprecationMessage": "",
           "rawdescription": "\n",
           "description": "",
-          "modifierKind": [
-            123
-          ],
+          "modifierKind": [123],
           "jsdoctags": [
             {
               "name": "open",
@@ -11504,9 +11458,7 @@
               "deprecationMessage": ""
             }
           ],
-          "argsDecorator": [
-            "$event"
-          ],
+          "argsDecorator": ["$event"],
           "deprecated": false,
           "deprecationMessage": "",
           "line": 52
@@ -11626,13 +11578,9 @@
       "outputs": [],
       "providers": [],
       "selector": "app-typography-page",
-      "styleUrls": [
-        "./typography-page.component.css"
-      ],
+      "styleUrls": ["./typography-page.component.css"],
       "styles": [],
-      "templateUrl": [
-        "./typography-page.component.html"
-      ],
+      "templateUrl": ["./typography-page.component.html"],
       "templateVariables": [],
       "viewProviders": [],
       "hostDirectives": [],
@@ -11651,9 +11599,7 @@
           "description": "",
           "line": 123,
           "rawdescription": "\n",
-          "modifierKind": [
-            148
-          ]
+          "modifierKind": [148]
         },
         {
           "name": "desktopHeadings",
@@ -11667,9 +11613,7 @@
           "description": "",
           "line": 21,
           "rawdescription": "\n",
-          "modifierKind": [
-            148
-          ]
+          "modifierKind": [148]
         },
         {
           "name": "labelStyles",
@@ -11683,9 +11627,7 @@
           "description": "",
           "line": 166,
           "rawdescription": "\n",
-          "modifierKind": [
-            148
-          ]
+          "modifierKind": [148]
         },
         {
           "name": "mobileHeadings",
@@ -11699,9 +11641,7 @@
           "description": "",
           "line": 72,
           "rawdescription": "\n",
-          "modifierKind": [
-            148
-          ]
+          "modifierKind": [148]
         }
       ],
       "methodsClass": [],
