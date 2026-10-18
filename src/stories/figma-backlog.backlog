@@ -4,6 +4,8 @@ This file tracks missing, incomplete, or undecided Figma specifications discover
 
 Last audited: 27 August 2026
 
+Last updated: 8 October 2026 — Shadows documentation and token added; outstanding design decisions recorded.
+
 ## How to use this backlog
 
 - **Confirmed gap** means the current Figma component set was inspected and does not specify the listed behavior or state.
@@ -16,7 +18,7 @@ Last audited: 27 August 2026
 
 - [ ] **P1 · Design review** — Define shared loading conventions: spinner placement, loading labels, disabled behavior, and whether existing content remains visible.
 - [ ] **P1 · Design review** — Define shared validation states across form controls: error, warning, success, disabled, and read-only.
-- [ ] **P1 · Design review** — Add elevation tokens and document their usage. Dropdowns and Toasts currently use the same `0 4px 16px rgb(0 0 0 / 8%)` shadow without a named design token.
+- [ ] **P1 · Design review** — Define elevation usage across components and adopt the shared `--shadow-default` token where appropriate. The token and Foundations / Shadows documentation now exist; Search, Toast, and Top Bar Nav still use literal shadow values.
 - [ ] **P1 · Design review** — Add motion tokens for durations and easing, including reduced-motion behavior. Toast countdown and component transitions currently have component-level values.
 - [ ] **P2 · Design review** — Define responsive rules for component widths, wrapping, and breakpoint behavior instead of only Desktop/Mobile snapshots.
 - [x] **P2 · Implemented** — Document minimum touch-target guidance for interactive icons and compact controls in Foundations / Accessibility.
@@ -129,6 +131,7 @@ Figma reference: [Button — node 15:358](https://www.figma.com/design/u0lpCPrGM
 
 - [ ] **P1 · Confirmed gap** — Add a Loading state, including spinner placement for text, icon, and icon-only buttons and whether the original label remains visible.
 - [ ] **P1 · Design review** — Add or explicitly rule out a pressed/active state separate from Hover and Focus.
+- [x] **P2 · Implemented** — Normalize enabled-button click focus for Safari, reset native button appearance for custom focus-ring rendering, and add an Actual focus Storybook interaction check. Direct Safari verification remains outstanding.
 - [ ] **P1 · Design review** — Add the Ghost keyboard-focus state to Figma; the code retains visible focus for accessibility even though the current Figma set omits it.
 - [ ] **P2 · Design review** — Confirm whether Danger is a semantic style of Primary or a first-class variant in naming and design documentation.
 - [ ] **P2 · Design review** — Define minimum-width, long-label, wrapping, truncation, and localization behavior.
@@ -166,6 +169,14 @@ Figma reference: [Button — node 15:358](https://www.figma.com/design/u0lpCPrGM
 - [ ] **P1 · Design review** — Define responsive typography behavior for display and heading styles.
 - [ ] **P2 · Design review** — Document maximum line lengths, paragraph spacing, and truncation guidance.
 - [ ] **P2 · Design review** — Define fallback behavior when Inter is unavailable or still loading.
+
+### Shadows
+
+Figma reference: [Shadows — node 675:1926](https://www.figma.com/design/u0lpCPrGMj68e9RMIRuYxL/DDS---Design-System-v1.0?node-id=675-1926)
+
+- [x] **P1 · Implemented** — Add Foundations / Shadows documentation with formatting consistent with the other foundation pages, the Figma example, and a live CSS example. Expose the shared `--shadow-default` token through the global stylesheet.
+- [ ] **P1 · Design review** — Reconcile the printed Figma value `0 2px 16px 0 rgba(0,0,0,.8)` with the actual shadow effect `0 4px 16px 0 rgb(0 0 0 / 8%)`. The code token follows the effect, and Storybook documents the discrepancy.
+- [ ] **P2 · Design review** — Document when to apply the default shadow and when to use borders or other elevation levels; the Figma page currently provides a single token and example.
 
 ### Spacing and layout
 
