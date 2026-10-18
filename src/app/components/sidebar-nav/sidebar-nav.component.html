@@ -1,23 +1,55 @@
 <aside class="dds-sidebar-nav">
-  <header class="dds-sidebar-nav__header">{{ title }}</header>
+  <header class="dds-sidebar-nav__header">
+    <div class="dds-sidebar-nav__brand" [hidden]="collapsed">
+      <ng-content select="[sidebarLogo]"
+        ><img [src]="logoSrc" width="23" height="24" alt=""
+      /></ng-content>
+      <span>{{ title }}</span>
+    </div>
+    <button
+      class="dds-sidebar-nav__toggle"
+      type="button"
+      [attr.aria-label]="collapsed ? 'Expand sidebar' : 'Collapse sidebar'"
+      [attr.aria-expanded]="!collapsed"
+      [attr.aria-controls]="navigationId"
+      (click)="toggleCollapsed()"
+    >
+      <dds-icon [name]="collapsed ? 'panel-left-open' : 'panel-left-close'" [size]="24"></dds-icon>
+    </button>
+  </header>
 
-  <nav class="dds-sidebar-nav__body" [attr.aria-label]="ariaLabel">
+  <nav
+    class="dds-sidebar-nav__body"
+    [attr.aria-label]="ariaLabel"
+    [id]="navigationId"
+    (scroll)="tooltip = undefined"
+  >
     <ul class="dds-sidebar-nav__list">
       <li *ngFor="let item of items" class="dds-sidebar-nav__item">
         <button
           *ngIf="item.children?.length; else leafItem"
           class="dds-sidebar-nav__parent"
+          [attr.aria-label]="item.label"
+          [attr.aria-describedby]="
+            collapsed && tooltip?.label === item.label ? navigationId + '-tooltip' : null
+          "
+          (mouseenter)="showTooltip(item, $event)"
+          (mouseleave)="tooltip = undefined"
+          (focus)="showTooltip(item, $event)"
+          (blur)="tooltip = undefined"
+          (keydown.escape)="tooltip = undefined"
           type="button"
           [class.dds-sidebar-nav__parent--active]="isActive(item) || hasActiveChild(item)"
           [disabled]="item.disabled"
-          [attr.aria-expanded]="isExpanded(item)"
+          [attr.aria-expanded]="!collapsed && isExpanded(item)"
           [attr.aria-controls]="submenuId(item)"
           (click)="toggle(item)"
         >
           <dds-icon [name]="item.icon || 'info'" [size]="20" aria-hidden="true"></dds-icon>
-          <span>{{ item.label }}</span>
+          <span [hidden]="collapsed">{{ item.label }}</span>
           <dds-icon
             class="dds-sidebar-nav__chevron"
+            [hidden]="collapsed"
             [name]="isExpanded(item) ? 'chevron-up' : 'chevron-down'"
             [size]="20"
             aria-hidden="true"
@@ -28,6 +60,15 @@
           <a
             *ngIf="item.href; else leafButton"
             class="dds-sidebar-nav__parent"
+            [attr.aria-label]="item.label"
+            [attr.aria-describedby]="
+              collapsed && tooltip?.label === item.label ? navigationId + '-tooltip' : null
+            "
+            (mouseenter)="showTooltip(item, $event)"
+            (mouseleave)="tooltip = undefined"
+            (focus)="showTooltip(item, $event)"
+            (blur)="tooltip = undefined"
+            (keydown.escape)="tooltip = undefined"
             [class.dds-sidebar-nav__parent--active]="isActive(item)"
             [class.dds-sidebar-nav__parent--disabled]="item.disabled"
             [attr.href]="item.disabled ? null : item.href"
@@ -36,11 +77,20 @@
             (click)="select(item, $event)"
           >
             <dds-icon [name]="item.icon || 'info'" [size]="20" aria-hidden="true"></dds-icon>
-            <span>{{ item.label }}</span>
+            <span [hidden]="collapsed">{{ item.label }}</span>
           </a>
           <ng-template #leafButton>
             <button
               class="dds-sidebar-nav__parent"
+              [attr.aria-label]="item.label"
+              [attr.aria-describedby]="
+                collapsed && tooltip?.label === item.label ? navigationId + '-tooltip' : null
+              "
+              (mouseenter)="showTooltip(item, $event)"
+              (mouseleave)="tooltip = undefined"
+              (focus)="showTooltip(item, $event)"
+              (blur)="tooltip = undefined"
+              (keydown.escape)="tooltip = undefined"
               type="button"
               [class.dds-sidebar-nav__parent--active]="isActive(item)"
               [disabled]="item.disabled"
@@ -48,7 +98,7 @@
               (click)="select(item)"
             >
               <dds-icon [name]="item.icon || 'info'" [size]="20" aria-hidden="true"></dds-icon>
-              <span>{{ item.label }}</span>
+              <span [hidden]="collapsed">{{ item.label }}</span>
             </button>
           </ng-template>
         </ng-template>
@@ -56,6 +106,7 @@
         <ul
           *ngIf="item.children?.length && isExpanded(item)"
           class="dds-sidebar-nav__submenu"
+          [hidden]="collapsed"
           [id]="submenuId(item)"
         >
           <li *ngFor="let child of item.children">
@@ -89,5 +140,18 @@
     </ul>
   </nav>
 
-  <footer class="dds-sidebar-nav__footer">{{ footer }}</footer>
+  <footer class="dds-sidebar-nav__footer">
+    <span [hidden]="collapsed">{{ footer }}</span>
+  </footer>
 </aside>
+
+<div
+  *ngIf="tooltip"
+  class="dds-sidebar-nav__tooltip"
+  role="tooltip"
+  [id]="navigationId + '-tooltip'"
+  [style.top.px]="tooltip.top"
+  [style.left.px]="tooltip.left"
+>
+  {{ tooltip.label }}
+</div>
