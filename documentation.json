@@ -659,7 +659,18 @@
                 }
             },
             "relationships": {
-                "incoming": [],
+                "incoming": [
+                    {
+                        "name": "CustomerManagementPageComponent",
+                        "type": "component",
+                        "description": "A composed dashboard example showing DDS navigation, form controls, and data display together."
+                    },
+                    {
+                        "name": "OrdersPageComponent",
+                        "type": "component",
+                        "description": "Sales order overview composed from DDS navigation, filters, and table components."
+                    }
+                ],
                 "outgoing": [
                     {
                         "name": "CommonModule",
@@ -741,7 +752,7 @@
         },
         {
             "name": "ButtonComponent",
-            "id": "component-ButtonComponent-b068ef17fa3930816fb0145118da6b01562788b55197ca85e2cd70a6d4bd2851f8bb041bc39ca8f5aaff24c487c335a9eeee5ca1d4e8b26e2fa47c3856f5598a",
+            "id": "component-ButtonComponent-594330e794196c2581aa4f0b920f25f52e603ce3a8d74ba4791dc9b4daac7a1739ade4da15d68d2927b7fbe6fedb724842c74741aa07a17017e01f74ce0a8d2e",
             "file": "src/app/components/button/button.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -895,7 +906,43 @@
             ],
             "outputsClass": [],
             "propertiesClass": [],
-            "methodsClass": [],
+            "methodsClass": [
+                {
+                    "name": "focusOnClick",
+                    "coverageIgnore": false,
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "MouseEvent",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 58,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nKeep pointer focus consistent in browsers that do not focus buttons on click.",
+                    "description": "<p>Keep pointer focus consistent in browsers that do not focus buttons on click.</p>\n",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "MouseEvent",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
             "coverageIgnore": false,
             "deprecated": false,
             "deprecationMessage": "",
@@ -915,12 +962,12 @@
             "description": "<p>A reusable button component for primary actions, secondary actions, and icon-only affordances.\nSupports variants, size options, semantic states, and optional leading or trailing icons.</p>\n",
             "rawdescription": "\n\nA reusable button component for primary actions, secondary actions, and icon-only affordances.\nSupports variants, size options, semantic states, and optional leading or trailing icons.\n",
             "type": "component",
-            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { DdsIconName, IconComponent } from '../icon/icon.component';\n\nexport type ButtonVariant = 'primary' | 'secondary' | 'ghost';\nexport type ButtonState = 'default' | 'hover' | 'focused' | 'disabled';\nexport type ButtonStyle = 'default' | 'danger';\nexport type ButtonSize = 'large' | 'medium' | 'small';\nexport type ButtonIconType = 'no-icon' | 'left-icon' | 'right-icon' | 'icon-only';\nexport type ButtonIconAnimation = 'none' | 'spin' | 'spin-on-press';\n\n/**\n * A reusable button component for primary actions, secondary actions, and icon-only affordances.\n * Supports variants, size options, semantic states, and optional leading or trailing icons.\n */\n@Component({\n  selector: 'dds-button',\n  standalone: true,\n  imports: [CommonModule, IconComponent],\n  templateUrl: './button.component.html',\n  styleUrl: './button.component.css',\n})\nexport class ButtonComponent {\n  /** Visual treatment for the button, used to communicate action importance. */\n  @Input() variant: ButtonVariant = 'primary';\n\n  /** Visual state used for design previews and interaction feedback. */\n  @Input() state: ButtonState = 'default';\n\n  /** Semantic style that can switch the button to a destructive treatment. */\n  @Input() styleType: ButtonStyle = 'default';\n\n  /** Size of the button to match surrounding layout and hierarchy. */\n  @Input() size: ButtonSize = 'large';\n\n  /** Placement of the icon, or whether the button should render as icon-only. */\n  @Input() iconType: ButtonIconType = 'no-icon';\n\n  /** Name of the icon to display when icon placement is enabled. */\n  @Input() icon: DdsIconName = 'info';\n\n  /** Optional motion treatment for animated action icons. */\n  @Input() iconAnimation: ButtonIconAnimation = 'none';\n\n  /** Accessible label for icon-only buttons when the visible label is not present. */\n  @Input() ariaLabel?: string;\n\n  /** Native button type used for form submission and button semantics. */\n  @Input() type: 'button' | 'submit' | 'reset' = 'button';\n\n  /** Disables interaction and applies the disabled visual treatment. */\n  @Input() disabled = false;\n\n  /** Expands the button to fill the available width of its container. */\n  @Input() fullWidth = false;\n\n  get isDisabled(): boolean {\n    return this.disabled || this.state === 'disabled';\n  }\n\n  get hasLeftIcon(): boolean {\n    return this.iconType === 'left-icon';\n  }\n\n  get hasRightIcon(): boolean {\n    return this.iconType === 'right-icon';\n  }\n\n  get isIconOnly(): boolean {\n    return this.iconType === 'icon-only';\n  }\n\n  get iconSize(): number {\n    if (this.size === 'small') {\n      return 16;\n    }\n\n    if (this.size === 'medium') {\n      return 20;\n    }\n\n    return 24;\n  }\n}\n",
+            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { DdsIconName, IconComponent } from '../icon/icon.component';\n\nexport type ButtonVariant = 'primary' | 'secondary' | 'ghost';\nexport type ButtonState = 'default' | 'hover' | 'focused' | 'disabled';\nexport type ButtonStyle = 'default' | 'danger';\nexport type ButtonSize = 'large' | 'medium' | 'small';\nexport type ButtonIconType = 'no-icon' | 'left-icon' | 'right-icon' | 'icon-only';\nexport type ButtonIconAnimation = 'none' | 'spin' | 'spin-on-press';\n\n/**\n * A reusable button component for primary actions, secondary actions, and icon-only affordances.\n * Supports variants, size options, semantic states, and optional leading or trailing icons.\n */\n@Component({\n  selector: 'dds-button',\n  standalone: true,\n  imports: [CommonModule, IconComponent],\n  templateUrl: './button.component.html',\n  styleUrl: './button.component.css',\n})\nexport class ButtonComponent {\n  /** Visual treatment for the button, used to communicate action importance. */\n  @Input() variant: ButtonVariant = 'primary';\n\n  /** Visual state used for design previews and interaction feedback. */\n  @Input() state: ButtonState = 'default';\n\n  /** Semantic style that can switch the button to a destructive treatment. */\n  @Input() styleType: ButtonStyle = 'default';\n\n  /** Size of the button to match surrounding layout and hierarchy. */\n  @Input() size: ButtonSize = 'large';\n\n  /** Placement of the icon, or whether the button should render as icon-only. */\n  @Input() iconType: ButtonIconType = 'no-icon';\n\n  /** Name of the icon to display when icon placement is enabled. */\n  @Input() icon: DdsIconName = 'info';\n\n  /** Optional motion treatment for animated action icons. */\n  @Input() iconAnimation: ButtonIconAnimation = 'none';\n\n  /** Accessible label for icon-only buttons when the visible label is not present. */\n  @Input() ariaLabel?: string;\n\n  /** Native button type used for form submission and button semantics. */\n  @Input() type: 'button' | 'submit' | 'reset' = 'button';\n\n  /** Disables interaction and applies the disabled visual treatment. */\n  @Input() disabled = false;\n\n  /** Expands the button to fill the available width of its container. */\n  @Input() fullWidth = false;\n\n  /** Keep pointer focus consistent in browsers that do not focus buttons on click. */\n  focusOnClick(event: MouseEvent): void {\n    if (!this.isDisabled) {\n      (event.currentTarget as HTMLButtonElement).focus({ preventScroll: true });\n    }\n  }\n\n  get isDisabled(): boolean {\n    return this.disabled || this.state === 'disabled';\n  }\n\n  get hasLeftIcon(): boolean {\n    return this.iconType === 'left-icon';\n  }\n\n  get hasRightIcon(): boolean {\n    return this.iconType === 'right-icon';\n  }\n\n  get isIconOnly(): boolean {\n    return this.iconType === 'icon-only';\n  }\n\n  get iconSize(): number {\n    if (this.size === 'small') {\n      return 16;\n    }\n\n    if (this.size === 'medium') {\n      return 20;\n    }\n\n    return 24;\n  }\n}\n",
             "styleUrl": "./button.component.css",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ":host {\n  display: inline-block;\n}\n\n.dds-button {\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  gap: var(--space-2);\n  border: 1px solid;\n  border-radius: var(--radius-sm);\n  font-family: var(--font-family-primary);\n  font-weight: var(--font-weight-medium);\n  letter-spacing: var(--space-none);\n  cursor: pointer;\n  position: relative;\n  outline: none;\n  transition:\n    background-color 0.2s ease-in-out,\n    border-color 0.2s ease-in-out,\n    box-shadow 0.2s ease-in-out;\n}\n\n.dds-button:disabled {\n  background-color: var(--btn-colour-primary-disabled);\n  border-color: var(--btn-colour-primary-disabled);\n  cursor: not-allowed;\n  color: var(--text-colour-disabled);\n}\n\n.dds-button--large {\n  height: 48px;\n  min-height: 48px;\n  padding: 12px 24px;\n  font-size: var(--font-size-md);\n  line-height: 24px;\n}\n\n.dds-button--medium {\n  height: 40px;\n  min-height: 40px;\n  padding: 8px 16px;\n  font-size: var(--font-size-sm);\n  line-height: 20px;\n}\n\n.dds-button--small {\n  height: 32px;\n  min-height: 32px;\n  padding: 4px 12px;\n  font-size: var(--font-size-xs);\n  line-height: 16px;\n}\n\n/* Primary Button */\n.dds-button--primary {\n  background-color: var(--btn-colour-primary);\n  border-color: var(--btn-colour-primary);\n  color: var(--text-colour-inverse);\n}\n\n.dds-button--primary:hover:not(:disabled),\n.dds-button--state-hover.dds-button--primary:not(:disabled) {\n  background-color: var(--btn-colour-primary-hover);\n  border-color: var(--btn-colour-primary-hover);\n}\n\n.dds-button--primary:focus,\n.dds-button--primary:focus-visible,\n.dds-button--primary:active,\n.dds-button--primary:hover:active,\n.dds-button--state-focused.dds-button--primary:not(:disabled) {\n  background-color: var(--btn-colour-primary);\n  border-color: var(--colour-neutral-white);\n  box-shadow: var(--btn-primary-focus-ring);\n}\n\n/* Secondary Button */\n.dds-button--secondary {\n  background-color: var(--btn-colour-secondary);\n  border-color: var(--border-colour-default);\n  color: var(--text-colour-default);\n}\n\n.dds-button--secondary:hover:not(:disabled),\n.dds-button--state-hover.dds-button--secondary:not(:disabled) {\n  background-color: var(--btn-colour-secondary-hover);\n  border-color: var(--border-colour-default);\n}\n\n.dds-button--secondary:focus,\n.dds-button--secondary:focus-visible,\n.dds-button--secondary:active,\n.dds-button--secondary:hover:active,\n.dds-button--state-focused.dds-button--secondary:not(:disabled) {\n  background-color: var(--btn-colour-secondary);\n  border-color: var(--colour-neutral-white);\n  box-shadow: var(--btn-primary-focus-ring);\n}\n\n/* Ghost Button */\n.dds-button--ghost {\n  background-color: var(--btn-colour-ghost);\n  border: none;\n  color: var(--text-colour-accent);\n}\n\n.dds-button--ghost:hover:not(:disabled),\n.dds-button--state-hover.dds-button--ghost:not(:disabled) {\n  background-color: var(--btn-colour-ghost-hover);\n}\n\n.dds-button--ghost:focus,\n.dds-button--ghost:focus-visible,\n.dds-button--ghost:active,\n.dds-button--ghost:hover:active,\n.dds-button--state-focused.dds-button--ghost:not(:disabled) {\n  background-color: var(--btn-colour-ghost-hover);\n  border-color: var(--border-colour-default);\n  box-shadow: var(--btn-primary-focus-ring);\n}\n\n.dds-button--ghost .dds-button__label {\n  display: block;\n  height: 100%;\n  position: relative;\n}\n\n.dds-button--ghost .dds-button__label::after {\n  background-color: var(--bg-colour-accent);\n  content: '';\n  display: block;\n  position: absolute;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  width: 100%;\n  height: 1px;\n}\n\n/* Danger Button */\n\n.dds-button--danger.dds-button--primary {\n  background-color: var(--btn-colour-danger);\n  border-color: var(--btn-colour-danger);\n}\n\n.dds-button--danger.dds-button--primary:hover:not(:disabled),\n.dds-button--danger.dds-button--state-hover.dds-button--primary:not(:disabled) {\n  background-color: var(--btn-colour-danger-hover);\n  border-color: var(--btn-colour-danger-hover);\n}\n\n.dds-button--danger.dds-button--primary:focus,\n.dds-button--danger.dds-button--primary:focus-visible,\n.dds-button--danger.dds-button--primary:active,\n.dds-button--danger.dds-button--primary:hover:active,\n.dds-button--danger.dds-button--state-focused.dds-button--primary:not(:disabled) {\n  background-color: var(--btn-colour-danger);\n  border-color: var(--colour-neutral-white);\n  box-shadow: var(--btn-danger-focus-ring);\n}\n\n/* Disabled states */\n\n.dds-button--primary:disabled {\n  background-color: var(--btn-colour-primary-disabled);\n  border-color: var(--btn-colour-primary-disabled);\n}\n\n.dds-button--secondary:disabled {\n  background-color: var(--btn-colour-secondary-disabled);\n  border-color: var(--border-colour-disabled);\n}\n\n.dds-button--ghost:disabled {\n  background-color: var(--btn-colour-ghost-disabled);\n  border: none;\n}\n\n.dds-button--danger.dds-button--primary:disabled {\n  background-color: var(--btn-colour-danger-disabled);\n  border-color: var(--btn-colour-danger-disabled);\n  color: var(--btn-colour-danger-text-disabled);\n}\n\n.dds-button--ghost:disabled .dds-button__label::after {\n  background-color: var(--text-colour-disabled);\n}\n\n/* Icon Button */\n\n.dds-button__icon {\n  display: inline-flex;\n  line-height: 0;\n}\n\n.dds-button--icon-spin .dds-button__icon {\n  animation: dds-button-icon-spin 800ms linear infinite;\n}\n\n.dds-button--icon-spin-on-press:active:not(:disabled) .dds-button__icon {\n  animation: dds-button-icon-spin 350ms ease-out;\n}\n\n@keyframes dds-button-icon-spin {\n  to {\n    transform: rotate(360deg);\n  }\n}\n\n@media (prefers-reduced-motion: reduce) {\n  .dds-button--icon-spin .dds-button__icon,\n  .dds-button--icon-spin-on-press:active:not(:disabled) .dds-button__icon {\n    animation: none;\n  }\n}\n\n.dds-button--icon-only {\n  padding: var(--space-0);\n  height: var(--btn-icon-only-size-lg);\n  min-height: var(--btn-icon-only-size-lg);\n  width: var(--btn-icon-only-size-lg);\n}\n\n.dds-button--icon-only.dds-button--medium {\n  width: var(--btn-icon-only-size-md);\n  height: var(--btn-icon-only-size-md);\n  min-height: var(--btn-icon-only-size-md);\n}\n\n.dds-button--icon-only.dds-button--small {\n  width: var(--btn-icon-only-size-sm);\n  height: var(--btn-icon-only-size-sm);\n  min-height: var(--btn-icon-only-size-sm);\n}\n",
+                    "data": ":host {\n  display: inline-block;\n}\n\n.dds-button {\n  /* Use DDS styling instead of native WebKit button rendering. */\n  -webkit-appearance: none;\n  appearance: none;\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  gap: var(--space-2);\n  border: 1px solid;\n  border-radius: var(--radius-sm);\n  font-family: var(--font-family-primary);\n  font-weight: var(--font-weight-medium);\n  letter-spacing: var(--space-none);\n  cursor: pointer;\n  position: relative;\n  outline: none;\n  transition:\n    background-color 0.2s ease-in-out,\n    border-color 0.2s ease-in-out,\n    box-shadow 0.2s ease-in-out;\n}\n\n.dds-button:disabled {\n  background-color: var(--btn-colour-primary-disabled);\n  border-color: var(--btn-colour-primary-disabled);\n  cursor: not-allowed;\n  color: var(--text-colour-disabled);\n}\n\n.dds-button--large {\n  height: 48px;\n  min-height: 48px;\n  padding: 12px 24px;\n  font-size: var(--font-size-md);\n  line-height: 24px;\n}\n\n.dds-button--medium {\n  height: 40px;\n  min-height: 40px;\n  padding: 8px 16px;\n  font-size: var(--font-size-sm);\n  line-height: 20px;\n}\n\n.dds-button--small {\n  height: 32px;\n  min-height: 32px;\n  padding: 4px 12px;\n  font-size: var(--font-size-xs);\n  line-height: 16px;\n}\n\n/* Primary Button */\n.dds-button--primary {\n  background-color: var(--btn-colour-primary);\n  border-color: var(--btn-colour-primary);\n  color: var(--text-colour-inverse);\n}\n\n.dds-button--primary:hover:not(:disabled),\n.dds-button--state-hover.dds-button--primary:not(:disabled) {\n  background-color: var(--btn-colour-primary-hover);\n  border-color: var(--btn-colour-primary-hover);\n}\n\n.dds-button--primary:focus,\n.dds-button--primary:focus-visible,\n.dds-button--primary:active,\n.dds-button--primary:hover:active,\n.dds-button--state-focused.dds-button--primary:not(:disabled) {\n  background-color: var(--btn-colour-primary);\n  border-color: var(--colour-neutral-white);\n  box-shadow: var(--btn-primary-focus-ring);\n}\n\n/* Secondary Button */\n.dds-button--secondary {\n  background-color: var(--btn-colour-secondary);\n  border-color: var(--border-colour-default);\n  color: var(--text-colour-default);\n}\n\n.dds-button--secondary:hover:not(:disabled),\n.dds-button--state-hover.dds-button--secondary:not(:disabled) {\n  background-color: var(--btn-colour-secondary-hover);\n  border-color: var(--border-colour-default);\n}\n\n.dds-button--secondary:focus,\n.dds-button--secondary:focus-visible,\n.dds-button--secondary:active,\n.dds-button--secondary:hover:active,\n.dds-button--state-focused.dds-button--secondary:not(:disabled) {\n  background-color: var(--btn-colour-secondary);\n  border-color: var(--colour-neutral-white);\n  box-shadow: var(--btn-primary-focus-ring);\n}\n\n/* Ghost Button */\n.dds-button--ghost {\n  background-color: var(--btn-colour-ghost);\n  border: none;\n  color: var(--text-colour-accent);\n}\n\n.dds-button--ghost:hover:not(:disabled),\n.dds-button--state-hover.dds-button--ghost:not(:disabled) {\n  background-color: var(--btn-colour-ghost-hover);\n}\n\n.dds-button--ghost:focus,\n.dds-button--ghost:focus-visible,\n.dds-button--ghost:active,\n.dds-button--ghost:hover:active,\n.dds-button--state-focused.dds-button--ghost:not(:disabled) {\n  background-color: var(--btn-colour-ghost-hover);\n  border-color: var(--border-colour-default);\n  box-shadow: var(--btn-primary-focus-ring);\n}\n\n.dds-button--ghost .dds-button__label {\n  display: block;\n  height: 100%;\n  position: relative;\n}\n\n.dds-button--ghost .dds-button__label::after {\n  background-color: var(--bg-colour-accent);\n  content: '';\n  display: block;\n  position: absolute;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  width: 100%;\n  height: 1px;\n}\n\n/* Danger Button */\n\n.dds-button--danger.dds-button--primary {\n  background-color: var(--btn-colour-danger);\n  border-color: var(--btn-colour-danger);\n}\n\n.dds-button--danger.dds-button--primary:hover:not(:disabled),\n.dds-button--danger.dds-button--state-hover.dds-button--primary:not(:disabled) {\n  background-color: var(--btn-colour-danger-hover);\n  border-color: var(--btn-colour-danger-hover);\n}\n\n.dds-button--danger.dds-button--primary:focus,\n.dds-button--danger.dds-button--primary:focus-visible,\n.dds-button--danger.dds-button--primary:active,\n.dds-button--danger.dds-button--primary:hover:active,\n.dds-button--danger.dds-button--state-focused.dds-button--primary:not(:disabled) {\n  background-color: var(--btn-colour-danger);\n  border-color: var(--colour-neutral-white);\n  box-shadow: var(--btn-danger-focus-ring);\n}\n\n/* Disabled states */\n\n.dds-button--primary:disabled {\n  background-color: var(--btn-colour-primary-disabled);\n  border-color: var(--btn-colour-primary-disabled);\n}\n\n.dds-button--secondary:disabled {\n  background-color: var(--btn-colour-secondary-disabled);\n  border-color: var(--border-colour-disabled);\n}\n\n.dds-button--ghost:disabled {\n  background-color: var(--btn-colour-ghost-disabled);\n  border: none;\n}\n\n.dds-button--danger.dds-button--primary:disabled {\n  background-color: var(--btn-colour-danger-disabled);\n  border-color: var(--btn-colour-danger-disabled);\n  color: var(--btn-colour-danger-text-disabled);\n}\n\n.dds-button--ghost:disabled .dds-button__label::after {\n  background-color: var(--text-colour-disabled);\n}\n\n/* Icon Button */\n\n.dds-button__icon {\n  display: inline-flex;\n  line-height: 0;\n}\n\n.dds-button--icon-spin .dds-button__icon {\n  animation: dds-button-icon-spin 800ms linear infinite;\n}\n\n.dds-button--icon-spin-on-press:active:not(:disabled) .dds-button__icon {\n  animation: dds-button-icon-spin 350ms ease-out;\n}\n\n@keyframes dds-button-icon-spin {\n  to {\n    transform: rotate(360deg);\n  }\n}\n\n@media (prefers-reduced-motion: reduce) {\n  .dds-button--icon-spin .dds-button__icon,\n  .dds-button--icon-spin-on-press:active:not(:disabled) .dds-button__icon {\n    animation: none;\n  }\n}\n\n.dds-button--icon-only {\n  padding: var(--space-0);\n  height: var(--btn-icon-only-size-lg);\n  min-height: var(--btn-icon-only-size-lg);\n  width: var(--btn-icon-only-size-lg);\n}\n\n.dds-button--icon-only.dds-button--medium {\n  width: var(--btn-icon-only-size-md);\n  height: var(--btn-icon-only-size-md);\n  min-height: var(--btn-icon-only-size-md);\n}\n\n.dds-button--icon-only.dds-button--small {\n  width: var(--btn-icon-only-size-sm);\n  height: var(--btn-icon-only-size-sm);\n  min-height: var(--btn-icon-only-size-sm);\n}\n",
                     "styleUrl": "./button.component.css"
                 }
             ],
@@ -945,7 +992,7 @@
                         "name": "isDisabled",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 57,
+                        "line": 64,
                         "rawdescription": "\n",
                         "description": ""
                     }
@@ -956,7 +1003,7 @@
                         "name": "hasLeftIcon",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 61,
+                        "line": 68,
                         "rawdescription": "\n",
                         "description": ""
                     }
@@ -967,7 +1014,7 @@
                         "name": "hasRightIcon",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 65,
+                        "line": 72,
                         "rawdescription": "\n",
                         "description": ""
                     }
@@ -978,7 +1025,7 @@
                         "name": "isIconOnly",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 69,
+                        "line": 76,
                         "rawdescription": "\n",
                         "description": ""
                     }
@@ -989,7 +1036,7 @@
                         "name": "iconSize",
                         "type": "number",
                         "returnType": "number",
-                        "line": 73,
+                        "line": 80,
                         "rawdescription": "\n",
                         "description": ""
                     }
@@ -1003,12 +1050,22 @@
                         "description": "An inline status message that communicates important contextual information."
                     },
                     {
+                        "name": "CustomerManagementPageComponent",
+                        "type": "component",
+                        "description": "A composed dashboard example showing DDS navigation, form controls, and data display together."
+                    },
+                    {
                         "name": "DataTableComponent",
                         "type": "component"
                     },
                     {
                         "name": "MinimalPaginationComponent",
                         "type": "component"
+                    },
+                    {
+                        "name": "OrdersPageComponent",
+                        "type": "component",
+                        "description": "Sales order overview composed from DDS navigation, filters, and table components."
                     },
                     {
                         "name": "PageToolbarComponent",
@@ -1027,7 +1084,7 @@
                     }
                 ]
             },
-            "templateData": "<button\n  class=\"dds-button\"\n  [attr.type]=\"type\"\n  [disabled]=\"isDisabled\"\n  [attr.aria-label]=\"isIconOnly ? ariaLabel || 'Icon button' : null\"\n  [class.dds-button--primary]=\"variant === 'primary'\"\n  [class.dds-button--secondary]=\"variant === 'secondary'\"\n  [class.dds-button--ghost]=\"variant === 'ghost'\"\n  [class.dds-button--danger]=\"styleType === 'danger'\"\n  [class.dds-button--large]=\"size === 'large'\"\n  [class.dds-button--small]=\"size === 'small'\"\n  [class.dds-button--medium]=\"size === 'medium'\"\n  [class.dds-button--state-hover]=\"state === 'hover'\"\n  [class.dds-button--state-focused]=\"state === 'focused'\"\n  [class.dds-button--state-disabled]=\"state === 'disabled'\"\n  [class.dds-button--icon-only]=\"isIconOnly\"\n  [class.dds-button--icon-spin]=\"iconAnimation === 'spin'\"\n  [class.dds-button--icon-spin-on-press]=\"iconAnimation === 'spin-on-press'\"\n  [class.dds-button--full-width]=\"fullWidth\"\n>\n  <dds-icon\n    class=\"dds-button__icon\"\n    *ngIf=\"hasLeftIcon || isIconOnly\"\n    [name]=\"icon\"\n    [size]=\"iconSize\"\n  ></dds-icon>\n  <span class=\"dds-button__label\" *ngIf=\"!isIconOnly\"><ng-content></ng-content></span>\n  <dds-icon\n    class=\"dds-button__icon\"\n    *ngIf=\"hasRightIcon\"\n    [name]=\"icon\"\n    [size]=\"iconSize\"\n  ></dds-icon>\n</button>\n"
+            "templateData": "<button\n  class=\"dds-button\"\n  (click)=\"focusOnClick($event)\"\n  [attr.type]=\"type\"\n  [disabled]=\"isDisabled\"\n  [attr.aria-label]=\"isIconOnly ? ariaLabel || 'Icon button' : null\"\n  [class.dds-button--primary]=\"variant === 'primary'\"\n  [class.dds-button--secondary]=\"variant === 'secondary'\"\n  [class.dds-button--ghost]=\"variant === 'ghost'\"\n  [class.dds-button--danger]=\"styleType === 'danger'\"\n  [class.dds-button--large]=\"size === 'large'\"\n  [class.dds-button--small]=\"size === 'small'\"\n  [class.dds-button--medium]=\"size === 'medium'\"\n  [class.dds-button--state-hover]=\"state === 'hover'\"\n  [class.dds-button--state-focused]=\"state === 'focused'\"\n  [class.dds-button--state-disabled]=\"state === 'disabled'\"\n  [class.dds-button--icon-only]=\"isIconOnly\"\n  [class.dds-button--icon-spin]=\"iconAnimation === 'spin'\"\n  [class.dds-button--icon-spin-on-press]=\"iconAnimation === 'spin-on-press'\"\n  [class.dds-button--full-width]=\"fullWidth\"\n>\n  <dds-icon\n    class=\"dds-button__icon\"\n    *ngIf=\"hasLeftIcon || isIconOnly\"\n    [name]=\"icon\"\n    [size]=\"iconSize\"\n  ></dds-icon>\n  <span class=\"dds-button__label\" *ngIf=\"!isIconOnly\"><ng-content></ng-content></span>\n  <dds-icon\n    class=\"dds-button__icon\"\n    *ngIf=\"hasRightIcon\"\n    [name]=\"icon\"\n    [size]=\"iconSize\"\n  ></dds-icon>\n</button>\n"
         },
         {
             "name": "ChartComponent",
@@ -2098,9 +2155,9 @@
         },
         {
             "name": "CustomerManagementPageComponent",
-            "id": "component-CustomerManagementPageComponent-89de0e26434599fe52c3465044f0f1f2e51a6ec42a71b00b3cef58c1afeadc42a89e9e98acd60e455fc74d198f45f1c635b5ca7f5d2705a2fb71668c6ff61101",
+            "id": "component-CustomerManagementPageComponent-6b3b89ffb546a040c1290518ae82ce945d64aedc4da0089a4df60b728bc14888ebc8d30fe2c24d311919ff334b49d6c4333f15cec7875ba1fffe1d19c684f8cc",
             "file": "src/app/examples/customer-management-page/customer-management-page.component.ts",
-            "changeDetection": "ChangeDetectionStrategy.OnPush",
+            "changeDetection": "ChangeDetectionStrategy.Default",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
@@ -2117,7 +2174,56 @@
             "templateVariables": [],
             "viewProviders": [],
             "hostDirectives": [],
-            "inputsClass": [],
+            "inputsClass": [
+                {
+                    "coverageIgnore": false,
+                    "name": "initialQuery",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 63,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "initialState",
+                    "defaultValue": "'ready'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nSimulated first-request outcome for repeatable prototype scenarios.",
+                    "description": "<p>Simulated first-request outcome for repeatable prototype scenarios.</p>\n",
+                    "line": 61,
+                    "type": "\"ready\" | \"loading\" | \"error\" | \"empty\"",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "initialStatus",
+                    "defaultValue": "'all'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 64,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "coverageIgnore": false,
+                    "name": "requestDelay",
+                    "defaultValue": "700",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "line": 62,
+                    "type": "number",
+                    "decorators": []
+                }
+            ],
             "outputsClass": [],
             "propertiesClass": [
                 {
@@ -2130,8 +2236,25 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 193,
+                    "line": 286,
                     "rawdescription": "\n"
+                },
+                {
+                    "name": "changeDetector",
+                    "coverageIgnore": false,
+                    "defaultValue": "inject(ChangeDetectorRef)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 75,
+                    "rawdescription": "\n",
+                    "modifierKind": [
+                        123,
+                        148
+                    ]
                 },
                 {
                     "name": "columns",
@@ -2143,11 +2266,24 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 68,
+                    "line": 161,
                     "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ]
+                },
+                {
+                    "name": "creating",
+                    "coverageIgnore": false,
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 70,
+                    "rawdescription": "\n"
                 },
                 {
                     "name": "currentPage",
@@ -2159,7 +2295,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 197,
+                    "line": 290,
                     "rawdescription": "\n"
                 },
                 {
@@ -2172,11 +2308,77 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 82,
+                    "line": 175,
+                    "rawdescription": "\n"
+                },
+                {
+                    "name": "detail",
+                    "coverageIgnore": false,
+                    "defaultValue": "null",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "CustomerRow | null",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 74,
+                    "rawdescription": "\n"
+                },
+                {
+                    "name": "draftLocation",
+                    "coverageIgnore": false,
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 72,
+                    "rawdescription": "\n"
+                },
+                {
+                    "name": "draftName",
+                    "coverageIgnore": false,
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 71,
+                    "rawdescription": "\n"
+                },
+                {
+                    "name": "element",
+                    "coverageIgnore": false,
+                    "defaultValue": "inject<ElementRef<HTMLElement>>(ElementRef)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 77,
                     "rawdescription": "\n",
                     "modifierKind": [
+                        123,
                         148
                     ]
+                },
+                {
+                    "name": "error",
+                    "coverageIgnore": false,
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 66,
+                    "rawdescription": "\n"
                 },
                 {
                     "name": "expandedIds",
@@ -2188,24 +2390,76 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 194,
+                    "line": 287,
+                    "rawdescription": "\n"
+                },
+                {
+                    "name": "failNextRequest",
+                    "coverageIgnore": false,
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 67,
+                    "rawdescription": "\n"
+                },
+                {
+                    "name": "loading",
+                    "coverageIgnore": false,
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 65,
+                    "rawdescription": "\n"
+                },
+                {
+                    "name": "mobileNavigationOpen",
+                    "coverageIgnore": false,
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 69,
                     "rawdescription": "\n"
                 },
                 {
                     "name": "navigationItems",
                     "coverageIgnore": false,
-                    "defaultValue": "[\n    { id: 'dashboard', label: 'Dashboard', icon: 'layout-dashboard' },\n    {\n      id: 'inventory',\n      label: 'Inventory',\n      icon: 'package',\n      children: [\n        { id: 'products', label: 'Products' },\n        { id: 'stock-levels', label: 'Stock levels' },\n      ],\n    },\n    {\n      id: 'logistics',\n      label: 'Logistics',\n      icon: 'truck',\n      children: [\n        { id: 'customers', label: 'Customers' },\n        { id: 'orders', label: 'Orders' },\n        { id: 'shipments', label: 'Shipments' },\n      ],\n    },\n    { id: 'reports', label: 'Reports', icon: 'chart-no-axes-combined' },\n    { id: 'settings', label: 'Settings', icon: 'settings' },\n  ]",
+                    "defaultValue": "EXAMPLE_NAVIGATION",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "SidebarNavItem[]",
+                    "type": "unknown",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 35,
+                    "line": 151,
                     "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ]
+                },
+                {
+                    "name": "notice",
+                    "coverageIgnore": false,
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 68,
+                    "rawdescription": "\n"
                 },
                 {
                     "name": "pageSize",
@@ -2217,10 +2471,25 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 198,
+                    "line": 291,
                     "rawdescription": "\n",
                     "modifierKind": [
                         148
+                    ]
+                },
+                {
+                    "name": "requestTimer",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ReturnType<any>",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 76,
+                    "rawdescription": "\n",
+                    "modifierKind": [
+                        123
                     ]
                 },
                 {
@@ -2233,7 +2502,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 195,
+                    "line": 288,
                     "rawdescription": "\n"
                 },
                 {
@@ -2246,7 +2515,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 199,
+                    "line": 292,
                     "rawdescription": "\n"
                 },
                 {
@@ -2259,7 +2528,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 196,
+                    "line": 289,
                     "rawdescription": "\n"
                 },
                 {
@@ -2272,14 +2541,75 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 60,
+                    "line": 153,
                     "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ]
+                },
+                {
+                    "name": "submitted",
+                    "coverageIgnore": false,
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 73,
+                    "rawdescription": "\n"
                 }
             ],
             "methodsClass": [
+                {
+                    "name": "changePage",
+                    "coverageIgnore": false,
+                    "args": [
+                        {
+                            "name": "page",
+                            "type": "number",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 96,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "jsdoctags": [
+                        {
+                            "name": "page",
+                            "type": "number",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "clearFilters",
+                    "coverageIgnore": false,
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 91,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": ""
+                },
                 {
                     "name": "customer",
                     "coverageIgnore": false,
@@ -2344,7 +2674,7 @@
                     "optional": false,
                     "returnType": "CustomerRow",
                     "typeParameters": [],
-                    "line": 243,
+                    "line": 349,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n",
@@ -2433,17 +2763,161 @@
                     ]
                 },
                 {
+                    "name": "navigate",
+                    "coverageIgnore": false,
+                    "args": [
+                        {
+                            "name": "id",
+                            "type": "string",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 140,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "jsdoctags": [
+                        {
+                            "name": "id",
+                            "type": "string",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "ngOnDestroy",
+                    "coverageIgnore": false,
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 87,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": ""
+                },
+                {
+                    "name": "ngOnInit",
+                    "coverageIgnore": false,
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 79,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": ""
+                },
+                {
+                    "name": "openCreate",
+                    "coverageIgnore": false,
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 101,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": ""
+                },
+                {
                     "name": "refreshTable",
                     "coverageIgnore": false,
                     "args": [],
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 236,
+                    "line": 331,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": ""
+                },
+                {
+                    "name": "saveCustomer",
+                    "coverageIgnore": false,
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "Event",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 109,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "Event",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "showDetails",
+                    "coverageIgnore": false,
+                    "args": [
+                        {
+                            "name": "row",
+                            "type": "DataTableRow",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 135,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "jsdoctags": [
+                        {
+                            "name": "row",
+                            "type": "DataTableRow",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
                 },
                 {
                     "name": "updateSearch",
@@ -2461,7 +2935,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 226,
+                    "line": 319,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n",
@@ -2496,7 +2970,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 231,
+                    "line": 325,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n",
@@ -2524,6 +2998,30 @@
             "standalone": true,
             "imports": [
                 {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "AlertComponent",
+                    "type": "component"
+                },
+                {
+                    "name": "ButtonComponent",
+                    "type": "component"
+                },
+                {
+                    "name": "TextInputComponent",
+                    "type": "component"
+                },
+                {
+                    "name": "SearchComponent",
+                    "type": "component"
+                },
+                {
+                    "name": "SelectComponent",
+                    "type": "component"
+                },
+                {
                     "name": "DataTableComponent",
                     "type": "component"
                 },
@@ -2543,20 +3041,20 @@
             "description": "<p>A composed dashboard example showing DDS navigation, form controls, and data display together.</p>\n",
             "rawdescription": "\nA composed dashboard example showing DDS navigation, form controls, and data display together.",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport {\n  DataTableColumn,\n  DataTableComponent,\n  DataTableRow,\n} from '../../components/data-table/data-table.component';\nimport { PageToolbarComponent } from '../../components/page-toolbar/page-toolbar.component';\nimport { SelectOption } from '../../components/select/select.component';\nimport {\n  SidebarNavComponent,\n  SidebarNavItem,\n} from '../../components/sidebar-nav/sidebar-nav.component';\nimport { StatusBadgeTone } from '../../components/status-badge/status-badge.component';\nimport { TopBarNavComponent } from '../../components/top-bar-nav/top-bar-nav.component';\n\ntype CustomerRow = DataTableRow & {\n  id: number;\n  name: string;\n  customerId: string;\n  location: string;\n  lastOrder: string;\n  status: string;\n  tone: StatusBadgeTone;\n};\n\n/** A composed dashboard example showing DDS navigation, form controls, and data display together. */\n@Component({\n  selector: 'dds-customer-management-page',\n  standalone: true,\n  imports: [DataTableComponent, PageToolbarComponent, SidebarNavComponent, TopBarNavComponent],\n  templateUrl: './customer-management-page.component.html',\n  styleUrl: './customer-management-page.component.css',\n})\nexport class CustomerManagementPageComponent {\n  readonly navigationItems: SidebarNavItem[] = [\n    { id: 'dashboard', label: 'Dashboard', icon: 'layout-dashboard' },\n    {\n      id: 'inventory',\n      label: 'Inventory',\n      icon: 'package',\n      children: [\n        { id: 'products', label: 'Products' },\n        { id: 'stock-levels', label: 'Stock levels' },\n      ],\n    },\n    {\n      id: 'logistics',\n      label: 'Logistics',\n      icon: 'truck',\n      children: [\n        { id: 'customers', label: 'Customers' },\n        { id: 'orders', label: 'Orders' },\n        { id: 'shipments', label: 'Shipments' },\n      ],\n    },\n    { id: 'reports', label: 'Reports', icon: 'chart-no-axes-combined' },\n    { id: 'settings', label: 'Settings', icon: 'settings' },\n  ];\n\n  readonly statusOptions: SelectOption[] = [\n    { label: 'All statuses', value: 'all' },\n    { label: 'Active', value: 'active' },\n    { label: 'Pending', value: 'pending' },\n    { label: 'Suspended', value: 'suspended' },\n    { label: 'Inactive', value: 'inactive' },\n  ];\n\n  readonly columns: DataTableColumn[] = [\n    { key: 'name', label: 'Customer', width: '22%' },\n    { key: 'customerId', label: 'Customer ID', width: '16%' },\n    { key: 'location', label: 'Location', width: '20%' },\n    { key: 'lastOrder', label: 'Last order', width: '18%' },\n    {\n      key: 'status',\n      label: 'Status',\n      width: '16%',\n      type: 'status',\n      statusTone: (row) => row['tone'] as StatusBadgeTone,\n    },\n  ];\n\n  readonly customers: CustomerRow[] = [\n    this.customer(\n      1,\n      'Acacia Market',\n      'CUS-1048',\n      'Nairobi, KE',\n      '30 Aug 2026',\n      'Active',\n      'success',\n    ),\n    this.customer(\n      2,\n      'Lakeview Supplies',\n      'CUS-1047',\n      'Kisumu, KE',\n      '29 Aug 2026',\n      'Active',\n      'success',\n    ),\n    this.customer(\n      3,\n      'Coastline Traders',\n      'CUS-1046',\n      'Mombasa, KE',\n      '28 Aug 2026',\n      'Pending',\n      'warning',\n    ),\n    this.customer(\n      4,\n      'Rift Valley Foods',\n      'CUS-1045',\n      'Nakuru, KE',\n      '27 Aug 2026',\n      'Suspended',\n      'danger',\n    ),\n    this.customer(\n      5,\n      'Savanna Retail',\n      'CUS-1044',\n      'Eldoret, KE',\n      '25 Aug 2026',\n      'Inactive',\n      'neutral',\n    ),\n    this.customer(\n      6,\n      'Greenline Stores',\n      'CUS-1043',\n      'Thika, KE',\n      '24 Aug 2026',\n      'Active',\n      'success',\n    ),\n    this.customer(\n      7,\n      'Highland Goods',\n      'CUS-1042',\n      'Nyeri, KE',\n      '22 Aug 2026',\n      'Pending',\n      'warning',\n    ),\n    this.customer(\n      8,\n      'Metro Wholesale',\n      'CUS-1041',\n      'Nairobi, KE',\n      '21 Aug 2026',\n      'Active',\n      'success',\n    ),\n    this.customer(\n      9,\n      'Eastern Merchants',\n      'CUS-1040',\n      'Embu, KE',\n      '18 Aug 2026',\n      'Inactive',\n      'neutral',\n    ),\n    this.customer(\n      10,\n      'Frontier Supply Co.',\n      'CUS-1039',\n      'Garissa, KE',\n      '16 Aug 2026',\n      'Active',\n      'success',\n    ),\n    this.customer(\n      11,\n      'Summit Distributors',\n      'CUS-1038',\n      'Kericho, KE',\n      '14 Aug 2026',\n      'Suspended',\n      'danger',\n    ),\n    this.customer(\n      12,\n      'Harbour Essentials',\n      'CUS-1037',\n      'Malindi, KE',\n      '12 Aug 2026',\n      'Active',\n      'success',\n    ),\n  ];\n\n  activeItemId = 'customers';\n  expandedIds = ['logistics'];\n  searchValue = '';\n  statusFilter = 'all';\n  currentPage = 1;\n  readonly pageSize = 5;\n  selectedKeys: Array<string | number> = [];\n\n  get filteredCustomers(): CustomerRow[] {\n    const query = this.searchValue.trim().toLowerCase();\n\n    return this.customers.filter((customer) => {\n      const matchesStatus =\n        this.statusFilter === 'all' || customer.status.toLowerCase() === this.statusFilter;\n      const matchesQuery =\n        !query ||\n        [customer.name, customer.customerId, customer.location].some((value) =>\n          value.toLowerCase().includes(query),\n        );\n\n      return matchesStatus && matchesQuery;\n    });\n  }\n\n  get visibleCustomers(): CustomerRow[] {\n    const start = (this.currentPage - 1) * this.pageSize;\n    return this.filteredCustomers.slice(start, start + this.pageSize);\n  }\n\n  get totalPages(): number {\n    return Math.max(1, Math.ceil(this.filteredCustomers.length / this.pageSize));\n  }\n\n  updateSearch(value: string): void {\n    this.searchValue = value;\n    this.currentPage = 1;\n  }\n\n  updateStatus(value: string): void {\n    this.statusFilter = value;\n    this.currentPage = 1;\n  }\n\n  refreshTable(): void {\n    this.searchValue = '';\n    this.statusFilter = 'all';\n    this.currentPage = 1;\n    this.selectedKeys = [];\n  }\n\n  private customer(\n    id: number,\n    name: string,\n    customerId: string,\n    location: string,\n    lastOrder: string,\n    status: string,\n    tone: StatusBadgeTone,\n  ): CustomerRow {\n    return { id, name, customerId, location, lastOrder, status, tone };\n  }\n}\n",
+            "sourceCode": "import { EXAMPLE_NAVIGATION } from '../example-navigation';\nimport { CommonModule } from '@angular/common';\nimport {\n  ChangeDetectionStrategy,\n  ChangeDetectorRef,\n  Component,\n  ElementRef,\n  Input,\n  OnInit,\n  OnDestroy,\n  inject,\n} from '@angular/core';\nimport { AlertComponent } from '../../components/alert/alert.component';\nimport { ButtonComponent } from '../../components/button/button.component';\nimport { TextInputComponent } from '../../components/text-input/text-input.component';\nimport { SearchComponent } from '../../components/search/search.component';\nimport { SelectComponent } from '../../components/select/select.component';\nimport {\n  DataTableColumn,\n  DataTableComponent,\n  DataTableRow,\n} from '../../components/data-table/data-table.component';\nimport { PageToolbarComponent } from '../../components/page-toolbar/page-toolbar.component';\nimport { SelectOption } from '../../components/select/select.component';\nimport { SidebarNavComponent } from '../../components/sidebar-nav/sidebar-nav.component';\nimport { StatusBadgeTone } from '../../components/status-badge/status-badge.component';\nimport { TopBarNavComponent } from '../../components/top-bar-nav/top-bar-nav.component';\n\ntype CustomerRow = DataTableRow & {\n  id: number;\n  name: string;\n  customerId: string;\n  location: string;\n  lastOrder: string;\n  status: string;\n  tone: StatusBadgeTone;\n};\n\n/** A composed dashboard example showing DDS navigation, form controls, and data display together. */\n@Component({\n  selector: 'dds-customer-management-page',\n  changeDetection: ChangeDetectionStrategy.Default,\n  standalone: true,\n  imports: [\n    CommonModule,\n    AlertComponent,\n    ButtonComponent,\n    TextInputComponent,\n    SearchComponent,\n    SelectComponent,\n    DataTableComponent,\n    PageToolbarComponent,\n    SidebarNavComponent,\n    TopBarNavComponent,\n  ],\n  templateUrl: './customer-management-page.component.html',\n  styleUrl: './customer-management-page.component.css',\n})\nexport class CustomerManagementPageComponent implements OnInit, OnDestroy {\n  /** Simulated first-request outcome for repeatable prototype scenarios. */\n  @Input() initialState: 'ready' | 'loading' | 'error' | 'empty' = 'ready';\n  @Input() requestDelay = 700;\n  @Input() initialQuery = '';\n  @Input() initialStatus = 'all';\n  loading = false;\n  error = false;\n  failNextRequest = false;\n  notice = '';\n  mobileNavigationOpen = false;\n  creating = false;\n  draftName = '';\n  draftLocation = '';\n  submitted = false;\n  detail: CustomerRow | null = null;\n  private readonly changeDetector = inject(ChangeDetectorRef);\n  private requestTimer?: ReturnType<typeof setTimeout>;\n  private readonly element = inject<ElementRef<HTMLElement>>(ElementRef);\n\n  ngOnInit(): void {\n    this.searchValue = this.initialQuery;\n    this.statusFilter = this.initialStatus;\n    if (this.initialState === 'empty') this.customers = [];\n    if (this.initialState === 'error') this.error = true;\n    if (this.initialState === 'loading') this.refreshTable();\n  }\n\n  ngOnDestroy(): void {\n    clearTimeout(this.requestTimer);\n  }\n\n  clearFilters(): void {\n    this.updateSearch('');\n    this.updateStatus('all');\n  }\n\n  changePage(page: number): void {\n    this.currentPage = Math.min(this.totalPages, Math.max(1, page));\n    this.selectedKeys = [];\n  }\n\n  openCreate(): void {\n    this.creating = true;\n    this.detail = null;\n    this.draftName = '';\n    this.draftLocation = '';\n    this.submitted = false;\n  }\n\n  saveCustomer(event: Event): void {\n    event.preventDefault();\n    this.submitted = true;\n    if (!this.draftName.trim() || !this.draftLocation.trim()) {\n      const fields = this.element.nativeElement.querySelectorAll<HTMLInputElement>('form input');\n      fields[this.draftName.trim() ? 1 : 0]?.focus();\n      return;\n    }\n    const id = Math.max(0, ...this.customers.map((customer) => customer.id)) + 1;\n    this.customers = [\n      this.customer(\n        id,\n        this.draftName.trim(),\n        `CUS-${1048 + id}`,\n        this.draftLocation.trim(),\n        'No orders yet',\n        'Active',\n        'success',\n      ),\n      ...this.customers,\n    ];\n    this.creating = false;\n    this.clearFilters();\n    this.notice = `${this.draftName.trim()} added successfully.`;\n  }\n\n  showDetails(row: DataTableRow): void {\n    this.detail = row as CustomerRow;\n    this.creating = false;\n  }\n\n  navigate(id: string): void {\n    this.activeItemId = 'customers';\n    this.mobileNavigationOpen = false;\n    if (id === 'orders') {\n      this.notice = 'Explore the Orders layout under Examples / Orders in Storybook.';\n      return;\n    }\n    if (id !== 'customers')\n      this.notice = 'This prototype demonstrates Customers. Other sections are not available yet.';\n  }\n\n  readonly navigationItems = EXAMPLE_NAVIGATION;\n\n  readonly statusOptions: SelectOption[] = [\n    { label: 'All statuses', value: 'all' },\n    { label: 'Active', value: 'active' },\n    { label: 'Pending', value: 'pending' },\n    { label: 'Suspended', value: 'suspended' },\n    { label: 'Inactive', value: 'inactive' },\n  ];\n\n  readonly columns: DataTableColumn[] = [\n    { key: 'name', label: 'Customer', width: '22%' },\n    { key: 'customerId', label: 'Customer ID', width: '16%' },\n    { key: 'location', label: 'Location', width: '20%' },\n    { key: 'lastOrder', label: 'Last order', width: '18%' },\n    {\n      key: 'status',\n      label: 'Status',\n      width: '16%',\n      type: 'status',\n      statusTone: (row) => row['tone'] as StatusBadgeTone,\n    },\n  ];\n\n  customers: CustomerRow[] = [\n    this.customer(\n      1,\n      'Acacia Market',\n      'CUS-1048',\n      'Nairobi, KE',\n      '30 Aug 2026',\n      'Active',\n      'success',\n    ),\n    this.customer(\n      2,\n      'Lakeview Supplies',\n      'CUS-1047',\n      'Kisumu, KE',\n      '29 Aug 2026',\n      'Active',\n      'success',\n    ),\n    this.customer(\n      3,\n      'Coastline Traders',\n      'CUS-1046',\n      'Mombasa, KE',\n      '28 Aug 2026',\n      'Pending',\n      'warning',\n    ),\n    this.customer(\n      4,\n      'Rift Valley Foods',\n      'CUS-1045',\n      'Nakuru, KE',\n      '27 Aug 2026',\n      'Suspended',\n      'danger',\n    ),\n    this.customer(\n      5,\n      'Savanna Retail',\n      'CUS-1044',\n      'Eldoret, KE',\n      '25 Aug 2026',\n      'Inactive',\n      'neutral',\n    ),\n    this.customer(\n      6,\n      'Greenline Stores',\n      'CUS-1043',\n      'Thika, KE',\n      '24 Aug 2026',\n      'Active',\n      'success',\n    ),\n    this.customer(\n      7,\n      'Highland Goods',\n      'CUS-1042',\n      'Nyeri, KE',\n      '22 Aug 2026',\n      'Pending',\n      'warning',\n    ),\n    this.customer(\n      8,\n      'Metro Wholesale',\n      'CUS-1041',\n      'Nairobi, KE',\n      '21 Aug 2026',\n      'Active',\n      'success',\n    ),\n    this.customer(\n      9,\n      'Eastern Merchants',\n      'CUS-1040',\n      'Embu, KE',\n      '18 Aug 2026',\n      'Inactive',\n      'neutral',\n    ),\n    this.customer(\n      10,\n      'Frontier Supply Co.',\n      'CUS-1039',\n      'Garissa, KE',\n      '16 Aug 2026',\n      'Active',\n      'success',\n    ),\n    this.customer(\n      11,\n      'Summit Distributors',\n      'CUS-1038',\n      'Kericho, KE',\n      '14 Aug 2026',\n      'Suspended',\n      'danger',\n    ),\n    this.customer(\n      12,\n      'Harbour Essentials',\n      'CUS-1037',\n      'Malindi, KE',\n      '12 Aug 2026',\n      'Active',\n      'success',\n    ),\n  ];\n\n  activeItemId = 'customers';\n  expandedIds = ['logistics'];\n  searchValue = '';\n  statusFilter = 'all';\n  currentPage = 1;\n  readonly pageSize = 5;\n  selectedKeys: Array<string | number> = [];\n\n  get filteredCustomers(): CustomerRow[] {\n    const query = this.searchValue.trim().toLowerCase();\n\n    return this.customers.filter((customer) => {\n      const matchesStatus =\n        this.statusFilter === 'all' || customer.status.toLowerCase() === this.statusFilter;\n      const matchesQuery =\n        !query ||\n        [customer.name, customer.customerId, customer.location].some((value) =>\n          value.toLowerCase().includes(query),\n        );\n\n      return matchesStatus && matchesQuery;\n    });\n  }\n\n  get visibleCustomers(): CustomerRow[] {\n    const start = (this.currentPage - 1) * this.pageSize;\n    return this.filteredCustomers.slice(start, start + this.pageSize);\n  }\n\n  get totalPages(): number {\n    return Math.max(1, Math.ceil(this.filteredCustomers.length / this.pageSize));\n  }\n\n  updateSearch(value: string): void {\n    this.searchValue = value;\n    this.currentPage = 1;\n    this.selectedKeys = [];\n  }\n\n  updateStatus(value: string): void {\n    this.statusFilter = value;\n    this.currentPage = 1;\n    this.selectedKeys = [];\n  }\n\n  refreshTable(): void {\n    clearTimeout(this.requestTimer);\n    this.loading = true;\n    this.error = false;\n    this.selectedKeys = [];\n    const fail = this.failNextRequest;\n    this.failNextRequest = false;\n    this.requestTimer = setTimeout(\n      () => {\n        this.loading = false;\n        this.error = fail;\n        this.notice = fail ? '' : 'Customer records are up to date.';\n        this.changeDetector.markForCheck();\n      },\n      Math.max(0, this.requestDelay),\n    );\n  }\n\n  private customer(\n    id: number,\n    name: string,\n    customerId: string,\n    location: string,\n    lastOrder: string,\n    status: string,\n    tone: StatusBadgeTone,\n  ): CustomerRow {\n    return { id, name, customerId, location, lastOrder, status, tone };\n  }\n}\n",
             "styleUrl": "./customer-management-page.component.css",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ":host {\n  display: block;\n  min-width: 1024px;\n  min-height: 720px;\n  background: var(--bg-colour-default);\n}\n\n.customer-page {\n  display: grid;\n  grid-template-columns: 250px minmax(0, 1fr);\n  min-height: 100vh;\n  background: var(--bg-colour-default);\n  color: var(--text-colour-default);\n  font-family: var(--font-family-primary);\n}\n\n.customer-page__sidebar {\n  position: sticky;\n  top: 0;\n  height: 100vh;\n}\n\n.customer-page__main {\n  min-width: 0;\n}\n\n.customer-page__content {\n  box-sizing: border-box;\n  padding: var(--space-6);\n}\n\n.customer-page__table-card {\n  padding: var(--space-4);\n  border: 1px solid var(--border-colour-subtle);\n  border-radius: var(--radius-sm);\n  background: var(--bg-colour-white);\n  box-shadow: 0 1px 2px rgb(0 0 0 / 4%);\n}\n",
+                    "data": ":host {\n  display: block;\n  min-width: 0;\n  min-height: 720px;\n  background: var(--bg-colour-default);\n}\n\n.customer-page {\n  display: grid;\n  grid-template-columns: 250px minmax(0, 1fr);\n  min-height: 100vh;\n  background: var(--bg-colour-default);\n  color: var(--text-colour-default);\n  font-family: var(--font-family-primary);\n}\n\n.customer-page__sidebar {\n  position: sticky;\n  top: 0;\n  height: 100vh;\n}\n\n.customer-page__main {\n  min-width: 0;\n}\n\n.customer-page__content {\n  box-sizing: border-box;\n  padding: var(--space-6);\n}\n\n.customer-page__table-card {\n  padding: var(--space-4);\n  border: 1px solid var(--border-colour-subtle);\n  border-radius: var(--radius-sm);\n  background: var(--bg-colour-white);\n  box-shadow: 0 1px 2px rgb(0 0 0 / 4%);\n}\n\n.customer-page__mobile-nav,\n.customer-page__mobile-toolbar {\n  display: none;\n}\n.customer-page__simulation,\n.customer-page__actions {\n  display: flex;\n  flex-wrap: wrap;\n  align-items: center;\n  gap: var(--space-3);\n  margin-bottom: var(--space-4);\n}\n.customer-page__simulation {\n  justify-content: space-between;\n  font-size: 12px;\n  color: var(--text-colour-secondary);\n}\n.customer-page__simulation label {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  min-height: 44px;\n}\n.customer-page__panel {\n  padding: var(--space-5);\n  margin-bottom: var(--space-4);\n  border: 1px solid var(--border-colour-subtle);\n  background: var(--bg-colour-white);\n  border-radius: var(--radius-sm);\n}\n.customer-page__panel h2 {\n  margin-top: 0;\n  font-size: 20px;\n}\n.customer-page__panel form {\n  display: grid;\n  gap: var(--space-4);\n}\n@media (max-width: 1100px) {\n  .customer-page {\n    grid-template-columns: minmax(0, 1fr);\n  }\n  .customer-page__sidebar {\n    display: none;\n    position: static;\n    height: auto;\n  }\n  .customer-page--nav-open .customer-page__sidebar {\n    display: block;\n  }\n  .customer-page__mobile-nav {\n    display: block;\n    padding: var(--space-3) var(--space-4);\n    background: var(--bg-colour-white);\n  }\n  .customer-page__desktop-toolbar {\n    display: none;\n  }\n  .customer-page__mobile-toolbar {\n    display: grid;\n    gap: var(--space-3);\n    padding: var(--space-4);\n    background: var(--bg-colour-white);\n  }\n  .customer-page__content {\n    padding: var(--space-4);\n  }\n}\n@media (max-width: 420px) {\n  .customer-page__content {\n    padding: var(--space-2);\n  }\n  .customer-page__table-card {\n    padding: var(--space-2);\n  }\n}\n",
                     "styleUrl": "./customer-management-page.component.css"
                 }
             ],
             "stylesData": "",
             "jsdoctags": [
                 {
-                    "pos": 799,
-                    "end": 900,
+                    "pos": 1381,
+                    "end": 1482,
                     "kind": 321,
                     "id": 0,
                     "flags": 16777216,
@@ -2566,6 +3064,10 @@
                 }
             ],
             "extends": [],
+            "implements": [
+                "OnInit",
+                "OnDestroy"
+            ],
             "accessors": {
                 "filteredCustomers": {
                     "name": "filteredCustomers",
@@ -2573,7 +3075,7 @@
                         "name": "filteredCustomers",
                         "type": "[]",
                         "returnType": "CustomerRow[]",
-                        "line": 201,
+                        "line": 294,
                         "rawdescription": "\n",
                         "description": ""
                     }
@@ -2584,7 +3086,7 @@
                         "name": "visibleCustomers",
                         "type": "[]",
                         "returnType": "CustomerRow[]",
-                        "line": 217,
+                        "line": 310,
                         "rawdescription": "\n",
                         "description": ""
                     }
@@ -2595,7 +3097,7 @@
                         "name": "totalPages",
                         "type": "number",
                         "returnType": "number",
-                        "line": 222,
+                        "line": 315,
                         "rawdescription": "\n",
                         "description": ""
                     }
@@ -2604,6 +3106,34 @@
             "relationships": {
                 "incoming": [],
                 "outgoing": [
+                    {
+                        "name": "CommonModule",
+                        "type": "module"
+                    },
+                    {
+                        "name": "AlertComponent",
+                        "type": "component",
+                        "description": "An inline status message that communicates important contextual information."
+                    },
+                    {
+                        "name": "ButtonComponent",
+                        "type": "component",
+                        "description": "A reusable button component for primary actions, secondary actions, and icon-only affordances. Supports variants, size options, semantic..."
+                    },
+                    {
+                        "name": "TextInputComponent",
+                        "type": "component"
+                    },
+                    {
+                        "name": "SearchComponent",
+                        "type": "component",
+                        "description": "A search field with optional suggestions and accessible combobox keyboard behavior."
+                    },
+                    {
+                        "name": "SelectComponent",
+                        "type": "component",
+                        "description": "A native single- or multi-select field with DDS sizing, validation, and helper text treatments."
+                    },
                     {
                         "name": "DataTableComponent",
                         "type": "component"
@@ -2622,10 +3152,18 @@
                         "name": "TopBarNavComponent",
                         "type": "component",
                         "description": "A dashboard header with a page title, notification and cart actions, and an account menu."
+                    },
+                    {
+                        "name": "OnInit",
+                        "type": "interface"
+                    },
+                    {
+                        "name": "OnDestroy",
+                        "type": "interface"
                     }
                 ]
             },
-            "templateData": "<div class=\"customer-page\">\n  <dds-sidebar-nav\n    class=\"customer-page__sidebar\"\n    title=\"DDS Enterprise\"\n    footer=\"Version 1.0.0\"\n    [items]=\"navigationItems\"\n    [(activeItemId)]=\"activeItemId\"\n    [(expandedIds)]=\"expandedIds\"\n  ></dds-sidebar-nav>\n\n  <main class=\"customer-page__main\">\n    <dds-top-bar-nav\n      pageTitle=\"Customers\"\n      [notificationCount]=\"128\"\n      [cartCount]=\"3\"\n      userInitials=\"JB\"\n      userName=\"Jordan Blake\"\n    ></dds-top-bar-nav>\n\n    <dds-page-toolbar\n      searchPlaceholder=\"Search by customer, ID, or location\"\n      filterLabel=\"All statuses\"\n      actionLabel=\"New customer\"\n      [filterOptions]=\"statusOptions\"\n      [searchValue]=\"searchValue\"\n      [filterValue]=\"statusFilter\"\n      (searchValueChange)=\"updateSearch($event)\"\n      (filterValueChange)=\"updateStatus($event)\"\n      (refresh)=\"refreshTable()\"\n    ></dds-page-toolbar>\n\n    <section class=\"customer-page__content\" aria-label=\"Customer records\">\n      <div class=\"customer-page__table-card\">\n        <dds-data-table\n          caption=\"Customers\"\n          [columns]=\"columns\"\n          [rows]=\"visibleCustomers\"\n          [selectable]=\"true\"\n          [currentPage]=\"currentPage\"\n          [totalPages]=\"totalPages\"\n          [totalItems]=\"filteredCustomers.length\"\n          [pageSize]=\"pageSize\"\n          [selectedKeys]=\"selectedKeys\"\n          emptyMessage=\"No customers match your filters.\"\n          (selectedKeysChange)=\"selectedKeys = $event\"\n          (pageChange)=\"currentPage = $event\"\n        ></dds-data-table>\n      </div>\n    </section>\n  </main>\n</div>\n"
+            "templateData": "<div class=\"customer-page\" [class.customer-page--nav-open]=\"mobileNavigationOpen\">\n  <div class=\"customer-page__mobile-nav\">\n    <dds-button\n      variant=\"secondary\"\n      (click)=\"mobileNavigationOpen = !mobileNavigationOpen\"\n      [ariaLabel]=\"mobileNavigationOpen ? 'Close navigation' : 'Open navigation'\"\n      >{{ mobileNavigationOpen ? 'Close navigation' : 'Menu' }}</dds-button\n    >\n  </div>\n  <dds-sidebar-nav\n    class=\"customer-page__sidebar\"\n    title=\"DDS Enterprise\"\n    footer=\"Version 1.0.0\"\n    [items]=\"navigationItems\"\n    [activeItemId]=\"activeItemId\"\n    (activeItemIdChange)=\"navigate($event)\"\n    [(expandedIds)]=\"expandedIds\"\n  ></dds-sidebar-nav>\n\n  <main class=\"customer-page__main\">\n    <dds-top-bar-nav\n      pageTitle=\"Customers\"\n      [showNotifications]=\"false\"\n      [showCart]=\"false\"\n      [menuItems]=\"[]\"\n      userInitials=\"JB\"\n      userName=\"Jordan Blake\"\n    ></dds-top-bar-nav>\n\n    <dds-page-toolbar\n      class=\"customer-page__desktop-toolbar\"\n      searchPlaceholder=\"Search by customer, ID, or location\"\n      filterLabel=\"All statuses\"\n      actionLabel=\"New customer\"\n      [filterOptions]=\"statusOptions\"\n      [searchValue]=\"searchValue\"\n      [filterValue]=\"statusFilter\"\n      (searchValueChange)=\"updateSearch($event)\"\n      (filterValueChange)=\"updateStatus($event)\"\n      [refreshing]=\"loading\"\n      [actionDisabled]=\"error\"\n      (action)=\"openCreate()\"\n      (refresh)=\"refreshTable()\"\n    ></dds-page-toolbar>\n\n    <div class=\"customer-page__mobile-toolbar\">\n      <dds-search\n        placeholder=\"Search customers\"\n        ariaLabel=\"Search customers\"\n        [showLabel]=\"false\"\n        [required]=\"false\"\n        [value]=\"searchValue\"\n        (valueChange)=\"updateSearch($event)\"\n      ></dds-search>\n      <dds-select\n        ariaLabel=\"Customer status\"\n        [showLabel]=\"false\"\n        [showHelperText]=\"false\"\n        [required]=\"false\"\n        [options]=\"statusOptions\"\n        [value]=\"statusFilter\"\n        (valueChange)=\"updateStatus($event)\"\n      ></dds-select>\n      <div class=\"customer-page__actions\">\n        <dds-button variant=\"secondary\" [disabled]=\"loading\" (click)=\"refreshTable()\"\n          >Refresh</dds-button\n        >\n        <dds-button [disabled]=\"loading || error\" (click)=\"openCreate()\">New customer</dds-button>\n      </div>\n    </div>\n\n    <section class=\"customer-page__content\" aria-label=\"Customer records\">\n      <div class=\"customer-page__simulation\">\n        <label\n          ><input\n            type=\"checkbox\"\n            [checked]=\"failNextRequest\"\n            [disabled]=\"loading\"\n            (change)=\"failNextRequest = !failNextRequest\"\n          />\n          Fail next refresh</label\n        >\n        <span>Prototype · changes stay in this session</span>\n      </div>\n      <dds-alert\n        *ngIf=\"notice && !error && !loading\"\n        tone=\"success\"\n        [text]=\"notice\"\n        (dismissed)=\"notice = ''\"\n      ></dds-alert>\n      <p role=\"status\" aria-live=\"polite\">\n        {{\n          loading\n            ? 'Loading customers…'\n            : error\n              ? ''\n              : filteredCustomers.length + ' customers found'\n        }}\n      </p>\n      <dds-alert\n        *ngIf=\"error\"\n        tone=\"danger\"\n        text=\"Customers could not be loaded. Check your connection and try again.\"\n        [dismissible]=\"false\"\n        [showAction]=\"true\"\n        actionLabel=\"Retry\"\n        (action)=\"refreshTable()\"\n      ></dds-alert>\n\n      <section *ngIf=\"creating\" class=\"customer-page__panel\" aria-labelledby=\"new-customer-title\">\n        <h2 id=\"new-customer-title\">New customer</h2>\n        <form (submit)=\"saveCustomer($event)\" novalidate>\n          <dds-text-input\n            label=\"Customer name\"\n            [required]=\"true\"\n            [value]=\"draftName\"\n            (valueChange)=\"draftName = $event\"\n            [state]=\"submitted && !draftName.trim() ? 'error' : 'default'\"\n            errorMessage=\"Enter a customer name.\"\n            [showHelperText]=\"false\"\n          ></dds-text-input>\n          <dds-text-input\n            label=\"Location\"\n            [required]=\"true\"\n            [value]=\"draftLocation\"\n            (valueChange)=\"draftLocation = $event\"\n            [state]=\"submitted && !draftLocation.trim() ? 'error' : 'default'\"\n            errorMessage=\"Enter a location.\"\n            [showHelperText]=\"false\"\n          ></dds-text-input>\n          <div class=\"customer-page__actions\">\n            <dds-button type=\"submit\">Save customer</dds-button>\n            <dds-button variant=\"secondary\" (click)=\"creating = false\">Cancel</dds-button>\n          </div>\n        </form>\n      </section>\n      <section *ngIf=\"detail\" class=\"customer-page__panel\" aria-labelledby=\"customer-detail-title\">\n        <h2 id=\"customer-detail-title\">{{ detail.name }}</h2>\n        <p>{{ detail.customerId }} · {{ detail.location }} · {{ detail.status }}</p>\n        <p>Last order: {{ detail.lastOrder }}</p>\n        <dds-button variant=\"secondary\" (click)=\"detail = null\">Close details</dds-button>\n      </section>\n      <div *ngIf=\"!error\" class=\"customer-page__table-card\" [attr.aria-busy]=\"loading\">\n        <div\n          *ngIf=\"!loading && (searchValue || statusFilter !== 'all')\"\n          class=\"customer-page__actions\"\n        >\n          <dds-button variant=\"secondary\" size=\"small\" (click)=\"clearFilters()\"\n            >Clear filters</dds-button\n          >\n        </div>\n        <dds-data-table\n          caption=\"Customers\"\n          [columns]=\"columns\"\n          [rows]=\"visibleCustomers\"\n          [loading]=\"loading\"\n          [rowActions]=\"[{ label: 'View customer', icon: 'eye' }]\"\n          (rowAction)=\"showDetails($event.row)\"\n          [selectable]=\"true\"\n          [currentPage]=\"currentPage\"\n          [totalPages]=\"totalPages\"\n          [totalItems]=\"filteredCustomers.length\"\n          [pageSize]=\"pageSize\"\n          [selectedKeys]=\"selectedKeys\"\n          [emptyMessage]=\"\n            customers.length\n              ? 'No customers match your filters. Clear filters to try again.'\n              : 'No customers yet. Add your first customer to get started.'\n          \"\n          (selectedKeysChange)=\"selectedKeys = $event\"\n          (pageChange)=\"changePage($event)\"\n        ></dds-data-table>\n      </div>\n    </section>\n  </main>\n</div>\n"
         },
         {
             "name": "DataTableComponent",
@@ -3359,6 +3897,11 @@
                         "name": "CustomerManagementPageComponent",
                         "type": "component",
                         "description": "A composed dashboard example showing DDS navigation, form controls, and data display together."
+                    },
+                    {
+                        "name": "OrdersPageComponent",
+                        "type": "component",
+                        "description": "Sales order overview composed from DDS navigation, filters, and table components."
                     }
                 ],
                 "outgoing": [
@@ -4133,7 +4676,13 @@
                 }
             },
             "relationships": {
-                "incoming": [],
+                "incoming": [
+                    {
+                        "name": "OrdersPageComponent",
+                        "type": "component",
+                        "description": "Sales order overview composed from DDS navigation, filters, and table components."
+                    }
+                ],
                 "outgoing": [
                     {
                         "name": "CommonModule",
@@ -5165,6 +5714,659 @@
             "templateData": "<nav class=\"dds-numbered-pagination\" [attr.aria-label]=\"ariaLabel\">\n  <button\n    class=\"dds-numbered-pagination__item dds-numbered-pagination__item--previous\"\n    type=\"button\"\n    aria-label=\"Previous page\"\n    [disabled]=\"isFirstPage\"\n    (click)=\"selectPage(normalizedCurrentPage - 1)\"\n  >\n    <dds-icon name=\"chevron-left\" [size]=\"16\"></dds-icon>\n  </button>\n\n  <ng-container *ngFor=\"let item of items; trackBy: trackItem\">\n    <span\n      *ngIf=\"item === 'ellipsis-start' || item === 'ellipsis-end'; else pageButton\"\n      class=\"dds-numbered-pagination__item dds-numbered-pagination__ellipsis\"\n      aria-hidden=\"true\"\n    >\n      …\n    </span>\n\n    <ng-template #pageButton>\n      <button\n        class=\"dds-numbered-pagination__item\"\n        type=\"button\"\n        [class.dds-numbered-pagination__item--active]=\"item === normalizedCurrentPage\"\n        [attr.aria-label]=\"'Page ' + item\"\n        [attr.aria-current]=\"item === normalizedCurrentPage ? 'page' : null\"\n        (click)=\"selectPage(asPageNumber(item))\"\n      >\n        {{ item }}\n      </button>\n    </ng-template>\n  </ng-container>\n\n  <button\n    class=\"dds-numbered-pagination__item dds-numbered-pagination__item--next\"\n    type=\"button\"\n    aria-label=\"Next page\"\n    [disabled]=\"isLastPage\"\n    (click)=\"selectPage(normalizedCurrentPage + 1)\"\n  >\n    <dds-icon name=\"chevron-right\" [size]=\"16\"></dds-icon>\n  </button>\n</nav>\n"
         },
         {
+            "name": "OrdersPageComponent",
+            "id": "component-OrdersPageComponent-b2cb9efd600001e7814ae61c5eb0b2376ba11c2aeff4a0d4f974c303f4ef0ebeeb073ff8dd9ddc9e8b13e89ced5e5e91bbdd9d8a084cbd5a62f0f96ca3bb146c",
+            "file": "src/app/examples/orders-page/orders-page.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.Default",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "dds-orders-page",
+            "styleUrls": [
+                "../customer-management-page/customer-management-page.component.css",
+                "./orders-page.component.css"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./orders-page.component.html"
+            ],
+            "templateVariables": [],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "columns",
+                    "coverageIgnore": false,
+                    "defaultValue": "[\n    { key: 'id', label: 'Order ID' },\n    { key: 'customer', label: 'Customer', width: '25%' },\n    { key: 'date', label: 'Order date' },\n    {\n      key: 'amount',\n      label: 'Total',\n      align: 'end',\n      value: (row) => this.currency(Number(row['amount'])),\n    },\n    {\n      key: 'status',\n      label: 'Status',\n      type: 'status',\n      statusTone: (row) => row['tone'] as StatusBadgeTone,\n    },\n  ]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "DataTableColumn[]",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 135,
+                    "rawdescription": "\n",
+                    "modifierKind": [
+                        148
+                    ]
+                },
+                {
+                    "name": "currentPage",
+                    "coverageIgnore": false,
+                    "defaultValue": "1",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 57,
+                    "rawdescription": "\n"
+                },
+                {
+                    "name": "detail",
+                    "coverageIgnore": false,
+                    "defaultValue": "null",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Order | null",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 60,
+                    "rawdescription": "\n"
+                },
+                {
+                    "name": "expandedIds",
+                    "coverageIgnore": false,
+                    "defaultValue": "['sales']",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "[]",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 53,
+                    "rawdescription": "\n"
+                },
+                {
+                    "name": "mobileNavigationOpen",
+                    "coverageIgnore": false,
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 54,
+                    "rawdescription": "\n"
+                },
+                {
+                    "name": "navigationItems",
+                    "coverageIgnore": false,
+                    "defaultValue": "EXAMPLE_NAVIGATION",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 52,
+                    "rawdescription": "\n",
+                    "modifierKind": [
+                        148
+                    ]
+                },
+                {
+                    "name": "notice",
+                    "coverageIgnore": false,
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 61,
+                    "rawdescription": "\n"
+                },
+                {
+                    "name": "orders",
+                    "coverageIgnore": false,
+                    "defaultValue": "[\n    {\n      id: 'ORD-2084',\n      customer: 'Acacia Market',\n      date: '8 Oct 2026',\n      amount: 42800,\n      status: 'Processing',\n      tone: 'info',\n    },\n    {\n      id: 'ORD-2083',\n      customer: 'Lakeview Supplies',\n      date: '8 Oct 2026',\n      amount: 18600,\n      status: 'Pending',\n      tone: 'warning',\n    },\n    {\n      id: 'ORD-2082',\n      customer: 'Coastline Traders',\n      date: '7 Oct 2026',\n      amount: 65400,\n      status: 'Shipped',\n      tone: 'info',\n    },\n    {\n      id: 'ORD-2081',\n      customer: 'Rift Valley Foods',\n      date: '7 Oct 2026',\n      amount: 31200,\n      status: 'Delivered',\n      tone: 'success',\n    },\n    {\n      id: 'ORD-2080',\n      customer: 'Savanna Retail',\n      date: '6 Oct 2026',\n      amount: 9500,\n      status: 'Cancelled',\n      tone: 'neutral',\n    },\n    {\n      id: 'ORD-2079',\n      customer: 'Greenline Stores',\n      date: '6 Oct 2026',\n      amount: 27400,\n      status: 'Delivered',\n      tone: 'success',\n    },\n    {\n      id: 'ORD-2078',\n      customer: 'Highland Goods',\n      date: '5 Oct 2026',\n      amount: 15800,\n      status: 'Pending',\n      tone: 'warning',\n    },\n    {\n      id: 'ORD-2077',\n      customer: 'Metro Wholesale',\n      date: '5 Oct 2026',\n      amount: 88000,\n      status: 'Processing',\n      tone: 'info',\n    },\n  ]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Order[]",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 69,
+                    "rawdescription": "\n",
+                    "modifierKind": [
+                        148
+                    ]
+                },
+                {
+                    "name": "pageSize",
+                    "coverageIgnore": false,
+                    "defaultValue": "5",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 58,
+                    "rawdescription": "\n",
+                    "modifierKind": [
+                        148
+                    ]
+                },
+                {
+                    "name": "query",
+                    "coverageIgnore": false,
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 55,
+                    "rawdescription": "\n"
+                },
+                {
+                    "name": "selectedKeys",
+                    "coverageIgnore": false,
+                    "defaultValue": "[]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Array<string | number>",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 59,
+                    "rawdescription": "\n"
+                },
+                {
+                    "name": "status",
+                    "coverageIgnore": false,
+                    "defaultValue": "'all'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 56,
+                    "rawdescription": "\n"
+                },
+                {
+                    "name": "statusOptions",
+                    "coverageIgnore": false,
+                    "defaultValue": "[\n    { label: 'All statuses', value: 'all' },\n    ...['Pending', 'Processing', 'Shipped', 'Delivered', 'Cancelled'].map((label) => ({\n      label,\n      value: label.toLowerCase(),\n    })),\n  ]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "[]",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 62,
+                    "rawdescription": "\n",
+                    "modifierKind": [
+                        148
+                    ]
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "changePage",
+                    "coverageIgnore": false,
+                    "args": [
+                        {
+                            "name": "value",
+                            "type": "number",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 197,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "jsdoctags": [
+                        {
+                            "name": "value",
+                            "type": "number",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "clearFilters",
+                    "coverageIgnore": false,
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 192,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": ""
+                },
+                {
+                    "name": "currency",
+                    "coverageIgnore": false,
+                    "args": [
+                        {
+                            "name": "amount",
+                            "type": "number",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "string",
+                    "typeParameters": [],
+                    "line": 152,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "jsdoctags": [
+                        {
+                            "name": "amount",
+                            "type": "number",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "navigate",
+                    "coverageIgnore": false,
+                    "args": [
+                        {
+                            "name": "id",
+                            "type": "string",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 208,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "jsdoctags": [
+                        {
+                            "name": "id",
+                            "type": "string",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "refresh",
+                    "coverageIgnore": false,
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 204,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": ""
+                },
+                {
+                    "name": "resetPage",
+                    "coverageIgnore": false,
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 216,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "showDetails",
+                    "coverageIgnore": false,
+                    "args": [
+                        {
+                            "name": "row",
+                            "type": "DataTableRow",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 201,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "jsdoctags": [
+                        {
+                            "name": "row",
+                            "type": "DataTableRow",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "updateQuery",
+                    "coverageIgnore": false,
+                    "args": [
+                        {
+                            "name": "value",
+                            "type": "string",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 184,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "jsdoctags": [
+                        {
+                            "name": "value",
+                            "type": "string",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "updateStatus",
+                    "coverageIgnore": false,
+                    "args": [
+                        {
+                            "name": "value",
+                            "type": "string",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 188,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "jsdoctags": [
+                        {
+                            "name": "value",
+                            "type": "string",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "coverageIgnore": false,
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "KpiCardComponent",
+                    "type": "component"
+                },
+                {
+                    "name": "SidebarNavComponent",
+                    "type": "component"
+                },
+                {
+                    "name": "TopBarNavComponent",
+                    "type": "component"
+                },
+                {
+                    "name": "PageToolbarComponent",
+                    "type": "component"
+                },
+                {
+                    "name": "DataTableComponent",
+                    "type": "component"
+                },
+                {
+                    "name": "ButtonComponent",
+                    "type": "component"
+                },
+                {
+                    "name": "SearchComponent",
+                    "type": "component"
+                },
+                {
+                    "name": "SelectComponent",
+                    "type": "component"
+                },
+                {
+                    "name": "AlertComponent",
+                    "type": "component"
+                }
+            ],
+            "description": "<p>Sales order overview composed from DDS navigation, filters, and table components.</p>\n",
+            "rawdescription": "\nSales order overview composed from DDS navigation, filters, and table components.",
+            "type": "component",
+            "sourceCode": "import { KpiCardComponent } from '../../components/kpi-card/kpi-card.component';\nimport { CommonModule } from '@angular/common';\nimport { ChangeDetectionStrategy, Component } from '@angular/core';\nimport { EXAMPLE_NAVIGATION } from '../example-navigation';\nimport { SidebarNavComponent } from '../../components/sidebar-nav/sidebar-nav.component';\nimport { TopBarNavComponent } from '../../components/top-bar-nav/top-bar-nav.component';\nimport { PageToolbarComponent } from '../../components/page-toolbar/page-toolbar.component';\nimport {\n  DataTableColumn,\n  DataTableComponent,\n  DataTableRow,\n} from '../../components/data-table/data-table.component';\nimport { ButtonComponent } from '../../components/button/button.component';\nimport { SearchComponent } from '../../components/search/search.component';\nimport { SelectComponent } from '../../components/select/select.component';\nimport { AlertComponent } from '../../components/alert/alert.component';\nimport { StatusBadgeTone } from '../../components/status-badge/status-badge.component';\n\ntype Order = DataTableRow & {\n  id: string;\n  customer: string;\n  date: string;\n  amount: number;\n  status: string;\n  tone: StatusBadgeTone;\n};\n\n/** Sales order overview composed from DDS navigation, filters, and table components. */\n@Component({\n  selector: 'dds-orders-page',\n  standalone: true,\n  changeDetection: ChangeDetectionStrategy.Default,\n  imports: [\n    CommonModule,\n    KpiCardComponent,\n    SidebarNavComponent,\n    TopBarNavComponent,\n    PageToolbarComponent,\n    DataTableComponent,\n    ButtonComponent,\n    SearchComponent,\n    SelectComponent,\n    AlertComponent,\n  ],\n  templateUrl: './orders-page.component.html',\n  styleUrls: [\n    '../customer-management-page/customer-management-page.component.css',\n    './orders-page.component.css',\n  ],\n})\nexport class OrdersPageComponent {\n  readonly navigationItems = EXAMPLE_NAVIGATION;\n  expandedIds = ['sales'];\n  mobileNavigationOpen = false;\n  query = '';\n  status = 'all';\n  currentPage = 1;\n  readonly pageSize = 5;\n  selectedKeys: Array<string | number> = [];\n  detail: Order | null = null;\n  notice = '';\n  readonly statusOptions = [\n    { label: 'All statuses', value: 'all' },\n    ...['Pending', 'Processing', 'Shipped', 'Delivered', 'Cancelled'].map((label) => ({\n      label,\n      value: label.toLowerCase(),\n    })),\n  ];\n  readonly orders: Order[] = [\n    {\n      id: 'ORD-2084',\n      customer: 'Acacia Market',\n      date: '8 Oct 2026',\n      amount: 42800,\n      status: 'Processing',\n      tone: 'info',\n    },\n    {\n      id: 'ORD-2083',\n      customer: 'Lakeview Supplies',\n      date: '8 Oct 2026',\n      amount: 18600,\n      status: 'Pending',\n      tone: 'warning',\n    },\n    {\n      id: 'ORD-2082',\n      customer: 'Coastline Traders',\n      date: '7 Oct 2026',\n      amount: 65400,\n      status: 'Shipped',\n      tone: 'info',\n    },\n    {\n      id: 'ORD-2081',\n      customer: 'Rift Valley Foods',\n      date: '7 Oct 2026',\n      amount: 31200,\n      status: 'Delivered',\n      tone: 'success',\n    },\n    {\n      id: 'ORD-2080',\n      customer: 'Savanna Retail',\n      date: '6 Oct 2026',\n      amount: 9500,\n      status: 'Cancelled',\n      tone: 'neutral',\n    },\n    {\n      id: 'ORD-2079',\n      customer: 'Greenline Stores',\n      date: '6 Oct 2026',\n      amount: 27400,\n      status: 'Delivered',\n      tone: 'success',\n    },\n    {\n      id: 'ORD-2078',\n      customer: 'Highland Goods',\n      date: '5 Oct 2026',\n      amount: 15800,\n      status: 'Pending',\n      tone: 'warning',\n    },\n    {\n      id: 'ORD-2077',\n      customer: 'Metro Wholesale',\n      date: '5 Oct 2026',\n      amount: 88000,\n      status: 'Processing',\n      tone: 'info',\n    },\n  ];\n  readonly columns: DataTableColumn[] = [\n    { key: 'id', label: 'Order ID' },\n    { key: 'customer', label: 'Customer', width: '25%' },\n    { key: 'date', label: 'Order date' },\n    {\n      key: 'amount',\n      label: 'Total',\n      align: 'end',\n      value: (row) => this.currency(Number(row['amount'])),\n    },\n    {\n      key: 'status',\n      label: 'Status',\n      type: 'status',\n      statusTone: (row) => row['tone'] as StatusBadgeTone,\n    },\n  ];\n  currency(amount: number): string {\n    return new Intl.NumberFormat('en-KE', {\n      style: 'currency',\n      currency: 'KES',\n      maximumFractionDigits: 0,\n    }).format(amount);\n  }\n  get filteredOrders(): Order[] {\n    const query = this.query.trim().toLowerCase();\n    return this.orders.filter(\n      (order) =>\n        (this.status === 'all' || order.status.toLowerCase() === this.status) &&\n        (!query || `${order.id} ${order.customer}`.toLowerCase().includes(query)),\n    );\n  }\n  get visibleOrders(): Order[] {\n    return this.filteredOrders.slice(\n      (this.currentPage - 1) * this.pageSize,\n      this.currentPage * this.pageSize,\n    );\n  }\n  get totalPages(): number {\n    return Math.max(1, Math.ceil(this.filteredOrders.length / this.pageSize));\n  }\n  get totalValue(): number {\n    return this.orders\n      .filter((order) => order.status !== 'Cancelled')\n      .reduce((sum, order) => sum + order.amount, 0);\n  }\n  get openOrders(): number {\n    return this.orders.filter((order) => ['Pending', 'Processing'].includes(order.status)).length;\n  }\n  updateQuery(value: string): void {\n    this.query = value;\n    this.resetPage();\n  }\n  updateStatus(value: string): void {\n    this.status = value;\n    this.resetPage();\n  }\n  clearFilters(): void {\n    this.query = '';\n    this.status = 'all';\n    this.resetPage();\n  }\n  changePage(value: number): void {\n    this.currentPage = Math.max(1, Math.min(this.totalPages, value));\n    this.selectedKeys = [];\n  }\n  showDetails(row: DataTableRow): void {\n    this.detail = row as Order;\n  }\n  refresh(): void {\n    this.selectedKeys = [];\n    this.notice = 'Orders are up to date.';\n  }\n  navigate(id: string): void {\n    this.mobileNavigationOpen = false;\n    if (id === 'orders') return;\n    this.notice =\n      id === 'customers'\n        ? 'Explore Customer Management under Examples in Storybook.'\n        : 'This prototype demonstrates Orders. Other sections are available as separate examples.';\n  }\n  private resetPage(): void {\n    this.currentPage = 1;\n    this.selectedKeys = [];\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ":host {\n  display: block;\n  min-width: 0;\n  min-height: 720px;\n  background: var(--bg-colour-default);\n}\n\n.customer-page {\n  display: grid;\n  grid-template-columns: 250px minmax(0, 1fr);\n  min-height: 100vh;\n  background: var(--bg-colour-default);\n  color: var(--text-colour-default);\n  font-family: var(--font-family-primary);\n}\n\n.customer-page__sidebar {\n  position: sticky;\n  top: 0;\n  height: 100vh;\n}\n\n.customer-page__main {\n  min-width: 0;\n}\n\n.customer-page__content {\n  box-sizing: border-box;\n  padding: var(--space-6);\n}\n\n.customer-page__table-card {\n  padding: var(--space-4);\n  border: 1px solid var(--border-colour-subtle);\n  border-radius: var(--radius-sm);\n  background: var(--bg-colour-white);\n  box-shadow: 0 1px 2px rgb(0 0 0 / 4%);\n}\n\n.customer-page__mobile-nav,\n.customer-page__mobile-toolbar {\n  display: none;\n}\n.customer-page__simulation,\n.customer-page__actions {\n  display: flex;\n  flex-wrap: wrap;\n  align-items: center;\n  gap: var(--space-3);\n  margin-bottom: var(--space-4);\n}\n.customer-page__simulation {\n  justify-content: space-between;\n  font-size: 12px;\n  color: var(--text-colour-secondary);\n}\n.customer-page__simulation label {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  min-height: 44px;\n}\n.customer-page__panel {\n  padding: var(--space-5);\n  margin-bottom: var(--space-4);\n  border: 1px solid var(--border-colour-subtle);\n  background: var(--bg-colour-white);\n  border-radius: var(--radius-sm);\n}\n.customer-page__panel h2 {\n  margin-top: 0;\n  font-size: 20px;\n}\n.customer-page__panel form {\n  display: grid;\n  gap: var(--space-4);\n}\n@media (max-width: 1100px) {\n  .customer-page {\n    grid-template-columns: minmax(0, 1fr);\n  }\n  .customer-page__sidebar {\n    display: none;\n    position: static;\n    height: auto;\n  }\n  .customer-page--nav-open .customer-page__sidebar {\n    display: block;\n  }\n  .customer-page__mobile-nav {\n    display: block;\n    padding: var(--space-3) var(--space-4);\n    background: var(--bg-colour-white);\n  }\n  .customer-page__desktop-toolbar {\n    display: none;\n  }\n  .customer-page__mobile-toolbar {\n    display: grid;\n    gap: var(--space-3);\n    padding: var(--space-4);\n    background: var(--bg-colour-white);\n  }\n  .customer-page__content {\n    padding: var(--space-4);\n  }\n}\n@media (max-width: 420px) {\n  .customer-page__content {\n    padding: var(--space-2);\n  }\n  .customer-page__table-card {\n    padding: var(--space-2);\n  }\n}\n",
+                    "styleUrl": "../customer-management-page/customer-management-page.component.css"
+                },
+                {
+                    "data": ".orders-summary {\n  display: grid;\n  grid-template-columns: repeat(3, minmax(0, 1fr));\n  gap: var(--space-4);\n  margin-bottom: var(--space-6);\n}\ndt {\n  color: var(--text-colour-secondary);\n  font-size: 14px;\n}\ndd {\n  margin: 4px 0 16px;\n}\n@media (max-width: 600px) {\n  .orders-summary {\n    grid-template-columns: 1fr;\n    gap: var(--space-2);\n  }\n}\n",
+                    "styleUrl": "./orders-page.component.css"
+                }
+            ],
+            "stylesData": "",
+            "jsdoctags": [
+                {
+                    "pos": 1189,
+                    "end": 1277,
+                    "kind": 321,
+                    "id": 0,
+                    "flags": 16777216,
+                    "modifierFlagsCache": 0,
+                    "transformFlags": 0,
+                    "comment": "Sales order overview composed from DDS navigation, filters, and table components."
+                }
+            ],
+            "extends": [],
+            "accessors": {
+                "filteredOrders": {
+                    "name": "filteredOrders",
+                    "getSignature": {
+                        "name": "filteredOrders",
+                        "type": "[]",
+                        "returnType": "Order[]",
+                        "line": 159,
+                        "rawdescription": "\n",
+                        "description": ""
+                    }
+                },
+                "visibleOrders": {
+                    "name": "visibleOrders",
+                    "getSignature": {
+                        "name": "visibleOrders",
+                        "type": "[]",
+                        "returnType": "Order[]",
+                        "line": 167,
+                        "rawdescription": "\n",
+                        "description": ""
+                    }
+                },
+                "totalPages": {
+                    "name": "totalPages",
+                    "getSignature": {
+                        "name": "totalPages",
+                        "type": "number",
+                        "returnType": "number",
+                        "line": 173,
+                        "rawdescription": "\n",
+                        "description": ""
+                    }
+                },
+                "totalValue": {
+                    "name": "totalValue",
+                    "getSignature": {
+                        "name": "totalValue",
+                        "type": "number",
+                        "returnType": "number",
+                        "line": 176,
+                        "rawdescription": "\n",
+                        "description": ""
+                    }
+                },
+                "openOrders": {
+                    "name": "openOrders",
+                    "getSignature": {
+                        "name": "openOrders",
+                        "type": "number",
+                        "returnType": "number",
+                        "line": 181,
+                        "rawdescription": "\n",
+                        "description": ""
+                    }
+                }
+            },
+            "relationships": {
+                "incoming": [],
+                "outgoing": [
+                    {
+                        "name": "CommonModule",
+                        "type": "module"
+                    },
+                    {
+                        "name": "KpiCardComponent",
+                        "type": "component",
+                        "description": "A compact dashboard card that displays one key metric and its comparative trend."
+                    },
+                    {
+                        "name": "SidebarNavComponent",
+                        "type": "component",
+                        "description": "A persistent application sidebar with one level of expandable navigation groups."
+                    },
+                    {
+                        "name": "TopBarNavComponent",
+                        "type": "component",
+                        "description": "A dashboard header with a page title, notification and cart actions, and an account menu."
+                    },
+                    {
+                        "name": "PageToolbarComponent",
+                        "type": "component",
+                        "description": "A page-level action bar combining search, filtering, refresh, and a primary action."
+                    },
+                    {
+                        "name": "DataTableComponent",
+                        "type": "component"
+                    },
+                    {
+                        "name": "ButtonComponent",
+                        "type": "component",
+                        "description": "A reusable button component for primary actions, secondary actions, and icon-only affordances. Supports variants, size options, semantic..."
+                    },
+                    {
+                        "name": "SearchComponent",
+                        "type": "component",
+                        "description": "A search field with optional suggestions and accessible combobox keyboard behavior."
+                    },
+                    {
+                        "name": "SelectComponent",
+                        "type": "component",
+                        "description": "A native single- or multi-select field with DDS sizing, validation, and helper text treatments."
+                    },
+                    {
+                        "name": "AlertComponent",
+                        "type": "component",
+                        "description": "An inline status message that communicates important contextual information."
+                    }
+                ]
+            },
+            "templateData": "<div class=\"customer-page\" [class.customer-page--nav-open]=\"mobileNavigationOpen\">\n  <div class=\"customer-page__mobile-nav\">\n    <dds-button variant=\"secondary\" (click)=\"mobileNavigationOpen = !mobileNavigationOpen\">{{\n      mobileNavigationOpen ? 'Close navigation' : 'Menu'\n    }}</dds-button>\n  </div>\n  <dds-sidebar-nav\n    class=\"customer-page__sidebar\"\n    title=\"DDS Enterprise\"\n    footer=\"Version 1.0.0\"\n    [items]=\"navigationItems\"\n    activeItemId=\"orders\"\n    [(expandedIds)]=\"expandedIds\"\n    (itemSelect)=\"navigate($event.id)\"\n  ></dds-sidebar-nav>\n  <main class=\"customer-page__main\">\n    <dds-top-bar-nav\n      pageTitle=\"Orders\"\n      [showNotifications]=\"false\"\n      [showCart]=\"false\"\n      [menuItems]=\"[]\"\n      userInitials=\"JB\"\n      userName=\"Jordan Blake\"\n    ></dds-top-bar-nav>\n    <dds-page-toolbar\n      class=\"customer-page__desktop-toolbar\"\n      searchPlaceholder=\"Search by order ID or customer\"\n      filterLabel=\"Order status\"\n      [searchValue]=\"query\"\n      [filterValue]=\"status\"\n      [filterOptions]=\"statusOptions\"\n      actionLabel=\"Clear filters\"\n      actionIcon=\"x\"\n      (searchValueChange)=\"updateQuery($event)\"\n      (filterValueChange)=\"updateStatus($event)\"\n      (refresh)=\"refresh()\"\n      (action)=\"clearFilters()\"\n    ></dds-page-toolbar>\n    <div class=\"customer-page__mobile-toolbar\">\n      <dds-search\n        ariaLabel=\"Search orders\"\n        placeholder=\"Search by order ID or customer\"\n        [showLabel]=\"false\"\n        [value]=\"query\"\n        (valueChange)=\"updateQuery($event)\"\n      ></dds-search>\n      <dds-select\n        ariaLabel=\"Order status\"\n        [showLabel]=\"false\"\n        [showHelperText]=\"false\"\n        [options]=\"statusOptions\"\n        [value]=\"status\"\n        (valueChange)=\"updateStatus($event)\"\n      ></dds-select>\n      <div class=\"customer-page__actions\">\n        <dds-button variant=\"secondary\" (click)=\"refresh()\">Refresh</dds-button\n        ><dds-button (click)=\"clearFilters()\">Clear filters</dds-button>\n      </div>\n    </div>\n    <section class=\"customer-page__content\" aria-label=\"Sales orders\">\n      <div class=\"orders-summary\" aria-label=\"All orders summary\">\n        <dds-kpi-card\n          label=\"Total orders\"\n          [value]=\"orders.length\"\n          trend=\"neutral\"\n          trendText=\"All orders in this example\"\n        ></dds-kpi-card>\n        <dds-kpi-card\n          label=\"Open orders\"\n          [value]=\"openOrders\"\n          trend=\"neutral\"\n          trendText=\"Pending and processing\"\n        ></dds-kpi-card>\n        <dds-kpi-card\n          label=\"Order value\"\n          [value]=\"currency(totalValue)\"\n          trend=\"neutral\"\n          trendText=\"Excluding cancelled orders\"\n        ></dds-kpi-card>\n      </div>\n      <dds-alert *ngIf=\"notice\" tone=\"info\" [text]=\"notice\" (dismissed)=\"notice = ''\"></dds-alert>\n      <section *ngIf=\"detail\" class=\"customer-page__panel\" aria-labelledby=\"order-detail-title\">\n        <h2 id=\"order-detail-title\">Order {{ detail.id }}</h2>\n        <dl>\n          <dt>Customer</dt>\n          <dd>{{ detail.customer }}</dd>\n          <dt>Order date</dt>\n          <dd>{{ detail.date }}</dd>\n          <dt>Status</dt>\n          <dd>{{ detail.status }}</dd>\n          <dt>Total</dt>\n          <dd>{{ currency(detail.amount) }}</dd>\n        </dl>\n        <dds-button variant=\"secondary\" (click)=\"detail = null\">Close details</dds-button>\n      </section>\n      <p role=\"status\">{{ filteredOrders.length }} orders found</p>\n      <div class=\"customer-page__table-card\">\n        <dds-data-table\n          caption=\"Sales orders\"\n          [columns]=\"columns\"\n          [rows]=\"visibleOrders\"\n          [selectable]=\"true\"\n          [selectedKeys]=\"selectedKeys\"\n          (selectedKeysChange)=\"selectedKeys = $event\"\n          [currentPage]=\"currentPage\"\n          [totalPages]=\"totalPages\"\n          [totalItems]=\"filteredOrders.length\"\n          [pageSize]=\"pageSize\"\n          (pageChange)=\"changePage($event)\"\n          [rowActions]=\"[{ label: 'View order', icon: 'eye' }]\"\n          (rowAction)=\"showDetails($event.row)\"\n          emptyMessage=\"No orders match your filters. Clear filters to try again.\"\n        ></dds-data-table>\n      </div>\n    </section>\n  </main>\n</div>\n"
+        },
+        {
             "name": "OtpInputComponent",
             "id": "component-OtpInputComponent-16538ac6121cfee4aec621da7edf51ccce62cef2c7989359aa979d6cd7aa757794e88b760a68264e24ea0c06abe5dfd0bce79ff8a01c5d826f53376f2abf11eb",
             "file": "src/app/components/otp-input/otp-input.component.ts",
@@ -6009,6 +7211,11 @@
                         "name": "CustomerManagementPageComponent",
                         "type": "component",
                         "description": "A composed dashboard example showing DDS navigation, form controls, and data display together."
+                    },
+                    {
+                        "name": "OrdersPageComponent",
+                        "type": "component",
+                        "description": "Sales order overview composed from DDS navigation, filters, and table components."
                     }
                 ],
                 "outgoing": [
@@ -7545,6 +8752,16 @@
             "relationships": {
                 "incoming": [
                     {
+                        "name": "CustomerManagementPageComponent",
+                        "type": "component",
+                        "description": "A composed dashboard example showing DDS navigation, form controls, and data display together."
+                    },
+                    {
+                        "name": "OrdersPageComponent",
+                        "type": "component",
+                        "description": "Sales order overview composed from DDS navigation, filters, and table components."
+                    },
+                    {
                         "name": "PageToolbarComponent",
                         "type": "component",
                         "description": "A page-level action bar combining search, filtering, refresh, and a primary action."
@@ -7965,6 +9182,16 @@
             },
             "relationships": {
                 "incoming": [
+                    {
+                        "name": "CustomerManagementPageComponent",
+                        "type": "component",
+                        "description": "A composed dashboard example showing DDS navigation, form controls, and data display together."
+                    },
+                    {
+                        "name": "OrdersPageComponent",
+                        "type": "component",
+                        "description": "Sales order overview composed from DDS navigation, filters, and table components."
+                    },
                     {
                         "name": "PageToolbarComponent",
                         "type": "component",
@@ -8391,6 +9618,11 @@
                         "name": "CustomerManagementPageComponent",
                         "type": "component",
                         "description": "A composed dashboard example showing DDS navigation, form controls, and data display together."
+                    },
+                    {
+                        "name": "OrdersPageComponent",
+                        "type": "component",
+                        "description": "Sales order overview composed from DDS navigation, filters, and table components."
                     }
                 ],
                 "outgoing": [
@@ -9523,7 +10755,13 @@
                 }
             },
             "relationships": {
-                "incoming": [],
+                "incoming": [
+                    {
+                        "name": "CustomerManagementPageComponent",
+                        "type": "component",
+                        "description": "A composed dashboard example showing DDS navigation, form controls, and data display together."
+                    }
+                ],
                 "outgoing": [
                     {
                         "name": "CommonModule",
@@ -10401,6 +11639,11 @@
                         "name": "CustomerManagementPageComponent",
                         "type": "component",
                         "description": "A composed dashboard example showing DDS navigation, form controls, and data display together."
+                    },
+                    {
+                        "name": "OrdersPageComponent",
+                        "type": "component",
+                        "description": "Sales order overview composed from DDS navigation, filters, and table components."
                     }
                 ],
                 "outgoing": [
@@ -10633,6 +11876,17 @@
                 "deprecationMessage": "",
                 "type": "unknown",
                 "defaultValue": "[\n  'info',\n  'arrow-right',\n  'arrow-left',\n  'arrow-down',\n  'arrow-up-down',\n  'arrow-up',\n  'check',\n  'chevron-down',\n  'chevron-right',\n  'chevron-left',\n  'chevron-up',\n  'chevrons-up-down',\n  'list-filter',\n  'columns-3',\n  'search',\n  'menu',\n  'circle-alert',\n  'ellipsis',\n  'plus',\n  'trash-2',\n  'x',\n  'layout-dashboard',\n  'ellipsis-vertical',\n  'house',\n  'map-pin',\n  'panels-top-left',\n  'grip-vertical',\n  'download',\n  'upload',\n  'minus',\n  'archive',\n  'ban',\n  'pencil',\n  'settings',\n  'sliders-horizontal',\n  'square-pen',\n  'copy',\n  'funnel',\n  'external-link',\n  'refresh-cw',\n  'wrench',\n  'brush-cleaning',\n  'cloud-upload',\n  'wand-sparkles',\n  'user',\n  'users',\n  'user-x',\n  'key-round',\n  'lock-keyhole',\n  'user-round',\n  'eye',\n  'eye-off',\n  'log-out',\n  'send-horizontal',\n  'bell',\n  'bell-dot',\n  'message-square-plus',\n  'star',\n  'circle-question-mark',\n  'phone',\n  'share-2',\n  'image',\n  'circle-stop',\n  'circle-play',\n  'headset',\n  'file',\n  'clipboard-list',\n  'printer',\n  'type',\n  'hash',\n  'at-sign',\n  'text-wrap',\n  'circle-dot',\n  'square-check',\n  'list',\n  'toggle-right',\n  'clock',\n  'circle-check',\n  'triangle-alert',\n  'calendar-days',\n  'calendar-1',\n  'loader-circle',\n  'life-buoy',\n  'shopping-cart',\n  'box',\n  'package',\n  'truck',\n  'chart-no-axes-combined',\n  'dollar-sign',\n  'credit-card',\n  'receipt-text',\n  'store',\n  'factory',\n  'chart-no-axes-column',\n  'battery-full',\n  'scan',\n  'person-standing',\n  'monitor-smartphone',\n  'contrast',\n  'wifi',\n  'signal',\n] as const"
+            },
+            {
+                "name": "EXAMPLE_NAVIGATION",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/examples/example-navigation.ts",
+                "coverageIgnore": false,
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "SidebarNavItem[]",
+                "defaultValue": "[\n  { id: 'dashboard', label: 'Dashboard', icon: 'layout-dashboard' },\n  {\n    id: 'inventory',\n    label: 'Inventory',\n    icon: 'package',\n    children: [\n      { id: 'products', label: 'Products' },\n      { id: 'stock-levels', label: 'Stock levels' },\n    ],\n  },\n  {\n    id: 'logistics',\n    label: 'Logistics',\n    icon: 'truck',\n    children: [\n      { id: 'customers', label: 'Customers' },\n      { id: 'shipments', label: 'Shipments' },\n    ],\n  },\n  {\n    id: 'sales',\n    label: 'Sales',\n    icon: 'shopping-cart',\n    children: [{ id: 'orders', label: 'Orders' }],\n  },\n  { id: 'reports', label: 'Reports', icon: 'chart-no-axes-combined' },\n  { id: 'settings', label: 'Settings', icon: 'settings' },\n]"
             },
             {
                 "name": "nextCheckboxGroupId",
@@ -11139,6 +12393,19 @@
                 "kind": 193
             },
             {
+                "name": "Order",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "coverageIgnore": false,
+                "rawtype": "DataTableRow & literal type",
+                "file": "src/app/examples/orders-page/orders-page.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "rawdescription": "",
+                "description": "",
+                "kind": 194
+            },
+            {
                 "name": "OtpInputSize",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
@@ -11549,6 +12816,19 @@
                     "deprecationMessage": "",
                     "type": "unknown",
                     "defaultValue": "[\n  'info',\n  'arrow-right',\n  'arrow-left',\n  'arrow-down',\n  'arrow-up-down',\n  'arrow-up',\n  'check',\n  'chevron-down',\n  'chevron-right',\n  'chevron-left',\n  'chevron-up',\n  'chevrons-up-down',\n  'list-filter',\n  'columns-3',\n  'search',\n  'menu',\n  'circle-alert',\n  'ellipsis',\n  'plus',\n  'trash-2',\n  'x',\n  'layout-dashboard',\n  'ellipsis-vertical',\n  'house',\n  'map-pin',\n  'panels-top-left',\n  'grip-vertical',\n  'download',\n  'upload',\n  'minus',\n  'archive',\n  'ban',\n  'pencil',\n  'settings',\n  'sliders-horizontal',\n  'square-pen',\n  'copy',\n  'funnel',\n  'external-link',\n  'refresh-cw',\n  'wrench',\n  'brush-cleaning',\n  'cloud-upload',\n  'wand-sparkles',\n  'user',\n  'users',\n  'user-x',\n  'key-round',\n  'lock-keyhole',\n  'user-round',\n  'eye',\n  'eye-off',\n  'log-out',\n  'send-horizontal',\n  'bell',\n  'bell-dot',\n  'message-square-plus',\n  'star',\n  'circle-question-mark',\n  'phone',\n  'share-2',\n  'image',\n  'circle-stop',\n  'circle-play',\n  'headset',\n  'file',\n  'clipboard-list',\n  'printer',\n  'type',\n  'hash',\n  'at-sign',\n  'text-wrap',\n  'circle-dot',\n  'square-check',\n  'list',\n  'toggle-right',\n  'clock',\n  'circle-check',\n  'triangle-alert',\n  'calendar-days',\n  'calendar-1',\n  'loader-circle',\n  'life-buoy',\n  'shopping-cart',\n  'box',\n  'package',\n  'truck',\n  'chart-no-axes-combined',\n  'dollar-sign',\n  'credit-card',\n  'receipt-text',\n  'store',\n  'factory',\n  'chart-no-axes-column',\n  'battery-full',\n  'scan',\n  'person-standing',\n  'monitor-smartphone',\n  'contrast',\n  'wifi',\n  'signal',\n] as const"
+                }
+            ],
+            "src/app/examples/example-navigation.ts": [
+                {
+                    "name": "EXAMPLE_NAVIGATION",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/examples/example-navigation.ts",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "SidebarNavItem[]",
+                    "defaultValue": "[\n  { id: 'dashboard', label: 'Dashboard', icon: 'layout-dashboard' },\n  {\n    id: 'inventory',\n    label: 'Inventory',\n    icon: 'package',\n    children: [\n      { id: 'products', label: 'Products' },\n      { id: 'stock-levels', label: 'Stock levels' },\n    ],\n  },\n  {\n    id: 'logistics',\n    label: 'Logistics',\n    icon: 'truck',\n    children: [\n      { id: 'customers', label: 'Customers' },\n      { id: 'shipments', label: 'Shipments' },\n    ],\n  },\n  {\n    id: 'sales',\n    label: 'Sales',\n    icon: 'shopping-cart',\n    children: [{ id: 'orders', label: 'Orders' }],\n  },\n  { id: 'reports', label: 'Reports', icon: 'chart-no-axes-combined' },\n  { id: 'settings', label: 'Settings', icon: 'settings' },\n]"
                 }
             ],
             "src/app/components/checkbox-group/checkbox-group.component.ts": [
@@ -12084,6 +13364,21 @@
                     "kind": 193
                 }
             ],
+            "src/app/examples/orders-page/orders-page.component.ts": [
+                {
+                    "name": "Order",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "coverageIgnore": false,
+                    "rawtype": "DataTableRow & literal type",
+                    "file": "src/app/examples/orders-page/orders-page.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "",
+                    "description": "",
+                    "kind": 194
+                }
+            ],
             "src/app/components/otp-input/otp-input.component.ts": [
                 {
                     "name": "OtpInputSize",
@@ -12507,7 +13802,7 @@
                 "linktype": "component",
                 "name": "ButtonComponent",
                 "coveragePercent": 100,
-                "coverageCount": "12/12",
+                "coverageCount": "13/13",
                 "status": "very-good"
             },
             {
@@ -13374,8 +14669,8 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "CustomerManagementPageComponent",
-                "coveragePercent": 6,
-                "coverageCount": "1/16",
+                "coveragePercent": 4,
+                "coverageCount": "2/41",
                 "status": "low"
             },
             {
@@ -13384,6 +14679,35 @@
                 "linktype": "miscellaneous",
                 "linksubtype": "typealias",
                 "name": "CustomerRow",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/examples/example-navigation.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "EXAMPLE_NAVIGATION",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/examples/orders-page/orders-page.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "OrdersPageComponent",
+                "coveragePercent": 4,
+                "coverageCount": "1/23",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/examples/orders-page/orders-page.component.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "Order",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
