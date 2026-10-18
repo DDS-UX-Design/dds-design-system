@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/angular';
-import { expect, within } from 'storybook/test';
+import { expect, userEvent, waitFor, within } from 'storybook/test';
 import {
   ButtonComponent,
   ButtonIconType,
@@ -239,6 +239,35 @@ export const PrimaryFocused: Story = {
   },
   parameters: {
     docs: { description: { story: 'Keyboard focus uses a visible focus ring.' } },
+  },
+};
+
+export const ActualFocus: Story = {
+  name: 'Actual focus',
+  args: {
+    text: 'Focus this button',
+    state: 'default',
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Uses actual DOM focus rather than the focused preview state. Test Primary, Secondary, Ghost, and Danger with the controls. DDS buttons explicitly take focus on click for consistent Safari behavior. Use keyboard navigation (Option+Tab when needed in Safari) to check keyboard focus too.',
+      },
+    },
+  },
+  play: async ({ canvasElement }) => {
+    const button = within(canvasElement).getByRole('button') as HTMLButtonElement;
+    if (button.disabled) return;
+
+    await userEvent.click(button);
+    await expect(button).toHaveFocus();
+    const styles = button.ownerDocument.defaultView!.getComputedStyle(button);
+    await expect(styles.appearance).toBe('none');
+    await expect(styles.boxShadow).not.toBe('none');
+    await waitFor(() => {
+      expect(button.ownerDocument.defaultView!.getComputedStyle(button).boxShadow).toContain('2px');
+    });
   },
 };
 
