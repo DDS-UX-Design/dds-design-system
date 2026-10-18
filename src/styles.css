@@ -2,6 +2,7 @@
 @import './tokens/primitives/colors.css';
 @import './tokens/primitives/spacing.css';
 @import './tokens/primitives/radius.css';
+@import './tokens/primitives/shadows.css';
 @import './tokens/primitives/typography.css';
 @import './tokens/semantic/button.tokens.css';
 @import './tokens/semantic/text.tokens.css';
