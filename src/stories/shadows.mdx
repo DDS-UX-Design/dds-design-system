@@ -1,0 +1,158 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import shadowExample from '../images/shadow-default.svg';
+
+<Meta title="Foundations/Shadows" />
+
+<div className="dds-shadows">
+  <p className="dds-shadows__eyebrow">FOUNDATIONS</p>
+
+# Shadows
+
+Shadows add depth and separation to surfaces across desktop and mobile interfaces.
+Use the shared shadow token to keep elevation consistent.
+
+## Token
+
+<div className="dds-shadows__table-scroll">
+  <table aria-label="DDS shadow tokens">
+    <thead>
+      <tr>
+        <th scope="col">Token</th>
+        <th scope="col">Value</th>
+        <th scope="col">Example</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <code>--shadow-default</code>
+        </td>
+        <td>
+          <span className="dds-shadows__value">0 2px 16px 0 rgba(0,0,0,.8)</span>
+        </td>
+        <td>
+          <div className="dds-shadows__example">
+            <img src={shadowExample} alt="White circle with the default shadow effect" />
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+## Implementation
+
+The value above is transcribed from the Figma documentation. The Figma `shadow-default`
+effect uses a **4px vertical offset** and **8% black opacity**, which differ from the printed
+2px offset and 80% opacity. The CSS token follows the effect:
+
+```css
+:root {
+  --shadow-default: 0 4px 16px 0 rgb(0 0 0 / 8%);
+}
+
+.surface {
+  box-shadow: var(--shadow-default);
+}
+```
+
+The live example below applies the shared CSS token.
+
+<div
+  className="dds-shadows__live"
+  role="img"
+  aria-label="White circle using the shared default CSS shadow token"
+/>
+
+[View the shadows source in Figma](https://www.figma.com/design/u0lpCPrGMj68e9RMIRuYxL/DDS---Design-System-v1.0?node-id=675-1926)
+
+</div>
+
+<style>{`
+  .dds-shadows {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 24px 16px 72px;
+    color: var(--text-colour-default, #171717);
+    font-family: Inter, system-ui, sans-serif;
+  }
+
+  .dds-shadows__eyebrow {
+    margin-bottom: 8px !important;
+    color: var(--text-colour-accent, #224583);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+  }
+
+  .dds-shadows > h1 {
+    margin-bottom: 16px;
+    color: var(--text-colour-default, #171717);
+    font-size: 48px;
+    font-weight: 400;
+    letter-spacing: -0.03em;
+  }
+
+  .dds-shadows > h2 {
+    margin-top: 64px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border-colour-subtle, #e5e5e5);
+  }
+
+  .dds-shadows__table-scroll {
+    overflow: hidden;
+    margin-top: var(--space-7, 32px);
+    border: 1px solid var(--border-colour-subtle, #e5e5e5);
+    border-radius: 8px;
+    background: var(--bg-colour-white, #fff);
+  }
+  .dds-shadows table { width: 100%; min-width: 660px; margin: 0; border-collapse: collapse; }
+  .dds-shadows table tr { background: transparent; border: 0; }
+  .dds-shadows table th, .dds-shadows table td {
+    width: 33.333%;
+    padding: 0 var(--space-5, 20px);
+    border: 0;
+    text-align: left;
+    vertical-align: middle;
+  }
+  .dds-shadows table th {
+    height: 52px;
+    border-bottom: 1px solid var(--border-colour-subtle, #e5e5e5);
+    color: var(--text-colour-secondary, #404040);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    font-weight: 600;
+    line-height: 20px;
+    text-transform: uppercase;
+  }
+  .dds-shadows table td { height: 80px; font-size: 13px; }
+  .dds-shadows td > code {
+    padding: 4px 8px;
+    border: 1px solid var(--border-colour-subtle, #e5e5e5);
+    border-radius: var(--radius-sm, 4px);
+    background: var(--bg-colour-default, #f7f7f7);
+    color: var(--text-colour-secondary, #404040);
+    font-size: 12px;
+    white-space: nowrap;
+  }
+  .dds-shadows__value { font-family: monospace; font-size: 12px; white-space: nowrap; }
+  .dds-shadows__example { position: relative; width: 35px; height: 35px; }
+  .dds-shadows__example img {
+    position: absolute;
+    top: -12px;
+    left: -16px;
+    max-width: none;
+  }
+  .dds-shadows__live {
+    width: 35px;
+    height: 35px;
+    margin: 24px 16px 40px;
+    border-radius: var(--radius-full, 9999px);
+    background: var(--bg-colour-white, #fff);
+    box-shadow: var(--shadow-default);
+  }
+  @media (max-width: 760px) {
+    .dds-shadows > h1 { font-size: 40px; }
+    .dds-shadows__table-scroll { overflow-x: auto; }
+  }
+`}</style>
