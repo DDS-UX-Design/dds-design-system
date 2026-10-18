@@ -103,6 +103,8 @@ import {
   LucideContrast,
   LucideWifi,
   LucideSignal,
+  LucidePanelLeftOpen,
+  LucidePanelLeftClose,
 } from '@lucide/angular';
 
 export const DDS_ICON_NAMES = [
@@ -207,6 +209,8 @@ export const DDS_ICON_NAMES = [
   'contrast',
   'wifi',
   'signal',
+  'panel-left-open',
+  'panel-left-close',
 ] as const;
 
 export type DdsIconName = (typeof DDS_ICON_NAMES)[number];
@@ -318,6 +322,8 @@ export type DdsIconName = (typeof DDS_ICON_NAMES)[number];
       LucideContrast,
       LucideWifi,
       LucideSignal,
+      LucidePanelLeftOpen,
+      LucidePanelLeftClose,
     ),
   ],
   template: `
