@@ -1,23 +1,34 @@
-<div class="customer-page">
+<div class="customer-page" [class.customer-page--nav-open]="mobileNavigationOpen">
+  <div class="customer-page__mobile-nav">
+    <dds-button
+      variant="secondary"
+      (click)="mobileNavigationOpen = !mobileNavigationOpen"
+      [ariaLabel]="mobileNavigationOpen ? 'Close navigation' : 'Open navigation'"
+      >{{ mobileNavigationOpen ? 'Close navigation' : 'Menu' }}</dds-button
+    >
+  </div>
   <dds-sidebar-nav
     class="customer-page__sidebar"
     title="DDS Enterprise"
     footer="Version 1.0.0"
     [items]="navigationItems"
-    [(activeItemId)]="activeItemId"
+    [activeItemId]="activeItemId"
+    (activeItemIdChange)="navigate($event)"
     [(expandedIds)]="expandedIds"
   ></dds-sidebar-nav>
 
   <main class="customer-page__main">
     <dds-top-bar-nav
       pageTitle="Customers"
-      [notificationCount]="128"
-      [cartCount]="3"
+      [showNotifications]="false"
+      [showCart]="false"
+      [menuItems]="[]"
       userInitials="JB"
       userName="Jordan Blake"
     ></dds-top-bar-nav>
 
     <dds-page-toolbar
+      class="customer-page__desktop-toolbar"
       searchPlaceholder="Search by customer, ID, or location"
       filterLabel="All statuses"
       actionLabel="New customer"
@@ -26,24 +37,138 @@
       [filterValue]="statusFilter"
       (searchValueChange)="updateSearch($event)"
       (filterValueChange)="updateStatus($event)"
+      [refreshing]="loading"
+      [actionDisabled]="error"
+      (action)="openCreate()"
       (refresh)="refreshTable()"
     ></dds-page-toolbar>
 
+    <div class="customer-page__mobile-toolbar">
+      <dds-search
+        placeholder="Search customers"
+        ariaLabel="Search customers"
+        [showLabel]="false"
+        [required]="false"
+        [value]="searchValue"
+        (valueChange)="updateSearch($event)"
+      ></dds-search>
+      <dds-select
+        ariaLabel="Customer status"
+        [showLabel]="false"
+        [showHelperText]="false"
+        [required]="false"
+        [options]="statusOptions"
+        [value]="statusFilter"
+        (valueChange)="updateStatus($event)"
+      ></dds-select>
+      <div class="customer-page__actions">
+        <dds-button variant="secondary" [disabled]="loading" (click)="refreshTable()"
+          >Refresh</dds-button
+        >
+        <dds-button [disabled]="loading || error" (click)="openCreate()">New customer</dds-button>
+      </div>
+    </div>
+
     <section class="customer-page__content" aria-label="Customer records">
-      <div class="customer-page__table-card">
+      <div class="customer-page__simulation">
+        <label
+          ><input
+            type="checkbox"
+            [checked]="failNextRequest"
+            [disabled]="loading"
+            (change)="failNextRequest = !failNextRequest"
+          />
+          Fail next refresh</label
+        >
+        <span>Prototype · changes stay in this session</span>
+      </div>
+      <dds-alert
+        *ngIf="notice && !error && !loading"
+        tone="success"
+        [text]="notice"
+        (dismissed)="notice = ''"
+      ></dds-alert>
+      <p role="status" aria-live="polite">
+        {{
+          loading
+            ? 'Loading customers…'
+            : error
+              ? ''
+              : filteredCustomers.length + ' customers found'
+        }}
+      </p>
+      <dds-alert
+        *ngIf="error"
+        tone="danger"
+        text="Customers could not be loaded. Check your connection and try again."
+        [dismissible]="false"
+        [showAction]="true"
+        actionLabel="Retry"
+        (action)="refreshTable()"
+      ></dds-alert>
+
+      <section *ngIf="creating" class="customer-page__panel" aria-labelledby="new-customer-title">
+        <h2 id="new-customer-title">New customer</h2>
+        <form (submit)="saveCustomer($event)" novalidate>
+          <dds-text-input
+            label="Customer name"
+            [required]="true"
+            [value]="draftName"
+            (valueChange)="draftName = $event"
+            [state]="submitted && !draftName.trim() ? 'error' : 'default'"
+            errorMessage="Enter a customer name."
+            [showHelperText]="false"
+          ></dds-text-input>
+          <dds-text-input
+            label="Location"
+            [required]="true"
+            [value]="draftLocation"
+            (valueChange)="draftLocation = $event"
+            [state]="submitted && !draftLocation.trim() ? 'error' : 'default'"
+            errorMessage="Enter a location."
+            [showHelperText]="false"
+          ></dds-text-input>
+          <div class="customer-page__actions">
+            <dds-button type="submit">Save customer</dds-button>
+            <dds-button variant="secondary" (click)="creating = false">Cancel</dds-button>
+          </div>
+        </form>
+      </section>
+      <section *ngIf="detail" class="customer-page__panel" aria-labelledby="customer-detail-title">
+        <h2 id="customer-detail-title">{{ detail.name }}</h2>
+        <p>{{ detail.customerId }} · {{ detail.location }} · {{ detail.status }}</p>
+        <p>Last order: {{ detail.lastOrder }}</p>
+        <dds-button variant="secondary" (click)="detail = null">Close details</dds-button>
+      </section>
+      <div *ngIf="!error" class="customer-page__table-card" [attr.aria-busy]="loading">
+        <div
+          *ngIf="!loading && (searchValue || statusFilter !== 'all')"
+          class="customer-page__actions"
+        >
+          <dds-button variant="secondary" size="small" (click)="clearFilters()"
+            >Clear filters</dds-button
+          >
+        </div>
         <dds-data-table
           caption="Customers"
           [columns]="columns"
           [rows]="visibleCustomers"
+          [loading]="loading"
+          [rowActions]="[{ label: 'View customer', icon: 'eye' }]"
+          (rowAction)="showDetails($event.row)"
           [selectable]="true"
           [currentPage]="currentPage"
           [totalPages]="totalPages"
           [totalItems]="filteredCustomers.length"
           [pageSize]="pageSize"
           [selectedKeys]="selectedKeys"
-          emptyMessage="No customers match your filters."
+          [emptyMessage]="
+            customers.length
+              ? 'No customers match your filters. Clear filters to try again.'
+              : 'No customers yet. Add your first customer to get started.'
+          "
           (selectedKeysChange)="selectedKeys = $event"
-          (pageChange)="currentPage = $event"
+          (pageChange)="changePage($event)"
         ></dds-data-table>
       </div>
     </section>
