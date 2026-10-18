@@ -1,4 +1,20 @@
-import { Component } from '@angular/core';
+import { EXAMPLE_NAVIGATION } from '../example-navigation';
+import { CommonModule } from '@angular/common';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  Input,
+  OnInit,
+  OnDestroy,
+  inject,
+} from '@angular/core';
+import { AlertComponent } from '../../components/alert/alert.component';
+import { ButtonComponent } from '../../components/button/button.component';
+import { TextInputComponent } from '../../components/text-input/text-input.component';
+import { SearchComponent } from '../../components/search/search.component';
+import { SelectComponent } from '../../components/select/select.component';
 import {
   DataTableColumn,
   DataTableComponent,
@@ -6,10 +22,7 @@ import {
 } from '../../components/data-table/data-table.component';
 import { PageToolbarComponent } from '../../components/page-toolbar/page-toolbar.component';
 import { SelectOption } from '../../components/select/select.component';
-import {
-  SidebarNavComponent,
-  SidebarNavItem,
-} from '../../components/sidebar-nav/sidebar-nav.component';
+import { SidebarNavComponent } from '../../components/sidebar-nav/sidebar-nav.component';
 import { StatusBadgeTone } from '../../components/status-badge/status-badge.component';
 import { TopBarNavComponent } from '../../components/top-bar-nav/top-bar-nav.component';
 
@@ -26,36 +39,116 @@ type CustomerRow = DataTableRow & {
 /** A composed dashboard example showing DDS navigation, form controls, and data display together. */
 @Component({
   selector: 'dds-customer-management-page',
+  changeDetection: ChangeDetectionStrategy.Default,
   standalone: true,
-  imports: [DataTableComponent, PageToolbarComponent, SidebarNavComponent, TopBarNavComponent],
+  imports: [
+    CommonModule,
+    AlertComponent,
+    ButtonComponent,
+    TextInputComponent,
+    SearchComponent,
+    SelectComponent,
+    DataTableComponent,
+    PageToolbarComponent,
+    SidebarNavComponent,
+    TopBarNavComponent,
+  ],
   templateUrl: './customer-management-page.component.html',
   styleUrl: './customer-management-page.component.css',
 })
-export class CustomerManagementPageComponent {
-  readonly navigationItems: SidebarNavItem[] = [
-    { id: 'dashboard', label: 'Dashboard', icon: 'layout-dashboard' },
-    {
-      id: 'inventory',
-      label: 'Inventory',
-      icon: 'package',
-      children: [
-        { id: 'products', label: 'Products' },
-        { id: 'stock-levels', label: 'Stock levels' },
-      ],
-    },
-    {
-      id: 'logistics',
-      label: 'Logistics',
-      icon: 'truck',
-      children: [
-        { id: 'customers', label: 'Customers' },
-        { id: 'orders', label: 'Orders' },
-        { id: 'shipments', label: 'Shipments' },
-      ],
-    },
-    { id: 'reports', label: 'Reports', icon: 'chart-no-axes-combined' },
-    { id: 'settings', label: 'Settings', icon: 'settings' },
-  ];
+export class CustomerManagementPageComponent implements OnInit, OnDestroy {
+  /** Simulated first-request outcome for repeatable prototype scenarios. */
+  @Input() initialState: 'ready' | 'loading' | 'error' | 'empty' = 'ready';
+  @Input() requestDelay = 700;
+  @Input() initialQuery = '';
+  @Input() initialStatus = 'all';
+  loading = false;
+  error = false;
+  failNextRequest = false;
+  notice = '';
+  mobileNavigationOpen = false;
+  creating = false;
+  draftName = '';
+  draftLocation = '';
+  submitted = false;
+  detail: CustomerRow | null = null;
+  private readonly changeDetector = inject(ChangeDetectorRef);
+  private requestTimer?: ReturnType<typeof setTimeout>;
+  private readonly element = inject<ElementRef<HTMLElement>>(ElementRef);
+
+  ngOnInit(): void {
+    this.searchValue = this.initialQuery;
+    this.statusFilter = this.initialStatus;
+    if (this.initialState === 'empty') this.customers = [];
+    if (this.initialState === 'error') this.error = true;
+    if (this.initialState === 'loading') this.refreshTable();
+  }
+
+  ngOnDestroy(): void {
+    clearTimeout(this.requestTimer);
+  }
+
+  clearFilters(): void {
+    this.updateSearch('');
+    this.updateStatus('all');
+  }
+
+  changePage(page: number): void {
+    this.currentPage = Math.min(this.totalPages, Math.max(1, page));
+    this.selectedKeys = [];
+  }
+
+  openCreate(): void {
+    this.creating = true;
+    this.detail = null;
+    this.draftName = '';
+    this.draftLocation = '';
+    this.submitted = false;
+  }
+
+  saveCustomer(event: Event): void {
+    event.preventDefault();
+    this.submitted = true;
+    if (!this.draftName.trim() || !this.draftLocation.trim()) {
+      const fields = this.element.nativeElement.querySelectorAll<HTMLInputElement>('form input');
+      fields[this.draftName.trim() ? 1 : 0]?.focus();
+      return;
+    }
+    const id = Math.max(0, ...this.customers.map((customer) => customer.id)) + 1;
+    this.customers = [
+      this.customer(
+        id,
+        this.draftName.trim(),
+        `CUS-${1048 + id}`,
+        this.draftLocation.trim(),
+        'No orders yet',
+        'Active',
+        'success',
+      ),
+      ...this.customers,
+    ];
+    this.creating = false;
+    this.clearFilters();
+    this.notice = `${this.draftName.trim()} added successfully.`;
+  }
+
+  showDetails(row: DataTableRow): void {
+    this.detail = row as CustomerRow;
+    this.creating = false;
+  }
+
+  navigate(id: string): void {
+    this.activeItemId = 'customers';
+    this.mobileNavigationOpen = false;
+    if (id === 'orders') {
+      this.notice = 'Explore the Orders layout under Examples / Orders in Storybook.';
+      return;
+    }
+    if (id !== 'customers')
+      this.notice = 'This prototype demonstrates Customers. Other sections are not available yet.';
+  }
+
+  readonly navigationItems = EXAMPLE_NAVIGATION;
 
   readonly statusOptions: SelectOption[] = [
     { label: 'All statuses', value: 'all' },
@@ -79,7 +172,7 @@ export class CustomerManagementPageComponent {
     },
   ];
 
-  readonly customers: CustomerRow[] = [
+  customers: CustomerRow[] = [
     this.customer(
       1,
       'Acacia Market',
@@ -191,7 +284,7 @@ export class CustomerManagementPageComponent {
   ];
 
   activeItemId = 'customers';
-  expandedIds = ['logistics'];
+  expandedIds = ['crm'];
   searchValue = '';
   statusFilter = 'all';
   currentPage = 1;
@@ -226,18 +319,31 @@ export class CustomerManagementPageComponent {
   updateSearch(value: string): void {
     this.searchValue = value;
     this.currentPage = 1;
+    this.selectedKeys = [];
   }
 
   updateStatus(value: string): void {
     this.statusFilter = value;
     this.currentPage = 1;
+    this.selectedKeys = [];
   }
 
   refreshTable(): void {
-    this.searchValue = '';
-    this.statusFilter = 'all';
-    this.currentPage = 1;
+    clearTimeout(this.requestTimer);
+    this.loading = true;
+    this.error = false;
     this.selectedKeys = [];
+    const fail = this.failNextRequest;
+    this.failNextRequest = false;
+    this.requestTimer = setTimeout(
+      () => {
+        this.loading = false;
+        this.error = fail;
+        this.notice = fail ? '' : 'Customer records are up to date.';
+        this.changeDetector.markForCheck();
+      },
+      Math.max(0, this.requestDelay),
+    );
   }
 
   private customer(
