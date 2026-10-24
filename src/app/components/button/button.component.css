@@ -24,13 +24,6 @@
     box-shadow 0.2s ease-in-out;
 }
 
-.dds-button:disabled {
-  background-color: var(--btn-colour-primary-disabled);
-  border-color: var(--btn-colour-primary-disabled);
-  cursor: not-allowed;
-  color: var(--text-colour-disabled);
-}
-
 .dds-button--large {
   height: 48px;
   min-height: 48px;
@@ -55,72 +48,41 @@
   line-height: 16px;
 }
 
-/* Primary Button */
+/* Colours inherit the nearest Semantic Colours theme. Keep these mappings local
+   to Button so other components can migrate independently. */
 .dds-button--primary {
-  background-color: var(--btn-colour-primary);
-  border-color: var(--btn-colour-primary);
-  color: var(--text-colour-inverse);
+  background-color: var(--color-interactive-default);
+  border-color: var(--color-interactive-default);
+  color: var(--color-text-on-interactive);
 }
 
 .dds-button--primary:hover:not(:disabled),
 .dds-button--state-hover.dds-button--primary:not(:disabled) {
-  background-color: var(--btn-colour-primary-hover);
-  border-color: var(--btn-colour-primary-hover);
+  background-color: var(--color-interactive-hover);
+  border-color: var(--color-interactive-hover);
 }
 
-.dds-button--primary:focus,
-.dds-button--primary:focus-visible,
-.dds-button--primary:active,
-.dds-button--primary:hover:active,
-.dds-button--state-focused.dds-button--primary:not(:disabled) {
-  background-color: var(--btn-colour-primary);
-  border-color: var(--colour-neutral-white);
-  box-shadow: var(--btn-primary-focus-ring);
+.dds-button--primary:active:not(:disabled) {
+  background-color: var(--color-interactive-pressed);
+  border-color: var(--color-interactive-pressed);
 }
 
-/* Secondary Button */
 .dds-button--secondary {
-  background-color: var(--btn-colour-secondary);
-  border-color: var(--border-colour-default);
-  color: var(--text-colour-default);
+  background-color: var(--color-bg-elevated);
+  border-color: var(--color-border-strong);
+  color: var(--color-text-primary);
 }
 
 .dds-button--secondary:hover:not(:disabled),
-.dds-button--state-hover.dds-button--secondary:not(:disabled) {
-  background-color: var(--btn-colour-secondary-hover);
-  border-color: var(--border-colour-default);
+.dds-button--state-hover.dds-button--secondary:not(:disabled),
+.dds-button--secondary:active:not(:disabled) {
+  background-color: var(--color-bg-subtle);
 }
 
-.dds-button--secondary:focus,
-.dds-button--secondary:focus-visible,
-.dds-button--secondary:active,
-.dds-button--secondary:hover:active,
-.dds-button--state-focused.dds-button--secondary:not(:disabled) {
-  background-color: var(--btn-colour-secondary);
-  border-color: var(--colour-neutral-white);
-  box-shadow: var(--btn-primary-focus-ring);
-}
-
-/* Ghost Button */
 .dds-button--ghost {
-  background-color: var(--btn-colour-ghost);
-  border: none;
-  color: var(--text-colour-accent);
-}
-
-.dds-button--ghost:hover:not(:disabled),
-.dds-button--state-hover.dds-button--ghost:not(:disabled) {
-  background-color: var(--btn-colour-ghost-hover);
-}
-
-.dds-button--ghost:focus,
-.dds-button--ghost:focus-visible,
-.dds-button--ghost:active,
-.dds-button--ghost:hover:active,
-.dds-button--state-focused.dds-button--ghost:not(:disabled) {
-  background-color: var(--btn-colour-ghost-hover);
-  border-color: var(--border-colour-default);
-  box-shadow: var(--btn-primary-focus-ring);
+  background-color: var(--color-bg-transparent);
+  border-color: var(--color-bg-transparent);
+  color: var(--color-text-primary);
 }
 
 .dds-button--ghost .dds-button__label {
@@ -130,7 +92,7 @@
 }
 
 .dds-button--ghost .dds-button__label::after {
-  background-color: var(--bg-colour-accent);
+  background-color: currentColor;
   content: '';
   display: block;
   position: absolute;
@@ -141,54 +103,54 @@
   height: 1px;
 }
 
-/* Danger Button */
-
 .dds-button--danger.dds-button--primary {
-  background-color: var(--btn-colour-danger);
-  border-color: var(--btn-colour-danger);
+  background-color: var(--color-feedback-error);
+  border-color: var(--color-feedback-error);
+  color: var(--color-text-on-feedback);
 }
 
 .dds-button--danger.dds-button--primary:hover:not(:disabled),
-.dds-button--danger.dds-button--state-hover.dds-button--primary:not(:disabled) {
-  background-color: var(--btn-colour-danger-hover);
-  border-color: var(--btn-colour-danger-hover);
+.dds-button--danger.dds-button--state-hover.dds-button--primary:not(:disabled),
+.dds-button--danger.dds-button--primary:active:not(:disabled) {
+  background-color: var(--color-interactive-danger-hover);
+  border-color: var(--color-interactive-danger-hover);
 }
 
-.dds-button--danger.dds-button--primary:focus,
-.dds-button--danger.dds-button--primary:focus-visible,
-.dds-button--danger.dds-button--primary:active,
-.dds-button--danger.dds-button--primary:hover:active,
+/* Actual focus and the design-preview state share the same ring. Focus remains
+   independent from press; do not force the default background on activation. */
+.dds-button:focus:not(:disabled),
+.dds-button--state-focused:not(:disabled) {
+  border-color: var(--color-bg-elevated);
+  box-shadow: 0 0 0 3px var(--color-border-focus);
+}
+
+.dds-button--danger.dds-button--primary:focus:not(:disabled),
 .dds-button--danger.dds-button--state-focused.dds-button--primary:not(:disabled) {
-  background-color: var(--btn-colour-danger);
-  border-color: var(--colour-neutral-white);
-  box-shadow: var(--btn-danger-focus-ring);
+  box-shadow: 0 0 0 3px var(--color-border-focus-danger);
 }
 
-/* Disabled states */
+.dds-button--ghost:focus:not(:disabled),
+.dds-button--state-focused.dds-button--ghost:not(:disabled) {
+  border-color: var(--color-border-focus);
+  box-shadow: none;
+}
 
-.dds-button--primary:disabled {
-  background-color: var(--btn-colour-primary-disabled);
-  border-color: var(--btn-colour-primary-disabled);
+/* Disabled is authoritative over appearance and every preview/pointer state. */
+.dds-button:disabled {
+  background-color: var(--color-bg-subtle);
+  border-color: var(--color-bg-subtle);
+  color: var(--color-text-disabled);
+  box-shadow: none;
+  cursor: not-allowed;
 }
 
 .dds-button--secondary:disabled {
-  background-color: var(--btn-colour-secondary-disabled);
-  border-color: var(--border-colour-disabled);
+  border-color: var(--color-border-default);
 }
 
 .dds-button--ghost:disabled {
-  background-color: var(--btn-colour-ghost-disabled);
-  border: none;
-}
-
-.dds-button--danger.dds-button--primary:disabled {
-  background-color: var(--btn-colour-danger-disabled);
-  border-color: var(--btn-colour-danger-disabled);
-  color: var(--btn-colour-danger-text-disabled);
-}
-
-.dds-button--ghost:disabled .dds-button__label::after {
-  background-color: var(--text-colour-disabled);
+  background-color: var(--color-bg-transparent);
+  border-color: var(--color-bg-transparent);
 }
 
 /* Icon Button */
