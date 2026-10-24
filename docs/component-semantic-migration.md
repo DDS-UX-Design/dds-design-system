@@ -60,3 +60,11 @@ Surfaces, labels, helper/placeholder text, validation and focus follow the text-
 No new hover or pressed variants were added. Selection remains native checked/change behaviour. Native select popup appearance is partly platform-controlled and requires visual review. There is no Toggle implementation. Six new tests verify disabled controls and groups cannot focus or activate. The CSS contract tests verify only public semantic names and disabled cascade precedence, substituting unique test colours because jsdom does not resolve custom properties; this is not visual verification. All 11 CSS contract tests pass. Targeted component/story tests pass (38 tests); Storybook build is run before the family commit.
 
 Product effect: Select in Page Toolbar and related screens and Date Input in Customer Management now inherit theme colours. Group and standalone control consumers keep the same API, sizing and events. No template or interaction code changed.
+
+## Feedback family
+
+Changed Alert, Toast and Status Badge styles; added Light/Dark/comparison stories with all tones, actions and long messages. Each tone uses `--color-feedback-{info,success,warning,error}` for status icons, borders and progress and the corresponding `-subtle` role for surfaces. Alert/Toast body text uses text-primary; neutral Badge uses bg-default/text-muted. Dismiss icons inherit text; focus uses border-focus, with border-focus-danger in destructive messages. Toast shadow uses effect-shadow. No timers, outputs, action semantics or dimensions changed. No disabled, loading or pressed variants were introduced to these messages.
+
+CSS contracts check all four Alert/Toast tone combinations and icon inheritance; 14 contract tests pass. Existing Angular dismissal/story tests remain applicable (the full suite has 46 passing tests and the unchanged starter-title failure). Storybook production build is run for this family. Browser visuals remain unavailable. Existing product table status badges inherit new colours; no product layout files were changed.
+
+Separate design gap: Alert currently uses the same info icon for all tones. This colour migration preserves that implementation; it does not claim icon parity with Figma.

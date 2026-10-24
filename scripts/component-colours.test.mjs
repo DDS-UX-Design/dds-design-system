@@ -4,6 +4,7 @@ import assert from 'node:assert/strict';
 import { JSDOM } from 'jsdom';
 
 const families = {
+  feedback: ['alert', 'toast', 'status-badge'],
   entry: ['text-input', 'textarea', 'password-input', 'search', 'otp-input'],
   selection: ['checkbox', 'checkbox-group', 'radio', 'radio-group', 'select', 'date-input'],
 };
@@ -22,7 +23,7 @@ for (const [family, components] of Object.entries(families)) {
       const source = css(name);
       assert.doesNotMatch(
         source,
-        /var\(--(?:.*colour|dds-primitive|grey-|blue-|red-|green-|yellow-|teal-)/,
+        /var\(--(?:(?:text|bg|border|icon|btn)-colour|colour-neutral|dds-primitive|grey-|blue-|red-|green-|yellow-|teal-)/,
         name,
       );
       assert.doesNotMatch(source, /#[\da-f]{3,8}\b|rgba?\(/i, name);
@@ -84,3 +85,28 @@ test('validation copy and destructive focus retain their semantic roles', () => 
   }
   dom.window.close();
 });
+
+for (const name of ['alert', 'toast']) {
+  test(`${name}: each feedback tone uses its own surface, border and icon role`, () => {
+    for (const tone of ['info', 'success', 'warning', 'danger']) {
+      const role = tone === 'danger' ? 'error' : tone;
+      const dom = new JSDOM(
+        `<style>${cascadeCss(name)}</style><div class="dds-${name} dds-${name}--${tone}"><span class="dds-${name}__status-icon"></span></div>`,
+      );
+      const element = dom.window.document.querySelector('div');
+      assert.equal(
+        dom.window.getComputedStyle(element).backgroundColor,
+        sentinel(`--color-feedback-${role}-subtle`),
+      );
+      assert.equal(
+        dom.window.getComputedStyle(element).borderLeftColor,
+        sentinel(`--color-feedback-${role}`),
+      );
+      assert.equal(
+        dom.window.getComputedStyle(element.firstChild).color,
+        sentinel(`--color-feedback-${role}`),
+      );
+      dom.window.close();
+    }
+  });
+}
