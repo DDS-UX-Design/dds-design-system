@@ -191,3 +191,23 @@ for (const [name, markup, selector] of [
     dom.window.close();
   });
 }
+
+test('Sidebar follows the current elevated-surface Figma bindings, including active icons', () => {
+  // Isolate each lookup: jsdom caches pseudo-selector matches across ancestor style queries.
+  const value = (selector, property) => {
+    const dom = new JSDOM(
+      `<style>${cascadeCss('sidebar-nav')}</style><aside class="dds-sidebar-nav"><header class="dds-sidebar-nav__header"></header><button class="dds-sidebar-nav__parent dds-sidebar-nav__parent--active"><dds-icon></dds-icon></button><a class="dds-sidebar-nav__child dds-sidebar-nav__child--active"></a></aside>`,
+    );
+    const result = dom.window
+      .getComputedStyle(dom.window.document.querySelector(selector))
+      .getPropertyValue(property);
+    dom.window.close();
+    return result;
+  };
+  assert.equal(value('aside', 'background-color'), sentinel('--color-bg-elevated'));
+  assert.equal(value('aside', 'color'), sentinel('--color-text-primary'));
+  assert.equal(value('header', 'border-bottom-color'), sentinel('--color-border-default'));
+  assert.equal(value('button', 'background-color'), sentinel('--color-feedback-info-subtle'));
+  assert.equal(value('dds-icon', 'color'), sentinel('--color-icon-default'));
+  assert.equal(value('a', 'color'), sentinel('--color-interactive-default'));
+});

@@ -102,3 +102,7 @@ Final verification: `npm run tokens:test` (5 passed), `npm run tokens:check` (18
 ## Subsequent Figma parity batch
 
 The [live parity register](figma-parity-register.md) records a later Button/Text Input comparison with current main definitions. Text Input's blanket disabled label/helper mapping above is superseded by the verified Figma hierarchy (primary label, semantic required marker, secondary helper and strong inside stroke; only native field text is disabled-coloured). Current inset-stroke and geometry changes are a separate parity correction, not part of the original colour-only migration. Other families retain their recorded mappings.
+
+## Sidebar source correction
+
+The [live Sidebar comparison](sidebar-nav-figma-parity.md) supersedes the original Sidebar on-brand mappings in the navigation section. Current Figma main instances use bg-elevated/text-primary, border-default, feedback-info-subtle parent states, interactive-default accents and icon-default active icons. Other navigation/data components retain their earlier mappings. This follow-up also corrects Sidebar anatomy and adds its secondary menu slot; token migration alone did not establish those details.

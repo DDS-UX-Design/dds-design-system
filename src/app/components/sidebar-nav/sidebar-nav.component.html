@@ -2,7 +2,7 @@
   <header class="dds-sidebar-nav__header">
     <div class="dds-sidebar-nav__brand" [hidden]="collapsed">
       <ng-content select="[sidebarLogo]"
-        ><img [src]="logoSrc" width="23" height="24" alt=""
+        ><img [src]="resolvedLogoSrc" width="23" height="24" alt=""
       /></ng-content>
       <span>{{ title }}</span>
     </div>
@@ -25,7 +25,17 @@
     (scroll)="tooltip = undefined"
   >
     <ul class="dds-sidebar-nav__list">
-      <li *ngFor="let item of items" class="dds-sidebar-nav__item">
+      <ng-container
+        *ngTemplateOutlet="navigationItems; context: { $implicit: items }"
+      ></ng-container>
+    </ul>
+    <ul *ngIf="bottomItems.length" class="dds-sidebar-nav__list dds-sidebar-nav__list--bottom">
+      <ng-container
+        *ngTemplateOutlet="navigationItems; context: { $implicit: bottomItems }"
+      ></ng-container>
+    </ul>
+    <ng-template #navigationItems let-menuItems>
+      <li *ngFor="let item of menuItems" class="dds-sidebar-nav__item">
         <button
           *ngIf="item.children?.length; else leafItem"
           class="dds-sidebar-nav__parent"
@@ -137,7 +147,7 @@
           </li>
         </ul>
       </li>
-    </ul>
+    </ng-template>
   </nav>
 
   <footer class="dds-sidebar-nav__footer">

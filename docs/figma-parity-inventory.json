@@ -9489,7 +9489,7 @@
     {
       "name": "Sidebar Nav",
       "pageId": "100:149",
-      "definitionInspection": "metadata only; detailed parity unverified",
+      "definitionInspection": "Current main definitions, Light/Dark contexts/screenshots and read-only layout/semantic bindings inspected on 2026-10-24.",
       "groups": [
         {
           "container": {
@@ -9682,7 +9682,7 @@
       ],
       "lifecycle": "Candidate / conditional inclusion",
       "status": "partial",
-      "priority": "P2",
+      "priority": "P0",
       "angular": [
         {
           "implementation": "src/app/components/sidebar-nav/sidebar-nav.component.ts",
@@ -9693,6 +9693,7 @@
             "footer = 'Version 1.0.0'",
             "ariaLabel = 'Primary navigation'",
             "items: SidebarNavItem[] = []",
+            "bottomItems: SidebarNavItem[] = []",
             "activeItemId?: string",
             "expandedIds: string[] = []"
           ],
@@ -9715,7 +9716,7 @@
           ]
         }
       ],
-      "differencesAndMissingBehaviour": "Expanded/collapsed and disabled links exist. On-brand overlay mappings, logo asset, focus and narrow policy need review.",
+      "differencesAndMissingBehaviour": "Corrected elevated surface/primary text, parent/child and icon state roles, dividers, padding/gaps and exact Light/Dark default logo assets. Optional bottomItems maps current secondary slot. Browser geometry, real hover/focus, scroll and visual review pending. No disabled/loading/pressed design variants claimed.",
       "acceptanceChecks": [
         "Inspect current main definitions and non-archived guidance; confirm supported combinations, semantic bindings, typography, icons and dimensions.",
         "Compare Light/Dark renders at source width and a 320px content width; exercise applicable native keyboard, focus, disabled, validation/loading and long-content states.",
@@ -9726,7 +9727,10 @@
         "Has Dropdown": ["False", "True"],
         "Layout": ["Collapsed", "Expanded"]
       },
-      "nonVariantPropertyCoverage": "Exact property definitions inspected for Button and Text Input; otherwise not inspected. Code API listed separately; no parity inferred."
+      "nonVariantPropertyCoverage": "Exact property definitions inspected for Button and Text Input; otherwise not inspected. Code API listed separately; no parity inferred.",
+      "initialDifferences": "Expanded/collapsed and disabled links exist. On-brand overlay mappings, logo asset, focus and narrow policy need review.",
+      "batchResult": "See sidebar-nav-figma-parity.md and sidebar-nav-figma-evidence.json",
+      "reviewStories": ["src/stories/sidebar-nav-parity.stories.ts"]
     },
     {
       "name": "Status Badge",
