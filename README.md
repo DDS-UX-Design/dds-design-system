@@ -123,3 +123,9 @@ When you update or add a component:
 - src/app/components: reusable Angular components
 - src/stories: Storybook stories for component documentation
 - src/tokens: design tokens for primitive and semantic styles
+
+## Figma token pipeline
+
+Current Figma colours, spacing and radius are versioned in `tokens/figma.snapshot.json`. Run `npm run tokens:build` to generate CSS, and `npm run tokens:check` to detect drift. Preview Light/Dark under **Foundations / Semantic Tokens** in Storybook.
+
+See [the export and review workflow](docs/token-pipeline.md) for updating the snapshot, account-access requirements and component migration limits.
