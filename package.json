@@ -12,7 +12,11 @@
     "serve:ssr:dds-design-system": "node dist/dds-design-system/server/server.mjs",
     "storybook": "ng run dds-design-system:storybook",
     "build-storybook": "ng run dds-design-system:build-storybook",
-    "chromatic": "chromatic"
+    "chromatic": "chromatic",
+    "tokens:sync": "node scripts/sync-tokens.mjs",
+    "tokens:build": "node scripts/build-tokens.mjs",
+    "tokens:check": "node scripts/build-tokens.mjs --check",
+    "tokens:test": "node --test scripts/build-tokens.test.mjs"
   },
   "private": true,
   "packageManager": "npm@11.16.0",

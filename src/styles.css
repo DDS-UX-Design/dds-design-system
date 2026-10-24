@@ -9,6 +9,7 @@
 @import './tokens/semantic/background.tokens.css';
 @import './tokens/semantic/icon.tokens.css';
 @import './tokens/semantic/border.tokens.css';
+@import './tokens/generated/figma.tokens.css';
 
 body {
   margin: 0;

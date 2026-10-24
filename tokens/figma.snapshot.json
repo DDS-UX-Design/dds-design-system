@@ -1,0 +1,3260 @@
+{
+  "schemaVersion": 1,
+  "fileKey": "u0lpCPrGMj68e9RMIRuYxL",
+  "collections": [
+    {
+      "id": "VariableCollectionId:23:1247",
+      "name": "Colour Primitives",
+      "defaultModeId": "23:0",
+      "modes": [
+        {
+          "modeId": "23:0",
+          "name": "Value"
+        }
+      ]
+    },
+    {
+      "id": "VariableCollectionId:94:6409",
+      "name": "Radius",
+      "defaultModeId": "94:0",
+      "modes": [
+        {
+          "modeId": "94:0",
+          "name": "Mode 1"
+        }
+      ]
+    },
+    {
+      "id": "VariableCollectionId:1888:214",
+      "name": "Semantic Colours",
+      "defaultModeId": "1888:0",
+      "modes": [
+        {
+          "modeId": "1888:0",
+          "name": "Light"
+        },
+        {
+          "modeId": "1888:1",
+          "name": "Dark"
+        }
+      ]
+    },
+    {
+      "id": "VariableCollectionId:58:235",
+      "name": "Spacing",
+      "defaultModeId": "58:0",
+      "modes": [
+        {
+          "modeId": "58:0",
+          "name": "Mode 1.tokens 2"
+        }
+      ]
+    }
+  ],
+  "variables": [
+    {
+      "id": "VariableID:2118:103",
+      "name": "Black/60",
+      "variableCollectionId": "VariableCollectionId:23:1247",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "23:0": {
+          "r": 0,
+          "g": 0,
+          "b": 0,
+          "a": 0.6000000238418579
+        }
+      },
+      "description": "",
+      "codeSyntax": {
+        "WEB": "var(--black-60)"
+      }
+    },
+    {
+      "id": "VariableID:2118:105",
+      "name": "Black/65",
+      "variableCollectionId": "VariableCollectionId:23:1247",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "23:0": {
+          "r": 0,
+          "g": 0,
+          "b": 0,
+          "a": 0.6499999761581421
+        }
+      },
+      "description": "",
+      "codeSyntax": {
+        "WEB": "var(--black-65)"
+      }
+    },
+    {
+      "id": "VariableID:2118:104",
+      "name": "Black/8",
+      "variableCollectionId": "VariableCollectionId:23:1247",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "23:0": {
+          "r": 0,
+          "g": 0,
+          "b": 0,
+          "a": 0.07999999821186066
+        }
+      },
+      "description": "",
+      "codeSyntax": {
+        "WEB": "var(--black-8)"
+      }
+    },
+    {
+      "id": "VariableID:1888:213",
+      "name": "Blue muted/900",
+      "variableCollectionId": "VariableCollectionId:23:1247",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "23:0": {
+          "r": 0.16862745583057404,
+          "g": 0.27450981736183167,
+          "b": 0.4156862795352936,
+          "a": 1
+        }
+      },
+      "description": "",
+      "codeSyntax": {
+        "WEB": "var(--blue-muted-900)"
+      }
+    },
+    {
+      "id": "VariableID:24:1257",
+      "name": "Blue/100",
+      "variableCollectionId": "VariableCollectionId:23:1247",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "23:0": {
+          "r": 0.9411764740943909,
+          "g": 0.95686274766922,
+          "b": 0.9803921580314636,
+          "a": 1
+        }
+      },
+      "description": "",
+      "codeSyntax": {}
+    },
+    {
+      "id": "VariableID:24:1258",
+      "name": "Blue/200",
+      "variableCollectionId": "VariableCollectionId:23:1247",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "23:0": {
+          "r": 0.8509804010391235,
+          "g": 0.8941176533699036,
+          "b": 0.9607843160629272,
+          "a": 1
+        }
+      },
+      "description": "",
+      "codeSyntax": {}
+    },
+    {
+      "id": "VariableID:24:1259",
+      "name": "Blue/300",
+      "variableCollectionId": "VariableCollectionId:23:1247",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "23:0": {
+          "r": 0.7019608020782471,
+          "g": 0.7882353067398071,
+          "b": 0.9215686321258545,
+          "a": 1
+        }
+      },
+      "description": "",
+      "codeSyntax": {}
+    },
+    {
+      "id": "VariableID:24:1260",
+      "name": "Blue/400",
+      "variableCollectionId": "VariableCollectionId:23:1247",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "23:0": {
+          "r": 0.5098039507865906,
+          "g": 0.6509804129600525,
+          "b": 0.8666666746139526,
+          "a": 1
+        }
+      },
+      "description": "",
+      "codeSyntax": {}
+    },
+    {
+      "id": "VariableID:24:1261",
+      "name": "Blue/500",
+      "variableCollectionId": "VariableCollectionId:23:1247",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "23:0": {
+          "r": 0.3019607961177826,
+          "g": 0.4901960790157318,
+          "b": 0.8078431487083435,
+          "a": 1
+        }
+      },
+      "description": "",
+      "codeSyntax": {}
+    },
+    {
+      "id": "VariableID:24:1262",
+      "name": "Blue/600",
+      "variableCollectionId": "VariableCollectionId:23:1247",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "23:0": {
+          "r": 0.18431372940540314,
+          "g": 0.3686274588108063,
+          "b": 0.686274528503418,
+          "a": 1
+        }
+      },
+      "description": "",
+      "codeSyntax": {}
+    },
+    {
+      "id": "VariableID:24:1263",
+      "name": "Blue/700",
+      "variableCollectionId": "VariableCollectionId:23:1247",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "23:0": {
+          "r": 0.13333334028720856,
+          "g": 0.2705882489681244,
+          "b": 0.5137255191802979,
+          "a": 1
+        }
+      },
+      "description": "",
+      "codeSyntax": {}
+    },
+    {
+      "id": "VariableID:24:1264",
+      "name": "Blue/800",
+      "variableCollectionId": "VariableCollectionId:23:1247",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "23:0": {
+          "r": 0.10196078568696976,
+          "g": 0.13333334028720856,
+          "b": 0.23137255012989044,
+          "a": 1
+        }
+      },
+      "description": "",
+      "codeSyntax": {}
+    },
+    {
+      "id": "VariableID:24:1265",
+      "name": "Blue/900",
+      "variableCollectionId": "VariableCollectionId:23:1247",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "23:0": {
+          "r": 0.04313725605607033,
+          "g": 0.054901961237192154,
+          "b": 0.10588235408067703,
+          "a": 1
+        }
+      },
+      "description": "",
+      "codeSyntax": {}
+    },
+    {
+      "id": "VariableID:2118:108",
+      "name": "Brand/Ink",
+      "variableCollectionId": "VariableCollectionId:23:1247",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "23:0": {
+          "r": 0.06666667014360428,
+          "g": 0.11372549086809158,
+          "b": 0.24313725531101227,
+          "a": 1
+        }
+      },
+      "description": "",
+      "codeSyntax": {
+        "WEB": "var(--brand-ink)"
+      }
+    },
+    {
+      "id": "VariableID:2118:143",
+      "name": "color/bg/brand",
+      "variableCollectionId": "VariableCollectionId:1888:214",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "1888:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:24:1264"
+        },
+        "1888:1": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:24:1265"
+        }
+      },
+      "description": "Persistent dark brand surface for app headers and navigation; pair with on-brand foregrounds.",
+      "codeSyntax": {
+        "WEB": "var(--color-bg-brand)"
+      }
+    },
+    {
+      "id": "VariableID:1888:215",
+      "name": "color/bg/default",
+      "variableCollectionId": "VariableCollectionId:1888:214",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "1888:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:24:1248"
+        },
+        "1888:1": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:1888:209"
+        }
+      },
+      "description": "Base application canvas for pages, workspaces and full-screen layouts.",
+      "codeSyntax": {
+        "WEB": "var(--color-bg-default)"
+      }
+    },
+    {
+      "id": "VariableID:1888:217",
+      "name": "color/bg/elevated",
+      "variableCollectionId": "VariableCollectionId:1888:214",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "1888:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:27:1461"
+        },
+        "1888:1": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:24:1255"
+        }
+      },
+      "description": "Raised surfaces such as cards, menus, popovers and input interiors.",
+      "codeSyntax": {
+        "WEB": "var(--color-bg-elevated)"
+      }
+    },
+    {
+      "id": "VariableID:2120:182",
+      "name": "color/bg/elevated/opacity-0",
+      "variableCollectionId": "VariableCollectionId:1888:214",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "1888:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:2120:183"
+        },
+        "1888:1": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:2120:184"
+        }
+      },
+      "description": "Transparent endpoint for elevated-surface fades and retained migration treatments.",
+      "codeSyntax": {
+        "WEB": "var(--color-bg-elevated-opacity-0)"
+      }
+    },
+    {
+      "id": "VariableID:2122:14870",
+      "name": "color/bg/elevated/opacity-10",
+      "variableCollectionId": "VariableCollectionId:1888:214",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "1888:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:2122:14871"
+        },
+        "1888:1": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:2122:14872"
+        }
+      },
+      "description": "10% elevated-surface tint for skeleton shimmer and subtle surface highlights.",
+      "codeSyntax": {
+        "WEB": "var(--color-bg-elevated-opacity-10)"
+      }
+    },
+    {
+      "id": "VariableID:1888:218",
+      "name": "color/bg/inverse",
+      "variableCollectionId": "VariableCollectionId:1888:214",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "1888:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:24:1256"
+        },
+        "1888:1": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:24:1248"
+        }
+      },
+      "description": "High-contrast inverse surface, especially tooltips; pair with inverse text and icons.",
+      "codeSyntax": {
+        "WEB": "var(--color-bg-inverse)"
+      }
+    },
+    {
+      "id": "VariableID:2122:14867",
+      "name": "color/bg/inverse/opacity-0",
+      "variableCollectionId": "VariableCollectionId:1888:214",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "1888:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:2122:14868"
+        },
+        "1888:1": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:2122:14869"
+        }
+      },
+      "description": "Transparent endpoint for inverse-surface gradient and fade treatments.",
+      "codeSyntax": {
+        "WEB": "var(--color-bg-inverse-opacity-0)"
+      }
+    },
+    {
+      "id": "VariableID:2122:14873",
+      "name": "color/bg/inverse/opacity-10",
+      "variableCollectionId": "VariableCollectionId:1888:214",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "1888:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:2122:14874"
+        },
+        "1888:1": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:2122:14875"
+        }
+      },
+      "description": "10% inverse tint for subtle shimmer or overlay treatments.",
+      "codeSyntax": {
+        "WEB": "var(--color-bg-inverse-opacity-10)"
+      }
+    },
+    {
+      "id": "VariableID:2122:14864",
+      "name": "color/bg/inverse/opacity-8",
+      "variableCollectionId": "VariableCollectionId:1888:214",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "1888:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:2122:14865"
+        },
+        "1888:1": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:2122:14866"
+        }
+      },
+      "description": "8% inverse tint for subdued skeleton bases and low-emphasis overlays.",
+      "codeSyntax": {
+        "WEB": "var(--color-bg-inverse-opacity-8)"
+      }
+    },
+    {
+      "id": "VariableID:1938:47",
+      "name": "color/bg/overlay",
+      "variableCollectionId": "VariableCollectionId:1888:214",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "1888:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:1888:209"
+        },
+        "1888:1": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:1888:209"
+        }
+      },
+      "description": "Modal backdrop base. Apply the documented 64% layer opacity to dim underlying content.",
+      "codeSyntax": {
+        "WEB": "var(--color-bg-overlay)"
+      }
+    },
+    {
+      "id": "VariableID:2118:141",
+      "name": "color/bg/overlay-light",
+      "variableCollectionId": "VariableCollectionId:1888:214",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "1888:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:2118:102"
+        },
+        "1888:1": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:2118:102"
+        }
+      },
+      "description": "60% white wash over content for light loading or masking treatments.",
+      "codeSyntax": {
+        "WEB": "var(--color-bg-overlay-light)"
+      }
+    },
+    {
+      "id": "VariableID:2118:142",
+      "name": "color/bg/scrim",
+      "variableCollectionId": "VariableCollectionId:1888:214",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "1888:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:2118:103"
+        },
+        "1888:1": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:2118:103"
+        }
+      },
+      "description": "60% dark scrim behind modal content or other blocking overlays.",
+      "codeSyntax": {
+        "WEB": "var(--color-bg-scrim)"
+      }
+    },
+    {
+      "id": "VariableID:1888:216",
+      "name": "color/bg/subtle",
+      "variableCollectionId": "VariableCollectionId:1888:214",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "1888:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:24:1249"
+        },
+        "1888:1": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:24:1256"
+        }
+      },
+      "description": "Quiet surface for secondary panels, grouped content and low-emphasis states.",
+      "codeSyntax": {
+        "WEB": "var(--color-bg-subtle)"
+      }
+    },
+    {
+      "id": "VariableID:2118:140",
+      "name": "color/bg/transparent",
+      "variableCollectionId": "VariableCollectionId:1888:214",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "1888:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:2118:101"
+        },
+        "1888:1": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:2118:101"
+        }
+      },
+      "description": "No visible fill for ghost controls and surfaces that must show the content beneath.",
+      "codeSyntax": {
+        "WEB": "var(--color-bg-transparent)"
+      }
+    },
+    {
+      "id": "VariableID:1888:226",
+      "name": "color/border/default",
+      "variableCollectionId": "VariableCollectionId:1888:214",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "1888:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:24:1250"
+        },
+        "1888:1": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:24:1254"
+        }
+      },
+      "description": "Decorative outlines and separators for cards, rows, menus and ordinary surfaces.",
+      "codeSyntax": {
+        "WEB": "var(--color-border-default)"
+      }
+    },
+    {
+      "id": "VariableID:1888:229",
+      "name": "color/border/focus",
+      "variableCollectionId": "VariableCollectionId:1888:214",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "1888:0": {
+          "color": {
+            "type": "VARIABLE_ALIAS",
+            "id": "VariableID:24:1262"
+          },
+          "opacity": 50
+        },
+        "1888:1": {
+          "color": {
+            "type": "VARIABLE_ALIAS",
+            "id": "VariableID:24:1260"
+          },
+          "opacity": 50
+        }
+      },
+      "description": "50% blue keyboard-focus indicator around interactive controls.",
+      "codeSyntax": {
+        "WEB": "var(--color-border-focus)"
+      }
+    },
+    {
+      "id": "VariableID:1906:690",
+      "name": "color/border/focus-danger",
+      "variableCollectionId": "VariableCollectionId:1888:214",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "1888:0": {
+          "color": {
+            "type": "VARIABLE_ALIAS",
+            "id": "VariableID:27:113"
+          },
+          "opacity": 50
+        },
+        "1888:1": {
+          "color": {
+            "type": "VARIABLE_ALIAS",
+            "id": "VariableID:27:109"
+          },
+          "opacity": 50
+        }
+      },
+      "description": "50% red keyboard-focus indicator for destructive actions.",
+      "codeSyntax": {
+        "WEB": "var(--color-border-focus-danger)"
+      }
+    },
+    {
+      "id": "VariableID:1888:228",
+      "name": "color/border/strong",
+      "variableCollectionId": "VariableCollectionId:1888:214",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "1888:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:24:1252"
+        },
+        "1888:1": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:24:1251"
+        }
+      },
+      "description": "Visible boundaries for inputs and controls where users must identify the interactive area.",
+      "codeSyntax": {
+        "WEB": "var(--color-border-strong)"
+      }
+    },
+    {
+      "id": "VariableID:1888:227",
+      "name": "color/border/subtle",
+      "variableCollectionId": "VariableCollectionId:1888:214",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "1888:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:24:1249"
+        },
+        "1888:1": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:24:1255"
+        }
+      },
+      "description": "Very quiet dividers between related content; not the sole boundary of an essential control.",
+      "codeSyntax": {
+        "WEB": "var(--color-border-subtle)"
+      }
+    },
+    {
+      "id": "VariableID:2118:145",
+      "name": "color/brand/dds",
+      "variableCollectionId": "VariableCollectionId:1888:214",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "1888:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:147:2957"
+        },
+        "1888:1": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:147:2957"
+        }
+      },
+      "description": "Primary DDS teal in approved brand artwork; keep separate from interactive state colours.",
+      "codeSyntax": {
+        "WEB": "var(--color-brand-dds)"
+      }
+    },
+    {
+      "id": "VariableID:2118:146",
+      "name": "color/brand/dds-mark",
+      "variableCollectionId": "VariableCollectionId:1888:214",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "1888:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:2118:106"
+        },
+        "1888:1": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:2118:106"
+        }
+      },
+      "description": "DDS mark accent preserved from the approved logo artwork.",
+      "codeSyntax": {
+        "WEB": "var(--color-brand-dds-mark)"
+      }
+    },
+    {
+      "id": "VariableID:2118:147",
+      "name": "color/brand/dds-secondary",
+      "variableCollectionId": "VariableCollectionId:1888:214",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "1888:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:2118:107"
+        },
+        "1888:1": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:2118:107"
+        }
+      },
+      "description": "Secondary DDS teal used in existing brand artwork and logo variants.",
+      "codeSyntax": {
+        "WEB": "var(--color-brand-dds-secondary)"
+      }
+    },
+    {
+      "id": "VariableID:2118:148",
+      "name": "color/brand/ink",
+      "variableCollectionId": "VariableCollectionId:1888:214",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "1888:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:2118:108"
+        },
+        "1888:1": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:2118:108"
+        }
+      },
+      "description": "Dark ink detail in approved brand artwork; not a substitute for theme-aware body text.",
+      "codeSyntax": {
+        "WEB": "var(--color-brand-ink)"
+      }
+    },
+    {
+      "id": "VariableID:2118:149",
+      "name": "color/brand/savannah",
+      "variableCollectionId": "VariableCollectionId:1888:214",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "1888:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:27:129"
+        },
+        "1888:1": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:27:129"
+        }
+      },
+      "description": "Savannah product identity accent in approved product branding.",
+      "codeSyntax": {
+        "WEB": "var(--color-brand-savannah)"
+      }
+    },
+    {
+      "id": "VariableID:2119:47",
+      "name": "color/brand/white",
+      "variableCollectionId": "VariableCollectionId:1888:214",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "1888:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:27:1461"
+        },
+        "1888:1": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:27:1461"
+        }
+      },
+      "description": "Fixed white detail in approved brand artwork and reversed logo variants.",
+      "codeSyntax": {
+        "WEB": "var(--color-brand-white)"
+      }
+    },
+    {
+      "id": "VariableID:2118:132",
+      "name": "color/chart/axis",
+      "variableCollectionId": "VariableCollectionId:1888:214",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "1888:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:24:1252"
+        },
+        "1888:1": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:24:1251"
+        }
+      },
+      "description": "Axes, tick marks and the baseline that establish a chart&#39;s coordinate system.",
+      "codeSyntax": {
+        "WEB": "var(--color-chart-axis)"
+      }
+    },
+    {
+      "id": "VariableID:2118:116",
+      "name": "color/chart/categorical/01",
+      "variableCollectionId": "VariableCollectionId:1888:214",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "1888:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:24:1262"
+        },
+        "1888:1": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:24:1260"
+        }
+      },
+      "description": "Categorical series 1 (blue) for unordered categories. Keep assignments stable and pair with labels, markers or patterns.",
+      "codeSyntax": {
+        "WEB": "var(--color-chart-categorical-01)"
+      }
+    },
+    {
+      "id": "VariableID:2118:117",
+      "name": "color/chart/categorical/02",
+      "variableCollectionId": "VariableCollectionId:1888:214",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "1888:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:147:2957"
+        },
+        "1888:1": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:147:2962"
+        }
+      },
+      "description": "Categorical series 2 (teal) for unordered categories. Keep assignments stable and pair with labels, markers or patterns.",
+      "codeSyntax": {
+        "WEB": "var(--color-chart-categorical-02)"
+      }
+    },
+    {
+      "id": "VariableID:2118:118",
+      "name": "color/chart/categorical/03",
+      "variableCollectionId": "VariableCollectionId:1888:214",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "1888:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:27:130"
+        },
+        "1888:1": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:27:127"
+        }
+      },
+      "description": "Categorical series 3 (amber) for unordered categories. Keep assignments stable and pair with labels, markers or patterns.",
+      "codeSyntax": {
+        "WEB": "var(--color-chart-categorical-03)"
+      }
+    },
+    {
+      "id": "VariableID:2118:119",
+      "name": "color/chart/categorical/04",
+      "variableCollectionId": "VariableCollectionId:1888:214",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "1888:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:27:123"
+        },
+        "1888:1": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:27:118"
+        }
+      },
+      "description": "Categorical series 4 (green) for unordered categories. Keep assignments stable and pair with labels, markers or patterns.",
+      "codeSyntax": {
+        "WEB": "var(--color-chart-categorical-04)"
+      }
+    },
+    {
+      "id": "VariableID:2118:120",
+      "name": "color/chart/categorical/05",
+      "variableCollectionId": "VariableCollectionId:1888:214",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "1888:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:2118:113"
+        },
+        "1888:1": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:2118:112"
+        }
+      },
+      "description": "Categorical series 5 (violet) for unordered categories. Keep assignments stable and pair with labels, markers or patterns.",
+      "codeSyntax": {
+        "WEB": "var(--color-chart-categorical-05)"
+      }
+    },
+    {
+      "id": "VariableID:2118:121",
+      "name": "color/chart/categorical/06",
+      "variableCollectionId": "VariableCollectionId:1888:214",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "1888:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:2118:115"
+        },
+        "1888:1": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:2118:114"
+        }
+      },
+      "description": "Categorical series 6 (rose) for unordered categories. Keep assignments stable and pair with labels, markers or patterns.",
+      "codeSyntax": {
+        "WEB": "var(--color-chart-categorical-06)"
+      }
+    },
+    {
+      "id": "VariableID:2118:130",
+      "name": "color/chart/diverging/high",
+      "variableCollectionId": "VariableCollectionId:1888:214",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "1888:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:24:1259"
+        },
+        "1888:1": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:24:1262"
+        }
+      },
+      "description": "Values above the reference midpoint. Use only when the reference has a clear meaning in the data.",
+      "codeSyntax": {
+        "WEB": "var(--color-chart-diverging-high)"
+      }
+    },
+    {
+      "id": "VariableID:2118:131",
+      "name": "color/chart/diverging/high-strong",
+      "variableCollectionId": "VariableCollectionId:1888:214",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "1888:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:24:1263"
+        },
+        "1888:1": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:24:1259"
+        }
+      },
+      "description": "Values far above the reference midpoint. Use only when the reference has a clear meaning in the data.",
+      "codeSyntax": {
+        "WEB": "var(--color-chart-diverging-high-strong)"
+      }
+    },
+    {
+      "id": "VariableID:2118:128",
+      "name": "color/chart/diverging/low",
+      "variableCollectionId": "VariableCollectionId:1888:214",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "1888:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:2118:109"
+        },
+        "1888:1": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:2118:110"
+        }
+      },
+      "description": "Values below the reference midpoint. Use only when the reference has a clear meaning in the data.",
+      "codeSyntax": {
+        "WEB": "var(--color-chart-diverging-low)"
+      }
+    },
+    {
+      "id": "VariableID:2118:127",
+      "name": "color/chart/diverging/low-strong",
+      "variableCollectionId": "VariableCollectionId:1888:214",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "1888:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:2118:111"
+        },
+        "1888:1": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:2118:109"
+        }
+      },
+      "description": "Values far below the reference midpoint. Use only when the reference has a clear meaning in the data.",
+      "codeSyntax": {
+        "WEB": "var(--color-chart-diverging-low-strong)"
+      }
+    },
+    {
+      "id": "VariableID:2118:129",
+      "name": "color/chart/diverging/midpoint",
+      "variableCollectionId": "VariableCollectionId:1888:214",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "1888:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:24:1249"
+        },
+        "1888:1": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:24:1253"
+        }
+      },
+      "description": "Neutral reference midpoint, such as zero variance or a target. Use only when the reference has a clear meaning in the data.",
+      "codeSyntax": {
+        "WEB": "var(--color-chart-diverging-midpoint)"
+      }
+    },
+    {
+      "id": "VariableID:2118:133",
+      "name": "color/chart/grid",
+      "variableCollectionId": "VariableCollectionId:1888:214",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "1888:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:24:1249"
+        },
+        "1888:1": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:24:1254"
+        }
+      },
+      "description": "Quiet chart grid lines and heatmap boundaries that support comparison without dominating the data.",
+      "codeSyntax": {
+        "WEB": "var(--color-chart-grid)"
+      }
+    },
+    {
+      "id": "VariableID:2118:136",
+      "name": "color/chart/label",
+      "variableCollectionId": "VariableCollectionId:1888:214",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "1888:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:24:1254"
+        },
+        "1888:1": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:24:1249"
+        }
+      },
+      "description": "Axis labels, legends, category names and direct labels outside coloured chart marks.",
+      "codeSyntax": {
+        "WEB": "var(--color-chart-label)"
+      }
+    },
+    {
+      "id": "VariableID:2118:134",
+      "name": "color/chart/reference",
+      "variableCollectionId": "VariableCollectionId:1888:214",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "1888:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:24:1253"
+        },
+        "1888:1": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:24:1250"
+        }
+      },
+      "description": "Target, benchmark or comparison lines; label what the reference represents.",
+      "codeSyntax": {
+        "WEB": "var(--color-chart-reference)"
+      }
+    },
+    {
+      "id": "VariableID:2118:122",
+      "name": "color/chart/sequential/01",
+      "variableCollectionId": "VariableCollectionId:1888:214",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "1888:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:24:1257"
+        },
+        "1888:1": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:24:1264"
+        }
+      },
+      "description": "Ordered magnitude step 1 of 5, from lowest (01) to highest (05), for intensity maps and quantitative heatmaps.",
+      "codeSyntax": {
+        "WEB": "var(--color-chart-sequential-01)"
+      }
+    },
+    {
+      "id": "VariableID:2118:123",
+      "name": "color/chart/sequential/02",
+      "variableCollectionId": "VariableCollectionId:1888:214",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "1888:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:24:1258"
+        },
+        "1888:1": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:24:1263"
+        }
+      },
+      "description": "Ordered magnitude step 2 of 5, from lowest (01) to highest (05), for intensity maps and quantitative heatmaps.",
+      "codeSyntax": {
+        "WEB": "var(--color-chart-sequential-02)"
+      }
+    },
+    {
+      "id": "VariableID:2118:124",
+      "name": "color/chart/sequential/03",
+      "variableCollectionId": "VariableCollectionId:1888:214",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "1888:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:24:1260"
+        },
+        "1888:1": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:24:1262"
+        }
+      },
+      "description": "Ordered magnitude step 3 of 5, from lowest (01) to highest (05), for intensity maps and quantitative heatmaps.",
+      "codeSyntax": {
+        "WEB": "var(--color-chart-sequential-03)"
+      }
+    },
+    {
+      "id": "VariableID:2118:125",
+      "name": "color/chart/sequential/04",
+      "variableCollectionId": "VariableCollectionId:1888:214",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "1888:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:24:1262"
+        },
+        "1888:1": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:24:1260"
+        }
+      },
+      "description": "Ordered magnitude step 4 of 5, from lowest (01) to highest (05), for intensity maps and quantitative heatmaps.",
+      "codeSyntax": {
+        "WEB": "var(--color-chart-sequential-04)"
+      }
+    },
+    {
+      "id": "VariableID:2118:126",
+      "name": "color/chart/sequential/05",
+      "variableCollectionId": "VariableCollectionId:1888:214",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "1888:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:24:1263"
+        },
+        "1888:1": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:24:1258"
+        }
+      },
+      "description": "Ordered magnitude step 5 of 5, from lowest (01) to highest (05), for intensity maps and quantitative heatmaps.",
+      "codeSyntax": {
+        "WEB": "var(--color-chart-sequential-05)"
+      }
+    },
+    {
+      "id": "VariableID:2118:139",
+      "name": "color/chart/status/negative",
+      "variableCollectionId": "VariableCollectionId:1888:214",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "1888:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:27:113"
+        },
+        "1888:1": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:27:109"
+        }
+      },
+      "description": "Data with an explicit negative or failed status; pair with a clear text label.",
+      "codeSyntax": {
+        "WEB": "var(--color-chart-status-negative)"
+      }
+    },
+    {
+      "id": "VariableID:2118:137",
+      "name": "color/chart/status/positive",
+      "variableCollectionId": "VariableCollectionId:1888:214",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "1888:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:27:123"
+        },
+        "1888:1": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:27:118"
+        }
+      },
+      "description": "Data with an explicit positive or successful status; do not assign to arbitrary categories.",
+      "codeSyntax": {
+        "WEB": "var(--color-chart-status-positive)"
+      }
+    },
+    {
+      "id": "VariableID:2118:138",
+      "name": "color/chart/status/warning",
+      "variableCollectionId": "VariableCollectionId:1888:214",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "1888:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:27:131"
+        },
+        "1888:1": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:27:127"
+        }
+      },
+      "description": "Data with an explicit pending, caution or at-risk status.",
+      "codeSyntax": {
+        "WEB": "var(--color-chart-status-warning)"
+      }
+    },
+    {
+      "id": "VariableID:2118:135",
+      "name": "color/chart/track",
+      "variableCollectionId": "VariableCollectionId:1888:214",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "1888:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:24:1249"
+        },
+        "1888:1": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:24:1254"
+        }
+      },
+      "description": "Empty or remaining portion of a gauge or progress track.",
+      "codeSyntax": {
+        "WEB": "var(--color-chart-track)"
+      }
+    },
+    {
+      "id": "VariableID:2118:150",
+      "name": "color/effect/shadow",
+      "variableCollectionId": "VariableCollectionId:1888:214",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "1888:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:2118:104"
+        },
+        "1888:1": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:2118:104"
+        }
+      },
+      "description": "8% black shadow colour for subtle elevation. Apply through a shared shadow style.",
+      "codeSyntax": {
+        "WEB": "var(--color-effect-shadow)"
+      }
+    },
+    {
+      "id": "VariableID:2122:14876",
+      "name": "color/effect/shadow/opacity-8",
+      "variableCollectionId": "VariableCollectionId:1888:214",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "1888:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:2122:14877"
+        },
+        "1888:1": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:2122:14877"
+        }
+      },
+      "description": "Explicit 8% shadow alias retained by migrated elevation effects.",
+      "codeSyntax": {
+        "WEB": "var(--color-effect-shadow-opacity-8)"
+      }
+    },
+    {
+      "id": "VariableID:2118:151",
+      "name": "color/effect/text-shadow",
+      "variableCollectionId": "VariableCollectionId:1888:214",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "1888:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:2118:105"
+        },
+        "1888:1": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:2118:105"
+        }
+      },
+      "description": "65% black text-shadow colour for the established text-shadow effect.",
+      "codeSyntax": {
+        "WEB": "var(--color-effect-text-shadow)"
+      }
+    },
+    {
+      "id": "VariableID:1888:240",
+      "name": "color/feedback/error",
+      "variableCollectionId": "VariableCollectionId:1888:214",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "1888:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:27:113"
+        },
+        "1888:1": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:27:109"
+        }
+      },
+      "description": "Strong error foreground or fill for failures, invalid input or destructive outcomes; pair it with the appropriate surface or on-feedback text.",
+      "codeSyntax": {
+        "WEB": "var(--color-feedback-error)"
+      }
+    },
+    {
+      "id": "VariableID:1888:241",
+      "name": "color/feedback/error-subtle",
+      "variableCollectionId": "VariableCollectionId:1888:214",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "1888:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:27:107"
+        },
+        "1888:1": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:1888:212"
+        }
+      },
+      "description": "Subtle error surface for failures, invalid input or destructive outcomes; pair with color/feedback/error.",
+      "codeSyntax": {
+        "WEB": "var(--color-feedback-error-subtle)"
+      }
+    },
+    {
+      "id": "VariableID:1888:242",
+      "name": "color/feedback/info",
+      "variableCollectionId": "VariableCollectionId:1888:214",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "1888:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:24:1263"
+        },
+        "1888:1": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:24:1259"
+        }
+      },
+      "description": "Strong info foreground or fill for neutral information and helpful system updates; pair it with the appropriate surface or on-feedback text.",
+      "codeSyntax": {
+        "WEB": "var(--color-feedback-info)"
+      }
+    },
+    {
+      "id": "VariableID:1888:243",
+      "name": "color/feedback/info-subtle",
+      "variableCollectionId": "VariableCollectionId:1888:214",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "1888:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:24:1257"
+        },
+        "1888:1": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:1888:213"
+        }
+      },
+      "description": "Subtle info surface for neutral information and helpful system updates; pair with color/feedback/info.",
+      "codeSyntax": {
+        "WEB": "var(--color-feedback-info-subtle)"
+      }
+    },
+    {
+      "id": "VariableID:1888:236",
+      "name": "color/feedback/success",
+      "variableCollectionId": "VariableCollectionId:1888:214",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "1888:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:27:123"
+        },
+        "1888:1": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:27:118"
+        }
+      },
+      "description": "Strong success foreground or fill for completed or successful outcomes; pair it with the appropriate surface or on-feedback text.",
+      "codeSyntax": {
+        "WEB": "var(--color-feedback-success)"
+      }
+    },
+    {
+      "id": "VariableID:1888:237",
+      "name": "color/feedback/success-subtle",
+      "variableCollectionId": "VariableCollectionId:1888:214",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "1888:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:27:116"
+        },
+        "1888:1": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:1888:210"
+        }
+      },
+      "description": "Subtle success surface for completed or successful outcomes; pair with color/feedback/success.",
+      "codeSyntax": {
+        "WEB": "var(--color-feedback-success-subtle)"
+      }
+    },
+    {
+      "id": "VariableID:1888:238",
+      "name": "color/feedback/warning",
+      "variableCollectionId": "VariableCollectionId:1888:214",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "1888:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:27:131"
+        },
+        "1888:1": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:27:127"
+        }
+      },
+      "description": "Strong warning foreground or fill for pending, caution or at-risk conditions; pair it with the appropriate surface or on-feedback text.",
+      "codeSyntax": {
+        "WEB": "var(--color-feedback-warning)"
+      }
+    },
+    {
+      "id": "VariableID:1888:239",
+      "name": "color/feedback/warning-subtle",
+      "variableCollectionId": "VariableCollectionId:1888:214",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "1888:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:27:125"
+        },
+        "1888:1": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:1888:211"
+        }
+      },
+      "description": "Subtle warning surface for pending, caution or at-risk conditions; pair with color/feedback/warning.",
+      "codeSyntax": {
+        "WEB": "var(--color-feedback-warning-subtle)"
+      }
+    },
+    {
+      "id": "VariableID:1888:230",
+      "name": "color/icon/default",
+      "variableCollectionId": "VariableCollectionId:1888:214",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "1888:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:24:1254"
+        },
+        "1888:1": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:24:1249"
+        }
+      },
+      "description": "Primary UI icons on ordinary surfaces, including navigation, actions and status affordances.",
+      "codeSyntax": {
+        "WEB": "var(--color-icon-default)"
+      }
+    },
+    {
+      "id": "VariableID:1888:232",
+      "name": "color/icon/inverse",
+      "variableCollectionId": "VariableCollectionId:1888:214",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "1888:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:27:1461"
+        },
+        "1888:1": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:24:1256"
+        }
+      },
+      "description": "Icon foreground on a theme-inverse surface; pair with color/bg/inverse.",
+      "codeSyntax": {
+        "WEB": "var(--color-icon-inverse)"
+      }
+    },
+    {
+      "id": "VariableID:1888:231",
+      "name": "color/icon/muted",
+      "variableCollectionId": "VariableCollectionId:1888:214",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "1888:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:24:1253"
+        },
+        "1888:1": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:24:1251"
+        }
+      },
+      "description": "Lower-emphasis icons for secondary actions and supporting information.",
+      "codeSyntax": {
+        "WEB": "var(--color-icon-muted)"
+      }
+    },
+    {
+      "id": "VariableID:2134:846",
+      "name": "color/icon/on-brand",
+      "variableCollectionId": "VariableCollectionId:1888:214",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "1888:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:27:1461"
+        },
+        "1888:1": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:27:1461"
+        }
+      },
+      "description": "White navigation and utility icons on a persistent dark brand surface.",
+      "codeSyntax": {
+        "WEB": "var(--color-icon-on-brand)"
+      }
+    },
+    {
+      "id": "VariableID:1900:567",
+      "name": "color/interactive/danger-hover",
+      "variableCollectionId": "VariableCollectionId:1888:214",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "1888:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:27:114"
+        },
+        "1888:1": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:27:108"
+        }
+      },
+      "description": "Hover fill for destructive actions; pair with the on-feedback foreground.",
+      "codeSyntax": {
+        "WEB": "var(--color-interactive-danger-hover)"
+      }
+    },
+    {
+      "id": "VariableID:1888:233",
+      "name": "color/interactive/default",
+      "variableCollectionId": "VariableCollectionId:1888:214",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "1888:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:24:1262"
+        },
+        "1888:1": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:24:1260"
+        }
+      },
+      "description": "Default action colour for primary buttons, active links and selected controls.",
+      "codeSyntax": {
+        "WEB": "var(--color-interactive-default)"
+      }
+    },
+    {
+      "id": "VariableID:2122:111",
+      "name": "color/interactive/default/opacity-10",
+      "variableCollectionId": "VariableCollectionId:1888:214",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "1888:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:2122:112"
+        },
+        "1888:1": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:2122:113"
+        }
+      },
+      "description": "10% action-colour tint for layout grid specimens and faint interactive overlays.",
+      "codeSyntax": {
+        "WEB": "var(--color-interactive-default-opacity-10)"
+      }
+    },
+    {
+      "id": "VariableID:1888:234",
+      "name": "color/interactive/hover",
+      "variableCollectionId": "VariableCollectionId:1888:214",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "1888:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:24:1263"
+        },
+        "1888:1": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:24:1259"
+        }
+      },
+      "description": "Pointer-hover treatment for interactive elements using the primary action colour.",
+      "codeSyntax": {
+        "WEB": "var(--color-interactive-hover)"
+      }
+    },
+    {
+      "id": "VariableID:2134:847",
+      "name": "color/interactive/on-brand",
+      "variableCollectionId": "VariableCollectionId:1888:214",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "1888:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:24:1259"
+        },
+        "1888:1": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:24:1259"
+        }
+      },
+      "description": "Selected navigation label or icon on a persistent dark brand bar.",
+      "codeSyntax": {
+        "WEB": "var(--color-interactive-on-brand)"
+      }
+    },
+    {
+      "id": "VariableID:1888:235",
+      "name": "color/interactive/pressed",
+      "variableCollectionId": "VariableCollectionId:1888:214",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "1888:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:24:1264"
+        },
+        "1888:1": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:24:1258"
+        }
+      },
+      "description": "Pressed or actively engaged state of primary interactive elements.",
+      "codeSyntax": {
+        "WEB": "var(--color-interactive-pressed)"
+      }
+    },
+    {
+      "id": "VariableID:1888:223",
+      "name": "color/text/disabled",
+      "variableCollectionId": "VariableCollectionId:1888:214",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "1888:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:24:1251"
+        },
+        "1888:1": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:24:1252"
+        }
+      },
+      "description": "Text on controls that are unavailable for interaction; never use for essential guidance.",
+      "codeSyntax": {
+        "WEB": "var(--color-text-disabled)"
+      }
+    },
+    {
+      "id": "VariableID:1888:222",
+      "name": "color/text/inverse",
+      "variableCollectionId": "VariableCollectionId:1888:214",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "1888:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:27:1461"
+        },
+        "1888:1": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:24:1256"
+        }
+      },
+      "description": "Readable foreground on a theme-inverse surface, such as a tooltip.",
+      "codeSyntax": {
+        "WEB": "var(--color-text-inverse)"
+      }
+    },
+    {
+      "id": "VariableID:1888:221",
+      "name": "color/text/muted",
+      "variableCollectionId": "VariableCollectionId:1888:214",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "1888:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:24:1253"
+        },
+        "1888:1": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:24:1251"
+        }
+      },
+      "description": "Tertiary metadata, placeholders and low-emphasis guidance on ordinary surfaces.",
+      "codeSyntax": {
+        "WEB": "var(--color-text-muted)"
+      }
+    },
+    {
+      "id": "VariableID:2118:144",
+      "name": "color/text/on-brand",
+      "variableCollectionId": "VariableCollectionId:1888:214",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "1888:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:27:1461"
+        },
+        "1888:1": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:27:1461"
+        }
+      },
+      "description": "White text on persistent dark brand surfaces, including mobile app headers.",
+      "codeSyntax": {
+        "WEB": "var(--color-text-on-brand)"
+      }
+    },
+    {
+      "id": "VariableID:1888:225",
+      "name": "color/text/on-feedback",
+      "variableCollectionId": "VariableCollectionId:1888:214",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "1888:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:27:1461"
+        },
+        "1888:1": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:24:1256"
+        }
+      },
+      "description": "Foreground labels on strong success, warning, error or information fills.",
+      "codeSyntax": {
+        "WEB": "var(--color-text-on-feedback)"
+      }
+    },
+    {
+      "id": "VariableID:1888:224",
+      "name": "color/text/on-interactive",
+      "variableCollectionId": "VariableCollectionId:1888:214",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "1888:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:27:1461"
+        },
+        "1888:1": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:24:1265"
+        }
+      },
+      "description": "Control labels on filled interactive surfaces; keep paired with the corresponding action fill.",
+      "codeSyntax": {
+        "WEB": "var(--color-text-on-interactive)"
+      }
+    },
+    {
+      "id": "VariableID:1888:219",
+      "name": "color/text/primary",
+      "variableCollectionId": "VariableCollectionId:1888:214",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "1888:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:24:1256"
+        },
+        "1888:1": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:24:1248"
+        }
+      },
+      "description": "Main reading text: headings, field values, table content and important labels.",
+      "codeSyntax": {
+        "WEB": "var(--color-text-primary)"
+      }
+    },
+    {
+      "id": "VariableID:1888:220",
+      "name": "color/text/secondary",
+      "variableCollectionId": "VariableCollectionId:1888:214",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "1888:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:24:1254"
+        },
+        "1888:1": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:24:1250"
+        }
+      },
+      "description": "Supporting copy, descriptions and secondary metadata with lower emphasis.",
+      "codeSyntax": {
+        "WEB": "var(--color-text-secondary)"
+      }
+    },
+    {
+      "id": "VariableID:2118:100",
+      "name": "Common/Black",
+      "variableCollectionId": "VariableCollectionId:23:1247",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "23:0": {
+          "r": 0,
+          "g": 0,
+          "b": 0,
+          "a": 1
+        }
+      },
+      "description": "",
+      "codeSyntax": {
+        "WEB": "var(--common-black)"
+      }
+    },
+    {
+      "id": "VariableID:2118:101",
+      "name": "Common/Transparent",
+      "variableCollectionId": "VariableCollectionId:23:1247",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "23:0": {
+          "r": 1,
+          "g": 1,
+          "b": 1,
+          "a": 0
+        }
+      },
+      "description": "",
+      "codeSyntax": {
+        "WEB": "var(--common-transparent)"
+      }
+    },
+    {
+      "id": "VariableID:27:1461",
+      "name": "Common/White",
+      "variableCollectionId": "VariableCollectionId:23:1247",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "23:0": {
+          "r": 1,
+          "g": 1,
+          "b": 1,
+          "a": 1
+        }
+      },
+      "description": "",
+      "codeSyntax": {}
+    },
+    {
+      "id": "VariableID:1888:210",
+      "name": "Green muted/900",
+      "variableCollectionId": "VariableCollectionId:23:1247",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "23:0": {
+          "r": 0.14509804546833038,
+          "g": 0.29411765933036804,
+          "b": 0.1882352977991104,
+          "a": 1
+        }
+      },
+      "description": "",
+      "codeSyntax": {
+        "WEB": "var(--green-muted-900)"
+      }
+    },
+    {
+      "id": "VariableID:27:116",
+      "name": "Green/100",
+      "variableCollectionId": "VariableCollectionId:23:1247",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "23:0": {
+          "r": 0.9098039269447327,
+          "g": 0.9607843160629272,
+          "b": 0.9137254953384399,
+          "a": 1
+        }
+      },
+      "description": "",
+      "codeSyntax": {}
+    },
+    {
+      "id": "VariableID:27:117",
+      "name": "Green/200",
+      "variableCollectionId": "VariableCollectionId:23:1247",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "23:0": {
+          "r": 0.7843137383460999,
+          "g": 0.9019607901573181,
+          "b": 0.7882353067398071,
+          "a": 1
+        }
+      },
+      "description": "",
+      "codeSyntax": {}
+    },
+    {
+      "id": "VariableID:27:118",
+      "name": "Green/300",
+      "variableCollectionId": "VariableCollectionId:23:1247",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "23:0": {
+          "r": 0.6470588445663452,
+          "g": 0.8392156958580017,
+          "b": 0.6549019813537598,
+          "a": 1
+        }
+      },
+      "description": "",
+      "codeSyntax": {}
+    },
+    {
+      "id": "VariableID:27:119",
+      "name": "Green/400",
+      "variableCollectionId": "VariableCollectionId:23:1247",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "23:0": {
+          "r": 0.5058823823928833,
+          "g": 0.7803921699523926,
+          "b": 0.5176470875740051,
+          "a": 1
+        }
+      },
+      "description": "",
+      "codeSyntax": {}
+    },
+    {
+      "id": "VariableID:27:120",
+      "name": "Green/500",
+      "variableCollectionId": "VariableCollectionId:23:1247",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "23:0": {
+          "r": 0.2980392277240753,
+          "g": 0.686274528503418,
+          "b": 0.3137255012989044,
+          "a": 1
+        }
+      },
+      "description": "",
+      "codeSyntax": {}
+    },
+    {
+      "id": "VariableID:27:121",
+      "name": "Green/600",
+      "variableCollectionId": "VariableCollectionId:23:1247",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "23:0": {
+          "r": 0.26274511218070984,
+          "g": 0.6274510025978088,
+          "b": 0.27843138575553894,
+          "a": 1
+        }
+      },
+      "description": "",
+      "codeSyntax": {}
+    },
+    {
+      "id": "VariableID:27:122",
+      "name": "Green/700",
+      "variableCollectionId": "VariableCollectionId:23:1247",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "23:0": {
+          "r": 0.21960784494876862,
+          "g": 0.5568627715110779,
+          "b": 0.23529411852359772,
+          "a": 1
+        }
+      },
+      "description": "",
+      "codeSyntax": {}
+    },
+    {
+      "id": "VariableID:27:123",
+      "name": "Green/800",
+      "variableCollectionId": "VariableCollectionId:23:1247",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "23:0": {
+          "r": 0.18039216101169586,
+          "g": 0.4901960790157318,
+          "b": 0.19607843458652496,
+          "a": 1
+        }
+      },
+      "description": "",
+      "codeSyntax": {}
+    },
+    {
+      "id": "VariableID:27:124",
+      "name": "Green/900",
+      "variableCollectionId": "VariableCollectionId:23:1247",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "23:0": {
+          "r": 0.10588235408067703,
+          "g": 0.3686274588108063,
+          "b": 0.125490203499794,
+          "a": 1
+        }
+      },
+      "description": "",
+      "codeSyntax": {}
+    },
+    {
+      "id": "VariableID:24:1248",
+      "name": "Grey/100",
+      "variableCollectionId": "VariableCollectionId:23:1247",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "23:0": {
+          "r": 0.9686274528503418,
+          "g": 0.9686274528503418,
+          "b": 0.9686274528503418,
+          "a": 1
+        }
+      },
+      "description": "",
+      "codeSyntax": {}
+    },
+    {
+      "id": "VariableID:24:1249",
+      "name": "Grey/200",
+      "variableCollectionId": "VariableCollectionId:23:1247",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "23:0": {
+          "r": 0.8980392217636108,
+          "g": 0.8980392217636108,
+          "b": 0.8980392217636108,
+          "a": 1
+        }
+      },
+      "description": "",
+      "codeSyntax": {}
+    },
+    {
+      "id": "VariableID:24:1250",
+      "name": "Grey/300",
+      "variableCollectionId": "VariableCollectionId:23:1247",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "23:0": {
+          "r": 0.8313725590705872,
+          "g": 0.8313725590705872,
+          "b": 0.8313725590705872,
+          "a": 1
+        }
+      },
+      "description": "",
+      "codeSyntax": {}
+    },
+    {
+      "id": "VariableID:24:1251",
+      "name": "Grey/400",
+      "variableCollectionId": "VariableCollectionId:23:1247",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "23:0": {
+          "r": 0.6392157077789307,
+          "g": 0.6392157077789307,
+          "b": 0.6392157077789307,
+          "a": 1
+        }
+      },
+      "description": "",
+      "codeSyntax": {}
+    },
+    {
+      "id": "VariableID:24:1252",
+      "name": "Grey/500",
+      "variableCollectionId": "VariableCollectionId:23:1247",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "23:0": {
+          "r": 0.45098039507865906,
+          "g": 0.45098039507865906,
+          "b": 0.45098039507865906,
+          "a": 1
+        }
+      },
+      "description": "",
+      "codeSyntax": {}
+    },
+    {
+      "id": "VariableID:24:1253",
+      "name": "Grey/600",
+      "variableCollectionId": "VariableCollectionId:23:1247",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "23:0": {
+          "r": 0.32156863808631897,
+          "g": 0.32156863808631897,
+          "b": 0.32156863808631897,
+          "a": 1
+        }
+      },
+      "description": "",
+      "codeSyntax": {}
+    },
+    {
+      "id": "VariableID:24:1254",
+      "name": "Grey/700",
+      "variableCollectionId": "VariableCollectionId:23:1247",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "23:0": {
+          "r": 0.250980406999588,
+          "g": 0.250980406999588,
+          "b": 0.250980406999588,
+          "a": 1
+        }
+      },
+      "description": "",
+      "codeSyntax": {}
+    },
+    {
+      "id": "VariableID:24:1255",
+      "name": "Grey/800",
+      "variableCollectionId": "VariableCollectionId:23:1247",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "23:0": {
+          "r": 0.14901961386203766,
+          "g": 0.14901961386203766,
+          "b": 0.14901961386203766,
+          "a": 1
+        }
+      },
+      "description": "",
+      "codeSyntax": {}
+    },
+    {
+      "id": "VariableID:24:1256",
+      "name": "Grey/900",
+      "variableCollectionId": "VariableCollectionId:23:1247",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "23:0": {
+          "r": 0.09019608050584793,
+          "g": 0.09019608050584793,
+          "b": 0.09019608050584793,
+          "a": 1
+        }
+      },
+      "description": "",
+      "codeSyntax": {}
+    },
+    {
+      "id": "VariableID:1888:209",
+      "name": "Grey/950",
+      "variableCollectionId": "VariableCollectionId:23:1247",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "23:0": {
+          "r": 0.062745101749897,
+          "g": 0.06666667014360428,
+          "b": 0.0784313753247261,
+          "a": 1
+        }
+      },
+      "description": "",
+      "codeSyntax": {
+        "WEB": "var(--grey-950)"
+      }
+    },
+    {
+      "id": "VariableID:2118:109",
+      "name": "Orange/300",
+      "variableCollectionId": "VariableCollectionId:23:1247",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "23:0": {
+          "r": 0.9921568632125854,
+          "g": 0.729411780834198,
+          "b": 0.45490196347236633,
+          "a": 1
+        }
+      },
+      "description": "",
+      "codeSyntax": {
+        "WEB": "var(--orange-300)"
+      }
+    },
+    {
+      "id": "VariableID:2118:110",
+      "name": "Orange/600",
+      "variableCollectionId": "VariableCollectionId:23:1247",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "23:0": {
+          "r": 0.7764706015586853,
+          "g": 0.364705890417099,
+          "b": 0.0313725508749485,
+          "a": 1
+        }
+      },
+      "description": "",
+      "codeSyntax": {
+        "WEB": "var(--orange-600)"
+      }
+    },
+    {
+      "id": "VariableID:2118:111",
+      "name": "Orange/700",
+      "variableCollectionId": "VariableCollectionId:23:1247",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "23:0": {
+          "r": 0.6039215922355652,
+          "g": 0.2549019753932953,
+          "b": 0,
+          "a": 1
+        }
+      },
+      "description": "",
+      "codeSyntax": {
+        "WEB": "var(--orange-700)"
+      }
+    },
+    {
+      "id": "VariableID:94:6416",
+      "name": "radius-2xl",
+      "variableCollectionId": "VariableCollectionId:94:6409",
+      "resolvedType": "FLOAT",
+      "valuesByMode": {
+        "94:0": 16
+      },
+      "description": "",
+      "codeSyntax": {}
+    },
+    {
+      "id": "VariableID:94:6420",
+      "name": "radius-full",
+      "variableCollectionId": "VariableCollectionId:94:6409",
+      "resolvedType": "FLOAT",
+      "valuesByMode": {
+        "94:0": 9999
+      },
+      "description": "",
+      "codeSyntax": {}
+    },
+    {
+      "id": "VariableID:94:6414",
+      "name": "radius-lg",
+      "variableCollectionId": "VariableCollectionId:94:6409",
+      "resolvedType": "FLOAT",
+      "valuesByMode": {
+        "94:0": 8
+      },
+      "description": "",
+      "codeSyntax": {}
+    },
+    {
+      "id": "VariableID:94:6413",
+      "name": "radius-md",
+      "variableCollectionId": "VariableCollectionId:94:6409",
+      "resolvedType": "FLOAT",
+      "valuesByMode": {
+        "94:0": 6
+      },
+      "description": "",
+      "codeSyntax": {}
+    },
+    {
+      "id": "VariableID:94:6410",
+      "name": "radius-none",
+      "variableCollectionId": "VariableCollectionId:94:6409",
+      "resolvedType": "FLOAT",
+      "valuesByMode": {
+        "94:0": 0
+      },
+      "description": "",
+      "codeSyntax": {}
+    },
+    {
+      "id": "VariableID:94:6412",
+      "name": "radius-sm",
+      "variableCollectionId": "VariableCollectionId:94:6409",
+      "resolvedType": "FLOAT",
+      "valuesByMode": {
+        "94:0": 4
+      },
+      "description": "",
+      "codeSyntax": {}
+    },
+    {
+      "id": "VariableID:94:6415",
+      "name": "radius-xl",
+      "variableCollectionId": "VariableCollectionId:94:6409",
+      "resolvedType": "FLOAT",
+      "valuesByMode": {
+        "94:0": 12
+      },
+      "description": "",
+      "codeSyntax": {}
+    },
+    {
+      "id": "VariableID:94:6411",
+      "name": "radius-xs",
+      "variableCollectionId": "VariableCollectionId:94:6409",
+      "resolvedType": "FLOAT",
+      "valuesByMode": {
+        "94:0": 2
+      },
+      "description": "",
+      "codeSyntax": {}
+    },
+    {
+      "id": "VariableID:94:6418",
+      "name": "raduis-3xl",
+      "variableCollectionId": "VariableCollectionId:94:6409",
+      "resolvedType": "FLOAT",
+      "valuesByMode": {
+        "94:0": 24
+      },
+      "description": "",
+      "codeSyntax": {}
+    },
+    {
+      "id": "VariableID:1888:212",
+      "name": "Red muted/900",
+      "variableCollectionId": "VariableCollectionId:23:1247",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "23:0": {
+          "r": 0.3764705955982208,
+          "g": 0.2078431397676468,
+          "b": 0.22745098173618317,
+          "a": 1
+        }
+      },
+      "description": "",
+      "codeSyntax": {
+        "WEB": "var(--red-muted-900)"
+      }
+    },
+    {
+      "id": "VariableID:27:107",
+      "name": "Red/100",
+      "variableCollectionId": "VariableCollectionId:23:1247",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "23:0": {
+          "r": 0.9960784316062927,
+          "g": 0.9490196108818054,
+          "b": 0.9490196108818054,
+          "a": 1
+        }
+      },
+      "description": "",
+      "codeSyntax": {}
+    },
+    {
+      "id": "VariableID:27:108",
+      "name": "Red/200",
+      "variableCollectionId": "VariableCollectionId:23:1247",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "23:0": {
+          "r": 0.9960784316062927,
+          "g": 0.886274516582489,
+          "b": 0.886274516582489,
+          "a": 1
+        }
+      },
+      "description": "",
+      "codeSyntax": {}
+    },
+    {
+      "id": "VariableID:27:109",
+      "name": "Red/300",
+      "variableCollectionId": "VariableCollectionId:23:1247",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "23:0": {
+          "r": 0.9960784316062927,
+          "g": 0.7921568751335144,
+          "b": 0.7921568751335144,
+          "a": 1
+        }
+      },
+      "description": "",
+      "codeSyntax": {}
+    },
+    {
+      "id": "VariableID:27:110",
+      "name": "Red/400",
+      "variableCollectionId": "VariableCollectionId:23:1247",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "23:0": {
+          "r": 0.9725490212440491,
+          "g": 0.4431372582912445,
+          "b": 0.4431372582912445,
+          "a": 1
+        }
+      },
+      "description": "",
+      "codeSyntax": {}
+    },
+    {
+      "id": "VariableID:27:111",
+      "name": "Red/500",
+      "variableCollectionId": "VariableCollectionId:23:1247",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "23:0": {
+          "r": 0.9372549057006836,
+          "g": 0.2666666805744171,
+          "b": 0.2666666805744171,
+          "a": 1
+        }
+      },
+      "description": "",
+      "codeSyntax": {}
+    },
+    {
+      "id": "VariableID:27:112",
+      "name": "Red/600",
+      "variableCollectionId": "VariableCollectionId:23:1247",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "23:0": {
+          "r": 0.8627451062202454,
+          "g": 0.14901961386203766,
+          "b": 0.14901961386203766,
+          "a": 1
+        }
+      },
+      "description": "",
+      "codeSyntax": {}
+    },
+    {
+      "id": "VariableID:27:113",
+      "name": "Red/700",
+      "variableCollectionId": "VariableCollectionId:23:1247",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "23:0": {
+          "r": 0.7254902124404907,
+          "g": 0.10980392247438431,
+          "b": 0.10980392247438431,
+          "a": 1
+        }
+      },
+      "description": "",
+      "codeSyntax": {}
+    },
+    {
+      "id": "VariableID:27:114",
+      "name": "Red/800",
+      "variableCollectionId": "VariableCollectionId:23:1247",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "23:0": {
+          "r": 0.6000000238418579,
+          "g": 0.10588235408067703,
+          "b": 0.10588235408067703,
+          "a": 1
+        }
+      },
+      "description": "",
+      "codeSyntax": {}
+    },
+    {
+      "id": "VariableID:27:115",
+      "name": "Red/900",
+      "variableCollectionId": "VariableCollectionId:23:1247",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "23:0": {
+          "r": 0.49803921580314636,
+          "g": 0.11372549086809158,
+          "b": 0.11372549086809158,
+          "a": 1
+        }
+      },
+      "description": "",
+      "codeSyntax": {}
+    },
+    {
+      "id": "VariableID:2122:14877",
+      "name": "RGBA/000000-a8",
+      "variableCollectionId": "VariableCollectionId:23:1247",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "23:0": {
+          "r": 0,
+          "g": 0,
+          "b": 0,
+          "a": 0.07999999821186066
+        }
+      },
+      "description": "",
+      "codeSyntax": {
+        "WEB": "var(--rgba-000000-a8)"
+      }
+    },
+    {
+      "id": "VariableID:2122:14868",
+      "name": "RGBA/171717-a0",
+      "variableCollectionId": "VariableCollectionId:23:1247",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "23:0": {
+          "r": 0.09019608050584793,
+          "g": 0.09019608050584793,
+          "b": 0.09019608050584793,
+          "a": 0
+        }
+      },
+      "description": "",
+      "codeSyntax": {
+        "WEB": "var(--rgba-171717-a0)"
+      }
+    },
+    {
+      "id": "VariableID:2122:14874",
+      "name": "RGBA/171717-a10",
+      "variableCollectionId": "VariableCollectionId:23:1247",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "23:0": {
+          "r": 0.09019608050584793,
+          "g": 0.09019608050584793,
+          "b": 0.09019608050584793,
+          "a": 0.10000000149011612
+        }
+      },
+      "description": "",
+      "codeSyntax": {
+        "WEB": "var(--rgba-171717-a10)"
+      }
+    },
+    {
+      "id": "VariableID:2122:14865",
+      "name": "RGBA/171717-a8",
+      "variableCollectionId": "VariableCollectionId:23:1247",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "23:0": {
+          "r": 0.09019608050584793,
+          "g": 0.09019608050584793,
+          "b": 0.09019608050584793,
+          "a": 0.07999999821186066
+        }
+      },
+      "description": "",
+      "codeSyntax": {
+        "WEB": "var(--rgba-171717-a8)"
+      }
+    },
+    {
+      "id": "VariableID:2120:184",
+      "name": "RGBA/262626-a0",
+      "variableCollectionId": "VariableCollectionId:23:1247",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "23:0": {
+          "r": 0.14901961386203766,
+          "g": 0.14901961386203766,
+          "b": 0.14901961386203766,
+          "a": 0
+        }
+      },
+      "description": "",
+      "codeSyntax": {
+        "WEB": "var(--rgba-262626-a0)"
+      }
+    },
+    {
+      "id": "VariableID:2122:14872",
+      "name": "RGBA/262626-a10",
+      "variableCollectionId": "VariableCollectionId:23:1247",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "23:0": {
+          "r": 0.14901961386203766,
+          "g": 0.14901961386203766,
+          "b": 0.14901961386203766,
+          "a": 0.10000000149011612
+        }
+      },
+      "description": "",
+      "codeSyntax": {
+        "WEB": "var(--rgba-262626-a10)"
+      }
+    },
+    {
+      "id": "VariableID:2122:112",
+      "name": "RGBA/2F5EAF-a10",
+      "variableCollectionId": "VariableCollectionId:23:1247",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "23:0": {
+          "r": 0.18431372940540314,
+          "g": 0.3686274588108063,
+          "b": 0.686274528503418,
+          "a": 0.10000000149011612
+        }
+      },
+      "description": "",
+      "codeSyntax": {
+        "WEB": "var(--rgba-2f5eaf-a10)"
+      }
+    },
+    {
+      "id": "VariableID:2122:113",
+      "name": "RGBA/82A6DD-a10",
+      "variableCollectionId": "VariableCollectionId:23:1247",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "23:0": {
+          "r": 0.5098039507865906,
+          "g": 0.6509804129600525,
+          "b": 0.8666666746139526,
+          "a": 0.10000000149011612
+        }
+      },
+      "description": "",
+      "codeSyntax": {
+        "WEB": "var(--rgba-82a6dd-a10)"
+      }
+    },
+    {
+      "id": "VariableID:2122:14869",
+      "name": "RGBA/F7F7F7-a0",
+      "variableCollectionId": "VariableCollectionId:23:1247",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "23:0": {
+          "r": 0.9686274528503418,
+          "g": 0.9686274528503418,
+          "b": 0.9686274528503418,
+          "a": 0
+        }
+      },
+      "description": "",
+      "codeSyntax": {
+        "WEB": "var(--rgba-f7f7f7-a0)"
+      }
+    },
+    {
+      "id": "VariableID:2122:14875",
+      "name": "RGBA/F7F7F7-a10",
+      "variableCollectionId": "VariableCollectionId:23:1247",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "23:0": {
+          "r": 0.9686274528503418,
+          "g": 0.9686274528503418,
+          "b": 0.9686274528503418,
+          "a": 0.10000000149011612
+        }
+      },
+      "description": "",
+      "codeSyntax": {
+        "WEB": "var(--rgba-f7f7f7-a10)"
+      }
+    },
+    {
+      "id": "VariableID:2122:14866",
+      "name": "RGBA/F7F7F7-a8",
+      "variableCollectionId": "VariableCollectionId:23:1247",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "23:0": {
+          "r": 0.9686274528503418,
+          "g": 0.9686274528503418,
+          "b": 0.9686274528503418,
+          "a": 0.07999999821186066
+        }
+      },
+      "description": "",
+      "codeSyntax": {
+        "WEB": "var(--rgba-f7f7f7-a8)"
+      }
+    },
+    {
+      "id": "VariableID:2120:183",
+      "name": "RGBA/FFFFFF-a0",
+      "variableCollectionId": "VariableCollectionId:23:1247",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "23:0": {
+          "r": 1,
+          "g": 1,
+          "b": 1,
+          "a": 0
+        }
+      },
+      "description": "",
+      "codeSyntax": {
+        "WEB": "var(--rgba-ffffff-a0)"
+      }
+    },
+    {
+      "id": "VariableID:2122:14871",
+      "name": "RGBA/FFFFFF-a10",
+      "variableCollectionId": "VariableCollectionId:23:1247",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "23:0": {
+          "r": 1,
+          "g": 1,
+          "b": 1,
+          "a": 0.10000000149011612
+        }
+      },
+      "description": "",
+      "codeSyntax": {
+        "WEB": "var(--rgba-ffffff-a10)"
+      }
+    },
+    {
+      "id": "VariableID:2118:114",
+      "name": "Rose/300",
+      "variableCollectionId": "VariableCollectionId:23:1247",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "23:0": {
+          "r": 0.9764705896377563,
+          "g": 0.658823549747467,
+          "b": 0.8313725590705872,
+          "a": 1
+        }
+      },
+      "description": "",
+      "codeSyntax": {
+        "WEB": "var(--rose-300)"
+      }
+    },
+    {
+      "id": "VariableID:2118:115",
+      "name": "Rose/600",
+      "variableCollectionId": "VariableCollectionId:23:1247",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "23:0": {
+          "r": 0.7450980544090271,
+          "g": 0.0941176488995552,
+          "b": 0.364705890417099,
+          "a": 1
+        }
+      },
+      "description": "",
+      "codeSyntax": {
+        "WEB": "var(--rose-600)"
+      }
+    },
+    {
+      "id": "VariableID:58:236",
+      "name": "space-0",
+      "variableCollectionId": "VariableCollectionId:58:235",
+      "resolvedType": "FLOAT",
+      "valuesByMode": {
+        "58:0": 0
+      },
+      "description": "",
+      "codeSyntax": {}
+    },
+    {
+      "id": "VariableID:58:237",
+      "name": "space-1",
+      "variableCollectionId": "VariableCollectionId:58:235",
+      "resolvedType": "FLOAT",
+      "valuesByMode": {
+        "58:0": 4
+      },
+      "description": "",
+      "codeSyntax": {}
+    },
+    {
+      "id": "VariableID:58:246",
+      "name": "space-10",
+      "variableCollectionId": "VariableCollectionId:58:235",
+      "resolvedType": "FLOAT",
+      "valuesByMode": {
+        "58:0": 64
+      },
+      "description": "",
+      "codeSyntax": {}
+    },
+    {
+      "id": "VariableID:58:238",
+      "name": "space-2",
+      "variableCollectionId": "VariableCollectionId:58:235",
+      "resolvedType": "FLOAT",
+      "valuesByMode": {
+        "58:0": 8
+      },
+      "description": "",
+      "codeSyntax": {}
+    },
+    {
+      "id": "VariableID:58:239",
+      "name": "space-3",
+      "variableCollectionId": "VariableCollectionId:58:235",
+      "resolvedType": "FLOAT",
+      "valuesByMode": {
+        "58:0": 12
+      },
+      "description": "",
+      "codeSyntax": {}
+    },
+    {
+      "id": "VariableID:58:240",
+      "name": "space-4",
+      "variableCollectionId": "VariableCollectionId:58:235",
+      "resolvedType": "FLOAT",
+      "valuesByMode": {
+        "58:0": 16
+      },
+      "description": "",
+      "codeSyntax": {}
+    },
+    {
+      "id": "VariableID:58:241",
+      "name": "space-5",
+      "variableCollectionId": "VariableCollectionId:58:235",
+      "resolvedType": "FLOAT",
+      "valuesByMode": {
+        "58:0": 20
+      },
+      "description": "",
+      "codeSyntax": {}
+    },
+    {
+      "id": "VariableID:58:242",
+      "name": "space-6",
+      "variableCollectionId": "VariableCollectionId:58:235",
+      "resolvedType": "FLOAT",
+      "valuesByMode": {
+        "58:0": 24
+      },
+      "description": "",
+      "codeSyntax": {}
+    },
+    {
+      "id": "VariableID:58:243",
+      "name": "space-7",
+      "variableCollectionId": "VariableCollectionId:58:235",
+      "resolvedType": "FLOAT",
+      "valuesByMode": {
+        "58:0": 32
+      },
+      "description": "",
+      "codeSyntax": {}
+    },
+    {
+      "id": "VariableID:58:244",
+      "name": "space-8",
+      "variableCollectionId": "VariableCollectionId:58:235",
+      "resolvedType": "FLOAT",
+      "valuesByMode": {
+        "58:0": 40
+      },
+      "description": "",
+      "codeSyntax": {}
+    },
+    {
+      "id": "VariableID:58:245",
+      "name": "space-9",
+      "variableCollectionId": "VariableCollectionId:58:235",
+      "resolvedType": "FLOAT",
+      "valuesByMode": {
+        "58:0": 48
+      },
+      "description": "",
+      "codeSyntax": {}
+    },
+    {
+      "id": "VariableID:147:2956",
+      "name": "Teal/100",
+      "variableCollectionId": "VariableCollectionId:23:1247",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "23:0": {
+          "r": 0.8078431487083435,
+          "g": 0.9254902005195618,
+          "b": 0.9411764740943909,
+          "a": 1
+        }
+      },
+      "description": "",
+      "codeSyntax": {}
+    },
+    {
+      "id": "VariableID:147:2962",
+      "name": "Teal/300",
+      "variableCollectionId": "VariableCollectionId:23:1247",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "23:0": {
+          "r": 0.4313725531101227,
+          "g": 0.7647058963775635,
+          "b": 0.8078431487083435,
+          "a": 1
+        }
+      },
+      "description": "",
+      "codeSyntax": {}
+    },
+    {
+      "id": "VariableID:147:2959",
+      "name": "Teal/400",
+      "variableCollectionId": "VariableCollectionId:23:1247",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "23:0": {
+          "r": 0.2666666805744171,
+          "g": 0.6509804129600525,
+          "b": 0.7019608020782471,
+          "a": 1
+        }
+      },
+      "description": "",
+      "codeSyntax": {}
+    },
+    {
+      "id": "VariableID:147:2957",
+      "name": "Teal/500",
+      "variableCollectionId": "VariableCollectionId:23:1247",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "23:0": {
+          "r": 0.19607843458652496,
+          "g": 0.5490196347236633,
+          "b": 0.5960784554481506,
+          "a": 1
+        }
+      },
+      "description": "",
+      "codeSyntax": {}
+    },
+    {
+      "id": "VariableID:2118:107",
+      "name": "Teal/550",
+      "variableCollectionId": "VariableCollectionId:23:1247",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "23:0": {
+          "r": 0.30980393290519714,
+          "g": 0.5372549295425415,
+          "b": 0.5843137502670288,
+          "a": 1
+        }
+      },
+      "description": "",
+      "codeSyntax": {
+        "WEB": "var(--teal-550)"
+      }
+    },
+    {
+      "id": "VariableID:2118:106",
+      "name": "Teal/600",
+      "variableCollectionId": "VariableCollectionId:23:1247",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "23:0": {
+          "r": 0.19607843458652496,
+          "g": 0.572549045085907,
+          "b": 0.6117647290229797,
+          "a": 1
+        }
+      },
+      "description": "",
+      "codeSyntax": {
+        "WEB": "var(--teal-600)"
+      }
+    },
+    {
+      "id": "VariableID:2118:112",
+      "name": "Violet/300",
+      "variableCollectionId": "VariableCollectionId:23:1247",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "23:0": {
+          "r": 0.7686274647712708,
+          "g": 0.7098039388656616,
+          "b": 0.9921568632125854,
+          "a": 1
+        }
+      },
+      "description": "",
+      "codeSyntax": {
+        "WEB": "var(--violet-300)"
+      }
+    },
+    {
+      "id": "VariableID:2118:113",
+      "name": "Violet/600",
+      "variableCollectionId": "VariableCollectionId:23:1247",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "23:0": {
+          "r": 0.48627451062202454,
+          "g": 0.22745098173618317,
+          "b": 0.929411768913269,
+          "a": 1
+        }
+      },
+      "description": "",
+      "codeSyntax": {
+        "WEB": "var(--violet-600)"
+      }
+    },
+    {
+      "id": "VariableID:2118:102",
+      "name": "White/60",
+      "variableCollectionId": "VariableCollectionId:23:1247",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "23:0": {
+          "r": 1,
+          "g": 1,
+          "b": 1,
+          "a": 0.6000000238418579
+        }
+      },
+      "description": "",
+      "codeSyntax": {
+        "WEB": "var(--white-60)"
+      }
+    },
+    {
+      "id": "VariableID:1888:211",
+      "name": "Yellow muted/900",
+      "variableCollectionId": "VariableCollectionId:23:1247",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "23:0": {
+          "r": 0.3490196168422699,
+          "g": 0.26274511218070984,
+          "b": 0.0941176488995552,
+          "a": 1
+        }
+      },
+      "description": "",
+      "codeSyntax": {
+        "WEB": "var(--yellow-muted-900)"
+      }
+    },
+    {
+      "id": "VariableID:27:125",
+      "name": "Yellow/100",
+      "variableCollectionId": "VariableCollectionId:23:1247",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "23:0": {
+          "r": 1,
+          "g": 0.9843137264251709,
+          "b": 0.9215686321258545,
+          "a": 1
+        }
+      },
+      "description": "",
+      "codeSyntax": {}
+    },
+    {
+      "id": "VariableID:27:126",
+      "name": "Yellow/200",
+      "variableCollectionId": "VariableCollectionId:23:1247",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "23:0": {
+          "r": 1,
+          "g": 0.9450980424880981,
+          "b": 0.7607843279838562,
+          "a": 1
+        }
+      },
+      "description": "",
+      "codeSyntax": {}
+    },
+    {
+      "id": "VariableID:27:127",
+      "name": "Yellow/300",
+      "variableCollectionId": "VariableCollectionId:23:1247",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "23:0": {
+          "r": 1,
+          "g": 0.9098039269447327,
+          "b": 0.6392157077789307,
+          "a": 1
+        }
+      },
+      "description": "",
+      "codeSyntax": {}
+    },
+    {
+      "id": "VariableID:27:128",
+      "name": "Yellow/400",
+      "variableCollectionId": "VariableCollectionId:23:1247",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "23:0": {
+          "r": 0.9098039269447327,
+          "g": 0.7254902124404907,
+          "b": 0.1921568661928177,
+          "a": 1
+        }
+      },
+      "description": "",
+      "codeSyntax": {}
+    },
+    {
+      "id": "VariableID:27:129",
+      "name": "Yellow/500",
+      "variableCollectionId": "VariableCollectionId:23:1247",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "23:0": {
+          "r": 0.8980392217636108,
+          "g": 0.6274510025978088,
+          "b": 0,
+          "a": 1
+        }
+      },
+      "description": "",
+      "codeSyntax": {}
+    },
+    {
+      "id": "VariableID:27:130",
+      "name": "Yellow/600",
+      "variableCollectionId": "VariableCollectionId:23:1247",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "23:0": {
+          "r": 0.7490196228027344,
+          "g": 0.4156862795352936,
+          "b": 0.007843137718737125,
+          "a": 1
+        }
+      },
+      "description": "",
+      "codeSyntax": {}
+    },
+    {
+      "id": "VariableID:27:131",
+      "name": "Yellow/700",
+      "variableCollectionId": "VariableCollectionId:23:1247",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "23:0": {
+          "r": 0.5921568870544434,
+          "g": 0.3176470696926117,
+          "b": 0.007843137718737125,
+          "a": 1
+        }
+      },
+      "description": "",
+      "codeSyntax": {}
+    },
+    {
+      "id": "VariableID:27:132",
+      "name": "Yellow/800",
+      "variableCollectionId": "VariableCollectionId:23:1247",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "23:0": {
+          "r": 0.40784314274787903,
+          "g": 0.1764705926179886,
+          "b": 0.0117647061124444,
+          "a": 1
+        }
+      },
+      "description": "",
+      "codeSyntax": {}
+    },
+    {
+      "id": "VariableID:27:133",
+      "name": "Yellow/900",
+      "variableCollectionId": "VariableCollectionId:23:1247",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "23:0": {
+          "r": 0.32156863808631897,
+          "g": 0.14509804546833038,
+          "b": 0.01568627543747425,
+          "a": 1
+        }
+      },
+      "description": "",
+      "codeSyntax": {}
+    }
+  ]
+}
