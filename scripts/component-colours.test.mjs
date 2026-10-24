@@ -70,6 +70,8 @@ for (const [name, prefix, shape] of [
     const style = dom.window.getComputedStyle(dom.window.document.querySelector('span'));
     if (name === 'text-input') {
       assert.equal(style.boxShadow, `inset 0 0 0 1px ${sentinel('--color-border-strong')}`);
+    } else if (name === 'textarea') {
+      assert.equal(style.boxShadow, `inset 0 0 0 1px ${sentinel('--color-border-default')}`);
     } else {
       assert.equal(style.borderTopColor, sentinel('--color-border-default'));
     }
@@ -186,11 +188,34 @@ for (const [name, markup, selector] of [
     const dom = new JSDOM(`<style>${cascadeCss(name)}</style>${markup}`);
     assert.equal(
       dom.window.getComputedStyle(dom.window.document.querySelector(selector)).color,
-      sentinel(name === 'text-input' ? '--color-text-secondary' : '--color-text-disabled'),
+      sentinel(
+        name === 'text-input'
+          ? '--color-text-secondary'
+          : name === 'textarea'
+            ? '--color-text-muted'
+            : '--color-text-disabled',
+      ),
     );
     dom.window.close();
   });
 }
+
+test('Textarea disabled label, required marker and counter preserve their main-component roles', () => {
+  for (const [className, role] of [
+    ['dds-textarea__label', '--color-text-primary'],
+    ['dds-textarea__required', '--color-feedback-error'],
+    ['dds-textarea__count', '--color-text-muted'],
+  ]) {
+    const dom = new JSDOM(
+      `<style>${cascadeCss('textarea')}</style><div class="dds-textarea dds-textarea--disabled"><span class="${className}"></span></div>`,
+    );
+    assert.equal(
+      dom.window.getComputedStyle(dom.window.document.querySelector('span')).color,
+      sentinel(role),
+    );
+    dom.window.close();
+  }
+});
 
 test('Sidebar follows the current elevated-surface Figma bindings, including active icons', () => {
   // Isolate each lookup: jsdom caches pseudo-selector matches across ancestor style queries.

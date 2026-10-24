@@ -89,7 +89,7 @@ export class TextareaComponent {
 
     if (this.isError) {
       ids.push(this.errorId);
-    } else if (this.showHelperText) {
+    } else if (this.showHelperText && !this.isDisabled) {
       ids.push(this.helperId);
     }
 
@@ -101,6 +101,7 @@ export class TextareaComponent {
   }
 
   handleInput(event: Event): void {
+    if (this.isDisabled || this.loading) return;
     this.value = (event.target as HTMLTextAreaElement).value;
     this.valueChange.emit(this.value);
   }

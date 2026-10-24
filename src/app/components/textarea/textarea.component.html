@@ -25,19 +25,25 @@
     </label>
 
     <div class="dds-textarea__field">
-      <textarea
-        class="dds-textarea__control"
-        [id]="inputId"
-        [value]="value"
-        [placeholder]="placeholder"
-        [required]="required"
-        [disabled]="isDisabled"
-        [attr.maxlength]="maxLength > 0 ? maxLength : null"
-        [attr.aria-label]="showLabel ? null : ariaLabel"
-        [attr.aria-invalid]="isError ? 'true' : null"
-        [attr.aria-describedby]="describedBy"
-        (input)="handleInput($event)"
-      ></textarea>
+      <div class="dds-textarea__input">
+        <span class="dds-textarea__measure" aria-hidden="true">{{
+          (value || placeholder) + '\u200b'
+        }}</span>
+        <textarea
+          class="dds-textarea__control"
+          [id]="inputId"
+          [value]="value"
+          [placeholder]="placeholder"
+          [required]="required"
+          [disabled]="isDisabled"
+          rows="1"
+          [attr.maxlength]="maxLength > 0 ? maxLength : null"
+          [attr.aria-label]="showLabel ? null : ariaLabel"
+          [attr.aria-invalid]="isError ? 'true' : null"
+          [attr.aria-describedby]="describedBy"
+          (input)="handleInput($event)"
+        ></textarea>
+      </div>
 
       <span
         *ngIf="showCharacterCount"
@@ -49,7 +55,11 @@
       </span>
     </div>
 
-    <p *ngIf="!isError && showHelperText" class="dds-textarea__supporting-text" [id]="helperId">
+    <p
+      *ngIf="!isError && !isDisabled && showHelperText"
+      class="dds-textarea__supporting-text"
+      [id]="helperId"
+    >
       {{ helperText }}
     </p>
 
