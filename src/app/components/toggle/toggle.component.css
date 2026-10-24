@@ -1,0 +1,138 @@
+:host {
+  display: inline-flex;
+  vertical-align: middle;
+  flex-shrink: 0;
+}
+
+.dds-toggle {
+  --toggle-bg: var(--color-bg-elevated);
+  --toggle-stroke: var(--color-border-strong);
+  --toggle-thumb: var(--color-text-secondary);
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 44px;
+}
+
+.dds-toggle--small {
+  width: 44px;
+}
+
+.dds-toggle--checked {
+  --toggle-bg: var(--color-interactive-default);
+  --toggle-stroke: var(--color-interactive-default);
+  --toggle-thumb: var(--color-text-on-interactive);
+}
+
+.dds-toggle__input {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.dds-toggle__track {
+  position: relative;
+  display: block;
+  width: 50px;
+  height: 26px;
+  border-radius: 9999px;
+  background: var(--toggle-bg);
+  box-shadow: 0 0 0 1px var(--toggle-stroke);
+  pointer-events: none;
+}
+
+.dds-toggle__thumb {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 18px;
+  height: 18px;
+  background: var(--toggle-thumb);
+  mask: url('/images/toggle/thumb-large.svg') center / 18px 18px no-repeat;
+}
+
+.dds-toggle--checked .dds-toggle__thumb {
+  left: 28px;
+}
+
+.dds-toggle--small .dds-toggle__track {
+  width: 40px;
+  height: 20px;
+}
+
+.dds-toggle--small .dds-toggle__thumb {
+  width: 12px;
+  height: 12px;
+  mask-image: url('/images/toggle/thumb-small.svg');
+  mask-size: 12px 12px;
+}
+
+.dds-toggle--small.dds-toggle--checked .dds-toggle__thumb {
+  left: 24px;
+}
+
+.dds-toggle--hover .dds-toggle__input:enabled + .dds-toggle__track,
+.dds-toggle__input:enabled:hover + .dds-toggle__track {
+  background: var(--color-bg-subtle);
+}
+
+.dds-toggle--checked.dds-toggle--hover .dds-toggle__input:enabled + .dds-toggle__track,
+.dds-toggle--checked .dds-toggle__input:enabled:hover + .dds-toggle__track {
+  background: var(--color-interactive-hover);
+}
+
+.dds-toggle.dds-toggle--focused .dds-toggle__input:enabled + .dds-toggle__track,
+.dds-toggle .dds-toggle__input:enabled:focus + .dds-toggle__track {
+  background: var(--toggle-bg);
+  box-shadow: 0 0 0 3px var(--color-border-focus);
+}
+
+.dds-toggle--disabled {
+  --toggle-bg: var(--color-bg-subtle);
+  --toggle-stroke: var(--color-border-default);
+  --toggle-thumb: var(--color-text-disabled);
+}
+
+.dds-toggle__input:disabled {
+  cursor: not-allowed;
+}
+
+@media (forced-colors: active) {
+  .dds-toggle__track {
+    outline: 1px solid ButtonText;
+  }
+
+  .dds-toggle__thumb {
+    forced-color-adjust: none;
+    background: ButtonText;
+  }
+
+  .dds-toggle--checked .dds-toggle__track {
+    background: Highlight;
+  }
+
+  .dds-toggle--checked .dds-toggle__thumb {
+    background: HighlightText;
+  }
+
+  .dds-toggle .dds-toggle__input:enabled:focus + .dds-toggle__track {
+    outline: 3px solid Highlight;
+    outline-offset: 2px;
+  }
+
+  .dds-toggle--disabled .dds-toggle__track {
+    background: Canvas;
+    outline-color: GrayText;
+  }
+
+  .dds-toggle--disabled .dds-toggle__thumb {
+    background: GrayText;
+  }
+}

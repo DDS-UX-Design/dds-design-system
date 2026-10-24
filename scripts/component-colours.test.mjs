@@ -17,7 +17,16 @@ const families = {
   ],
   feedback: ['alert', 'toast', 'status-badge'],
   entry: ['text-input', 'textarea', 'password-input', 'search', 'otp-input'],
-  selection: ['checkbox', 'checkbox-group', 'radio', 'radio-group', 'select', 'date-input'],
+  selection: [
+    'checkbox',
+    'checkbox-group',
+    'radio',
+    'radio-group',
+    'select',
+    'date-input',
+    'toggle',
+    'toggle-field',
+  ],
 };
 const generated = readFileSync(
   new URL('../src/tokens/generated/figma.tokens.css', import.meta.url),
@@ -199,6 +208,39 @@ for (const [name, markup, selector] of [
     dom.window.close();
   });
 }
+
+test('Toggle disabled states preserve thumb position and override focus/hover colours', () => {
+  for (const small of [false, true]) {
+    const dom = new JSDOM(
+      `<style>${cascadeCss('toggle')}</style><span class="dds-toggle dds-toggle--checked dds-toggle--disabled dds-toggle--focused dds-toggle--hover ${small ? 'dds-toggle--small' : ''}"><input class="dds-toggle__input" disabled><span class="dds-toggle__track"><span class="dds-toggle__thumb"></span></span></span>`,
+    );
+    const root = dom.window.getComputedStyle(dom.window.document.querySelector('.dds-toggle'));
+    assert.equal(root.getPropertyValue('--toggle-bg'), sentinel('--color-bg-subtle'));
+    assert.equal(root.getPropertyValue('--toggle-stroke'), sentinel('--color-border-default'));
+    assert.equal(root.getPropertyValue('--toggle-thumb'), sentinel('--color-text-disabled'));
+    const track = dom.window.getComputedStyle(
+      dom.window.document.querySelector('.dds-toggle__track'),
+    );
+    assert.equal(track.boxShadow, '0 0 0 1px var(--toggle-stroke)');
+    const thumb = dom.window.getComputedStyle(
+      dom.window.document.querySelector('.dds-toggle__thumb'),
+    );
+    assert.equal(thumb.left, small ? '24px' : '28px');
+    dom.window.close();
+  }
+});
+
+test('Toggle native focus overrides hover preview with the semantic focus ring', () => {
+  const dom = new JSDOM(
+    `<style>${cascadeCss('toggle')}</style><span class="dds-toggle dds-toggle--checked dds-toggle--hover"><input class="dds-toggle__input"><span class="dds-toggle__track"></span></span>`,
+  );
+  dom.window.document.querySelector('input').focus();
+  const track = dom.window.getComputedStyle(
+    dom.window.document.querySelector('.dds-toggle__track'),
+  );
+  assert.equal(track.boxShadow, `0 0 0 3px ${sentinel('--color-border-focus')}`);
+  dom.window.close();
+});
 
 test('Textarea disabled label, required marker and counter preserve their main-component roles', () => {
   for (const [className, role] of [

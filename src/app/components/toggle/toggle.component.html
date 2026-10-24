@@ -1,0 +1,26 @@
+<span
+  class="dds-toggle"
+  [class.dds-toggle--small]="size === 'small'"
+  [class.dds-toggle--checked]="checked"
+  [class.dds-toggle--hover]="state === 'hover'"
+  [class.dds-toggle--focused]="state === 'focused'"
+  [class.dds-toggle--disabled]="isDisabled"
+>
+  <input
+    class="dds-toggle__input"
+    type="checkbox"
+    role="switch"
+    [id]="inputId"
+    [checked]="checked"
+    [disabled]="isDisabled"
+    [attr.name]="name || null"
+    [attr.aria-checked]="checked"
+    [attr.aria-label]="labelledBy ? null : ariaLabel"
+    [attr.aria-labelledby]="labelledBy || null"
+    [attr.aria-describedby]="describedBy || null"
+    (change)="handleChange($event)"
+  />
+  <span class="dds-toggle__track" aria-hidden="true">
+    <span class="dds-toggle__thumb"></span>
+  </span>
+</span>

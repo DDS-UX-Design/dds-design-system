@@ -1,0 +1,17 @@
+<label class="dds-toggle-field" [class.dds-toggle-field--disabled]="disabled" [for]="inputId">
+  <span class="dds-toggle-field__copy">
+    <span class="dds-toggle-field__label" [id]="inputId + '-label'">{{ label }}</span>
+    @if (showHelperText && helperText) {
+      <span class="dds-toggle-field__helper" [id]="inputId + '-helper'">{{ helperText }}</span>
+    }
+  </span>
+  <dds-toggle
+    [inputId]="inputId"
+    [checked]="checked"
+    [disabled]="disabled"
+    [name]="name"
+    [labelledBy]="inputId + '-label'"
+    [describedBy]="showHelperText && helperText ? inputId + '-helper' : undefined"
+    (checkedChange)="handleChange($event)"
+  />
+</label>
