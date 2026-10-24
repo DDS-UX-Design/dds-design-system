@@ -8,7 +8,7 @@
   flex-direction: column;
   width: 388px;
   max-width: 100%;
-  color: var(--text-colour-default);
+  color: var(--color-text-primary);
   font-family: var(--font-family-primary);
 }
 
@@ -26,7 +26,7 @@
 }
 
 .dds-otp__required {
-  color: var(--red-700);
+  color: var(--color-feedback-error);
 }
 
 .dds-otp__fields {
@@ -60,9 +60,9 @@
   align-items: center;
   justify-content: center;
   height: 67px;
-  border: 1px solid var(--border-colour-strong);
+  border: 1px solid var(--color-border-strong);
   border-radius: var(--radius-sm);
-  background: var(--bg-colour-white);
+  background: var(--color-bg-elevated);
   font-size: var(--font-size-xl);
   font-weight: var(--font-weight-semibold);
   line-height: 24px;
@@ -76,11 +76,11 @@
 }
 
 .dds-otp__field--active {
-  border: 2px solid var(--border-colour-info);
+  border: 2px solid var(--color-border-focus);
 }
 
 .dds-otp--error .dds-otp__field {
-  border: 2px solid var(--border-colour-danger);
+  border: 2px solid var(--color-feedback-error);
 }
 
 .dds-otp--disabled .dds-otp__fields {
@@ -92,15 +92,15 @@
 }
 
 .dds-otp--disabled .dds-otp__field {
-  border-color: var(--border-colour-default);
-  background: var(--bg-colour-disabled);
-  color: var(--text-colour-disabled);
+  border-color: var(--color-border-default);
+  background: var(--color-bg-subtle);
+  color: var(--color-text-disabled);
 }
 
 .dds-otp__error-message {
   margin: 0;
   padding-top: var(--space-2);
-  color: var(--text-colour-danger);
+  color: var(--color-feedback-error);
   font-size: var(--font-size-xs);
   font-weight: var(--font-weight-medium);
   line-height: 16px;
@@ -114,7 +114,7 @@
   gap: var(--space-1);
   margin: 0;
   padding-top: var(--space-4);
-  color: var(--text-colour-tertiary);
+  color: var(--color-text-muted);
   font-size: var(--font-size-xs);
   font-weight: var(--font-weight-regular);
   line-height: 16px;
@@ -126,12 +126,12 @@
 }
 
 .dds-otp__expiry strong {
-  color: var(--text-colour-default);
+  color: var(--color-text-primary);
   font-weight: var(--font-weight-semibold);
 }
 
 .dds-otp__expiry--expired {
-  color: var(--text-colour-danger);
+  color: var(--color-feedback-error);
   font-weight: var(--font-weight-medium);
 }
 
@@ -150,4 +150,21 @@
   display: flex;
   justify-content: center;
   padding-top: var(--space-4);
+}
+
+/* Validation focus remains destructive for native and preview focus. */
+.dds-otp--error .dds-otp__field--active {
+  box-shadow: 0 0 0 2px var(--color-border-focus-danger);
+}
+
+/* Disabled overrides validation and focus previews. Keep their existing geometry. */
+.dds-otp--disabled .dds-otp__field {
+  border-color: var(--color-border-default);
+  background: var(--color-bg-subtle);
+  box-shadow: none;
+}
+
+.dds-otp--disabled .dds-otp__label,
+.dds-otp--disabled .dds-otp__required {
+  color: var(--color-text-disabled);
 }

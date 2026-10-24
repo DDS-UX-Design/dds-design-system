@@ -8,7 +8,7 @@
   flex-direction: column;
   width: 460px;
   max-width: 100%;
-  color: var(--text-colour-default);
+  color: var(--color-text-primary);
   font-family: var(--font-family-primary);
 }
 
@@ -17,7 +17,7 @@
   align-items: center;
   gap: var(--space-1);
   padding-bottom: var(--space-2);
-  color: var(--text-colour-default);
+  color: var(--color-text-primary);
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-semibold);
   line-height: 20px;
@@ -31,7 +31,7 @@
 
 .dds-textarea__required,
 .dds-textarea--error .dds-textarea__label {
-  color: var(--text-colour-danger);
+  color: var(--color-feedback-error);
 }
 
 .dds-textarea__field {
@@ -39,22 +39,22 @@
   box-sizing: border-box;
   display: flex;
   min-height: 80px;
-  border: 1px solid var(--border-colour-default);
+  border: 1px solid var(--color-border-default);
   border-radius: var(--radius-sm);
-  background: var(--bg-colour-white);
+  background: var(--color-bg-elevated);
 }
 
 .dds-textarea--focused .dds-textarea__field,
 .dds-textarea__field:focus-within {
-  border: 2px solid var(--border-colour-info);
+  border: 2px solid var(--color-border-focus);
 }
 
 .dds-textarea--error .dds-textarea__field {
-  border: 2px solid var(--border-colour-danger);
+  border: 2px solid var(--color-feedback-error);
 }
 
 .dds-textarea--disabled .dds-textarea__field {
-  background: var(--bg-colour-disabled);
+  background: var(--color-bg-subtle);
 }
 
 .dds-textarea__control {
@@ -65,8 +65,8 @@
   resize: vertical;
   border: 0;
   outline: 0;
-  background: transparent;
-  color: var(--text-colour-default);
+  background: var(--color-bg-transparent);
+  color: var(--color-text-primary);
   font: inherit;
   font-size: var(--font-size-md);
   line-height: 24px;
@@ -83,24 +83,24 @@
 }
 
 .dds-textarea__control::placeholder {
-  color: var(--text-colour-placeholder);
+  color: var(--color-text-muted);
   opacity: 1;
 }
 
 .dds-textarea__control:disabled {
-  color: var(--text-colour-disabled);
+  color: var(--color-text-disabled);
   cursor: not-allowed;
 }
 
 .dds-textarea__control:disabled::placeholder {
-  color: var(--text-colour-disabled);
+  color: var(--color-text-disabled);
 }
 
 .dds-textarea__count {
   position: absolute;
   right: var(--space-2);
   bottom: var(--space-2);
-  color: var(--text-colour-tertiary);
+  color: var(--color-text-muted);
   font-size: var(--font-size-xs);
   font-weight: var(--font-weight-regular);
   line-height: 16px;
@@ -110,14 +110,14 @@
 .dds-textarea__supporting-text {
   margin: 0;
   padding-top: var(--space-2);
-  color: var(--text-colour-tertiary);
+  color: var(--color-text-muted);
   font-size: var(--font-size-xs);
   font-weight: var(--font-weight-regular);
   line-height: 16px;
 }
 
 .dds-textarea__error {
-  color: var(--text-colour-danger);
+  color: var(--color-feedback-error);
   font-weight: var(--font-weight-medium);
 }
 
@@ -131,4 +131,22 @@
 
 .dds-textarea__skeleton-supporting-text {
   padding-top: var(--space-2);
+}
+
+/* Validation focus remains destructive for native and preview focus. */
+.dds-textarea--error .dds-textarea__field:focus-within,
+.dds-textarea--error.dds-textarea--focused .dds-textarea__field {
+  box-shadow: 0 0 0 2px var(--color-border-focus-danger);
+}
+
+/* Disabled overrides validation and focus previews. Keep their existing geometry. */
+.dds-textarea--disabled .dds-textarea__field {
+  border-color: var(--color-border-default);
+  background: var(--color-bg-subtle);
+  box-shadow: none;
+}
+
+.dds-textarea--disabled .dds-textarea__label,
+.dds-textarea--disabled .dds-textarea__required {
+  color: var(--color-text-disabled);
 }
