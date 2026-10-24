@@ -264,9 +264,13 @@ export const ActualFocus: Story = {
     await expect(button).toHaveFocus();
     const styles = button.ownerDocument.defaultView!.getComputedStyle(button);
     await expect(styles.appearance).toBe('none');
-    await expect(styles.boxShadow).not.toBe('none');
     await waitFor(() => {
-      expect(button.ownerDocument.defaultView!.getComputedStyle(button).boxShadow).toContain('2px');
+      const focused = button.ownerDocument.defaultView!.getComputedStyle(button);
+      if (button.classList.contains('dds-button--ghost')) {
+        expect(focused.borderColor).not.toBe('rgba(0, 0, 0, 0)');
+      } else {
+        expect(focused.boxShadow).toContain('3px');
+      }
     });
   },
 };
@@ -471,4 +475,109 @@ export const FullWidth: Story = {
     layout: 'padded',
     viewport: { defaultViewport: 'mobile' },
   },
+};
+
+/** Same component instances under scoped semantic modes; no theme prop required. */
+const themedMatrix = (theme: 'light' | 'dark') => ({
+  template: `
+    <section data-theme="${theme}" style="padding:var(--space-6);background:var(--color-bg-default);color:var(--color-text-primary)">
+      <h2>Button · ${theme}</h2>
+      <p>Default, hover, focus and disabled. Colours inherit the nearest theme.</p>
+      ${comparisonRows
+        .map(
+          ({ label, variant, styleType }) => `
+        <div style="margin-bottom:var(--space-6)">
+          <h3>${label}</h3>
+          <div style="display:flex;flex-wrap:wrap;gap:var(--space-6)">
+            ${(['default', 'hover', 'focused', 'disabled'] as const)
+              .map(
+                (state) => `
+              <div style="display:grid;gap:var(--space-3);justify-items:start" data-variant="${label.toLowerCase()}" data-state="${state}">
+                <span>${state}</span>
+                <dds-button variant="${variant}" styleType="${styleType}" state="${state}" size="medium">${label === 'Danger' ? 'Delete item' : 'Save changes'}</dds-button>
+              </div>`,
+              )
+              .join('')}
+          </div>
+        </div>`,
+        )
+        .join('')}
+      <h3>Sizes and icons</h3>
+      <div style="display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-4)">
+        <dds-button size="large" iconType="left-icon" icon="plus">Add item</dds-button>
+        <dds-button size="medium" iconType="right-icon" icon="arrow-right">Continue</dds-button>
+        <dds-button size="small" iconType="icon-only" icon="plus" ariaLabel="Add item"></dds-button>
+      </div>
+    </section>`,
+});
+
+const verifySemanticColours = async (canvasElement: HTMLElement) => {
+  const section = canvasElement.querySelector('section[data-theme]')!;
+  const probe = section.ownerDocument.createElement('span');
+  section.appendChild(probe);
+  const colour = (token: string) => {
+    probe.style.backgroundColor = `var(--${token})`;
+    return probe.ownerDocument.defaultView!.getComputedStyle(probe).backgroundColor;
+  };
+  try {
+    for (const cell of Array.from(
+      section.querySelectorAll<HTMLElement>('[data-variant][data-state]'),
+    )) {
+      const button = cell.querySelector('button')!;
+      const variant = cell.dataset['variant'];
+      const state = cell.dataset['state'];
+      const disabled = state === 'disabled';
+      const hover = state === 'hover';
+      const bg =
+        variant === 'ghost'
+          ? 'color-bg-transparent'
+          : disabled
+            ? 'color-bg-subtle'
+            : variant === 'primary'
+              ? hover
+                ? 'color-interactive-hover'
+                : 'color-interactive-default'
+              : variant === 'danger'
+                ? hover
+                  ? 'color-interactive-danger-hover'
+                  : 'color-feedback-error'
+                : hover
+                  ? 'color-bg-subtle'
+                  : 'color-bg-elevated';
+      const fg = disabled
+        ? 'color-text-disabled'
+        : variant === 'primary'
+          ? 'color-text-on-interactive'
+          : variant === 'danger'
+            ? 'color-text-on-feedback'
+            : 'color-text-primary';
+      await waitFor(() => {
+        const actual = button.ownerDocument.defaultView!.getComputedStyle(button);
+        expect(actual.backgroundColor).toBe(colour(bg));
+        expect(actual.color).toBe(colour(fg));
+      });
+      if (disabled) await expect(button).toBeDisabled();
+    }
+  } finally {
+    probe.remove();
+  }
+};
+
+export const SemanticLight: Story = {
+  name: 'Semantic colours / Light',
+  parameters: { layout: 'fullscreen', controls: { disable: true } },
+  render: () => themedMatrix('light'),
+  play: async ({ canvasElement }) => verifySemanticColours(canvasElement),
+};
+
+export const SemanticDark: Story = {
+  name: 'Semantic colours / Dark',
+  parameters: { layout: 'fullscreen', controls: { disable: true } },
+  render: () => themedMatrix('dark'),
+  play: SemanticLight.play,
+};
+
+export const GhostFocused: Story = {
+  name: 'Ghost / Focus',
+  args: { text: 'Learn more', variant: 'ghost', state: 'focused' },
 };
