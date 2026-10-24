@@ -50,3 +50,13 @@ Light/Dark/Comparison stories include realistic labels, long validation and deli
 - Repository formatting check reports pre-existing issues, including generated CSS. Generated files were not hand-formatted. Changed component/story/test/docs files are checked separately.
 - Storybook production build uses the documented memory/worker settings with Compodoc disabled to preserve the pre-existing modified documentation.json.
 - Browser connection reports no available browser; rendered visual review and story play execution remain pending.
+
+## Selection and date family
+
+Changed Checkbox, Radio, Checkbox Group, Radio Group, Select and Date Input styles; added a Light/Dark comparison story, six native disabled tests and `scripts/component-colours.test.mjs`.
+
+Surfaces, labels, helper/placeholder text, validation and focus follow the text-entry roles above. Checked Radio uses `--color-interactive-default`, independently of its `--color-border-focus` ring. Checkbox check/mixed marks inherit `--color-icon-default`. Invalid focus uses `--color-border-focus-danger`. Disabled controls and icons use text-disabled, bg-subtle and border-default, overriding checked/focus/invalid styling. Group required markers inherit disabled text. Native select options explicitly receive elevated surfaces and primary/disabled text.
+
+No new hover or pressed variants were added. Selection remains native checked/change behaviour. Native select popup appearance is partly platform-controlled and requires visual review. There is no Toggle implementation. Six new tests verify disabled controls and groups cannot focus or activate. The CSS contract tests verify only public semantic names and disabled cascade precedence, substituting unique test colours because jsdom does not resolve custom properties; this is not visual verification. All 11 CSS contract tests pass. Targeted component/story tests pass (38 tests); Storybook build is run before the family commit.
+
+Product effect: Select in Page Toolbar and related screens and Date Input in Customer Management now inherit theme colours. Group and standalone control consumers keep the same API, sizing and events. No template or interaction code changed.

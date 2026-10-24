@@ -15,7 +15,7 @@
   display: flex;
   gap: var(--space-1);
   padding-bottom: var(--space-2);
-  color: var(--text-colour-default);
+  color: var(--color-text-primary);
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-semibold);
   line-height: 20px;
@@ -32,9 +32,9 @@
   align-items: center;
   min-height: 48px;
   padding: 0 var(--space-3);
-  border: 1px solid var(--border-colour-default);
+  border: 1px solid var(--color-border-default);
   border-radius: var(--radius-sm);
-  background: var(--bg-colour-white);
+  background: var(--color-bg-elevated);
   box-sizing: border-box;
 }
 
@@ -48,8 +48,8 @@
   padding: 0;
   border: 0;
   outline: 0;
-  background: transparent;
-  color: var(--text-colour-default);
+  background: var(--color-bg-transparent);
+  color: var(--color-text-primary);
   font: inherit;
   font-size: var(--font-size-md);
   font-weight: var(--font-weight-regular);
@@ -62,26 +62,26 @@
 }
 
 .dds-date-input__control::placeholder {
-  color: var(--text-colour-placeholder);
+  color: var(--color-text-muted);
   opacity: 1;
 }
 
 .dds-date-input__icon {
   display: inline-flex;
   flex: 0 0 auto;
-  color: var(--icon-colour-default);
+  color: var(--color-icon-default);
   pointer-events: none;
 }
 
 .dds-date-input__field:focus-within,
 .dds-date-input--focused .dds-date-input__field {
-  border: 2px solid var(--border-colour-info);
+  border: 2px solid var(--color-border-focus);
   padding-right: 11px;
   padding-left: 11px;
 }
 
 .dds-date-input--error .dds-date-input__field {
-  border: 2px solid var(--border-colour-danger);
+  border: 2px solid var(--color-feedback-error);
   padding-right: 11px;
   padding-left: 11px;
 }
@@ -89,7 +89,7 @@
 .dds-date-input__message {
   margin: 0;
   padding-top: var(--space-2);
-  color: var(--text-colour-tertiary);
+  color: var(--color-text-muted);
   font-size: var(--font-size-xs);
   font-weight: var(--font-weight-regular);
   line-height: 16px;
@@ -98,23 +98,23 @@
 .dds-date-input__required,
 .dds-date-input--error .dds-date-input__label,
 .dds-date-input__message--error {
-  color: var(--text-colour-danger);
+  color: var(--color-feedback-error);
 }
 
 .dds-date-input--disabled .dds-date-input__field {
-  border-color: var(--border-colour-default);
-  background: var(--bg-colour-disabled);
+  border-color: var(--color-border-default);
+  background: var(--color-bg-subtle);
 }
 
 .dds-date-input--disabled .dds-date-input__control,
 .dds-date-input--disabled .dds-date-input__icon,
 .dds-date-input--disabled .dds-date-input__message {
-  color: var(--text-colour-disabled);
+  color: var(--color-text-disabled);
   cursor: not-allowed;
 }
 
 .dds-date-input--disabled .dds-date-input__control::placeholder {
-  color: var(--text-colour-disabled);
+  color: var(--color-text-disabled);
 }
 
 .dds-date-input__skeleton-label {
@@ -127,4 +127,21 @@
 
 .dds-date-input__skeleton-message {
   padding-top: var(--space-2);
+}
+
+.dds-date-input--error .dds-date-input__field:focus-within,
+.dds-date-input--error.dds-date-input--focused .dds-date-input__field {
+  box-shadow: 0 0 0 2px var(--color-border-focus-danger);
+}
+
+.dds-date-input--disabled .dds-date-input__field {
+  border-color: var(--color-border-default);
+  box-shadow: none;
+}
+
+.dds-date-input--disabled .dds-date-input__label,
+.dds-date-input--disabled .dds-date-input__required,
+.dds-date-input--disabled .dds-date-input__control,
+.dds-date-input--disabled .dds-date-input__icon {
+  color: var(--color-text-disabled);
 }

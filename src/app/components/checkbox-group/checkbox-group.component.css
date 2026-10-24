@@ -8,7 +8,7 @@
   margin: 0;
   padding: 0;
   border: 0;
-  color: var(--text-colour-default);
+  color: var(--color-text-primary);
   font-family: var(--font-family-primary);
 }
 
@@ -21,7 +21,7 @@
 
 .dds-checkbox-group__legend span,
 .dds-checkbox-group__supporting-text--error {
-  color: var(--text-colour-danger);
+  color: var(--color-feedback-error);
 }
 
 .dds-checkbox-group__legend span {
@@ -46,19 +46,19 @@
 .dds-checkbox-group__supporting-text {
   margin: 0;
   padding-top: var(--space-2);
-  color: var(--text-colour-tertiary);
+  color: var(--color-text-muted);
   font-size: var(--font-size-xs);
   font-weight: var(--font-weight-regular);
   line-height: var(--font-size-md);
 }
 
 .dds-checkbox-group__supporting-text--error {
-  color: var(--text-colour-danger);
+  color: var(--color-feedback-error);
   font-weight: var(--font-weight-medium);
 }
 
 .dds-checkbox-group:disabled .dds-checkbox-group__legend {
-  color: var(--text-colour-disabled);
+  color: var(--color-text-disabled);
 }
 
 .dds-checkbox-group__skeleton-legend {
@@ -87,4 +87,8 @@
 
 .dds-checkbox-group__skeleton-supporting-text {
   padding-top: var(--space-2);
+}
+
+.dds-checkbox-group:disabled .dds-checkbox-group__legend span {
+  color: var(--color-text-disabled);
 }

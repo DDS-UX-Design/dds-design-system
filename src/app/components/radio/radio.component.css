@@ -7,7 +7,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  color: var(--text-colour-default);
+  color: var(--color-text-primary);
   font-family: var(--font-family-primary);
   font-size: var(--font-size-sm);
   line-height: var(--font-size-xl);
@@ -22,7 +22,7 @@
 
 .dds-radio__required,
 .dds-radio__error {
-  color: var(--text-colour-danger);
+  color: var(--color-feedback-error);
 }
 
 .dds-radio__skeleton-label {
@@ -60,40 +60,40 @@
   place-items: center;
   width: 20px;
   height: 20px;
-  border: 1px solid var(--border-colour-strong);
+  border: 1px solid var(--color-border-strong);
   border-radius: var(--radius-full);
-  background: var(--bg-colour-white);
+  background: var(--color-bg-elevated);
 }
 
 .dds-radio__circle > span {
   width: 10px;
   height: 10px;
   border-radius: var(--radius-full);
-  background: transparent;
+  background: var(--color-bg-transparent);
 }
 
 .dds-radio__native:checked + .dds-radio__circle {
-  border: 2px solid var(--border-colour-info);
+  border: 2px solid var(--color-interactive-default);
 }
 
 .dds-radio__native:checked + .dds-radio__circle > span {
-  background: var(--bg-colour-accent);
+  background: var(--color-interactive-default);
 }
 
 .dds-radio__native:focus-visible + .dds-radio__circle,
 .dds-radio--focused .dds-radio__circle {
-  border: 2px solid var(--border-colour-info);
-  outline: 2px solid var(--bg-colour-info-muted);
+  border: 2px solid var(--color-border-focus);
+  outline: 2px solid var(--color-border-focus);
   outline-offset: 2px;
 }
 
 .dds-radio--invalid .dds-radio__circle,
 .dds-radio--invalid .dds-radio__native:checked + .dds-radio__circle {
-  border: 2px solid var(--border-colour-danger);
+  border: 2px solid var(--color-feedback-error);
 }
 
 .dds-radio--disabled {
-  color: var(--text-colour-disabled);
+  color: var(--color-text-disabled);
 }
 
 .dds-radio--disabled .dds-radio__option {
@@ -101,16 +101,16 @@
 }
 
 .dds-radio--disabled .dds-radio__circle {
-  border-color: var(--border-colour-strong);
-  background: var(--bg-colour-disabled);
+  border-color: var(--color-border-strong);
+  background: var(--color-bg-subtle);
 }
 
 .dds-radio--disabled .dds-radio__native:checked + .dds-radio__circle {
-  border-color: var(--border-colour-strong);
+  border-color: var(--color-border-strong);
 }
 
 .dds-radio--disabled .dds-radio__native:checked + .dds-radio__circle > span {
-  background: var(--text-colour-disabled);
+  background: var(--color-text-disabled);
 }
 
 .dds-radio__error {
@@ -119,4 +119,22 @@
   font-size: var(--font-size-xs);
   font-weight: var(--font-weight-medium);
   line-height: var(--font-size-md);
+}
+
+.dds-radio--invalid .dds-radio__native:focus-visible + .dds-radio__circle,
+.dds-radio--invalid.dds-radio--focused .dds-radio__circle {
+  outline: 2px solid var(--color-border-focus-danger);
+  outline-offset: 2px;
+}
+
+.dds-radio--disabled .dds-radio__circle,
+.dds-radio--disabled .dds-radio__native:checked + .dds-radio__circle {
+  border-color: var(--color-border-default);
+  background: var(--color-bg-subtle);
+  color: var(--color-text-disabled);
+  outline: none;
+}
+
+.dds-radio--disabled .dds-radio__required {
+  color: var(--color-text-disabled);
 }
