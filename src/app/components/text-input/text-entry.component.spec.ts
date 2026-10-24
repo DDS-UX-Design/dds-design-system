@@ -49,3 +49,28 @@ describe('Text entry native disabled behaviour', () => {
     expect(changed).not.toHaveBeenCalled();
   });
 });
+
+describe('Text Input validation and loading contract', () => {
+  it('associates validation text and retains native disabled/required semantics', async () => {
+    await TestBed.configureTestingModule({ imports: [TextInputComponent] }).compileComponents();
+    const fixture = TestBed.createComponent(TextInputComponent);
+    fixture.componentRef.setInput('state', 'error');
+    fixture.componentRef.setInput('errorMessage', 'Enter the invoice reference.');
+    fixture.componentRef.setInput('required', true);
+    fixture.detectChanges();
+    const input: HTMLInputElement = fixture.nativeElement.querySelector('input');
+    expect(input.required).toBe(true);
+    expect(input.getAttribute('aria-invalid')).toBe('true');
+    expect(document.getElementById(input.getAttribute('aria-describedby')!)?.textContent).toContain(
+      'Enter the invoice reference.',
+    );
+    fixture.componentRef.setInput('disabled', true);
+    fixture.detectChanges();
+    input.focus();
+    expect(document.activeElement).not.toBe(input);
+    fixture.componentRef.setInput('loading', true);
+    fixture.detectChanges();
+    expect(fixture.nativeElement.querySelector('input')).toBeNull();
+    expect(fixture.nativeElement.querySelector('[aria-busy="true"]')).not.toBeNull();
+  });
+});

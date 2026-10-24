@@ -13,6 +13,7 @@
 
 .dds-text-input__label {
   display: flex;
+  align-items: center;
   gap: var(--space-1);
   padding-bottom: var(--space-2);
   color: var(--color-text-primary);
@@ -27,6 +28,11 @@
   line-height: 16px;
 }
 
+.dds-text-input__required {
+  font-size: var(--font-size-sm);
+  line-height: 20px;
+}
+
 .dds-text-input__required,
 .dds-text-input__message--error {
   color: var(--color-feedback-error);
@@ -37,7 +43,8 @@
   align-items: center;
   min-height: 48px;
   padding: 0 var(--space-3);
-  border: 1px solid var(--color-border-strong);
+  border: 0;
+  box-shadow: inset 0 0 0 1px var(--color-border-strong);
   border-radius: var(--radius-sm);
   background: var(--color-bg-elevated);
   box-sizing: border-box;
@@ -73,15 +80,11 @@
 
 .dds-text-input__field:focus-within,
 .dds-text-input--focused .dds-text-input__field {
-  border: 2px solid var(--color-border-focus);
-  padding-right: 11px;
-  padding-left: 11px;
+  box-shadow: inset 0 0 0 2px var(--color-border-focus);
 }
 
 .dds-text-input--error .dds-text-input__field {
-  border: 2px solid var(--color-feedback-error);
-  padding-right: 11px;
-  padding-left: 11px;
+  box-shadow: inset 0 0 0 2px var(--color-feedback-error);
 }
 
 .dds-text-input__message {
@@ -110,7 +113,7 @@
 }
 
 .dds-text-input--disabled .dds-text-input__field {
-  border-color: var(--color-border-strong);
+  box-shadow: inset 0 0 0 1px var(--color-border-strong);
   background: var(--color-bg-subtle);
 }
 
@@ -126,19 +129,16 @@
 /* Validation focus remains destructive for native and preview focus. */
 .dds-text-input--error .dds-text-input__field:focus-within,
 .dds-text-input--error.dds-text-input--focused .dds-text-input__field {
-  box-shadow: 0 0 0 2px var(--color-border-focus-danger);
+  box-shadow:
+    inset 0 0 0 2px var(--color-feedback-error),
+    0 0 0 2px var(--color-border-focus-danger);
 }
 
-/* Disabled overrides validation and focus previews. Keep their existing geometry. */
-.dds-text-input--disabled .dds-text-input__field {
-  border-color: var(--color-border-default);
+/* Current main definition keeps label/helper hierarchy; only field text is muted.
+   Disabled still overrides all validation/focus treatments on the field. */
+.dds-text-input.dds-text-input--disabled .dds-text-input__field {
   background: var(--color-bg-subtle);
-  box-shadow: none;
-}
-
-.dds-text-input--disabled .dds-text-input__label,
-.dds-text-input--disabled .dds-text-input__required {
-  color: var(--color-text-disabled);
+  box-shadow: inset 0 0 0 1px var(--color-border-strong);
 }
 
 .dds-text-input__message--error {
@@ -146,5 +146,29 @@
 }
 
 .dds-text-input--disabled .dds-text-input__message {
-  color: var(--color-text-disabled);
+  color: var(--color-text-secondary);
+}
+
+/* Forced-colour modes suppress shadows; retain a real boundary and focus cue. */
+@media (forced-colors: active) {
+  .dds-text-input__field {
+    border: 1px solid CanvasText;
+    padding-inline: calc(var(--space-3) - 1px);
+    box-shadow: none;
+  }
+
+  .dds-text-input__field:focus-within,
+  .dds-text-input--focused .dds-text-input__field,
+  .dds-text-input--error .dds-text-input__field:focus-within,
+  .dds-text-input--error.dds-text-input--focused .dds-text-input__field {
+    border: 2px solid Highlight;
+    padding-inline: calc(var(--space-3) - 2px);
+    box-shadow: none;
+  }
+
+  .dds-text-input.dds-text-input--disabled .dds-text-input__field {
+    border: 1px solid GrayText;
+    padding-inline: calc(var(--space-3) - 1px);
+    box-shadow: none;
+  }
 }

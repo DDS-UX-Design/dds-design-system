@@ -48,10 +48,19 @@ const matrix = (theme: string) => `
 async function semanticColour(element: Element, property: string, token: string) {
   const probe = document.createElement('span');
   probe.style.color = `var(${token})`;
-  element.appendChild(probe);
+  (element.parentElement ?? element).appendChild(probe);
   const expected = getComputedStyle(probe).color;
   probe.remove();
   await expect(getComputedStyle(element).getPropertyValue(property)).toBe(expected);
+}
+
+async function semanticStroke(element: Element, token: string) {
+  const probe = document.createElement('span');
+  probe.style.color = `var(${token})`;
+  element.appendChild(probe);
+  const expected = getComputedStyle(probe).color;
+  probe.remove();
+  await expect(getComputedStyle(element).boxShadow).toContain(expected);
 }
 
 const verify = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
@@ -60,10 +69,11 @@ const verify = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   await semanticColour(name, 'color', '--color-text-primary');
   await semanticColour(name.parentElement!, 'background-color', '--color-bg-elevated');
   await userEvent.click(name);
-  await semanticColour(name.parentElement!, 'border-top-color', '--color-border-focus');
+  await semanticStroke(name.parentElement!, '--color-border-focus');
   const invalid = canvas.getByRole('textbox', { name: 'Account reference' });
   await userEvent.click(invalid);
-  await semanticColour(invalid.parentElement!, 'border-top-color', '--color-feedback-error');
+  await semanticStroke(invalid.parentElement!, '--color-feedback-error');
+  await semanticStroke(invalid.parentElement!, '--color-border-focus-danger');
   await semanticColour(
     canvasElement.querySelector('.dds-text-input__message--error')!,
     'color',
@@ -71,7 +81,7 @@ const verify = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   );
   const disabled = canvas.getByRole('textbox', { name: 'Managed account' });
   await expect(disabled).toBeDisabled();
-  await semanticColour(disabled.parentElement!, 'border-top-color', '--color-border-default');
+  await semanticStroke(disabled.parentElement!, '--color-border-strong');
   await semanticColour(disabled, 'color', '--color-text-disabled');
   const buttons = canvas.getAllByRole('button');
   await expect(buttons.at(-1)!).toBeDisabled();

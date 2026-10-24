@@ -68,7 +68,11 @@ for (const [name, prefix, shape] of [
       `<style>${cascadeCss(name)}</style><div class="${prefix} ${prefix}--disabled ${prefix}--${invalid} ${prefix}--focused"><input class="${prefix}__native" checked disabled><span class="${prefix}__${shape} ${prefix}__field--active"></span></div>`,
     );
     const style = dom.window.getComputedStyle(dom.window.document.querySelector('span'));
-    assert.equal(style.borderTopColor, sentinel('--color-border-default'));
+    if (name === 'text-input') {
+      assert.equal(style.boxShadow, `inset 0 0 0 1px ${sentinel('--color-border-strong')}`);
+    } else {
+      assert.equal(style.borderTopColor, sentinel('--color-border-default'));
+    }
     assert.equal(style.backgroundColor, sentinel('--color-bg-subtle'));
     dom.window.close();
   });
@@ -178,11 +182,11 @@ for (const [name, markup, selector] of [
     'p',
   ],
 ]) {
-  test(`${name}: disabled supporting content uses disabled text`, () => {
+  test(`${name}: disabled supporting content uses its documented role`, () => {
     const dom = new JSDOM(`<style>${cascadeCss(name)}</style>${markup}`);
     assert.equal(
       dom.window.getComputedStyle(dom.window.document.querySelector(selector)).color,
-      sentinel('--color-text-disabled'),
+      sentinel(name === 'text-input' ? '--color-text-secondary' : '--color-text-disabled'),
     );
     dom.window.close();
   });

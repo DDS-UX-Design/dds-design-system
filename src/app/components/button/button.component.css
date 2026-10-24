@@ -10,7 +10,9 @@
   align-items: center;
   justify-content: center;
   gap: var(--space-2);
-  border: 1px solid;
+  box-sizing: border-box;
+  --dds-button-stroke: 1px;
+  border: var(--dds-button-stroke) solid;
   border-radius: var(--radius-sm);
   font-family: var(--font-family-primary);
   font-weight: var(--font-weight-medium);
@@ -27,7 +29,8 @@
 .dds-button--large {
   height: 48px;
   min-height: 48px;
-  padding: 12px 24px;
+  padding: calc(var(--space-3) - var(--dds-button-stroke))
+    calc(var(--space-6) - var(--dds-button-stroke));
   font-size: var(--font-size-md);
   line-height: 24px;
 }
@@ -35,7 +38,8 @@
 .dds-button--medium {
   height: 40px;
   min-height: 40px;
-  padding: 8px 16px;
+  padding: calc(var(--space-2) - var(--dds-button-stroke))
+    calc(var(--space-4) - var(--dds-button-stroke));
   font-size: var(--font-size-sm);
   line-height: 20px;
 }
@@ -43,7 +47,8 @@
 .dds-button--small {
   height: 32px;
   min-height: 32px;
-  padding: 4px 12px;
+  padding: calc(var(--space-1) - var(--dds-button-stroke))
+    calc(var(--space-3) - var(--dds-button-stroke));
   font-size: var(--font-size-xs);
   line-height: 16px;
 }
@@ -86,9 +91,18 @@
 }
 
 .dds-button--ghost .dds-button__label {
-  display: block;
-  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 2px;
   position: relative;
+  white-space: nowrap;
+}
+
+.dds-button--ghost.dds-button--medium .dds-button__label,
+.dds-button--ghost.dds-button--small .dds-button__label {
+  height: 20px;
 }
 
 .dds-button--ghost .dds-button__label::after {
@@ -131,6 +145,7 @@
 
 .dds-button--ghost:focus:not(:disabled),
 .dds-button--state-focused.dds-button--ghost:not(:disabled) {
+  --dds-button-stroke: 2px;
   border-color: var(--color-border-focus);
   box-shadow: none;
 }
@@ -198,4 +213,21 @@
   width: var(--btn-icon-only-size-sm);
   height: var(--btn-icon-only-size-sm);
   min-height: var(--btn-icon-only-size-sm);
+}
+
+@media (forced-colors: active) {
+  .dds-button {
+    border-color: ButtonText;
+  }
+
+  .dds-button:focus:not(:disabled),
+  .dds-button--state-focused:not(:disabled) {
+    outline: 2px solid Highlight;
+    outline-offset: 2px;
+  }
+
+  .dds-button:disabled {
+    border-color: GrayText;
+    color: GrayText;
+  }
 }
