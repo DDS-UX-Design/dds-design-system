@@ -4,6 +4,16 @@ import assert from 'node:assert/strict';
 import { JSDOM } from 'jsdom';
 
 const families = {
+  navigation: [
+    'nav-tab',
+    'sidebar-nav',
+    'top-bar-nav',
+    'page-toolbar',
+    'minimal-pagination',
+    'numbered-pagination',
+    'data-table',
+    'kpi-card',
+  ],
   feedback: ['alert', 'toast', 'status-badge'],
   entry: ['text-input', 'textarea', 'password-input', 'search', 'otp-input'],
   selection: ['checkbox', 'checkbox-group', 'radio', 'radio-group', 'select', 'date-input'],
@@ -110,3 +120,22 @@ for (const name of ['alert', 'toast']) {
     }
   });
 }
+
+test('disabled navigation beats active styling and disabled icons inherit disabled colour', () => {
+  const dom = new JSDOM(
+    `<style>${cascadeCss('sidebar-nav')} ${cascadeCss('numbered-pagination')}</style><a class="dds-sidebar-nav__parent dds-sidebar-nav__parent--active dds-sidebar-nav__parent--disabled" aria-disabled="true"><dds-icon></dds-icon></a><button disabled class="dds-numbered-pagination__item dds-numbered-pagination__item--active"></button>`,
+  );
+  assert.equal(
+    dom.window.getComputedStyle(dom.window.document.querySelector('dds-icon')).color,
+    sentinel('--color-text-disabled'),
+  );
+  // Use an isolated document for each stylesheet (jsdom caches pseudo matching).
+  const pages = new JSDOM(
+    `<style>${cascadeCss('numbered-pagination')}</style><button disabled class="dds-numbered-pagination__item dds-numbered-pagination__item--active"></button>`,
+  );
+  const button = pages.window.getComputedStyle(pages.window.document.querySelector('button'));
+  assert.equal(button.color, sentinel('--color-text-disabled'));
+  assert.equal(button.backgroundColor, sentinel('--color-bg-subtle'));
+  pages.window.close();
+  dom.window.close();
+});

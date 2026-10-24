@@ -5,7 +5,7 @@
 
 .dds-data-table {
   width: 100%;
-  color: var(--text-colour-default);
+  color: var(--color-text-primary);
   font-family: var(--font-family-primary);
 }
 
@@ -26,7 +26,7 @@
 }
 
 .dds-data-table__bulk {
-  border-bottom: 1px solid var(--border-colour-default);
+  border-bottom: 1px solid var(--color-border-default);
 }
 
 .dds-data-table__selection-summary {
@@ -38,7 +38,7 @@
   padding: 0;
   border: 0;
   border-bottom: 1px solid currentColor;
-  background: transparent;
+  background: var(--color-bg-transparent);
   color: inherit;
   font: inherit;
   cursor: pointer;
@@ -79,13 +79,13 @@ td {
 }
 
 th {
-  background: var(--bg-colour-default);
+  background: var(--color-bg-default);
   font-weight: var(--font-weight-medium);
 }
 
 td {
-  border-top: 1px solid var(--border-colour-default);
-  background: var(--bg-colour-white);
+  border-top: 1px solid var(--color-border-default);
+  background: var(--color-bg-elevated);
   overflow-wrap: anywhere;
   transition: background-color 120ms ease-out;
 }
@@ -108,16 +108,16 @@ td {
   text-align: center;
 }
 .dds-data-table__row:not(.dds-data-table__row--selected):hover td {
-  background: var(--bg-colour-row-hover);
+  background: var(--color-bg-subtle);
 }
 
 .dds-data-table__row--selected td {
-  background: var(--bg-colour-row-selected);
+  background: var(--color-interactive-default-opacity-10);
 }
 
 .dds-data-table__empty {
   height: 112px;
-  color: var(--text-colour-tertiary);
+  color: var(--color-text-muted);
   text-align: center;
 }
 
@@ -127,8 +127,8 @@ td {
   justify-content: space-between;
   gap: var(--space-4);
   padding-top: var(--space-4);
-  border-top: 1px solid var(--border-colour-default);
-  color: var(--text-colour-tertiary);
+  border-top: 1px solid var(--color-border-default);
+  color: var(--color-text-muted);
   font-size: var(--font-size-sm);
 }
 
@@ -138,4 +138,9 @@ td {
     align-items: stretch;
     flex-direction: column;
   }
+}
+
+.dds-data-table__clear:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
 }

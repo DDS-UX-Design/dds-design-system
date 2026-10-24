@@ -12,8 +12,8 @@
   width: 100%;
   min-height: 65px;
   padding: var(--space-3) var(--space-6);
-  border-bottom: 1px solid var(--border-colour-default);
-  background: var(--bg-colour-white);
+  border-bottom: 1px solid var(--color-border-default);
+  background: var(--color-bg-elevated);
 }
 
 .dds-page-toolbar__search {

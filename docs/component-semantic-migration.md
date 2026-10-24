@@ -11,7 +11,7 @@ Migration inventory/order (all listed controls exist):
 1. Text Input, Textarea, Password Input, Search, OTP Input: legacy field colours; Password focus primitive; OTP required primitive; Search suggestion primitive and shadow literal.
 2. Checkbox/Checkbox Group, Radio/Radio Group, Select, Date Input: legacy colours. Toggle is absent. Date Input follows the related field controls.
 3. Alert, Toast, Status Badge: legacy feedback colours.
-4. Nav Tab, Sidebar Nav, Top Bar Nav, Page Toolbar, Minimal/Numbered Pagination, Data Table, KPI Card, Chart, Skeleton and Loading Overlay: legacy/primitive colours; Chart also embeds colours in TypeScript. Spinner inherits current colour and Icon uses currentColor. Shared aliases remain because these consumers still need them.
+4. Nav Tab, Sidebar Nav, Top Bar Nav, Page Toolbar, Minimal/Numbered Pagination, Data Table, KPI Card, Chart, Skeleton and Loading Overlay: legacy/primitive colours; Chart also embeds colours in TypeScript. Spinner embeds fixed colours in SVG background artwork; Icon uses currentColor. Shared aliases remain because these consumers still need them.
 
 ## Text entry family
 
@@ -68,3 +68,11 @@ Changed Alert, Toast and Status Badge styles; added Light/Dark/comparison storie
 CSS contracts check all four Alert/Toast tone combinations and icon inheritance; 14 contract tests pass. Existing Angular dismissal/story tests remain applicable (the full suite has 46 passing tests and the unchanged starter-title failure). Storybook production build is run for this family. Browser visuals remain unavailable. Existing product table status badges inherit new colours; no product layout files were changed.
 
 Separate design gap: Alert currently uses the same info icon for all tones. This colour migration preserves that implementation; it does not claim icon parity with Figma.
+
+## Navigation, pagination and data family
+
+Changed Nav Tab, Sidebar Nav, Top Bar Nav, Page Toolbar, Minimal/Numbered Pagination, Data Table and KPI Card styles, plus Light/Dark/comparison stories. Surfaces use bg-elevated/default; borders use border-default/subtle; text uses primary/secondary/muted. Active tabs, page numbers and notification counts use interactive-default, with text-on-interactive. Neutral avatars pair bg-inverse with text-inverse. Row hover uses bg-subtle; selected rows use interactive-default-opacity-10. KPI positive/negative trends use feedback-success/error and their icons inherit.
+
+Sidebar uses bg-brand/text-on-brand, interactive-on-brand accents and elevated-opacity-10 for hover/active overlays and separators. There are no dedicated on-brand divider or navigation-hover roles: these are purpose-based mappings to the existing overlay role; design review should confirm their contrast. Focus uses border-focus. Disabled anchors are excluded from hover styling, and disabled buttons/anchors/icons override active colours. Numbered Pagination disabled controls override active surfaces. Data Table's clear-selection button now has an explicit semantic focus outline. Existing native interactions and public APIs are preserved; no pressed variants were invented where no separate treatment existed.
+
+The semantic contract suite now covers disabled active sidebar icons and page buttons (16 tests), alongside the existing keyboard/navigation Angular tests. Storybook is built for this family. Rendered hover/focus/contrast review is pending a connected browser. Orders and Customer Management now inherit new component colours across navigation, toolbars, tables, pagination and KPI cards; their own page CSS remains outside the library component migration.

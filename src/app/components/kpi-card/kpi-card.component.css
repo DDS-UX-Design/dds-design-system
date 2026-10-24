@@ -9,10 +9,10 @@
   gap: var(--space-1);
   min-width: 160px;
   padding: var(--space-3);
-  border: 1px solid var(--border-colour-subtle);
+  border: 1px solid var(--color-border-subtle);
   border-radius: var(--radius-sm);
-  background: var(--bg-colour-white);
-  color: var(--text-colour-default);
+  background: var(--color-bg-elevated);
+  color: var(--color-text-primary);
 }
 
 .dds-kpi-card__label,
@@ -22,7 +22,7 @@
 
 .dds-kpi-card__label {
   overflow: hidden;
-  color: var(--text-colour-secondary);
+  color: var(--color-text-secondary);
   font: var(--font-weight-regular) var(--font-size-xs) / var(--font-size-md)
     var(--font-family-primary);
   text-overflow: ellipsis;
@@ -47,7 +47,7 @@
   align-items: center;
   gap: var(--space-1);
   min-height: 18px;
-  color: var(--text-colour-tertiary);
+  color: var(--color-text-muted);
   font: var(--font-weight-semibold) var(--font-size-xs) / var(--font-size-md)
     var(--font-family-primary);
 }
@@ -62,11 +62,11 @@
 }
 
 .dds-kpi-card[data-trend='positive'] .dds-kpi-card__trend {
-  color: var(--text-colour-success);
+  color: var(--color-feedback-success);
 }
 
 .dds-kpi-card[data-trend='negative'] .dds-kpi-card__trend {
-  color: var(--text-colour-danger);
+  color: var(--color-feedback-error);
 }
 
 @media (forced-colors: active) {

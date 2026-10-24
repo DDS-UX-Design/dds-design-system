@@ -10,7 +10,7 @@
 }
 
 .dds-minimal-pagination__status {
-  color: var(--text-colour-tertiary);
+  color: var(--color-text-muted);
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-regular);
   line-height: 20px;
