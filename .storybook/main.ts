@@ -7,7 +7,7 @@ const config: StorybookConfig = {
   logLevel: 'warn',
   webpackFinal: async (config) => {
     config.module?.rules?.push({
-      test: /\.(?:md|backlog)$/,
+      test: /\.md$/,
       type: 'asset/source',
     });
 

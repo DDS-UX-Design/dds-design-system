@@ -18,5 +18,3 @@ Native Primary press uses `color/interactive/pressed`. Danger press currently re
 This change preserves the component API, dimensions and icon placements. Legacy global `--btn-*` colour aliases remain for compatibility with other consumers; Button no longer reads them. This is a colour migration, not certification of loading-state coverage, responsive sizing, or every component's code/Figma parity.
 
 Review the Light/Dark matrices, actual keyboard/pointer focus, disabled behaviour and icon-only accessible names before merging. Existing product screens using Button will inherit the new appearance and should receive visual review.
-
-A later [Figma parity batch](figma-parity-register.md) verified main set `15:358` and corrected inside-stroke sizing plus Ghost's 2px focus border and underline container. Public APIs and the colour/press mappings above remain unchanged. Rendered parity is pending browser review.

@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/angular';
+import { componentWrapperDecorator, type Meta, type StoryObj } from '@storybook/angular';
 import { expect, fn, userEvent, within } from 'storybook/test';
 import {
   TextareaComponent,
@@ -155,8 +155,6 @@ type Story = StoryObj<TextareaStoryArgs>;
 
 export const Playground: Story = {};
 
-export const Default: Story = {};
-
 export const WithContent: Story = {
   name: 'With content',
   args: { value: exampleResponse },
@@ -204,4 +202,74 @@ export const EnterResponse: Story = {
     await expect(canvas.getByText('31/40')).toBeInTheDocument();
     await expect(args.onValueChange).toHaveBeenLastCalledWith('Please call me before delivery.');
   },
+};
+
+const themedStates = (theme: 'light' | 'dark', narrow = false) => ({
+  props: { exampleResponse },
+  template: `
+    <section data-theme="${theme}" style="padding:32px;background:var(--color-bg-default);color:var(--color-text-primary);box-sizing:border-box;${narrow ? 'width:320px;max-width:100%' : ''}">
+      <div style="display:grid;gap:24px;grid-template-columns:${narrow ? 'minmax(0,1fr)' : 'repeat(2,minmax(0,460px))'};align-items:start">
+        <dds-textarea label="Delivery instructions" placeholder="Tell us where to leave your order…" helperText="Include any access requirements." [required]="true" />
+        <dds-textarea label="Short delivery note" size="small" placeholder="Add a note…" helperText="Visible to the delivery team." [required]="true" />
+        <dds-textarea label="Dispatch request" state="focused" [value]="exampleResponse" helperText="You can update this before dispatch." />
+        <dds-textarea label="Packing request" size="small" state="focused" [value]="exampleResponse" />
+        <dds-textarea label="Cancellation reason" state="error" errorMessage="Explain why this order needs to be cancelled before continuing." [required]="true" />
+        <dds-textarea label="Return reason" size="small" state="error" errorMessage="Describe the problem with your delivery." [required]="true" />
+        <dds-textarea label="Archived instructions" state="disabled" [value]="exampleResponse" [required]="true" />
+        <dds-textarea label="Archived note" size="small" state="disabled" [required]="true" />
+      </div>
+    </section>`,
+});
+
+const verifyStates: NonNullable<Story['play']> = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  const empty = canvas.getByRole('textbox', { name: /Delivery instructions/ });
+  const field = empty.closest('.dds-textarea__field')!;
+  const rect = field.getBoundingClientRect();
+  await expect(rect.height).toBe(80);
+  await expect(empty.getBoundingClientRect().left - rect.left).toBe(12);
+  await userEvent.click(empty);
+  await expect(empty).toHaveFocus();
+  await expect(field.getBoundingClientRect().height).toBe(80);
+  const invalid = canvas.getByRole('textbox', { name: /Cancellation reason/ });
+  await userEvent.click(invalid);
+  await expect(invalid).toHaveAttribute('aria-invalid', 'true');
+  await expect(invalid).toHaveAccessibleDescription(/Explain why this order/);
+  const disabled = canvas.getByRole('textbox', { name: /Archived instructions/ });
+  await expect(disabled).toBeDisabled();
+  await expect(disabled).toHaveAccessibleDescription(/\/150/);
+  await expect(
+    disabled.closest('.dds-textarea')!.querySelector('.dds-textarea__supporting-text'),
+  ).toBeNull();
+  const probe = document.createElement('span');
+  probe.style.color = 'var(--color-border-focus-danger)';
+  field.parentElement!.appendChild(probe);
+  await expect(getComputedStyle(invalid.closest('.dds-textarea__field')!).boxShadow).toContain(
+    getComputedStyle(probe).color,
+  );
+  probe.remove();
+};
+
+export const Light: Story = {
+  parameters: { layout: 'fullscreen', controls: { disable: true } },
+  render: () => themedStates('light'),
+  play: verifyStates,
+};
+
+export const Dark: Story = {
+  parameters: Light.parameters,
+  render: () => themedStates('dark'),
+  play: verifyStates,
+};
+
+export const NarrowLongContent: Story = {
+  args: {
+    value: exampleResponse,
+    label: 'Delivery and access instructions for the distribution centre',
+    helperText:
+      'Include the entrance, receiving contact and any restrictions the driver should know about.',
+  },
+  decorators: [
+    componentWrapperDecorator((story) => `<div style="width:320px;max-width:100%">${story}</div>`),
+  ],
 };

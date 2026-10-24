@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/angular';
+import { componentWrapperDecorator, type Meta, type StoryObj } from '@storybook/angular';
 import { expect, userEvent, within } from 'storybook/test';
 import {
   TextInputComponent,
@@ -128,6 +128,15 @@ export const Error: Story = {
 export const Mobile: Story = {
   args: { size: 'mobile' },
   parameters: { viewport: { defaultViewport: 'mobile' } },
+  play: async ({ canvasElement }) => {
+    const input = within(canvasElement).getByRole('textbox');
+    await expect(input.parentElement!.getBoundingClientRect().height).toBe(40);
+    const marker = canvasElement.querySelector('.dds-text-input__required');
+    if (marker) {
+      await expect(getComputedStyle(marker).fontSize).toBe('14px');
+      await expect(getComputedStyle(marker).lineHeight).toBe('20px');
+    }
+  },
 };
 export const Disabled: Story = { args: { value: 'Field text', disabled: true } };
 export const Loading: Story = {
@@ -156,4 +165,22 @@ export const Entry: Story = {
     await userEvent.type(input, 'Field text');
     await expect(input).toHaveValue('Field text');
   },
+};
+
+export const NarrowThemes: Story = {
+  args: {
+    value: 'Field text',
+    state: 'error',
+    errorMessage:
+      'Enter the reference from your invoice. Contact the warehouse team if it is missing.',
+  },
+  decorators: [
+    componentWrapperDecorator(
+      (story) => `
+    <div style="width:320px;max-width:100%">
+      <section data-theme="light" style="padding:16px;background:var(--color-bg-default);color:var(--color-text-primary)">${story}</section>
+      <section data-theme="dark" style="padding:16px;background:var(--color-bg-default);color:var(--color-text-primary)">${story}</section>
+    </div>`,
+    ),
+  ],
 };
