@@ -4,6 +4,7 @@ import assert from 'node:assert/strict';
 import { JSDOM } from 'jsdom';
 
 const families = {
+  chart: ['chart'],
   navigation: [
     'nav-tab',
     'sidebar-nav',
@@ -138,4 +139,14 @@ test('disabled navigation beats active styling and disabled icons inherit disabl
   assert.equal(button.backgroundColor, sentinel('--color-bg-subtle'));
   pages.window.close();
   dom.window.close();
+});
+
+test('Chart canvas reads generated semantic names and contains no colour literal fallback', () => {
+  const source = readFileSync(
+    new URL('../src/app/components/chart/chart.component.ts', import.meta.url),
+    'utf8',
+  );
+  assert.doesNotMatch(source, /#[\da-f]{3,8}\b|--(?:chart-[1-6]|grey-|bg-colour|text-colour)/i);
+  for (const [, role] of source.matchAll(/'(--color-[\w-]+)'/g))
+    assert.ok(generated.includes(`${role}:`), role);
 });

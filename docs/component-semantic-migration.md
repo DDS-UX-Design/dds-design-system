@@ -76,3 +76,23 @@ Changed Nav Tab, Sidebar Nav, Top Bar Nav, Page Toolbar, Minimal/Numbered Pagina
 Sidebar uses bg-brand/text-on-brand, interactive-on-brand accents and elevated-opacity-10 for hover/active overlays and separators. There are no dedicated on-brand divider or navigation-hover roles: these are purpose-based mappings to the existing overlay role; design review should confirm their contrast. Focus uses border-focus. Disabled anchors are excluded from hover styling, and disabled buttons/anchors/icons override active colours. Numbered Pagination disabled controls override active surfaces. Data Table's clear-selection button now has an explicit semantic focus outline. Existing native interactions and public APIs are preserved; no pressed variants were invented where no separate treatment existed.
 
 The semantic contract suite now covers disabled active sidebar icons and page buttons (16 tests), alongside the existing keyboard/navigation Angular tests. Storybook is built for this family. Rendered hover/focus/contrast review is pending a connected browser. Orders and Customer Management now inherit new component colours across navigation, toolbars, tables, pagination and KPI cards; their own page CSS remains outside the library component migration.
+
+## Chart family
+
+Changed Chart TypeScript/CSS, added a Chart regression test and Light/Dark/comparison stories. Categorical series read `--color-chart-categorical-01` through `06`; gauge remainder uses chart-track; axes/grid/ticks/legend use chart-axis/grid/label. Segment and point borders use bg-elevated. Tooltip surface/text/border use bg-elevated/text-primary/border-default. Removed white fallback literals. Hover retains the semantic series palette instead of allowing Chart.js to manufacture tinted colours; existing point radius and tooltip feedback remain. No keyboard, loading or error variants were introduced.
+
+Canvas reads computed styles on its actual element, so nested theme scopes apply. A MutationObserver redraws when an existing ancestor's data-theme changes and disconnects on destroy. Moving an already-mounted chart between different ancestor trees is not observed; normal Angular mounting or input changes re-read its scope. Tests mock canvas drawing and check semantic configuration, theme-change redraw and cleanup; these do not verify rendered pixels. The full Angular suite has 47 passing tests and the unchanged starter-title failure. Existing product charts will change palette, axis and tooltip appearance and need visual review. Existing chart layout/orientation decisions remain separate design gaps.
+
+## Deferred loading roles and assets
+
+These are explicit remaining migration gaps, not completed families:
+
+- **Skeleton:** its 8% black base and 0/18/55% white shimmer have no dedicated loading roles. Proposed mapping is bg-subtle for the base and bg-elevated-opacity-0/bg-elevated-opacity-10 for a simplified wave, subject to Figma design review; that changes the wave treatment. Current literals are retained rather than manufacturing values or silently treating shadow tokens as loading tokens.
+- **Loading Overlay:** overlay-light and scrim are candidate mappings for its web treatments. Its mobile 80% white surface has no matching semantic role. Its existing `theme` input is an explicit treatment API and conflicts with automatic ancestor theme selection; preserve it until a focused compatibility decision is reviewed. No new theme inputs were added anywhere.
+- **Spinner:** current SVG background artwork embeds light track and blue arc fills. Proposed semantic mapping is bg-subtle track + interactive-default arc, with an inline SVG or separate masks preserving the existing paths. Background-image SVGs cannot inherit the host's custom properties; this requires an asset/rendering change and rendered review, not an alias substitution.
+
+All other migrated components retain nearest-ancestor CSS theme inheritance. Shared legacy aliases remain for loading components, page example CSS and other external consumers; no global alias remapping occurred. Loading branches of otherwise migrated controls remain dependent on these deferred components.
+
+## Final audit
+
+Disabled supporting/validation copy, Textarea counts, OTP expiry text and Select helper text now use text-disabled when their control is disabled, completing the earlier border/control overrides. User token and documentation changes remain outside migration commits. Live Figma freshness and rendered review remain unverified. No merge, deployment, package publication, accessibility certification or full Figma parity is claimed.

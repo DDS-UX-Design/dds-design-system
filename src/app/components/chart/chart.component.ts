@@ -54,12 +54,12 @@ Chart.register(
 );
 
 const CHART_COLOURS = [
-  '--chart-1',
-  '--chart-2',
-  '--chart-3',
-  '--chart-4',
-  '--chart-5',
-  '--chart-6',
+  '--color-chart-categorical-01',
+  '--color-chart-categorical-02',
+  '--color-chart-categorical-03',
+  '--color-chart-categorical-04',
+  '--color-chart-categorical-05',
+  '--color-chart-categorical-06',
 ] as const;
 
 /** Experimental Chart.js wrapper for documenting DDS data-visualisation colour usage. */
@@ -88,11 +88,22 @@ export class ChartComponent implements AfterViewInit, OnChanges, OnDestroy {
   @Input() accessibleLabel = 'Chart';
 
   private chart?: Chart;
+  private themeObserver?: MutationObserver;
 
   constructor(@Inject(PLATFORM_ID) private readonly platformId: object) {}
 
   ngAfterViewInit(): void {
     this.renderChart();
+    if (isPlatformBrowser(this.platformId) && this.canvas) {
+      this.themeObserver = new MutationObserver(() => this.renderChart());
+      // CSS handles normal components; canvas pixels need redrawing when a
+      // theme changes on any ancestor, including a nested theme boundary.
+      let ancestor: HTMLElement | null = this.canvas.nativeElement;
+      while (ancestor) {
+        this.themeObserver.observe(ancestor, { attributes: true, attributeFilter: ['data-theme'] });
+        ancestor = ancestor.parentElement;
+      }
+    }
   }
 
   ngOnChanges(_changes: SimpleChanges): void {
@@ -100,6 +111,7 @@ export class ChartComponent implements AfterViewInit, OnChanges, OnDestroy {
   }
 
   ngOnDestroy(): void {
+    this.themeObserver?.disconnect();
     this.chart?.destroy();
   }
 
@@ -125,9 +137,13 @@ export class ChartComponent implements AfterViewInit, OnChanges, OnDestroy {
             label: this.series[0]?.label ?? 'Value',
             data: this.series[0]?.data ?? [],
             backgroundColor: isGauge
-              ? [colours[0], styles.getPropertyValue('--grey-200').trim()]
+              ? [colours[0], styles.getPropertyValue('--color-chart-track').trim()]
               : colours,
-            borderColor: styles.getPropertyValue('--bg-colour-white').trim() || '#fff',
+            borderColor: styles.getPropertyValue('--color-bg-elevated').trim(),
+            hoverBackgroundColor: isGauge
+              ? [colours[0], styles.getPropertyValue('--color-chart-track').trim()]
+              : colours,
+            hoverBorderColor: styles.getPropertyValue('--color-bg-elevated').trim(),
             borderWidth: isGauge ? 0 : 1,
           },
         ]
@@ -138,7 +154,9 @@ export class ChartComponent implements AfterViewInit, OnChanges, OnDestroy {
             borderColor: colours[index % colours.length],
             borderWidth: 2,
             pointBackgroundColor: colours[index % colours.length],
-            pointBorderColor: styles.getPropertyValue('--bg-colour-white').trim() || '#fff',
+            pointBorderColor: styles.getPropertyValue('--color-bg-elevated').trim(),
+            pointHoverBackgroundColor: colours[index % colours.length],
+            pointHoverBorderColor: styles.getPropertyValue('--color-bg-elevated').trim(),
             pointBorderWidth: 2,
             pointRadius: 4,
             pointHoverRadius: 6,
@@ -147,6 +165,10 @@ export class ChartComponent implements AfterViewInit, OnChanges, OnDestroy {
         : this.series.map((series, index) => ({
             ...series,
             backgroundColor:
+              this.type === 'horizontal-bar'
+                ? series.data.map((_, colourIndex) => colours[colourIndex % colours.length])
+                : colours[index % colours.length],
+            hoverBackgroundColor:
               this.type === 'horizontal-bar'
                 ? series.data.map((_, colourIndex) => colours[colourIndex % colours.length])
                 : colours[index % colours.length],
@@ -168,13 +190,20 @@ export class ChartComponent implements AfterViewInit, OnChanges, OnDestroy {
           rotation: isGauge ? -90 : undefined,
           circumference: isGauge ? 180 : undefined,
           plugins: {
+            tooltip: {
+              backgroundColor: styles.getPropertyValue('--color-bg-elevated').trim(),
+              titleColor: styles.getPropertyValue('--color-text-primary').trim(),
+              bodyColor: styles.getPropertyValue('--color-text-primary').trim(),
+              borderColor: styles.getPropertyValue('--color-border-default').trim(),
+              borderWidth: 1,
+            },
             legend: {
               display: !isGauge && (isCircular || this.type !== 'horizontal-bar'),
               position: this.legendPosition,
               labels: {
                 boxWidth: 48,
                 boxHeight: 12,
-                color: styles.getPropertyValue('--text-colour-default').trim(),
+                color: styles.getPropertyValue('--color-chart-label').trim(),
                 font: { family: styles.getPropertyValue('--font-family-primary').trim(), size: 14 },
                 padding: 12,
               },
@@ -185,30 +214,30 @@ export class ChartComponent implements AfterViewInit, OnChanges, OnDestroy {
             : isLine
               ? {
                   x: {
-                    border: { color: '#d4d4d4' },
+                    border: { color: styles.getPropertyValue('--color-chart-axis').trim() },
                     grid: { display: false },
-                    ticks: { color: '#171717' },
+                    ticks: { color: styles.getPropertyValue('--color-chart-label').trim() },
                   },
                   y: {
                     beginAtZero: true,
-                    border: { color: '#d4d4d4' },
-                    grid: { color: '#e5e5e5' },
-                    ticks: { color: '#171717' },
+                    border: { color: styles.getPropertyValue('--color-chart-axis').trim() },
+                    grid: { color: styles.getPropertyValue('--color-chart-grid').trim() },
+                    ticks: { color: styles.getPropertyValue('--color-chart-label').trim() },
                   },
                 }
               : {
                   x: {
                     beginAtZero: true,
                     stacked: isStacked,
-                    border: { color: '#d4d4d4' },
+                    border: { color: styles.getPropertyValue('--color-chart-axis').trim() },
                     grid: { display: false },
-                    ticks: { color: '#171717' },
+                    ticks: { color: styles.getPropertyValue('--color-chart-label').trim() },
                   },
                   y: {
                     stacked: isStacked,
-                    border: { color: '#d4d4d4' },
+                    border: { color: styles.getPropertyValue('--color-chart-axis').trim() },
                     grid: { display: false },
-                    ticks: { color: '#171717' },
+                    ticks: { color: styles.getPropertyValue('--color-chart-label').trim() },
                   },
                 },
         },
