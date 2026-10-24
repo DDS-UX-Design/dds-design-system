@@ -36,12 +36,11 @@ const preview: Preview = {
         order: [
           'Welcome',
           'Foundations',
-          ['Colours', 'Typography', 'Spacing', 'Shadows', 'Icons', 'Accessibility'],
+          ['Semantic Tokens', 'Typography', 'Spacing', 'Shadows', 'Icons', 'Accessibility'],
           'Components',
           'Patterns',
           'Layouts',
           'Pages',
-          'Project',
         ],
       },
     },

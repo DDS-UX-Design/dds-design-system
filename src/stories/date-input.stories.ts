@@ -34,7 +34,7 @@ const meta: Meta<DateInputStoryArgs> = {
     docs: {
       description: {
         component:
-          'A date text field matching the current Figma specification. It accepts a formatted date but intentionally does not include a calendar or date-range picker; those interactions remain in the Figma backlog.',
+          'A date text field that accepts a formatted date. Calendar and date-range picker interactions are not implemented.',
       },
     },
   },
