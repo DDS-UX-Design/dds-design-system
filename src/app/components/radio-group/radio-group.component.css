@@ -8,7 +8,7 @@
   margin: 0;
   padding: 0;
   border: 0;
-  color: var(--text-colour-default);
+  color: var(--color-text-primary);
   font-family: var(--font-family-primary);
 }
 
@@ -21,7 +21,7 @@
 
 .dds-radio-group__legend span,
 .dds-radio-group__error {
-  color: var(--text-colour-danger);
+  color: var(--color-feedback-error);
 }
 
 .dds-radio-group__legend span {
@@ -52,7 +52,7 @@
 }
 
 .dds-radio-group:disabled .dds-radio-group__legend {
-  color: var(--text-colour-disabled);
+  color: var(--color-text-disabled);
 }
 
 .dds-radio-group__skeleton-legend {
@@ -77,4 +77,8 @@
   display: flex;
   align-items: center;
   gap: var(--space-2);
+}
+
+.dds-radio-group:disabled .dds-radio-group__legend span {
+  color: var(--color-text-disabled);
 }

@@ -13,7 +13,7 @@
   padding: var(--space-3) var(--space-4);
   border-left: 4px solid;
   border-radius: var(--radius-sm);
-  color: var(--text-colour-default);
+  color: var(--color-text-primary);
   font-family: var(--font-family-primary);
   font-size: var(--font-size-md);
   line-height: 24px;
@@ -26,23 +26,23 @@
 }
 
 .dds-alert--info {
-  background: var(--bg-colour-info-muted);
-  border-color: var(--border-colour-info);
+  background: var(--color-feedback-info-subtle);
+  border-color: var(--color-feedback-info);
 }
 
 .dds-alert--warning {
-  background: var(--bg-colour-warning-muted);
-  border-color: var(--border-colour-warning);
+  background: var(--color-feedback-warning-subtle);
+  border-color: var(--color-feedback-warning);
 }
 
 .dds-alert--success {
-  background: var(--bg-colour-success-muted);
-  border-color: var(--border-colour-success);
+  background: var(--color-feedback-success-subtle);
+  border-color: var(--color-feedback-success);
 }
 
 .dds-alert--danger {
-  background: var(--bg-colour-danger-muted);
-  border-color: var(--border-colour-danger);
+  background: var(--color-feedback-error-subtle);
+  border-color: var(--color-feedback-error);
 }
 
 .dds-alert__content {
@@ -64,19 +64,19 @@
 }
 
 .dds-alert--info .dds-alert__status-icon {
-  color: var(--text-colour-info);
+  color: var(--color-feedback-info);
 }
 
 .dds-alert--warning .dds-alert__status-icon {
-  color: var(--text-colour-warning);
+  color: var(--color-feedback-warning);
 }
 
 .dds-alert--success .dds-alert__status-icon {
-  color: var(--text-colour-success);
+  color: var(--color-feedback-success);
 }
 
 .dds-alert--danger .dds-alert__status-icon {
-  color: var(--text-colour-danger);
+  color: var(--color-feedback-error);
 }
 
 .dds-alert__text {
@@ -96,14 +96,14 @@
   margin-left: var(--space-3);
   padding: 0;
   border: 0;
-  background: transparent;
-  color: var(--text-colour-default);
+  background: var(--color-bg-transparent);
+  color: var(--color-text-primary);
   cursor: pointer;
 }
 
 .dds-alert__dismiss:focus-visible {
   border-radius: var(--radius-xs);
-  outline: 2px solid var(--border-colour-info);
+  outline: 2px solid var(--color-border-focus);
   outline-offset: 2px;
 }
 
@@ -111,4 +111,8 @@
   .dds-alert__action {
     margin-left: var(--space-2);
   }
+}
+
+.dds-alert--danger .dds-alert__dismiss:focus-visible {
+  outline-color: var(--color-border-focus-danger);
 }

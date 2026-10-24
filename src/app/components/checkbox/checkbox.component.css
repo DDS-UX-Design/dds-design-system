@@ -7,7 +7,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  color: var(--text-colour-default);
+  color: var(--color-text-primary);
   font-family: var(--font-family-primary);
   font-size: var(--font-size-sm);
   line-height: 20px;
@@ -22,7 +22,7 @@
 
 .dds-checkbox__required,
 .dds-checkbox__error {
-  color: var(--text-colour-danger);
+  color: var(--color-feedback-error);
 }
 
 .dds-checkbox__skeleton-label {
@@ -62,10 +62,10 @@
   width: 20px;
   height: 20px;
   overflow: hidden;
-  border: 1px solid var(--border-colour-default);
+  border: 1px solid var(--color-border-default);
   border-radius: var(--radius-sm);
-  background: var(--bg-colour-white);
-  color: var(--icon-colour-default);
+  background: var(--color-bg-elevated);
+  color: var(--color-icon-default);
 }
 
 .dds-checkbox__box dds-icon {
@@ -78,15 +78,15 @@
 
 .dds-checkbox__native:focus-visible + .dds-checkbox__box,
 .dds-checkbox--focused .dds-checkbox__box {
-  border: 2px solid var(--border-colour-info);
+  border: 2px solid var(--color-border-focus);
 }
 
 .dds-checkbox--invalid .dds-checkbox__box {
-  border: 2px solid var(--border-colour-danger);
+  border: 2px solid var(--color-feedback-error);
 }
 
 .dds-checkbox--disabled {
-  color: var(--text-colour-disabled);
+  color: var(--color-text-disabled);
 }
 
 .dds-checkbox--disabled .dds-checkbox__option {
@@ -94,7 +94,7 @@
 }
 
 .dds-checkbox--disabled .dds-checkbox__box {
-  color: var(--icon-colour-disabled);
+  color: var(--color-text-disabled);
 }
 
 .dds-checkbox__error {
@@ -103,4 +103,22 @@
   font-size: var(--font-size-xs);
   font-weight: var(--font-weight-medium);
   line-height: 16px;
+}
+
+.dds-checkbox--invalid .dds-checkbox__native:focus-visible + .dds-checkbox__box,
+.dds-checkbox--invalid.dds-checkbox--focused .dds-checkbox__box {
+  outline: 2px solid var(--color-border-focus-danger);
+  outline-offset: 2px;
+}
+
+.dds-checkbox--disabled .dds-checkbox__box,
+.dds-checkbox--disabled .dds-checkbox__native:checked + .dds-checkbox__box {
+  border-color: var(--color-border-default);
+  background: var(--color-bg-subtle);
+  color: var(--color-text-disabled);
+  outline: none;
+}
+
+.dds-checkbox--disabled .dds-checkbox__required {
+  color: var(--color-text-disabled);
 }

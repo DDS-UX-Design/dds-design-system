@@ -1,5 +1,17 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, Output, HostBinding } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  Output,
+  HostBinding,
+  HostListener,
+  OnInit,
+  OnDestroy,
+  inject,
+} from '@angular/core';
 import { DdsIconName, IconComponent } from '../icon/icon.component';
 
 export interface SidebarNavItem {
@@ -21,7 +33,39 @@ let nextSidebarId = 0;
   templateUrl: './sidebar-nav.component.html',
   styleUrl: './sidebar-nav.component.css',
 })
-export class SidebarNavComponent {
+export class SidebarNavComponent implements OnInit, OnDestroy {
+  private readonly host = inject<ElementRef<HTMLElement>>(ElementRef);
+  private readonly changeDetector = inject(ChangeDetectorRef);
+  private themeObserver?: MutationObserver;
+  private darkLogo = false;
+
+  /** Only the default artwork changes with the nearest theme; supplied logos are preserved. */
+  get resolvedLogoSrc(): string {
+    return this.logoSrc === 'images/dds-brand-icon.svg' && !this.darkLogo
+      ? 'images/dds-brand-icon-light.svg'
+      : this.logoSrc;
+  }
+
+  ngOnInit(): void {
+    const updateLogo = () => {
+      this.darkLogo =
+        this.host.nativeElement.closest?.('[data-theme]')?.getAttribute('data-theme') === 'dark';
+      this.changeDetector.markForCheck();
+    };
+    updateLogo();
+    if (typeof MutationObserver === 'undefined') return;
+    this.themeObserver = new MutationObserver(updateLogo);
+    let ancestor: HTMLElement | null = this.host.nativeElement;
+    while (ancestor) {
+      this.themeObserver.observe(ancestor, { attributes: true, attributeFilter: ['data-theme'] });
+      ancestor = ancestor.parentElement;
+    }
+  }
+
+  ngOnDestroy(): void {
+    this.themeObserver?.disconnect();
+  }
+
   readonly navigationId = `dds-sidebar-nav-${nextSidebarId++}`;
   @HostBinding('class.dds-sidebar-nav--collapsed')
   @Input()
@@ -36,6 +80,11 @@ export class SidebarNavComponent {
     this.collapsedChange.emit(this.collapsed);
   }
 
+  @HostListener('document:keydown.escape')
+  dismissTooltip(): void {
+    this.tooltip = undefined;
+  }
+
   showTooltip(item: SidebarNavItem, event: Event): void {
     if (!this.collapsed) return;
     const rect = (event.currentTarget as HTMLElement).getBoundingClientRect();
@@ -46,6 +95,8 @@ export class SidebarNavComponent {
   @Input() footer = 'Version 1.0.0';
   @Input() ariaLabel = 'Primary navigation';
   @Input() items: SidebarNavItem[] = [];
+  /** Secondary destinations below the divider, matching Figma's Bottom Menu Items slot. */
+  @Input() bottomItems: SidebarNavItem[] = [];
   @Input() activeItemId?: string;
   @Input() expandedIds: string[] = [];
 

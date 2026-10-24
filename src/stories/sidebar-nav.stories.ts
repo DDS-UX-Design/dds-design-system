@@ -51,7 +51,7 @@ const meta: Meta<SidebarNavStoryArgs> = {
     docs: {
       description: {
         component:
-          'A persistent application sidebar with a branded header, scrollable navigation, one level of expandable groups, active-page indication, and a version footer. Toggle between the 250px expanded sidebar and 72px icon rail; collapsed groups expand the sidebar to expose child destinations.',
+          'A persistent application sidebar with a branded header, scrollable navigation with an optional divider-separated bottomItems list, one level of expandable groups, active-page indication, and a version footer. Toggle between the 250px expanded sidebar and 72px icon rail; collapsed groups expand the sidebar to expose child destinations.',
       },
     },
   },
@@ -61,13 +61,15 @@ const meta: Meta<SidebarNavStoryArgs> = {
     title: 'DDS Enterprise',
     footer: 'Version 1.0.0',
     ariaLabel: 'Primary navigation',
-    items,
+    items: items.slice(0, 3),
+    bottomItems: items.slice(3),
     activeItemId: 'all-orders',
     expandedIds: ['orders'],
     onItemSelect: fn(),
   },
   argTypes: {
     collapsed: { control: 'boolean', description: 'Show the 72px icon rail.' },
+    bottomItems: { control: 'object', description: 'Secondary destinations below the divider.' },
     onItemSelect: { action: 'itemSelect', table: { disable: true } },
   },
   render: (args) => ({
@@ -75,7 +77,7 @@ const meta: Meta<SidebarNavStoryArgs> = {
     template: `
       <!-- Demo links update selection without navigating away from the Storybook preview. -->
       <dds-sidebar-nav
-        [title]="title" [logoSrc]="logoSrc" [footer]="footer" [ariaLabel]="ariaLabel" [items]="items"
+        [title]="title" [logoSrc]="logoSrc" [footer]="footer" [ariaLabel]="ariaLabel" [items]="items" [bottomItems]="bottomItems"
         [(collapsed)]="collapsed" [(activeItemId)]="activeItemId" [(expandedIds)]="expandedIds"
         (itemSelect)="onItemSelect($event)"
         (click)="$event.preventDefault()"
@@ -95,7 +97,7 @@ export const LongContent: Story = {
     title: 'DDS Enterprise Platform',
     footer: 'Development · Version 1.0.0-beta.12',
     items: [
-      ...items,
+      ...items.slice(0, 3),
       ...Array.from({ length: 8 }, (_, index) => ({
         id: `extra-${index}`,
         label: `Additional navigation item ${index + 1}`,
@@ -124,7 +126,12 @@ export const ExpandAndSelect: Story = {
 };
 
 export const SalesNavigation: Story = {
-  args: { items: EXAMPLE_NAVIGATION, activeItemId: 'orders', expandedIds: ['sales'] },
+  args: {
+    items: EXAMPLE_NAVIGATION.slice(0, 4),
+    bottomItems: EXAMPLE_NAVIGATION.slice(4),
+    activeItemId: 'orders',
+    expandedIds: ['sales'],
+  },
   parameters: {
     docs: {
       description: {

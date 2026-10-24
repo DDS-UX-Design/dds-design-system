@@ -1,0 +1,438 @@
+{
+  "fileKey": "u0lpCPrGMj68e9RMIRuYxL",
+  "inspectedOn": "2026-10-24",
+  "note": "Read-only live component properties and geometry. High-fidelity design contexts and renders were also inspected for implementation. No design files were edited.",
+  "components": [
+    {
+      "name": "Button",
+      "sets": [
+        {
+          "id": "15:358",
+          "name": "Button",
+          "description": "Theme-ready Button. Inherits Semantic Colours. Danger focus uses border/focus-danger; other focus states use border/focus. Ghost Focus supports Large, Medium and Small with No Icon, Left Icon and Right Icon. Existing variant IDs are preserved. Pressed states remain undefined.",
+          "properties": {
+            "Button Text#29245:19": {
+              "type": "TEXT",
+              "defaultValue": "Button Text"
+            },
+            "Icon Instance#29310:43": {
+              "type": "INSTANCE_SWAP",
+              "defaultValue": "19:514"
+            },
+            "Variant": {
+              "type": "VARIANT",
+              "defaultValue": "Primary",
+              "variantOptions": ["Primary", "Secondary", "Ghost"]
+            },
+            "State": {
+              "type": "VARIANT",
+              "defaultValue": "Default",
+              "variantOptions": ["Default", "Disabled", "Hover", "Focus"]
+            },
+            "Style": {
+              "type": "VARIANT",
+              "defaultValue": "Default",
+              "variantOptions": ["Default", "Danger"]
+            },
+            "Size": {
+              "type": "VARIANT",
+              "defaultValue": "Large",
+              "variantOptions": ["Large", "Medium", "Small"]
+            },
+            "Icon Type": {
+              "type": "VARIANT",
+              "defaultValue": "No Icon",
+              "variantOptions": ["No Icon", "Left Icon", "Right Icon", "Icon Only"]
+            }
+          }
+        }
+      ],
+      "details": [
+        {
+          "id": "15:359",
+          "name": "Variant=Primary, State=Default, Style=Default, Size=Large, Icon Type=No Icon",
+          "type": "COMPONENT",
+          "width": 137,
+          "height": 48,
+          "padding": [12, 24, 12, 24],
+          "gap": 8,
+          "strokeWeight": 0,
+          "strokeAlign": "CENTER",
+          "strokes": [],
+          "effects": [],
+          "children": [
+            {
+              "id": "15:360",
+              "name": "Text Type",
+              "type": "TEXT",
+              "width": 89,
+              "height": 24
+            }
+          ]
+        },
+        {
+          "id": "15:361",
+          "name": "Variant=Primary, State=Default, Style=Default, Size=Medium, Icon Type=No Icon",
+          "type": "COMPONENT",
+          "width": 110,
+          "height": 40,
+          "padding": [8, 16, 8, 16],
+          "gap": 8,
+          "strokeWeight": 0,
+          "strokeAlign": "CENTER",
+          "strokes": [],
+          "effects": [],
+          "children": [
+            {
+              "id": "15:363",
+              "name": "Text Type",
+              "type": "TEXT",
+              "width": 78,
+              "height": 20
+            }
+          ]
+        },
+        {
+          "id": "15:379",
+          "name": "Variant=Secondary, State=Default, Style=Default, Size=Small, Icon Type=Right Icon",
+          "type": "COMPONENT",
+          "width": 115,
+          "height": 32,
+          "padding": [4, 12, 4, 12],
+          "gap": 8,
+          "strokeWeight": 1,
+          "strokeAlign": "INSIDE",
+          "strokes": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.45098039507865906,
+                "g": 0.45098039507865906,
+                "b": 0.45098039507865906
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:1888:228"
+                }
+              }
+            }
+          ],
+          "effects": [],
+          "children": [
+            {
+              "id": "15:380",
+              "name": "Text Type",
+              "type": "TEXT",
+              "width": 67,
+              "height": 16
+            },
+            {
+              "id": "15:381",
+              "name": "info",
+              "type": "INSTANCE",
+              "width": 16,
+              "height": 16
+            }
+          ]
+        },
+        {
+          "id": "1906:739",
+          "name": "Variant=Ghost, State=Focus, Style=Default, Size=Medium, Icon Type=No Icon",
+          "type": "COMPONENT",
+          "width": 110,
+          "height": 40,
+          "padding": [4, 16, 4, 16],
+          "gap": 8,
+          "strokeWeight": 2,
+          "strokeAlign": "INSIDE",
+          "strokes": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 0.5,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.18431372940540314,
+                "g": 0.3686274588108063,
+                "b": 0.686274528503418
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:1888:229"
+                }
+              }
+            }
+          ],
+          "effects": [],
+          "children": [
+            {
+              "id": "1906:740",
+              "name": "Text + Underline",
+              "type": "FRAME",
+              "width": 78,
+              "height": 20
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Text Input",
+      "sets": [
+        {
+          "id": "2:659",
+          "name": "Text Input",
+          "description": "Single-line field for free-form values. Choose Desktop or Mobile and use Default, Focus Active, Disabled, or Danger states. Properties expose label, required marker, placeholder, field text, helper text, and error message. Keep labels visible and instructions specific; use Danger for a validation error with actionable error copy. Verify focus visibility, error messaging, keyboard and screen-reader behaviour before v1 signoff.",
+          "properties": {
+            "Placeholder Text#594:0": {
+              "type": "TEXT",
+              "defaultValue": "Placeholder text..."
+            },
+            "Show Placeholder#594:10": {
+              "type": "BOOLEAN",
+              "defaultValue": true
+            },
+            "Show Error Message#1216:80": {
+              "type": "BOOLEAN",
+              "defaultValue": true
+            },
+            "Label#29223:3": {
+              "type": "TEXT",
+              "defaultValue": "Label Text"
+            },
+            "Show Label#29245:10": {
+              "type": "BOOLEAN",
+              "defaultValue": true
+            },
+            "Required#29310:37": {
+              "type": "BOOLEAN",
+              "defaultValue": true
+            },
+            "Field Text#30137:19": {
+              "type": "TEXT",
+              "defaultValue": "Field text"
+            },
+            "Show Field Text#30159:13": {
+              "type": "BOOLEAN",
+              "defaultValue": true
+            },
+            "Show Helper Text#30159:30": {
+              "type": "BOOLEAN",
+              "defaultValue": true
+            },
+            "Error Message#30166:0": {
+              "type": "TEXT",
+              "defaultValue": "Error message"
+            },
+            "Helper Text#32587:0": {
+              "type": "TEXT",
+              "defaultValue": "Helper text"
+            },
+            "Size": {
+              "type": "VARIANT",
+              "defaultValue": "Desktop",
+              "variantOptions": ["Desktop", "Mobile"]
+            },
+            "State": {
+              "type": "VARIANT",
+              "defaultValue": "Default",
+              "variantOptions": ["Default", "Focus Active", "Disabled", "Danger"]
+            },
+            "Placeholder": {
+              "type": "VARIANT",
+              "defaultValue": "False",
+              "variantOptions": ["False", "True"]
+            }
+          }
+        }
+      ],
+      "details": [
+        {
+          "id": "2:706",
+          "name": "Size=Desktop, State=Default, Placeholder=False",
+          "type": "COMPONENT",
+          "width": 460,
+          "height": 100,
+          "padding": [0, 0, 0, 0],
+          "gap": 0,
+          "strokeWeight": 1,
+          "strokeAlign": "INSIDE",
+          "strokes": [],
+          "effects": [],
+          "children": [
+            {
+              "id": "2:707",
+              "name": "Label Container",
+              "type": "FRAME",
+              "width": 460,
+              "height": 28
+            },
+            {
+              "id": "2:710",
+              "name": "Input Field",
+              "type": "FRAME",
+              "width": 460,
+              "height": 48
+            },
+            {
+              "id": "2:712",
+              "name": "Helper Text Container",
+              "type": "FRAME",
+              "width": 460,
+              "height": 24
+            }
+          ]
+        },
+        {
+          "id": "2:714",
+          "name": "Size=Desktop, State=Focus Active, Placeholder=False",
+          "type": "COMPONENT",
+          "width": 460,
+          "height": 100,
+          "padding": [0, 0, 0, 0],
+          "gap": 0,
+          "strokeWeight": 1,
+          "strokeAlign": "INSIDE",
+          "strokes": [],
+          "effects": [],
+          "children": [
+            {
+              "id": "2:715",
+              "name": "Label Container",
+              "type": "FRAME",
+              "width": 460,
+              "height": 28
+            },
+            {
+              "id": "2:718",
+              "name": "Input Field",
+              "type": "FRAME",
+              "width": 460,
+              "height": 48
+            },
+            {
+              "id": "2:720",
+              "name": "Helper Text Container",
+              "type": "FRAME",
+              "width": 460,
+              "height": 24
+            }
+          ]
+        },
+        {
+          "id": "2:738",
+          "name": "Size=Desktop, State=Danger, Placeholder=False",
+          "type": "COMPONENT",
+          "width": 460,
+          "height": 100,
+          "padding": [0, 0, 0, 0],
+          "gap": 0,
+          "strokeWeight": 1,
+          "strokeAlign": "INSIDE",
+          "strokes": [],
+          "effects": [],
+          "children": [
+            {
+              "id": "2:739",
+              "name": "Label Container",
+              "type": "FRAME",
+              "width": 460,
+              "height": 28
+            },
+            {
+              "id": "2:742",
+              "name": "Input Field",
+              "type": "FRAME",
+              "width": 460,
+              "height": 48
+            },
+            {
+              "id": "2:744",
+              "name": "Error Message Container",
+              "type": "FRAME",
+              "width": 460,
+              "height": 24
+            }
+          ]
+        },
+        {
+          "id": "2:754",
+          "name": "Size=Desktop, State=Disabled, Placeholder=False",
+          "type": "COMPONENT",
+          "width": 460,
+          "height": 100,
+          "padding": [0, 0, 0, 0],
+          "gap": 0,
+          "strokeWeight": 1,
+          "strokeAlign": "INSIDE",
+          "strokes": [],
+          "effects": [],
+          "children": [
+            {
+              "id": "2:755",
+              "name": "Label Container",
+              "type": "FRAME",
+              "width": 460,
+              "height": 28
+            },
+            {
+              "id": "2:758",
+              "name": "Input",
+              "type": "FRAME",
+              "width": 460,
+              "height": 48
+            },
+            {
+              "id": "2:760",
+              "name": "Helper Text Container",
+              "type": "FRAME",
+              "width": 460,
+              "height": 24
+            }
+          ]
+        },
+        {
+          "id": "2:722",
+          "name": "Size=Mobile, State=Default, Placeholder=False",
+          "type": "COMPONENT",
+          "width": 460,
+          "height": 88,
+          "padding": [0, 0, 0, 0],
+          "gap": 0,
+          "strokeWeight": 1,
+          "strokeAlign": "INSIDE",
+          "strokes": [],
+          "effects": [],
+          "children": [
+            {
+              "id": "2:723",
+              "name": "Label Container",
+              "type": "FRAME",
+              "width": 460,
+              "height": 24
+            },
+            {
+              "id": "2:726",
+              "name": "Input Field",
+              "type": "FRAME",
+              "width": 460,
+              "height": 40
+            },
+            {
+              "id": "2:728",
+              "name": "Helper Text Container",
+              "type": "FRAME",
+              "width": 460,
+              "height": 24
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

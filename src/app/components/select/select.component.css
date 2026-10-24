@@ -8,7 +8,7 @@
   flex-direction: column;
   width: 460px;
   max-width: 100%;
-  color: var(--text-colour-default);
+  color: var(--color-text-primary);
   font-family: var(--font-family-primary);
 }
 
@@ -29,7 +29,7 @@
 }
 
 .dds-select__required {
-  color: var(--text-colour-danger);
+  color: var(--color-feedback-error);
 }
 
 .dds-select__field {
@@ -39,9 +39,9 @@
   align-items: center;
   width: 100%;
   min-height: 48px;
-  border: 1px solid var(--border-colour-default);
+  border: 1px solid var(--color-border-default);
   border-radius: var(--radius-sm);
-  background: var(--bg-colour-white);
+  background: var(--color-bg-elevated);
 }
 
 .dds-select--small .dds-select__field {
@@ -54,15 +54,15 @@
 
 .dds-select--focused .dds-select__field,
 .dds-select__field:focus-within {
-  border: 2px solid var(--border-colour-info);
+  border: 2px solid var(--color-border-focus);
 }
 
 .dds-select--error .dds-select__field {
-  border: 2px solid var(--border-colour-danger);
+  border: 2px solid var(--color-feedback-error);
 }
 
 .dds-select--disabled .dds-select__field {
-  background: var(--bg-colour-disabled);
+  background: var(--color-bg-subtle);
 }
 
 .dds-select__control {
@@ -74,8 +74,8 @@
   border: 0;
   outline: 0;
   appearance: none;
-  background: transparent;
-  color: var(--text-colour-default);
+  background: var(--color-bg-transparent);
+  color: var(--color-text-primary);
   cursor: pointer;
   font: inherit;
   font-size: var(--font-size-md);
@@ -113,7 +113,7 @@
 
 .dds-select--placeholder .dds-select__control,
 .dds-select--disabled .dds-select__control {
-  color: var(--text-colour-placeholder);
+  color: var(--color-text-muted);
 }
 
 .dds-select--disabled .dds-select__control {
@@ -125,25 +125,25 @@
   z-index: 0;
   right: var(--space-3);
   display: inline-flex;
-  color: var(--text-colour-default);
+  color: var(--color-text-primary);
   pointer-events: none;
 }
 
 .dds-select--disabled .dds-select__icon {
-  color: var(--text-colour-placeholder);
+  color: var(--color-text-muted);
 }
 
 .dds-select__supporting-text {
   margin: 0;
   padding-top: var(--space-2);
-  color: var(--text-colour-secondary);
+  color: var(--color-text-secondary);
   font-size: var(--font-size-xs);
   font-weight: var(--font-weight-regular);
   line-height: 16px;
 }
 
 .dds-select__error {
-  color: var(--text-colour-danger);
+  color: var(--color-feedback-error);
   font-weight: var(--font-weight-medium);
 }
 
@@ -157,4 +157,39 @@
 
 .dds-select__skeleton-supporting-text {
   padding-top: var(--space-2);
+}
+
+.dds-select--error .dds-select__field:focus-within,
+.dds-select--error.dds-select--focused .dds-select__field {
+  box-shadow: 0 0 0 2px var(--color-border-focus-danger);
+}
+
+.dds-select--disabled .dds-select__field {
+  border-color: var(--color-border-default);
+  box-shadow: none;
+}
+
+.dds-select--disabled .dds-select__label,
+.dds-select--disabled .dds-select__required,
+.dds-select--disabled .dds-select__control,
+.dds-select--disabled .dds-select__icon {
+  color: var(--color-text-disabled);
+}
+
+/* Native popup options must also inherit theme surfaces. */
+.dds-select__control option {
+  color: var(--color-text-primary);
+  background: var(--color-bg-elevated);
+}
+
+.dds-select__control option:disabled {
+  color: var(--color-text-disabled);
+}
+
+.dds-select__icon {
+  color: var(--color-icon-default);
+}
+
+.dds-select--disabled .dds-select__supporting-text {
+  color: var(--color-text-disabled);
 }

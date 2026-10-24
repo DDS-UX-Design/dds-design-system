@@ -13,9 +13,10 @@
 
 .dds-text-input__label {
   display: flex;
+  align-items: center;
   gap: var(--space-1);
   padding-bottom: var(--space-2);
-  color: var(--text-colour-default);
+  color: var(--color-text-primary);
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-semibold);
   line-height: 20px;
@@ -27,9 +28,14 @@
   line-height: 16px;
 }
 
+.dds-text-input__required {
+  font-size: var(--font-size-sm);
+  line-height: 20px;
+}
+
 .dds-text-input__required,
 .dds-text-input__message--error {
-  color: var(--text-colour-danger);
+  color: var(--color-feedback-error);
 }
 
 .dds-text-input__field {
@@ -37,9 +43,10 @@
   align-items: center;
   min-height: 48px;
   padding: 0 var(--space-3);
-  border: 1px solid var(--border-colour-strong);
+  border: 0;
+  box-shadow: inset 0 0 0 1px var(--color-border-strong);
   border-radius: var(--radius-sm);
-  background: var(--bg-colour-white);
+  background: var(--color-bg-elevated);
   box-sizing: border-box;
 }
 
@@ -53,8 +60,8 @@
   padding: 0;
   border: 0;
   outline: 0;
-  background: transparent;
-  color: var(--text-colour-default);
+  background: var(--color-bg-transparent);
+  color: var(--color-text-primary);
   font: inherit;
   font-size: var(--font-size-md);
   font-weight: var(--font-weight-regular);
@@ -67,27 +74,23 @@
 }
 
 .dds-text-input__control::placeholder {
-  color: var(--text-colour-placeholder);
+  color: var(--color-text-muted);
   opacity: 1;
 }
 
 .dds-text-input__field:focus-within,
 .dds-text-input--focused .dds-text-input__field {
-  border: 2px solid var(--border-colour-info);
-  padding-right: 11px;
-  padding-left: 11px;
+  box-shadow: inset 0 0 0 2px var(--color-border-focus);
 }
 
 .dds-text-input--error .dds-text-input__field {
-  border: 2px solid var(--border-colour-danger);
-  padding-right: 11px;
-  padding-left: 11px;
+  box-shadow: inset 0 0 0 2px var(--color-feedback-error);
 }
 
 .dds-text-input__message {
   margin: 0;
   padding-top: var(--space-2);
-  color: var(--text-colour-secondary);
+  color: var(--color-text-secondary);
   font-size: var(--font-size-xs);
   font-weight: var(--font-weight-regular);
   line-height: 16px;
@@ -110,15 +113,62 @@
 }
 
 .dds-text-input--disabled .dds-text-input__field {
-  border-color: var(--border-colour-strong);
-  background: var(--bg-colour-disabled);
+  box-shadow: inset 0 0 0 1px var(--color-border-strong);
+  background: var(--color-bg-subtle);
 }
 
 .dds-text-input--disabled .dds-text-input__control {
-  color: var(--text-colour-disabled);
+  color: var(--color-text-disabled);
   cursor: not-allowed;
 }
 
 .dds-text-input--disabled .dds-text-input__control::placeholder {
-  color: var(--text-colour-disabled);
+  color: var(--color-text-disabled);
+}
+
+/* Validation focus remains destructive for native and preview focus. */
+.dds-text-input--error .dds-text-input__field:focus-within,
+.dds-text-input--error.dds-text-input--focused .dds-text-input__field {
+  box-shadow:
+    inset 0 0 0 2px var(--color-feedback-error),
+    0 0 0 2px var(--color-border-focus-danger);
+}
+
+/* Current main definition keeps label/helper hierarchy; only field text is muted.
+   Disabled still overrides all validation/focus treatments on the field. */
+.dds-text-input.dds-text-input--disabled .dds-text-input__field {
+  background: var(--color-bg-subtle);
+  box-shadow: inset 0 0 0 1px var(--color-border-strong);
+}
+
+.dds-text-input__message--error {
+  color: var(--color-feedback-error);
+}
+
+.dds-text-input--disabled .dds-text-input__message {
+  color: var(--color-text-secondary);
+}
+
+/* Forced-colour modes suppress shadows; retain a real boundary and focus cue. */
+@media (forced-colors: active) {
+  .dds-text-input__field {
+    border: 1px solid CanvasText;
+    padding-inline: calc(var(--space-3) - 1px);
+    box-shadow: none;
+  }
+
+  .dds-text-input__field:focus-within,
+  .dds-text-input--focused .dds-text-input__field,
+  .dds-text-input--error .dds-text-input__field:focus-within,
+  .dds-text-input--error.dds-text-input--focused .dds-text-input__field {
+    border: 2px solid Highlight;
+    padding-inline: calc(var(--space-3) - 2px);
+    box-shadow: none;
+  }
+
+  .dds-text-input.dds-text-input--disabled .dds-text-input__field {
+    border: 1px solid GrayText;
+    padding-inline: calc(var(--space-3) - 1px);
+    box-shadow: none;
+  }
 }
