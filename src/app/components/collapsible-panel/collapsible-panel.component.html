@@ -1,0 +1,29 @@
+<div class="dds-collapsible-panel">
+  <div role="heading" [attr.aria-level]="headingLevel">
+    <button
+      #header
+      class="dds-collapsible-panel__header"
+      type="button"
+      [id]="panelId + '-header'"
+      [attr.aria-expanded]="open"
+      [attr.aria-controls]="panelId + '-body'"
+      (click)="toggle()"
+    >
+      <span class="dds-collapsible-panel__title">{{ title }}</span>
+      <span
+        class="dds-collapsible-panel__chevron"
+        [class.dds-collapsible-panel__chevron--open]="open"
+        aria-hidden="true"
+      ></span>
+    </button>
+  </div>
+  <div
+    #body
+    class="dds-collapsible-panel__body"
+    [id]="panelId + '-body'"
+    [hidden]="!open"
+    [attr.inert]="!open ? '' : null"
+  >
+    <ng-content>Add supporting information, settings or form fields for this section.</ng-content>
+  </div>
+</div>

@@ -4,6 +4,7 @@ import assert from 'node:assert/strict';
 import { JSDOM } from 'jsdom';
 
 const families = {
+  disclosure: ['collapsible-panel'],
   chart: ['chart'],
   navigation: [
     'nav-tab',
@@ -208,6 +209,31 @@ for (const [name, markup, selector] of [
     dom.window.close();
   });
 }
+
+test('Collapsible Panel anatomy follows the current surface, text, border and icon bindings', () => {
+  const dom = new JSDOM(
+    `<style>${cascadeCss('collapsible-panel')}</style><div class="dds-collapsible-panel"><button class="dds-collapsible-panel__header"><span class="dds-collapsible-panel__chevron"></span></button><div class="dds-collapsible-panel__body"></div></div>`,
+  );
+  const value = (selector, property) =>
+    dom.window
+      .getComputedStyle(dom.window.document.querySelector(selector))
+      .getPropertyValue(property);
+  assert.equal(
+    value('.dds-collapsible-panel', 'background-color'),
+    sentinel('--color-bg-elevated'),
+  );
+  assert.equal(
+    value('.dds-collapsible-panel', 'border-top-color'),
+    sentinel('--color-border-default'),
+  );
+  assert.equal(value('button', 'color'), sentinel('--color-text-primary'));
+  assert.equal(value('.dds-collapsible-panel__body', 'color'), sentinel('--color-text-secondary'));
+  assert.equal(
+    value('.dds-collapsible-panel__chevron', 'background-color'),
+    sentinel('--color-icon-default'),
+  );
+  dom.window.close();
+});
 
 test('Toggle disabled states preserve thumb position and override focus/hover colours', () => {
   for (const small of [false, true]) {
