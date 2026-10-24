@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/angular';
+import { componentWrapperDecorator, type Meta, type StoryObj } from '@storybook/angular';
 import { expect, userEvent, waitFor, within } from 'storybook/test';
 import {
   ButtonComponent,
@@ -504,9 +504,9 @@ const themedMatrix = (theme: 'light' | 'dark') => ({
         .join('')}
       <h3>Sizes and icons</h3>
       <div style="display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-4)">
-        <dds-button size="large" iconType="left-icon" icon="plus">Add item</dds-button>
-        <dds-button size="medium" iconType="right-icon" icon="arrow-right">Continue</dds-button>
-        <dds-button size="small" iconType="icon-only" icon="plus" ariaLabel="Add item"></dds-button>
+        <dds-button data-size="large" size="large" iconType="left-icon" icon="plus">Add item</dds-button>
+        <dds-button data-size="medium" size="medium" iconType="right-icon" icon="arrow-right">Continue</dds-button>
+        <dds-button data-size="small" size="small" iconType="icon-only" icon="plus" ariaLabel="Add item"></dds-button>
       </div>
     </section>`,
 });
@@ -520,6 +520,17 @@ const verifySemanticColours = async (canvasElement: HTMLElement) => {
     return probe.ownerDocument.defaultView!.getComputedStyle(probe).backgroundColor;
   };
   try {
+    for (const [size, height, iconSize, fontSize] of [
+      ['large', 48, 24, 16],
+      ['medium', 40, 20, 14],
+      ['small', 32, 16, 12],
+    ] as const) {
+      const host = section.querySelector(`[data-size="${size}"]`)!;
+      const button = host.querySelector('button')!;
+      await expect(button.getBoundingClientRect().height).toBe(height);
+      await expect(getComputedStyle(button).fontSize).toBe(`${fontSize}px`);
+      await expect(host.querySelector('svg')!.getBoundingClientRect().width).toBe(iconSize);
+    }
     for (const cell of Array.from(
       section.querySelectorAll<HTMLElement>('[data-variant][data-state]'),
     )) {
@@ -580,4 +591,11 @@ export const SemanticDark: Story = {
 export const GhostFocused: Story = {
   name: 'Ghost / Focus',
   args: { text: 'Learn more', variant: 'ghost', state: 'focused' },
+};
+
+export const NarrowContent: Story = {
+  args: { text: 'Review delivery instructions before confirming dispatch', size: 'medium' },
+  decorators: [
+    componentWrapperDecorator((story) => `<div style="width:320px;max-width:100%">${story}</div>`),
+  ],
 };
