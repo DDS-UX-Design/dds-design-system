@@ -150,3 +150,40 @@ test('Chart canvas reads generated semantic names and contains no colour literal
   for (const [, role] of source.matchAll(/'(--color-[\w-]+)'/g))
     assert.ok(generated.includes(`${role}:`), role);
 });
+
+for (const [name, markup, selector] of [
+  [
+    'text-input',
+    '<div class="dds-text-input--disabled"><p class="dds-text-input__message dds-text-input__message--error"></p></div>',
+    'p',
+  ],
+  [
+    'password-input',
+    '<div class="dds-password-input--disabled"><p class="dds-password-input__error"></p></div>',
+    'p',
+  ],
+  [
+    'textarea',
+    '<div class="dds-textarea--disabled"><span class="dds-textarea__count"></span></div>',
+    'span',
+  ],
+  [
+    'otp-input',
+    '<div class="dds-otp--disabled"><p class="dds-otp__expiry"><strong></strong></p></div>',
+    'strong',
+  ],
+  [
+    'select',
+    '<div class="dds-select--disabled"><p class="dds-select__supporting-text"></p></div>',
+    'p',
+  ],
+]) {
+  test(`${name}: disabled supporting content uses disabled text`, () => {
+    const dom = new JSDOM(`<style>${cascadeCss(name)}</style>${markup}`);
+    assert.equal(
+      dom.window.getComputedStyle(dom.window.document.querySelector(selector)).color,
+      sentinel('--color-text-disabled'),
+    );
+    dom.window.close();
+  });
+}

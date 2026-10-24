@@ -144,3 +144,7 @@
 .dds-text-input__message--error {
   color: var(--color-feedback-error);
 }
+
+.dds-text-input--disabled .dds-text-input__message {
+  color: var(--color-text-disabled);
+}

@@ -168,3 +168,8 @@
 .dds-otp--disabled .dds-otp__required {
   color: var(--color-text-disabled);
 }
+
+.dds-otp--disabled .dds-otp__expiry,
+.dds-otp--disabled .dds-otp__expiry strong {
+  color: var(--color-text-disabled);
+}

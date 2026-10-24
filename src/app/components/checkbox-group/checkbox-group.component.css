@@ -92,3 +92,7 @@
 .dds-checkbox-group:disabled .dds-checkbox-group__legend span {
   color: var(--color-text-disabled);
 }
+
+.dds-checkbox-group:disabled .dds-checkbox-group__supporting-text {
+  color: var(--color-text-disabled);
+}

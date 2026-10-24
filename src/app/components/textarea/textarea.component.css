@@ -150,3 +150,8 @@
 .dds-textarea--disabled .dds-textarea__required {
   color: var(--color-text-disabled);
 }
+
+.dds-textarea--disabled .dds-textarea__count,
+.dds-textarea--disabled .dds-textarea__supporting-text {
+  color: var(--color-text-disabled);
+}

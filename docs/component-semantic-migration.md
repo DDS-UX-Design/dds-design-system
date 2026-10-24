@@ -96,3 +96,5 @@ All other migrated components retain nearest-ancestor CSS theme inheritance. Sha
 ## Final audit
 
 Disabled supporting/validation copy, Textarea counts, OTP expiry text and Select helper text now use text-disabled when their control is disabled, completing the earlier border/control overrides. User token and documentation changes remain outside migration commits. Live Figma freshness and rendered review remain unverified. No merge, deployment, package publication, accessibility certification or full Figma parity is claimed.
+
+Final verification: `npm run tokens:test` (5 passed), `npm run tokens:check` (182 tokens), `node --test scripts/component-colours.test.mjs` (23 passed), `npx tsc --noEmit -p tsconfig.spec.json` (passed), and Storybook production build (passed with NODE_OPTIONS/NG_BUILD_MAX_WORKERS above and `--compodoc=false`). Final `npm test -- --watch=false`: 47 passed, one pre-existing app starter-title failure. All migration files pass Prettier and `git diff --check`; repository-wide format:check still reports the same 20 baseline files. No connected browser was available, so visual review and browser-only colour play assertions were not executed.

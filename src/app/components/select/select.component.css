@@ -189,3 +189,7 @@
 .dds-select__icon {
   color: var(--color-icon-default);
 }
+
+.dds-select--disabled .dds-select__supporting-text {
+  color: var(--color-text-disabled);
+}
