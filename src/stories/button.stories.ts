@@ -1,8 +1,9 @@
-import { componentWrapperDecorator, type Meta, type StoryObj } from '@storybook/angular';
+import { type Meta, type StoryObj } from '@storybook/angular';
 import { expect, userEvent, waitFor, within } from 'storybook/test';
 import {
   ButtonComponent,
   ButtonIconType,
+  ButtonIconAnimation,
   ButtonSize,
   ButtonState,
   ButtonStyle,
@@ -18,6 +19,7 @@ type ButtonStoryArgs = {
   size: ButtonSize;
   iconType: ButtonIconType;
   icon: DdsIconName;
+  iconAnimation: ButtonIconAnimation;
   ariaLabel?: string;
   disabled: boolean;
   fullWidth: boolean;
@@ -32,7 +34,7 @@ const meta: Meta<ButtonStoryArgs> = {
     docs: {
       description: {
         component:
-          'Buttons trigger an immediate action. Use Primary for the main action in a view, Secondary for supporting actions, Ghost for low-emphasis actions, and Danger only for destructive actions. Use a concise verb-led label. Icon-only buttons require an ariaLabel, and a view should usually contain only one primary action.',
+          'Buttons trigger an immediate action. Use Primary for the main action in a view, Secondary for supporting actions, Ghost for low-emphasis actions, and Danger only for destructive actions. Use a concise verb-led label. Icon-only buttons require an ariaLabel, and a view should usually contain only one primary action. Danger is supported with Primary; Ghost supports text and leading/trailing icons, not icon-only. State is a design preview; use disabled for application behaviour. Icon animation is visual feedback, not a loading controller.',
       },
     },
     layout: 'centered',
@@ -54,7 +56,8 @@ const meta: Meta<ButtonStoryArgs> = {
       name: 'style',
       control: 'select',
       options: ['default', 'danger'],
-      description: 'Semantic style that can switch the button to a destructive treatment.',
+      description: 'Destructive treatment for Primary buttons only.',
+      if: { arg: 'variant', eq: 'primary' },
       table: { category: 'Appearance', defaultValue: { summary: 'default' } },
     },
     size: {
@@ -66,7 +69,8 @@ const meta: Meta<ButtonStoryArgs> = {
     iconType: {
       control: 'select',
       options: ['no-icon', 'left-icon', 'right-icon', 'icon-only'],
-      description: 'Determines whether an icon appears before, after, or instead of the label.',
+      description:
+        'Leading/trailing icons work with every treatment. Icon-only is supported for Primary, Secondary and Danger; do not use it with Ghost.',
       table: { category: 'Content', defaultValue: { summary: 'no-icon' } },
     },
     icon: {
@@ -75,6 +79,14 @@ const meta: Meta<ButtonStoryArgs> = {
       description: 'Icon to render when the button uses an icon placement option.',
       if: { arg: 'iconType', neq: 'no-icon' },
       table: { category: 'Content', defaultValue: { summary: 'info' } },
+    },
+    iconAnimation: {
+      control: 'select',
+      options: ['none', 'spin', 'spin-on-press'],
+      description:
+        'Optional icon motion. Respects reduced-motion preferences; does not manage loading or disabled state.',
+      if: { arg: 'iconType', neq: 'no-icon' },
+      table: { category: 'Content' },
     },
     ariaLabel: {
       control: 'text',
@@ -114,6 +126,7 @@ const meta: Meta<ButtonStoryArgs> = {
     size: 'large',
     iconType: 'no-icon',
     icon: 'info',
+    iconAnimation: 'none',
     ariaLabel: 'Action button',
     disabled: false,
     fullWidth: false,
@@ -129,6 +142,7 @@ const meta: Meta<ButtonStoryArgs> = {
         [size]="size"
         [iconType]="iconType"
         [icon]="icon"
+        [iconAnimation]="iconAnimation"
         [ariaLabel]="ariaLabel"
         [disabled]="disabled"
         [fullWidth]="fullWidth"
@@ -191,6 +205,7 @@ export const Playground: Story = {
         'size',
         'iconType',
         'icon',
+        'iconAnimation',
         'ariaLabel',
         'disabled',
         'fullWidth',
@@ -206,187 +221,7 @@ export const Playground: Story = {
   },
 };
 
-export const PrimaryDefault: Story = {
-  name: 'Primary / Default',
-  args: {
-    text: 'Save changes',
-  },
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    const button = canvas.getByRole('button', { name: 'Save changes' });
-
-    await expect(button).toBeEnabled();
-    await expect(button).not.toHaveFocus();
-  },
-};
-
-export const PrimaryHover: Story = {
-  name: 'Primary / Hover',
-  args: {
-    text: 'Save changes',
-    state: 'hover',
-  },
-  parameters: {
-    docs: { description: { story: 'The hover treatment increases visual feedback.' } },
-  },
-};
-
-export const PrimaryFocused: Story = {
-  name: 'Primary / Focus',
-  args: {
-    text: 'Save changes',
-    state: 'focused',
-  },
-  parameters: {
-    docs: { description: { story: 'Keyboard focus uses a visible focus ring.' } },
-  },
-};
-
-export const ActualFocus: Story = {
-  name: 'Actual focus',
-  args: {
-    text: 'Focus this button',
-    state: 'default',
-  },
-  parameters: {
-    docs: {
-      description: {
-        story:
-          'Uses actual DOM focus rather than the focused preview state. Test Primary, Secondary, Ghost, and Danger with the controls. DDS buttons explicitly take focus on click for consistent Safari behavior. Use keyboard navigation (Option+Tab when needed in Safari) to check keyboard focus too.',
-      },
-    },
-  },
-  play: async ({ canvasElement }) => {
-    const button = within(canvasElement).getByRole('button') as HTMLButtonElement;
-    if (button.disabled) return;
-
-    await userEvent.click(button);
-    await expect(button).toHaveFocus();
-    const styles = button.ownerDocument.defaultView!.getComputedStyle(button);
-    await expect(styles.appearance).toBe('none');
-    await waitFor(() => {
-      const focused = button.ownerDocument.defaultView!.getComputedStyle(button);
-      if (button.classList.contains('dds-button--ghost')) {
-        expect(focused.borderColor).not.toBe('rgba(0, 0, 0, 0)');
-      } else {
-        expect(focused.boxShadow).toContain('3px');
-      }
-    });
-  },
-};
-
-export const PrimaryDisabled: Story = {
-  name: 'Primary / Disabled',
-  args: {
-    text: 'Save changes',
-    disabled: true,
-  },
-};
-
-export const SecondaryDefault: Story = {
-  name: 'Secondary / Default',
-  args: {
-    text: 'Cancel',
-    variant: 'secondary',
-  },
-};
-
-export const SecondaryHover: Story = {
-  name: 'Secondary / Hover',
-  args: {
-    text: 'Cancel',
-    variant: 'secondary',
-    state: 'hover',
-  },
-};
-
-export const SecondaryFocused: Story = {
-  name: 'Secondary / Focus',
-  args: {
-    text: 'Cancel',
-    variant: 'secondary',
-    state: 'focused',
-  },
-};
-
-export const SecondaryDisabled: Story = {
-  name: 'Secondary / Disabled',
-  args: {
-    text: 'Cancel',
-    variant: 'secondary',
-    disabled: true,
-  },
-};
-
-export const DangerDefault: Story = {
-  name: 'Danger / Default',
-  args: {
-    text: 'Delete project',
-    styleType: 'danger',
-  },
-  parameters: {
-    docs: {
-      description: {
-        story: 'Reserve danger buttons for destructive actions and pair them with explicit labels.',
-      },
-    },
-  },
-};
-
-export const DangerHover: Story = {
-  name: 'Danger / Hover',
-  args: {
-    text: 'Delete project',
-    styleType: 'danger',
-    state: 'hover',
-  },
-};
-
-export const DangerFocused: Story = {
-  name: 'Danger / Focus',
-  args: {
-    text: 'Delete project',
-    styleType: 'danger',
-    state: 'focused',
-  },
-};
-
-export const DangerDisabled: Story = {
-  name: 'Danger / Disabled',
-  args: {
-    text: 'Delete project',
-    styleType: 'danger',
-    disabled: true,
-  },
-};
-
-export const GhostDefault: Story = {
-  name: 'Ghost / Default',
-  args: {
-    text: 'Learn more',
-    variant: 'ghost',
-  },
-};
-
-export const GhostHover: Story = {
-  name: 'Ghost / Hover',
-  args: {
-    text: 'Learn more',
-    variant: 'ghost',
-    state: 'hover',
-  },
-};
-
-export const GhostDisabled: Story = {
-  name: 'Ghost / Disabled',
-  args: {
-    text: 'Learn more',
-    variant: 'ghost',
-    disabled: true,
-  },
-};
-
-export const AllVariants: Story = {
+export const VariantsAndIcons: Story = {
   name: 'Variants and icons',
   parameters: {
     controls: { disable: true },
@@ -409,71 +244,38 @@ export const AllVariants: Story = {
       `,
     ],
   }),
-};
-
-export const IconOnly: Story = {
-  args: {
-    text: '',
-    iconType: 'icon-only',
-    icon: 'plus',
-    ariaLabel: 'Add item',
-  },
-  parameters: {
-    docs: {
-      description: {
-        story:
-          'Use only for universally understood actions and always provide an accessible label.',
-      },
-    },
+  play: async ({ canvasElement }) => {
+    const buttons = canvasElement.querySelectorAll<HTMLButtonElement>('.dds-button--icon-only');
+    await expect(buttons).toHaveLength(3);
+    for (const button of buttons) {
+      await expect(button).toHaveAccessibleName();
+      await expect(button.querySelector('.dds-button__label')).toBeNull();
+    }
   },
 };
 
 export const Sizes: Story = {
-  parameters: {
-    controls: { include: ['variant', 'styleType', 'iconType', 'icon'] },
-    layout: 'padded',
-  },
-  render: (args) => ({
-    props: args,
-    template: `
-      <div class="button-sizes">
-        <div class="button-sizes__row">
-          <span>Large · 48px</span>
-          <dds-button [variant]="variant" [styleType]="styleType" size="large" [iconType]="iconType" [icon]="icon">Large action</dds-button>
-          <dds-button *ngIf="variant !== 'ghost'" [variant]="variant" [styleType]="styleType" size="large" iconType="icon-only" [icon]="icon" ariaLabel="Large icon action"></dds-button>
-        </div>
-        <div class="button-sizes__row">
-          <span>Medium · 40px</span>
-          <dds-button [variant]="variant" [styleType]="styleType" size="medium" [iconType]="iconType" [icon]="icon">Medium action</dds-button>
-          <dds-button *ngIf="variant !== 'ghost'" [variant]="variant" [styleType]="styleType" size="medium" iconType="icon-only" [icon]="icon" ariaLabel="Medium icon action"></dds-button>
-        </div>
-        <div class="button-sizes__row">
-          <span>Small · 32px</span>
-          <dds-button [variant]="variant" [styleType]="styleType" size="small" [iconType]="iconType" [icon]="icon">Small action</dds-button>
-          <dds-button *ngIf="variant !== 'ghost'" [variant]="variant" [styleType]="styleType" size="small" iconType="icon-only" [icon]="icon" ariaLabel="Small icon action"></dds-button>
-        </div>
-      </div>
-    `,
-    styles: [
-      `
-        .button-sizes { display: grid; gap: 20px; }
-        .button-sizes__row { display: grid; grid-template-columns: 112px auto auto; align-items: center; justify-content: start; gap: 16px; }
-        .button-sizes__row > span { color: #525252; font-size: 13px; }
-      `,
-    ],
+  parameters: { layout: 'padded', controls: { disable: true } },
+  render: () => ({
+    template: `<div style="display:grid;gap:24px">
+    ${(['large', 'medium', 'small'] as const).map((size, index) => `<section data-size="${size}" style="display:grid;gap:12px"><h3>${size} · ${[48, 40, 32][index]}px</h3><div style="display:flex;flex-wrap:wrap;align-items:center;gap:16px"><dds-button size="${size}" iconType="left-icon" icon="plus">Add item</dds-button><dds-button size="${size}" iconType="icon-only" icon="plus" ariaLabel="Add item"></dds-button></div></section>`).join('')}
+  </div>`,
   }),
-};
-
-export const FullWidth: Story = {
-  args: {
-    text: 'Continue',
-    fullWidth: true,
-    iconType: 'right-icon',
-    icon: 'arrow-right',
-  },
-  parameters: {
-    layout: 'padded',
-    viewport: { defaultViewport: 'mobile' },
+  play: async ({ canvasElement }) => {
+    for (const [size, height, iconSize, fontSize] of [
+      ['large', 48, 24, 16],
+      ['medium', 40, 20, 14],
+      ['small', 32, 16, 12],
+    ] as const) {
+      for (const host of canvasElement.querySelectorAll(`[data-size="${size}"] dds-button`)) {
+        const button = host.querySelector('button')!;
+        await expect(button.getBoundingClientRect().height).toBe(height);
+        await expect(getComputedStyle(button).fontSize).toBe(`${fontSize}px`);
+        await expect(host.querySelector('svg')!.getBoundingClientRect().width).toBe(iconSize);
+        if (button.classList.contains('dds-button--icon-only'))
+          await expect(button.getBoundingClientRect().width).toBe(height);
+      }
+    }
   },
 };
 
@@ -502,12 +304,6 @@ const themedMatrix = (theme: 'light' | 'dark') => ({
         </div>`,
         )
         .join('')}
-      <h3>Sizes and icons</h3>
-      <div style="display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-4)">
-        <dds-button data-size="large" size="large" iconType="left-icon" icon="plus">Add item</dds-button>
-        <dds-button data-size="medium" size="medium" iconType="right-icon" icon="arrow-right">Continue</dds-button>
-        <dds-button data-size="small" size="small" iconType="icon-only" icon="plus" ariaLabel="Add item"></dds-button>
-      </div>
     </section>`,
 });
 
@@ -520,17 +316,6 @@ const verifySemanticColours = async (canvasElement: HTMLElement) => {
     return probe.ownerDocument.defaultView!.getComputedStyle(probe).backgroundColor;
   };
   try {
-    for (const [size, height, iconSize, fontSize] of [
-      ['large', 48, 24, 16],
-      ['medium', 40, 20, 14],
-      ['small', 32, 16, 12],
-    ] as const) {
-      const host = section.querySelector(`[data-size="${size}"]`)!;
-      const button = host.querySelector('button')!;
-      await expect(button.getBoundingClientRect().height).toBe(height);
-      await expect(getComputedStyle(button).fontSize).toBe(`${fontSize}px`);
-      await expect(host.querySelector('svg')!.getBoundingClientRect().width).toBe(iconSize);
-    }
     for (const cell of Array.from(
       section.querySelectorAll<HTMLElement>('[data-variant][data-state]'),
     )) {
@@ -574,28 +359,115 @@ const verifySemanticColours = async (canvasElement: HTMLElement) => {
   }
 };
 
-export const SemanticLight: Story = {
-  name: 'Semantic colours / Light',
+export const Light: Story = {
   parameters: { layout: 'fullscreen', controls: { disable: true } },
   render: () => themedMatrix('light'),
   play: async ({ canvasElement }) => verifySemanticColours(canvasElement),
 };
 
-export const SemanticDark: Story = {
-  name: 'Semantic colours / Dark',
+export const Dark: Story = {
   parameters: { layout: 'fullscreen', controls: { disable: true } },
   render: () => themedMatrix('dark'),
-  play: SemanticLight.play,
+  play: Light.play,
 };
 
-export const GhostFocused: Story = {
-  name: 'Ghost / Focus',
-  args: { text: 'Learn more', variant: 'ghost', state: 'focused' },
+export const Interactions: Story = {
+  parameters: {
+    layout: 'padded',
+    controls: { disable: true },
+    docs: {
+      description: {
+        story:
+          'Real keyboard and pointer interaction, separate from the Light/Dark preview classes. Primary uses the pressed token; Danger currently reuses its hover token because no distinct destructive pressed role exists. Disabled buttons cannot activate. Hold the pointer down to review native pressed colours; synthetic story events assert activation but do not verify browser :active styling.',
+      },
+    },
+  },
+  render: () => ({
+    template: `<div style="display:grid;gap:24px">${(['light', 'dark'] as const).map((theme) => `<section data-theme="${theme}" style="padding:24px;background:var(--color-bg-default);color:var(--color-text-primary)"><h3>${theme}</h3><div style="display:flex;flex-wrap:wrap;gap:16px">${comparisonRows.map(({ label, variant, styleType }) => `<dds-button variant="${variant}" styleType="${styleType}">${label} action</dds-button>`).join('')}<dds-button [disabled]="true">Unavailable action</dds-button></div></section>`).join('')}</div>`,
+  }),
+  play: async ({ canvasElement }) => {
+    for (const section of canvasElement.querySelectorAll<HTMLElement>('section[data-theme]')) {
+      const canvas = within(section);
+      const probe = section.ownerDocument.createElement('span');
+      section.appendChild(probe);
+      const colour = (token: string) => {
+        probe.style.color = `var(--${token})`;
+        return getComputedStyle(probe).color;
+      };
+      try {
+        for (const [index, { label }] of comparisonRows.entries()) {
+          const button = canvas.getByRole('button', { name: `${label} action` });
+          const clicks: Event[] = [];
+          const clicked = (event: Event) => clicks.push(event);
+          button.addEventListener('click', clicked);
+          try {
+            if (index === 0) button.focus();
+            else await userEvent.tab();
+            await expect(button).toHaveFocus();
+            await expect(getComputedStyle(button).appearance).toBe('none');
+            await waitFor(() => {
+              const styles = getComputedStyle(button);
+              const focus = colour(
+                label === 'Danger' ? 'color-border-focus-danger' : 'color-border-focus',
+              );
+              if (label === 'Ghost') expect(styles.borderColor).toBe(focus);
+              else {
+                expect(styles.boxShadow).toContain('3px');
+                expect(styles.boxShadow).toContain(focus);
+              }
+            });
+            await userEvent.keyboard('{Enter}');
+            await userEvent.keyboard(' ');
+            await expect(clicks).toHaveLength(2);
+            await userEvent.pointer({ target: button, keys: '[MouseLeft>]' });
+            await userEvent.pointer({ target: button, keys: '[/MouseLeft]' });
+            await expect(button).toHaveFocus();
+            await expect(clicks).toHaveLength(3);
+          } finally {
+            button.removeEventListener('click', clicked);
+          }
+        }
+        const disabled = canvas.getByRole('button', { name: 'Unavailable action' });
+        let clicks = 0;
+        const clicked = () => clicks++;
+        disabled.addEventListener('click', clicked);
+        try {
+          await userEvent.click(disabled);
+          await expect(disabled).toBeDisabled();
+          await expect(disabled).not.toHaveFocus();
+          await expect(clicks).toBe(0);
+        } finally {
+          disabled.removeEventListener('click', clicked);
+        }
+      } finally {
+        probe.remove();
+      }
+    }
+  },
 };
 
-export const NarrowContent: Story = {
-  args: { text: 'Review delivery instructions before confirming dispatch', size: 'medium' },
-  decorators: [
-    componentWrapperDecorator((story) => `<div style="width:320px;max-width:100%">${story}</div>`),
-  ],
+export const Layout: Story = {
+  parameters: {
+    layout: 'padded',
+    controls: { disable: true },
+    docs: {
+      description: {
+        story:
+          'Text buttons fill their parent when fullWidth is enabled. Long labels wrap while preserving the size’s minimum height. Prefer concise labels; this example deliberately stresses a narrow container.',
+      },
+    },
+  },
+  render: () => ({
+    template: `<div style="width:320px;max-width:100%;display:grid;gap:24px"><section><h3>Full width</h3><dds-button [fullWidth]="true" iconType="right-icon" icon="arrow-right">Continue</dds-button></section><section><h3>Long content</h3><dds-button [fullWidth]="true" size="medium">Review delivery instructions before confirming dispatch</dds-button></section></div>`,
+  }),
+  play: async ({ canvasElement }) => {
+    for (const button of canvasElement.querySelectorAll('button')) {
+      const section = button.closest('section')!;
+      await expect(
+        Math.abs(button.getBoundingClientRect().width - section.getBoundingClientRect().width),
+      ).toBeLessThan(1);
+      await expect(button.scrollWidth).toBeLessThanOrEqual(button.clientWidth);
+      await expect(button.scrollHeight).toBeLessThanOrEqual(button.clientHeight);
+    }
+  },
 };

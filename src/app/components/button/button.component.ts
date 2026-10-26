@@ -19,6 +19,7 @@ export type ButtonIconAnimation = 'none' | 'spin' | 'spin-on-press';
   imports: [CommonModule, IconComponent],
   templateUrl: './button.component.html',
   styleUrl: './button.component.css',
+  host: { '[class.dds-button-host--full-width]': 'fullWidth' },
 })
 export class ButtonComponent {
   /** Visual treatment for the button, used to communicate action importance. */

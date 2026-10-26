@@ -4,6 +4,7 @@ import assert from 'node:assert/strict';
 import { JSDOM } from 'jsdom';
 
 const families = {
+  button: ['button'],
   steps: ['steps'],
   tooltip: ['tooltip'],
   disclosure: ['collapsible-panel'],
@@ -373,5 +374,38 @@ test('Steps marker and status colours distinguish complete, current, upcoming an
       sentinel(state === 'error' ? '--color-feedback-error' : '--color-text-secondary'),
     );
     dom.window.close();
+  }
+});
+
+// Dispatching synthetic pointer events cannot put a browser into :active.
+// Substitute selector flags to test the CSS cascade and semantic roles separately.
+test('Button native pressed roles and destructive focus survive disabled precedence', () => {
+  const source = cascadeCss('button')
+    .replace(/:active/g, '[data-test-active]')
+    .replace(/:hover/g, '[data-test-hover]');
+  for (const [variant, role] of [
+    ['primary', '--color-interactive-pressed'],
+    ['danger', '--color-interactive-danger-hover'],
+    ['secondary', '--color-bg-subtle'],
+    ['ghost', '--color-bg-transparent'],
+  ]) {
+    for (const disabled of [false, true]) {
+      const dom = new JSDOM(
+        `<style>${source}</style><button class="dds-button dds-button--${variant === 'danger' ? 'primary dds-button--danger' : variant} dds-button--state-hover dds-button--state-focused" data-test-active ${disabled ? 'disabled' : ''}></button>`,
+      );
+      const style = dom.window.getComputedStyle(dom.window.document.querySelector('button'));
+      assert.equal(
+        style.backgroundColor,
+        sentinel(
+          disabled ? (variant === 'ghost' ? '--color-bg-transparent' : '--color-bg-subtle') : role,
+        ),
+      );
+      if (disabled) {
+        assert.equal(style.color, sentinel('--color-text-disabled'));
+        assert.equal(style.boxShadow, 'none');
+      } else if (variant === 'danger')
+        assert.equal(style.boxShadow, `0 0 0 3px ${sentinel('--color-border-focus-danger')}`);
+      dom.window.close();
+    }
   }
 });

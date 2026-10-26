@@ -231,3 +231,20 @@
     color: GrayText;
   }
 }
+
+:host(.dds-button-host--full-width) {
+  display: block;
+  width: 100%;
+  min-width: 0;
+}
+
+.dds-button--full-width {
+  width: 100%;
+  height: auto;
+}
+
+.dds-button--full-width .dds-button__label {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
