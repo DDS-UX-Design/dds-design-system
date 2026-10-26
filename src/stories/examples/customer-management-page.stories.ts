@@ -11,7 +11,7 @@ const meta: Meta<CustomerManagementPageComponent> = {
     docs: {
       description: {
         component:
-          'An interactive DDS prototype with simulated loading and request failures, retry, combined search and status filters, selection, pagination, customer details, and local customer creation. Refresh preserves filters. Use Fail next refresh to explore recovery. Data is local to each mounted story. Below 1100px navigation expands inline and the toolbar stacks; the table scrolls horizontally. These responsive choices are prototype proposals pending Figma review.',
+          'An interactive DDS prototype with simulated loading and request failures, retry, combined search and status filters, selection, pagination, customer details, and local customer creation. System feedback uses dismissible Toasts; Retry remains available beside an unavailable list. Refresh preserves filters. Use Fail next refresh to explore recovery. Data is local to each mounted story. Below 1100px navigation expands inline and the toolbar stacks; the table scrolls horizontally. These responsive choices are prototype proposals pending Figma review.',
       },
     },
   },
@@ -41,7 +41,9 @@ export const ErrorAndRetry: Story = {
   args: { initialState: 'error' },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    await expect(canvas.getByText(/Customers could not be loaded/)).toBeVisible();
+    await expect(canvas.getByRole('alert')).toHaveTextContent('Customers could not be loaded');
+    await userEvent.click(canvas.getByRole('button', { name: 'Dismiss notification' }));
+    await expect(canvas.queryByRole('alert')).not.toBeInTheDocument();
     await userEvent.click(canvas.getByRole('button', { name: 'Retry' }));
     await expect(canvas.getByRole('status')).toHaveTextContent('Loading customers');
     await waitFor(() => expect(canvas.getByText('Acacia Market')).toBeVisible(), { timeout: 5000 });
@@ -115,6 +117,8 @@ export const EmptyAndCreate: Story = {
     await userEvent.click(canvas.getByRole('button', { name: 'Save customer' }));
     await expect(canvas.getByText('Sunrise Stores')).toBeVisible();
     await expect(canvas.getByText('Sunrise Stores added successfully.')).toBeVisible();
+    await userEvent.click(canvas.getByRole('button', { name: 'Dismiss notification' }));
+    await expect(canvas.queryByText('Sunrise Stores added successfully.')).not.toBeInTheDocument();
   },
 };
 export const Mobile: Story = {

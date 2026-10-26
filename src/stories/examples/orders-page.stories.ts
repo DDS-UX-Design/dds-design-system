@@ -11,7 +11,7 @@ const meta: Meta<OrdersPageComponent> = {
     docs: {
       description: {
         component:
-          'A Sales / Orders layout using DDS sidebar navigation, page toolbar, status badges, selection, and pagination. Search by order ID or customer, filter by status, and open order details. Summary cards show all orders independently of filters; cancelled orders are excluded from order value. Uses local sample data and the responsive shell from Customer Management. Sales is a new top-level navigation group; Orders now belongs to Sales rather than Logistics.',
+          'A Sales / Orders layout using DDS sidebar navigation, page toolbar, status badges, selection, and pagination. Search by order ID or customer, filter by status, and open order details. Summary cards show all orders independently of filters; cancelled orders are excluded from order value. System feedback uses dismissible Toasts. Uses local sample data and the responsive shell from Customer Management. Sales is a new top-level navigation group; Orders now belongs to Sales rather than Logistics.',
       },
     },
   },
@@ -40,6 +40,13 @@ export const FilterAndView: Story = {
         .find((element) => element.getBoundingClientRect().width > 0)!,
     );
     await expect(canvas.getByText('ORD-2083')).toBeVisible();
+    const refresh = canvas
+      .getAllByRole('button', { name: /Refresh/ })
+      .find((element) => element.getBoundingClientRect().width > 0)!;
+    await userEvent.click(refresh);
+    await expect(canvas.getByText('Orders are up to date.')).toBeVisible();
+    await userEvent.click(canvas.getByRole('button', { name: 'Dismiss notification' }));
+    await expect(canvas.queryByText('Orders are up to date.')).not.toBeInTheDocument();
   },
 };
 export const Mobile: Story = { globals: { viewport: { value: 'mobile', isRotated: false } } };

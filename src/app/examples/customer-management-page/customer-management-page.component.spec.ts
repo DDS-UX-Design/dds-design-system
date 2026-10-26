@@ -107,4 +107,40 @@ describe('Customer Management prototype', () => {
     vi.advanceTimersByTime(1000);
     expect(page.loading).toBe(true);
   });
+  it('keeps Retry available after dismissing the error Toast, then shows dismissible success feedback', async () => {
+    const fixture = await setup('error');
+    vi.useFakeTimers();
+    const page = fixture.componentInstance;
+    const root: HTMLElement = fixture.nativeElement;
+    expect(root.querySelector('dds-alert')).toBeNull();
+    expect(root.querySelector('dds-toast [role="alert"]')?.textContent).toContain(
+      'Customers could not be loaded',
+    );
+    root.querySelector<HTMLButtonElement>('dds-toast button')!.click();
+    fixture.detectChanges();
+    expect(page.error).toBe(true);
+    expect(root.querySelector('dds-toast')).toBeNull();
+    const retry = [...root.querySelectorAll('button')].find(
+      (button) => button.textContent?.trim() === 'Retry',
+    )!;
+    retry.click();
+    fixture.detectChanges();
+    vi.advanceTimersByTime(700);
+    fixture.changeDetectorRef.markForCheck();
+    fixture.detectChanges();
+    expect(page.error).toBe(false);
+    expect(root.querySelector('dds-toast [role="status"]')?.textContent).toContain(
+      'Customer records are up to date.',
+    );
+    root.querySelector<HTMLButtonElement>('dds-toast button')!.click();
+    fixture.detectChanges();
+    expect(page.notice).toBe('');
+    expect(root.querySelector('dds-toast')).toBeNull();
+    page.failNextRequest = true;
+    page.refreshTable();
+    vi.advanceTimersByTime(700);
+    fixture.changeDetectorRef.markForCheck();
+    fixture.detectChanges();
+    expect(root.querySelector('dds-toast [role="alert"]')).not.toBeNull();
+  });
 });

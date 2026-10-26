@@ -10,7 +10,7 @@ import {
   OnDestroy,
   inject,
 } from '@angular/core';
-import { AlertComponent } from '../../components/alert/alert.component';
+import { ToastComponent, ToastTone } from '../../components/toast/toast.component';
 import { ButtonComponent } from '../../components/button/button.component';
 import { TextInputComponent } from '../../components/text-input/text-input.component';
 import { SearchComponent } from '../../components/search/search.component';
@@ -43,7 +43,7 @@ type CustomerRow = DataTableRow & {
   standalone: true,
   imports: [
     CommonModule,
-    AlertComponent,
+    ToastComponent,
     ButtonComponent,
     TextInputComponent,
     SearchComponent,
@@ -66,6 +66,8 @@ export class CustomerManagementPageComponent implements OnInit, OnDestroy {
   error = false;
   failNextRequest = false;
   notice = '';
+  noticeTone: ToastTone = 'success';
+  errorNotificationDismissed = false;
   mobileNavigationOpen = false;
   creating = false;
   draftName = '';
@@ -129,6 +131,7 @@ export class CustomerManagementPageComponent implements OnInit, OnDestroy {
     ];
     this.creating = false;
     this.clearFilters();
+    this.noticeTone = 'success';
     this.notice = `${this.draftName.trim()} added successfully.`;
   }
 
@@ -140,8 +143,9 @@ export class CustomerManagementPageComponent implements OnInit, OnDestroy {
   navigate(id: string): void {
     this.activeItemId = 'customers';
     this.mobileNavigationOpen = false;
+    this.noticeTone = 'info';
     if (id === 'orders') {
-      this.notice = 'Explore the Orders layout under Examples / Orders in Storybook.';
+      this.notice = 'Explore the Orders layout under Pages / Orders in Storybook.';
       return;
     }
     if (id !== 'customers')
@@ -332,6 +336,7 @@ export class CustomerManagementPageComponent implements OnInit, OnDestroy {
     clearTimeout(this.requestTimer);
     this.loading = true;
     this.error = false;
+    this.errorNotificationDismissed = false;
     this.selectedKeys = [];
     const fail = this.failNextRequest;
     this.failNextRequest = false;
@@ -339,6 +344,7 @@ export class CustomerManagementPageComponent implements OnInit, OnDestroy {
       () => {
         this.loading = false;
         this.error = fail;
+        this.noticeTone = 'success';
         this.notice = fail ? '' : 'Customer records are up to date.';
         this.changeDetector.markForCheck();
       },

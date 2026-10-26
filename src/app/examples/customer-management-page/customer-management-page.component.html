@@ -82,12 +82,6 @@
         >
         <span>Prototype · changes stay in this session</span>
       </div>
-      <dds-alert
-        *ngIf="notice && !error && !loading"
-        tone="success"
-        [text]="notice"
-        (dismissed)="notice = ''"
-      ></dds-alert>
       <p role="status" aria-live="polite">
         {{
           loading
@@ -97,15 +91,10 @@
               : filteredCustomers.length + ' customers found'
         }}
       </p>
-      <dds-alert
-        *ngIf="error"
-        tone="danger"
-        text="Customers could not be loaded. Check your connection and try again."
-        [dismissible]="false"
-        [showAction]="true"
-        actionLabel="Retry"
-        (action)="refreshTable()"
-      ></dds-alert>
+      <section *ngIf="error" class="customer-page__panel" aria-labelledby="customer-load-error">
+        <h2 id="customer-load-error">Customer records unavailable</h2>
+        <dds-button variant="secondary" (click)="refreshTable()">Retry</dds-button>
+      </section>
 
       <section *ngIf="creating" class="customer-page__panel" aria-labelledby="new-customer-title">
         <h2 id="new-customer-title">New customer</h2>
@@ -173,4 +162,22 @@
       </div>
     </section>
   </main>
+  <div class="customer-page__notifications">
+    <dds-toast
+      *ngIf="notice && !error && !loading"
+      [tone]="noticeTone"
+      title="Customer update"
+      [message]="notice"
+      [autoDismiss]="false"
+      (dismissed)="notice = ''"
+    />
+    <dds-toast
+      *ngIf="error && !errorNotificationDismissed"
+      tone="danger"
+      title="Unable to load customers"
+      message="Customers could not be loaded. Check your connection and try again."
+      [autoDismiss]="false"
+      (dismissed)="errorNotificationDismissed = true"
+    />
+  </div>
 </div>

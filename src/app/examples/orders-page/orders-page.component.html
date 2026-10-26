@@ -78,7 +78,6 @@
           trendText="Excluding cancelled orders"
         ></dds-kpi-card>
       </div>
-      <dds-alert *ngIf="notice" tone="info" [text]="notice" (dismissed)="notice = ''"></dds-alert>
       <section *ngIf="detail" class="customer-page__panel" aria-labelledby="order-detail-title">
         <h2 id="order-detail-title">Order {{ detail.id }}</h2>
         <dl>
@@ -114,4 +113,14 @@
       </div>
     </section>
   </main>
+  <div class="customer-page__notifications">
+    <dds-toast
+      *ngIf="notice"
+      tone="info"
+      title="Orders update"
+      [message]="notice"
+      [autoDismiss]="false"
+      (dismissed)="notice = ''"
+    />
+  </div>
 </div>

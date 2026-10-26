@@ -13,7 +13,7 @@ import {
 import { ButtonComponent } from '../../components/button/button.component';
 import { SearchComponent } from '../../components/search/search.component';
 import { SelectComponent } from '../../components/select/select.component';
-import { AlertComponent } from '../../components/alert/alert.component';
+import { ToastComponent } from '../../components/toast/toast.component';
 import { StatusBadgeTone } from '../../components/status-badge/status-badge.component';
 
 type Order = DataTableRow & {
@@ -40,7 +40,7 @@ type Order = DataTableRow & {
     ButtonComponent,
     SearchComponent,
     SelectComponent,
-    AlertComponent,
+    ToastComponent,
   ],
   templateUrl: './orders-page.component.html',
   styleUrls: [
@@ -210,7 +210,7 @@ export class OrdersPageComponent {
     if (id === 'orders') return;
     this.notice =
       id === 'customers'
-        ? 'Explore Customer Management under Examples in Storybook.'
+        ? 'Explore Customer Management under Pages in Storybook.'
         : 'This prototype demonstrates Orders. Other sections are available as separate examples.';
   }
   private resetPage(): void {

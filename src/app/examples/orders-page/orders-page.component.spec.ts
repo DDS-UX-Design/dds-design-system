@@ -37,4 +37,24 @@ describe('Orders example', () => {
     expect(page.filteredOrders).toHaveLength(8);
     expect(page.totalValue).toBe(289200);
   });
+  it('shows refresh feedback in a dismissible Toast and can show the same feedback again', async () => {
+    await TestBed.configureTestingModule({ imports: [OrdersPageComponent] }).compileComponents();
+    const fixture = TestBed.createComponent(OrdersPageComponent);
+    fixture.detectChanges();
+    const root: HTMLElement = fixture.nativeElement;
+    const page = fixture.componentInstance;
+    for (let attempt = 0; attempt < 2; attempt++) {
+      page.refresh();
+      fixture.changeDetectorRef.markForCheck();
+      fixture.detectChanges();
+      expect(root.querySelector('dds-alert')).toBeNull();
+      expect(root.querySelector('dds-toast [role="status"]')?.textContent).toContain(
+        'Orders are up to date.',
+      );
+      root.querySelector<HTMLButtonElement>('dds-toast button')!.click();
+      fixture.detectChanges();
+      expect(page.notice).toBe('');
+      expect(root.querySelector('dds-toast')).toBeNull();
+    }
+  });
 });
