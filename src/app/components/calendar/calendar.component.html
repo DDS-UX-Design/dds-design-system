@@ -1,0 +1,75 @@
+<div class="dds-calendar" [class.dds-calendar--mobile]="size === 'mobile'">
+  <div class="dds-calendar__navigation">
+    <button
+      type="button"
+      class="dds-calendar__nav dds-calendar__nav--previous"
+      aria-label="Previous month"
+      [disabled]="monthDisabled(-1)"
+      (click)="navigateMonth(-1, $event)"
+    >
+      <span aria-hidden="true"></span>
+    </button>
+    <h3 [id]="id + '-month'" tabindex="-1" aria-live="polite" aria-atomic="true">
+      {{ monthLabel }}
+    </h3>
+    <button
+      type="button"
+      class="dds-calendar__nav dds-calendar__nav--next"
+      aria-label="Next month"
+      [disabled]="monthDisabled(1)"
+      (click)="navigateMonth(1, $event)"
+    >
+      <span aria-hidden="true"></span>
+    </button>
+  </div>
+  <div
+    class="dds-calendar__grid"
+    role="grid"
+    [attr.aria-multiselectable]="selectionMode === 'range' ? 'true' : null"
+    [attr.aria-labelledby]="id + '-month'"
+  >
+    <div class="dds-calendar__week" role="row">
+      @for (day of weekdays; track day; let index = $index) {
+        <span class="dds-calendar__weekday" role="columnheader" [attr.aria-label]="day">{{
+          weekdayLabels[index]
+        }}</span>
+      }
+    </div>
+    @for (week of weeks; track format(week[0])) {
+      <div class="dds-calendar__week" role="row">
+        @for (date of week; track format(date)) {
+          <div
+            role="gridcell"
+            [attr.aria-selected]="selected(date) || inRange(date) ? 'true' : 'false'"
+          >
+            <button
+              type="button"
+              class="dds-calendar__day"
+              [class.dds-calendar__day--selected]="selected(date)"
+              [class.dds-calendar__day--in-range]="inRange(date)"
+              [attr.data-date]="format(date)"
+              [attr.aria-label]="label(date)"
+              [disabled]="outside(date) || !allowed(date)"
+              [attr.tabindex]="format(date) === format(activeDate) ? 0 : -1"
+              (focus)="activeDate = date"
+              (keydown)="onDayKeydown($event)"
+              (click)="select(date)"
+            >
+              {{ date.getUTCDate() }}
+            </button>
+          </div>
+        }
+      </div>
+    }
+  </div>
+  <div class="dds-calendar__actions">
+    @if (selectionMode === 'range') {
+      <span class="dds-calendar__instruction" aria-live="polite" aria-atomic="true">{{
+        selectingEnd ? 'Choose end date' : 'Choose start date'
+      }}</span>
+    } @else {
+      <button type="button" [disabled]="todayDisabled" (click)="today()">Today</button>
+    }
+    <button type="button" [disabled]="disabled" (click)="clear()">Clear</button>
+  </div>
+</div>

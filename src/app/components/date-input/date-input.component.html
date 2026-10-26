@@ -1,10 +1,12 @@
 <div
   class="dds-date-input"
   [class.dds-date-input--mobile]="size === 'mobile'"
-  [class.dds-date-input--focused]="state === 'focused'"
+  [class.dds-date-input--focused]="state === 'focused' || calendarOpen"
   [class.dds-date-input--error]="isError"
   [class.dds-date-input--disabled]="disabled"
   [class.dds-date-input--loading]="loading"
+  [class.dds-date-input--range]="selectionMode === 'range'"
+  [class.dds-date-input--open]="calendarOpen"
   [attr.aria-busy]="loading ? 'true' : null"
   [attr.aria-label]="loading ? 'Loading date input' : null"
 >
@@ -30,8 +32,8 @@
         [id]="inputId"
         [name]="name"
         type="text"
-        inputmode="numeric"
-        [value]="value"
+        [attr.inputmode]="selectionMode === 'range' ? 'text' : 'numeric'"
+        [value]="displayValue"
         [placeholder]="placeholder"
         [required]="required"
         [disabled]="disabled"
@@ -40,8 +42,25 @@
         [attr.aria-invalid]="isError ? 'true' : null"
         [attr.aria-describedby]="describedBy"
         (input)="handleInput($event)"
+        (blur)="onBlur()"
       />
-      <dds-icon class="dds-date-input__icon" name="calendar-days" [size]="iconSize"></dds-icon>
+      @if (calendarEnabled) {
+        <button
+          #calendarTrigger
+          type="button"
+          class="dds-date-input__calendar-trigger"
+          [attr.aria-label]="'Choose ' + (showLabel ? label : ariaLabel || label)"
+          aria-haspopup="dialog"
+          [attr.aria-expanded]="calendarOpen"
+          [attr.aria-controls]="calendarOpen ? inputId + '-calendar' : null"
+          [disabled]="disabled"
+          (click)="toggleCalendar()"
+        >
+          <dds-icon class="dds-date-input__icon" name="calendar-days" [size]="iconSize" />
+        </button>
+      } @else {
+        <dds-icon class="dds-date-input__icon" name="calendar-days" [size]="iconSize" />
+      }
     </div>
 
     <p
@@ -49,10 +68,32 @@
       class="dds-date-input__message dds-date-input__message--error"
       [id]="messageId"
     >
-      {{ errorMessage }}
+      {{ displayErrorMessage }}
     </p>
     <p *ngIf="!isError && showHelperText" class="dds-date-input__message" [id]="messageId">
       {{ helperText }}
     </p>
   </ng-template>
 </div>
+
+@if (calendarOpen) {
+  <div
+    #panel
+    class="dds-date-input__calendar-panel"
+    [id]="inputId + '-calendar'"
+    popover="manual"
+    role="dialog"
+    [attr.aria-label]="'Choose ' + (showLabel ? label : ariaLabel || label)"
+  >
+    <dds-calendar
+      [value]="value"
+      [selectionMode]="selectionMode"
+      (draftChange)="draftValue = $event"
+      [size]="size"
+      [minDate]="minDate"
+      [maxDate]="maxDate"
+      [disabled]="disabled"
+      (valueChange)="selectDate($event)"
+    />
+  </div>
+}

@@ -4,6 +4,7 @@ import assert from 'node:assert/strict';
 import { JSDOM } from 'jsdom';
 
 const families = {
+  calendar: ['calendar'],
   modal: ['modal'],
   button: ['button'],
   steps: ['steps'],
@@ -431,4 +432,44 @@ test('Modal uses semantic surface, border, text, error and disabled-close roles'
     );
     dom.window.close();
   }
+});
+
+test('Calendar endpoints, in-range days and disabled selected days retain semantic roles', () => {
+  for (const [classes, disabled, background, foreground] of [
+    [
+      'dds-calendar__day--selected',
+      false,
+      '--color-interactive-default',
+      '--color-text-on-interactive',
+    ],
+    [
+      'dds-calendar__day--in-range',
+      false,
+      '--color-interactive-default-opacity-10',
+      '--color-text-primary',
+    ],
+    ['dds-calendar__day--selected', true, '--color-bg-transparent', '--color-text-disabled'],
+    ['dds-calendar__day--in-range', true, '--color-bg-transparent', '--color-text-disabled'],
+  ]) {
+    const dom = new JSDOM(
+      `<style>${cascadeCss('calendar')}</style><div class="dds-calendar"><button class="dds-calendar__day ${classes}" ${disabled ? 'disabled' : ''}></button></div>`,
+    );
+    const style = dom.window.getComputedStyle(dom.window.document.querySelector('button'));
+    assert.equal(style.backgroundColor, sentinel(background));
+    assert.equal(style.color, sentinel(foreground));
+    dom.window.close();
+  }
+});
+
+test('Date Input disabled styling wins over open/error/focus treatments', () => {
+  const dom = new JSDOM(
+    `<style>${cascadeCss('date-input')}</style><div class="dds-date-input dds-date-input--disabled dds-date-input--error dds-date-input--focused dds-date-input--open"><div class="dds-date-input__field"></div></div>`,
+  );
+  const style = dom.window.getComputedStyle(
+    dom.window.document.querySelector('.dds-date-input__field'),
+  );
+  assert.equal(style.boxShadow, 'none');
+  assert.equal(style.borderTopColor, sentinel('--color-border-default'));
+  assert.equal(style.backgroundColor, sentinel('--color-bg-subtle'));
+  dom.window.close();
 });

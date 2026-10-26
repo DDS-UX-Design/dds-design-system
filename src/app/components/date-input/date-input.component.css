@@ -145,3 +145,83 @@
 .dds-date-input--disabled .dds-date-input__icon {
   color: var(--color-text-disabled);
 }
+
+.dds-date-input__calendar-trigger {
+  display: grid;
+  place-items: center;
+  flex: 0 0 40px;
+  height: 40px;
+  margin-inline: -8px;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: var(--color-bg-transparent);
+  color: var(--color-icon-default);
+  cursor: pointer;
+}
+
+.dds-date-input--mobile .dds-date-input__calendar-trigger {
+  flex-basis: 32px;
+  height: 32px;
+  margin-inline: -6px;
+}
+
+.dds-date-input__calendar-trigger:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: -2px;
+}
+
+.dds-date-input--error .dds-date-input__calendar-trigger:focus-visible {
+  outline-color: var(--color-border-focus-danger);
+}
+
+.dds-date-input__calendar-trigger:disabled {
+  color: var(--color-text-disabled);
+  cursor: not-allowed;
+}
+
+.dds-date-input__calendar-panel {
+  position: fixed;
+  inset: auto;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  max-height: calc(100dvh - 16px);
+  max-width: calc(100vw - 16px);
+  overflow: auto;
+  background: var(--color-bg-transparent);
+  color: var(--color-text-primary);
+}
+
+@media (forced-colors: active) {
+  .dds-date-input__calendar-trigger:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
+.dds-date-input--open .dds-date-input__field {
+  box-shadow: 0 0 0 2px var(--color-border-focus);
+}
+.dds-date-input--error.dds-date-input--open .dds-date-input__field {
+  box-shadow: 0 0 0 2px var(--color-border-focus-danger);
+}
+.dds-date-input__calendar-panel {
+  border-radius: var(--radius-sm);
+  box-shadow: 0 4px 16px var(--color-effect-shadow);
+}
+
+.dds-date-input--range .dds-date-input__message--error {
+  font-weight: var(--font-weight-medium);
+}
+.dds-date-input--range.dds-date-input--mobile .dds-date-input__required {
+  font-size: var(--font-size-sm);
+  line-height: 20px;
+}
+
+/* Disabled overrides focused/error previews as well as an open calendar treatment. */
+.dds-date-input--disabled.dds-date-input--focused .dds-date-input__field,
+.dds-date-input--disabled.dds-date-input--open .dds-date-input__field,
+.dds-date-input--disabled.dds-date-input--error .dds-date-input__field {
+  border-color: var(--color-border-default);
+  box-shadow: none;
+}
