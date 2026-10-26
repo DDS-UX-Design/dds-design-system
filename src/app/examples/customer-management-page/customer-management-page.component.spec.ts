@@ -107,7 +107,7 @@ describe('Customer Management prototype', () => {
     vi.advanceTimersByTime(1000);
     expect(page.loading).toBe(true);
   });
-  it('keeps Retry available after dismissing the error Toast, then shows dismissible success feedback', async () => {
+  it('keeps Retry available after dismissing the error Toast, then auto-dismisses success feedback', async () => {
     const fixture = await setup('error');
     vi.useFakeTimers();
     const page = fixture.componentInstance;
@@ -116,6 +116,9 @@ describe('Customer Management prototype', () => {
     expect(root.querySelector('dds-toast [role="alert"]')?.textContent).toContain(
       'Customers could not be loaded',
     );
+    vi.advanceTimersByTime(6000);
+    fixture.detectChanges();
+    expect(root.querySelector('dds-toast [role="alert"]')).not.toBeNull();
     root.querySelector<HTMLButtonElement>('dds-toast button')!.click();
     fixture.detectChanges();
     expect(page.error).toBe(true);
@@ -132,7 +135,7 @@ describe('Customer Management prototype', () => {
     expect(root.querySelector('dds-toast [role="status"]')?.textContent).toContain(
       'Customer records are up to date.',
     );
-    root.querySelector<HTMLButtonElement>('dds-toast button')!.click();
+    vi.advanceTimersByTime(5000);
     fixture.detectChanges();
     expect(page.notice).toBe('');
     expect(root.querySelector('dds-toast')).toBeNull();
@@ -142,5 +145,19 @@ describe('Customer Management prototype', () => {
     fixture.changeDetectorRef.markForCheck();
     fixture.detectChanges();
     expect(root.querySelector('dds-toast [role="alert"]')).not.toBeNull();
+  });
+  it('auto-dismisses informational navigation feedback after five seconds', async () => {
+    const fixture = await setup();
+    vi.useFakeTimers();
+    fixture.componentInstance.navigate('orders');
+    fixture.changeDetectorRef.markForCheck();
+    fixture.detectChanges();
+    expect(fixture.nativeElement.querySelector('dds-toast [role="status"]').textContent).toContain(
+      'Pages / Orders',
+    );
+    vi.advanceTimersByTime(5000);
+    fixture.detectChanges();
+    expect(fixture.componentInstance.notice).toBe('');
+    expect(fixture.nativeElement.querySelector('dds-toast')).toBeNull();
   });
 });

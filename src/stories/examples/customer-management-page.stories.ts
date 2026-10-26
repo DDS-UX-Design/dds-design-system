@@ -11,7 +11,7 @@ const meta: Meta<CustomerManagementPageComponent> = {
     docs: {
       description: {
         component:
-          'An interactive DDS prototype with simulated loading and request failures, retry, combined search and status filters, selection, pagination, customer details, and local customer creation. System feedback uses dismissible Toasts; Retry remains available beside an unavailable list. Refresh preserves filters. Use Fail next refresh to explore recovery. Data is local to each mounted story. Below 1100px navigation expands inline and the toolbar stacks; the table scrolls horizontally. These responsive choices are prototype proposals pending Figma review.',
+          'An interactive DDS prototype with simulated loading and request failures, retry, combined search and status filters, selection, pagination, customer details, and local customer creation. Success and info Toasts auto-dismiss after five seconds; error Toasts remain until dismissed; Retry remains available beside an unavailable list. Refresh preserves filters. Use Fail next refresh to explore recovery. Data is local to each mounted story. Below 1100px navigation expands inline and the toolbar stacks; the table scrolls horizontally. These responsive choices are prototype proposals pending Figma review.',
       },
     },
   },

@@ -3,6 +3,7 @@ import { OrdersPageComponent } from './orders-page.component';
 import { EXAMPLE_NAVIGATION } from '../example-navigation';
 
 describe('Orders example', () => {
+  afterEach(() => vi.useRealTimers());
   it('places Orders under Sales, outside CRM', () => {
     expect(
       EXAMPLE_NAVIGATION.find((item) => item.id === 'sales')?.children?.map((item) => item.id),
@@ -37,12 +38,13 @@ describe('Orders example', () => {
     expect(page.filteredOrders).toHaveLength(8);
     expect(page.totalValue).toBe(289200);
   });
-  it('shows refresh feedback in a dismissible Toast and can show the same feedback again', async () => {
+  it('auto-dismisses refresh feedback after five seconds and can show it again', async () => {
     await TestBed.configureTestingModule({ imports: [OrdersPageComponent] }).compileComponents();
     const fixture = TestBed.createComponent(OrdersPageComponent);
     fixture.detectChanges();
     const root: HTMLElement = fixture.nativeElement;
     const page = fixture.componentInstance;
+    vi.useFakeTimers();
     for (let attempt = 0; attempt < 2; attempt++) {
       page.refresh();
       fixture.changeDetectorRef.markForCheck();
@@ -51,7 +53,10 @@ describe('Orders example', () => {
       expect(root.querySelector('dds-toast [role="status"]')?.textContent).toContain(
         'Orders are up to date.',
       );
-      root.querySelector<HTMLButtonElement>('dds-toast button')!.click();
+      vi.advanceTimersByTime(4999);
+      fixture.detectChanges();
+      expect(root.querySelector('dds-toast [role="status"]')).not.toBeNull();
+      vi.advanceTimersByTime(1);
       fixture.detectChanges();
       expect(page.notice).toBe('');
       expect(root.querySelector('dds-toast')).toBeNull();
