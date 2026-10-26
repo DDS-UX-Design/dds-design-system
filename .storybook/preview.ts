@@ -35,6 +35,7 @@ const preview: Preview = {
       storySort: {
         order: [
           'Welcome',
+          'Changelog',
           'Foundations',
           [
             'Semantic Tokens',
