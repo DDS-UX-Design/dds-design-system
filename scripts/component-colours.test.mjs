@@ -4,6 +4,7 @@ import assert from 'node:assert/strict';
 import { JSDOM } from 'jsdom';
 
 const families = {
+  steps: ['steps'],
   tooltip: ['tooltip'],
   disclosure: ['collapsible-panel'],
   chart: ['chart'],
@@ -326,4 +327,51 @@ test('Sidebar follows the current elevated-surface Figma bindings, including act
   assert.equal(value('button', 'background-color'), sentinel('--color-feedback-info-subtle'));
   assert.equal(value('dds-icon', 'color'), sentinel('--color-icon-default'));
   assert.equal(value('a', 'color'), sentinel('--color-interactive-default'));
+});
+
+test('Steps marker and status colours distinguish complete, current, upcoming and error', () => {
+  for (const state of ['complete', 'current', 'upcoming', 'error']) {
+    const dom = new JSDOM(
+      `<style>${cascadeCss('steps')}</style><li class="dds-steps__item" data-state="${state}"><span class="dds-steps__marker"></span><span class="dds-steps__status"></span></li>`,
+    );
+    const marker = dom.window.getComputedStyle(
+      dom.window.document.querySelector('.dds-steps__marker'),
+    );
+    const interactive = state === 'complete' || state === 'current';
+    assert.equal(
+      marker.backgroundColor,
+      sentinel(
+        interactive
+          ? '--color-interactive-default'
+          : state === 'error'
+            ? '--color-feedback-error-subtle'
+            : '--color-bg-elevated',
+      ),
+    );
+    assert.equal(
+      marker.borderTopColor,
+      sentinel(
+        interactive
+          ? '--color-interactive-default'
+          : state === 'error'
+            ? '--color-feedback-error'
+            : '--color-border-strong',
+      ),
+    );
+    assert.equal(
+      marker.color,
+      sentinel(
+        interactive
+          ? '--color-text-on-interactive'
+          : state === 'error'
+            ? '--color-feedback-error'
+            : '--color-text-secondary',
+      ),
+    );
+    assert.equal(
+      dom.window.getComputedStyle(dom.window.document.querySelector('.dds-steps__status')).color,
+      sentinel(state === 'error' ? '--color-feedback-error' : '--color-text-secondary'),
+    );
+    dom.window.close();
+  }
 });
