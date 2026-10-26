@@ -1,0 +1,109 @@
+:host {
+  --tooltip-bridge: 0px;
+  --tooltip-arrow-depth: 6px;
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+  width: max-content;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  border: 0;
+  padding: 0;
+  overflow: visible;
+  background: var(--color-bg-transparent);
+  color: var(--color-text-inverse);
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-regular);
+  line-height: 20px;
+  pointer-events: auto;
+}
+
+:host([data-arrow='false']) {
+  --tooltip-arrow-depth: 0px;
+}
+
+:host([data-placement='top']) {
+  padding-bottom: calc(var(--tooltip-arrow-depth) + var(--tooltip-bridge));
+}
+
+:host([data-placement='bottom']) {
+  padding-top: calc(var(--tooltip-arrow-depth) + var(--tooltip-bridge));
+}
+
+:host([data-placement='left']) {
+  padding-right: calc(var(--tooltip-arrow-depth) + var(--tooltip-bridge));
+}
+
+:host([data-placement='right']) {
+  padding-left: calc(var(--tooltip-arrow-depth) + var(--tooltip-bridge));
+}
+
+.dds-tooltip__surface {
+  box-sizing: border-box;
+  width: max-content;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-sm);
+  background: var(--color-bg-inverse);
+  box-shadow: 0 4px 16px 0 var(--color-effect-shadow);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+:host(.dds-tooltip--multiline) .dds-tooltip__surface {
+  width: 264px;
+}
+
+.dds-tooltip__arrow {
+  position: absolute;
+  width: 12px;
+  height: 6px;
+  background: var(--color-bg-inverse);
+  mask: url('/images/tooltip/arrow-top.svg') center / 12px 6px no-repeat;
+}
+
+:host([data-placement='top']) .dds-tooltip__arrow {
+  bottom: var(--tooltip-bridge);
+  left: var(--tooltip-arrow-offset, 50%);
+  transform: translateX(-50%);
+}
+
+:host([data-placement='bottom']) .dds-tooltip__arrow {
+  top: var(--tooltip-bridge);
+  left: var(--tooltip-arrow-offset, 50%);
+  transform: translateX(-50%);
+  mask-image: url('/images/tooltip/arrow-bottom.svg');
+}
+
+:host([data-placement='left']) .dds-tooltip__arrow,
+:host([data-placement='right']) .dds-tooltip__arrow {
+  top: var(--tooltip-arrow-offset, 50%);
+  width: 6px;
+  height: 12px;
+  transform: translateY(-50%);
+  mask-size: 6px 12px;
+}
+
+:host([data-placement='left']) .dds-tooltip__arrow {
+  right: var(--tooltip-bridge);
+  mask-image: url('/images/tooltip/arrow-left.svg');
+}
+
+:host([data-placement='right']) .dds-tooltip__arrow {
+  left: var(--tooltip-bridge);
+  mask-image: url('/images/tooltip/arrow-right.svg');
+}
+
+@media (forced-colors: active) {
+  .dds-tooltip__surface {
+    outline: 1px solid CanvasText;
+    background: Canvas;
+    color: CanvasText;
+  }
+
+  .dds-tooltip__arrow {
+    forced-color-adjust: none;
+    background: CanvasText;
+  }
+}

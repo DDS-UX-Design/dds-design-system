@@ -4,6 +4,7 @@ import assert from 'node:assert/strict';
 import { JSDOM } from 'jsdom';
 
 const families = {
+  tooltip: ['tooltip'],
   disclosure: ['collapsible-panel'],
   chart: ['chart'],
   navigation: [
@@ -209,6 +210,28 @@ for (const [name, markup, selector] of [
     dom.window.close();
   });
 }
+
+test('Tooltip surface, text, shadow and arrow share the current inverse semantic bindings', () => {
+  const source = cascadeCss('tooltip').replace(
+    /:host(?:\(([^)]+)\))?/g,
+    (_, selector) => `.tooltip-host${selector ?? ''}`,
+  );
+  const dom = new JSDOM(
+    `<style>${source}</style><div class="tooltip-host" data-placement="top" data-arrow="true"><div class="dds-tooltip__surface">Optional help</div><span class="dds-tooltip__arrow"></span></div>`,
+  );
+  const value = (selector, property) =>
+    dom.window
+      .getComputedStyle(dom.window.document.querySelector(selector))
+      .getPropertyValue(property);
+  assert.equal(value('.tooltip-host', 'color'), sentinel('--color-text-inverse'));
+  assert.equal(value('.dds-tooltip__surface', 'background-color'), sentinel('--color-bg-inverse'));
+  assert.equal(value('.dds-tooltip__arrow', 'background-color'), sentinel('--color-bg-inverse'));
+  assert.equal(
+    value('.dds-tooltip__surface', 'box-shadow'),
+    `0 4px 16px 0 ${sentinel('--color-effect-shadow')}`,
+  );
+  dom.window.close();
+});
 
 test('Collapsible Panel anatomy follows the current surface, text, border and icon bindings', () => {
   const dom = new JSDOM(
