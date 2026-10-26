@@ -1,7 +1,5 @@
 # DDS Design System
 
-[![Visual tests](https://github.com/DDS-UX-Design/dds-design-system/actions/workflows/visual-tests.yml/badge.svg)](https://github.com/DDS-UX-Design/dds-design-system/actions/workflows/visual-tests.yml)
-
 This repository contains the DDS Design System, a lightweight Angular-based component library with Storybook documentation and visual review workflows.
 
 ## Overview
