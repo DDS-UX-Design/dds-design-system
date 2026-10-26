@@ -1,0 +1,65 @@
+<dialog
+  #dialog
+  class="dds-modal"
+  [attr.aria-labelledby]="id + '-title'"
+  [attr.aria-describedby]="message ? id + '-message' : null"
+  aria-modal="true"
+  [attr.aria-busy]="submitting ? 'true' : null"
+  (cancel)="onCancel($event)"
+  (close)="onNativeClose()"
+  (keydown)="onKeydown($event)"
+  (pointerdown)="onPointerDown($event)"
+  (click)="onBackdropClick($event)"
+>
+  <div class="dds-modal__shell">
+    <header class="dds-modal__header">
+      <h2 #heading [id]="id + '-title'" tabindex="-1">{{ title }}</h2>
+      <button
+        type="button"
+        class="dds-modal__close"
+        aria-label="Close dialog"
+        [disabled]="submitting"
+        (click)="dismiss('close')"
+      >
+        <span aria-hidden="true"></span>
+      </button>
+    </header>
+    <div class="dds-modal__body">
+      @if (message) {
+        <p [id]="id + '-message'">{{ message }}</p>
+      }
+      <div class="dds-modal__content" [hidden]="!showContent" [attr.inert]="submitting ? '' : null">
+        <ng-content />
+      </div>
+      <div aria-live="polite" aria-atomic="true">
+        @if (submitting) {
+          <p>{{ submittingMessage }}</p>
+        }
+      </div>
+      <div role="alert" aria-atomic="true">
+        @if (state === 'error') {
+          <p class="dds-modal__error">{{ errorMessage }}</p>
+        }
+      </div>
+    </div>
+    <footer class="dds-modal__actions">
+      <dds-button
+        data-secondary
+        variant="secondary"
+        [size]="mobile() ? 'large' : 'medium'"
+        [fullWidth]="mobile()"
+        [disabled]="submitting"
+        (click)="dismiss('secondary')"
+        >{{ secondaryLabel }}</dds-button
+      >
+      <dds-button
+        [size]="mobile() ? 'large' : 'medium'"
+        [fullWidth]="mobile()"
+        [styleType]="intent === 'destructive' ? 'danger' : 'default'"
+        [disabled]="submitting"
+        (click)="confirm()"
+        >{{ submitting ? submittingLabel : primaryLabel }}</dds-button
+      >
+    </footer>
+  </div>
+</dialog>

@@ -4,6 +4,7 @@ import assert from 'node:assert/strict';
 import { JSDOM } from 'jsdom';
 
 const families = {
+  modal: ['modal'],
   button: ['button'],
   steps: ['steps'],
   tooltip: ['tooltip'],
@@ -407,5 +408,27 @@ test('Button native pressed roles and destructive focus survive disabled precede
         assert.equal(style.boxShadow, `0 0 0 3px ${sentinel('--color-border-focus-danger')}`);
       dom.window.close();
     }
+  }
+});
+
+test('Modal uses semantic surface, border, text, error and disabled-close roles', () => {
+  for (const [selector, property, role] of [
+    ['dialog', 'background-color', '--color-bg-elevated'],
+    ['dialog', 'border-top-color', '--color-border-default'],
+    ['dialog', 'color', '--color-text-primary'],
+    ['.dds-modal__body', 'color', '--color-text-secondary'],
+    ['.dds-modal__error', 'color', '--color-feedback-error'],
+    ['button', 'color', '--color-text-disabled'],
+  ]) {
+    const dom = new JSDOM(
+      `<style>${cascadeCss('modal')}</style><dialog class="dds-modal"><button class="dds-modal__close" disabled></button><div class="dds-modal__body"><p class="dds-modal__error"></p></div></dialog>`,
+    );
+    assert.equal(
+      dom.window
+        .getComputedStyle(dom.window.document.querySelector(selector))
+        .getPropertyValue(property),
+      sentinel(role),
+    );
+    dom.window.close();
   }
 });

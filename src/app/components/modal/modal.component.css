@@ -1,0 +1,157 @@
+.dds-modal {
+  box-sizing: border-box;
+  width: 560px;
+  max-width: calc(100vw - 32px);
+  max-height: calc(100dvh - 32px);
+  margin: auto;
+  padding: 0;
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-xl);
+  background: var(--color-bg-elevated);
+  color: var(--color-text-primary);
+  font-family: var(--font-family-primary);
+}
+
+.dds-modal::backdrop {
+  background: var(--color-bg-overlay);
+  opacity: 0.64;
+}
+
+.dds-modal__shell {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  max-height: calc(100dvh - 34px);
+  padding: var(--space-6);
+  box-sizing: border-box;
+}
+
+.dds-modal__header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-shrink: 0;
+}
+
+.dds-modal__header h2 {
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+  overflow-wrap: anywhere;
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  line-height: 28px;
+  outline: none;
+}
+
+.dds-modal__close {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  background: var(--color-bg-transparent);
+  color: var(--color-icon-default);
+  cursor: pointer;
+}
+
+.dds-modal__close span {
+  display: block;
+  width: 24px;
+  height: 24px;
+  background: currentColor;
+  mask: url('/images/modal/close.svg') center / 24px 24px no-repeat;
+}
+
+.dds-modal__close:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
+}
+
+.dds-modal__close:disabled {
+  color: var(--color-text-disabled);
+  cursor: not-allowed;
+}
+
+.dds-modal__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  min-height: 0;
+  overflow-y: auto;
+  overflow-wrap: anywhere;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+  line-height: 20px;
+}
+
+.dds-modal__content:empty {
+  display: none;
+}
+
+/* Keep empty live regions available to assistive technology without taking a layout gap. */
+.dds-modal__body > [aria-live]:empty,
+.dds-modal__body > [role='alert']:empty {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.dds-modal__body p {
+  margin: 0;
+}
+
+.dds-modal__content[hidden] {
+  display: none;
+}
+
+.dds-modal__error {
+  color: var(--color-feedback-error);
+}
+
+.dds-modal__actions {
+  display: flex;
+  flex-shrink: 0;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+@media (max-width: 599px) {
+  .dds-modal {
+    width: 328px;
+  }
+
+  .dds-modal__shell {
+    padding: var(--space-4);
+  }
+
+  .dds-modal__actions {
+    flex-direction: column;
+  }
+
+  .dds-modal__actions dds-button {
+    display: block;
+    width: 100%;
+  }
+}
+
+@media (forced-colors: active) {
+  .dds-modal {
+    border-color: CanvasText;
+  }
+
+  .dds-modal__close:focus-visible {
+    outline-color: Highlight;
+  }
+
+  .dds-modal__close span {
+    forced-color-adjust: none;
+    background: ButtonText;
+  }
+}
