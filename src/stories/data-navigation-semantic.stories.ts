@@ -9,7 +9,7 @@ import { DataTableComponent } from '../app/components/data-table/data-table.comp
 import { KpiCardComponent } from '../app/components/kpi-card/kpi-card.component';
 
 export default {
-  title: 'Components/Data and Navigation Semantic Colours',
+  title: 'Foundations/Theme Comparisons/Data and Navigation',
   decorators: [
     moduleMetadata({
       imports: [

@@ -22,7 +22,7 @@ type CheckboxStoryArgs = {
 };
 
 const meta: Meta<CheckboxStoryArgs> = {
-  title: 'Components/Forms/Checkbox',
+  title: 'Building Blocks/Forms/Checkbox',
   component: CheckboxComponent,
   tags: ['autodocs'],
   parameters: {

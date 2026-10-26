@@ -3,7 +3,7 @@ import { fn } from 'storybook/test';
 import { PageToolbarComponent } from '../app/components/page-toolbar/page-toolbar.component';
 
 const meta: Meta<PageToolbarComponent> = {
-  title: 'Components/Navigation/Page Toolbar',
+  title: 'Compositions/Navigation/Page Toolbar',
   component: PageToolbarComponent,
   tags: ['autodocs'],
   parameters: {

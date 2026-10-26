@@ -7,7 +7,7 @@ import { SelectComponent } from '../app/components/select/select.component';
 import { DateInputComponent } from '../app/components/date-input/date-input.component';
 
 export default {
-  title: 'Components/Forms/Selection Semantic Colours',
+  title: 'Foundations/Theme Comparisons/Selection',
   decorators: [
     moduleMetadata({
       imports: [

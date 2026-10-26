@@ -3,7 +3,7 @@ import { expect, userEvent, within } from 'storybook/test';
 import { OrdersPageComponent } from '../../app/examples/orders-page/orders-page.component';
 
 const meta: Meta<OrdersPageComponent> = {
-  title: 'Examples/Orders',
+  title: 'Pages/Orders',
   component: OrdersPageComponent,
   tags: ['autodocs'],
   parameters: {

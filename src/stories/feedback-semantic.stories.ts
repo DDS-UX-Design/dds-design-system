@@ -4,7 +4,7 @@ import { ToastComponent } from '../app/components/toast/toast.component';
 import { StatusBadgeComponent } from '../app/components/status-badge/status-badge.component';
 
 export default {
-  title: 'Components/Feedback Semantic Colours',
+  title: 'Foundations/Theme Comparisons/Feedback',
   decorators: [moduleMetadata({ imports: [AlertComponent, ToastComponent, StatusBadgeComponent] })],
   parameters: { layout: 'fullscreen' },
 } satisfies Meta;

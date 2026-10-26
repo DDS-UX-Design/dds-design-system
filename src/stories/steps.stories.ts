@@ -10,7 +10,7 @@ const orderItems: StepsItem[] = ['Order placed', 'Confirmed', 'Dispatched', 'Del
   (label) => ({ label }),
 );
 const meta: Meta<StepsComponent> = {
-  title: 'Components/Navigation/Steps',
+  title: 'Building Blocks/Navigation/Steps',
   component: StepsComponent,
   tags: ['autodocs'],
   parameters: {

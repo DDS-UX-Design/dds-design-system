@@ -5,7 +5,7 @@ import { TooltipComponent } from '../app/components/tooltip/tooltip.component';
 import { TooltipDirective } from '../app/components/tooltip/tooltip.directive';
 
 const meta: Meta<TooltipComponent> = {
-  title: 'Components/Feedback/Tooltip',
+  title: 'Building Blocks/Feedback/Tooltip',
   component: TooltipComponent,
   tags: ['autodocs'],
   decorators: [moduleMetadata({ imports: [TooltipDirective, ButtonComponent] })],

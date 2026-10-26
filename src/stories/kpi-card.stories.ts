@@ -3,7 +3,7 @@ import { expect, within } from 'storybook/test';
 import { KpiCardComponent } from '../app/components/kpi-card/kpi-card.component';
 
 const meta: Meta<KpiCardComponent> = {
-  title: 'Components/Data Display/KPI Card',
+  title: 'Compositions/Data Display/KPI Card',
   component: KpiCardComponent,
   tags: ['autodocs'],
   decorators: [

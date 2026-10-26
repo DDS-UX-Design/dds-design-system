@@ -14,7 +14,7 @@ type PanelStoryArgs = CollapsiblePanelComponent & {
 };
 
 const meta: Meta<PanelStoryArgs> = {
-  title: 'Components/Layout/Collapsible Panel',
+  title: 'Building Blocks/Disclosure/Collapsible Panel',
   component: CollapsiblePanelComponent,
   tags: ['autodocs'],
   parameters: {

@@ -19,7 +19,7 @@ const notificationOptions: CheckboxGroupOption[] = [
 ];
 
 const meta: Meta<CheckboxGroupStoryArgs> = {
-  title: 'Components/Forms/Checkbox Group',
+  title: 'Compositions/Forms/Checkbox Group',
   component: CheckboxGroupComponent,
   tags: ['autodocs'],
   parameters: {

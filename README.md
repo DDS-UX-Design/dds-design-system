@@ -46,6 +46,16 @@ npm run storybook
 
 Storybook will open in your browser and load the component stories from the project.
 
+The sidebar groups stories by how you use them:
+
+- **Foundations**: design tokens, typography, icons and theme comparisons.
+- **Building Blocks**: focused controls grouped by Actions, Forms, Feedback, Navigation and Disclosure.
+- **Compositions**: coordinated components such as grouped fields, navigation bars, toolbars and data tables.
+- **Patterns, Layouts and Pages**: workflow examples, reusable page arrangements and complete screens, where available.
+- **Experimental**: components whose design or implementation is still being evaluated.
+
+Give each component one canonical location. Classify it by its purpose for consumers, rather than the number of components it imports.
+
 ## Build the project
 
 Create a production build of the Angular app:

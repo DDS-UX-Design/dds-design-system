@@ -27,7 +27,7 @@ type ButtonStoryArgs = {
 };
 
 const meta: Meta<ButtonStoryArgs> = {
-  title: 'Components/Button',
+  title: 'Building Blocks/Actions/Button',
   component: ButtonComponent,
   tags: ['autodocs'],
   parameters: {

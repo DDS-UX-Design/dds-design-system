@@ -10,7 +10,7 @@ type MinimalPaginationStoryArgs = {
 };
 
 const meta: Meta<MinimalPaginationStoryArgs> = {
-  title: 'Components/Navigation/Pagination/Minimal',
+  title: 'Building Blocks/Navigation/Pagination/Minimal',
   component: MinimalPaginationComponent,
   tags: ['autodocs'],
   parameters: {

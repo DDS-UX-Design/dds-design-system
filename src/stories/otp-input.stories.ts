@@ -24,7 +24,7 @@ type OtpInputStoryArgs = {
 };
 
 const meta: Meta<OtpInputStoryArgs> = {
-  title: 'Components/Forms/OTP Input',
+  title: 'Building Blocks/Forms/OTP Input',
   component: OtpInputComponent,
   tags: ['autodocs'],
   parameters: {

@@ -27,7 +27,7 @@ type TextInputStoryArgs = {
 };
 
 const meta: Meta<TextInputStoryArgs> = {
-  title: 'Components/Forms/Text Input',
+  title: 'Building Blocks/Forms/Text Input',
   component: TextInputComponent,
   tags: ['autodocs'],
   parameters: {

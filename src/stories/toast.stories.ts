@@ -15,7 +15,7 @@ type ToastStoryArgs = {
 };
 
 const meta: Meta<ToastStoryArgs> = {
-  title: 'Components/Feedback/Toast',
+  title: 'Building Blocks/Feedback/Toast',
   component: ToastComponent,
   tags: ['autodocs'],
   parameters: {

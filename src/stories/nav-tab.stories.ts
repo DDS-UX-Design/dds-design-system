@@ -11,7 +11,7 @@ const items: NavTabItem[] = [
 ];
 
 const meta: Meta<NavTabComponent> = {
-  title: 'Components/Navigation/Nav Tab',
+  title: 'Building Blocks/Navigation/Nav Tab',
   component: NavTabComponent,
   tags: ['autodocs'],
   parameters: {

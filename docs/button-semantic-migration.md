@@ -1,6 +1,6 @@
 # Button semantic colour migration
 
-Button now reads the generated `--color-*` tokens directly and inherits the nearest `data-theme="light"` or `data-theme="dark"` ancestor. Changing a Storybook background alone does not select a theme. Use Components / Button / Light or Dark for review.
+Button now reads the generated `--color-*` tokens directly and inherits the nearest `data-theme="light"` or `data-theme="dark"` ancestor. Changing a Storybook background alone does not select a theme. Use Building Blocks / Actions / Button / Light or Dark for review.
 
 | Treatment        | Default                                    | Hover                             | Disabled                                   |
 | ---------------- | ------------------------------------------ | --------------------------------- | ------------------------------------------ |

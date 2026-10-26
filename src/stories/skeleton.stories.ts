@@ -8,7 +8,7 @@ type SkeletonStoryArgs = {
 };
 
 const meta: Meta<SkeletonStoryArgs> = {
-  title: 'Components/Loading/Skeleton',
+  title: 'Building Blocks/Feedback/Skeleton',
   component: SkeletonComponent,
   tags: ['autodocs'],
   parameters: {

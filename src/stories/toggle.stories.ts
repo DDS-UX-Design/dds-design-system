@@ -4,7 +4,7 @@ import { ToggleComponent } from '../app/components/toggle/toggle.component';
 
 type ToggleStoryArgs = ToggleComponent & { onCheckedChange: ReturnType<typeof fn> };
 const meta: Meta<ToggleStoryArgs> = {
-  title: 'Components/Forms/Toggle',
+  title: 'Building Blocks/Forms/Toggle',
   component: ToggleComponent,
   tags: ['autodocs'],
   parameters: {

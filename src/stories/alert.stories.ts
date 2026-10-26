@@ -15,7 +15,7 @@ type AlertStoryArgs = {
 };
 
 const meta: Meta<AlertStoryArgs> = {
-  title: 'Components/Feedback/Alert',
+  title: 'Building Blocks/Feedback/Alert',
   component: AlertComponent,
   tags: ['autodocs'],
   parameters: {

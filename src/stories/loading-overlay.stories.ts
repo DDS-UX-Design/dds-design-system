@@ -12,7 +12,7 @@ type LoadingOverlayStoryArgs = {
 };
 
 const meta: Meta<LoadingOverlayStoryArgs> = {
-  title: 'Components/Loading/Spinner Applications',
+  title: 'Compositions/Feedback/Loading Overlay',
   component: LoadingOverlayComponent,
   tags: ['autodocs'],
   parameters: {

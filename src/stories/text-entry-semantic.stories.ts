@@ -7,7 +7,7 @@ import { SearchComponent } from '../app/components/search/search.component';
 import { OtpInputComponent } from '../app/components/otp-input/otp-input.component';
 
 const meta: Meta = {
-  title: 'Components/Forms/Text Entry Semantic Colours',
+  title: 'Foundations/Theme Comparisons/Text Entry',
   decorators: [
     moduleMetadata({
       imports: [

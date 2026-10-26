@@ -28,7 +28,7 @@ const exampleResponse =
   'I need assistance updating the delivery address for my recent order before it is dispatched.';
 
 const meta: Meta<TextareaStoryArgs> = {
-  title: 'Components/Forms/Textarea',
+  title: 'Building Blocks/Forms/Textarea',
   component: TextareaComponent,
   tags: ['autodocs'],
   parameters: {

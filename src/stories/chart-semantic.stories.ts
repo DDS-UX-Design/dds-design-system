@@ -1,7 +1,7 @@
 import { moduleMetadata, type Meta, type StoryObj } from '@storybook/angular';
 import { ChartComponent } from '../app/components/chart/chart.component';
 export default {
-  title: 'Components/Chart/Semantic Colours',
+  title: 'Experimental/Data Visualisation/Charts/Semantic Colours',
   decorators: [moduleMetadata({ imports: [ChartComponent] })],
   parameters: { layout: 'fullscreen' },
 } satisfies Meta;

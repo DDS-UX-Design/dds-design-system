@@ -10,7 +10,7 @@ type NumberedPaginationStoryArgs = {
 };
 
 const meta: Meta<NumberedPaginationStoryArgs> = {
-  title: 'Components/Navigation/Pagination/Numbered',
+  title: 'Building Blocks/Navigation/Pagination/Numbered',
   component: NumberedPaginationComponent,
   tags: ['autodocs'],
   parameters: {

@@ -25,7 +25,7 @@ type PasswordInputStoryArgs = {
 };
 
 const meta: Meta<PasswordInputStoryArgs> = {
-  title: 'Components/Forms/Password Input',
+  title: 'Building Blocks/Forms/Password Input',
   component: PasswordInputComponent,
   tags: ['autodocs'],
   parameters: {

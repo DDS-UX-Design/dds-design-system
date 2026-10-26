@@ -5,7 +5,7 @@ import { RadioComponent, RadioState } from '../app/components/radio/radio.compon
 type RadioStoryArgs = RadioComponent & { onSelected: ReturnType<typeof fn> };
 
 const meta: Meta<RadioStoryArgs> = {
-  title: 'Components/Forms/Radio',
+  title: 'Building Blocks/Forms/Radio',
   component: RadioComponent,
   tags: ['autodocs'],
   parameters: {

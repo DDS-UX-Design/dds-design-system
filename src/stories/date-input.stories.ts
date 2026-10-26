@@ -26,7 +26,7 @@ type DateInputStoryArgs = {
 };
 
 const meta: Meta<DateInputStoryArgs> = {
-  title: 'Components/Forms/Date Input',
+  title: 'Building Blocks/Forms/Date Input',
   component: DateInputComponent,
   tags: ['autodocs'],
   parameters: {

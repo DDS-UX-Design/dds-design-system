@@ -19,7 +19,7 @@ const deliveryOptions: RadioOption[] = [
 ];
 
 const meta: Meta<RadioGroupStoryArgs> = {
-  title: 'Components/Forms/Radio Group',
+  title: 'Compositions/Forms/Radio Group',
   component: RadioGroupComponent,
   tags: ['autodocs'],
   parameters: {

@@ -36,7 +36,7 @@ const countryOptions: SelectOption[] = [
 ];
 
 const meta: Meta<SelectStoryArgs> = {
-  title: 'Components/Forms/Select',
+  title: 'Building Blocks/Forms/Select',
   component: SelectComponent,
   tags: ['autodocs'],
   parameters: {

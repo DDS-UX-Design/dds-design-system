@@ -74,7 +74,7 @@ type DataTableStoryArgs = DataTableComponent & {
 };
 
 const meta: Meta<DataTableStoryArgs> = {
-  title: 'Components/Data Display/Data Table',
+  title: 'Compositions/Data Display/Data Table',
   component: DataTableComponent,
   tags: ['autodocs'],
   decorators: [

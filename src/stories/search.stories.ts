@@ -25,7 +25,7 @@ type SearchStoryArgs = {
 const exampleSuggestions = ['Customer accounts', 'Customer orders', 'Customer support'];
 
 const meta: Meta<SearchStoryArgs> = {
-  title: 'Components/Forms/Search',
+  title: 'Building Blocks/Forms/Search',
   component: SearchComponent,
   tags: ['autodocs'],
   parameters: {

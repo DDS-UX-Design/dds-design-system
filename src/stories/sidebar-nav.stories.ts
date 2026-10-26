@@ -37,7 +37,7 @@ const items: SidebarNavItem[] = [
 ];
 
 const meta: Meta<SidebarNavStoryArgs> = {
-  title: 'Components/Navigation/Sidebar Nav',
+  title: 'Compositions/Navigation/Sidebar Nav',
   component: SidebarNavComponent,
   tags: ['autodocs'],
   decorators: [

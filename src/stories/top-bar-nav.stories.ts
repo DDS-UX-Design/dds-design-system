@@ -9,7 +9,7 @@ type TopBarNavStoryArgs = TopBarNavComponent & {
 };
 
 const meta: Meta<TopBarNavStoryArgs> = {
-  title: 'Components/Navigation/Top Bar Nav',
+  title: 'Compositions/Navigation/Top Bar Nav',
   component: TopBarNavComponent,
   tags: ['autodocs'],
   decorators: [

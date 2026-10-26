@@ -4,7 +4,7 @@ import { SpinnerComponent, SpinnerSize } from '../app/components/spinner/spinner
 type SpinnerStoryArgs = { size: SpinnerSize; label: string; animated: boolean };
 
 const meta: Meta<SpinnerStoryArgs> = {
-  title: 'Components/Loading/Spinner',
+  title: 'Building Blocks/Feedback/Spinner',
   component: SpinnerComponent,
   tags: ['autodocs'],
   parameters: {
