@@ -4,6 +4,7 @@ import assert from 'node:assert/strict';
 import { JSDOM } from 'jsdom';
 
 const families = {
+  dropdown: ['dropdown'],
   rating: ['rating'],
   calendar: ['calendar'],
   modal: ['modal'],
@@ -510,4 +511,51 @@ test('rating: score colours, selected border and disabled precedence retain thei
     css('rating'),
     /input:hover:not\(:disabled\)\s*\+\s*\.dds-rating__target\s*\{\s*background:\s*var\(--color-bg-subtle\)/,
   );
+});
+
+test('dropdown: semantic surfaces, focus, danger and disabled precedence', () => {
+  const dom = new JSDOM(`<style>${cascadeCss('dropdown')}</style>
+    <div class="dds-dropdown__menu">
+      <button class="dds-dropdown__item">Edit</button>
+      <button class="dds-dropdown__item dds-dropdown__item--danger">Delete</button>
+      <button class="dds-dropdown__item dds-dropdown__item--danger" disabled>Unavailable</button>
+      <div class="dds-dropdown__divider"></div>
+    </div>`);
+  const document = dom.window.document;
+  const buttons = [...document.querySelectorAll('button')];
+  const style = (node) => dom.window.getComputedStyle(node);
+  assert.equal(
+    style(document.querySelector('.dds-dropdown__menu')).backgroundColor,
+    sentinel('--color-bg-elevated'),
+  );
+  assert.equal(
+    style(document.querySelector('.dds-dropdown__divider')).backgroundColor,
+    sentinel('--color-border-subtle'),
+  );
+  assert.equal(style(buttons[0]).color, sentinel('--color-text-primary'));
+  assert.equal(style(buttons[1]).color, sentinel('--color-feedback-error'));
+  // Use fresh documents: jsdom caches computed styles across focus changes.
+  for (const danger of [false, true]) {
+    const focused = new JSDOM(`<style>${cascadeCss('dropdown')}</style>
+      <button class="dds-dropdown__item ${danger ? 'dds-dropdown__item--danger' : ''}">Action</button>`);
+    const button = focused.window.document.querySelector('button');
+    button.focus();
+    assert.equal(
+      focused.window.getComputedStyle(button).boxShadow,
+      `inset 0 0 0 2px ${sentinel(danger ? '--color-border-focus-danger' : '--color-border-focus')}`,
+    );
+    focused.window.close();
+  }
+  assert.equal(style(buttons[2]).color, sentinel('--color-text-disabled'));
+  assert.equal(style(buttons[2]).backgroundColor, sentinel('--color-bg-elevated'));
+  assert.equal(style(buttons[2]).boxShadow, 'none');
+  assert.match(
+    css('dropdown'),
+    /\.dds-dropdown__item:hover:not\(:disabled\)\s*\{\s*background:\s*var\(--color-bg-subtle\)/,
+  );
+  assert.match(
+    css('dropdown'),
+    /\.dds-dropdown__item--danger:hover:not\(:disabled\)\s*\{\s*background:\s*var\(--color-feedback-error-subtle\)/,
+  );
+  dom.window.close();
 });

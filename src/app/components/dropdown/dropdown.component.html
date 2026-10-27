@@ -1,0 +1,59 @@
+<button
+  #trigger
+  type="button"
+  class="dds-dropdown__trigger"
+  [class.dds-dropdown__trigger--icon]="iconOnly"
+  [id]="id + '-trigger'"
+  [disabled]="disabled || !items.length"
+  [attr.aria-label]="iconOnly ? triggerLabel : null"
+  aria-haspopup="menu"
+  [attr.aria-expanded]="open"
+  [attr.aria-controls]="open ? id : null"
+  (click)="toggle()"
+  (keydown)="onTriggerKeydown($event)"
+>
+  @if (iconOnly) {
+    <dds-icon name="ellipsis" [size]="16" />
+  } @else {
+    <span>{{ triggerLabel }}</span>
+    <span
+      class="dds-dropdown__chevron"
+      aria-hidden="true"
+      [class.dds-dropdown__chevron--up]="(open ? actualDirection : direction) === 'up'"
+    ></span>
+  }
+</button>
+<div
+  #menu
+  class="dds-dropdown__menu"
+  popover="manual"
+  [id]="id"
+  [hidden]="!open"
+  role="menu"
+  [attr.aria-labelledby]="id + '-trigger'"
+  tabindex="-1"
+  (keydown)="onMenuKeydown($event)"
+>
+  @for (item of items; track $index) {
+    @if (
+      $index > 0 &&
+      (item.separatorBefore ||
+        (item.styleType === 'danger' && items[$index - 1].styleType !== 'danger'))
+    ) {
+      <div class="dds-dropdown__divider" role="separator"></div>
+    }
+    <button
+      type="button"
+      role="menuitem"
+      class="dds-dropdown__item"
+      [class.dds-dropdown__item--danger]="item.styleType === 'danger'"
+      [disabled]="item.disabled"
+      [attr.aria-disabled]="item.disabled ? 'true' : null"
+      [tabIndex]="activeIndex === $index ? 0 : -1"
+      (focus)="activeIndex = $index"
+      (click)="select(item)"
+    >
+      {{ item.label }}
+    </button>
+  }
+</div>

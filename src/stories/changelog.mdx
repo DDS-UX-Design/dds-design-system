@@ -10,6 +10,8 @@ Changes available in this Storybook. Entries describe repository updates, not pu
 
 ### Added
 
+- **Dropdown / Dropup:** contextual action menus with disabled and destructive items, keyboard navigation, viewport collision handling and optional Data Table row overflow actions. Existing direct row actions are preserved.
+
 - **Rating:** Stars and Smileys, Default and Compact sizes, native radio keyboard selection, theme comparisons and a feedback example. Forms start unanswered and submit separately from selection.
 
 - **Date Input calendars and ranges:** month navigation, keyboard date selection, Today/Clear, inclusive date ranges, calendar bounds and range validation. Incomplete range selections are discarded on dismissal.
@@ -33,5 +35,7 @@ Changes available in this Storybook. Entries describe repository updates, not pu
 - **Button layout:** full-width text buttons fill their container, and long labels can wrap while retaining the minimum size height.
 
 ### Upgrade notes
+
+- **Data Table:** no placeholder “More actions” button is rendered by default. Supply `rowActions` for direct actions or `rowActionMenu` for the overflow menu. Existing action outputs retain their `{ action, row }` payload.
 
 - Storybook navigation changes and consolidated Button stories change story URLs. Update saved links and review affected visual-test baselines.

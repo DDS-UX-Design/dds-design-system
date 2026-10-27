@@ -91,7 +91,7 @@ const meta: Meta<DataTableStoryArgs> = {
     docs: {
       description: {
         component:
-          'A responsive, accessible data table with row selection, bulk actions, loading placeholders, status badges, row actions, and minimal pagination. Use Page Toolbar for page-level search and filtering.',
+          'A data table with selection, bulk actions, status badges and pagination. Use rowActions for direct actions and rowActionMenu for a short overflow menu; both emit the original action and row through rowAction. Menu icons are omitted, matching the label-only menu design. Confirm irreversible actions in the application and explain disabled actions nearby. Use Page Toolbar for page-level search and filtering.',
       },
     },
   },
@@ -104,7 +104,13 @@ const meta: Meta<DataTableStoryArgs> = {
     currentPage: 1,
     pageSize: 10,
     selectedKeys: [],
-    rowActions: [{ label: 'More actions', icon: 'ellipsis' }],
+    rowActions: [],
+    rowActionMenu: [
+      { label: 'View order' },
+      { label: 'Duplicate' },
+      { label: 'Export', disabled: true },
+      { label: 'Delete', styleType: 'danger' },
+    ],
     bulkActions: [
       { label: 'Archive', icon: 'archive' },
       { label: 'Delete', icon: 'trash-2', styleType: 'danger' },
@@ -120,7 +126,7 @@ const meta: Meta<DataTableStoryArgs> = {
         [selectable]="selectable" [loading]="loading"
         [showPagination]="showPagination" [currentPage]="currentPage"
         [totalPages]="totalPages" [totalItems]="totalItems" [pageSize]="pageSize"
-        [rowActions]="rowActions" [bulkActions]="bulkActions"
+        [rowActions]="rowActions" [rowActionMenu]="rowActionMenu" [bulkActions]="bulkActions"
         [(selectedKeys)]="selectedKeys"
         (pageChange)="currentPage = $event"
         (rowAction)="onRowAction($event)" (bulkAction)="onBulkAction($event)"
@@ -145,7 +151,7 @@ export const Pagination: Story = {
 export const Selectable: Story = { args: { selectable: true } };
 export const BulkActions: Story = { args: { selectable: true, selectedKeys: [1, 2] } };
 export const Loading: Story = {
-  args: { loading: true, showPagination: false, rowActions: [] },
+  args: { loading: true, showPagination: false, rowActions: [], rowActionMenu: [] },
 };
 export const Empty: Story = { args: { rows: [], totalItems: 0, totalPages: 1 } };
 
@@ -155,5 +161,29 @@ export const RowSelection: Story = {
     const canvas = within(canvasElement);
     await userEvent.click(canvas.getByRole('checkbox', { name: 'Select row 1' }));
     await expect(canvas.getByText('1 selected')).toBeInTheDocument();
+  },
+};
+
+export const RowActionMenu: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Export is unavailable until the report is ready. Scroll the table horizontally or use a narrow viewport to review menu clipping and automatic placement.',
+      },
+    },
+  },
+  play: async ({ canvasElement, args }) => {
+    const canvas = within(canvasElement);
+    const trigger = canvas.getByRole('button', { name: 'More actions for row 1' });
+    await userEvent.click(trigger);
+    const menu = canvas.getByRole('menu');
+    await expect(within(menu).getByRole('menuitem', { name: 'Export' })).toBeDisabled();
+    await userEvent.click(within(menu).getByRole('menuitem', { name: 'View order' }));
+    await expect(args.onRowAction).toHaveBeenLastCalledWith({
+      action: args.rowActionMenu[0],
+      row: args.rows[0],
+    });
+    await expect(trigger).toHaveFocus();
   },
 };

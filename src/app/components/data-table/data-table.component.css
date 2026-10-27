@@ -103,6 +103,12 @@ td {
 .dds-data-table__actions-column {
   width: 64px;
 }
+.dds-data-table__row-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+}
 .dds-data-table__selection-cell,
 .dds-data-table__actions-cell {
   text-align: center;

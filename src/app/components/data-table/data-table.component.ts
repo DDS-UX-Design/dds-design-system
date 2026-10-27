@@ -3,6 +3,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ButtonComponent } from '../button/button.component';
 import { CheckboxComponent, CheckboxValue } from '../checkbox/checkbox.component';
 import { DdsIconName } from '../icon/icon.component';
+import { DropdownComponent, DropdownItem } from '../dropdown/dropdown.component';
 import { MinimalPaginationComponent } from '../minimal-pagination/minimal-pagination.component';
 import { SkeletonComponent } from '../skeleton/skeleton.component';
 import { StatusBadgeComponent, StatusBadgeTone } from '../status-badge/status-badge.component';
@@ -19,10 +20,8 @@ export type DataTableColumn = {
   value?: (row: DataTableRow) => string | number | null | undefined;
 };
 
-export type DataTableAction = {
-  label: string;
+export type DataTableAction = DropdownItem & {
   icon?: DdsIconName;
-  styleType?: 'default' | 'danger';
 };
 
 @Component({
@@ -31,6 +30,7 @@ export type DataTableAction = {
   imports: [
     CommonModule,
     ButtonComponent,
+    DropdownComponent,
     CheckboxComponent,
     MinimalPaginationComponent,
     SkeletonComponent,
@@ -52,7 +52,9 @@ export class DataTableComponent {
   @Input() totalPages = 1;
   @Input() totalItems = 0;
   @Input() pageSize = 10;
-  @Input() rowActions: DataTableAction[] = [{ label: 'More actions', icon: 'ellipsis' }];
+  @Input() rowActions: DataTableAction[] = [];
+  /** Optional contextual actions. Direct rowActions and their event payloads are preserved. */
+  @Input() rowActionMenu: DataTableAction[] = [];
   @Input() bulkActions: DataTableAction[] = [];
   @Input() emptyMessage = 'No results found.';
   @Input() selectedKeys: Array<string | number> = [];
@@ -63,7 +65,16 @@ export class DataTableComponent {
   @Output() bulkAction = new EventEmitter<DataTableAction>();
 
   get visibleColumnCount(): number {
-    return this.columns.length + (this.selectable ? 1 : 0) + (this.rowActions.length ? 1 : 0);
+    return this.columns.length + (this.selectable ? 1 : 0) + (this.hasRowActions ? 1 : 0);
+  }
+
+  get hasRowActions(): boolean {
+    return this.rowActions.length > 0 || this.rowActionMenu.length > 0;
+  }
+
+  get actionsColumnWidth(): number {
+    const controls = this.rowActions.length + (this.rowActionMenu.length ? 1 : 0);
+    return Math.max(64, 24 + controls * 32 + Math.max(0, controls - 1) * 8);
   }
 
   get skeletonRows(): number[] {

@@ -10,6 +10,7 @@
         [variant]="action.styleType === 'danger' ? 'primary' : 'secondary'"
         size="small"
         [styleType]="action.styleType ?? 'default'"
+        [disabled]="action.disabled ?? false"
         [iconType]="action.icon ? 'left-icon' : 'no-icon'"
         [icon]="action.icon ?? 'info'"
         (click)="bulkAction.emit(action)"
@@ -28,7 +29,11 @@
       <colgroup>
         <col *ngIf="selectable" class="dds-data-table__selection-column" />
         <col *ngFor="let column of columns; trackBy: trackColumn" [style.width]="column.width" />
-        <col *ngIf="rowActions.length" class="dds-data-table__actions-column" />
+        <col
+          *ngIf="hasRowActions"
+          class="dds-data-table__actions-column"
+          [style.width.px]="actionsColumnWidth"
+        />
       </colgroup>
       <thead>
         <tr>
@@ -48,7 +53,7 @@
           >
             {{ column.label }}
           </th>
-          <th *ngIf="rowActions.length" scope="col">
+          <th *ngIf="hasRowActions" scope="col">
             <span class="dds-visually-hidden">Actions</span>
           </th>
         </tr>
@@ -62,7 +67,7 @@
             <td *ngFor="let column of columns; trackBy: trackColumn">
               <dds-skeleton width="70%" height="16px"></dds-skeleton>
             </td>
-            <td *ngIf="rowActions.length">
+            <td *ngIf="hasRowActions">
               <dds-skeleton width="32px" height="32px"></dds-skeleton>
             </td>
           </tr>
@@ -94,18 +99,29 @@
               ></dds-status-badge>
               <ng-template #textCell>{{ cellValue(column, row) }}</ng-template>
             </td>
-            <td *ngIf="rowActions.length" class="dds-data-table__actions-cell">
-              <dds-button
-                *ngFor="let action of rowActions"
-                variant="secondary"
-                size="small"
-                [styleType]="action.styleType ?? 'default'"
-                [iconType]="action.icon ? 'icon-only' : 'no-icon'"
-                [icon]="action.icon ?? 'info'"
-                [ariaLabel]="action.label"
-                (click)="rowAction.emit({ action: action, row: row })"
-                >{{ action.icon ? '' : action.label }}</dds-button
-              >
+            <td *ngIf="hasRowActions" class="dds-data-table__actions-cell">
+              <div class="dds-data-table__row-actions">
+                <dds-button
+                  *ngFor="let action of rowActions"
+                  variant="secondary"
+                  size="small"
+                  [styleType]="action.styleType ?? 'default'"
+                  [disabled]="action.disabled ?? false"
+                  [iconType]="action.icon ? 'icon-only' : 'no-icon'"
+                  [icon]="action.icon ?? 'info'"
+                  [ariaLabel]="action.label"
+                  (click)="rowAction.emit({ action: action, row: row })"
+                  >{{ action.icon ? '' : action.label }}</dds-button
+                >
+                <dds-dropdown
+                  *ngIf="rowActionMenu.length"
+                  [items]="rowActionMenu"
+                  [iconOnly]="true"
+                  [triggerLabel]="'More actions for row ' + rowIdentity(row)"
+                  align="end"
+                  (itemSelect)="rowAction.emit({ action: $event, row: row })"
+                />
+              </div>
             </td>
           </tr>
           <tr *ngIf="!rows.length">
