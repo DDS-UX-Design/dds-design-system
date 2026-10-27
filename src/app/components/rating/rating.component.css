@@ -1,0 +1,123 @@
+:host {
+  display: inline-block;
+  max-width: 100%;
+  vertical-align: top;
+}
+.dds-rating {
+  width: 320px;
+  max-width: 100%;
+  min-inline-size: 0;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  color: var(--color-text-primary);
+  font: 400 14px/20px var(--font-family-primary);
+}
+.dds-rating--compact {
+  width: 272px;
+}
+.dds-rating legend {
+  padding: 0;
+  margin-bottom: 8px;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+.dds-rating__content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.dds-rating p {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+.dds-rating__options {
+  display: flex;
+  gap: 8px;
+}
+.dds-rating--compact .dds-rating__options {
+  gap: 4px;
+}
+.dds-rating__option {
+  position: relative;
+  display: block;
+  flex: 0 0 44px;
+  height: 44px;
+}
+.dds-rating__option input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 1;
+}
+.dds-rating__target {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 44px;
+  height: 44px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+.dds-rating__option input:checked + .dds-rating__target {
+  border-color: var(--color-icon-default);
+}
+.dds-rating__option input:hover:not(:disabled) + .dds-rating__target {
+  background: var(--color-bg-subtle);
+}
+.dds-rating__option input:focus-visible + .dds-rating__target {
+  border: 2px solid var(--color-border-focus);
+}
+.dds-rating__icon {
+  display: block;
+  width: 24px;
+  height: 24px;
+  background: var(--color-icon-default);
+  mask-repeat: no-repeat;
+  mask-position: center;
+}
+.dds-rating--compact .dds-rating__icon {
+  width: 20px;
+  height: 20px;
+}
+.dds-rating__icon--highlighted {
+  background: var(--color-feedback-warning);
+}
+.dds-rating__icon--highlighted.dds-rating__icon--low {
+  background: var(--color-feedback-error);
+}
+.dds-rating__icon--highlighted.dds-rating__icon--high {
+  background: var(--color-feedback-success);
+}
+.dds-rating__summary {
+  font-size: 12px;
+  line-height: 16px;
+}
+.dds-rating:disabled {
+  color: var(--color-text-disabled);
+}
+.dds-rating__option input:disabled {
+  cursor: not-allowed;
+}
+.dds-rating:disabled .dds-rating__icon {
+  background: var(--color-text-disabled);
+}
+.dds-rating__option input:disabled:checked + .dds-rating__target {
+  border-color: var(--color-border-default);
+}
+.dds-rating .dds-rating__visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}

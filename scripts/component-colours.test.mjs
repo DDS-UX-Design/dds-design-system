@@ -4,6 +4,7 @@ import assert from 'node:assert/strict';
 import { JSDOM } from 'jsdom';
 
 const families = {
+  rating: ['rating'],
   calendar: ['calendar'],
   modal: ['modal'],
   button: ['button'],
@@ -472,4 +473,41 @@ test('Date Input disabled styling wins over open/error/focus treatments', () => 
   assert.equal(style.borderTopColor, sentinel('--color-border-default'));
   assert.equal(style.backgroundColor, sentinel('--color-bg-subtle'));
   dom.window.close();
+});
+
+test('rating: score colours, selected border and disabled precedence retain their roles', () => {
+  for (const [classes, expected] of [
+    ['', '--color-icon-default'],
+    ['dds-rating__icon--highlighted', '--color-feedback-warning'],
+    ['dds-rating__icon--highlighted dds-rating__icon--low', '--color-feedback-error'],
+    ['dds-rating__icon--highlighted dds-rating__icon--high', '--color-feedback-success'],
+  ]) {
+    for (const disabled of [false, true]) {
+      const dom = new JSDOM(`<style>${cascadeCss('rating')}</style>
+        <fieldset class="dds-rating" ${disabled ? 'disabled' : ''}>
+          <label class="dds-rating__option"><input type="radio" checked ${disabled ? 'disabled' : ''}>
+            <span class="dds-rating__target"><span class="dds-rating__icon ${classes}"></span></span>
+          </label>
+        </fieldset>`);
+      const getStyle = (selector) =>
+        dom.window.getComputedStyle(dom.window.document.querySelector(selector));
+      assert.equal(
+        getStyle('.dds-rating__icon').backgroundColor,
+        sentinel(disabled ? '--color-text-disabled' : expected),
+      );
+      assert.equal(
+        getStyle('.dds-rating__target').borderTopColor,
+        sentinel(disabled ? '--color-border-default' : '--color-icon-default'),
+      );
+      dom.window.close();
+    }
+  }
+  assert.match(
+    css('rating'),
+    /input:focus-visible\s*\+\s*\.dds-rating__target\s*\{\s*border:\s*2px solid var\(--color-border-focus\)/,
+  );
+  assert.match(
+    css('rating'),
+    /input:hover:not\(:disabled\)\s*\+\s*\.dds-rating__target\s*\{\s*background:\s*var\(--color-bg-subtle\)/,
+  );
 });

@@ -1,0 +1,36 @@
+<fieldset class="dds-rating" [class.dds-rating--compact]="size === 'compact'" [disabled]="disabled">
+  <legend [class.dds-rating__visually-hidden]="!showLabel">{{ label }}</legend>
+  <div class="dds-rating__content">
+    @if (showSupportingText && supportingText) {
+      <p [id]="inputId + '-help'">{{ supportingText }}</p>
+    }
+    <div class="dds-rating__options" [attr.data-style]="styleType">
+      @for (option of options; track option.value) {
+        <label class="dds-rating__option">
+          <input
+            type="radio"
+            [name]="name"
+            [value]="option.value"
+            [checked]="selectedValue === option.value"
+            [disabled]="disabled"
+            [attr.aria-label]="option.value + ' of 5, ' + option.label"
+            [attr.aria-describedby]="
+              showSupportingText && supportingText ? inputId + '-help' : null
+            "
+            (change)="select(option.value)"
+          />
+          <span class="dds-rating__target" aria-hidden="true">
+            <span
+              class="dds-rating__icon"
+              [class.dds-rating__icon--highlighted]="isHighlighted(option.value)"
+              [class.dds-rating__icon--low]="styleType === 'smileys' && selectedValue <= 2"
+              [class.dds-rating__icon--high]="styleType === 'smileys' && selectedValue >= 4"
+              [style.mask-image]="iconUrl(option)"
+            ></span>
+          </span>
+        </label>
+      }
+    </div>
+    <p class="dds-rating__summary">{{ summary }}</p>
+  </div>
+</fieldset>
