@@ -1,0 +1,76 @@
+<div
+  class="dds-file-upload"
+  role="group"
+  tabindex="-1"
+  [attr.aria-labelledby]="inputId + '-label'"
+  [attr.aria-describedby]="inputId + '-requirements' + (batchError ? ' ' + inputId + '-error' : '')"
+>
+  <label [id]="inputId + '-label'" [for]="inputId" class="dds-file-upload__label">{{
+    label
+  }}</label>
+  @if (helperText) {
+    <p class="dds-file-upload__helper">{{ helperText }}</p>
+  }
+  <div
+    class="dds-file-upload__area"
+    [class.dds-file-upload__area--drag]="dragOver && !areaDisabled"
+    [class.dds-file-upload__area--error]="!!batchError"
+    [class.dds-file-upload__area--disabled]="areaDisabled"
+    (dragenter)="dragEnter($event)"
+    (dragleave)="dragLeave($event)"
+    (dragover)="dragMove($event)"
+    (drop)="drop($event)"
+  >
+    <p class="dds-file-upload__title">{{ areaTitle }}</p>
+    <p class="dds-file-upload__requirements" [id]="inputId + '-requirements'">{{ requirements }}</p>
+    <input
+      #picker
+      type="file"
+      class="dds-file-upload__native"
+      [id]="inputId"
+      [accept]="accept"
+      [multiple]="pickerMultiple"
+      [disabled]="pickerDisabled"
+      tabindex="-1"
+      [attr.aria-describedby]="
+        inputId + '-requirements' + (batchError ? ' ' + inputId + '-error' : '')
+      "
+      [attr.aria-invalid]="batchError ? 'true' : null"
+      (change)="handlePicker($event)"
+      (cancel)="pickerCancelled()"
+    />
+    <dds-button
+      class="dds-file-upload__browse"
+      variant="secondary"
+      [size]="platform === 'mobile' ? 'large' : 'medium'"
+      [disabled]="areaDisabled"
+      (click)="browse()"
+      >{{ platform === 'mobile' ? 'Choose files' : 'Browse files' }}</dds-button
+    >
+    @if (disabled) {
+      <p>{{ disabledReason }}</p>
+    } @else if (limitReached) {
+      <p>Remove a file before adding another.</p>
+    }
+    @if (batchError) {
+      <p class="dds-file-upload__error" [id]="inputId + '-error'" role="alert">{{ batchError }}</p>
+    }
+  </div>
+  <p class="dds-file-upload__summary" role="status" aria-live="polite" aria-atomic="true">
+    {{ summary }}
+  </p>
+  @if (items.length) {
+    <ul class="dds-file-upload__items" [attr.aria-label]="label + ' files'">
+      @for (item of items; track item.id) {
+        <li [attr.data-upload-id]="item.id">
+          <dds-file-upload-item
+            [item]="item"
+            [platform]="platform"
+            [disabled]="disabled"
+            (action)="handleAction($event)"
+          />
+        </li>
+      }
+    </ul>
+  }
+</div>

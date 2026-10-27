@@ -1,0 +1,71 @@
+:host {
+  display: block;
+  min-width: 0;
+  max-width: 100%;
+}
+.dds-upload-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  box-sizing: border-box;
+  padding: var(--space-4);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-lg);
+  background: var(--color-bg-elevated);
+  color: var(--color-text-secondary);
+  font: 400 12px/20px var(--font-family-primary);
+}
+p {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+.dds-upload-item__extension {
+  white-space: nowrap;
+}
+.dds-upload-item__name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+.dds-upload-item[data-status='failed'],
+.dds-upload-item[data-status='rejected'] {
+  border-color: var(--color-feedback-error);
+}
+[data-status='failed'] .dds-upload-item__status,
+[data-status='rejected'] .dds-upload-item__status {
+  color: var(--color-feedback-error);
+}
+[data-status='complete'] .dds-upload-item__status {
+  color: var(--color-feedback-success);
+}
+.dds-upload-item__progress {
+  height: 4px;
+  overflow: hidden;
+  background: var(--color-bg-subtle);
+}
+.dds-upload-item__progress span {
+  display: block;
+  height: 100%;
+  background: var(--color-interactive-default);
+}
+/* Unknown progress has no fabricated bar or percentage; its named progressbar remains available to AT. */
+.dds-upload-item__progress--unknown {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  clip-path: inset(50%);
+  overflow: hidden;
+}
+.dds-upload-item__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+.dds-upload-item__sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}

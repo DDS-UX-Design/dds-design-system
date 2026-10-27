@@ -4,6 +4,7 @@ import assert from 'node:assert/strict';
 import { JSDOM } from 'jsdom';
 
 const families = {
+  upload: ['file-upload', 'file-upload-item'],
   dropdown: ['dropdown'],
   rating: ['rating'],
   calendar: ['calendar'],
@@ -580,4 +581,71 @@ test('authentication template: surfaces, content and success use generated seman
   assert.equal(style('h1').color, sentinel('--color-text-primary'));
   assert.equal(style('.auth__success-icon').backgroundColor, sentinel('--color-feedback-success'));
   dom.window.close();
+});
+
+test('upload: drag, validation focus and disabled cascades use the intended roles', () => {
+  // Substitute pseudo-classes to exercise simultaneous states in jsdom. Real pointer/focus
+  // behaviour is covered by the browser stories; this is only a selector cascade check.
+  const source = cascadeCss('file-upload')
+    .replace(/:hover/g, '.test-hover')
+    .replace(/:focus-within/g, '.test-focus');
+  for (const [classes, background, border, focus] of [
+    ['', '--color-bg-elevated', '--color-border-strong', false],
+    ['test-hover', '--color-bg-elevated', '--color-interactive-default', false],
+    [
+      'test-hover dds-file-upload__area--drag',
+      '--color-feedback-info-subtle',
+      '--color-border-focus',
+      false,
+    ],
+    [
+      'test-hover test-focus dds-file-upload__area--error',
+      '--color-bg-elevated',
+      '--color-border-focus-danger',
+      true,
+    ],
+    [
+      'test-hover test-focus dds-file-upload__area--drag dds-file-upload__area--error dds-file-upload__area--disabled',
+      '--color-bg-elevated',
+      '--color-border-strong',
+      false,
+    ],
+  ]) {
+    const dom = new JSDOM(
+      `<style>${source}</style><div class="dds-file-upload__area ${classes}"><p class="dds-file-upload__title">Choose files</p></div>`,
+    );
+    const area = dom.window.getComputedStyle(dom.window.document.querySelector('div'));
+    assert.equal(area.backgroundColor, sentinel(background));
+    assert.equal(area.borderTopColor, sentinel(border));
+    if (focus)
+      assert.equal(area.boxShadow, `inset 0 0 0 2px ${sentinel('--color-border-focus-danger')}`);
+    if (classes.includes('disabled')) {
+      assert.equal(area.boxShadow, 'none');
+      assert.equal(
+        dom.window.getComputedStyle(dom.window.document.querySelector('p')).color,
+        sentinel('--color-text-disabled'),
+      );
+    }
+    dom.window.close();
+  }
+  for (const status of ['failed', 'rejected', 'complete', 'processing']) {
+    const dom = new JSDOM(
+      `<style>${cascadeCss('file-upload-item')}</style><article class="dds-upload-item" data-status="${status}"><p class="dds-upload-item__status">Status</p></article>`,
+    );
+    const error = ['failed', 'rejected'].includes(status);
+    const role = error
+      ? '--color-feedback-error'
+      : status === 'complete'
+        ? '--color-feedback-success'
+        : '--color-text-secondary';
+    assert.equal(
+      dom.window.getComputedStyle(dom.window.document.querySelector('p')).color,
+      sentinel(role),
+    );
+    assert.equal(
+      dom.window.getComputedStyle(dom.window.document.querySelector('article')).borderTopColor,
+      sentinel(error ? '--color-feedback-error' : '--color-border-default'),
+    );
+    dom.window.close();
+  }
 });

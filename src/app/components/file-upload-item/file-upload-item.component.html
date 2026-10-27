@@ -1,0 +1,44 @@
+<article
+  class="dds-upload-item"
+  [attr.data-status]="item.status"
+  [attr.aria-labelledby]="id + '-name'"
+  [attr.aria-describedby]="id + '-status'"
+  [attr.aria-busy]="item.pending ? 'true' : null"
+>
+  <p class="dds-upload-item__name" [id]="id + '-name'">
+    <span>{{ stem }}</span
+    ><span class="dds-upload-item__extension">{{ extension }}</span>
+  </p>
+  <p>{{ metadata }}</p>
+  <p class="dds-upload-item__status" [id]="id + '-status'">{{ statusText }}</p>
+  @if (item.status === 'uploading') {
+    <div
+      class="dds-upload-item__progress"
+      [class.dds-upload-item__progress--unknown]="percentage === undefined"
+      role="progressbar"
+      [attr.aria-label]="'Upload progress for ' + item.name"
+      aria-valuemin="0"
+      aria-valuemax="100"
+      [attr.aria-valuenow]="percentage ?? null"
+      [attr.aria-valuetext]="percentage === undefined ? 'Uploading' : percentage + '%'"
+    >
+      @if (percentage !== undefined) {
+        <span [style.width.%]="percentage"></span>
+      }
+    </div>
+  }
+  @if (actions.length) {
+    <div class="dds-upload-item__actions">
+      @for (option of actions; track option.action) {
+        <dds-button
+          variant="secondary"
+          [size]="platform === 'mobile' ? 'large' : 'medium'"
+          [disabled]="disabled || !!item.pending"
+          (click)="activate(option.action)"
+          >{{ option.label
+          }}<span class="dds-upload-item__sr-only"> {{ item.name }}</span></dds-button
+        >
+      }
+    </div>
+  }
+</article>
