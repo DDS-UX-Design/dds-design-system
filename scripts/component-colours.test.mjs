@@ -559,3 +559,25 @@ test('dropdown: semantic surfaces, focus, danger and disabled precedence', () =>
   );
   dom.window.close();
 });
+
+test('authentication template: surfaces, content and success use generated semantic roles', () => {
+  const source = readFileSync(
+    new URL('../src/app/examples/authentication/authentication.component.css', import.meta.url),
+    'utf8',
+  );
+  assert.doesNotMatch(source, /#[\da-f]{3,8}\b|rgba?\(|--(?:text|bg|border|icon)-colour/i);
+  for (const [, role] of source.matchAll(/var\((--color-[\w-]+)\)/g)) {
+    assert.ok(generated.includes(`${role}:`), role);
+  }
+  const resolved = source.replace(/var\((--color-[\w-]+)\)/g, (_, role) => sentinel(role));
+  const dom = new JSDOM(
+    `<style>${resolved}</style><main class="auth"><section class="auth__card"><h1>Sign in</h1><span class="auth__success-icon"></span></section></main>`,
+  );
+  const style = (selector) =>
+    dom.window.getComputedStyle(dom.window.document.querySelector(selector));
+  assert.equal(style('.auth').backgroundColor, sentinel('--color-bg-default'));
+  assert.equal(style('.auth__card').backgroundColor, sentinel('--color-bg-elevated'));
+  assert.equal(style('h1').color, sentinel('--color-text-primary'));
+  assert.equal(style('.auth__success-icon').backgroundColor, sentinel('--color-feedback-success'));
+  dom.window.close();
+});

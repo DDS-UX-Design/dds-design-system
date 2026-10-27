@@ -1,0 +1,196 @@
+<main class="auth" [attr.aria-labelledby]="id + '-heading'">
+  <div class="auth__image" aria-hidden="true">
+    <img src="images/authentication/workspace.jpg" alt="" width="1600" height="1068" />
+  </div>
+  <div class="auth__content">
+    <section class="auth__card">
+      @if (stage() === 'success') {
+        <span class="auth__success-icon" aria-hidden="true"></span>
+      }
+      <header class="auth__header">
+        <h1 #heading [id]="id + '-heading'" tabindex="-1">{{ headingText }}</h1>
+        @if (stage() === 'verification') {
+          <p>
+            Enter the six-digit code sent to <strong>{{ maskedIdentifier }}</strong
+            >. Use the code before the countdown expires.
+          </p>
+        }
+        @if (stage() === 'recovery') {
+          <p>Enter your account email and we’ll send you password reset instructions.</p>
+        }
+      </header>
+      @if (error()) {
+        <dds-alert tone="danger" [text]="error()" [dismissible]="false" />
+      }
+      <div class="auth__announcements" aria-live="polite" aria-atomic="true">
+        @if (busy()) {
+          <p role="status">
+            {{
+              stage() === 'sign-in'
+                ? 'Signing in…'
+                : stage() === 'verification'
+                  ? 'Checking your request…'
+                  : 'Sending reset instructions…'
+            }}
+          </p>
+        } @else if (notice()) {
+          <p role="status">{{ notice() }}</p>
+        }
+      </div>
+
+      @if (stage() === 'sign-in') {
+        <form novalidate (submit)="$event.preventDefault(); signIn()" [attr.aria-busy]="busy()">
+          <fieldset [disabled]="busy()">
+            <legend class="auth__sr-only">Account credentials</legend>
+            <dds-text-input
+              [inputId]="id + '-identifier'"
+              name="username"
+              autocomplete="username"
+              label="Email / mobile number"
+              placeholder="alex@example.com"
+              [showHelperText]="false"
+              [required]="true"
+              [value]="identifier"
+              (valueChange)="updateIdentifier($event)"
+              [state]="identifierError ? 'error' : 'default'"
+              [errorMessage]="identifierError"
+              [disabled]="busy()"
+            />
+            <dds-password-input
+              [inputId]="id + '-password'"
+              name="password"
+              label="Password"
+              autocomplete="current-password"
+              [required]="true"
+              [value]="password"
+              (valueChange)="updatePassword($event)"
+              [state]="passwordError ? 'error' : 'default'"
+              [errorMessage]="passwordError"
+              [disabled]="busy()"
+            />
+            <dds-checkbox
+              [showLabel]="false"
+              option="Keep me signed in"
+              [value]="keepSignedIn ? 'checked' : 'unchecked'"
+              (valueChange)="keepSignedIn = $event === 'checked'"
+              [state]="busy() ? 'disabled' : 'default'"
+            />
+            <div class="auth__actions">
+              <dds-button
+                type="submit"
+                [fullWidth]="true"
+                [disabled]="busy()"
+                iconType="left-icon"
+                [icon]="busy() ? 'loader-circle' : 'lock-keyhole'"
+                [iconAnimation]="busy() ? 'spin' : 'none'"
+                >{{ busy() ? 'Signing in…' : 'Sign in' }}</dds-button
+              >
+              <dds-button
+                variant="ghost"
+                [fullWidth]="true"
+                [disabled]="busy()"
+                (click)="forgotPassword()"
+                >Forgot password?</dds-button
+              >
+            </div>
+          </fieldset>
+        </form>
+      }
+      @if (stage() === 'verification') {
+        <form novalidate (submit)="$event.preventDefault(); verify()" [attr.aria-busy]="busy()">
+          <fieldset [disabled]="busy()">
+            <legend class="auth__sr-only">Identity verification</legend>
+            <dds-otp-input
+              [inputId]="id + '-code'"
+              [showLabel]="true"
+              label="Verification code"
+              [value]="code"
+              (valueChange)="updateCode($event)"
+              [state]="busy() ? 'disabled-loading' : codeError ? 'error' : 'default'"
+              [errorMessage]="codeError"
+              [expiryTime]="expiryTime"
+              [codeExpired]="remaining() === 0"
+            />
+            <div class="auth__actions">
+              <dds-button
+                type="submit"
+                [fullWidth]="true"
+                [disabled]="busy() || code.length !== 6 || remaining() === 0"
+                >{{ busy() ? 'Please wait…' : 'Verify' }}</dds-button
+              >
+              <dds-button
+                variant="ghost"
+                [fullWidth]="true"
+                [disabled]="busy() || resendRemaining() > 0"
+                (click)="resend()"
+                >{{
+                  resendRemaining() > 0
+                    ? 'Resend code in ' + resendRemaining() + 's'
+                    : 'Resend code'
+                }}</dds-button
+              >
+              <dds-button
+                variant="ghost"
+                [fullWidth]="true"
+                [disabled]="busy()"
+                (click)="backToSignIn()"
+                >Use a different account</dds-button
+              >
+            </div>
+          </fieldset>
+        </form>
+      }
+      @if (stage() === 'success') {
+        <p class="auth__confirmation" role="status">
+          Your identity is verified. You’re ready to continue to your workspace.
+        </p>
+        <dds-button variant="secondary" [fullWidth]="true" (click)="backToSignIn()"
+          >Back to sign in</dds-button
+        >
+      }
+      @if (stage() === 'recovery') {
+        <form novalidate (submit)="$event.preventDefault(); recover()" [attr.aria-busy]="busy()">
+          <fieldset [disabled]="busy()">
+            <legend class="auth__sr-only">Password recovery</legend>
+            <dds-text-input
+              [inputId]="id + '-recovery'"
+              name="email"
+              autocomplete="email"
+              label="Email address"
+              placeholder="alex@example.com"
+              [required]="true"
+              [showHelperText]="false"
+              [value]="recoveryEmail"
+              (valueChange)="recoveryEmail = $event; recoveryError = ''; error.set('')"
+              [state]="recoveryError ? 'error' : 'default'"
+              [errorMessage]="recoveryError"
+              [disabled]="busy()"
+            />
+            <div class="auth__actions">
+              <dds-button type="submit" [fullWidth]="true" [disabled]="busy()">{{
+                busy() ? 'Sending…' : 'Send reset instructions'
+              }}</dds-button>
+              <dds-button
+                variant="ghost"
+                [fullWidth]="true"
+                [disabled]="busy()"
+                (click)="backToSignIn()"
+                >Back to sign in</dds-button
+              >
+            </div>
+          </fieldset>
+        </form>
+      }
+      @if (stage() === 'recovery-sent') {
+        <p class="auth__confirmation" role="status">
+          If an account exists for that email address, you’ll receive password reset instructions
+          shortly.
+        </p>
+        <p class="auth__confirmation">Check your spam folder if the message doesn’t arrive.</p>
+        <dds-button variant="secondary" [fullWidth]="true" (click)="backToSignIn()"
+          >Back to sign in</dds-button
+        >
+      }
+    </section>
+  </div>
+</main>

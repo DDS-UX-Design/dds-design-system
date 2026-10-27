@@ -1,0 +1,148 @@
+:host {
+  display: block;
+  container-type: inline-size;
+}
+.auth {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(620px, 42%);
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: var(--color-bg-default);
+  color: var(--color-text-primary);
+  font-family: var(--font-family-primary);
+}
+.auth__image {
+  position: relative;
+  min-height: 100%;
+  overflow: hidden;
+  margin-right: -80px;
+}
+.auth__image img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.auth__content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-8);
+  min-width: 0;
+}
+.auth__card {
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  width: 540px;
+  max-width: 100%;
+  margin-left: -64px;
+  padding: var(--space-8);
+  border-radius: var(--radius-lg);
+  background: var(--color-bg-elevated);
+  box-shadow: 0 4px 16px var(--color-effect-shadow);
+}
+.auth__header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  text-align: center;
+}
+h1 {
+  margin: 0;
+  color: var(--color-text-primary);
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-semibold);
+  line-height: 40px;
+  overflow-wrap: anywhere;
+}
+h1:focus {
+  outline: none;
+}
+p {
+  margin: 0;
+  font-size: var(--font-size-md);
+  line-height: 24px;
+  overflow-wrap: anywhere;
+}
+.auth__header p,
+.auth__confirmation {
+  color: var(--color-text-secondary);
+}
+.auth__confirmation {
+  text-align: center;
+}
+form,
+fieldset {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  min-width: 0;
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+.auth__actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+.auth__announcements:empty {
+  display: none;
+}
+.auth__announcements {
+  color: var(--color-text-secondary);
+}
+.auth__announcements p {
+  font-size: var(--font-size-sm);
+  line-height: 20px;
+}
+dds-otp-input {
+  align-self: center;
+  width: 100%;
+  max-width: 388px;
+}
+.auth__success-icon {
+  display: block;
+  align-self: center;
+  width: 102px;
+  height: 102px;
+  background: var(--color-feedback-success);
+  mask: url('/images/authentication/success.svg') no-repeat center;
+}
+.auth__sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+@container (max-width: 960px) {
+  .auth {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .auth__image {
+    display: none;
+  }
+  .auth__card {
+    margin-left: 0;
+  }
+}
+@container (max-width: 540px) {
+  .auth__content {
+    padding: var(--space-4);
+  }
+  .auth__card {
+    padding: var(--space-6);
+  }
+  h1 {
+    font-size: var(--font-size-2xl);
+    line-height: 32px;
+  }
+}
